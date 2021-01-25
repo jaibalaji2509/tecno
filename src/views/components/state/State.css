@@ -1,0 +1,160 @@
+.StateList-card-container{
+    
+    background: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 20px !important;
+    color: black;
+    padding: 3%;
+}
+.Office-card-container-6{
+    
+    background: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 20px !important;
+    color: black;
+    padding: 5%;
+}
+.errorRes{
+    margin-top: 5px;
+    color: red
+}
+.role-heading-2{
+    font-family: Noto Sans;
+font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+}
+.role-heading-6{
+    font-family: Noto Sans;
+font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.form-labels-6{
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.stretching{
+    flex-grow: 1 !important;
+   
+}
+.blueColor-btns1{
+    background: #e85656!important;
+    color: white;
+    width: 80px;
+    /* font-weight: bold; */
+    font-weight: 600;
+    font-size: 12px;
+text-align: center;
+}
+
+.btn-container-role{
+    padding-left: 60%;
+    padding-right: 10%;
+}
+/* .seperator{
+    margin-top: 3%;
+    margin-bottom: 3%;
+} */
+.blueColor-btn2{
+    
+    background: #0676ED!important;
+    color: white;
+    width : 80px;
+    /* font-weight: bold; */
+    font-weight: 600;
+    font-size: 12px;
+text-align: center;
+
+}
+
+.blueColor-btn:hover{
+    background: #0676ED !important;
+    color: #FFFFFF;
+    font-weight: bold;
+    
+}
+
+.cancel-btn{
+    border: 1px solid black;
+    font-weight: bold;
+    color: #000000;
+}
+.cancel-btn:hover{
+    border: 1px solid black;
+    font-weight: bold;
+    color: #000000;
+    
+    background: #0676ED!important;
+    color: white;
+    font-weight: bold;
+}
+.blueColor:hover{
+    background: #0676ED!important;
+    color: white;
+    font-weight: bold;
+}
+
+
+.Roles-card-containe-6{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 20px !important;
+    color: black;
+    float: left;
+}
+.role-form-container-6{
+    padding-left: 2%;
+    padding-right: 2%;
+}
+.seperator-6{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.box::-webkit-input-placeholder{
+    font-size: 11px !important;
+}
+option{
+    font-size: 11px !important;
+}
+.box ::-webkit-input-value{
+    font-size: 11px !important;
+}
+.icon-role-list{
+    width: 20px;
+    height: 20px;
+}
+
+.box{
+    width: 140PX !important;
+    margin-right: 30PX;
+    /* margin-right: ; */
+}
+
+.center-6{
+    margin: 0;
+    position: absolute;
+     nav-down: 50%; 
+    left: 70%;
+  }
+  .centerd-6{
+    display: flex;
+    padding-left:20%;
+  padding-top: 1%;
+  margin-Right: '100%'
+  }
+  .centerd-7{
+    margin: 0;
+    position: absolute;
+    nav-down: 50%; 
+    left: 80%;
+   width:700px;
+  }
+
+  .my-2,.mx-0 {
+    margin-bottom: 0.5rem !important;
+    min-width: 1150px !important;
+}

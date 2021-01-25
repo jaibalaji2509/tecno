@@ -1,0 +1,175 @@
+.reporting-card-container {
+  background: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 20px !important;
+  color: black;
+  width: 1165px;
+  height: 550px;
+  top: -31px;
+  bottom: 120px;
+  left: -40px;
+  padding: 20px;
+  /* font-size: 20px; */
+}
+
+.reporting-card-container-1 {
+  background: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 20px !important;
+  color: black;
+  width: 1165px;
+  height: 550px;
+  top: -15px;
+  bottom: 140px;
+  left: -12px;
+  padding: 20px;
+  /* font-size: 20px; */
+}
+
+.reporting-card-container-2{
+  background: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 20px !important;
+  color: black;
+  width: 1165px;
+  height: 550px;
+  top: -15px;
+  bottom: 140px;
+  left: -12px;
+  padding: 20px;
+  /* font-size: 20px; */
+}
+
+.errorRes {
+  margin-top: 8px;
+  color: red;
+}
+.educationdetail-form-container {
+  padding-left: 25%;
+  padding-right: 25%;
+}
+.educationdetail-heading {
+  color: #000000;
+
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+}
+.form-labels10 {
+  font-weight: bold;
+  font-size: 14px;
+}
+.reporting-heading {
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.seperator-report {
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.form-labels5 {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* .form-labels4{
+    font-weight: bold;
+    font-size: 14px;
+} */
+
+.stretching {
+  flex-grow: 1 !important;
+}
+.btn-container-role {
+  padding-left: 60%;
+  padding-right: 10%;
+}
+.seperator {
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+.blueColor-btns1 {
+  background: #0676ed !important;
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+}
+.whiteColor-btn {
+  background: white !important;
+  color: black;
+  font-weight: bold;
+  font-size: 12px;
+}
+.blueColor-btn:hover {
+  background: #0676ed !important;
+  color: #ffffff;
+  font-weight: bold;
+  float: left;
+}
+
+.cancel-btn {
+  border: 1px solid black;
+  font-weight: bold;
+  color: #000000;
+}
+.cancel-btn:hover {
+  border: 1px solid black;
+  font-weight: bold;
+  color: #000000;
+}
+
+.EducationDetail-card-container {
+  background: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 20px !important;
+  color: black;
+  width: 1165px;
+  height: 625px;
+  top: 15px;
+  bottom: 105px;
+  left: 30px;
+  padding: 20px;
+}
+
+.Role-card-container-6 {
+  background: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 20px !important;
+  color: black;
+  padding: 2%;
+}
+
+.box::-webkit-input-placeholder {
+  font-size: 12px !important;
+}
+option {
+  font-size: 11px !important;
+}
+.box ::-webkit-input-value {
+  font-size: 11px !important;
+}
+
+.education {
+  margin: 0;
+  position: absolute;
+  left: 88%;
+  padding: 2%;
+}
+.education1 {
+  margin: 0;
+  position: absolute;
+  left: 80%;
+}
+/* .ReactVirtualized__Table__row {
+      text-align: center;
+
+}
+.ReactVirtualized__Table {
+    text-align: center;
+
+} */

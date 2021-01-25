@@ -1,0 +1,154 @@
+
+.errorRes{
+    margin-top: 8px;
+    color: red
+}
+.addemployee-form-container{
+    padding-left: 2%;
+    padding-right: 2%;
+}
+.addemployee-heading{
+    font-family: Noto Sans;
+font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.form-label1{
+    font-weight: bold;
+    font-size: 14px;
+}
+.form-label2{
+ width: 125px;
+left: 533px;
+padding-left: 7%;
+font-family: Noto Sans;
+font-style: normal;
+font-weight: bold;
+font-size: 14px;
+
+}
+.stretching{
+    flex-grow: 1 !important;
+   
+}
+.btn-container-add{
+    padding-left: 60%;
+    padding-right: 10%;
+}
+.seperator{
+    margin-top: 3%;
+    margin-bottom: 3%;
+    
+}
+.seperators{
+    margin-top: 3%;
+    margin-bottom: 3%;
+    
+}
+.blueColor-add{
+    
+    background: #0676ED!important;
+    color: white;
+    /* font-weight: bold; */
+    font-weight: 600;
+font-size: 12px;
+
+
+}
+.blueColor-add1{
+    
+    background: white!important;
+    color: black;
+    /* font-weight: bold; */
+    font-weight: 600;
+font-size: 12px;
+
+
+}
+.blueColor-btn:hover{
+    background: #0676ED !important;
+    color: #FFFFFF;
+    font-weight: bold;
+    
+}
+
+.cancel-btn{
+    border: 1px solid black;
+    font-weight: bold;
+    color: #000000;
+}
+.cancel-btn:hover{
+    border: 1px solid black;
+    font-weight: bold;
+    color: #000000;
+    
+}
+
+.AddEmployee-card-container{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 20px !important;
+    border: 1px solid #d3d3d3;
+    color: black;
+    width: 1230px;
+    top: -15px;
+    height: 650px;
+   
+    bottom: 150px;
+    left: -30px;
+    padding: 20px; 
+    /* font-size: 20px; */
+   
+}
+
+.box::-webkit-input-placeholder{
+    font-size: 11px !important;
+}
+option{
+    font-size: 11px !important;
+}
+.box ::-webkit-input-value{
+    font-size: 11px !important;
+}
+.icon-role-list{
+    width: 20px;
+    height: 20px;
+}
+
+.add {
+    margin: 0;
+    position: absolute;
+    left: 90%;
+  }
+
+  .cancel {
+    color: #e85656;
+    margin: 0;
+    position: absolute;
+    left: 80%;
+  }
+ .k-radio{
+    /* position: absolute; */
+    width: 20px;
+    height: 20px;
+    left: 523px;
+    top: 649px;
+ }
+ .image1{
+     position: absolute;
+    width: 130px;
+    height: 120px;
+    left: 563px;
+    top: -25px;
+    background: #C4C4C4;}
+
+
+    .Role-card-container{
+    
+        background: #FFFFFF;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+        border-radius: 15px !important;
+        color: black;
+        padding: 2%;
+    }

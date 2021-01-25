@@ -1,0 +1,77 @@
+import React from "react";
+import { CRow, CCol, CCard } from '@coreui/react'
+import OrganizationChart from "@dabeng/react-orgchart";
+import "../../../views/images/Emp1.png";
+import RolesHierarchy from "./Hirerarchy";
+
+
+const HierarchyChart = (props) => {
+
+    // const hierarchyHeader = "Role Hierarchy Chart";
+
+    // const ds2 = {
+    //     id: "n1",
+    //     name: "Managing Director",
+    //     title: "HEAD OFFICE CHENNAI",
+    //     img: "https://ef.ca/wp-content/uploads/2018/02/teamphotos_0011_Devin-Couvrette-Eclipse_Final_3189.jpg",
+    //     // img: 'Emp1.png',
+    //     children: [
+    //         {
+    //             id: "n2",
+    //             name: "Manager",
+    //             title: "CIRCLE OFFICE CHENNAI", 
+    //             img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGfw_up9hc6DdutRh6GRH1J-nyxgsDl-2ldg&usqp=CAU"
+    //         },
+    //         {
+    //             id: "n3",
+    //             name: "Manager",
+    //             title: "CIRCLE OFFICE COIMBATORE",
+    //             img: "data:image/jpeg;base64,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",
+    //             children: [
+    //                 {
+    //                     id: "n4", name: "Assistant Manager", title: "DIVISIONAL OFFICE ERODE",
+    //                     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGfw_up9hc6DdutRh6GRH1J-nyxgsDl-2ldg&usqp=CAU",
+    //                 },
+    //                 {
+    //                     id: "n5",
+    //                     name: "Assistant Manager",
+    //                     title: "DIVISIONAL OFFICE COIMBATORE",
+    //                     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQAJk04QhRdrjlRT81ouhDrwgfc5QPys_TGGg&usqp=CAU",
+    //                     children: [
+    //                         { id: "n6", name: "Chief Vigilance Officer", title: "SUB DIVISION OFFICE METTUPALAYAM", img: "https://image.shutterstock.com/image-photo/portrait-handsome-young-man-260nw-76916683.jpg" },
+    //                         { id: "n7", name: "Chief Vigilance Officer", title: "SUB DIVISION OFFICE POLLACHI", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTGJrPcUpiaL5SPn2o0aD84S1sRvr4V9_J7KQ&usqp=CAU" }
+    //                     ]
+    //                 },
+
+    //             ]
+    //         },
+    //         { id: "n9", name: "Manager", title: "CIRCLE OFFICE MADURAI", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRPitFRaxtC5wYac4C6ArdIcbzqH2cxszVEzw&usqp=CAU", },
+
+    //     ]
+    // };
+
+    const ds2 = props.datasource;
+
+
+    return (
+
+        <div>
+            <CCard className={'org-chartcontainer3'} >
+                <CRow style={{ paddingTop: '2%', paddingLeft: '2%' }}>
+                    {/* <CCol md='12' className={'role-heading'} >
+           {hierarchyHeader}</CCol> */}
+                </CRow>
+
+                <CRow>
+                    <CCol>
+                        <OrganizationChart datasource={ds2} chartClass="myChart" NodeTemplate={RolesHierarchy} />
+                    </CCol>
+                </CRow>
+            </CCard>
+        </div>
+
+    );
+
+}
+
+export default HierarchyChart;

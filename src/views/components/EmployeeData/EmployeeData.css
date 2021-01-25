@@ -1,0 +1,193 @@
+.Role-card-container-2 {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 20px !important;
+    color: black;
+    padding: 3%;
+}
+
+.form-labels-2 {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.employee-card-container {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 20px !important;
+    color: black;
+    width: 100%;
+    height: auto;
+    top: -0px;
+    bottom: 105px;
+    left: -2px;
+    padding: 30px;
+    /* font-size: 20px;    */
+}
+
+.errorRes {
+    margin-top: 5px;
+    color: red
+}
+
+.role-heading-2 {
+    font-family: Noto Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.form-labels-2 {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.header {
+    background-color: #fffcdc;
+}
+
+.stretching {
+    flex-grow: 1 !important;
+}
+
+.btn-container-role {
+    padding-left: 60%;
+    padding-right: 10%;
+}
+
+.blueColor-btn {
+    background: #0676ED!important;
+    color: white;
+    /* font-weight: bold; */
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.blueColor-btn:hover {
+    background: #0676ED !important;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.cancel-btn {
+    border: 1px solid black;
+    font-weight: bold;
+    color: #000000;
+}
+
+.cancel-btn:hover {
+    border: 1px solid black;
+    font-weight: bold;
+    color: #000000;
+}
+
+.Roles-card-container {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 20px !important;
+    color: black;
+    float: left;
+}
+
+.role-form-container-2 {
+    padding-top: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.seperator-2 {
+    margin-top: 2%;
+    margin-bottom: 3%;
+}
+
+.box::-webkit-input-placeholder {
+    font-size: 11px !important;
+}
+
+option {
+    font-size: 11px !important;
+}
+
+.box ::-webkit-input-value {
+    font-size: 11px !important;
+}
+
+.icon-role-list {
+    width: 20px;
+    height: 20px;
+}
+
+.center-2 {
+    margin: 0;
+    position: absolute;
+    nav-down: 50%;
+    left: 90%;
+    /* -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+}
+
+.centerd-2 {
+    margin: 0;
+    position: absolute;
+    nav-down: 50%;
+    left: 80%;
+    /* -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+}
+
+.image-2 {
+    position: absolute;
+    width: 130px;
+    height: 120px;
+    left: 563px;
+    top: -85px;
+    background: #C4C4C4;
+}
+
+.centers {
+    margin: 0;
+    position: absolute;
+    left: 90%;
+    top: 20%;
+    width: 20px;
+    height: 20px;
+}
+
+.box {
+    width: 115PX !important;
+    margin-right: 43PX;
+}
+
+.form-labels-4 {
+    font-weight: bold;
+    font-size: 14px;
+    padding-left: 350px;
+}
+
+.font7 {
+    font-size: 16px;
+    font-weight: 400;
+    /* margin-left: 400px;  */
+}
+
+.font8 {
+    font-size: 24px;
+    font-weight: 400;
+    font-family: Roboto, HelveticaNeue, Arial, sans-serif;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+    width: 250px;
+    height: 20px;
+    position: relative;
+    bottom: 55px;
+    left: 20px;
+}
+
+/* .row {
+    display: flex;
+    flex-wrap: wrap;
+    right: -446px;
+    margin-left: -15px;
+} */
