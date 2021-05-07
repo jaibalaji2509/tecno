@@ -1,10 +1,26 @@
 import { CButton, CCard, CCol, CInput, CLabel, CRow } from "@coreui/react";
 import React, { useState } from "react";
+import Toaster from "src/views/notifications/toaster/Toaster";
 import CDataTable from "../../CoreComponents/table/CDataTable";
+import { saveCreateCorporation } from "../../../services/ApiService";
+import { toast } from "react-toastify";
 const Location = () => {
   const [location, setLocation] = useState({
     state: "",
     district: "",
+    city: "",
+    ward: "",
+    area: "",
+    street: "",
+    pincode: "",
+  });
+  const [mobilenumber, setMobileNumber] = useState("");
+  const [otpHide, setOtpHide] = useState(false);
+  const [locations, setLocations] = useState({
+    state: "",
+    district: "",
+    city: "",
+    ward: "",
     area: "",
     street: "",
     pincode: "",
@@ -33,13 +49,35 @@ const Location = () => {
     { key: "Area", label: "Area", _style: { width: "10%" } },
     { key: "Pincode", label: "Pincode", _style: { width: "10%" } },
   ];
+  const [passing, setPassing] = useState("");
+  const [error, setError] =useState("")
+  const saveCorporation = async () => {
+    // setLocationHide({
+    //   ...locationHide,
+    //   municipalLocation: true,
+    //   corporation: false,
+    // });
 
-  const saveCorporation = () => {
-    setLocationHide({
-      ...locationHide,
-      municipalLocation: true,
-      corporation: false,
-    });
+    if (passing === "") {
+      let body = {
+        state: locations.state,
+        district: locations.district,
+        city: locations.city,
+        area: locations.area,
+        ward: locations.ward,
+        street: locations.street,
+      };
+      console.log(body);
+      try {
+        const response = await saveCreateCorporation(JSON.stringify(body));
+        console.log(body, "createfirst");
+        if (response) {
+          toast.success(response);
+        }
+      } catch (error) {
+        toast.error(error);
+      }
+    }
   };
 
   const saveMunicipalLocation = () => {
@@ -87,6 +125,18 @@ const Location = () => {
       corporation: true,
     });
   };
+  const changeHandler = (e) => {
+    setLocations({ ...locations, [e.target.name]: e.target.value });
+  };
+  const otpChangeHandle = (e) => {
+     setMobileNumber(e.target.value)
+    if(mobilenumber.length > 8){
+      setOtpHide(true)
+    }
+    else{
+      setError("enter valid data")
+    }
+  };
   return (
     <div>
       <CCard className={"cardSave"}>
@@ -111,9 +161,10 @@ const Location = () => {
                   <CInput
                     className={"input-align"}
                     id={"corporationState"}
+                    name={"state"}
                     placeholder={" State Name"}
-                    value={location.state}
-                    onChange={(e) => setLocation(e.target.value)}
+                    value={locations.state}
+                    onChange={changeHandler}
                   />
                 </CCol>
                 <CCol className={"column-align"} md="3">
@@ -124,9 +175,10 @@ const Location = () => {
                   <CInput
                     className={"input-align"}
                     id={"corporationDistrict"}
+                    name={"district"}
                     placeholder={" District/City Name"}
-                    value={location.district}
-                    onChange={(e) => setLocation(e.target.value)}
+                    value={locations.district}
+                    onChange={changeHandler}
                   />
                 </CCol>
                 <CCol className={"column-align"} md="3">
@@ -137,9 +189,10 @@ const Location = () => {
                   <CInput
                     className={"input-align"}
                     id={"corporation"}
-                    placeholder={" Area Name"}
-                    value={location.arae}
-                    onChange={(e) => setLocation(e.target.value)}
+                    name={"city"}
+                    placeholder={" Corporation Name"}
+                    value={locations.city}
+                    onChange={changeHandler}
                   />
                 </CCol>
               </CRow>
@@ -152,9 +205,10 @@ const Location = () => {
                   <CInput
                     className={"input-align"}
                     id={"corporationArea"}
-                    placeholder={" Street Name"}
-                    value={location.street}
-                    onChange={(e) => setLocation(e.target.value)}
+                    name={"area"}
+                    placeholder={" Area Name"}
+                    value={locations.area}
+                    onChange={changeHandler}
                   />
                 </CCol>
                 <CCol className={"column-align"} md="3">
@@ -166,9 +220,10 @@ const Location = () => {
                     type={"text"}
                     className={"input-align"}
                     id={"corporationWard"}
-                    placeholder={"Enter Pincode"}
-                    value={location.pincode}
-                    onChange={(e) => setLocation(e.target.value)}
+                    name={"ward"}
+                    placeholder={"Enter Ward"}
+                    value={locations.ward}
+                    onChange={changeHandler}
                   />
                 </CCol>
                 <CCol className={"column-align"} md="3">
@@ -180,12 +235,47 @@ const Location = () => {
                     type={"text"}
                     className={"input-align"}
                     id={"corporationStreet"}
-                    placeholder={"Enter Pincode"}
-                    value={location.pincode}
-                    onChange={(e) => setLocation(e.target.value)}
+                    name={"street"}
+                    placeholder={"Enter Street"}
+                    value={locations.street}
+                    onChange={changeHandler}
                   />
                 </CCol>
               </CRow>
+              {/* <CCol className={"column-align"} md="3">
+                <CLabel className={"label-name"}>
+                  Mobile Number
+                  <span className={"text-danger"}>*</span>
+                </CLabel>
+                <CInput
+                  type={"number"}
+                  className={"input-align"}
+                  id={"corporationStreets"}
+                  name={"streets"}
+                  placeholder={"Enter Street"}
+                  value={mobilenumber}
+                  onChange={otpChangeHandle}
+                
+                />
+                <span className="text-danger">{error}</span>
+              </CCol>
+              {otpHide && (
+                <CCol className={"column-align"} md="3">
+                  <CLabel className={"label-name"}>
+                  OTP
+                    <span className={"text-danger"}>*</span>
+                  </CLabel>
+                  <CInput
+                    type={"number"}
+                    className={"input-align"}
+                    id={"corporationStreets"}
+                    name={"streets"}
+                    placeholder={"Enter otp"}
+                   
+                   
+                  />
+                </CCol>
+              )} */}
             </div>
             <CRow>
               <CCol md="10">
