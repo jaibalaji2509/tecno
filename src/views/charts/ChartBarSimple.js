@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { getColor } from '@coreui/utils/src'
+import { getColor } from '@coreui/utils'
 import { CChartBar } from '@coreui/react-chartjs'
 
 const ChartBarSimple = props => {
@@ -48,7 +48,6 @@ const ChartBarSimple = props => {
   return (
     <CChartBar
       {...attributes}
-      type="bar"
       datasets={defaultDatasets}
       options={defaultOptions}
       labels={label}

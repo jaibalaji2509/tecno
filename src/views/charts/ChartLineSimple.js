@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { getColor, deepObjectsMerge } from '@coreui/utils/src'
+import { getColor, deepObjectsMerge } from '@coreui/utils'
 import { CChartLine } from '@coreui/react-chartjs'
 
 const ChartLineSimple = props => {
@@ -123,7 +123,6 @@ const ChartLineSimple = props => {
   return (
     <CChartLine
       {...attributes}
-      type="line"
       datasets={computedDatasets}
       options={computedOptions}
       labels={label}

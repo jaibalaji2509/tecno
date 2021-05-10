@@ -10,14 +10,14 @@ import {
   CSidebarMinimizer,
   CSidebarNavDropdown,
   CSidebarNavItem,
+  CImg,
+  CLabel,
 } from '@coreui/react'
-import { CRow, CCol } from "@coreui/react";
 
 import CIcon from '@coreui/icons-react'
 
 // sidebar nav config
 import navigation from './_nav'
-import { Col } from 'antd'
 
 const TheSidebar = () => {
   const dispatch = useDispatch()
@@ -29,8 +29,25 @@ const TheSidebar = () => {
       onShowChange={(val) => dispatch({type: 'set', sidebarShow: val })}
     >
       <CSidebarBrand className="d-md-down-none" to="/">
-        <h5>HR Module</h5>
-        
+        {/* <CIcon
+          className="c-sidebar-brand-full"
+          name="logo-negative"
+          height={35}
+        />
+        <CIcon
+          className="c-sidebar-brand-minimized"
+          name="sygnet"
+          height={35}
+        /> */}
+         <CSidebarBrand
+        className="d-md-down-none"
+        to="/"
+        style={{ backgroundColor: "#fff" }}
+      >
+        <CLabel style={{fontSize:"18px", fontWeight:"bold",backgroundColor:"white", color:"black", position:"absolute"}}>
+          POLITICAL-PARTY
+        </CLabel>
+      </CSidebarBrand>
       </CSidebarBrand>
       <CSidebarNav>
 
