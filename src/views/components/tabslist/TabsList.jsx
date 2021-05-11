@@ -1,151 +1,139 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from "react";
 import {
-    CCol,
-    CNav,
-    CNavItem,
-    CNavLink,
-    CRow,
-    CTabContent,
-    CTabPane,
-    CCard,
-    CCardBody,
-    CTabs,
-} from '@coreui/react'
-import AddEmployee from '../addemployee/AddEmployee'
-import Address from '../address/Address'
-import EducationDetails from '../educationdetails/EducationDetails'
-import BulkDetails from '../bulkdetails/BulkDetails'
-import FamilyList from '../familylist/FamilyList'
-// import Role from '../role/Role'
-import AddExperienceDetails from '../ExperienceDetails/AddExperienceDetails'
-import Document from '../Document/Document'
+  CCol,
+  CNav,
+  CNavItem,
+  CNavLink,
+  CRow,
+  CTabContent,
+  CTabPane,
+  CCard,
+  CCardBody,
+  CTabs,
+} from "@coreui/react";
 
+import { BrowserRouter as Router } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { useHistory } from 'react-router-dom'
-// import { address } from '../../../services/ApiService'
-
-import Role from '../role/Role';
+// import { EmployeeContext } from "../../../services/EmployeeContext";
+import LocationLibrary from "../location_library/Locationlibrary";
+import Location from "../location/Location";
 
 const TabsList = () => {
-    // const [state,setState] = useContext(EmployeeContext);
-    const [active, setActive] = useState("AddPartyMember");
-    console.log(active, 'active');
+  // const [state] = React.useContext(EmployeeContext);
+  const [active, setActive] = useState("0");
 
-    const activeTabHandler = (val) => {
-        console.log(val, 'vLaaa');
-        setActive(val);
-    }
-    // const [state, setState] = useContext(EmployeeContext);
-    // console.log(state,'tabs');
-    const history = useHistory()
-    function Addres(props) {
-        return <h2 onClick={() => props.history.push('AddEmployee')}>About</h2>;
-    }
+  const [TRUE, FALSE] = [true, false];
 
-    function Topics({ match }) {
-        return <h3>Requested Param: {match.params.id}</h3>;
-    }
-    useEffect(() => {
-        return history.listen((location) => {
-            console.log(`You changed the page to: ${location.BulkDetails}`)
-        })
-    }, [history])
+  const activeTabHandler = (val) => {
+    setActive(val);
+  };
 
-    const setValue = (data) => {
-        // setState({...state,...data});
-        console.log(data);
-    }
-    return (
+  return (
+    <CRow>
+      <div>
+        <Router>
+        </Router>
+      </div>
+      <CCol>
+        <CCard>
+          <CCardBody>
+            <CTabs activeTab={active}>
+              <CNav variant="tabs">
+                <CNavItem>
+                  <CNavLink
+                    data-tab="0"
+               onClick={()=>setActive("0")}
+                    id={"tabsListAddEmployee"}
+                  >
+                  Gneral Location{" "}
+                  </CNavLink>
+                </CNavItem>
 
-            <CRow>
-                <div>
-                    <Router>
-                        <Route exact path="/" component={AddEmployee} />
-                        <Route path="/AddPartyMember" component={Addres} />
-                    </Router>
-                </div>
-                <CCol >
-                    <CCard>
+                <CNavItem>
+                  <CNavLink
+                    id={"tabsListReporting"}
+                  onClick={()=>setActive("1")}
+                    data-tab="1"
+                 
+                  >
+                    Rural Location{" "}
+                  </CNavLink>
+                </CNavItem>
 
-                        <CCardBody>
+                {/* <CNavItem>
+                  <CNavLink
+                    id={"tabsListDocument"}
+                    onClick={() => setActive("Document")}
+                    data-tab="Document"
+                    disabled={state.roleData ? FALSE : TRUE}
+                  >
+                    Documents{" "}
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink
+                    id={"tabsListFamilyDetails"}
+                    onClick={() => setActive("FamilyDetails")}
+                    data-tab="FamilyDetails"
+                    disabled={state.documentData ? FALSE : TRUE}
+                  >
+                    Family Details{" "}
+                  </CNavLink>
+                </CNavItem>
 
-                            <CTabs activeTab={active}>
+                <CNavItem>
+                  <CNavLink
+                    id={"tabsListAddExperienceDetails"}
+                    onClick={() => setActive("AddExperienceDetails")}
+                    data-tab="AddExperienceDetails"
+                    disabled={state.familyData ? FALSE : TRUE}
+                  >
+                    Experience Details{" "}
+                  </CNavLink>
+                </CNavItem>
 
-                                <CNav variant="tabs">
+                <CNavItem>
+                  <CNavLink
+                    id={"tabsListAddEducationDetails"}
+                    onClick={() => setActive("EducationDetails")}
+                    data-tab="EducationDetails"
+                    disabled={state.experienceData ? FALSE : TRUE}
+                  >
+                    Education Qualification{" "}
+                  </CNavLink>
+                </CNavItem>
+                <CNavItem>
+                  <CNavLink
+                    id={"tabsListAddress"}
+                    onClick={() => setActive("Address")}
+                    data-tab="Address"
+                    disabled={state.educationData ? FALSE : TRUE}
+                  >
+                    Address{" "}
+                  </CNavLink>
+                </CNavItem> */}
+              </CNav>
 
-                                    <CNavItem>
-                                        <CNavLink data-tab="AddPartyMember">
-                                            Add Party Member </CNavLink>
-                                    </CNavItem>
+              <CTabContent>
+                <CTabPane  data-tab="0">
+                  {active ==="0" && (
+                 <LocationLibrary onActive={activeTabHandler}/>
+                 )}
+                </CTabPane>
+                <CTabPane data-tab="1">
+                  {active ==="1" && (
+                  <Location onActive={activeTabHandler}/>
+                  )}
+                </CTabPane>
+              
+              </CTabContent>
+            </CTabs>
+          </CCardBody>
+        </CCard>
+      </CCol>
+    </CRow>
+  );
+};
 
-                                    <CNavItem>
-                                        <CNavLink data-tab="Role">
-                                            Role </CNavLink>
-                                    </CNavItem>
-
-                                    <CNavItem>
-                                        <CNavLink data-tab="FamilyDetails">
-                                            Family Details </CNavLink>
-                                    </CNavItem>
-
-                                    {/* <CNavItem>
-                                        <CNavLink data-tab="AddExperienceDetails">
-                                            Experience Details </CNavLink>
-                                    </CNavItem> */}
-
-                                    <CNavItem>
-                                        <CNavLink data-tab="EducationDetails">
-                                            Education Qualification </CNavLink>
-                                    </CNavItem>
-                                    <CNavItem>
-                                        <CNavLink data-tab="Document">
-                                           Documents </CNavLink>
-                                    </CNavItem>
-                                    <CNavItem>
-                                        <CNavLink data-tab="Address">
-                                            Address </CNavLink>
-                                    </CNavItem>
-
-                                    {/* <CNavItem>
-                                        <CNavLink data-tab="BulkDetails">
-                                            Bulk Upload </CNavLink>
-                                    </CNavItem> */}
-                                </CNav>
-
-                                <CTabContent>
-                                    <CTabPane data-tab="AddPartyMember">
-                                        <AddEmployee onActive={activeTabHandler} />
-                                    </CTabPane>
-                                    <CTabPane data-tab="Address">
-                                        <Address  onActive={activeTabHandler} />
-                                    </CTabPane>
-                                    <CTabPane data-tab="Role">
-                                        <Role onActive={activeTabHandler} value={setValue} />
-                                    </CTabPane>
-                                    {/* <CTabPane data-tab="AddExperienceDetails">
-                                        <AddExperienceDetails onActive={activeTabHandler} />
-                                    </CTabPane> */}
-                                    <CTabPane data-tab="EducationDetails">
-                                        <EducationDetails onActive={activeTabHandler} />
-                                    </CTabPane>
-                                    <CTabPane data-tab="FamilyDetails">
-                                        <FamilyList onActive={activeTabHandler} />
-                                    </CTabPane>
-                                    <CTabPane data-tab="Document">
-                                        <Document onActive={activeTabHandler} />
-                                    </CTabPane>
-                                    {/* <CTabPane data-tab="BulkDetails">
-                                        <BulkDetails />
-                                    </CTabPane> */}
-                                </CTabContent>
-                            </CTabs>
-                        </CCardBody>
-                    </CCard>
-                </CCol>
-            </CRow>
-    )
-}
-
-export default TabsList
+export default TabsList;

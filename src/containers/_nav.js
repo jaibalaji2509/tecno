@@ -15,8 +15,8 @@ const _nav =  [
  
   {
     _tag: 'CSidebarNavItem',
-    name: 'Location',
-    to: '/location',
+    name: 'Location Library',
+    to: '/tabslist',
     icon: 'cil-drop',
   },
   // {

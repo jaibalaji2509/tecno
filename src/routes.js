@@ -1,4 +1,6 @@
 import React from 'react';
+import LocationLibrary from './views/components/location_library/Locationlibrary';
+import TabsList from './views/components/tabslist/TabsList';
 import Login from './views/pages/login/Login';
 
 const Toaster = React.lazy(() => import('./views/notifications/toaster/Toaster'));
@@ -82,6 +84,8 @@ const routes = [
   { path: '/location',  exact: true, name: 'Location', component: Location },
   { path: '/users', exact: true,  name: 'Users', component: Users },
   { path: '/users/:id', exact: true, name: 'User Details', component: User },
+  {path:"/locationlibrary", exact:true, name:'Location Library', component:LocationLibrary},
+  {path:"/tabslist", exact:true, name : "TabsList", component:TabsList}
  
 ];
 
