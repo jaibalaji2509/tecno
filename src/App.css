@@ -1118,16 +1118,15 @@ html:not([dir=rtl]) .c-sidebar-nav-dropdown-toggle:after {
   margin-bottom: 1px;
 }
 .header-label{
-  margin-left: 67px;
-  margin-bottom: 0px !important;
-  text-transform: uppercase;
-  color: #000000;
-  font-weight: 700 !important;
-  font-size: 18px !important;
-  line-height: 28px;
-  font-family: "Open Sans" !important;
-  margin-top: 10px !important;
-  letter-spacing: 0.5px;
+  margin-bottom: 0px;
+    text-transform: uppercase;
+    color: #000000;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    font-family: 'Open Sans';
+    margin-top: 20px;
+    letter-spacing: 0.5px;
 }
 button.saveBtn {
   text-transform: uppercase;

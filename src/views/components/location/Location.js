@@ -147,7 +147,7 @@ const Location = () => {
           <div>
             <div style={{ marginLeft: "-26px" }}>
               <div className={"row-headerlabel"}>
-                <span className={"header-label"}>
+                <span  style={{marginLeft:"70px"}} className={"header-label"}>
                   {" "}
                   Adding Corporation Location{" "}
                 </span>
@@ -162,7 +162,7 @@ const Location = () => {
                     className={"input-align"}
                     id={"corporationState"}
                     name={"state"}
-                    placeholder={" State Name"}
+                    placeholder={"State Name"}
                     value={locations.state}
                     onChange={changeHandler}
                   />
@@ -226,6 +226,7 @@ const Location = () => {
                     onChange={changeHandler}
                   />
                 </CCol>
+                
                 <CCol className={"column-align"} md="3">
                   <CLabel className={"label-name"}>
                     Street
