@@ -34,29 +34,29 @@ const Location = () => {
     cityLocation: false,
   });
   const userData = [
-    {
-      SNo: "1",
-      State: "TamilNadu",
-      District: "chennai",
-      Area: "TNagar",
-      Pincode: "600017",
-    },
+    // {
+    //   SNo: "1",
+    //   State: "TamilNadu",
+    //   District: "chennai",
+    //   Area: "TNagar",
+    //   Street: "Pondy Bazar",
+    // },
   ];
   const fields = [
     { key: "SNo", label: "S.NO", _style: { width: "10%" } },
     { key: "State", label: "State", _style: { width: "10%" } },
     { key: "District", label: "District", _style: { width: "10%" } },
-    { key: "Area", label: "Area", _style: { width: "10%" } },
-    { key: "Pincode", label: "Pincode", _style: { width: "10%" } },
+    { key: "Area", label: "Ward", _style: { width: "10%" } },
+    { key: "Street", label: "Street", _style: { width: "10%" } },
   ];
   const [passing, setPassing] = useState("");
   const [error, setError] =useState("")
   const saveCorporation = async () => {
-    // setLocationHide({
-    //   ...locationHide,
-    //   municipalLocation: true,
-    //   corporation: false,
-    // });
+    setLocationHide({
+      ...locationHide,
+      municipalLocation: true,
+      corporation: false,
+    });
 
     if (passing === "") {
       let body = {
@@ -371,7 +371,7 @@ const Location = () => {
               <div className={"row-headerlabel"}>
                 <span className={"header-label"}>
                   {" "}
-                  Adding Municipal Location{" "}
+                  Adding Urban Location{" "}
                 </span>
               </div>
               <CRow className={"row-alignment"} md="12" sm="12" lg="12">
@@ -390,7 +390,7 @@ const Location = () => {
                 </CCol>
                 <CCol className={"column-align"} md="3">
                   <CLabel className={"label-name"}>
-                    District
+                    District/City
                     <span className={"text-danger"}>*</span>
                   </CLabel>
                   <CInput
@@ -403,13 +403,13 @@ const Location = () => {
                 </CCol>
                 <CCol className={"column-align"} md="3">
                   <CLabel className={"label-name"}>
-                    Muncipality
+                    Muncipality Corporation
                     <span className={"text-danger"}>*</span>
                   </CLabel>
                   <CInput
                     className={"input-align"}
                     id={"Muncipality"}
-                    placeholder={" Area Name"}
+                    placeholder={" Muncipality Corporation"}
                     value={location.arae}
                     onChange={(e) => setLocation(e.target.value)}
                   />
@@ -424,7 +424,7 @@ const Location = () => {
                   <CInput
                     className={"input-align"}
                     id={"municipalWard"}
-                    placeholder={" Street Name"}
+                    placeholder={" Ward"}
                     value={location.street}
                     onChange={(e) => setLocation(e.target.value)}
                   />
@@ -438,7 +438,22 @@ const Location = () => {
                     type={"text"}
                     className={"input-align"}
                     id={"municipalStreet"}
-                    placeholder={"Enter Pincode"}
+                    placeholder={"Enter Street"}
+                    value={location.pincode}
+                    onChange={(e) => setLocation(e.target.value)}
+                  />
+                </CCol>
+
+                <CCol className={"column-align"} md="3">
+                  <CLabel className={"label-name"}>
+                    Area
+                    <span className={"text-danger"}>*</span>
+                  </CLabel>
+                  <CInput
+                    type={"text"}
+                    className={"input-align"}
+                    id={"municipalStreet"}
+                    placeholder={"Enter Area"}
                     value={location.pincode}
                     onChange={(e) => setLocation(e.target.value)}
                   />
@@ -867,7 +882,7 @@ const Location = () => {
               <div className={"row-headerlabel"}>
                 <span className={"header-label"}>
                   {" "}
-                  Adding Village Panchayat Location{" "}
+                  Adding Rural Location{" "}
                 </span>
               </div>
               <CRow className={"row-alignment"} md="12" sm="12" lg="12">
@@ -899,19 +914,34 @@ const Location = () => {
                 </CCol>
                 <CCol className={"column-align"} md="3">
                   <CLabel className={"label-name"}>
-                    Village Panchayat
+                     Panchayat Union
                     <span className={"text-danger"}>*</span>
                   </CLabel>
                   <CInput
                     className={"input-align"}
                     id={"villagePanchayat"}
-                    placeholder={" Area Name"}
+                    placeholder={"  Panchayat Union"}
                     value={location.arae}
                     onChange={(e) => setLocation(e.target.value)}
                   />
                 </CCol>
               </CRow>
               <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+
+              <CCol className={"column-align"} md="3">
+                  <CLabel className={"label-name"}>
+                    Village Union
+                    <span className={"text-danger"}>*</span>
+                  </CLabel>
+                  <CInput
+                    className={"input-align"}
+                    id={"villageunion"}
+                    placeholder={"village Union"}
+                    value={location.villageunion}
+                    onChange={(e) => setLocation(e.target.value)}
+                  />
+                </CCol>
+                
                 <CCol className={"column-align"} md="3">
                   <CLabel className={"label-name"}>
                     Ward
@@ -920,7 +950,7 @@ const Location = () => {
                   <CInput
                     className={"input-align"}
                     id={"villagePanchayatWard"}
-                    placeholder={" Street Name"}
+                    placeholder={"Enter Ward"}
                     value={location.street}
                     onChange={(e) => setLocation(e.target.value)}
                   />
@@ -934,7 +964,7 @@ const Location = () => {
                     type={"text"}
                     className={"input-align"}
                     id={"villagePanchayatStreet"}
-                    placeholder={"Enter Pincode"}
+                    placeholder={"Enter Street"}
                     value={location.pincode}
                     onChange={(e) => setLocation(e.target.value)}
                   />
@@ -946,6 +976,7 @@ const Location = () => {
                 <CCol
                   md="5"
                   style={{
+                    marginTop: "18px",
                     float: "right",
                   }}
                 >
@@ -953,7 +984,7 @@ const Location = () => {
                     style={{
                       float: "right",
                     }}
-                    id={"villagePanchayatSave"}
+                    id={"cancelAbbreviationConfigureCode"}
                     className={"cancelBtn"}
                   >
                     CANCEL
@@ -963,9 +994,9 @@ const Location = () => {
                       float: "right",
                       marginRight: "15px",
                     }}
-                    id={"villagePanchayatCancel"}
+                    id={"saveAbbreviationConfigureCode"}
                     className={"saveBtn"}
-                    onClick={saveVillagePanchayat}
+                    onClick={saveCorporation}
                   >
                     Save
                   </CButton>{" "}

@@ -25,11 +25,7 @@ option {
   .c-header.c-header-fixed {
     background-color: white;
   }
-  .c-sidebar .c-sidebar-brand {
-    background:5px white;
-    border-right: 1px solid white;
-    border-bottom: 1px solidwhite;
-  }
+ 
   .navbar-brand {
     color: white;
   }
@@ -181,10 +177,7 @@ html:not([dir=rtl]) .c-sidebar-nav-dropdown-toggle:after {
     color: #fff;
   }
   
-  .c-sidebar {
-    color: lightwhite;
-    background: rgba(255, 255, 255, 0.8);
-  }
+
   
   /* .c-sidebar .c-sidebar-nav-link .c-sidebar-nav-icon {
     color: #fff;
@@ -1127,6 +1120,7 @@ html:not([dir=rtl]) .c-sidebar-nav-dropdown-toggle:after {
     font-family: 'Open Sans';
     margin-top: 20px;
     letter-spacing: 0.5px;
+    margin-left: 60px;
 }
 button.saveBtn {
   text-transform: uppercase;
@@ -1174,4 +1168,15 @@ button.cancelBtn {
   justify-content: center;
   align-items: center;
 
+}
+
+.c-sidebar {
+  color: lightwhite;
+  background: white;
+}
+
+.c-sidebar .c-sidebar-brand {
+  background:5px #225da2;
+  border-right: 1px solid white;
+  border-bottom: 1px solidwhite;
 }
