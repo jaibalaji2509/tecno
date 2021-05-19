@@ -1,26 +1,51 @@
 <!DOCTYPE html>
 <!--
 * CoreUI Free - React.js Admin Template
-* @version v3.2.0
+* @version v3.0.0-beta.1
 * @link https://coreui.io/pro/react/
 * Copyright (c) 2020 creativeLabs Łukasz Holeczek
 * License MIT
 -->
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="CoreUI for React - Open Source Bootstrap Admin Template">
-    <meta name="author" content="Łukasz Holeczek">
-    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,CSS,SCSS,HTML,RWD,Dashboard,React">
-    <title>CoreUI Free React.js Admin Template</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="CoreUI for React - Open Source Bootstrap Admin Template"
+    />
+    <meta name="author" content="Łukasz Holeczek" />
+    <meta
+      name="keyword"
+      content="Bootstrap,Admin,Template,Open,Source,CSS,SCSS,HTML,RWD,Dashboard,React"
+    />
+    <title>Kpost HR</title>
     <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
+      @import url("https://fonts.googleapis.com/css?family=Yahoo Sans");
+      @import url("https://fonts.googleapis.com/css?family=Open Sans");
+      @import url("https://fonts.googleapis.com/css?family=Roboto");
+      @import url("https://fonts.googleapis.com/css?family=Montserrat");
+      @import url("https://fonts.googleapis.com/css?family=Nunito Sans");
+      @import url("https://fonts.googleapis.com/css?family=Google Sans");
+      @import url("https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+    </style>
+    <script src="https://balkangraph.com/js/latest/OrgChart.js"></script>
+    <script
+      src="https://kit.fontawesome.com/dff3235aa5.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script src="https://kit.fontawesome.com/dff3235aa5.js" crossorigin="anonymous"></script> -->
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -31,10 +56,8 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
   </head>
-  <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
+  <body onload="puts()">
+       <noscript> You need to enable JavaScript to run this app. </noscript>
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -47,4 +70,12 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script>
+    // window.onload = function reloadFun() {
+    //   localStorage.removeItem("token");
+    //   if(window.location.pathname !== '/login'){
+    //     window.location.pathname = '/login';
+    //   }
+    // };
+  </script>
 </html>

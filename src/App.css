@@ -23,7 +23,7 @@ option {
     color: #0011ff !important;
   }
   .c-header.c-header-fixed {
-    background-color: white;
+    background-color: whblite;
   }
  
   .navbar-brand {
@@ -1172,11 +1172,18 @@ button.cancelBtn {
 
 .c-sidebar {
   color: lightwhite;
-  background: white;
+  background: transparent;
 }
 
 .c-sidebar .c-sidebar-brand {
   background:5px #225da2;
   border-right: 1px solid white;
   border-bottom: 1px solidwhite;
+}
+
+.table th, .table td {
+  font-family: "normal" !important;
+  color: #000 !important;
+  font-size: 16px;
+  font-weight: bold;
 }
