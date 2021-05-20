@@ -44,6 +44,13 @@
     margin-left: 3px;
 }
 
+
+.label-name-2 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    margin-left: 15px;
+}
 .form-labels-6{
     font-weight: 600;
     font-size: 14px;
@@ -173,5 +180,21 @@ option{
 }
 
 .white{
-    white-space: nowrap;
+    white-space: nowra
+}
+.col-sm-3 {
+    -webkit-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+    margin-left: -12px;
+}
+.column-align3{
+    margin-top: 30px;
+    margin-left: 50px;
+}
+.label-name-3{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    margin-left: 3px;
 }
