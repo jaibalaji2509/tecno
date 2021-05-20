@@ -41,6 +41,8 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'));
 const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
 const Location = React.lazy(() => import('./views/components/location/Location'));
+const AddMemberRegister = React.lazy(() => import('./views/components/MemberRegistration/AddMemberRegister'));
+const MemberRegistration = React.lazy(() => import('./views/components/MemberRegistration/MemberRegistration'));
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -85,8 +87,10 @@ const routes = [
   { path: '/users', exact: true,  name: 'Users', component: Users },
   { path: '/users/:id', exact: true, name: 'User Details', component: User },
   {path:"/locationlibrary", exact:true, name:'Location Library', component:LocationLibrary},
-  {path:"/tabslist", exact:true, name : "TabsList", component:TabsList}
- 
+  {path:"/tabslist", exact:true, name : "TabsList", component:TabsList},
+  { path: '/AddMemberRegister',  exact: true, name: 'AddMemberRegister', component: AddMemberRegister },
+  { path: '/MemberRegistration',  exact: true, name: 'MemberRegistration', component: MemberRegistration },
+
 ];
 
 export default routes;

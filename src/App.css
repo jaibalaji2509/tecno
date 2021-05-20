@@ -1127,6 +1127,7 @@ html:not([dir=rtl]) .c-sidebar-nav-dropdown-toggle:after {
     font-family: 'Open Sans';
     margin-top: 20px;
     letter-spacing: 0.5px;
+    margin-left: 60px;
 }
 button.saveBtn {
   text-transform: uppercase;
@@ -1150,6 +1151,9 @@ button.saveBtn {
   justify-content: center;
   align-items: center;
   
+}
+.select{
+  margin-left: 30px;
 }
 
 button.cancelBtn {

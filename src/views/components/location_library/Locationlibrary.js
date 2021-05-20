@@ -805,175 +805,178 @@ function LocationLibrary(props) {
                   Mandatory fields are marked with an asterisk (*)
                 </p>
 
-             
-                <CRow className={"seperator-6"}>
-                {CountryList && (
-                  <React.Fragment>
-                    <CCol className={"column-align"} md={5} lg={5}>
-                      <CLabel className={"form-labels-6"}>
-                        Country
-                        <span className={"text-danger"}> *</span>
-                      </CLabel>
-                      <Select
-                        type={"text"}
-                        id={"locationLibraryCountry"}
-                        placeholder="Select the Country Name"
-                        onChange={(e) => {
-                          if (countryName.label) {
-                            setCountryName({ ...e, edit: countryName.edit });
-                          } else {
-                            setCountryName({ ...e, edit: true });
-                          }
-                        }}
-                        value={countryName}
-                        options={countrySchema}
-                        isDisabled={StateCreate || CityCreate || AreaCreate}
-                      />
-                    </CCol>
-                    {addHide && (
-                      <React.Fragment>
-                        <CCol md={1} lg={1}>
-                          <CButton
-                            id={"locationLibraryCountryAdd"}
-                            shape={"pill"}
-                            style={{ marginTop: "30px" }}
-                            className={"saveBtn"}
-                            onClick={countryCreate}
-                            disabled={StateCreate || CityCreate || AreaCreate}
-                          >
-                            ADD
-                          </CButton>
-                        </CCol>
-                      </React.Fragment>
-                    )}
+                <CRow className={"row-alignment"}>
+                  {CountryList && (
+                    <React.Fragment>
+                      <CCol className={"column-align"} md={5} lg={5}>
+                        <CLabel className={"label-name-1"}>
+                          Country
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <Select
+                          type={"text"}
+                          id={"locationLibraryCountry"}
+                          placeholder="Select the Country Name"
+                          onChange={(e) => {
+                            if (countryName.label) {
+                              setCountryName({ ...e, edit: countryName.edit });
+                            } else {
+                              setCountryName({ ...e, edit: true });
+                            }
+                          }}
+                          value={countryName}
+                          options={countrySchema}
+                          isDisabled={StateCreate || CityCreate || AreaCreate}
+                        />
+                      </CCol>
+                      {addHide && (
+                        <React.Fragment>
+                          <CCol className={"column-align"} md={1} lg={1}>
+                            <CButton
+                              id={"locationLibraryCountryAdd"}
+                              shape={"pill"}
+                              style={{ marginTop: "30px" }}
+                              className={"saveBtn"}
+                              onClick={countryCreate}
+                              disabled={StateCreate || CityCreate || AreaCreate}
+                            >
+                              ADD
+                            </CButton>
+                          </CCol>
+                        </React.Fragment>
+                      )}
 
-                    {countryName.edit && (
-                      <React.Fragment>
-                        <CCol md={1} lg={1}>
-                          <CButton
-                            id={"locationLibraryCountryEdit"}
-                            style={{
-                              marginTop: "30px",
-                            }}
-                            className={"btn btn-success"}
-                            onClick={editCountry}
-                            disabled={StateCreate || CityCreate || AreaCreate}
-                          >
-                            EDIT
-                          </CButton>
-                        </CCol>
-                      </React.Fragment>
-                    )}
-                  </React.Fragment>
-                )}
+                      {countryName.edit && (
+                        <React.Fragment>
+                          <CCol className={"column-align"} md={1} lg={1}>
+                            <CButton
+                              id={"locationLibraryCountryEdit"}
+                              style={{
+                                marginTop: "30px",
+                              }}
+                              className={"btn btn-success"}
+                              onClick={editCountry}
+                              disabled={StateCreate || CityCreate || AreaCreate}
+                            >
+                              EDIT
+                            </CButton>
+                          </CCol>
+                        </React.Fragment>
+                      )}
+                    </React.Fragment>
+                  )}
 
-                {CountryCreate && (
-                  <React.Fragment>
-                    <CCol md="3">
-                      <CLabel className={"form-labels-6"}>
-                        Country Name
-                        <span className={"text-danger"}> *</span>
-                      </CLabel>
-                      <CInput
-                        name={"CountryName"}
-                        id={"locationLibraryCountryName"}
-                        value={formik.values.CountryName}
-                        onChange={formik.handleChange}
-                        onKeyPress={(e) =>
-                          FormValidation.value_Without_Number_Symbols(e)
-                        }
-                        placeholder="Country Name"
-                        maxlength="60"
-                        size="60"
-                      />
-                      {formik.errors.CountryName ? (
-                        <div className="text-danger">
-                          {" "}
-                          {formik.errors.CountryName}
-                        </div>
-                      ) : null}
-                    </CCol>
-
-                    <CCol md="3">
-                      <CLabel className={"form-labels-6"}>
-                        Abbreviation
-                        <span className={"text-danger"}> *</span>
-                      </CLabel>
-                      <CInput
-                        id={"locationLibraryCountryAbbreviation"}
-                        name={"Abbreviation1"}
-                        value={formik.values.Abbreviation1}
-                        onChange={formik.handleChange}
-                        onKeyPress={(e) =>
-                          FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                            e
-                          )
-                        }
-                        space="null"
-                        placeholder="Enter Abbreviation"
-                        maxlength="5"
-                        size="5"
-                        removedSpacesText
-                      />
-                      {formik.errors.Abbreviation1 ? (
-                        <div className="text-danger">
-                          {" "}
-                          {formik.errors.Abbreviation1}
-                        </div>
-                      ) : null}
-                    </CCol>
-                    <CCol md="3">
-                      <CLabel className={"form-labels-6"}>
-                        Code
-                        <span className={"text-danger"}> *</span>
-                      </CLabel>
-                      <CInput
-                        name={"Code1"}
-                        id={"locationLibraryCountryCode"}
-                        onKeyPress={(e) =>
-                          FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                            e
-                          )
-                        }
-                        value={formik.values.Code1}
-                        onChange={formik.handleChange}
-                        style={{ textTransform: "uppercase" }}
-                        placeholder="Enter Code"
-                        maxlength="5"
-                        size="5"
-                      />
-                      {formik.errors.Code1 ? (
+                  {CountryCreate && (
+                    <React.Fragment >
                         
-                        <div className="text-danger">
-                          {" "}
-                          {formik.errors.Code1}
-                        </div>
-                      ) : null}
-                    </CCol>
-                    <CCol md="3">
-                      <CButton
-                        shape={"pill"}
-                        style={{ marginTop: "30px" }}
-                        className={"saveBtn"}
-                        onClick={Country}
-                        id={"locationLibraryCountrySave"}
-                      >
-                        {passing !== "" ? "UPDATE" : "SAVE"}
-                      </CButton>
-                      <CButton
-                        shape={"pill"}
-                        id={"locationLibraryCountryCancel"}
-                        style={{ marginTop: "30px", marginLeft: "20px" }}
-                        className={"cancelBtn"}
-                        onClick={CancelCountry}
-                      >
-                        CANCEL
-                      </CButton>
-                      {error !== "" ? <p>{error}</p> : null}
-                    </CCol>
-                  </React.Fragment>
-                )}
-              </CRow>
+                      <CCol  md="3">
+                        <CLabel className={"label-name-2"}>
+                          Country Name
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <CInput
+                             className={"input-align"}
+                          name={"countryname"}
+                          id={"locationLibraryCountryName"}
+                          value={countrys.countryname}
+                          onChange={changeHandler}
+                          onKeyPress={(e) =>
+                            FormValidation.value_Without_Number_Symbols(e)
+                          }
+                          placeholder="Country Name"
+                          maxlength="60"
+                          size="60"
+                        />
+                        {formik.errors.CountryName ? (
+                          <div className="text-danger">
+                            {" "}
+                            {formik.errors.CountryName}
+                          </div>
+                        ) : null}
+                      </CCol>
+
+                      <CCol md="3">
+                        <CLabel className={"label-name-2"}>
+                          Abbreviation
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <CInput
+                             className={"input-align"}
+                          id={"locationLibraryCountryAbbreviation"}
+                          name={"abbreviation"}
+                          value={countrys.abbreviation}
+                          onChange={changeHandler}
+                          onKeyPress={(e) =>
+                            FormValidation.value_Without_Number_Without_Symbols_Without_Space(
+                              e
+                            )
+                          }
+                          space="null"
+                          placeholder="Enter Abbreviation"
+                          minlength="3"
+                          maxlength="3"
+                          size="5"
+                          removedSpacesText
+                        />
+                        {formik.errors.Abbreviation1 ? (
+                          <div className="text-danger">
+                            {" "}
+                            {formik.errors.Abbreviation1}
+                          </div>
+                        ) : null}
+                      </CCol>
+                      <CCol  md="3">
+                        <CLabel className={"label-name-2"}>
+                          Code
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <CInput
+                             className={"input-align"}
+                          name={"code"}
+                          id={"locationLibraryCountryCode"}
+                          onKeyPress={(e) =>
+                            FormValidation.value_Without_Number_Without_Symbols_Without_Space(
+                              e
+                            )
+                          }
+                          value={countrys.code}
+                          onChange={changeHandler}
+                          style={{ textTransform: "uppercase" }}
+                          placeholder="Enter Code"
+                          maxlength="3"
+                          size="5"
+                        />
+                        {formik.errors.Code1 ? (
+                          <div className="text-danger">
+                            {" "}
+                            {formik.errors.Code1}
+                          </div>
+                        ) : null}
+                      </CCol>
+                      <CCol  md="3">
+                        <CButton
+                          shape={"pill"}
+                          style={{ marginTop: "30px", }}
+                          className={"saveBtn"}
+                          onClick={Country}
+                          id={"locationLibraryCountrySave"}
+                        >
+                          {passing !== "" ? "UPDATE" : "SAVE"}
+                        </CButton>
+                        <CButton
+                          shape={"pill"}
+                          id={"locationLibraryCountryCancel"}
+                          style={{ marginTop: "30px", marginLeft: "20px" }}
+                          className={"cancelBtn"}
+                          onClick={CancelCountry}
+                        >
+                          CANCEL
+                        </CButton>
+                        {error !== "" ? <p>{error}</p> : null}
+                      </CCol>
+                    </React.Fragment>
+                  )}
+                </CRow>
                 <CRow className={"row-alignment"}>
                   {StateList && (
                     <React.Fragment>
@@ -1042,7 +1045,7 @@ function LocationLibrary(props) {
                   {StateCreate && (
                     <React.Fragment>
                       <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name-1"}>
+                        <CLabel className={"label-name-2"}>
                           State Name
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -1068,7 +1071,7 @@ function LocationLibrary(props) {
                       </CCol>
 
                       <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name-1"}>
+                        <CLabel className={"label-name-2"}>
                           Abbreviation
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -1094,7 +1097,7 @@ function LocationLibrary(props) {
                         ) : null}
                       </CCol>
                       <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name-1"}>
+                        <CLabel className={"label-name-2"}>
                           Code
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -1212,7 +1215,7 @@ function LocationLibrary(props) {
                   {CityCreate && (
                     <React.Fragment>
                       <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name-1"}>
+                        <CLabel className={"label-name-2"}>
                           City Name
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -1237,7 +1240,7 @@ function LocationLibrary(props) {
                       </CCol>
 
                       <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name-1"}>
+                        <CLabel className={"label-name-2"}>
                           Abbreviation
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -1263,7 +1266,7 @@ function LocationLibrary(props) {
                         ) : null}
                       </CCol>
                       <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name-1"}>
+                        <CLabel className={"label-name-2"}>
                           Code
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -1403,7 +1406,7 @@ function LocationLibrary(props) {
                   {AreaCreate && (
                     <React.Fragment>
                       <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name-1"}>
+                        <CLabel className={"label-name-2"}>
                           Area Name
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -1428,7 +1431,7 @@ function LocationLibrary(props) {
                       </CCol>
 
                       <CCol className={"column-align"} md="2">
-                        <CLabel className={"label-name-1"}>
+                        <CLabel className={"label-name-2"}>
                           Pincode
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -1454,7 +1457,7 @@ function LocationLibrary(props) {
                         ) : null}
                       </CCol>
                       <CCol className={"column-align"} md="2">
-                        <CLabel className={"label-name-1"}>
+                        <CLabel className={"label-name-2"}>
                           Abbreviation
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -1480,7 +1483,7 @@ function LocationLibrary(props) {
                         ) : null}
                       </CCol>
                       <CCol className={"column-align"} md="2">
-                        <CLabel className={"label-name-1"}>
+                        <CLabel className={"label-name-2"}>
                           Code
                           <span className={"text-danger"}> *</span>
                         </CLabel>

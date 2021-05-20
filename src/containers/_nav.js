@@ -19,6 +19,12 @@ const _nav =  [
     to: '/tabslist',
     icon: 'cil-drop',
   },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Member Registration',
+    to: '/MemberRegistration',
+    icon: 'cil-drop',
+  },
   // {
   //   _tag: 'CSidebarNavItem',
   //   name: 'Typography',

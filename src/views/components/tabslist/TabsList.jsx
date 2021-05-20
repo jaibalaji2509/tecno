@@ -57,7 +57,7 @@ const TabsList = () => {
                     data-tab="1"
                  
                   >
-                    Rural Location{" "}
+                  Rural Location{" "}
                   </CNavLink>
                 </CNavItem>
 
