@@ -25,7 +25,7 @@ const _nav =  [
   {
     id:"AdminSetupSideBar",
     _tag: "CSidebarNavDropdown",
-    name: "Electral Ward Library",
+    name: "Electoral Ward Library",
     route: "/AdminSetup",
     
     icon: 'cil-drop',
