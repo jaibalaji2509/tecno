@@ -1,10 +1,12 @@
-import { CButton, CCard, CCol, CInput, CLabel, CRow } from "@coreui/react";
+import { CButton, CCard, CCol, CInput, CLabel, CRow, CSelect } from "@coreui/react";
 import React, { useState } from "react";
 import Toaster from "src/views/notifications/toaster/Toaster";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
-const Location = () => {
+import { useHistory } from "react-router";
+const MappingMunicipalCorpoation = () => {
+    const history = useHistory()
   const [location, setLocation] = useState({
     state: "",
     district: "",
@@ -25,6 +27,11 @@ const Location = () => {
     street: "",
     pincode: "",
   });
+  const [municipalList, setMunicipalList] = useState(true);
+  const [MunicipalCreate, setmunicipalCreate] = useState(false);
+  const [municipalCorporation, setMunicipalCorporation] = useState({});
+  const[municipalName, setMuniicipalName] =useState("")
+
   const [locationHide, setLocationHide] = useState({
     corporation: true,
     municipalLocation: false,
@@ -44,10 +51,17 @@ const Location = () => {
   ];
   const fields = [
     { key: "SNo", label: "S.NO", _style: { width: "10%" } },
-    { key: "State", label: "State", _style: { width: "10%" } },
-    { key: "District", label: "District", _style: { width: "10%" } },
-    { key: "Area", label: "Ward", _style: { width: "10%" } },
-    { key: "Street", label: "Street", _style: { width: "10%" } },
+    // { key: "State", label: "State", _style: { width: "10%" } },
+    // { key: "District", label: "District", _style: { width: "10%" } },
+    { key: "Ward", label: "Ward", _style: { width: "10%" } },
+    { key: "Street", label: "Name of the Street", _style: { width: "10%" } },
+    { key: "Street", label: "Male", _style: { width: "10%" } },
+    { key: "Street", label: "Female", _style: { width: "10%" } },
+    { key: "Street", label: "Transgender", _style: { width: "10%" } },
+  
+    // { key: "male", label: "Male", _style: { width: "10%" } },
+    // { key: "female", label: "Female", _style: { width: "10%" } },
+    { key: "Street", label: "Action", _style: { width: "10%" } },
   ];
   const [passing, setPassing] = useState("");
   const [error, setError] =useState("")
@@ -137,11 +151,32 @@ const Location = () => {
       setError("enter valid data")
     }
   };
+  const enableCreate = async () => {
+    await setMunicipalList(false);
+    await setmunicipalCreate(true);
+  };
+
+  const editState = async () => {
+    await setMunicipalList(false);
+    await setmunicipalCreate(true);
+    // formik.values.StateName = stateName.stateName;
+    // formik.values.Abbreviation2 = stateName.abbreviation;
+    // formik.values.Code2 = stateName.code;
+    // setPassing(stateName._id);
+    // getState();
+    // getAllAreas();
+  };
+  const CancelState = async () => {
+   
+    setPassing("");
+    await setMunicipalList(true);
+    await setmunicipalCreate(false);
+  };
   return (
     <div>
       <CCard className={"cardSave"}>
         <div className={"main-headerlabel"}>
-          <span className={"header-label"}>Location Library</span>
+          <span className={"header-label"}>Mapping Municipal Corporation</span>
         </div>
         {locationHide.corporation && (
           <div>
@@ -149,100 +184,78 @@ const Location = () => {
               <div className={"row-headerlabel"}>
                 <span  style={{marginLeft:"70px"}} className={"header-label"}>
                   {" "}
-                  Adding Corporation Location{" "}
+                  Mapping Municipal Corporation{" "}
                 </span>
               </div>
+            
               <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                <CCol className={"column-align"} md="3">
+             
+              <CCol className={"column-align"} md="4">
+               <CLabel className={"label-name"}>
+               Municipal Corporation
+                 <span className={"text-danger"}>*</span>
+               </CLabel>
+               <CSelect
+                 className={"input-align"}
+                 id={"municipaldistrict"}
+                 name={"city"}
+                 placeholder={" Corporation Name"}
+                 value={locations.city}
+                 onChange={changeHandler}
+               />
+             </CCol>
+             <CCol className={"column-align"} md="4">
+               <CLabel className={"label-name"}>
+               State
+                 <span className={"text-danger"}>*</span>
+               </CLabel>
+               <CSelect
+                 className={"input-align"}
+                 id={"municipalstatename"}
+                 name={"state"}
+                 placeholder={"Select State"}
+                 value={locations.district}
+                 onChange={changeHandler}
+               />
+             </CCol>
+            
+             
+           </CRow>
+              
+              <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+             
+
+              
+                <CCol className={"column-align"} md="4">
                   <CLabel className={"label-name"}>
-                    State
+                    District / City
                     <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CInput
+                  <CSelect
                     className={"input-align"}
-                    id={"corporationState"}
-                    name={"state"}
-                    placeholder={"State Name"}
-                    value={locations.state}
-                    onChange={changeHandler}
-                  />
-                </CCol>
-                <CCol className={"column-align"} md="3">
-                  <CLabel className={"label-name"}>
-                    District
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <CInput
-                    className={"input-align"}
-                    id={"corporationDistrict"}
-                    name={"district"}
-                    placeholder={" District/City Name"}
-                    value={locations.district}
-                    onChange={changeHandler}
-                  />
-                </CCol>
-                <CCol className={"column-align"} md="3">
-                  <CLabel className={"label-name"}>
-                    Corporation
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <CInput
-                    className={"input-align"}
-                    id={"corporation"}
+                    id={"municipaldistrict"}
                     name={"city"}
                     placeholder={" Corporation Name"}
                     value={locations.city}
                     onChange={changeHandler}
                   />
                 </CCol>
-              </CRow>
-              <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                <CCol className={"column-align"} md="3">
+                <CCol className={"column-align"} md="4">
                   <CLabel className={"label-name"}>
-                    Area
+                  Ward
                     <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CInput
+                  <CSelect
                     className={"input-align"}
-                    id={"corporationArea"}
-                    name={"area"}
-                    placeholder={" Area Name"}
-                    value={locations.area}
-                    onChange={changeHandler}
-                  />
-                </CCol>
-                <CCol className={"column-align"} md="3">
-                  <CLabel className={"label-name"}>
-                    Ward
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <CInput
-                    type={"text"}
-                    className={"input-align"}
-                    id={"corporationWard"}
-                    name={"ward"}
-                    placeholder={"Enter Ward"}
-                    value={locations.ward}
-                    onChange={changeHandler}
-                  />
-                </CCol>
-                
-                <CCol className={"column-align"} md="3">
-                  <CLabel className={"label-name"}>
-                    Street
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <CInput
-                    type={"text"}
-                    className={"input-align"}
-                    id={"corporationStreet"}
-                    name={"street"}
-                    placeholder={"Enter Street"}
-                    value={locations.street}
+                    id={"municipalstatename"}
+                    name={"Ward"}
+                    placeholder={"Select Ward"}
+                    value={locations.district}
                     onChange={changeHandler}
                   />
                 </CCol>
               </CRow>
+             
               {/* <CCol className={"column-align"} md="3">
                 <CLabel className={"label-name"}>
                   Mobile Number
@@ -278,13 +291,14 @@ const Location = () => {
                 </CCol>
               )} */}
             </div>
-            <CRow>
+            <CRow style={{marginTop:"45px"}}>
               <CCol md="10">
                 <CCol
                   md="5"
                   style={{
-                    marginTop: "18px",
+                    marginRight: "130px",
                     float: "right",
+                    marginTop:"-5px"
                   }}
                 >
                   <CButton
@@ -307,16 +321,27 @@ const Location = () => {
                   >
                     Save
                   </CButton>{" "}
+                  <CButton
+                    style={{
+                      float: "right",
+                      marginRight: "15px",
+                    }}
+                    id={"saveAbbreviationConfigureCode"}
+                    className={"saveBtn"}
+                    onClick={()=>history.push("./municipalcorporation")}
+                  >
+                    Add Municipal Corporation
+                  </CButton>{" "}
                 </CCol>
               </CCol>
             </CRow>
-            <CRow style={{ padding: "4%", marginTop: "-3.5%" }}>
+            <CRow style={{ padding: "4%", marginTop: "-1.5%" }}>
               <CDataTable
                 items={userData}
                 fields={fields}
                 columnFilter
                 tableFilter
-                tableLabel={"List of Locations"}
+                tableLabel={"List of Streets"}
                 itemsPerPageSelect
                 itemsPerPage={5}
                 hover
@@ -1238,4 +1263,4 @@ const Location = () => {
   );
 };
 
-export default Location;
+export default MappingMunicipalCorpoation;

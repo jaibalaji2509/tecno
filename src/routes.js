@@ -1,7 +1,12 @@
 import React from 'react';
 import LocationLibrary from './views/components/location_library/Locationlibrary';
 import TabsList from './views/components/tabslist/TabsList';
+import MunicipalCorporation from './views/components/municipalcorporation/MunicipalCorporation';
 import Login from './views/pages/login/Login';
+// import VillagePanchayat from './views/components/villagepanchayat/VillagePanchayat';
+
+
+
 
 const Toaster = React.lazy(() => import('./views/notifications/toaster/Toaster'));
 const Tables = React.lazy(() => import('./views/base/tables/Tables'));
@@ -44,6 +49,10 @@ const Location = React.lazy(() => import('./views/components/location/Location')
 const AddMemberRegister = React.lazy(() => import('./views/components/MemberRegistration/AddMemberRegister'));
 const MemberRegistration = React.lazy(() => import('./views/components/MemberRegistration/MemberRegistration'));
 
+const Municipality = React.lazy(() => import('./views/components/municipality/Municipality'));
+const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
+const VillagePanchayat = React.lazy(() => import('./views/components/villagepanchayat/VillagePanchayat'));
+const MappingMunicipalCorpoation = React.lazy(() => import('./views/components/mappingmunicipalcorporation/MappingMunicipalCorpoation'));
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', exact: true ,component: Dashboard },
@@ -91,6 +100,11 @@ const routes = [
   { path: '/AddMemberRegister',  exact: true, name: 'AddMemberRegister', component: AddMemberRegister },
   { path: '/MemberRegistration',  exact: true, name: 'MemberRegistration', component: MemberRegistration },
 
+  {path:"/municipalcorporation", exact:true, name : "Municipal Corporation", component:MunicipalCorporation},
+  {path:"/municipality", exact:true, name : "Municipality", component:Municipality},
+  {path:"/townpanchayat", exact:true, name : "Municipality", component:TownPanchayat},
+  {path:"/villagepanchayat", exact:true, name : "Village Panchayat", component:VillagePanchayat},
+  {path:"/mappingmunicipalcorporation", exact:true, name : "Mapping Municipal Corporation", component:MappingMunicipalCorpoation},
 ];
 
 export default routes;

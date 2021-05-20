@@ -46,7 +46,7 @@ const TabsList = () => {
                onClick={()=>setActive("0")}
                     id={"tabsListAddEmployee"}
                   >
-                  Gneral Location{" "}
+                  Location Master{" "}
                   </CNavLink>
                 </CNavItem>
 

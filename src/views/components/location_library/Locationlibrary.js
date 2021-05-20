@@ -37,7 +37,9 @@ function LocationLibrary(props) {
   const [stateSchema, setState] = useState([]);
   const [countrySchema, setCountry] = useState([]);
   const [AreaCreate, setAreaCreate] = useState(false);
+  const [StreetCreate, setStreetCreate] = useState(false);
   const [AreaList, setAreaList] = useState(true);
+  const [StreetList, setStreetList] = useState(true);
   const [CountryCreate, setCountryCreate] = useState(false);
   const [CountryList, setCountryList] = useState(true);
   const [CityCreate, setCityCreate] = useState(false);
@@ -49,13 +51,14 @@ function LocationLibrary(props) {
   const [saveHide, setSaveHide] = useState(false);
   const [stateName, setStateName] = useState("");
   const [cityName, setCityName] = useState("");
+  const [streetName, setStreetName] = useState("");
   const [areaName, setAreaName] = useState("");
   const [deleteId, setDeleteId] = useState({ id: "", show: false });
   const [countrys, setCountrys] = useState({
     countryname: "",
     abbreviation: "",
     code: "",
-  }); 
+  });
   const [states, setStates] = useState({
     statename: "",
     abbreviation: "",
@@ -196,7 +199,7 @@ function LocationLibrary(props) {
         code: countrys.code,
       };
 
-    //   body = { ...body, Code: body.Code1.toUpperCase() };
+      //   body = { ...body, Code: body.Code1.toUpperCase() };
       try {
         response = await createCountry(JSON.stringify(body));
         if (response.success === true) {
@@ -253,327 +256,327 @@ function LocationLibrary(props) {
     }
   };
 
-    const State = async () => {
-      if (passing === "") {
-        var response;
-        let body = formik.values;
-        body = {
-         statename:states.statename,
-         abbreviation:states.abbreviation,
-         code:states.code
-        };
-        try {
-          response = await createState(JSON.stringify(body));
-          if (response.success === true) {
-            // response.State.value = response.State._id;
-            response.State.label = response.State.stateName;
-            toast.success(response.message, { autoClose: 1000 });
-            setTimeout(() => {
-              setStateCreate(false);
-              setStateList(true);
-            }, 1300);
-            formik.handleReset({});
-            setState([...stateSchema, response.State]);
-            formik.values = {};
-
-            return 0;
-          }
-
-          toast.error(response.error);
-        } catch (e) {
-          console.log(e);
-        }
-      } else {
-        try {
-          response = await updateState(
-            formik.values.StateName,
-            formik.values.Abbreviation2,
-            formik.values.Code2,
-            passing
-          );
-          getAllAreas();
-          if (response.success === true) {
-            toast.success(response.message, { autoClose: 1000 });
-            setTimeout(() => {
-              setStateCreate(false);
-              setStateList(true);
-            }, 1300);
-            setStateName("");
-            setCityName("");
-            setAreaName("");
-            setCity([]);
-            setArea([]);
-            getAllState();
-            // getAllAreas();
-            const elementsIndex = stateSchema.findIndex(
-              (element) => element._id === passing
-            );
-            let newArray = [...stateSchema];
-            response.updateOfficeType = {
-              ...response.updateOfficeType,
-              valu: response.updateOfficeType._id,
-              label: response.updateOfficeType.stateNAme,
-            };
-            newArray[elementsIndex] = response.updateOfficeType;
-            setState([...stateSchema, newArray]);
-          }
-        } catch (e) {
-          console.log(e);
-        }
-      }
-    };
-
-    const City = async () => {
-      if (passing === "") {
-        var response;
-        let body = formik.values;
-        body = {
-            cityname:citys.cityname,
-            abbreviation:citys.abbreviation,
-            code:citys.code
-        };
-        try {
-          response = await createCity(JSON.stringify(body));
-          if (response.success === true) {
-            getAllAreas();
-            toast.success(response.message, { autoClose: 1000 });
-            setTimeout(() => {
-              setCityCreate(false);
-              setCityList(true);
-            }, 1300);
-
-            response.City = {
-              ...response.City,
-              value: response.City._id,
-              label: response.City.cityName,
-            };
-            formik.handleReset({});
-            setCity([...citySchema, response.City]);
-            formik.values = {};
-
-            return 0;
-          }
-          toast.error(response.error);
-        } catch (e) {
-          console.log(e);
-        }
-      } else {
-        try {
-          response = await updateCity(
-            formik.values.CityName,
-            formik.values.Abbreviation3,
-            formik.values.Code3,
-            passing
-          );
-          if (response.success === true) {
-            toast.success(response.message, { autoClose: 1000 });
-            setCityName("");
-            setAreaName("");
-            setArea([]);
-            getAllCity();
-            getAllAreas();
-            setTimeout(() => {
-              setCityCreate(false);
-              setCityList(true);
-            }, 1300);
-            const elementsIndex = citySchema.findIndex(
-              (element) => element._id === passing
-            );
-            let newArray = [...citySchema];
-            response.updateOfficeType = {
-              ...response.updateOfficeType,
-              value: response.updateOfficeType._id,
-              label: response.updateOfficeType.cityName,
-            };
-            newArray[elementsIndex] = response.updateOfficeType;
-            setCity(newArray);
-          }
-        } catch (e) {
-          console.log(e);
-        }
-      }
-    };
-
-    const Area = async () => {
-      if (passing === "") {
-        var response;
-        let body = formik.values;
-        body = {
-            areaname:areas.areaname,
-            abbreviation:citys.abbreviation,
-            code:citys.code
-        };
-        try {
-          response = await createArea(JSON.stringify(body));
-          if (response.success === true) {
-            formik.values = {};
-            toast.success(response.message, { autoClose: 1000 });
-            setTimeout(() => {
-              setAreaCreate(false);
-              setAreaList(true);
-            }, 1300);
-            formik.handleReset({});
-            setArea("");
-            getAllArea();
-            getAllAreas();
-            formik.values = {};
-            return 0;
-          }
-          toast.error(response.error);
-        } catch (e) {
-          console.log(e);
-        }
-      } else {
-        try {
-          response = await updateArea(
-            formik.values.AreaName,
-            formik.values.Abbreviation4,
-            formik.values.Code4,
-            formik.values.Pincode,
-            passing
-          );
-          if (response.success === true) {
-            getAllAreas();
-            formik.values.CountryName = "";
-            formik.values.AreaName = "";
-            formik.values.Abbreviation4 = "";
-            formik.values.Code4 = "";
-            formik.values.Pincode = "";
-            setPassing("");
-            toast.success(response.message);
-            setTimeout(() => {
-              setAreaCreate(false);
-              setAreaList(true);
-            }, 2000);
-            setAreaName("");
-            const elementsIndex = areasSchema.findIndex(
-              (element) => element._id === passing
-            );
-            let newArray = [...areasSchema];
-            response.updateOfficeType = {
-              ...response.updateOfficeType,
-              value: response.updateOfficeType._id,
-              label: response.updateOfficeType.areaName,
-            };
-            newArray[elementsIndex] = response.updateOfficeType;
-            setArea(newArray);
-            getAllAreas();
-          }
-        } catch (e) {
-          console.log(e);
-        }
-      }
-    };
-
-    const getAllCountry = async () => {
+  const State = async () => {
+    if (passing === "") {
       var response;
+      let body = formik.values;
+      body = {
+        statename: states.statename,
+        abbreviation: states.abbreviation,
+        code: states.code,
+      };
       try {
-        response = await getCountry();
-        response.Country.map((x) => {
+        response = await createState(JSON.stringify(body));
+        if (response.success === true) {
+          // response.State.value = response.State._id;
+          response.State.label = response.State.stateName;
+          toast.success(response.message, { autoClose: 1000 });
+          setTimeout(() => {
+            setStateCreate(false);
+            setStateList(true);
+          }, 1300);
+          formik.handleReset({});
+          setState([...stateSchema, response.State]);
+          formik.values = {};
+
+          return 0;
+        }
+
+        toast.error(response.error);
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      try {
+        response = await updateState(
+          formik.values.StateName,
+          formik.values.Abbreviation2,
+          formik.values.Code2,
+          passing
+        );
+        getAllAreas();
+        if (response.success === true) {
+          toast.success(response.message, { autoClose: 1000 });
+          setTimeout(() => {
+            setStateCreate(false);
+            setStateList(true);
+          }, 1300);
+          setStateName("");
+          setCityName("");
+          setAreaName("");
+          setCity([]);
+          setArea([]);
+          getAllState();
+          // getAllAreas();
+          const elementsIndex = stateSchema.findIndex(
+            (element) => element._id === passing
+          );
+          let newArray = [...stateSchema];
+          response.updateOfficeType = {
+            ...response.updateOfficeType,
+            valu: response.updateOfficeType._id,
+            label: response.updateOfficeType.stateNAme,
+          };
+          newArray[elementsIndex] = response.updateOfficeType;
+          setState([...stateSchema, newArray]);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
+
+  const City = async () => {
+    if (passing === "") {
+      var response;
+      let body = formik.values;
+      body = {
+        cityname: citys.cityname,
+        abbreviation: citys.abbreviation,
+        code: citys.code,
+      };
+      try {
+        response = await createCity(JSON.stringify(body));
+        if (response.success === true) {
+          getAllAreas();
+          toast.success(response.message, { autoClose: 1000 });
+          setTimeout(() => {
+            setCityCreate(false);
+            setCityList(true);
+          }, 1300);
+
+          response.City = {
+            ...response.City,
+            value: response.City._id,
+            label: response.City.cityName,
+          };
+          formik.handleReset({});
+          setCity([...citySchema, response.City]);
+          formik.values = {};
+
+          return 0;
+        }
+        toast.error(response.error);
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      try {
+        response = await updateCity(
+          formik.values.CityName,
+          formik.values.Abbreviation3,
+          formik.values.Code3,
+          passing
+        );
+        if (response.success === true) {
+          toast.success(response.message, { autoClose: 1000 });
+          setCityName("");
+          setAreaName("");
+          setArea([]);
+          getAllCity();
+          getAllAreas();
+          setTimeout(() => {
+            setCityCreate(false);
+            setCityList(true);
+          }, 1300);
+          const elementsIndex = citySchema.findIndex(
+            (element) => element._id === passing
+          );
+          let newArray = [...citySchema];
+          response.updateOfficeType = {
+            ...response.updateOfficeType,
+            value: response.updateOfficeType._id,
+            label: response.updateOfficeType.cityName,
+          };
+          newArray[elementsIndex] = response.updateOfficeType;
+          setCity(newArray);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
+
+  const Area = async () => {
+    if (passing === "") {
+      var response;
+      let body = formik.values;
+      body = {
+        areaname: areas.areaname,
+        abbreviation: citys.abbreviation,
+        code: citys.code,
+      };
+      try {
+        response = await createArea(JSON.stringify(body));
+        if (response.success === true) {
+          formik.values = {};
+          toast.success(response.message, { autoClose: 1000 });
+          setTimeout(() => {
+            setAreaCreate(false);
+            setAreaList(true);
+          }, 1300);
+          formik.handleReset({});
+          setArea("");
+          getAllArea();
+          getAllAreas();
+          formik.values = {};
+          return 0;
+        }
+        toast.error(response.error);
+      } catch (e) {
+        console.log(e);
+      }
+    } else {
+      try {
+        response = await updateArea(
+          formik.values.AreaName,
+          formik.values.Abbreviation4,
+          formik.values.Code4,
+          formik.values.Pincode,
+          passing
+        );
+        if (response.success === true) {
+          getAllAreas();
+          formik.values.CountryName = "";
+          formik.values.AreaName = "";
+          formik.values.Abbreviation4 = "";
+          formik.values.Code4 = "";
+          formik.values.Pincode = "";
+          setPassing("");
+          toast.success(response.message);
+          setTimeout(() => {
+            setAreaCreate(false);
+            setAreaList(true);
+          }, 2000);
+          setAreaName("");
+          const elementsIndex = areasSchema.findIndex(
+            (element) => element._id === passing
+          );
+          let newArray = [...areasSchema];
+          response.updateOfficeType = {
+            ...response.updateOfficeType,
+            value: response.updateOfficeType._id,
+            label: response.updateOfficeType.areaName,
+          };
+          newArray[elementsIndex] = response.updateOfficeType;
+          setArea(newArray);
+          getAllAreas();
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
+
+  const getAllCountry = async () => {
+    var response;
+    try {
+      response = await getCountry();
+      response.Country.map((x) => {
+        x.value = x._id;
+        x.label = x.countryName;
+        return 0;
+      });
+      if (response) {
+        setCountry(response.Country);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const getAllState = async () => {
+    var response;
+    try {
+      response = await getState(countryName._id);
+      if (response) {
+        response.State.map((x) => {
           x.value = x._id;
-          x.label = x.countryName;
+          x.label = x.stateName;
           return 0;
         });
-        if (response) {
-          setCountry(response.Country);
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    };
 
-    const getAllState = async () => {
-      var response;
-      try {
-        response = await getState(countryName._id);
-        if (response) {
-          response.State.map((x) => {
+        setState(response.State);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const getAllCity = async () => {
+    var response;
+    try {
+      response = await getCity(stateName._id);
+
+      if (response) {
+        response.City.map((x) => {
+          x.value = x._id;
+          x.label = x.cityName;
+          return 0;
+        });
+
+        setCity(response.City);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const getAllArea = async () => {
+    var response;
+    try {
+      response = await getArea(cityName._id);
+      if (response) {
+        if (response.Area) {
+          response.Area.map((x) => {
             x.value = x._id;
-            x.label = x.stateName;
+            x.label = `${capitalize(x.state.stateName)}, ${capitalize(
+              x.city.cityName
+            )}, ${capitalize(x.areaName)}, ${x.pincode}`;
+            x.cityName = x.city.cityName;
+            x.stateName = x.state.stateName;
+            x.countryName = x.country.countryName;
             return 0;
           });
-
-          setState(response.State);
         }
-      } catch (e) {
-        console.log(e);
+        setArea(response.Area);
       }
-    };
+    } catch (e) {}
+    return 0;
+  };
 
-    const getAllCity = async () => {
-      var response;
-      try {
-        response = await getCity(stateName._id);
-
-        if (response) {
-          response.City.map((x) => {
-            x.value = x._id;
-            x.label = x.cityName;
-            return 0;
-          });
-
-          setCity(response.City);
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
-    const getAllArea = async () => {
-      var response;
-      try {
-        response = await getArea(cityName._id);
-        if (response) {
-          if (response.Area) {
-            response.Area.map((x) => {
-              x.value = x._id;
-              x.label = `${capitalize(x.state.stateName)}, ${capitalize(
-                x.city.cityName
-              )}, ${capitalize(x.areaName)}, ${x.pincode}`;
-              x.cityName = x.city.cityName;
-              x.stateName = x.state.stateName;
-              x.countryName = x.country.countryName;
-              return 0;
-            });
-          }
-          setArea(response.Area);
-        }
-      } catch (e) {}
-      return 0;
-    };
-
-    useEffect(() => {
+  useEffect(() => {
     //   getAllAreas();
-      getAllArea();
-      getAllCountry();
-      getAllState();
-      getAllCity();
-    }, [countryName, stateName, cityName, areaName]);
+    getAllArea();
+    getAllCountry();
+    getAllState();
+    getAllCity();
+  }, [countryName, stateName, cityName, areaName]);
 
-    const getAllAreas = async () => {
-      var response;
-      try {
-        response = await getAreaSchema();
-        if (response) {
-          if (response.Area) {
-            response.Area.map((x, i) => {
-              x.value = x._id;
-              x.label = `${capitalize(x.state.stateName)}, ${capitalize(
-                x.city.cityName
-              )}, ${capitalize(x.areaName)}, ${x.pincode}`;
-              x.cityName = x.city.cityName;
-              x.stateName = x.state.stateName;
-              x.countryName = x.country.countryName;
-              x.sNo = i + 1;
-              return 0;
-            });
-          }
-          setAreas(response.Area);
+  const getAllAreas = async () => {
+    var response;
+    try {
+      response = await getAreaSchema();
+      if (response) {
+        if (response.Area) {
+          response.Area.map((x, i) => {
+            x.value = x._id;
+            x.label = `${capitalize(x.state.stateName)}, ${capitalize(
+              x.city.cityName
+            )}, ${capitalize(x.areaName)}, ${x.pincode}`;
+            x.cityName = x.city.cityName;
+            x.stateName = x.state.stateName;
+            x.countryName = x.country.countryName;
+            x.sNo = i + 1;
+            return 0;
+          });
         }
-      } catch (e) {
-        console.log(e);
+        setAreas(response.Area);
       }
-    };
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const capitalize = (x) => {
     let s = x.toLowerCase();
@@ -647,11 +650,16 @@ function LocationLibrary(props) {
   }, [formik.values]);
   const fields = [
     { key: "sNo", _style: { width: "10%" } },
-    { key: "countryName", _style: { width: "20%" } },
-    { key: "stateName", _style: { width: "20%" } },
-    { key: "cityName", _style: { width: "20%" } },
-    { key: "areaName", _style: { width: "20%" } },
-    { key: "pincode", _style: { width: "20%" } },
+    // { key: "countryName", _style: { width: "20%" } },
+    { key: "stateName", label: "State ", _style: { width: "20%" } },
+    { key: "cityName", label: "District / City", _style: { width: "20%" } },
+    {
+      key: "areaName",
+      label: "Village / Area / Locality",
+      _style: { width: "20%" },
+    },
+    { key: "pincode", label: "Pincode", _style: { width: "20%" } },
+    { key: "pincode", label: "Street ", _style: { width: "20%" } },
 
     {
       label: "Action",
@@ -794,7 +802,7 @@ function LocationLibrary(props) {
           <div>
             <div className={"main-headerlabel"}>
               <span style={{ marginLeft: "15px" }} className={"header-label"}>
-                Location Library
+                Location Master
               </span>
             </div>
 
@@ -805,7 +813,7 @@ function LocationLibrary(props) {
                   Mandatory fields are marked with an asterisk (*)
                 </p>
 
-                <CRow className={"row-alignment"}>
+                {/* <CRow className={"row-alignment"}>
                   {CountryList && (
                     <React.Fragment>
                       <CCol className={"column-align"} md={5} lg={5}>
@@ -855,6 +863,7 @@ function LocationLibrary(props) {
                                 marginTop: "30px",
                               }}
                               className={"btn btn-success"}
+                              u
                               onClick={editCountry}
                               disabled={StateCreate || CityCreate || AreaCreate}
                             >
@@ -867,15 +876,14 @@ function LocationLibrary(props) {
                   )}
 
                   {CountryCreate && (
-                    <React.Fragment >
-                        
-                      <CCol  md="3">
-                        <CLabel className={"label-name-2"}>
+                    <React.Fragment>
+                      <CCol md="3">
+                        <CLabel className={"label-name-3"}>
                           Country Name
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                             className={"input-align"}
+                          className={"input-align"}
                           name={"countryname"}
                           id={"locationLibraryCountryName"}
                           value={countrys.countryname}
@@ -896,12 +904,12 @@ function LocationLibrary(props) {
                       </CCol>
 
                       <CCol md="3">
-                        <CLabel className={"label-name-2"}>
+                        <CLabel className={"label-name-3"}>
                           Abbreviation
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                             className={"input-align"}
+                          className={"input-align"}
                           id={"locationLibraryCountryAbbreviation"}
                           name={"abbreviation"}
                           value={countrys.abbreviation}
@@ -925,13 +933,13 @@ function LocationLibrary(props) {
                           </div>
                         ) : null}
                       </CCol>
-                      <CCol  md="3">
-                        <CLabel className={"label-name-2"}>
+                      <CCol md="3">
+                        <CLabel className={"label-name-3"}>
                           Code
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                             className={"input-align"}
+                          className={"input-align"}
                           name={"code"}
                           id={"locationLibraryCountryCode"}
                           onKeyPress={(e) =>
@@ -953,10 +961,10 @@ function LocationLibrary(props) {
                           </div>
                         ) : null}
                       </CCol>
-                      <CCol  md="3">
+                      <CCol md="3">
                         <CButton
                           shape={"pill"}
-                          style={{ marginTop: "30px", }}
+                          style={{ marginTop: "30px" }}
                           className={"saveBtn"}
                           onClick={Country}
                           id={"locationLibraryCountrySave"}
@@ -976,11 +984,11 @@ function LocationLibrary(props) {
                       </CCol>
                     </React.Fragment>
                   )}
-                </CRow>
+                </CRow> */}
                 <CRow className={"row-alignment"}>
                   {StateList && (
                     <React.Fragment>
-                      <CCol className={"column-align"} md={5} lg={5}>
+                      <CCol className={"column-align"} md={4} lg={4}>
                         <CLabel className={"label-name-1"}>
                           State
                           <span className={"text-danger"}> *</span>
@@ -1001,29 +1009,23 @@ function LocationLibrary(props) {
                           isDisabled={CountryCreate || CityCreate || AreaCreate}
                         />
                       </CCol>
-                      {/* <CCol className={"column-align"} md={1} lg={1}>
-                            <CButton
-                              shape={"pill"}
-                              id={"locationLibraryStateAdd"}
-                              style={{ marginTop: "30px" }}
-                              className={"saveBtn"}
-                              onClick={enableCreate}
-                              disabled={
-                                CountryCreate || CityCreate || AreaCreate
-                              }
-                            >
-                              ADD
-                            </CButton>
-                          </CCol> */}
-                      {countryName.edit && (
-                        <React.Fragment>
-                        
-                        </React.Fragment>
-                      )}
+                      <CCol className={"column-align"} md={1} lg={1}>
+                        <CButton
+                          shape={"pill"}
+                          id={"locationLibraryStateAdd"}
+                          style={{ marginTop: "30px" }}
+                          className={"saveBtn"}
+                          onClick={enableCreate}
+                          disabled={CountryCreate || CityCreate || AreaCreate}
+                        >
+                          ADD
+                        </CButton>
+                      </CCol>
+                      {countryName.edit && <React.Fragment></React.Fragment>}
 
                       {stateName.edit === true ? (
                         <React.Fragment>
-                          <CCol className={"column-align"} md={3} lg={3}>
+                          <CCol md={3} lg={3}>
                             <CButton
                               style={{
                                 marginTop: "30px",
@@ -1044,8 +1046,11 @@ function LocationLibrary(props) {
                   )}
                   {StateCreate && (
                     <React.Fragment>
-                      <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name-2"}>
+                      <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+
+                     
+                      <CCol  md="3">
+                        <CLabel className={"label-name-3"}>
                           State Name
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -1070,8 +1075,8 @@ function LocationLibrary(props) {
                         ) : null}
                       </CCol>
 
-                      <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name-2"}>
+                      <CCol  md="3">
+                        <CLabel className={"label-name-3"}>
                           Abbreviation
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -1096,8 +1101,8 @@ function LocationLibrary(props) {
                           </div>
                         ) : null}
                       </CCol>
-                      <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name-2"}>
+                      <CCol  md="3">
+                        <CLabel className={"label-name-3"}>
                           Code
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -1123,7 +1128,7 @@ function LocationLibrary(props) {
                           </div>
                         ) : null}
                       </CCol>
-                      <CCol className={"column-align"} md="3">
+                      <CCol  md="3">
                         <CButton
                           shape={"pill"}
                           id={"locationLibraryStateSave"}
@@ -1144,15 +1149,26 @@ function LocationLibrary(props) {
                         </CButton>
                         {error !== "" ? <p>{error}</p> : null}
                       </CCol>
+                      </CRow>
                     </React.Fragment>
                   )}
+                </CRow>
+                <CRow>
+                  <CCol md={6} lg={6}>
+                    <CCard
+                    style={{backgroundColor:"white", color:"blue", border : "1px solid", width:"200px", height:"100px", marginLeft:"800px", marginTop:"-71px"}}
+                    
+                    >
+                    <span style={{color:"black"}}>State</span>
+                    </CCard>
+                  </CCol>
                 </CRow>
                 <CRow className={"row-alignment"}>
                   {CityList && (
                     <React.Fragment>
-                      <CCol className={"column-align"} md={5} lg={5}>
+                      <CCol className={"column-align"} md={4} lg={4}>
                         <CLabel className={"label-name-1"}>
-                          City
+                          District / City
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <Select
@@ -1214,8 +1230,9 @@ function LocationLibrary(props) {
                   )}
                   {CityCreate && (
                     <React.Fragment>
-                      <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name-2"}>
+                         <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                      <CCol  md="3">
+                        <CLabel className={"label-name-3"}>
                           City Name
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -1239,8 +1256,8 @@ function LocationLibrary(props) {
                         ) : null}
                       </CCol>
 
-                      <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name-2"}>
+                      <CCol  md="3">
+                        <CLabel className={"label-name-3"}>
                           Abbreviation
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -1265,8 +1282,8 @@ function LocationLibrary(props) {
                           </div>
                         ) : null}
                       </CCol>
-                      <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name-2"}>
+                      <CCol  md="3">
+                        <CLabel className={"label-name-3"}>
                           Code
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -1313,15 +1330,16 @@ function LocationLibrary(props) {
                         </CButton>
                         {error !== "" ? <p>{error}</p> : null}
                       </CCol>
+                      </CRow>
                     </React.Fragment>
                   )}
                 </CRow>
                 <CRow className={"row-alignment"}>
                   {AreaList && (
                     <React.Fragment>
-                      <CCol className={"column-align"} md={5} lg={5}>
+                      <CCol className={"column-align"} md={4} lg={4}>
                         <CLabel className={"label-name-1"}>
-                          Area
+                          Village / Area / Locality
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <Select
@@ -1379,6 +1397,7 @@ function LocationLibrary(props) {
                       )}
                       {saveHide && (
                         <React.Fragment>
+                          
                           <CCol className={"column-align"} md="2">
                             <CButton
                               style={{ marginTop: "30px" }}
@@ -1405,8 +1424,9 @@ function LocationLibrary(props) {
                   )}
                   {AreaCreate && (
                     <React.Fragment>
-                      <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name-2"}>
+                           <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                      <CCol  md="3">
+                        <CLabel className={"label-name-3"}>
                           Area Name
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -1430,34 +1450,8 @@ function LocationLibrary(props) {
                         ) : null}
                       </CCol>
 
-                      <CCol className={"column-align"} md="2">
-                        <CLabel className={"label-name-2"}>
-                          Pincode
-                          <span className={"text-danger"}> *</span>
-                        </CLabel>
-                        <CInput
-                          onKeyPress={(e) =>
-                            FormValidation.value_Only_Number(e)
-                          }
-                          name={"Pincode"}
-                          type={"text"}
-                          id={"locationLibraryAreaPincode"}
-                          onChange={formik.handleChange}
-                          value={formik.values.Pincode}
-                          placeholder="Enter Pincode"
-                          autoComplete="none"
-                          maxlength="6"
-                          size="6"
-                        />
-                        {formik.errors.Pincode ? (
-                          <div className="text-danger">
-                            {" "}
-                            {formik.errors.Pincode}
-                          </div>
-                        ) : null}
-                      </CCol>
-                      <CCol className={"column-align"} md="2">
-                        <CLabel className={"label-name-2"}>
+                      <CCol md="2">
+                        <CLabel className={"label-name-3"}>
                           Abbreviation
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -1482,8 +1476,226 @@ function LocationLibrary(props) {
                           </div>
                         ) : null}
                       </CCol>
-                      <CCol className={"column-align"} md="2">
-                        <CLabel className={"label-name-2"}>
+                      <CCol md="2">
+                        <CLabel className={"label-name-3"}>
+                          Code
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <CInput
+                          onKeyPress={(e) =>
+                            FormValidation.value_Without_Number_Without_Symbols_Without_Space(
+                              e
+                            )
+                          }
+                          id={"locationLibraryAreaCode"}
+                          name={"Code4"}
+                          value={formik.values.Code4}
+                          onChange={formik.handleChange}
+                          style={{ textTransform: "uppercase" }}
+                          placeholder="Enter Code"
+                          maxlength="5"
+                          size="5"
+                        />
+                        {formik.errors.Code4 ? (
+                          <div className="text-danger">
+                            {" "}
+                            {formik.errors.Code4}
+                          </div>
+                        ) : null}
+                      </CCol>
+                      <CCol  md="2">
+                        <CButton
+                          style={{ marginTop: "30px" }}
+                          className={"saveBtn"}
+                          onClick={Area}
+                          id={"locationLibraryAreaSave"}
+                        >
+                          SAVE
+                        </CButton>
+                        <CButton
+                          style={{ marginTop: "30px", marginLeft: "20px" }}
+                          className={"cancelBtn"}
+                          onClick={CancelArea}
+                          id={"locationLibraryAreaCancel"}
+                        >
+                          CANCEL
+                        </CButton>
+                        {error !== "" ? <p>{error}</p> : null}
+                      </CCol>
+                      </CRow>
+                    </React.Fragment>
+                  )}
+                </CRow>
+                <CRow className={"row-alignment"}>
+                  <CCol className={"column-align"} md={4} lg={4}>
+                    <CLabel className={"label-name-1"}>
+                      Pincode
+                      <span className={"text-danger"}> *</span>
+                    </CLabel>
+                    <CInput
+                      onKeyPress={(e) => FormValidation.value_Only_Number(e)}
+                      name={"Pincode"}
+                      type={"text"}
+                      id={"locationLibraryAreaPincode"}
+                      onChange={formik.handleChange}
+                      value={formik.values.Pincode}
+                      placeholder="Enter Pincode"
+                      autoComplete="none"
+                      maxlength="6"
+                      size="6"
+                    />
+                    {formik.errors.Pincode ? (
+                      <div className="text-danger">
+                        {" "}
+                        {formik.errors.Pincode}
+                      </div>
+                    ) : null}
+                  </CCol>
+                </CRow>
+
+                <CRow className={"row-alignment"}>
+                  {StreetList && (
+                    <React.Fragment>
+                      <CCol className={"column-align"} md={4} lg={4}>
+                        <CLabel className={"label-name-1"}>
+                          Street
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <Select
+                          placeholder="Select the Street Name"
+                          id={"locationLibraryArea"}
+                          onChange={(e) => {
+                            if (streetName.label) {
+                              setStreetName({ ...e, edit: streetName.edit });
+                            } else {
+                              setStreetName({ ...e, edit: true });
+                            }
+                          }}
+                          value={streetName.value ? streetName : null}
+                          options={areaSchema}
+                          isDisabled={
+                            CountryCreate || StateCreate || CityCreate
+                          }
+                        />
+                      </CCol>
+
+                      {streetName.edit && (
+                        <React.Fragment>
+                          <CCol className={"column-align"} md={1} lg={1}>
+                            <CButton
+                              id={"locationLibraryAreaAdd"}
+                              shape={"pill"}
+                              style={{ marginTop: "30px" }}
+                              className={"saveBtn"}
+                              onClick={areaCreate}
+                              disabled={
+                                CountryCreate || StateCreate || CityCreate
+                              }
+                            >
+                              ADD
+                            </CButton>
+                          </CCol>
+                        </React.Fragment>
+                      )}
+                      {streetName.edit && (
+                        <React.Fragment>
+                          <CCol className={"column-align"} md={3} lg={3}>
+                            <CButton
+                              id={"locationLibraryAreaEdit"}
+                              style={{ marginTop: "30px" }}
+                              className={"btn btn-success"}
+                              onClick={editArea}
+                              disabled={
+                                CountryCreate || StateCreate || CityCreate
+                              }
+                            >
+                              EDIT
+                            </CButton>
+                          </CCol>
+                        </React.Fragment>
+                      )}
+                      {saveHide && (
+                        <React.Fragment>
+                          <CCol className={"column-align"} md="2">
+                            <CButton
+                              style={{ marginTop: "30px" }}
+                              className={"saveBtn"}
+                              // onClick={LocationUpdate}
+                              id={"locationLibraryAreaSave"}
+                            >
+                              SAVE
+                            </CButton>
+
+                            <CButton
+                              style={{ marginTop: "30px", marginLeft: "20px" }}
+                              className={"cancelBtn"}
+                              onClick={CancelEdit}
+                              id={"locationLibraryAreaCancel"}
+                            >
+                              CANCEL
+                            </CButton>
+                            {error !== "" ? <p>{error}</p> : null}
+                          </CCol>
+                        </React.Fragment>
+                      )}
+                    </React.Fragment>
+                  )}
+                  {StreetCreate && (
+                    <React.Fragment>
+                       <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                      <CCol md="3">
+                        <CLabel className={"label-name-3"}>
+                          Street Name
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <CInput
+                          onKeyPress={(e) =>
+                            FormValidation.value_Without_Number_Symbols(e)
+                          }
+                          id={"locationLibraryAreaName"}
+                          name={"StreetName"}
+                          value={formik.values.streetName}
+                          onChange={formik.handleChange}
+                          placeholder="Area Name"
+                          maxlength="60"
+                          size="60"
+                        />
+                        {formik.errors.AreaName ? (
+                          <div className="text-danger">
+                            {" "}
+                            {formik.errors.AreaName}
+                          </div>
+                        ) : null}
+                      </CCol>
+
+                      <CCol  md="2">
+                        <CLabel className={"label-name-3"}>
+                          Abbreviation
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <CInput
+                          onKeyPress={(e) =>
+                            FormValidation.value_Without_Number_Without_Symbols_Without_Space(
+                              e
+                            )
+                          }
+                          id={"locationLibraryAreaAbbreviation"}
+                          name={"Abbreviation4"}
+                          value={formik.values.Abbreviation4}
+                          onChange={formik.handleChange}
+                          placeholder="Enter Abbreviation"
+                          maxlength="5"
+                          size="5"
+                        />
+                        {formik.errors.Abbreviation4 ? (
+                          <div className="text-danger">
+                            {" "}
+                            {formik.errors.Abbreviation4}
+                          </div>
+                        ) : null}
+                      </CCol>
+                      <CCol  md="2">
+                        <CLabel className={"label-name-3"}>
                           Code
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -1528,15 +1740,48 @@ function LocationLibrary(props) {
                         </CButton>
                         {error !== "" ? <p>{error}</p> : null}
                       </CCol>
+                     </CRow>
                     </React.Fragment>
                   )}
                 </CRow>
               </CCol>
             </CRow>
+          
+          
 
             <CRow
-              style={{ padding: "1%", marginTop: "1.5%", marginLeft: "27px" }}
+              style={{ padding: "1%", marginTop: "1.5%", marginLeft: "27px",}}
             >
+                <CRow>
+              <CCol style={{ fontSize: '1.55rem' }} md='12'>
+                <i
+                  id={"locationLibraryDelete"}
+                  style={{
+                    position:"absolute", 
+                    top:"7px" ,
+                    marginLeft: "955px",
+                    marginBottom:"20px",
+                    color: "#0072ff",
+                  
+                  }}
+                  className="fa fa-print"
+                ></i>
+              </CCol>
+              <CCol style={{ fontSize: '1.55rem' }} md='12'>
+                <i
+                  id={"locationLibraryDelete"}
+                  style={{
+                    position:"absolute", 
+                    top:"7px" ,
+                    marginLeft: "1000px",
+                    marginBottom:"20px",
+                    color: "green",
+                  
+                  }}
+                  className="fa fa-share-alt"
+                ></i>
+              </CCol>
+            </CRow>
               <CDataTable
                 items={areasSchema}
                 fields={fields}

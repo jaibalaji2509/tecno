@@ -1,6 +1,7 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
-
+// import { TiGroup } from "react-icons/ti";
+// import { MdLocationOn,MdContactMail,MdAssignmentTurnedIn } from "react-icons/md";
 const _nav =  [
   {
     _tag: 'CSidebarNavItem',
@@ -13,11 +14,56 @@ const _nav =  [
     }
   },
  
+
   {
     _tag: 'CSidebarNavItem',
     name: 'Location Library',
-    to: '/tabslist',
+    to: '/locationlibrary',
     icon: 'cil-drop',
+  },
+
+  {
+    id:"AdminSetupSideBar",
+    _tag: "CSidebarNavDropdown",
+    name: "Electral Ward Library",
+    route: "/AdminSetup",
+    
+    icon: 'cil-drop',
+
+    _children: [
+      {
+        id:"CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: "Municipal Corporation",
+        to: "/Municipalcorporation",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+
+      {
+        id:"AdminandSubAdminSideBar",
+        _tag: "CSidebarNavItem",
+        name: "Municipality",
+        to: "/municipality",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+
+      {
+        id:"EntityListSideBar",
+        _tag: "CSidebarNavItem",
+        name: "Town Panchayat",
+        to: "/townpanchayat",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+
+      {
+        id:"LocationLibrarySideBar",
+        _tag: "CSidebarNavItem",
+        name: "Village Panchayat",
+        to: "/villagepanchayat",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+ 
+  ],
   },
   {
     _tag: 'CSidebarNavItem',
@@ -25,6 +71,7 @@ const _nav =  [
     to: '/MemberRegistration',
     icon: 'cil-drop',
   },
+ 
   // {
   //   _tag: 'CSidebarNavItem',
   //   name: 'Typography',
