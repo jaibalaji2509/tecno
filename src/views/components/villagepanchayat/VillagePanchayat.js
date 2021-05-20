@@ -4,7 +4,7 @@ import Toaster from "src/views/notifications/toaster/Toaster";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
-const MunicipalCorporation = () => {
+const VillagePanchayat = () => {
   const [location, setLocation] = useState({
     state: "",
     district: "",
@@ -39,15 +39,23 @@ const MunicipalCorporation = () => {
     cityLocation: false,
   });
   const userData = [
-    // {
-    //   SNo: "1",
+    {
+      SNo: "1",
     //   State: "TamilNadu",
     //   District: "chennai",
     //   Area: "TNagar",
-    //   Street: "Pondy Bazar",
-    // },
+      Street: "Pondy Bazar",
+    },
   ];
   const fields = [
+    {
+        key: "show_details",
+        label: "Select",
+        _style: { width: "3%" },
+        name: <div>Email <input type={"checkbox"} onClick={""}/></div>,
+        sorter: false,
+        filter: false,
+      },
     { key: "SNo", label: "S.NO", _style: { width: "10%" } },
     // { key: "State", label: "State", _style: { width: "10%" } },
     // { key: "District", label: "District", _style: { width: "10%" } },
@@ -56,7 +64,7 @@ const MunicipalCorporation = () => {
   
     // { key: "male", label: "Male", _style: { width: "10%" } },
     // { key: "female", label: "Female", _style: { width: "10%" } },
-    { key: "Street", label: "Action", _style: { width: "10%" } },
+    { key: "Action", label: "Action", _style: { width: "10%" } },
   ];
   const [passing, setPassing] = useState("");
   const [error, setError] =useState("")
@@ -171,7 +179,7 @@ const MunicipalCorporation = () => {
     <div>
       <CCard className={"cardSave"}>
         <div className={"main-headerlabel"}>
-          <span className={"header-label"}> Municipal Corporation</span>
+          <span className={"header-label"}> Village Panchayat</span>
         </div>
         {locationHide.corporation && (
           <div>
@@ -179,7 +187,7 @@ const MunicipalCorporation = () => {
               <div className={"row-headerlabel"}>
                 <span  style={{marginLeft:"70px"}} className={"header-label"}>
                   {" "}
-                  Adding Municipal Corporation{" "}
+                  Adding Village Panchayat{" "}
                 </span>
               </div>
               <CRow className={"row-alignment"} style={{marginLeft:"5px"}}>
@@ -187,7 +195,153 @@ const MunicipalCorporation = () => {
                     <React.Fragment>
                       <CCol className={"column-align"} md={4} lg={4}>
                         <CLabel className={"label-name-1"}>
-                        Municipal Corporation
+                        District Panchayat
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <CSelect
+                          placeholder="Select District Panchayat"
+                          id={"municipalcorporation"}
+                          type={"text"}
+                         value={municipalCorporation}
+                          // isDisabled={CountryCreate || CityCreate || AreaCreate}
+                        />
+                      </CCol>
+                      <CCol className={"column-align"} md={1} lg={1}>
+                        <CButton
+                          shape={"pill"}
+                          id={"addmunicipalcorporation"}
+                          style={{ marginTop: "30px" }}
+                          className={"saveBtn"}
+                          onClick={enableCreate}
+                          // disabled={CountryCreate || CityCreate || AreaCreate}
+                        >
+                          ADD
+                        </CButton>
+                      </CCol>
+                      {/* {countryName.edit && <React.Fragment></React.Fragment>} */}
+
+                      {municipalName.edit === true ? (
+                        <React.Fragment>
+                          <CCol md={3} lg={3}>
+                            <CButton
+                              style={{
+                                marginTop: "30px",
+                              }}
+                              id={"locationLibraryStateEdit"}
+                              className={"btn btn-success"}
+                              onClick={editState}
+                              // disabled={
+                              //   CountryCreate || CityCreate || AreaCreate
+                              // }
+                            >
+                              EDIT
+                            </CButton>
+                          </CCol>
+                        </React.Fragment>
+                      ) : null}
+                    </React.Fragment>
+                  )}
+                  {MunicipalCreate && (
+                    <React.Fragment>
+                      <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+
+                     
+                      <CCol  md="3">
+                        <CLabel className={"label-name-3"}>
+                         District panchayat
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+
+                        <CInput
+                          // onKeyPress={(e) =>
+                          //   FormValidation.value_Without_Number_Symbols(e)
+                          // }
+                          id={"MunicipalName"}
+                          name={"municipalname"}
+                          // value={states.statename}
+                          // onChange={statechangeHandler}
+                          placeholder="Enter District Panchayat Name"
+                          maxlength="60"
+                          size="60"
+                        />
+                       
+                      </CCol>
+
+                      <CCol  md="3">
+                        <CLabel className={"label-name-3"}>
+                          Abbreviation
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <CInput
+                          // onKeyPress={(e) =>
+                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
+                          //     e
+                          //   )
+                          // }
+                          id={"municipalabrreviation"}
+                          name={"abbreviation"}
+                          // value={states.abbreviation}
+                          // onChange={statechangeHandler}
+                          placeholder="Enter Abbreviation"
+                          maxlength="5"
+                          size="5"
+                        />
+                       
+                      </CCol>
+                      <CCol  md="3">
+                        <CLabel className={"label-name-3"}>
+                          Code
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <CInput
+                          id={"municipalcode"}
+                          // onKeyPress={(e) =>
+                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
+                          //     e
+                          //   )
+                          // }
+                          name={"code"}
+                          // value={states.code}
+                          // onChange={statechangeHandler}
+                       
+                          placeholder="Enter Code"
+                          maxlength="5"
+                          size="5"
+                        />
+                       
+                      </CCol>
+                      <CCol  md="3">
+                        <CButton
+                          shape={"pill"}
+                          id={"municipalsave"}
+                          style={{ marginTop: "30px" }}
+                          className={"saveBtn"}
+                          // onClick={State}
+                        >
+                          {passing !== "" ? "UPDATE" : "SAVE"}
+                        </CButton>
+                        <CButton
+                          shape={"pill"}
+                          id={"municipalcancel"}
+                          style={{ marginTop: "30px", marginLeft: "20px" }}
+                          className={"cancelBtn"}
+                          onClick={CancelState}
+                        >
+                          CANCEL
+                        </CButton>
+                        {error !== "" ? <p>{error}</p> : null}
+                      </CCol>
+                      </CRow>
+                    </React.Fragment>
+                  )}
+                </CRow>
+
+                <CRow className={"row-alignment"} style={{marginLeft:"5px"}}>
+                  {municipalList && (
+                    <React.Fragment>
+                      <CCol className={"column-align"} md={4} lg={4}>
+                        <CLabel className={"label-name-1"}>
+                         Panchayat Union
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CSelect
@@ -240,7 +394,7 @@ const MunicipalCorporation = () => {
                      
                       <CCol  md="3">
                         <CLabel className={"label-name-3"}>
-                          Municipal Corporation 
+                        Panchayat Union
                           <span className={"text-danger"}> *</span>
                         </CLabel>
 
@@ -252,7 +406,7 @@ const MunicipalCorporation = () => {
                           name={"municipalname"}
                           // value={states.statename}
                           // onChange={statechangeHandler}
-                          placeholder="State Name"
+                          placeholder="Enter panchayat Union Name"
                           maxlength="60"
                           size="60"
                         />
@@ -295,7 +449,152 @@ const MunicipalCorporation = () => {
                           name={"code"}
                           // value={states.code}
                           // onChange={statechangeHandler}
-                          style={{ textTransform: "uppercase" }}
+                       
+                          placeholder="Enter Code"
+                          maxlength="5"
+                          size="5"
+                        />
+                       
+                      </CCol>
+                      <CCol  md="3">
+                        <CButton
+                          shape={"pill"}
+                          id={"municipalsave"}
+                          style={{ marginTop: "30px" }}
+                          className={"saveBtn"}
+                          // onClick={State}
+                        >
+                          {passing !== "" ? "UPDATE" : "SAVE"}
+                        </CButton>
+                        <CButton
+                          shape={"pill"}
+                          id={"municipalcancel"}
+                          style={{ marginTop: "30px", marginLeft: "20px" }}
+                          className={"cancelBtn"}
+                          onClick={CancelState}
+                        >
+                          CANCEL
+                        </CButton>
+                        {error !== "" ? <p>{error}</p> : null}
+                      </CCol>
+                      </CRow>
+                    </React.Fragment>
+                  )}
+                </CRow>
+                <CRow className={"row-alignment"} style={{marginLeft:"5px"}}>
+                  {municipalList && (
+                    <React.Fragment>
+                      <CCol className={"column-align"} md={4} lg={4}>
+                        <CLabel className={"label-name-1"}>
+                        Village Panchayat
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <CSelect
+                          placeholder="Select Municipal Corporation"
+                          id={"municipalcorporation"}
+                          type={"text"}
+                         value={municipalCorporation}
+                          // isDisabled={CountryCreate || CityCreate || AreaCreate}
+                        />
+                      </CCol>
+                      <CCol className={"column-align"} md={1} lg={1}>
+                        <CButton
+                          shape={"pill"}
+                          id={"addmunicipalcorporation"}
+                          style={{ marginTop: "30px" }}
+                          className={"saveBtn"}
+                          onClick={enableCreate}
+                          // disabled={CountryCreate || CityCreate || AreaCreate}
+                        >
+                          ADD
+                        </CButton>
+                      </CCol>
+                      {/* {countryName.edit && <React.Fragment></React.Fragment>} */}
+
+                      {municipalName.edit === true ? (
+                        <React.Fragment>
+                          <CCol md={3} lg={3}>
+                            <CButton
+                              style={{
+                                marginTop: "30px",
+                              }}
+                              id={"locationLibraryStateEdit"}
+                              className={"btn btn-success"}
+                              onClick={editState}
+                              // disabled={
+                              //   CountryCreate || CityCreate || AreaCreate
+                              // }
+                            >
+                              EDIT
+                            </CButton>
+                          </CCol>
+                        </React.Fragment>
+                      ) : null}
+                    </React.Fragment>
+                  )}
+                  {MunicipalCreate && (
+                    <React.Fragment>
+                      <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+
+                     
+                      <CCol  md="3">
+                        <CLabel className={"label-name-3"}>
+                        Village Panchayat
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+
+                        <CInput
+                          // onKeyPress={(e) =>
+                          //   FormValidation.value_Without_Number_Symbols(e)
+                          // }
+                          id={"MunicipalName"}
+                          name={"municipalname"}
+                          // value={states.statename}
+                          // onChange={statechangeHandler}
+                          placeholder="Enter Village Panchayat Name"
+                          maxlength="60"
+                          size="60"
+                        />
+                       
+                      </CCol>
+
+                      <CCol  md="3">
+                        <CLabel className={"label-name-3"}>
+                          Abbreviation
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <CInput
+                          // onKeyPress={(e) =>
+                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
+                          //     e
+                          //   )
+                          // }
+                          id={"municipalabrreviation"}
+                          name={"abbreviation"}
+                          // value={states.abbreviation}
+                          // onChange={statechangeHandler}
+                          placeholder="Enter Abbreviation"
+                          maxlength="5"
+                          size="5"
+                        />
+                       
+                      </CCol>
+                      <CCol  md="3">
+                        <CLabel className={"label-name-3"}>
+                          Code
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <CInput
+                          id={"municipalcode"}
+                          // onKeyPress={(e) =>
+                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
+                          //     e
+                          //   )
+                          // }
+                          name={"code"}
+                          // value={states.code}
+                          // onChange={statechangeHandler}
+                     
                           placeholder="Enter Code"
                           maxlength="5"
                           size="5"
@@ -398,7 +697,7 @@ const MunicipalCorporation = () => {
                           name={"municipalname"}
                           // value={states.statename}
                           // onChange={statechangeHandler}
-                          placeholder="State Name"
+                          placeholder="Enter Ward Number"
                           maxlength="60"
                           size="60"
                         />
@@ -441,7 +740,7 @@ const MunicipalCorporation = () => {
                           name={"wardcode"}
                           // value={states.code}
                           // onChange={statechangeHandler}
-                          style={{ textTransform: "uppercase" }}
+                        
                           placeholder="Enter Code"
                           maxlength="5"
                           size="5"
@@ -615,6 +914,24 @@ const MunicipalCorporation = () => {
                   show_details: (item, index) => {
                     return (
                       <td className="py-2">
+                           <CInput
+                            type={"checkbox"}
+                            // onClick={() => {
+                            //   let data = item._id;
+                            //   if (`${checked}` === `${data}`) {
+                            //     setChecked("");
+                            //   } else {
+                            //     getToRoleEmpMovement(item);
+                            //   }
+                            // }}
+                            // checked={checked === `${item._id}`}
+                            style={{
+                              width: "15px",
+                              height: "15px",
+                              marginLeft: "30px",
+                              marginBottom: "10px",
+                            }}
+                          />
                         <CRow>
                           <CCol style={{ fontSize: "1.15rem" }} md="12">
                             <i
@@ -1527,4 +1844,4 @@ const MunicipalCorporation = () => {
   );
 };
 
-export default MunicipalCorporation;
+export default VillagePanchayat;

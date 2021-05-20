@@ -3,6 +3,10 @@ import LocationLibrary from './views/components/location_library/Locationlibrary
 import TabsList from './views/components/tabslist/TabsList';
 import MunicipalCorporation from './views/components/municipalcorporation/MunicipalCorporation';
 import Login from './views/pages/login/Login';
+// import VillagePanchayat from './views/components/villagepanchayat/VillagePanchayat';
+
+
+
 
 const Toaster = React.lazy(() => import('./views/notifications/toaster/Toaster'));
 const Tables = React.lazy(() => import('./views/base/tables/Tables'));
@@ -42,7 +46,10 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'));
 const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
 const Location = React.lazy(() => import('./views/components/location/Location'));
-
+const Municipality = React.lazy(() => import('./views/components/municipality/Municipality'));
+const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
+const VillagePanchayat = React.lazy(() => import('./views/components/villagepanchayat/VillagePanchayat'));
+const MappingMunicipalCorpoation = React.lazy(() => import('./views/components/mappingmunicipalcorporation/MappingMunicipalCorpoation'));
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', exact: true ,component: Dashboard },
@@ -88,7 +95,10 @@ const routes = [
   {path:"/locationlibrary", exact:true, name:'Location Library', component:LocationLibrary},
   {path:"/tabslist", exact:true, name : "TabsList", component:TabsList},
   {path:"/municipalcorporation", exact:true, name : "Municipal Corporation", component:MunicipalCorporation},
- 
+  {path:"/municipality", exact:true, name : "Municipality", component:Municipality},
+  {path:"/townpanchayat", exact:true, name : "Municipality", component:TownPanchayat},
+  {path:"/villagepanchayat", exact:true, name : "Village Panchayat", component:VillagePanchayat},
+  {path:"/mappingmunicipalcorporation", exact:true, name : "Mapping Municipal Corporation", component:MappingMunicipalCorpoation},
 ];
 
 export default routes;
