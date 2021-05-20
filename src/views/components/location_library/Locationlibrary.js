@@ -1047,108 +1047,106 @@ function LocationLibrary(props) {
                   {StateCreate && (
                     <React.Fragment>
                       <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                        <CCol md="3">
+                          <CLabel className={"label-name-3"}>
+                            State Name
+                            <span className={"text-danger"}> *</span>
+                          </CLabel>
 
-                     
-                      <CCol  md="3">
-                        <CLabel className={"label-name-3"}>
-                          State Name
-                          <span className={"text-danger"}> *</span>
-                        </CLabel>
+                          <CInput
+                            onKeyPress={(e) =>
+                              FormValidation.value_Without_Number_Symbols(e)
+                            }
+                            id={"locationLibraryStateName"}
+                            name={"statename"}
+                            value={states.statename}
+                            onChange={statechangeHandler}
+                            placeholder="State Name"
+                            maxlength="60"
+                            size="60"
+                          />
+                          {formik.errors.StateName ? (
+                            <div className="text-danger">
+                              {" "}
+                              {formik.errors.StateName}
+                            </div>
+                          ) : null}
+                        </CCol>
 
-                        <CInput
-                          onKeyPress={(e) =>
-                            FormValidation.value_Without_Number_Symbols(e)
-                          }
-                          id={"locationLibraryStateName"}
-                          name={"statename"}
-                          value={states.statename}
-                          onChange={statechangeHandler}
-                          placeholder="State Name"
-                          maxlength="60"
-                          size="60"
-                        />
-                        {formik.errors.StateName ? (
-                          <div className="text-danger">
-                            {" "}
-                            {formik.errors.StateName}
-                          </div>
-                        ) : null}
-                      </CCol>
-
-                      <CCol  md="3">
-                        <CLabel className={"label-name-3"}>
-                          Abbreviation
-                          <span className={"text-danger"}> *</span>
-                        </CLabel>
-                        <CInput
-                          onKeyPress={(e) =>
-                            FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                              e
-                            )
-                          }
-                          id={"locationLibraryStateAbbreviation"}
-                          name={"abbreviation"}
-                          value={states.abbreviation}
-                          onChange={statechangeHandler}
-                          placeholder="Enter Abbreviation"
-                          maxlength="5"
-                          size="5"
-                        />
-                        {formik.errors.Abbreviation2 ? (
-                          <div className="text-danger">
-                            {" "}
-                            {formik.errors.Abbreviation2}
-                          </div>
-                        ) : null}
-                      </CCol>
-                      <CCol  md="3">
-                        <CLabel className={"label-name-3"}>
-                          Code
-                          <span className={"text-danger"}> *</span>
-                        </CLabel>
-                        <CInput
-                          id={"locationLibraryStateCode"}
-                          onKeyPress={(e) =>
-                            FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                              e
-                            )
-                          }
-                          name={"code"}
-                          value={states.code}
-                          onChange={statechangeHandler}
-                          style={{ textTransform: "uppercase" }}
-                          placeholder="Enter Code"
-                          maxlength="5"
-                          size="5"
-                        />
-                        {formik.errors.Code2 ? (
-                          <div className="text-danger">
-                            {" "}
-                            {formik.errors.Code2}
-                          </div>
-                        ) : null}
-                      </CCol>
-                      <CCol  md="3">
-                        <CButton
-                          shape={"pill"}
-                          id={"locationLibraryStateSave"}
-                          style={{ marginTop: "30px" }}
-                          className={"saveBtn"}
-                          onClick={State}
-                        >
-                          {passing !== "" ? "UPDATE" : "SAVE"}
-                        </CButton>
-                        <CButton
-                          shape={"pill"}
-                          id={"locationLibraryStateCancel"}
-                          style={{ marginTop: "30px", marginLeft: "20px" }}
-                          className={"cancelBtn"}
-                          onClick={CancelState}
-                        >
-                          CANCEL
-                        </CButton>
-                        {error !== "" ? <p>{error}</p> : null}
-                      </CCol>
+                        <CCol md="3">
+                          <CLabel className={"label-name-3"}>
+                            Abbreviation
+                            <span className={"text-danger"}> *</span>
+                          </CLabel>
+                          <CInput
+                            onKeyPress={(e) =>
+                              FormValidation.value_Without_Number_Without_Symbols_Without_Space(
+                                e
+                              )
+                            }
+                            id={"locationLibraryStateAbbreviation"}
+                            name={"abbreviation"}
+                            value={states.abbreviation}
+                            onChange={statechangeHandler}
+                            placeholder="Enter Abbreviation"
+                            maxlength="5"
+                            size="5"
+                          />
+                          {formik.errors.Abbreviation2 ? (
+                            <div className="text-danger">
+                              {" "}
+                              {formik.errors.Abbreviation2}
+                            </div>
+                          ) : null}
+                        </CCol>
+                        <CCol md="3">
+                          <CLabel className={"label-name-3"}>
+                            Code
+                            <span className={"text-danger"}> *</span>
+                          </CLabel>
+                          <CInput
+                            id={"locationLibraryStateCode"}
+                            onKeyPress={(e) =>
+                              FormValidation.value_Without_Number_Without_Symbols_Without_Space(
+                                e
+                              )
+                            }
+                            name={"code"}
+                            value={states.code}
+                            onChange={statechangeHandler}
+                            style={{ textTransform: "uppercase" }}
+                            placeholder="Enter Code"
+                            maxlength="5"
+                            size="5"
+                          />
+                          {formik.errors.Code2 ? (
+                            <div className="text-danger">
+                              {" "}
+                              {formik.errors.Code2}
+                            </div>
+                          ) : null}
+                        </CCol>
+                        <CCol md="3">
+                          <CButton
+                            shape={"pill"}
+                            id={"locationLibraryStateSave"}
+                            style={{ marginTop: "30px" }}
+                            className={"saveBtn"}
+                            onClick={State}
+                          >
+                            {passing !== "" ? "UPDATE" : "SAVE"}
+                          </CButton>
+                          <CButton
+                            shape={"pill"}
+                            id={"locationLibraryStateCancel"}
+                            style={{ marginTop: "30px", marginLeft: "20px" }}
+                            className={"cancelBtn"}
+                            onClick={CancelState}
+                          >
+                            CANCEL
+                          </CButton>
+                          {error !== "" ? <p>{error}</p> : null}
+                        </CCol>
                       </CRow>
                     </React.Fragment>
                   )}
@@ -1156,10 +1154,17 @@ function LocationLibrary(props) {
                 <CRow>
                   <CCol md={6} lg={6}>
                     <CCard
-                    style={{backgroundColor:"white", color:"blue", border : "1px solid", width:"200px", height:"100px", marginLeft:"800px", marginTop:"-71px"}}
-                    
+                      style={{
+                        backgroundColor: "white",
+                        color: "blue",
+                        border: "1px solid",
+                        width: "200px",
+                        height: "100px",
+                        marginLeft: "800px",
+                        marginTop: "-71px",
+                      }}
                     >
-                    <span style={{color:"black"}}>State</span>
+                      <span style={{ color: "black" }}>State</span>
                     </CCard>
                   </CCol>
                 </CRow>
@@ -1230,106 +1235,106 @@ function LocationLibrary(props) {
                   )}
                   {CityCreate && (
                     <React.Fragment>
-                         <CRow className={"column-align3"} sm={12} md={12} lg={12}>
-                      <CCol  md="3">
-                        <CLabel className={"label-name-3"}>
-                          City Name
-                          <span className={"text-danger"}> *</span>
-                        </CLabel>
-                        <CInput
-                          onKeyPress={(e) =>
-                            FormValidation.value_Without_Number_Symbols(e)
-                          }
-                          id={"locationLibraryCityName"}
-                          name={"CityName"}
-                          value={formik.values.CityName}
-                          onChange={formik.handleChange}
-                          placeholder="City Name"
-                          maxlength="60"
-                          size="60"
-                        />
-                        {formik.errors.CityName ? (
-                          <div className="text-danger">
-                            {" "}
-                            {formik.errors.CityName}
-                          </div>
-                        ) : null}
-                      </CCol>
+                      <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                        <CCol md="3">
+                          <CLabel className={"label-name-3"}>
+                            City Name
+                            <span className={"text-danger"}> *</span>
+                          </CLabel>
+                          <CInput
+                            onKeyPress={(e) =>
+                              FormValidation.value_Without_Number_Symbols(e)
+                            }
+                            id={"locationLibraryCityName"}
+                            name={"CityName"}
+                            value={formik.values.CityName}
+                            onChange={formik.handleChange}
+                            placeholder="City Name"
+                            maxlength="60"
+                            size="60"
+                          />
+                          {formik.errors.CityName ? (
+                            <div className="text-danger">
+                              {" "}
+                              {formik.errors.CityName}
+                            </div>
+                          ) : null}
+                        </CCol>
 
-                      <CCol  md="3">
-                        <CLabel className={"label-name-3"}>
-                          Abbreviation
-                          <span className={"text-danger"}> *</span>
-                        </CLabel>
-                        <CInput
-                          onKeyPress={(e) =>
-                            FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                              e
-                            )
-                          }
-                          id={"locationLibraryCityAbbreviation"}
-                          name={"Abbreviation3"}
-                          value={formik.values.Abbreviation3}
-                          onChange={formik.handleChange}
-                          placeholder="Enter Abbreviation"
-                          maxlength="5"
-                          size="5"
-                        />
-                        {formik.errors.Abbreviation3 ? (
-                          <div className="text-danger">
-                            {" "}
-                            {formik.errors.Abbreviation3}
-                          </div>
-                        ) : null}
-                      </CCol>
-                      <CCol  md="3">
-                        <CLabel className={"label-name-3"}>
-                          Code
-                          <span className={"text-danger"}> *</span>
-                        </CLabel>
-                        <CInput
-                          onKeyPress={(e) =>
-                            FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                              e
-                            )
-                          }
-                          id={"locationLibraryCityCode"}
-                          name={"Code3"}
-                          value={formik.values.Code3}
-                          onChange={formik.handleChange}
-                          style={{ textTransform: "uppercase" }}
-                          placeholder="Enter Code"
-                          maxlength="5"
-                          size="5"
-                        />
-                        {formik.errors.Code3 ? (
-                          <div className="text-danger">
-                            {" "}
-                            {formik.errors.Code3}
-                          </div>
-                        ) : null}
-                      </CCol>
-                      <CCol className={"column-align"} md="3">
-                        <CButton
-                          shape={"pill"}
-                          style={{ marginTop: "30px" }}
-                          className={"saveBtn"}
-                          onClick={City}
-                          id={"locationLibraryCitySave"}
-                        >
-                          {passing !== "" ? "UPDATE" : "SAVE"}
-                        </CButton>
-                        <CButton
-                          shape={"pill"}
-                          style={{ marginTop: "30px", marginLeft: "20px" }}
-                          className={"cancelBtn"}
-                          onClick={CancelCity}
-                          id={"locationLibraryCityCancel"}
-                        >
-                          CANCEL
-                        </CButton>
-                        {error !== "" ? <p>{error}</p> : null}
-                      </CCol>
+                        <CCol md="3">
+                          <CLabel className={"label-name-3"}>
+                            Abbreviation
+                            <span className={"text-danger"}> *</span>
+                          </CLabel>
+                          <CInput
+                            onKeyPress={(e) =>
+                              FormValidation.value_Without_Number_Without_Symbols_Without_Space(
+                                e
+                              )
+                            }
+                            id={"locationLibraryCityAbbreviation"}
+                            name={"Abbreviation3"}
+                            value={formik.values.Abbreviation3}
+                            onChange={formik.handleChange}
+                            placeholder="Enter Abbreviation"
+                            maxlength="5"
+                            size="5"
+                          />
+                          {formik.errors.Abbreviation3 ? (
+                            <div className="text-danger">
+                              {" "}
+                              {formik.errors.Abbreviation3}
+                            </div>
+                          ) : null}
+                        </CCol>
+                        <CCol md="3">
+                          <CLabel className={"label-name-3"}>
+                            Code
+                            <span className={"text-danger"}> *</span>
+                          </CLabel>
+                          <CInput
+                            onKeyPress={(e) =>
+                              FormValidation.value_Without_Number_Without_Symbols_Without_Space(
+                                e
+                              )
+                            }
+                            id={"locationLibraryCityCode"}
+                            name={"Code3"}
+                            value={formik.values.Code3}
+                            onChange={formik.handleChange}
+                            style={{ textTransform: "uppercase" }}
+                            placeholder="Enter Code"
+                            maxlength="5"
+                            size="5"
+                          />
+                          {formik.errors.Code3 ? (
+                            <div className="text-danger">
+                              {" "}
+                              {formik.errors.Code3}
+                            </div>
+                          ) : null}
+                        </CCol>
+                        <CCol className={"column-align"} md="3">
+                          <CButton
+                            shape={"pill"}
+                            style={{ marginTop: "30px" }}
+                            className={"saveBtn"}
+                            onClick={City}
+                            id={"locationLibraryCitySave"}
+                          >
+                            {passing !== "" ? "UPDATE" : "SAVE"}
+                          </CButton>
+                          <CButton
+                            shape={"pill"}
+                            style={{ marginTop: "30px", marginLeft: "20px" }}
+                            className={"cancelBtn"}
+                            onClick={CancelCity}
+                            id={"locationLibraryCityCancel"}
+                          >
+                            CANCEL
+                          </CButton>
+                          {error !== "" ? <p>{error}</p> : null}
+                        </CCol>
                       </CRow>
                     </React.Fragment>
                   )}
@@ -1397,7 +1402,6 @@ function LocationLibrary(props) {
                       )}
                       {saveHide && (
                         <React.Fragment>
-                          
                           <CCol className={"column-align"} md="2">
                             <CButton
                               style={{ marginTop: "30px" }}
@@ -1424,104 +1428,104 @@ function LocationLibrary(props) {
                   )}
                   {AreaCreate && (
                     <React.Fragment>
-                           <CRow className={"column-align3"} sm={12} md={12} lg={12}>
-                      <CCol  md="3">
-                        <CLabel className={"label-name-3"}>
-                          Area Name
-                          <span className={"text-danger"}> *</span>
-                        </CLabel>
-                        <CInput
-                          onKeyPress={(e) =>
-                            FormValidation.value_Without_Number_Symbols(e)
-                          }
-                          id={"locationLibraryAreaName"}
-                          name={"AreaName"}
-                          value={formik.values.AreaName}
-                          onChange={formik.handleChange}
-                          placeholder="Area Name"
-                          maxlength="60"
-                          size="60"
-                        />
-                        {formik.errors.AreaName ? (
-                          <div className="text-danger">
-                            {" "}
-                            {formik.errors.AreaName}
-                          </div>
-                        ) : null}
-                      </CCol>
+                      <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                        <CCol md="3">
+                          <CLabel className={"label-name-3"}>
+                            Area Name
+                            <span className={"text-danger"}> *</span>
+                          </CLabel>
+                          <CInput
+                            onKeyPress={(e) =>
+                              FormValidation.value_Without_Number_Symbols(e)
+                            }
+                            id={"locationLibraryAreaName"}
+                            name={"AreaName"}
+                            value={formik.values.AreaName}
+                            onChange={formik.handleChange}
+                            placeholder="Area Name"
+                            maxlength="60"
+                            size="60"
+                          />
+                          {formik.errors.AreaName ? (
+                            <div className="text-danger">
+                              {" "}
+                              {formik.errors.AreaName}
+                            </div>
+                          ) : null}
+                        </CCol>
 
-                      <CCol md="2">
-                        <CLabel className={"label-name-3"}>
-                          Abbreviation
-                          <span className={"text-danger"}> *</span>
-                        </CLabel>
-                        <CInput
-                          onKeyPress={(e) =>
-                            FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                              e
-                            )
-                          }
-                          id={"locationLibraryAreaAbbreviation"}
-                          name={"Abbreviation4"}
-                          value={formik.values.Abbreviation4}
-                          onChange={formik.handleChange}
-                          placeholder="Enter Abbreviation"
-                          maxlength="5"
-                          size="5"
-                        />
-                        {formik.errors.Abbreviation4 ? (
-                          <div className="text-danger">
-                            {" "}
-                            {formik.errors.Abbreviation4}
-                          </div>
-                        ) : null}
-                      </CCol>
-                      <CCol md="2">
-                        <CLabel className={"label-name-3"}>
-                          Code
-                          <span className={"text-danger"}> *</span>
-                        </CLabel>
-                        <CInput
-                          onKeyPress={(e) =>
-                            FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                              e
-                            )
-                          }
-                          id={"locationLibraryAreaCode"}
-                          name={"Code4"}
-                          value={formik.values.Code4}
-                          onChange={formik.handleChange}
-                          style={{ textTransform: "uppercase" }}
-                          placeholder="Enter Code"
-                          maxlength="5"
-                          size="5"
-                        />
-                        {formik.errors.Code4 ? (
-                          <div className="text-danger">
-                            {" "}
-                            {formik.errors.Code4}
-                          </div>
-                        ) : null}
-                      </CCol>
-                      <CCol  md="2">
-                        <CButton
-                          style={{ marginTop: "30px" }}
-                          className={"saveBtn"}
-                          onClick={Area}
-                          id={"locationLibraryAreaSave"}
-                        >
-                          SAVE
-                        </CButton>
-                        <CButton
-                          style={{ marginTop: "30px", marginLeft: "20px" }}
-                          className={"cancelBtn"}
-                          onClick={CancelArea}
-                          id={"locationLibraryAreaCancel"}
-                        >
-                          CANCEL
-                        </CButton>
-                        {error !== "" ? <p>{error}</p> : null}
-                      </CCol>
+                        <CCol md="2">
+                          <CLabel className={"label-name-3"}>
+                            Abbreviation
+                            <span className={"text-danger"}> *</span>
+                          </CLabel>
+                          <CInput
+                            onKeyPress={(e) =>
+                              FormValidation.value_Without_Number_Without_Symbols_Without_Space(
+                                e
+                              )
+                            }
+                            id={"locationLibraryAreaAbbreviation"}
+                            name={"Abbreviation4"}
+                            value={formik.values.Abbreviation4}
+                            onChange={formik.handleChange}
+                            placeholder="Enter Abbreviation"
+                            maxlength="5"
+                            size="5"
+                          />
+                          {formik.errors.Abbreviation4 ? (
+                            <div className="text-danger">
+                              {" "}
+                              {formik.errors.Abbreviation4}
+                            </div>
+                          ) : null}
+                        </CCol>
+                        <CCol md="2">
+                          <CLabel className={"label-name-3"}>
+                            Code
+                            <span className={"text-danger"}> *</span>
+                          </CLabel>
+                          <CInput
+                            onKeyPress={(e) =>
+                              FormValidation.value_Without_Number_Without_Symbols_Without_Space(
+                                e
+                              )
+                            }
+                            id={"locationLibraryAreaCode"}
+                            name={"Code4"}
+                            value={formik.values.Code4}
+                            onChange={formik.handleChange}
+                            style={{ textTransform: "uppercase" }}
+                            placeholder="Enter Code"
+                            maxlength="5"
+                            size="5"
+                          />
+                          {formik.errors.Code4 ? (
+                            <div className="text-danger">
+                              {" "}
+                              {formik.errors.Code4}
+                            </div>
+                          ) : null}
+                        </CCol>
+                        <CCol md="2">
+                          <CButton
+                            style={{ marginTop: "30px" }}
+                            className={"saveBtn"}
+                            onClick={Area}
+                            id={"locationLibraryAreaSave"}
+                          >
+                            SAVE
+                          </CButton>
+                          <CButton
+                            style={{ marginTop: "30px", marginLeft: "20px" }}
+                            className={"cancelBtn"}
+                            onClick={CancelArea}
+                            id={"locationLibraryAreaCancel"}
+                          >
+                            CANCEL
+                          </CButton>
+                          {error !== "" ? <p>{error}</p> : null}
+                        </CCol>
                       </CRow>
                     </React.Fragment>
                   )}
@@ -1642,200 +1646,189 @@ function LocationLibrary(props) {
                   )}
                   {StreetCreate && (
                     <React.Fragment>
-                       <CRow className={"column-align3"} sm={12} md={12} lg={12}>
-                      <CCol md="3">
-                        <CLabel className={"label-name-3"}>
-                          Street Name
-                          <span className={"text-danger"}> *</span>
-                        </CLabel>
-                        <CInput
-                          onKeyPress={(e) =>
-                            FormValidation.value_Without_Number_Symbols(e)
-                          }
-                          id={"locationLibraryAreaName"}
-                          name={"StreetName"}
-                          value={formik.values.streetName}
-                          onChange={formik.handleChange}
-                          placeholder="Area Name"
-                          maxlength="60"
-                          size="60"
-                        />
-                        {formik.errors.AreaName ? (
-                          <div className="text-danger">
-                            {" "}
-                            {formik.errors.AreaName}
-                          </div>
-                        ) : null}
-                      </CCol>
+                      <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                        <CCol md="3">
+                          <CLabel className={"label-name-3"}>
+                            Street Name
+                            <span className={"text-danger"}> *</span>
+                          </CLabel>
+                          <CInput
+                            onKeyPress={(e) =>
+                              FormValidation.value_Without_Number_Symbols(e)
+                            }
+                            id={"locationLibraryAreaName"}
+                            name={"StreetName"}
+                            value={formik.values.streetName}
+                            onChange={formik.handleChange}
+                            placeholder="Area Name"
+                            maxlength="60"
+                            size="60"
+                          />
+                          {formik.errors.AreaName ? (
+                            <div className="text-danger">
+                              {" "}
+                              {formik.errors.AreaName}
+                            </div>
+                          ) : null}
+                        </CCol>
 
-                      <CCol  md="2">
-                        <CLabel className={"label-name-3"}>
-                          Abbreviation
-                          <span className={"text-danger"}> *</span>
-                        </CLabel>
-                        <CInput
-                          onKeyPress={(e) =>
-                            FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                              e
-                            )
-                          }
-                          id={"locationLibraryAreaAbbreviation"}
-                          name={"Abbreviation4"}
-                          value={formik.values.Abbreviation4}
-                          onChange={formik.handleChange}
-                          placeholder="Enter Abbreviation"
-                          maxlength="5"
-                          size="5"
-                        />
-                        {formik.errors.Abbreviation4 ? (
-                          <div className="text-danger">
-                            {" "}
-                            {formik.errors.Abbreviation4}
-                          </div>
-                        ) : null}
-                      </CCol>
-                      <CCol  md="2">
-                        <CLabel className={"label-name-3"}>
-                          Code
-                          <span className={"text-danger"}> *</span>
-                        </CLabel>
-                        <CInput
-                          onKeyPress={(e) =>
-                            FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                              e
-                            )
-                          }
-                          id={"locationLibraryAreaCode"}
-                          name={"Code4"}
-                          value={formik.values.Code4}
-                          onChange={formik.handleChange}
-                          style={{ textTransform: "uppercase" }}
-                          placeholder="Enter Code"
-                          maxlength="5"
-                          size="5"
-                        />
-                        {formik.errors.Code4 ? (
-                          <div className="text-danger">
-                            {" "}
-                            {formik.errors.Code4}
-                          </div>
-                        ) : null}
-                      </CCol>
-                      <CCol className={"column-align"} md="2">
-                        <CButton
-                          style={{ marginTop: "30px" }}
-                          className={"saveBtn"}
-                          onClick={Area}
-                          id={"locationLibraryAreaSave"}
-                        >
-                          SAVE
-                        </CButton>
-                        <CButton
-                          style={{ marginTop: "30px", marginLeft: "20px" }}
-                          className={"cancelBtn"}
-                          onClick={CancelArea}
-                          id={"locationLibraryAreaCancel"}
-                        >
-                          CANCEL
-                        </CButton>
-                        {error !== "" ? <p>{error}</p> : null}
-                      </CCol>
-                     </CRow>
+                        <CCol md="2">
+                          <CLabel className={"label-name-3"}>
+                            Abbreviation
+                            <span className={"text-danger"}> *</span>
+                          </CLabel>
+                          <CInput
+                            onKeyPress={(e) =>
+                              FormValidation.value_Without_Number_Without_Symbols_Without_Space(
+                                e
+                              )
+                            }
+                            id={"locationLibraryAreaAbbreviation"}
+                            name={"Abbreviation4"}
+                            value={formik.values.Abbreviation4}
+                            onChange={formik.handleChange}
+                            placeholder="Enter Abbreviation"
+                            maxlength="5"
+                            size="5"
+                          />
+                          {formik.errors.Abbreviation4 ? (
+                            <div className="text-danger">
+                              {" "}
+                              {formik.errors.Abbreviation4}
+                            </div>
+                          ) : null}
+                        </CCol>
+                        <CCol md="2">
+                          <CLabel className={"label-name-3"}>
+                            Code
+                            <span className={"text-danger"}> *</span>
+                          </CLabel>
+                          <CInput
+                            onKeyPress={(e) =>
+                              FormValidation.value_Without_Number_Without_Symbols_Without_Space(
+                                e
+                              )
+                            }
+                            id={"locationLibraryAreaCode"}
+                            name={"Code4"}
+                            value={formik.values.Code4}
+                            onChange={formik.handleChange}
+                            style={{ textTransform: "uppercase" }}
+                            placeholder="Enter Code"
+                            maxlength="5"
+                            size="5"
+                          />
+                          {formik.errors.Code4 ? (
+                            <div className="text-danger">
+                              {" "}
+                              {formik.errors.Code4}
+                            </div>
+                          ) : null}
+                        </CCol>
+                        <CCol className={"column-align"} md="2">
+                          <CButton
+                            style={{ marginTop: "30px" }}
+                            className={"saveBtn"}
+                            onClick={Area}
+                            id={"locationLibraryAreaSave"}
+                          >
+                            SAVE
+                          </CButton>
+                          <CButton
+                            style={{ marginTop: "30px", marginLeft: "20px" }}
+                            className={"cancelBtn"}
+                            onClick={CancelArea}
+                            id={"locationLibraryAreaCancel"}
+                          >
+                            CANCEL
+                          </CButton>
+                          {error !== "" ? <p>{error}</p> : null}
+                        </CCol>
+                      </CRow>
                     </React.Fragment>
                   )}
                 </CRow>
               </CCol>
             </CRow>
-          
-          
-
-            <CRow
-              style={{ padding: "1%", marginTop: "1.5%", marginLeft: "27px",}}
-            >
+            <CRow>
+              <CCol lg={"9"}></CCol>
+              <CCol lg={"3"}>
                 <CRow>
-              <CCol style={{ fontSize: '1.55rem' }} md='12'>
-                <i
-                  id={"locationLibraryDelete"}
-                  style={{
-                    position:"absolute", 
-                    top:"7px" ,
-                    marginLeft: "955px",
-                    marginBottom:"20px",
-                    color: "#0072ff",
-                  
-                  }}
-                  className="fa fa-print"
-                ></i>
-              </CCol>
-              <CCol style={{ fontSize: '1.55rem' }} md='12'>
-                <i
-                  id={"locationLibraryDelete"}
-                  style={{
-                    position:"absolute", 
-                    top:"7px" ,
-                    marginLeft: "1000px",
-                    marginBottom:"20px",
-                    color: "green",
-                  
-                  }}
-                  className="fa fa-share-alt"
-                ></i>
+                  <CCol md="6"></CCol>
+                  <CCol style={{ fontSize: "1.55rem" }} md="2">
+                    <i
+                      id={"locationLibraryDelete"}
+                      style={{ color: "#0072ff" }}
+                      className="fa fa-print"
+                    ></i>
+                  </CCol>
+                  <CCol style={{ fontSize: "1.55rem" }} md="2">
+                    <i
+                      id={"locationLibraryDelete"}
+                      style={{ color: "green" }}
+                      className="fa fa-share-alt"
+                    ></i>
+                  </CCol>
+                </CRow>
               </CCol>
             </CRow>
-              <CDataTable
-                items={areasSchema}
-                fields={fields}
-                columnFilter
-                tableFilter
-                tableLabel={"List of Locations"}
-                itemsPerPageSelect
-                itemsPerPage={5}
-                hover
-                sorter
-                pagination
-                scopedSlots={{
-                  show_details: (item, index) => {
-                    return (
-                      <td className="py-2">
-                        <CRow>
-                          <CCol
-                            className={"column-align"}
-                            style={{ fontSize: "1.15rem" }}
-                            md="12"
-                          >
-                            <i
-                              onClick={() => {
-                                toggleDetails(index);
-                              }}
-                            ></i>
-                            <i
-                              style={{
-                                marginRight: "5px",
-                                color: "#3480e2",
-                                cursor: "pointer",
-                              }}
-                              id={"locationLibraryEdit"}
-                              onClick={() => EditCountry(item)}
-                              className="fas fa-edit"
-                            ></i>
-                            <i
-                              onClick={() => deleteConfirm(item._id)}
-                              id={"locationLibraryDelete"}
-                              style={{
-                                marginLeft: "5px",
-                                color: "#e85654",
-                                cursor: "pointer",
-                              }}
-                              className="fa fa-trash"
-                            ></i>
-                          </CCol>
-                        </CRow>
-                      </td>
-                    );
-                  },
-                  details: (item, index) => {},
-                }}
-              />
+            <CRow style={{ padding: "1%", marginLeft: "0px" }}>
+              <CCol lg={"12"}>
+                <CDataTable
+                  items={areasSchema}
+                  fields={fields}
+                  columnFilter
+                  tableFilter
+                  tableLabel={"List of Locations"}
+                  itemsPerPageSelect
+                  itemsPerPage={5}
+                  hover
+                  sorter
+                  pagination
+                  scopedSlots={{
+                    show_details: (item, index) => {
+                      return (
+                        <td className="py-2">
+                          <CRow>
+                            <CCol
+                              className={"column-align"}
+                              style={{ fontSize: "1.15rem" }}
+                              md="12"
+                            >
+                              <i
+                                onClick={() => {
+                                  toggleDetails(index);
+                                }}
+                              ></i>
+                              <i
+                                style={{
+                                  marginRight: "5px",
+                                  color: "#3480e2",
+                                  cursor: "pointer",
+                                }}
+                                id={"locationLibraryEdit"}
+                                onClick={() => EditCountry(item)}
+                                className="fas fa-edit"
+                              ></i>
+                              <i
+                                onClick={() => deleteConfirm(item._id)}
+                                id={"locationLibraryDelete"}
+                                style={{
+                                  marginLeft: "5px",
+                                  color: "#e85654",
+                                  cursor: "pointer",
+                                }}
+                                className="fa fa-trash"
+                              ></i>
+                            </CCol>
+                          </CRow>
+                        </td>
+                      );
+                    },
+                    details: (item, index) => {},
+                  }}
+                />
+              </CCol>
             </CRow>
           </div>
         </CCard>
