@@ -62,15 +62,40 @@ const _nav =  [
         to: "/villagepanchayat",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
+      {
+        id:"AdminandSubAdminSideBar",
+        _tag: "CSidebarNavItem",
+        name: "Constituency",
+        to: "/Constituency",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
  
   ],
   },
   {
-    _tag: 'CSidebarNavItem',
-    name: 'Member Registration',
-    to: '/MemberRegistration',
+    id:"AdminSetupSideBar",
+    _tag: "CSidebarNavDropdown",
+    name: "Party Member Registration",
+    route: "/AdminSetup",
+    
     icon: 'cil-drop',
+
+    _children: [
+      {
+        id:"CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: 'Member Registration',
+        to: '/MemberRegistration',
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+    ],
   },
+  // {
+  //   _tag: 'CSidebarNavItem',
+  //   name: 'Member Registration',
+  //   to: '/MemberRegistration',
+  //   icon: 'cil-drop',
+  // },
  
   // {
   //   _tag: 'CSidebarNavItem',

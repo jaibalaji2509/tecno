@@ -49,6 +49,7 @@ const Location = React.lazy(() => import('./views/components/location/Location')
 const AddMemberRegister = React.lazy(() => import('./views/components/MemberRegistration/AddMemberRegister'));
 const MemberRegistration = React.lazy(() => import('./views/components/MemberRegistration/MemberRegistration'));
 
+const Constituency = React.lazy(() => import('./views/components/Constituency/Constituency'));
 const Municipality = React.lazy(() => import('./views/components/municipality/Municipality'));
 const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
 const VillagePanchayat = React.lazy(() => import('./views/components/villagepanchayat/VillagePanchayat'));
@@ -105,6 +106,7 @@ const routes = [
   {path:"/townpanchayat", exact:true, name : "Municipality", component:TownPanchayat},
   {path:"/villagepanchayat", exact:true, name : "Village Panchayat", component:VillagePanchayat},
   {path:"/mappingmunicipalcorporation", exact:true, name : "Mapping Municipal Corporation", component:MappingMunicipalCorpoation},
+  {path:"/Constituency", exact:true, name : "Constituency", component:Constituency},
 ];
 
 export default routes;

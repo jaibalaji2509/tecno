@@ -56,14 +56,15 @@ function AddMemberRegister() {
   ];
 
   const fields = [
-    { key: "SNo", label: "S.NO", _style: { width: "10%" } },
+    { key: "SNo", label: "S.NO", _style: { width: "10%" }, sorter: false,
+    filter: false, },
     { key: "Member Name", label: "Member Name", _style: { width: "10%" } },
     { key: "Gender", label: "Gender", _style: { width: "10%" } },
     { key: "Mobile Number", label: "Mobile Number", _style: { width: "10%" } },
     { key: "Street Name", label: "Street Name", _style: { width: "10%" } },
-    { key: "Area Name", label: "Area Name", _style: { width: "10%" } },
+    { key: "Area Name", label: "Area Name / Locality", _style: { width: "10%" } },
     { key: "District Name", label: "District / City Name", _style: { width: "10%" } },
-    { key: "State Name", label: "Address", _style: { width: "10%" } },
+    { key: "State Name", label: "State Name", _style: { width: "10%" } },
     {
       label: "Action",
       key: "show_details",
