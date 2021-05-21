@@ -158,11 +158,11 @@ function MemberRegistration() {
               className={"saveBtn"}
               onClick={enableCreate}
               style={{
-                marginLeft: "2.5%%",
                 width: "120px",
                 cursor: "pointer",
                 marginTop: "50px",
                 marginBottom: "-50px",
+                marginLeft:"2.5%"
               }}
             >
               Add Member
