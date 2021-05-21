@@ -870,7 +870,8 @@ const VillagePanchayat = () => {
                 <CCol
                   md="5"
                   style={{
-                    marginRight: "455px",
+                      position:"absolute",
+                    marginLeft: "255px",
                     float: "right",
                     marginTop:"-65px"
                   }}
