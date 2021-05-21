@@ -25,7 +25,7 @@ const _nav =  [
   {
     id:"AdminSetupSideBar",
     _tag: "CSidebarNavDropdown",
-    name: "Electral Ward Library",
+    name: "Electoral Ward Library",
     route: "/AdminSetup",
     
     icon: 'cil-drop',
@@ -43,7 +43,7 @@ const _nav =  [
         id:"AdminandSubAdminSideBar",
         _tag: "CSidebarNavItem",
         name: "Municipality",
-        to: "/AdminSetup",
+        to: "/municipality",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
 
@@ -51,15 +51,15 @@ const _nav =  [
         id:"EntityListSideBar",
         _tag: "CSidebarNavItem",
         name: "Town Panchayat",
-        to: "/entitylist",
+        to: "/townpanchayat",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
 
       {
         id:"LocationLibrarySideBar",
         _tag: "CSidebarNavItem",
-        name: "Location Library",
-        to: "/Village Panchayat",
+        name: "Village Panchayat",
+        to: "/villagepanchayat",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
  

@@ -1,7 +1,52 @@
 import Axios from "axios";
 import { toast } from "react-toastify";
 
+export async function getHierarchy() {
+  try {
+    const token = localStorage.getItem(`token`);
+    const response = await fetch(`/officeType/getHierarchy`, {
+      method: `GET`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    });
+    if (response.status === 200) {
+      return await response.json();
+    } else if (response.status === 401) {
+      localStorage.removeItem("token");
+      window.location.pathname = "/login";
+      throw new Error(`User Unauthorized. Please login again.`);
+    } else {
+      var errorResponse = await response.json();
+      throw new Error(errorResponse.error);
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
 
+export async function saveCreateMemberRegister(body) {
+  try {
+ 
+    const response = await fetch(`/location`, {
+      method: `post`,
+      headers: {
+        "Content-Type": "application/json",
+    
+      },
+      body:body,
+    });
+    if (response.status === 401) {
+      localStorage.removeItem("token");
+      window.location.pathname = "/login";
+      throw new Error(`User Unauthorized. Please login again.`);
+    }
+    return await response.json();
+  } catch (e) {
+    throw e;
+  }
+}
   export async function saveCreateCorporation(body) {
     try {
     //   let token = await localStorage.getItem("token");

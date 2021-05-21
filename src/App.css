@@ -1157,6 +1157,9 @@ button.saveBtn {
   justify-content: center;
   align-items: center;
 }
+.select{
+  margin-left: 30px;
+}
 
 button.cancelBtn {
   text-transform: uppercase;

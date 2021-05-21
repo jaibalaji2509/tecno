@@ -4,7 +4,7 @@ import Toaster from "src/views/notifications/toaster/Toaster";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
-const MunicipalCorporation = () => {
+const TownPanchayat = () => {
   const [location, setLocation] = useState({
     state: "",
     district: "",
@@ -39,15 +39,23 @@ const MunicipalCorporation = () => {
     cityLocation: false,
   });
   const userData = [
-    // {
-    //   SNo: "1",
-    //   State: "TamilNadu",
-    //   District: "chennai",
-    //   Area: "TNagar",
-    //   Street: "Pondy Bazar",
-    // },
+    {
+      SNo: "1",
+      // State: "TamilNadu",
+      // District: "chennai",
+      // Area: "TNagar",
+      Street: "CP Ramaswamy Street",
+    },
   ];
   const fields = [
+    {
+      key: "show_details",
+      label: "Select",
+      _style: { width: "3%" },
+      name: <div>Email <input type={"checkbox"} onClick={""}/></div>,
+      sorter: false,
+      filter: false,
+    },
     { key: "SNo", label: "S.NO", _style: { width: "10%" } },
     // { key: "State", label: "State", _style: { width: "10%" } },
     // { key: "District", label: "District", _style: { width: "10%" } },
@@ -56,7 +64,7 @@ const MunicipalCorporation = () => {
   
     // { key: "male", label: "Male", _style: { width: "10%" } },
     // { key: "female", label: "Female", _style: { width: "10%" } },
-    { key: "Street", label: "Action", _style: { width: "10%" } },
+    { key: "Action", label: "Action", _style: { width: "10%" } },
   ];
   const [passing, setPassing] = useState("");
   const [error, setError] =useState("")
@@ -171,7 +179,7 @@ const MunicipalCorporation = () => {
     <div>
       <CCard className={"cardSave"}>
         <div className={"main-headerlabel"}>
-          <span className={"header-label"}> Municipal Corporation</span>
+          <span className={"header-label"}> Town panchayat</span>
         </div>
         {locationHide.corporation && (
           <div>
@@ -179,7 +187,7 @@ const MunicipalCorporation = () => {
               <div className={"row-headerlabel"}>
                 <span  style={{marginLeft:"70px"}} className={"header-label"}>
                   {" "}
-                  Adding Municipal Corporation{" "}
+                  Adding Town Panchayat{" "}
                 </span>
               </div>
               <CRow className={"row-alignment"} style={{marginLeft:"5px"}}>
@@ -187,7 +195,7 @@ const MunicipalCorporation = () => {
                     <React.Fragment>
                       <CCol className={"column-align"} md={4} lg={4}>
                         <CLabel className={"label-name-1"}>
-                        Municipal Corporation
+                        Town Panchayat
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CSelect
@@ -240,7 +248,7 @@ const MunicipalCorporation = () => {
                      
                       <CCol  md="3">
                         <CLabel className={"label-name-3"}>
-                          Municipal Corporation 
+                         Town Panchayat
                           <span className={"text-danger"}> *</span>
                         </CLabel>
 
@@ -252,7 +260,7 @@ const MunicipalCorporation = () => {
                           name={"municipalname"}
                           // value={states.statename}
                           // onChange={statechangeHandler}
-                          placeholder="State Name"
+                          placeholder="Enter Town Panchayat Name"
                           maxlength="60"
                           size="60"
                         />
@@ -295,7 +303,7 @@ const MunicipalCorporation = () => {
                           name={"code"}
                           // value={states.code}
                           // onChange={statechangeHandler}
-                          style={{ textTransform: "uppercase" }}
+                       
                           placeholder="Enter Code"
                           maxlength="5"
                           size="5"
@@ -398,7 +406,7 @@ const MunicipalCorporation = () => {
                           name={"municipalname"}
                           // value={states.statename}
                           // onChange={statechangeHandler}
-                          placeholder="State Name"
+                          placeholder="Enter Ward Number"
                           maxlength="60"
                           size="60"
                         />
@@ -441,7 +449,7 @@ const MunicipalCorporation = () => {
                           name={"wardcode"}
                           // value={states.code}
                           // onChange={statechangeHandler}
-                          style={{ textTransform: "uppercase" }}
+                       
                           placeholder="Enter Code"
                           maxlength="5"
                           size="5"
@@ -615,6 +623,24 @@ const MunicipalCorporation = () => {
                   show_details: (item, index) => {
                     return (
                       <td className="py-2">
+                         <CInput
+                            type={"checkbox"}
+                            // onClick={() => {
+                            //   let data = item._id;
+                            //   if (`${checked}` === `${data}`) {
+                            //     setChecked("");
+                            //   } else {
+                            //     getToRoleEmpMovement(item);
+                            //   }
+                            // }}
+                            // checked={checked === `${item._id}`}
+                            style={{
+                              width: "15px",
+                              height: "15px",
+                              marginLeft: "30px",
+                              marginBottom: "10px",
+                            }}
+                          />
                         <CRow>
                           <CCol style={{ fontSize: "1.15rem" }} md="12">
                             <i
@@ -1527,4 +1553,4 @@ const MunicipalCorporation = () => {
   );
 };
 
-export default MunicipalCorporation;
+export default TownPanchayat;
