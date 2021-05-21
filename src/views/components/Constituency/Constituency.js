@@ -7,13 +7,22 @@ import { toast } from "react-toastify";
 
 function Constituency() {
 
+  const [error, setError] = useState("");
+  const [municipalList1, setMunicipalList1] = useState(true);
     const [municipalList, setMunicipalList] = useState(true);
     const [MunicipalCreate, setmunicipalCreate] = useState(false);
-    const[municipalName, setMuniicipalName] =useState("")
-
+    const [MunicipalCreate1, setmunicipalCreate1] = useState(false);
+    const [ParliamentaryConstituency, setParliamentaryConstituency] = useState({});
+    const [municipalName, setMuniicipalName] = useState("");
+  
     const enableCreate = async () => {
         await setMunicipalList(false);
         await setmunicipalCreate(true);
+      };
+
+      const enableCreate1 = async () => {
+        await setMunicipalList1(false);
+        await setmunicipalCreate1(true);
       };
     
       const editState = async () => {
@@ -26,11 +35,28 @@ function Constituency() {
         // getState();
         // getAllAreas();
       };
+      const editState1 = async () => {
+        await setMunicipalList1(false);
+        await setmunicipalCreate1(true);
+        // formik.values.StateName = stateName.stateName;
+        // formik.values.Abbreviation2 = stateName.abbreviation;
+        // formik.values.Code2 = stateName.code;
+        // setPassing(stateName._id);
+        // getState();
+        // getAllAreas();
+      };
+    
       const CancelState = async () => {
        
         setPassing("");
         await setMunicipalList(true);
         await setmunicipalCreate(false);
+      };
+      const CancelState1 = async () => {
+       
+        setPassing("");
+        await setMunicipalList1(true);
+        await setmunicipalCreate1(false);
       };
       const [passing, setPassing] = useState("");
       const userData = [
@@ -81,93 +107,289 @@ function Constituency() {
                   Adding CONSTITUENCY{" "}
                 </span>
               </div>
-              <CRow className={"row-alignment"} style={{marginLeft:"-16px"}}>
-              {municipalList && (
+              <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
+                {municipalList && (
+                  <React.Fragment>
+                    <CCol className={"column-align"} md={4} lg={4}>
+                      <CLabel className={"label-name-1"}>
+                      Parliamentary Constituency
+                        <span className={"text-danger"}> *</span>
+                      </CLabel>
+                      <CSelect
+                        placeholder="Select Municipal Corporation"
+                        id={"ParliamentaryConstituency"}
+                        type={"text"}
+                        value={ParliamentaryConstituency}
+                        // isDisabled={CountryCreate || CityCreate || AreaCreate}
+                      />
+                    </CCol>
+                    <CCol className={"column-align"} md={1} lg={1}>
+                      <CButton
+                        shape={"pill"}
+                        id={"addParliamentaryConstituency"}
+                        style={{ marginTop: "30px" }}
+                        className={"saveBtn"}
+                        onClick={enableCreate}
+                        // disabled={CountryCreate || CityCreate || AreaCreate}
+                      >
+                        ADD
+                      </CButton>
+                    </CCol>
+                    {/* {countryName.edit && <React.Fragment></React.Fragment>} */}
+
+                    {municipalName.edit === true ? (
                       <React.Fragment>
-                      <CCol className={"column-align"} md={4} lg={4}>
-                        <CLabel  className={"label-name"}>
-                        Parliamentary Constituency
+                        <CCol md={3} lg={3}>
+                          <CButton
+                            style={{
+                              marginTop: "30px",
+                            }}
+                            id={"ParliamentaryConstituencyEdit"}
+                            className={"btn btn-success"}
+                            onClick={editState}
+                            // disabled={
+                            //   CountryCreate || CityCreate || AreaCreate
+                            // }
+                          >
+                            EDIT
+                          </CButton>
+                        </CCol>
+                      </React.Fragment>
+                    ) : null}
+                  </React.Fragment>
+                )}
+                {MunicipalCreate && (
+                  <React.Fragment>
+                    <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                      <CCol md="3">
+                        <CLabel className={"label-name-3"}>
+                           Parliamentary 
                           <span className={"text-danger"}> *</span>
                         </CLabel>
-                        <CSelect
-                          placeholder="CSelect Parliamentary Constituency"
-                          id={"CONSTITUENCYParliamentary"}
-                          type={"text"}
-                          className={"input-align"}
+
+                        <CInput
+                          // onKeyPress={(e) =>
+                          //   FormValidation.value_Without_Number_Symbols(e)
+                          // }
+                          id={"ParliamentarydConstituency"}
+                          name={"Parliamentary Constituency"}
+                          // value={states.statename}
+                          // onChange={statechangeHandler}
+                          placeholder="Enter Parliamentary Constituency"
+                          maxlength="60"
+                          size="60"
                         />
                       </CCol>
-                      <CCol className={"column-align"} md={1} lg={1}>
+
+                      <CCol md="3">
+                        <CLabel className={"label-name-3"}>
+                          Abbreviation
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <CInput
+                          // onKeyPress={(e) =>
+                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
+                          //     e
+                          //   )
+                          // }
+                          id={"ParliamentaryConstituencyabrreviation"}
+                          name={"abbreviation"}
+                          // value={states.abbreviation}
+                          // onChange={statechangeHandler}
+                          placeholder="Enter Abbreviation"
+                          maxlength="5"
+                          size="5"
+                        />
+                      </CCol>
+                      <CCol md="3">
+                        <CLabel className={"label-name-3"}>
+                          Code
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <CInput
+                          id={"ParliamentaryConstituencycode"}
+                          // onKeyPress={(e) =>
+                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
+                          //     e
+                          //   )
+                          // }
+                          name={"code"}
+                          // value={states.code}
+                          // onChange={statechangeHandler}
+                          // style={{ textTransform: "uppercase" }}
+                            placeholder="Enter Code"
+                          maxlength="5"
+                          size="5"
+                        />
+                      </CCol>
+                      <CCol md="3">
                         <CButton
                           shape={"pill"}
-                          id={"addconstituency"}
+                          id={"ParliamentaryConstituencysave"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
-                          
-                          // disabled={CountryCreate || CityCreate || AreaCreate}
+                          // onClick={State}
                         >
-                          ADD
+                          {passing !== "" ? "UPDATE" : "SAVE"}
                         </CButton>
+                        <CButton
+                          shape={"pill"}
+                          id={"ParliamentaryConstituencylcancel"}
+                          style={{ marginTop: "30px", marginLeft: "20px" }}
+                          className={"cancelBtn"}
+                          onClick={CancelState}
+                        >
+                          CANCEL
+                        </CButton>
+                        {error !== "" ? <p>{error}</p> : null}
                       </CCol>
-                      {/* {countryName.edit && <React.Fragment></React.Fragment>} */}
-
-                      {municipalName.edit === true ? (
-                        <React.Fragment>
-                          <CCol md={3} lg={3}>
-                            <CButton
-                              style={{
-                                marginTop: "60px",
-                              }}
-                              id={"editconstituency"}
-                              className={"btn btn-success"}
-                             
-                              // disabled={
-                              //   CountryCreate || CityCreate || AreaCreate
-                              // }
-                            >
-                              EDIT
-                            </CButton>
-                          </CCol>
-                        </React.Fragment>
-                      ) : null}
-                    </React.Fragment>
-                     )}
-           </CRow>
+                    </CRow>
+                  </React.Fragment>
+                )}
+              </CRow>
         
-           <CRow className={"row-alignment"} style={{marginLeft:"-16px"}}>
-           
-                                 <React.Fragment>
-                      <CCol className={"column-align"} md={4} lg={4}>
-                        <CLabel  className={"label-name"}>
-                      Legislative Assembly Constituency
+              <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
+                {municipalList1 && (
+                  <React.Fragment>
+                    <CCol className={"column-align"} md={4} lg={4}>
+                      <CLabel className={"label-name-1"}>
+                        Legislative Assembly Constituency 
+                        <span className={"text-danger"}> *</span>
+                      </CLabel>
+                      <CSelect
+                        placeholder="Select the State Name"
+                        id={"Legislative"}
+                        type={"text"}
+
+                        // isDisabled={CountryCreate || CityCreate || AreaCreate}
+                      />
+                    </CCol>
+                    <CCol className={"column-align"} md={1} lg={1}>
+                      <CButton
+                        shape={"pill"}
+                        id={"addLegislative1"}
+                        style={{ marginTop: "30px" }}
+                        className={"saveBtn"}
+                        onClick={enableCreate1}
+                        // disabled={CountryCreate || CityCreate || AreaCreate}
+                      >
+                        ADD
+                      </CButton>
+                    </CCol>
+                    {/* {countryName.edit && <React.Fragment></React.Fragment>} */}
+
+                    {municipalName.edit === true ? (
+                      <React.Fragment>
+                        <CCol md={3} lg={3}>
+                          <CButton
+                            style={{
+                              marginTop: "30px",
+                            }}
+                            id={"LegislativeEdit1"}
+                            className={"btn btn-success"}
+                            onClick={editState1}
+                            // disabled={
+                            //   CountryCreate || CityCreate || AreaCreate
+                            // }
+                          >
+                            EDIT
+                          </CButton>
+                        </CCol>
+                      </React.Fragment>
+                    ) : null}
+                  </React.Fragment>
+                )}
+                {MunicipalCreate1 && (
+                  <React.Fragment>
+                    <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                      <CCol md="3">
+                        <CLabel className={"label-name-3"}>
+                        Legislative Assembly
+ 
                           <span className={"text-danger"}> *</span>
                         </CLabel>
-                        <CSelect
-                          placeholder="CSelect  Legislative Assembly Constituency"
-                          id={"CONSTITUENCYLegislativeAssembly"}
-                          type={"text"}
-                          className={"input-align"}
+
+                        <CInput
+                          // onKeyPress={(e) =>
+                          //   FormValidation.value_Without_Number_Symbols(e)
+                          // }
+                          id={"Legislative1"}
+                          name={"Legislative"}
+                          // value={states.statename}
+                          // onChange={statechangeHandler}
+                          placeholder="State Name"
+                          maxlength="60"
+                          size="60"
                         />
                       </CCol>
-                      <CCol className={"column-align"} md={1} lg={1}>
+
+                      <CCol md="3">
+                        <CLabel className={"label-name-3"}>
+                          Abbreviation
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <CInput
+                          // onKeyPress={(e) =>
+                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
+                          //     e
+                          //   )
+                          // }
+                          id={"Legislativeabbreviation"}
+                          name={"abbreviation"}
+                          // value={states.abbreviation}
+                          // onChange={statechangeHandler}
+                          placeholder="Enter Abbreviation"
+                          maxlength="5"
+                          size="5"
+                        />
+                      </CCol>
+                      <CCol md="3">
+                        <CLabel className={"label-name-3"}>
+                          Code
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <CInput
+                          id={"Legislativecode"}
+                          // onKeyPress={(e) =>
+                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
+                          //     e
+                          //   )
+                          // }
+                          name={"Legislativecode"}
+                          // value={states.code}
+                          // onChange={statechangeHandler}
+                          // style={{ textTransform: "uppercase" }}
+                          placeholder="Enter Code"
+                          maxlength="5"
+                          size="5"
+                        />
+                      </CCol>
+                      <CCol md="3">
                         <CButton
                           shape={"pill"}
-                          id={"add2constituency"}
+                          id={"Legislativesave1"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
-                          
-                          // disabled={CountryCreate || CityCreate || AreaCreate}
+                          // onClick={State}
                         >
-                          ADD
+                          {passing !== "" ? "UPDATE" : "SAVE"}
                         </CButton>
+                        <CButton
+                          shape={"pill"}
+                          id={"wardcancel"}
+                          style={{ marginTop: "30px", marginLeft: "20px" }}
+                          className={"cancelBtn"}
+                          onClick={CancelState1}
+                        >
+                          CANCEL
+                        </CButton>
+                        {error !== "" ? <p>{error}</p> : null}
                       </CCol>
-                      {/* {countryName.edit && <React.Fragment></React.Fragment>} */}
-
-            
-                        
-                  
-                    </React.Fragment>
-            
-           </CRow>
+                    </CRow>
+                  </React.Fragment>
+                )}
+              </CRow> 
+           
            <CRow>
         <CCol>
   <CLabel style={{fontSize:"20PX", fontFamily:"Open Sans", fontWeight:"700", marginLeft:"71px", marginTop:"20px"}}>
@@ -263,7 +485,7 @@ function Constituency() {
                     style={{
                       float: "right",
                     }}
-                    id={"cancelAbbreviationConfigureCode"}
+                    id={"cancelconstituency"}
                     className={"cancelBtn"}
                   >
                     CANCEL
@@ -273,7 +495,7 @@ function Constituency() {
                       float: "right",
                       marginRight: "15px",
                     }}
-                    id={"saveAbbreviationConfigureCode"}
+                    id={"saveconstituencyAbbreviationConfigureCode"}
                     className={"saveBtn"}
                   >
                     Save
