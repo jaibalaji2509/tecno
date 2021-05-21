@@ -536,47 +536,15 @@ const Municipality = () => {
                   />
                 </CCol>
               </CRow>
-              {/* <CCol className={"column-align"} md="3">
-                <CLabel className={"label-name"}>
-                  Mobile Number
-                  <span className={"text-danger"}>*</span>
-                </CLabel>
-                <CInput
-                  type={"number"}
-                  className={"input-align"}
-                  id={"corporationStreets"}
-                  name={"streets"}
-                  placeholder={"Enter Street"}
-                  value={mobilenumber}
-                  onChange={otpChangeHandle}
-                
-                />
-                <span className="text-danger">{error}</span>
-              </CCol>
-              {otpHide && (
-                <CCol className={"column-align"} md="3">
-                  <CLabel className={"label-name"}>
-                  OTP
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <CInput
-                    type={"number"}
-                    className={"input-align"}
-                    id={"corporationStreets"}
-                    name={"streets"}
-                    placeholder={"Enter otp"}
-                   
-                   
-                  />
-                </CCol>
-              )} */}
+           
             </div>
             <CRow style={{ marginTop: "30px" }}>
               <CCol md="10">
                 <CCol
                   md="5"
                   style={{
-                    marginRight: "455px",
+                    marginLeft: "255px",
+                    position:"absolute",
                     float: "right",
                     marginTop: "-65px",
                   }}

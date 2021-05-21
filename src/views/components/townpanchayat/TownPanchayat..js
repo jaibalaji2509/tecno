@@ -579,7 +579,8 @@ const TownPanchayat = () => {
                 <CCol
                   md="5"
                   style={{
-                    marginRight: "455px",
+                    marginLeft: "255px",
+                    position:"absolute",
                     float: "right",
                     marginTop:"-65px"
                   }}
