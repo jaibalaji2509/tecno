@@ -90,7 +90,6 @@ const _nav =  [
       },
     ],
   },
- 
   {
     id:"AdminSetupSideBar",
     _tag: "CSidebarNavDropdown",
@@ -103,12 +102,28 @@ const _nav =  [
       {
         id:"CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
-        name: 'Party Office',
+        name: 'Party OFFICE',
         to: '/partyoffice',
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
+      {
+        id:"CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: 'WING OFFICE',
+        to: '/OfficeType',
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+      {
+        id:"AdminandSubAdminSideBar",
+        _tag: "CSidebarNavItem",
+        name: "WING OFFICE LOCATION",
+        to: "/WingLocation",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+
     ],
   },
+ 
   // {
   //   _tag: 'CSidebarNavItem',
   //   name: 'Member Registration',

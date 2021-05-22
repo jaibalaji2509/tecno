@@ -46,6 +46,8 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'));
 const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
 const Location = React.lazy(() => import('./views/components/location/Location'));
+const OfficeType = React.lazy(() => import('./views/components/OfficeType/OfficeType'));
+const WingLocation = React.lazy(() => import('./views/components/WingLocation/WingLocation'));
 
 const Constituency = React.lazy(() => import('./views/components/Constituency/Constituency'));
 const Municipality = React.lazy(() => import('./views/components/municipality/Municipality'));
@@ -110,6 +112,8 @@ const routes = [
   {path:"/Constituency", exact:true, name : "Constituency", component:Constituency},
   { path: '/AddMemberRegister',  exact: true, name: 'AddMemberRegister', component: AddMemberRegister },
   { path: '/MemberRegistration',  exact: true, name: 'MemberRegistration', component: MemberRegistration },
+  { path: '/OfficeType',  exact: true, name: 'OfficeType', component: OfficeType },
+  { path: '/WingLocation',  exact: true, name: 'WingLocation', component: WingLocation },
 
 ];
 

@@ -124,7 +124,7 @@ color="gradient-danger"
               className={"saveBtn"}
               onClick={enableCreate}
               style={{
-                marginLeft: "2.5%%",
+                marginLeft: "2.5%",
                 width: "120px",
                 cursor: "pointer",
                 marginTop: "50px",
