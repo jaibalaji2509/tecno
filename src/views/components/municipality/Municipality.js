@@ -55,6 +55,7 @@ const Municipality = () => {
       // District: "chennai",
       // Area: "TNagar",
       Street: "Pondy Bazar",
+    
     },
   ];
   const fields = [
@@ -66,7 +67,8 @@ const Municipality = () => {
       sorter: false,
       filter: false,
     },
-    { key: "SNo", label: "S.NO", _style: { width: "5%" } },
+    { key: "SNo", label: "S.NO", _style: { width: "5%" },    sorter: false,
+    filter: false, },
     // { key: "State", label: "State", _style: { width: "10%" } },
     // { key: "District", label: "District", _style: { width: "10%" } },
     // { key: "Area", label: "Ward", _style: { width: "10%" } },
@@ -74,7 +76,8 @@ const Municipality = () => {
 
     // { key: "male", label: "Male", _style: { width: "10%" } },
     // { key: "female", label: "Female", _style: { width: "10%" } },
-    { key: "show_details1", label: "Action", _style: { width: "10%" } },
+    { key: "show_details1", label: "Action", _style: { width: "10%" },    sorter: false,
+    filter: false, },
   ];
   const [passing, setPassing] = useState("");
   const [error, setError] = useState("");
