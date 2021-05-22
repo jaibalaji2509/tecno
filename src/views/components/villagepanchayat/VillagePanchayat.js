@@ -274,7 +274,7 @@ const VillagePanchayat = () => {
                       Village panchayat
                         <span className={"text-danger"}>*</span>
                       </CLabel>
-                      <CSelect
+                -      <CSelect
                         className={"input-align"}
                         id={"municipaldistrict"}
                         name={"city"}
