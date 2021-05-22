@@ -90,6 +90,25 @@ const _nav =  [
       },
     ],
   },
+ 
+  {
+    id:"AdminSetupSideBar",
+    _tag: "CSidebarNavDropdown",
+    name: "Organization Setup",
+    route: "/AdminSetup",
+    
+    icon: 'cil-drop',
+
+    _children: [
+      {
+        id:"CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: 'Party Office',
+        to: '/partyoffice',
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+    ],
+  },
   // {
   //   _tag: 'CSidebarNavItem',
   //   name: 'Member Registration',

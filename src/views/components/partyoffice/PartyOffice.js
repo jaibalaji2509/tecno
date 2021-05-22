@@ -4,9 +4,7 @@ import Toaster from "src/views/notifications/toaster/Toaster";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
-import { useHistory } from "react-router";
-const MappingMunicipalCorpoation = () => {
-    const history = useHistory()
+const PartyOffice = () => {
   const [location, setLocation] = useState({
     state: "",
     district: "",
@@ -50,18 +48,17 @@ const MappingMunicipalCorpoation = () => {
     // },
   ];
   const fields = [
-    { key: "SNo", label: "S.NO", _style: { width: "10%" } },
+    { key: "SNo", label: "S.NO", _style: { width: "10%" },    sorter: false,
+    filter: false, },
     // { key: "State", label: "State", _style: { width: "10%" } },
-    // { key: "District", label: "District", _style: { width: "10%" } },
-    { key: "Ward", label: "Ward", _style: { width: "10%" } },
-    { key: "Street", label: "Name of the Street", _style: { width: "10%" } },
-    { key: "Street", label: "Male", _style: { width: "10%" } },
-    { key: "Street", label: "Female", _style: { width: "10%" } },
-    { key: "Street", label: "Transgender", _style: { width: "10%" } },
   
-    // { key: "male", label: "Male", _style: { width: "10%" } },
+    { key: "Street", label: "Type of Party Office", _style: { width: "10%" } },
+    { key: "District", label: "Abbreviation", _style: { width: "10%" } },
+    { key: "Area", label: "Code", _style: { width: "10%" } },
+    { key: "male", label: "Reporting TO", _style: { width: "10%" } },
     // { key: "female", label: "Female", _style: { width: "10%" } },
-    { key: "Street", label: "Action", _style: { width: "10%" } },
+    { key: "Street", label: "Action", _style: { width: "10%" },    sorter: false,
+    filter: false, },
   ];
   const [passing, setPassing] = useState("");
   const [error, setError] =useState("")
@@ -172,11 +169,120 @@ const MappingMunicipalCorpoation = () => {
     await setMunicipalList(true);
     await setmunicipalCreate(false);
   };
+  const [hideMappingMunicipal, setHideMappingmunicipal] =useState(true)
+  const[hideCorporation, setHideCorporation] =useState(false)
+  const changeMunicipalCorporation = ()=>{
+    setHideMappingmunicipal(false)
+    setHideCorporation(true)
+  }
   return (
+
     <div>
-      <CCard className={"cardSave"}>
+      {hideMappingMunicipal && (
+         <div>
+         <CCard className={"cardSave"}>
+           <div className={"main-headerlabel"}>
+             <span className={"header-label"}> party Office</span>
+           </div>
+           {locationHide.corporation && (
+             <div>
+               <div style={{ marginLeft: "-26px" }}>
+                 <div className={"row-headerlabel"}>
+                   <span  style={{marginLeft:"70px"}} className={"header-label"}>
+                     {" "}
+                       Party Office{" "}
+                   </span>
+                 </div>
+                 <CRow style={{marginTop:"45px"}}>
+                 <CCol md="10">
+                   <CCol
+                     md="5"
+                     style={{
+                       marginLeft: "5px",
+                       float: "right",
+                       marginTop:"-20px"
+                     }}
+                   >
+        
+                     <CButton
+                       style={{
+                         float: "right",
+                         marginRight: "1030px",
+                       }}
+                       id={"saveAbbreviationConfigureCode"}
+                       className={"saveBtn"}
+                       onClick={changeMunicipalCorporation}
+                     >
+                      Add Party Office
+                     </CButton>{" "}
+                   </CCol>
+                 </CCol>
+               </CRow>
+               </div>
+               <CRow style={{ padding: "4%", marginTop: "-1.5%" }}>
+                 <CDataTable
+                   items={userData}
+                   fields={fields}
+                   columnFilter
+                   tableFilter
+                   tableLabel={"List of Party Office"}
+                   itemsPerPageSelect
+                   itemsPerPage={5}
+                   hover
+                   sorter
+                   pagination
+                   scopedSlots={{
+                     show_details: (item, index) => {
+                       return (
+                         <td className="py-2">
+                           <CRow>
+                             <CCol style={{ fontSize: "1.15rem" }} md="12">
+                               <i
+                                 onClick={() => {
+                                   //   toggleDetails(index);
+                                 }}
+                               ></i>
+                               {/* <i
+                                   style={{
+                                     marginRight: "5px",
+                                     color: "#3480e2",
+                                     cursor: "pointer",
+                                   }}
+                                   id={"locationLibraryEdit"}
+                                   onClick={() => EditCountry(item)}
+                                   className="fas fa-edit"
+                                 ></i>
+                                 <i
+                                   onClick={() => deleteConfirm(item._id)}
+                                   id={"locationLibraryDelete"}
+                                   style={{
+                                     marginLeft: "5px",
+                                     color: "#e85654",
+                                     cursor: "pointer",
+                                   }}
+                                   className="fa fa-trash"
+                                 ></i> */}
+                             </CCol>
+                           </CRow>
+                         </td>
+                       );
+                     },
+                     details: (item, index) => {},
+                   }}
+                 />
+               </CRow>
+             </div>
+           )}
+   
+         </CCard>
+       </div>
+      )}
+
+      {hideCorporation && (
+        <div>
+ <CCard className={"cardSave"} style={{minHeight:"450px"}}>
         <div className={"main-headerlabel"}>
-          <span className={"header-label"}>Mapping Municipal Corporation</span>
+          <span className={"header-label"}> Party Office</span>
         </div>
         {locationHide.corporation && (
           <div>
@@ -184,54 +290,33 @@ const MappingMunicipalCorpoation = () => {
               <div className={"row-headerlabel"}>
                 <span  style={{marginLeft:"70px"}} className={"header-label"}>
                   {" "}
-                  Mapping Municipal Corporation{" "}
+                  Adding Party Office{" "}
                 </span>
               </div>
-            
-              <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-             
-              <CCol className={"column-align"} md="4">
-               <CLabel className={"label-name"}>
-               Municipal Corporation
-                 <span className={"text-danger"}>*</span>
-               </CLabel>
-               <CSelect
-                 className={"input-align"}
-                 id={"municipaldistrict"}
-                 name={"city"}
-                 placeholder={" Corporation Name"}
-                 value={locations.city}
-                 onChange={changeHandler}
-               />
-             </CCol>
-             <CCol className={"column-align"} md="4">
-               <CLabel className={"label-name"}>
-               State
-                 <span className={"text-danger"}>*</span>
-               </CLabel>
-               <CSelect
-                 className={"input-align"}
-                 id={"municipalstatename"}
-                 name={"state"}
-                 placeholder={"Select State"}
-                 value={locations.district}
-                 onChange={changeHandler}
-               />
-             </CCol>
-            
-             
-           </CRow>
-              
-              <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+        
+     <CRow className={"row-alignment"} md="12" sm="12" lg="12">
              
 
-              
                 <CCol className={"column-align"} md="4">
                   <CLabel className={"label-name"}>
-                    District / City
+                  Type of PartyOffice
                     <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CSelect
+                  <CInput
+                    className={"input-align"}
+                    id={"municipalstatename"}
+                    name={"state"}
+                    placeholder={"Select State"}
+                    value={locations.district}
+                    onChange={changeHandler}
+                  />
+                </CCol>
+                <CCol className={"column-align"} md="4">
+                  <CLabel className={"label-name"}>
+                  Abbreviation
+                    <span className={"text-danger"}>*</span>
+                  </CLabel>
+                  <CInput
                     className={"input-align"}
                     id={"municipaldistrict"}
                     name={"city"}
@@ -240,65 +325,53 @@ const MappingMunicipalCorpoation = () => {
                     onChange={changeHandler}
                   />
                 </CCol>
-                <CCol className={"column-align"} md="4">
+                
+              </CRow>
+              <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+             
+              <CCol className={"column-align"} md="4">
                   <CLabel className={"label-name"}>
-                  Ward
+                  Code
+                    <span className={"text-danger"}>*</span>
+                  </CLabel>
+                  <CInput
+                    className={"input-align"}
+                    id={"municipaldistrict"}
+                    name={"city"}
+                    placeholder={" Corporation Name"}
+                    value={locations.city}
+                    onChange={changeHandler}
+                  />
+                </CCol>
+              <CCol className={"column-align"} md="4">
+                  <CLabel className={"label-name"}>
+                   Reporting To
                     <span className={"text-danger"}>*</span>
                   </CLabel>
                   <CSelect
                     className={"input-align"}
-                    id={"municipalstatename"}
-                    name={"Ward"}
-                    placeholder={"Select Ward"}
-                    value={locations.district}
+                    id={"municipalarea"}
+                    name={"area"}
+                    placeholder={" Corporation Name"}
+                    value={locations.city}
                     onChange={changeHandler}
                   />
                 </CCol>
-              </CRow>
-             
-              {/* <CCol className={"column-align"} md="3">
-                <CLabel className={"label-name"}>
-                  Mobile Number
-                  <span className={"text-danger"}>*</span>
-                </CLabel>
-                <CInput
-                  type={"number"}
-                  className={"input-align"}
-                  id={"corporationStreets"}
-                  name={"streets"}
-                  placeholder={"Enter Street"}
-                  value={mobilenumber}
-                  onChange={otpChangeHandle}
-                
-                />
-                <span className="text-danger">{error}</span>
-              </CCol>
-              {otpHide && (
-                <CCol className={"column-align"} md="3">
-                  <CLabel className={"label-name"}>
-                  OTP
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <CInput
-                    type={"number"}
-                    className={"input-align"}
-                    id={"corporationStreets"}
-                    name={"streets"}
-                    placeholder={"Enter otp"}
-                   
-                   
-                  />
-                </CCol>
-              )} */}
+           
+            
+           </CRow>
+            
+            
             </div>
-            <CRow style={{marginTop:"45px"}}>
+            <CRow style={{marginTop:"60px"}}>
               <CCol md="10">
                 <CCol
                   md="5"
                   style={{
-                    marginRight: "130px",
+                    marginLeft: "555px",
                     float: "right",
-                    marginTop:"-5px"
+                    marginTop:"-25px",
+                    position:"absolute"
                   }}
                 >
                   <CButton
@@ -321,73 +394,10 @@ const MappingMunicipalCorpoation = () => {
                   >
                     Save
                   </CButton>{" "}
-                  <CButton
-                    style={{
-                      float: "right",
-                      marginRight: "15px",
-                    }}
-                    id={"saveAbbreviationConfigureCode"}
-                    className={"saveBtn"}
-                    onClick={()=>history.push("./municipalcorporation")}
-                  >
-                    Add Municipal Corporation
-                  </CButton>{" "}
                 </CCol>
               </CCol>
             </CRow>
-            <CRow style={{ padding: "4%", marginTop: "-1.5%" }}>
-              <CDataTable
-                items={userData}
-                fields={fields}
-                columnFilter
-                tableFilter
-                tableLabel={"List of Streets"}
-                itemsPerPageSelect
-                itemsPerPage={5}
-                hover
-                sorter
-                pagination
-                scopedSlots={{
-                  show_details: (item, index) => {
-                    return (
-                      <td className="py-2">
-                        <CRow>
-                          <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              onClick={() => {
-                                //   toggleDetails(index);
-                              }}
-                            ></i>
-                            {/* <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "#3480e2",
-                                  cursor: "pointer",
-                                }}
-                                id={"locationLibraryEdit"}
-                                onClick={() => EditCountry(item)}
-                                className="fas fa-edit"
-                              ></i>
-                              <i
-                                onClick={() => deleteConfirm(item._id)}
-                                id={"locationLibraryDelete"}
-                                style={{
-                                  marginLeft: "5px",
-                                  color: "#e85654",
-                                  cursor: "pointer",
-                                }}
-                                className="fa fa-trash"
-                              ></i> */}
-                          </CCol>
-                        </CRow>
-                      </td>
-                    );
-                  },
-                  details: (item, index) => {},
-                }}
-              />
-            </CRow>
-          </div>
+</div>
         )}
 
         {locationHide.municipalLocation && (
@@ -1259,8 +1269,11 @@ const MappingMunicipalCorpoation = () => {
           </div>
         )}
       </CCard>
+        </div>
+      )}
+     
     </div>
   );
 };
 
-export default MappingMunicipalCorpoation;
+export default PartyOffice;

@@ -46,14 +46,12 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'));
 const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
 const Location = React.lazy(() => import('./views/components/location/Location'));
-// const AddMemberRegister = React.lazy(() => import('./views/components/MemberRegistration/AddMemberRegister'));
-// const MemberRegistration = React.lazy(() => import('./views/components/MemberRegistration/MemberRegistration'));
 
 const Constituency = React.lazy(() => import('./views/components/Constituency/Constituency'));
 const Municipality = React.lazy(() => import('./views/components/municipality/Municipality'));
 const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
 const VillagePanchayat = React.lazy(() => import('./views/components/villagepanchayat/VillagePanchayat'));
-const MappingMunicipalCorpoation = React.lazy(() => import('./views/components/mappingmunicipalcorporation/MappingMunicipalCorpoation'));
+const PartyOffice = React.lazy(() => import('./views/components/partyoffice/PartyOffice'));
 const AddMemberRegister = React.lazy(() => import('./views/components/MemberRegistration/AddMemberRegister'));
 const MemberRegistration = React.lazy(() => import('./views/components/MemberRegistration/MemberRegistration'));
 
@@ -108,7 +106,7 @@ const routes = [
   {path:"/municipality", exact:true, name : "Municipality", component:Municipality},
   {path:"/townpanchayat", exact:true, name : "Municipality", component:TownPanchayat},
   {path:"/villagepanchayat", exact:true, name : "Village Panchayat", component:VillagePanchayat},
-  {path:"/mappingmunicipalcorporation", exact:true, name : "Mapping Municipal Corporation", component:MappingMunicipalCorpoation},
+  {path:"/partyoffice", exact:true, name : "Party Office", component:PartyOffice},
   {path:"/Constituency", exact:true, name : "Constituency", component:Constituency},
   { path: '/AddMemberRegister',  exact: true, name: 'AddMemberRegister', component: AddMemberRegister },
   { path: '/MemberRegistration',  exact: true, name: 'MemberRegistration', component: MemberRegistration },
