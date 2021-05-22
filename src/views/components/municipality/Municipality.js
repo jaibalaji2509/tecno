@@ -35,6 +35,8 @@ const Municipality = () => {
   });
   const [municipalList, setMunicipalList] = useState(true);
   const [MunicipalCreate, setmunicipalCreate] = useState(false);
+  const [municipalList1, setMunicipalList1] = useState(true);
+  const [MunicipalCreate1, setmunicipalCreate1] = useState(false);
   const [municipalCorporation, setMunicipalCorporation] = useState({});
   const [municipalName, setMuniicipalName] = useState("");
 
@@ -53,6 +55,7 @@ const Municipality = () => {
       // District: "chennai",
       // Area: "TNagar",
       Street: "Pondy Bazar",
+    
     },
   ];
   const fields = [
@@ -64,7 +67,8 @@ const Municipality = () => {
       sorter: false,
       filter: false,
     },
-    { key: "SNo", label: "S.NO", _style: { width: "5%" } },
+    { key: "SNo", label: "S.NO", _style: { width: "5%" },    sorter: false,
+    filter: false, },
     // { key: "State", label: "State", _style: { width: "10%" } },
     // { key: "District", label: "District", _style: { width: "10%" } },
     // { key: "Area", label: "Ward", _style: { width: "10%" } },
@@ -72,7 +76,8 @@ const Municipality = () => {
 
     // { key: "male", label: "Male", _style: { width: "10%" } },
     // { key: "female", label: "Female", _style: { width: "10%" } },
-    { key: "show_details1", label: "Action", _style: { width: "10%" } },
+    { key: "show_details1", label: "Action", _style: { width: "10%" },    sorter: false,
+    filter: false, },
   ];
   const [passing, setPassing] = useState("");
   const [error, setError] = useState("");
@@ -104,7 +109,12 @@ const Municipality = () => {
       }
     }
   };
-
+  const CancelState1 = async () => {
+   
+    setPassing("");
+    await setMunicipalList1(true);
+    await setmunicipalCreate1(false);
+  };
   const saveMunicipalLocation = () => {
     setLocationHide({
       ...locationHide,
@@ -166,9 +176,25 @@ const Municipality = () => {
     await setmunicipalCreate(true);
   };
 
+  const enableCreate1 = async () => {
+    await setMunicipalList1(false);
+    await setmunicipalCreate1(true);
+  };
+
   const editState = async () => {
     await setMunicipalList(false);
     await setmunicipalCreate(true);
+    // formik.values.StateName = stateName.stateName;
+    // formik.values.Abbreviation2 = stateName.abbreviation;
+    // formik.values.Code2 = stateName.code;
+    // setPassing(stateName._id);
+    // getState();
+    // getAllAreas();
+  };
+  
+  const editState1 = async () => {
+    await setMunicipalList1(false);
+    await setmunicipalCreate1(true);
     // formik.values.StateName = stateName.stateName;
     // formik.values.Abbreviation2 = stateName.abbreviation;
     // formik.values.Code2 = stateName.code;
@@ -514,7 +540,7 @@ const Municipality = () => {
               </CRow>
 
               <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
-                {municipalList && (
+                {municipalList1 && (
                   <React.Fragment>
                     <CCol className={"column-align"} md={4} lg={4}>
                       <CLabel className={"label-name-1"}>
@@ -535,7 +561,7 @@ const Municipality = () => {
                         id={"addmunicipalcorporation"}
                         style={{ marginTop: "30px" }}
                         className={"saveBtn"}
-                        onClick={enableCreate}
+                        onClick={enableCreate1}
                         // disabled={CountryCreate || CityCreate || AreaCreate}
                       >
                         ADD
@@ -552,7 +578,7 @@ const Municipality = () => {
                             }}
                             id={"locationLibraryStateEdit"}
                             className={"btn btn-success"}
-                            onClick={editState}
+                            onClick={editState1}
                             // disabled={
                             //   CountryCreate || CityCreate || AreaCreate
                             // }
@@ -564,7 +590,7 @@ const Municipality = () => {
                     ) : null}
                   </React.Fragment>
                 )}
-                {MunicipalCreate && (
+                {MunicipalCreate1 && (
                   <React.Fragment>
                     <CRow className={"column-align3"} sm={12} md={12} lg={12}>
                       <CCol md="3">
@@ -643,7 +669,7 @@ const Municipality = () => {
                           id={"wardcancel"}
                           style={{ marginTop: "30px", marginLeft: "20px" }}
                           className={"cancelBtn"}
-                          onClick={CancelState}
+                          onClick={CancelState1}
                         >
                           CANCEL
                         </CButton>

@@ -48,7 +48,8 @@ const MunicipalCorporation = () => {
     // },
   ];
   const fields = [
-    { key: "SNo", label: "S.NO", _style: { width: "10%" } },
+    { key: "SNo", label: "S.NO", _style: { width: "10%" },    sorter: false,
+    filter: false, },
     // { key: "State", label: "State", _style: { width: "10%" } },
     // { key: "District", label: "District", _style: { width: "10%" } },
     // { key: "Area", label: "Ward", _style: { width: "10%" } },
@@ -56,7 +57,8 @@ const MunicipalCorporation = () => {
   
     // { key: "male", label: "Male", _style: { width: "10%" } },
     // { key: "female", label: "Female", _style: { width: "10%" } },
-    { key: "Street", label: "Action", _style: { width: "10%" } },
+    { key: "Street", label: "Action", _style: { width: "10%" },    sorter: false,
+    filter: false, },
   ];
   const [passing, setPassing] = useState("");
   const [error, setError] =useState("")

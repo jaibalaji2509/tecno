@@ -658,7 +658,8 @@ function LocationLibrary(props) {
     formik.values.Code4 = val4.toUpperCase();
   }, [formik.values]);
   const fields = [
-    { key: "sNo", _style: { width: "10%" } },
+    { key: "sNo", _style: { width: "10%" },    sorter: false,
+    filter: false, },
     // { key: "countryName", _style: { width: "20%" } },
     { key: "stateName", label: "State ", _style: { width: "20%" } },
     { key: "cityName", label: "District / City", _style: { width: "20%" } },

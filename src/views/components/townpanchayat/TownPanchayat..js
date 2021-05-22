@@ -35,6 +35,8 @@ const TownPanchayat = () => {
   });
   const [municipalList, setMunicipalList] = useState(true);
   const [MunicipalCreate, setmunicipalCreate] = useState(false);
+  const [municipalList1, setMunicipalList1] = useState(true);
+  const [MunicipalCreate1, setmunicipalCreate1] = useState(false);
   const [municipalCorporation, setMunicipalCorporation] = useState({});
   const [municipalName, setMuniicipalName] = useState("");
 
@@ -68,7 +70,8 @@ const TownPanchayat = () => {
       sorter: false,
       filter: false,
     },
-    { key: "SNo", label: "S.NO", _style: { width: "10%" } },
+    { key: "SNo", label: "S.NO", _style: { width: "10%" }, sorter: false,
+    filter: false, },
     // { key: "State", label: "State", _style: { width: "10%" } },
     // { key: "District", label: "District", _style: { width: "10%" } },
     // { key: "Area", label: "Ward", _style: { width: "10%" } },
@@ -76,7 +79,8 @@ const TownPanchayat = () => {
 
     // { key: "male", label: "Male", _style: { width: "10%" } },
     // { key: "female", label: "Female", _style: { width: "10%" } },
-    { key: "Action", label: "Action", _style: { width: "10%" } },
+    { key: "Action", label: "Action", _style: { width: "10%" }, sorter: false,
+    filter: false, },
   ];
   const [passing, setPassing] = useState("");
   const [error, setError] = useState("");
@@ -192,6 +196,28 @@ const TownPanchayat = () => {
     setHideMappingTown(false);
     setHideTownPanchayat(true);
   };
+  const enableCreate1 = async () => {
+    await setMunicipalList1(false);
+    await setmunicipalCreate1(true);
+  };
+
+  const editState1 = async () => {
+    await setMunicipalList1(false);
+    await setmunicipalCreate1(true);
+    // formik.values.StateName = stateName.stateName;
+    // formik.values.Abbreviation2 = stateName.abbreviation;
+    // formik.values.Code2 = stateName.code;
+    // setPassing(stateName._id);
+    // getState();
+    // getAllAreas();
+  };
+  const CancelState1 = async () => {
+   
+    setPassing("");
+    await setMunicipalList1(true);
+    await setmunicipalCreate1(false);
+  };
+ 
   return (
     <div>
       {hideMappingTown && (
@@ -644,7 +670,7 @@ const TownPanchayat = () => {
                           id={"wardcancel"}
                           style={{ marginTop: "30px", marginLeft: "20px" }}
                           className={"cancelBtn"}
-                          onClick={CancelState}
+                          onClick={CancelState1}
                         >
                           CANCEL
                         </CButton>

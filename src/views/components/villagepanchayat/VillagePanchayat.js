@@ -35,6 +35,12 @@ const VillagePanchayat = () => {
   });
   const [municipalList, setMunicipalList] = useState(true);
   const [MunicipalCreate, setmunicipalCreate] = useState(false);
+  const [municipalList1, setMunicipalList1] = useState(true);
+  const [MunicipalCreate1, setmunicipalCreate1] = useState(false);
+  const [municipalList2, setMunicipalList2] = useState(true);
+  const [MunicipalCreate2, setmunicipalCreate2] = useState(false);
+  const [municipalList3, setMunicipalList3] = useState(true);
+  const [MunicipalCreate3, setmunicipalCreate3] = useState(false);
   const [municipalCorporation, setMunicipalCorporation] = useState({});
   const [municipalName, setMuniicipalName] = useState("");
 
@@ -76,7 +82,8 @@ const VillagePanchayat = () => {
 
     // { key: "male", label: "Male", _style: { width: "10%" } },
     // { key: "female", label: "Female", _style: { width: "10%" } },
-    { key: "Action", label: "Action", _style: { width: "10%" } },
+    { key: "Action", label: "Action", _style: { width: "10%" }, sorter: false,
+    filter: false, },
   ];
   const [passing, setPassing] = useState("");
   const [error, setError] = useState("");
@@ -191,6 +198,70 @@ const VillagePanchayat = () => {
     setHideMappingVillage(false);
     setHideVillagePanchayat(true);
   };
+  const enableCreate1 = async () => {
+    await setMunicipalList1(false);
+    await setmunicipalCreate1(true);
+  };
+
+  const editState1 = async () => {
+    await setMunicipalList1(false);
+    await setmunicipalCreate1(true);
+    // formik.values.StateName = stateName.stateName;
+    // formik.values.Abbreviation2 = stateName.abbreviation;
+    // formik.values.Code2 = stateName.code;
+    // setPassing(stateName._id);
+    // getState();
+    // getAllAreas();
+  };
+  const CancelState1 = async () => {
+   
+    setPassing("");
+    await setMunicipalList1(true);
+    await setmunicipalCreate1(false);
+  };
+  const enableCreate2 = async () => {
+    await setMunicipalList2(false);
+    await setmunicipalCreate2(true);
+  };
+
+  const editState2 = async () => {
+    await setMunicipalList2(false);
+    await setmunicipalCreate2(true);
+    // formik.values.StateName = stateName.stateName;
+    // formik.values.Abbreviation2 = stateName.abbreviation;
+    // formik.values.Code2 = stateName.code;
+    // setPassing(stateName._id);
+    // getState();
+    // getAllAreas();
+  };
+  const CancelState2 = async () => {
+   
+    setPassing("");
+    await setMunicipalList2(true);
+    await setmunicipalCreate2(false);
+  };
+  const enableCreate3 = async () => {
+    await setMunicipalList3(false);
+    await setmunicipalCreate3(true);
+  };
+
+  const editState3 = async () => {
+    await setMunicipalList3(false);
+    await setmunicipalCreate3(true);
+    // formik.values.StateName = stateName.stateName;
+    // formik.values.Abbreviation2 = stateName.abbreviation;
+    // formik.values.Code2 = stateName.code;
+    // setPassing(stateName._id);
+    // getState();
+    // getAllAreas();
+  };
+  const CancelState3 = async () => {
+   
+    setPassing("");
+    await setMunicipalList3(true);
+    await setmunicipalCreate3(false);
+  };
+
   return (
     <div>
       {hideMappingVillage && (
@@ -644,7 +715,8 @@ const VillagePanchayat = () => {
                           id={"municipalcancel"}
                           style={{ marginTop: "30px", marginLeft: "20px" }}
                           className={"cancelBtn"}
-                          onClick={CancelState}
+                          onClick={CancelState1
+                          }
                         >
                           CANCEL
                         </CButton>
@@ -784,7 +856,7 @@ const VillagePanchayat = () => {
                           id={"municipalcancel"}
                           style={{ marginTop: "30px", marginLeft: "20px" }}
                           className={"cancelBtn"}
-                          onClick={CancelState}
+                          onClick={CancelState2}
                         >
                           CANCEL
                         </CButton>
@@ -925,7 +997,7 @@ const VillagePanchayat = () => {
                           id={"wardcancel"}
                           style={{ marginTop: "30px", marginLeft: "20px" }}
                           className={"cancelBtn"}
-                          onClick={CancelState}
+                          onClick={CancelState3}
                         >
                           CANCEL
                         </CButton>
