@@ -35,8 +35,8 @@ const Municipality = () => {
   });
   const [municipalList, setMunicipalList] = useState(true);
   const [MunicipalCreate, setmunicipalCreate] = useState(false);
-  const [municipalList1, setMunicipalList1] = useState(true);
-  const [MunicipalCreate1, setmunicipalCreate1] = useState(false);
+  const [municipalListadd, setMunicipalListadd] = useState(true);
+  const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
   const [municipalCorporation, setMunicipalCorporation] = useState({});
   const [municipalName, setMuniicipalName] = useState("");
 
@@ -171,9 +171,9 @@ const Municipality = () => {
     await setmunicipalCreate(true);
   };
 
-  const enableCreate1 = async () => {
-    await setMunicipalList1(false);
-    await setmunicipalCreate1(true);
+  const enableCreateadd = async () => {
+    await setMunicipalListadd(false);
+    await setmunicipalCreateadd(true);
   };
 
   const editState = async () => {
@@ -187,9 +187,9 @@ const Municipality = () => {
     // getAllAreas();
   };
   
-  const editState1 = async () => {
-    await setMunicipalList1(false);
-    await setmunicipalCreate1(true);
+  const editStateadd = async () => {
+    await setMunicipalListadd(false);
+    await setmunicipalCreateadd(true);
     // formik.values.StateName = stateName.stateName;
     // formik.values.Abbreviation2 = stateName.abbreviation;
     // formik.values.Code2 = stateName.code;
@@ -202,10 +202,10 @@ const Municipality = () => {
     await setMunicipalList(true);
     await setmunicipalCreate(false);
   };
-  const CancelState1 = async () => {
+  const CancelStateadd = async () => {
     setPassing("");
-    await setMunicipalList1(true);
-    await setmunicipalCreate1(false);
+    await setMunicipalListadd(true);
+    await setmunicipalCreateadd(false);
   };
   
   return (
@@ -365,7 +365,7 @@ const Municipality = () => {
               </CRow>
 
               <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
-                {municipalList1 && (
+                {municipalListadd && (
                   <React.Fragment>
                     <CCol className={"column-align"} md={4} lg={4}>
                       <CLabel className={"label-name-1"}>
@@ -386,7 +386,7 @@ const Municipality = () => {
                         id={"addmunicipalcorporation"}
                         style={{ marginTop: "30px" }}
                         className={"saveBtn"}
-                        onClick={enableCreate1}
+                        onClick={enableCreateadd}
                         // disabled={CountryCreate || CityCreate || AreaCreate}
                       >
                         ADD
@@ -403,7 +403,7 @@ const Municipality = () => {
                             }}
                             id={"locationLibraryStateEdit"}
                             className={"btn btn-success"}
-                            onClick={editState1}
+                            onClick={editStateadd}
                             // disabled={
                             //   CountryCreate || CityCreate || AreaCreate
                             // }
@@ -415,7 +415,7 @@ const Municipality = () => {
                     ) : null}
                   </React.Fragment>
                 )}
-                {MunicipalCreate1 && (
+                {MunicipalCreateadd && (
                   <React.Fragment>
                     <CRow className={"column-align3"} sm={12} md={12} lg={12}>
                       <CCol md="3">
@@ -494,7 +494,7 @@ const Municipality = () => {
                           id={"wardcancel"}
                           style={{ marginTop: "30px", marginLeft: "20px" }}
                           className={"cancelBtn"}
-                          onClick={CancelState1}
+                          onClick={CancelStateadd}
                         >
                           CANCEL
                         </CButton>

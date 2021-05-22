@@ -90,6 +90,33 @@ const _nav =  [
       },
     ],
   },
+  {
+    id:"AdminSetupSideBar",
+    _tag: "CSidebarNavDropdown",
+    name: "Organization Setup",
+    route: "/AdminSetup",
+    
+    icon: 'cil-drop',
+
+    _children: [
+      {
+        id:"CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: 'WING OFFICE',
+        to: '/OfficeType',
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+      {
+        id:"AdminandSubAdminSideBar",
+        _tag: "CSidebarNavItem",
+        name: "WING OFFICE LOCATION",
+        to: "/WingLocation",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+
+    ],
+  },
+ 
   // {
   //   _tag: 'CSidebarNavItem',
   //   name: 'Member Registration',

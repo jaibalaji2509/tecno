@@ -27,6 +27,8 @@ const MunicipalCorporation = () => {
   });
   const [municipalList, setMunicipalList] = useState(true);
   const [MunicipalCreate, setmunicipalCreate] = useState(false);
+  const [municipalListadd, setMunicipalListadd] = useState(true);
+  const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
   const [municipalCorporation, setMunicipalCorporation] = useState({});
   const[municipalName, setMuniicipalName] =useState("")
 
@@ -169,6 +171,28 @@ const MunicipalCorporation = () => {
     await setMunicipalList(true);
     await setmunicipalCreate(false);
   };
+  const enableCreateadd = async () => {
+    await setMunicipalListadd(false);
+    await setmunicipalCreateadd(true);
+  };
+
+  const editStateadd = async () => {
+    await setMunicipalListadd(false);
+    await setmunicipalCreateadd(true);
+    // formik.values.StateName = stateName.stateName;
+    // formik.values.Abbreviation2 = stateName.abbreviation;
+    // formik.values.Code2 = stateName.code;
+    // setPassing(stateName._id);
+    // getState();
+    // getAllAreas();
+  };
+  const CancelStateadd = async () => {
+   
+    setPassing("");
+    await setMunicipalListadd(true);
+    await setmunicipalCreateadd(false);
+  };
+
   const [hideMappingMunicipal, setHideMappingmunicipal] =useState(true)
   const[hideCorporation, setHideCorporation] =useState(false)
   const changeMunicipalCorporation = ()=>{
@@ -513,7 +537,7 @@ const MunicipalCorporation = () => {
                 </CRow>
 
                 <CRow className={"row-alignment"} style={{marginLeft:"5px"}}>
-                  {municipalList && (
+                  {municipalListadd && (
                     <React.Fragment>
                       <CCol className={"column-align"} md={4} lg={4}>
                         <CLabel className={"label-name-1"}>
@@ -534,7 +558,7 @@ const MunicipalCorporation = () => {
                           id={"addmunicipalcorporation"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
-                          onClick={enableCreate}
+                          onClick={enableCreateadd}
                           // disabled={CountryCreate || CityCreate || AreaCreate}
                         >
                           ADD
@@ -551,7 +575,7 @@ const MunicipalCorporation = () => {
                               }}
                               id={"locationLibraryStateEdit"}
                               className={"btn btn-success"}
-                              onClick={editState}
+                              onClick={editStateadd}
                               // disabled={
                               //   CountryCreate || CityCreate || AreaCreate
                               // }
@@ -563,7 +587,7 @@ const MunicipalCorporation = () => {
                       ) : null}
                     </React.Fragment>
                   )}
-                  {MunicipalCreate && (
+                  {MunicipalCreateadd && (
                     <React.Fragment>
                       <CRow className={"column-align3"} sm={12} md={12} lg={12}>
 
@@ -647,7 +671,7 @@ const MunicipalCorporation = () => {
                           id={"wardcancel"}
                           style={{ marginTop: "30px", marginLeft: "20px" }}
                           className={"cancelBtn"}
-                          onClick={CancelState}
+                          onClick={CancelStateadd}
                         >
                           CANCEL
                         </CButton>

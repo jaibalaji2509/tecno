@@ -8,10 +8,10 @@ import { toast } from "react-toastify";
 function Constituency() {
 
   const [error, setError] = useState("");
-  const [municipalList1, setMunicipalList1] = useState(true);
+  const [municipalListadd, setMunicipalListadd] = useState(true);
     const [municipalList, setMunicipalList] = useState(true);
     const [MunicipalCreate, setmunicipalCreate] = useState(false);
-    const [MunicipalCreate1, setmunicipalCreate1] = useState(false);
+    const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
     const [ParliamentaryConstituency, setParliamentaryConstituency] = useState({});
     const [municipalName, setMuniicipalName] = useState("");
   
@@ -20,9 +20,9 @@ function Constituency() {
         await setmunicipalCreate(true);
       };
 
-      const enableCreate1 = async () => {
-        await setMunicipalList1(false);
-        await setmunicipalCreate1(true);
+      const enableCreateadd = async () => {
+        await setMunicipalListadd(false);
+        await setmunicipalCreateadd(true);
       };
     
       const editState = async () => {
@@ -35,9 +35,9 @@ function Constituency() {
         // getState();
         // getAllAreas();
       };
-      const editState1 = async () => {
-        await setMunicipalList1(false);
-        await setmunicipalCreate1(true);
+      const editStateadd = async () => {
+        await setMunicipalListadd(false);
+        await setmunicipalCreateadd(true);
         // formik.values.StateName = stateName.stateName;
         // formik.values.Abbreviation2 = stateName.abbreviation;
         // formik.values.Code2 = stateName.code;
@@ -52,11 +52,11 @@ function Constituency() {
         await setMunicipalList(true);
         await setmunicipalCreate(false);
       };
-      const CancelState1 = async () => {
+      const CancelStateadd = async () => {
        
         setPassing("");
-        await setMunicipalList1(true);
-        await setmunicipalCreate1(false);
+        await setMunicipalListadd(true);
+        await setmunicipalCreateadd(false);
       };
       const [passing, setPassing] = useState("");
       const userData = [
@@ -86,9 +86,9 @@ function Constituency() {
       
         // { key: "male", label: "Male", _style: { width: "10%" } },
         // { key: "female", label: "Female", _style: { width: "10%" } },
-        { key: "Action", label: "Action", _style: { width: "10%" }, sorter: false,
+        { key: "show_details1", label: "Action", _style: { width: "10%" },    sorter: false,
         filter: false, },
-      ];
+          ];
     
     return (
         <div>
@@ -251,7 +251,7 @@ function Constituency() {
               </CRow>
         
               <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
-                {municipalList1 && (
+                {municipalListadd && (
                   <React.Fragment>
                     <CCol className={"column-align"} md={4} lg={4}>
                       <CLabel className={"label-name-1"}>
@@ -272,7 +272,7 @@ function Constituency() {
                         id={"addLegislative1"}
                         style={{ marginTop: "30px" }}
                         className={"saveBtn"}
-                        onClick={enableCreate1}
+                        onClick={enableCreateadd}
                         // disabled={CountryCreate || CityCreate || AreaCreate}
                       >
                         ADD
@@ -289,7 +289,7 @@ function Constituency() {
                             }}
                             id={"LegislativeEdit1"}
                             className={"btn btn-success"}
-                            onClick={editState1}
+                            onClick={editStateadd}
                             // disabled={
                             //   CountryCreate || CityCreate || AreaCreate
                             // }
@@ -301,7 +301,7 @@ function Constituency() {
                     ) : null}
                   </React.Fragment>
                 )}
-                {MunicipalCreate1 && (
+                {MunicipalCreateadd && (
                   <React.Fragment>
                     <CRow className={"column-align3"} sm={12} md={12} lg={12}>
                       <CCol md="3">
@@ -381,7 +381,7 @@ function Constituency() {
                           id={"wardcancel"}
                           style={{ marginTop: "30px", marginLeft: "20px" }}
                           className={"cancelBtn"}
-                          onClick={CancelState1}
+                          onClick={CancelStateadd}
                         >
                           CANCEL
                         </CButton>
@@ -566,6 +566,42 @@ function Constituency() {
                                 }}
                                 className="fa fa-trash"
                               ></i> */}
+                          </CCol>
+                        </CRow>
+                      </td>
+                    );
+                  },
+                  show_details1: (item, index) => {
+                    return (
+                      <td className="py-2">
+                        <CRow>
+                    
+                          <CCol style={{ fontSize: "1.15rem" }} md="12">
+                            <i
+                              onClick={() => {
+                                //   toggleDetails(index);
+                              }}
+                            ></i>
+                            <i
+                                style={{
+                                  marginRight: "5px",
+                                  color: "#3480e2",
+                                  cursor: "pointer",
+                                }}
+                                id={"constituencyEditicon"}
+                                // onClick={() => EditCountry(item)}
+                                className="fas fa-edit"
+                              ></i>
+                              <i
+                                // onClick={() => deleteConfirm(item._id)}
+                                id={"constituencyDelete"}
+                                style={{
+                                  marginLeft: "5px",
+                                  color: "#e85654",
+                                  cursor: "pointer",
+                                }}
+                                className="fa fa-trash"
+                              ></i>
                           </CCol>
                         </CRow>
                       </td>
