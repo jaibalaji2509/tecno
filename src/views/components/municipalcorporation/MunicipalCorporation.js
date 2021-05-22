@@ -180,7 +180,7 @@ const MunicipalCorporation = () => {
          <div>
          <CCard className={"cardSave"}>
            <div className={"main-headerlabel"}>
-             <span className={"header-label"}>Mapping Municipal Corporation</span>
+             <span className={"header-label"}> Municipal Corporation</span>
            </div>
            {locationHide.corporation && (
              <div>
@@ -188,7 +188,7 @@ const MunicipalCorporation = () => {
                  <div className={"row-headerlabel"}>
                    <span  style={{marginLeft:"70px"}} className={"header-label"}>
                      {" "}
-                     Mapping Municipal Corporation{" "}
+                      Municipal Corporation{" "}
                    </span>
                  </div>
                  <CRow style={{marginTop:"45px"}}>
@@ -205,13 +205,13 @@ const MunicipalCorporation = () => {
                      <CButton
                        style={{
                          float: "right",
-                         marginRight: "930px",
+                         marginRight: "965px",
                        }}
                        id={"saveAbbreviationConfigureCode"}
                        className={"saveBtn"}
                        onClick={changeMunicipalCorporation}
                      >
-                       Add Municipal Corporation
+                        Municipal Corporation
                      </CButton>{" "}
                    </CCol>
                  </CCol>
@@ -340,11 +340,6 @@ const MunicipalCorporation = () => {
              </div>
            )}
    
-         
-   
-         
-           
-        
          </CCard>
        </div>
       )}
