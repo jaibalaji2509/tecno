@@ -167,14 +167,7 @@ const TownPanchayat = () => {
   const changeHandler = (e) => {
     setLocations({ ...locations, [e.target.name]: e.target.value });
   };
-  const otpChangeHandle = (e) => {
-    setMobileNumber(e.target.value);
-    if (mobilenumber.length > 8) {
-      setOtpHide(true);
-    } else {
-      setError("enter valid data");
-    }
-  };
+
   const enableCreate = async () => {
     await setMunicipalList(false);
     await setmunicipalCreate(true);
