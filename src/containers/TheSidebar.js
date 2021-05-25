@@ -9,8 +9,7 @@ import {
   CSidebarMinimizer,
   CSidebarNavDropdown,
   CSidebarNavItem,
-  CImg,
-  CLabel,
+  CCreateElement,
   CLabel,
 } from '@coreui/react'
 

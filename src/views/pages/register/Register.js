@@ -8,7 +8,6 @@ import {
   CContainer,
   CForm,
   CInput,
-  CInput,
   CInputGroup,
   CInputGroupPrepend,
   CInputGroupText,

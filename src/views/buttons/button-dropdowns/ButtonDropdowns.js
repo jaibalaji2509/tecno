@@ -13,10 +13,10 @@ import {
   CDropdownMenu,
   CDropdownToggle,
   CRow,
-  CInput,
   CLabel,
   CInput,
-  CInputCheckbox
+  CInputCheckbox,
+  CFormGroup
 } from '@coreui/react'
 import { DocsLink } from 'src/reusable'
 

@@ -5,7 +5,7 @@ import {
   CToggler,
   CHeaderBrand,
   CHeaderNav,
-  CHeaderNavItem,
+  CBreadcrumbRouter,
   CHeaderNavLink,
   CSubheader,
   CLink

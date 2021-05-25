@@ -46,15 +46,14 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'));
 const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
 const Location = React.lazy(() => import('./views/components/location/Location'));
-const OfficeType = React.lazy(() => import('./views/components/officeType/OfficeType'));
-const WingLocation = React.lazy(() => import('./views/components/wingLocation/WingLocation'));
+const OfficeType = React.lazy(() => import('./views/components/officetype/OfficeType'));
+const WingLocation = React.lazy(() => import('./views/components/winglocation/WingLocation'));
 
-const Constituency = React.lazy(() => import('./views/components/constituency/Constituency'));
 const Municipality = React.lazy(() => import('./views/components/municipality/Municipality'));
 const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
 const VillagePanchayat = React.lazy(() => import('./views/components/villagepanchayat/VillagePanchayat'));
 const MappingMunicipalCorpoation = React.lazy(() => import('./views/components/mappingmunicipalcorporation/MappingMunicipalCorpoation'));
-const MemberRegistration = React.lazy(() => import('./views/components/memberRegistration/MemberRegistration'));
+const MemberRegistration = React.lazy(() => import('./views/components/memberregistration/MemberRegistration'));
 const ViewConstituency = React.lazy(() => import('./views/components/constituency/ViewConstituency'));
 
 const routes = [
@@ -109,7 +108,6 @@ const routes = [
   {path:"/townpanchayat", exact:true, name : "Municipality", component:TownPanchayat},
   {path:"/villagepanchayat", exact:true, name : "Village Panchayat", component:VillagePanchayat},
   {path:"/mappingmunicipalcorporation", exact:true, name : "Mapping Municipal Corporation", component:MappingMunicipalCorpoation},
-  {path:"/Constituency", exact:true, name : "Constituency", component:Constituency},
   { path: '/MemberRegistration',  exact: true, name: 'MemberRegistration', component: MemberRegistration },
   { path: '/OfficeType',  exact: true, name: 'OfficeType', component: OfficeType },
   { path: '/WingLocation',  exact: true, name: 'WingLocation', component: WingLocation },

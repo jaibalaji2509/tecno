@@ -1,4 +1,4 @@
-import { CButton, CCard, CCol, CLabel, CRow, CSelect } from "@coreui/react";
+import { CButton, CCard, CCol, CLabel, CRow, CSelect, CInput } from "@coreui/react";
 import React, { useState } from "react";
 import Toaster from "src/views/notifications/toaster/Toaster";
 import CDataTable from "../../CoreComponents/table/CDataTable";

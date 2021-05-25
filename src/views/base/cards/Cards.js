@@ -9,7 +9,8 @@ import {
   CRow,
   CCollapse,
   CSwitch,
-  CLink
+  CLink,
+  CFade
 } from  '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import { DocsLink } from 'src/reusable'

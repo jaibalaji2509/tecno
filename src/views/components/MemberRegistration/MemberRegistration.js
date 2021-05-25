@@ -5,11 +5,10 @@ import { CImg,
   CCol,
   CButton, 
   CLabel, 
-  CInput, 
   CWidgetDropdown,
   CInput,
   CInputRadio,
-  CDropdown,
+  CFormGroup,
   CSelect,
   CDropdownMenu,
   CDropdownItem,
@@ -189,7 +188,7 @@ color="gradient-danger"
   <CSelect
     styles={{ marginLeft: "50px" }}
     type={"text"}
-    id={"CONSTITUENCY"}
+    id={"memberregister"}
     className={"input-align"}
     placeholder="Select the State"
   />
@@ -202,7 +201,7 @@ color="gradient-danger"
   <CSelect
     styles={{ marginLeft: "50px" }}
     type={"text"}
-    id={"CONSTITUENCYcity"}
+    id={"memberregistercity"}
     className={"input-align"}
     placeholder="CSelect the District / City "
   />
@@ -220,7 +219,7 @@ color="gradient-danger"
   <CSelect
     styles={{ marginLeft: "50px" }}
     type={"text"}
-    id={"CONSTITUENCY"}
+    id={"memberregisterarea"}
     className={"input-align"}
     placeholder="Select the Area"
   />
@@ -233,7 +232,7 @@ color="gradient-danger"
   <CSelect
     styles={{ marginLeft: "50px" }}
     type={"text"}
-    id={"CONSTITUENCYcity"}
+    id={"memberregisterstreet"}
     className={"input-align"}
     placeholder="CSelect the Street"
   />
@@ -341,13 +340,13 @@ color="gradient-danger"
                                 color: "#3480e2",
                                 cursor: "pointer",
                               }}
-                              id={"constituencyEditicon"}
+                              id={"memberregisterediticon"}
                               // onClick={() => EditCountry(item)}
                               className="fas fa-edit"
                             ></i>
                             <i
                               // onClick={() => deleteConfirm(item._id)}
-                              id={"constituencyDelete"}
+                              id={"memberregisterdelete"}
                               style={{
                                 marginLeft: "5px",
                                 color: "#e85654",
@@ -363,7 +362,7 @@ color="gradient-danger"
                               cursor: "pointer",
 
                             }}
-                            id={"constituencyEditicon"}
+                            id={"memberregisterediticon"}
                             className="fa fa-eye"
                             ></i>
                             <i
@@ -374,7 +373,7 @@ color="gradient-danger"
                               cursor: "pointer",
 
                             }}
-                            id={"constituencyEditicon"}
+                            id={"memberregisterediticon"}
                              className="fa fa-history"
                              ></i>
                           </CCol>
@@ -524,7 +523,7 @@ color="gradient-danger"
           <Select
           styles={{marginLeft:"50px"}}
             type={"text"}
-            id={"memberregisterEducationQualification"}
+            id={"memberregistereducationqualification"}
             className={"select"}
             placeholder="Select the Education Qualification"
             options={Education}
@@ -537,7 +536,7 @@ color="gradient-danger"
           </CLabel>
           <Select
             type={"text"}
-            id={"memberregisterOccupation"}
+            id={"memberregisteroccupation"}
             className={"select"}
             placeholder="Select the Occupation"
             options={Occupation}
@@ -632,7 +631,7 @@ color="gradient-danger"
           </CLabel>
           <CInput
             className={"input-align"}
-            id={"memberregisterDistrict"}
+            id={"memberregisterdistrict"}
             name={"district"}
             placeholder={" District/City Name"}
           />
@@ -645,7 +644,7 @@ color="gradient-danger"
           </CLabel>
           <Select
             type={"text"}
-            id={"memberregisterArea"}
+            id={"memberregisterarea"}
             className={"select"}
             placeholder="Select the Area"
             options={Occupation}
@@ -690,7 +689,7 @@ color="gradient-danger"
             style={{
               float: "right",
             }}
-            id={"cancelAbbreviationConfigureCode"}
+            id={"cancelabbreviationconfigurecode"}
             className={"cancelBtn"}
           onClick={()=> history.push("/MemberRegistration")}
           >

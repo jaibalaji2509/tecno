@@ -66,7 +66,7 @@ const _nav =  [
         id:"AdminandSubAdminSideBar",
         _tag: "CSidebarNavItem",
         name: "Constituency",
-        to: "/Constituency",
+        to: "/ViewConstituency",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
  

@@ -5,7 +5,6 @@ import React, { useState, useEffect } from "react";
       CCol,
       CButton, 
       CLabel, 
-      CInput, 
       CInput,
       CDropdown,
       CDropdownMenu,
@@ -113,7 +112,7 @@ import React, { useState, useEffect } from "react";
                     type={"text"}
                     className={"input-align"}
                     name={"Abbreviation"}
-                    id={"WingAbbreviation "}
+                    id={"wingabbreviation "}
                     placeholder="Enter the Abbreviation"
                   />
                 </CCol>
@@ -142,7 +141,7 @@ import React, { useState, useEffect } from "react";
                   </CLabel>
                   <Select
                     type={"text"}
-                    id={"wingReportingTo"}
+                    id={"wingreportingto"}
                     className={"select"}
                     placeholder="Select the Hierarchy ReportingTo"
                    
@@ -274,13 +273,13 @@ import React, { useState, useEffect } from "react";
                                       color: "#3480e2",
                                       cursor: "pointer",
                                     }}
-                                    id={"constituencyEditicon"}
+                                    id={"wingediticon"}
                                     // onClick={() => EditCountry(item)}
                                     className="fas fa-edit"
                                   ></i>
                                   <i
                                     // onClick={() => deleteConfirm(item._id)}
-                                    id={"constituencyDelete"}
+                                    id={"wingdelete"}
                                     style={{
                                       marginLeft: "5px",
                                       color: "#e85654",

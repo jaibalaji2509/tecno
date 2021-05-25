@@ -16,8 +16,7 @@ import {
   CInputGroupPrepend,
   CInputGroupText,
   CRow,
-  CCallout,
-  CInput
+  CCallout
 } from '@coreui/react'
 import { DocsLink } from 'src/reusable'
 

@@ -4,7 +4,6 @@ import {
   CCol,
   CContainer,
   CInput,
-  CInput,
   CInputGroup,
   CInputGroupPrepend,
   CInputGroupAppend,

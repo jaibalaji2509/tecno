@@ -7,7 +7,6 @@ import {
   CButton,
   CLabel,
   CInput,
-  CInput,
   CDropdown,
   CDropdownMenu,
   CDropdownItem,
@@ -213,13 +212,13 @@ function WingLocation() {
                                 color: "#3480e2",
                                 cursor: "pointer",
                               }}
-                              id={"constituencyEditicon"}
+                              id={"wingediticon"}
                               // onClick={() => EditCountry(item)}
                               className="fas fa-edit"
                             ></i>
                             <i
                               // onClick={() => deleteConfirm(item._id)}
-                              id={"constituencyDelete"}
+                              id={"wingdelete"}
                               style={{
                                 marginLeft: "5px",
                                 color: "#e85654",
@@ -268,7 +267,7 @@ function WingLocation() {
                   </CLabel>
                   <Select
                     type={"text"}
-                    id={"wingReportingTo"}
+                    id={"wingreportingto"}
                     className={"select"}
                     placeholder="Select the Type of Wing Office"
                   />
@@ -280,7 +279,7 @@ function WingLocation() {
                   </CLabel>
                   <Select
                     type={"text"}
-                    id={"wingReportingTo"}
+                    id={"wingreportingto"}
                     className={"select"}
                     placeholder="Select the reporting location"
                   />
@@ -296,7 +295,7 @@ function WingLocation() {
                     type={"text"}
                     className={"input-align"}
                     name={"Address1"}
-                    id={"WinglocationAddress1"}
+                    id={"winglocationaddress1"}
                     placeholder="Enter Address Line 1"
                   />
                 </CCol>
@@ -311,7 +310,7 @@ function WingLocation() {
                     type={"text"}
                     className={"input-align"}
                     name={"Address1"}
-                    id={"WinglocationAddress1"}
+                    id={"winglocationaddress1"}
                     placeholder="Enter Address Line 1"
                   />
                 </CCol>
@@ -325,7 +324,7 @@ function WingLocation() {
                     type={"text"}
                     className={"input-align"}
                     name={"Address2"}
-                    id={"WinglocationAddress2"}
+                    id={"winglocationaddress2"}
                     placeholder="Enter Address Line 2"
                   />
                 </CCol>
@@ -339,7 +338,7 @@ function WingLocation() {
                   </CLabel>
                   <Select
                     type={"text"}
-                    id={"wingSearchLocation"}
+                    id={"wingsearchlocation"}
                     className={"select"}
                     placeholder="Country,State,City,Area"
                   />
@@ -359,7 +358,7 @@ function WingLocation() {
                     disabled
                     className={"input-align"}
                     name={"Country "}
-                    id={"WinglocationCountry "}
+                    id={"winglocationcountry "}
                     placeholder="Enter Country "
                   />
                 </CCol>
@@ -374,7 +373,7 @@ function WingLocation() {
                     disabled
                     className={"input-align"}
                     name={"State"}
-                    id={"Winglocation"}
+                    id={"winglocation"}
                     placeholder="Enter State"
                   />
                 </CCol>
@@ -392,7 +391,7 @@ function WingLocation() {
                     className={"input-align"}
                     name={"City "}
                     disabled
-                    id={"WinglocationCity"}
+                    id={"winglocationcity"}
                     placeholder="Enter City "
                   />
                 </CCol>
@@ -407,7 +406,7 @@ function WingLocation() {
                     className={"input-align"}
                     name={"Area "}
                     disabled
-                    id={"WinglocationArea "}
+                    id={"winglocationarea "}
                     placeholder="Enter Area "
                   />
                 </CCol>
@@ -423,7 +422,7 @@ function WingLocation() {
                     type={"text"}
                     className={"input-align"}
                     name={"Pincode "}
-                    id={"WinglocatioPincode"}
+                    id={"winglocatiopincode"}
                     disabled
                     placeholder="Enter Pincode "
                   />
@@ -442,7 +441,7 @@ function WingLocation() {
                       float: "right",
                       marginRight:"-200px"
                     }}
-                    id={"cancelconstituency"}
+                    id={"cancelwing"}
                     className={"cancelBtn"}
                   >
                     CANCEL
@@ -452,7 +451,7 @@ function WingLocation() {
                       float: "right",
                       marginRight: "-100px",
                     }}
-                    id={"saveconstituencyAbbreviationConfigureCode"}
+                    id={"savewingAbbreviationConfigureCode"}
                     className={"saveBtn"}
                   >
                     Save

@@ -7,8 +7,9 @@ import {
   CCol,
   CContainer,
   CJumbotron,
-  CJumbotron,
   CRow,
+  CEmbed,
+  CEmbedItem
 } from '@coreui/react'
 import { DocsLink } from 'src/reusable'
 

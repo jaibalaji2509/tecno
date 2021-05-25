@@ -3,7 +3,6 @@ import {
   CButton,
   CCol,
   CInput,
-  CInput,
   CContainer,
   CInputGroup,
   CInputGroupAppend,

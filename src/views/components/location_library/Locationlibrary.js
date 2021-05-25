@@ -8,8 +8,7 @@ import {
   CButton,
   CLabel,
   CWidgetDropdown,
-  CImg,
- CInput
+  CInput
 } from "@coreui/react";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -1062,7 +1061,6 @@ function LocationLibrary(props) {
                             State Name
                             <span className={"text-danger"}> *</span>
                           </CLabel>
-
                           <CInput
                             onKeyPress={(e) =>
                               FormValidation.value_Without_Number_Symbols(e)

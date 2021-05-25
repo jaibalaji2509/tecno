@@ -7,7 +7,8 @@ import {
   CCardHeader,
   CCol,
   CRow,
-  CPagination
+  CPagination,
+  CDataTable
 } from '@coreui/react'
 
 import usersData from './UsersData'
