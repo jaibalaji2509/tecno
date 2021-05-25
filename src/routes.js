@@ -106,7 +106,7 @@ const routes = [
 
   {path:"/municipalcorporation", exact:true, name : "Municipal Corporation", component:MunicipalCorporation},
   {path:"/municipality", exact:true, name : "Municipality", component:Municipality},
-  {path:"/townpanchayat", exact:true, name : "Municipality", component:TownPanchayat},
+  {path:"/townpanchayat", exact:true, name : "Town Panchayat", component:TownPanchayat},
   {path:"/villagepanchayat", exact:true, name : "Village Panchayat", component:VillagePanchayat},
   {path:"/partyoffice", exact:true, name : "Party Office", component:PartyOffice},
   {path:"/Constituency", exact:true, name : "Constituency", component:Constituency},

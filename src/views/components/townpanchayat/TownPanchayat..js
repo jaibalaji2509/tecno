@@ -13,17 +13,7 @@ import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
 const TownPanchayat = () => {
-  const [location, setLocation] = useState({
-    state: "",
-    district: "",
-    city: "",
-    ward: "",
-    area: "",
-    street: "",
-    pincode: "",
-  });
-  const [mobilenumber, setMobileNumber] = useState("");
-  const [otpHide, setOtpHide] = useState(false);
+
   const [locations, setLocations] = useState({
     state: "",
     district: "",
@@ -39,7 +29,8 @@ const TownPanchayat = () => {
   const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
   const [municipalCorporation, setMunicipalCorporation] = useState({});
   const [municipalName, setMuniicipalName] = useState("");
-
+  const [wardnumberList, seatWardNumberList] = useState(true);
+  const [wardNumberCreate, setWardNumberCreate] = useState(false);
   const [locationHide, setLocationHide] = useState({
     corporation: true,
     municipalLocation: false,
@@ -49,13 +40,13 @@ const TownPanchayat = () => {
     cityLocation: false,
   });
   const userData = [
-    {
-      SNo: "1",
-      // State: "TamilNadu",
-      // District: "chennai",
-      // Area: "TNagar",
-      Street: "CP Ramaswamy Street",
-    },
+    // {
+    //   SNo: "1",
+    //   // State: "TamilNadu",
+    //   // District: "chennai",
+    //   // Area: "TNagar",
+    //   Street: "CP Ramaswamy Street",
+    // },
   ];
   const fields = [
     {
@@ -69,7 +60,7 @@ const TownPanchayat = () => {
     {
       key: "SNo",
       label: "S.NO",
-      _style: { width: "10%" },
+      _style: { width: "5%" },
       sorter: false,
       filter: false,
     },
@@ -80,6 +71,21 @@ const TownPanchayat = () => {
 
     // { key: "male", label: "Male", _style: { width: "10%" } },
     // { key: "female", label: "Female", _style: { width: "10%" } },
+  
+    {
+      key: "Action",
+      label: "Enteerd by",
+      _style: { width: "10%" },
+      sorter: false,
+      filter: false,
+    },
+    {
+      key: "Action",
+      label: "Entered On",
+      _style: { width: "10%" },
+      sorter: false,
+      filter: false,
+    },
     {
       key: "Action",
       label: "Action",
@@ -90,80 +96,37 @@ const TownPanchayat = () => {
   ];
   const [passing, setPassing] = useState("");
   const [error, setError] = useState("");
-  const saveCorporation = async () => {
-    setLocationHide({
-      ...locationHide,
-      municipalLocation: true,
-      corporation: false,
-    });
+  // const saveCorporation = async () => {
+  //   setLocationHide({
+  //     ...locationHide,
+  //     municipalLocation: true,
+  //     corporation: false,
+  //   });
 
-    if (passing === "") {
-      let body = {
-        state: locations.state,
-        district: locations.district,
-        city: locations.city,
-        area: locations.area,
-        ward: locations.ward,
-        street: locations.street,
-      };
-      console.log(body);
-      try {
-        const response = await saveCreateCorporation(JSON.stringify(body));
-        console.log(body, "createfirst");
-        if (response) {
-          toast.success(response);
-        }
-      } catch (error) {
-        toast.error(error);
-      }
-    }
-  };
+  //   if (passing === "") {
+  //     let body = {
+  //       state: locations.state,
+  //       district: locations.district,
+  //       city: locations.city,
+  //       area: locations.area,
+  //       ward: locations.ward,
+  //       street: locations.street,
+  //     };
+  //     console.log(body);
+  //     try {
+  //       const response = await saveCreateCorporation(JSON.stringify(body));
+  //       console.log(body, "createfirst");
+  //       if (response) {
+  //         toast.success(response);
+  //       }
+  //     } catch (error) {
+  //       toast.error(error);
+  //     }
+  //   }
+  // };
 
-  const saveMunicipalLocation = () => {
-    setLocationHide({
-      ...locationHide,
-      municipalLocation: false,
-      districtPanchayat: true,
-    });
-  };
-  const saveDistrictPanchayat = () => {
-    console.log(locationHide, "hidr");
-    setLocationHide({
-      ...locationHide,
-      districtPanchayat: false,
-      townPanchayat: true,
-    });
-  };
-  const savetownPanchayat = () => {
-    console.log(locationHide, "hidr");
-    setLocationHide({
-      ...locationHide,
-      villagePanchayat: true,
-      townPanchayat: false,
-    });
-  };
-  const saveVillagePanchayat = () => {
-    console.log(locationHide, "hidr");
-    setLocationHide({
-      ...locationHide,
-      villagePanchayat: false,
-      cityLocation: true,
-    });
-  };
-  const cityLocation = () => {
-    setLocationHide({
-      ...locationHide,
-      cityLocation: true,
-      townPanchayat: false,
-    });
-  };
-  const cancelcityLocation = () => {
-    setLocationHide({
-      ...locationHide,
-      cityLocation: false,
-      corporation: true,
-    });
-  };
+
+
   const changeHandler = (e) => {
     setLocations({ ...locations, [e.target.name]: e.target.value });
   };
@@ -195,12 +158,11 @@ const TownPanchayat = () => {
     setHideMappingTown(false);
     setHideTownPanchayat(true);
   };
-  const enableCreate1 = async () => {
-    // await setMunicipalList1(false);
-    // await setmunicipalCreate1(true);
-    const enableCreateadd = async () => {
-      await setMunicipalListadd(false);
-      await setmunicipalCreateadd(true);
+ 
+    
+    const addWardNumber = async () => {
+      await seatWardNumberList(false);
+      await setWardNumberCreate(true);
     };
 
     const editStateadd = async () => {
@@ -213,10 +175,10 @@ const TownPanchayat = () => {
       // getState();
       // getAllAreas();
     };
-    const CancelStateadd = async () => {
+    const cancelWardNumber = async () => {
       setPassing("");
-      await setMunicipalListadd(true);
-      await setmunicipalCreateadd(false);
+      await seatWardNumberList(true);
+      await setWardNumberCreate(false);
     };
 
     return (
@@ -252,7 +214,7 @@ const TownPanchayat = () => {
                           <CButton
                             style={{
                               float: "right",
-                              marginRight: "980px",
+                              marginRight: "835px",
                             }}
                             id={"saveAbbreviationConfigureCode"}
                             className={"saveBtn"}
@@ -557,7 +519,7 @@ const TownPanchayat = () => {
                       className={"row-alignment"}
                       style={{ marginLeft: "5px" }}
                     >
-                      {municipalListadd && (
+                      {wardnumberList && (
                         <React.Fragment>
                           <CCol className={"column-align"} md={4} lg={4}>
                             <CLabel className={"label-name-1"}>
@@ -578,7 +540,7 @@ const TownPanchayat = () => {
                               id={"addmunicipalcorporation"}
                               style={{ marginTop: "30px" }}
                               className={"saveBtn"}
-                              onClick={enableCreateadd}
+                              onClick={addWardNumber}
                               // disabled={CountryCreate || CityCreate || AreaCreate}
                             >
                               ADD
@@ -608,7 +570,7 @@ const TownPanchayat = () => {
                         </React.Fragment>
                       )}
 
-                      {MunicipalCreate && (
+                      {wardNumberCreate && (
                         <React.Fragment>
                           <CRow
                             className={"column-align3"}
@@ -695,7 +657,7 @@ const TownPanchayat = () => {
                                   marginLeft: "20px",
                                 }}
                                 className={"cancelBtn"}
-                                onClick={CancelStateadd}
+                                onClick={cancelWardNumber}
                               >
                                 CANCEL
                               </CButton>
@@ -826,7 +788,7 @@ const TownPanchayat = () => {
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
-                          onClick={saveCorporation}
+                          // onClick={saveCorporation}
                         >
                           Save
                         </CButton>{" "}
@@ -911,5 +873,5 @@ const TownPanchayat = () => {
       </div>
     );
   };
-};
+
 export default TownPanchayat;
