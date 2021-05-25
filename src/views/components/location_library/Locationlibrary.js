@@ -1372,11 +1372,11 @@ function LocationLibrary(props) {
                         header=""
                         text=""
                       >
-                        <span style={{ marginLeft: "10px", fontSize: "24px",fontWeight:"700" }}>
-                          State
+                        <span style={{ marginLeft: "-40px", fontSize: "24px",fontWeight:"700" }}>
+                          District / City
                         </span>
                         <span
-                          style={{ marginLeft: "-129px", marginTop: "30px" ,fontSize: "24px",fontWeight:"700" }}
+                          style={{ marginLeft: "-159px", marginTop: "30px" ,fontSize: "24px",fontWeight:"700" }}
                         >
                           2
                         </span>
@@ -1592,11 +1592,11 @@ function LocationLibrary(props) {
                         header=""
                         text=""
                       >
-                        <span style={{ marginLeft: "10px", fontSize: "24px",fontWeight:"700" }}>
-                          State
+                        <span style={{ marginLeft: "-40px", fontSize: "24px",fontWeight:"700" }}>
+                          Village / Area
                         </span>
                         <span
-                          style={{ marginLeft: "-129px", marginTop: "30px" ,fontSize: "24px",fontWeight:"700" }}
+                          style={{ marginLeft: "-169px", marginTop: "30px" ,fontSize: "24px",fontWeight:"700" }}
                         >
                           2
                         </span>
@@ -1839,8 +1839,8 @@ function LocationLibrary(props) {
                         header=""
                         text=""
                       >
-                        <span style={{ marginLeft: "10px", fontSize: "24px",fontWeight:"700" }}>
-                          State
+                        <span style={{ marginLeft: "-10px", fontSize: "24px",fontWeight:"700" }}>
+                          Street
                         </span>
                         <span
                           style={{ marginLeft: "-129px", marginTop: "30px" ,fontSize: "24px",fontWeight:"700" }}

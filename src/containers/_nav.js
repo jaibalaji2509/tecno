@@ -25,7 +25,7 @@ const _nav =  [
   {
     id:"AdminSetupSideBar",
     _tag: "CSidebarNavDropdown",
-    name: "Electoral Ward Library",
+    name: "Ward Library",
     route: "/AdminSetup",
     
     icon: 'cil-drop',
@@ -75,7 +75,55 @@ const _nav =  [
   {
     id:"AdminSetupSideBar",
     _tag: "CSidebarNavDropdown",
-    name: "Party Member Management",
+    name: "Party Organization Setup",
+    route: "/AdminSetup",
+    
+    icon: 'cil-drop',
+
+    _children: [
+      {
+        id:"CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: 'Type of Party Office',
+        to: '/partyoffice',
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+      {
+        id:"CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: 'Type of Party Wing Office',
+        to: '/OfficeType',
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+      {
+        id:"CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: 'Party Office Location',
+        to: '/partyofficelocation',
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+      
+      {
+        id:"AdminandSubAdminSideBar",
+        _tag: "CSidebarNavItem",
+        name: "Party Wings Office Location",
+        to: "/WingLocation",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+      {
+        id:"AdminandSubAdminSideBar",
+        _tag: "CSidebarNavItem",
+        name: "Party Posting",
+        to: "/partyposting",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+    ],
+  },
+ 
+  {
+    id:"AdminSetupSideBar",
+    _tag: "CSidebarNavDropdown",
+    name: "Party Member Registration",
     route: "/AdminSetup",
     
     icon: 'cil-drop',
@@ -89,11 +137,75 @@ const _nav =  [
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
     ],
+    _children: [
+      {
+        id:"CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: 'Member Count',
+        to: '/MemberRegistration',
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+    ],
+    _children: [
+      {
+        id:"CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: 'Suspend Mmember',
+        to: '/MemberRegistration',
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+    ],
+    _children: [
+      {
+        id:"CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: 'Terminate Member ',
+        to: '/MemberRegistration',
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+    ],
+    _children: [
+      {
+        id:"CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: 'Assign Party Posting',
+        to: '/MemberRegistration',
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+      
+    ],
+    _children: [
+      {
+        id:"CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: 'Promote',
+        to: '/MemberRegistration',
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+    ],
+    _children: [
+      {
+        id:"CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: 'Transfer',
+        to: '/MemberRegistration',
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+    ],
+    _children: [
+      {
+        id:"CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: 'Map Public Representation',
+        to: '/MemberRegistration',
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+    ],
   },
   {
     id:"AdminSetupSideBar",
     _tag: "CSidebarNavDropdown",
-    name: "Organization Setup",
+    name: "Kpost Management",
     route: "/AdminSetup",
     
     icon: 'cil-drop',
@@ -102,21 +214,22 @@ const _nav =  [
       {
         id:"CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
-        name: 'WING OFFICE',
-        to: '/OfficeType',
+        name: 'Allocate CC',
+        to: '/MemberRegistration',
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
+    ],
+    _children: [
       {
-        id:"AdminandSubAdminSideBar",
+        id:"CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
-        name: "WING OFFICE LOCATION",
-        to: "/WingLocation",
+        name: ' Allocate Contacts',
+        to: '/MemberRegistration10',
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
-
     ],
   },
- 
+  
   // {
   //   _tag: 'CSidebarNavItem',
   //   name: 'Member Registration',
