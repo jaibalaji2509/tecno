@@ -27,11 +27,12 @@ function MemberRegistration() {
   const [hide, setHide] = useState(false)
   const [memberhide, setMemberHide] = useState(true)
   const fields = [
-    { key: "SNo", label: "S.NO", _style: { width: "10%" } },
+    { key: "SNo", label: "S.NO", _style: { width: "10%" },sorter: false,
+    filter: false, },
     { key: "Name of Member", label: "Name of Member", _style: { width: "10%" } },
     { key: "State", label: "State", _style: { width: "10%" } },
     { key: "District", label: "District", _style: { width: "10%" } },
-    { key: "Area", label: "Area", _style: { width: "10%" } },
+    { key: "Area", label: "Area / Locality", _style: { width: "10%" } },
     { key: "Street", label: "Street", _style: { width: "10%" } },
     {
       label: "Action",
@@ -55,7 +56,7 @@ function MemberRegistration() {
           <div>
         
         <div className={"main-headerlabel"}>
-          <span className={"header-label"} style={{fontSize:"30px"}}>Member Registration</span>
+          <span className={"header-label"}>Member Registration</span>
         </div>
         <CRow style={{marginTop:"30px"}} >
       <CCol sm="6" lg="3" style={{marginLeft:"10px"}}>
@@ -65,10 +66,10 @@ function MemberRegistration() {
           header=""         
           text=""
         >
-          <span style={{marginLeft:"30px", fontSize:"30px",}}>Male</span>
-          <span style={{marginLeft:"-89px", marginTop:"30px"}}>2</span>
+          <span style={{marginLeft:"-50px", fontSize:"30px",}}>Male</span>
+          <span style={{marginLeft:"-162px", marginTop:"30px"}}>2</span>
    <br/><br/>
-          <CImg style={{width:"20px",height:"20px"}} src="https://icons.iconarchive.com/icons/custom-icon-design/flatastic-7/512/Male-icon.png"/>
+          {/* <CImg style={{width:"20px",height:"20px"}} src="https://icons.iconarchive.com/icons/custom-icon-design/flatastic-7/512/Male-icon.png"/> */}
         </CWidgetDropdown>
       </CCol>
 
@@ -80,10 +81,10 @@ color="gradient-info"
           header=""
           text=""
         >
-                    <span style={{marginLeft:"30px", fontSize:"30px",}}>Female</span>
-                    <span style={{marginLeft:"-100px", marginTop:"30px"}}>2</span>
+                    <span style={{marginLeft:"-30px", fontSize:"30px",}}>Female</span>
+                    <span style={{marginLeft:"-165px", marginTop:"30px"}}>2</span>
           <br/><br/>
-                    <CImg style={{width:"20px", height:"20px"}} src="https://icons.iconarchive.com/icons/custom-icon-design/flatastic-7/512/Female-icon.png"/>
+                    {/* <CImg style={{width:"20px", height:"20px"}} src="https://icons.iconarchive.com/icons/custom-icon-design/flatastic-7/512/Female-icon.png"/> */}
         </CWidgetDropdown>
       </CCol>
 
@@ -95,10 +96,10 @@ color="gradient-warning"
           header=""
           text=""
         >         
-                  <span style={{marginLeft:"-18px", fontSize:"30px",}}>TransGender</span>
-                  <span style={{marginLeft:"-126px", marginTop:"30px"}}>1</span>
+                  <span style={{marginLeft:"-75px", fontSize:"30px",}}>TransGender</span>
+                  <span style={{marginLeft:"-200px", marginTop:"30px"}}>1</span>
          <br/><br/>
-          <CImg style={{width:"20px", height:"20px"}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/A_TransGender-Symbol_Plain3.svg/878px-A_TransGender-Symbol_Plain3.svg.png"/>
+          {/* <CImg style={{width:"20px", height:"20px"}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/A_TransGender-Symbol_Plain3.svg/878px-A_TransGender-Symbol_Plain3.svg.png"/> */}
         </CWidgetDropdown>
       </CCol>
 
@@ -110,10 +111,10 @@ color="gradient-danger"
           header=""
           text=""
         >
-           <span style={{marginLeft:"-20px", fontSize:"30px",}}>Total Count</span>
-           <span style={{marginLeft:"-140px", marginTop:"30px"}}>5</span>
+           <span style={{marginLeft:"-73px", fontSize:"30px",}}>Total Count</span>
+           <span style={{marginLeft:"-204px", marginTop:"30px"}}>5</span>
    <br/><br/>
-          <CImg style={{width:"20px", height:"20px"}} src="https://p.kindpng.com/picc/s/265-2652987_persons-png-transparent-png.png"/>
+          {/* <CImg style={{width:"20px", height:"20px"}} src="https://p.kindpng.com/picc/s/265-2652987_persons-png-transparent-png.png"/> */}
         </CWidgetDropdown>
       </CCol>
     </CRow>
@@ -123,7 +124,7 @@ color="gradient-danger"
               className={"saveBtn"}
               onClick={enableCreate}
               style={{
-                marginLeft: "20px",
+                marginLeft: "2.5%",
                 width: "120px",
                 cursor: "pointer",
                 marginTop: "50px",

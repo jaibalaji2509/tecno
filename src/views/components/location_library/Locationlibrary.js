@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from "react";
 // import "react-virtualized/styles.css";
 import CDataTable from "../../CoreComponents/table/CDataTable";
-import { CRow, CCard, CCol, CButton, CLabel, CInput } from "@coreui/react";
+import {
+  CRow,
+  CCard,
+  CCol,
+  CButton,
+  CLabel,
+  CWidgetDropdown,
+  CImg,
+  CInput,
+} from "@coreui/react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import "./LocationLibrary.css";
@@ -649,7 +658,8 @@ function LocationLibrary(props) {
     formik.values.Code4 = val4.toUpperCase();
   }, [formik.values]);
   const fields = [
-    { key: "sNo", _style: { width: "10%" } },
+    { key: "sNo", _style: { width: "10%" },    sorter: false,
+    filter: false, },
     // { key: "countryName", _style: { width: "20%" } },
     { key: "stateName", label: "State ", _style: { width: "20%" } },
     { key: "cityName", label: "District / City", _style: { width: "20%" } },
@@ -1150,23 +1160,34 @@ function LocationLibrary(props) {
                       </CRow>
                     </React.Fragment>
                   )}
-                </CRow>
-                <CRow>
-                  <CCol md={6} lg={6}>
-                    <CCard
-                      style={{
-                        backgroundColor: "white",
-                        color: "blue",
-                        border: "1px solid",
-                        width: "200px",
-                        height: "100px",
-                        marginLeft: "800px",
-                        marginTop: "-71px",
-                      }}
-                    >
-                      <span style={{ color: "black" }}>State</span>
-                    </CCard>
-                  </CCol>
+                  <CRow style={{ marginLeft:"1200px",position:"absolute" ,marginTop:"30px"}}>
+                    <CCol sm="6" lg="3" style={{ marginLeft: "10px" }}>
+                      <CWidgetDropdown
+                        style={{
+                          width: "280px",
+                          textAlign: "center",
+                          fontSize: "30px",
+                          float: "right",
+                          height:"100px"
+                        }}
+                        color="gradient-primary"
+                        header=""
+                        text=""
+                      >
+                        <span style={{ marginLeft: "10px", fontSize: "24px",fontWeight:"700" }}>
+                          State
+                        </span>
+                        <span
+                          style={{ marginLeft: "-129px", marginTop: "30px" ,fontSize: "24px",fontWeight:"700" }}
+                        >
+                          2
+                        </span>
+                        <br />
+                        <br />
+                      
+                      </CWidgetDropdown>
+                    </CCol>
+                  </CRow>
                 </CRow>
                 <CRow className={"row-alignment"}>
                   {CityList && (
@@ -1338,6 +1359,35 @@ function LocationLibrary(props) {
                       </CRow>
                     </React.Fragment>
                   )}
+                    <CRow style={{marginTop:"50px", marginLeft:"1200px",position:"absolute" }}>
+                    <CCol sm="3" lg="3" style={{ marginLeft: "10px" }}>
+                      <CWidgetDropdown
+                        style={{
+                          width: "280px",
+                          textAlign: "center",
+                          fontSize: "30px",
+                          float: "right",
+                          height:"100px"
+                        }}
+                        color="gradient-info"
+                        header=""
+                        text=""
+                      >
+                        <span style={{ marginLeft: "-40px", fontSize: "24px",fontWeight:"700" }}>
+                          District / City
+                        </span>
+                        <span
+                          style={{ marginLeft: "-159px", marginTop: "30px" ,fontSize: "24px",fontWeight:"700" }}
+                        >
+                          2
+                        </span>
+                        <br />
+                        <br />
+                      
+                      </CWidgetDropdown>
+                    </CCol>
+                  </CRow>
+                
                 </CRow>
                 <CRow className={"row-alignment"}>
                   {AreaList && (
@@ -1529,6 +1579,34 @@ function LocationLibrary(props) {
                       </CRow>
                     </React.Fragment>
                   )}
+                  <CRow style={{marginTop:"70px", marginLeft:"1200px",position:"absolute" }}>
+                    <CCol sm="3" lg="3" style={{ marginLeft: "10px" }}>
+                      <CWidgetDropdown
+                        style={{
+                          width: "280px",
+                          textAlign: "center",
+                          fontSize: "30px",
+                          float: "right",
+                          height:"100px"
+                        }}
+                        color="gradient-warning"  
+                        header=""
+                        text=""
+                      >
+                        <span style={{ marginLeft: "-40px", fontSize: "24px",fontWeight:"700" }}>
+                          Village / Area
+                        </span>
+                        <span
+                          style={{ marginLeft: "-169px", marginTop: "30px" ,fontSize: "24px",fontWeight:"700" }}
+                        >
+                          2
+                        </span>
+                        <br />
+                        <br />
+                      
+                      </CWidgetDropdown>
+                    </CCol>
+                  </CRow>
                 </CRow>
                 <CRow className={"row-alignment"}>
                   <CCol className={"column-align"} md={4} lg={4}>
@@ -1643,6 +1721,7 @@ function LocationLibrary(props) {
                         </React.Fragment>
                       )}
                     </React.Fragment>
+                    
                   )}
                   {StreetCreate && (
                     <React.Fragment>
@@ -1747,88 +1826,123 @@ function LocationLibrary(props) {
                       </CRow>
                     </React.Fragment>
                   )}
+                   <CRow style={{marginTop:"10px", marginLeft:"1200px",position:"absolute" }}>
+                    <CCol sm="3" lg="3" style={{ marginLeft: "10px" }}>
+                      <CWidgetDropdown
+                        style={{
+                          width: "280px",
+                          textAlign: "center",
+                          fontSize: "30px",
+                          float: "right",
+                          height:"100px"
+                        }}
+                        color="gradient-danger"
+                        header=""
+                        text=""
+                      >
+                        <span style={{ marginLeft: "-10px", fontSize: "24px",fontWeight:"700" }}>
+                          Street
+                        </span>
+                        <span
+                          style={{ marginLeft: "-129px", marginTop: "30px" ,fontSize: "24px",fontWeight:"700" }}
+                        >
+                          2
+                        </span>
+                        <br />
+                        <br />
+                      
+                      </CWidgetDropdown>
+                    </CCol>
+                  </CRow>
                 </CRow>
               </CCol>
             </CRow>
-            <CRow>
-              <CCol lg={"9"}></CCol>
-              <CCol lg={"3"}>
-                <CRow>
-                  <CCol md="6"></CCol>
-                  <CCol style={{ fontSize: "1.55rem" }} md="2">
-                    <i
-                      id={"locationLibraryDelete"}
-                      style={{ color: "#0072ff" }}
-                      className="fa fa-print"
-                    ></i>
-                  </CCol>
-                  <CCol style={{ fontSize: "1.55rem" }} md="2">
-                    <i
-                      id={"locationLibraryDelete"}
-                      style={{ color: "green" }}
-                      className="fa fa-share-alt"
-                    ></i>
-                  </CCol>
-                </CRow>
-              </CCol>
-            </CRow>
-            <CRow style={{ padding: "1%", marginLeft: "0px" }}>
-              <CCol lg={"12"}>
-                <CDataTable
-                  items={areasSchema}
-                  fields={fields}
-                  columnFilter
-                  tableFilter
-                  tableLabel={"List of Locations"}
-                  itemsPerPageSelect
-                  itemsPerPage={5}
-                  hover
-                  sorter
-                  pagination
-                  scopedSlots={{
-                    show_details: (item, index) => {
-                      return (
-                        <td className="py-2">
-                          <CRow>
-                            <CCol
-                              className={"column-align"}
-                              style={{ fontSize: "1.15rem" }}
-                              md="12"
-                            >
-                              <i
-                                onClick={() => {
-                                  toggleDetails(index);
-                                }}
-                              ></i>
-                              <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "#3480e2",
-                                  cursor: "pointer",
-                                }}
-                                id={"locationLibraryEdit"}
-                                onClick={() => EditCountry(item)}
-                                className="fas fa-edit"
-                              ></i>
-                              <i
-                                onClick={() => deleteConfirm(item._id)}
-                                id={"locationLibraryDelete"}
-                                style={{
-                                  marginLeft: "5px",
-                                  color: "#e85654",
-                                  cursor: "pointer",
-                                }}
-                                className="fa fa-trash"
-                              ></i>
-                            </CCol>
-                          </CRow>
-                        </td>
-                      );
-                    },
-                    details: (item, index) => {},
-                  }}
-                />
-              </CCol>
+
+            <CRow
+              style={{ padding: "1%", marginTop: "1.5%", marginLeft: "27px" }}
+            >
+              <CRow>
+                <CCol style={{ fontSize: "1.55rem" }} md="12">
+                  <i
+                    id={"locationLibraryDelete"}
+                    style={{
+                      position: "absolute",
+                      top: "7px",
+                      marginLeft: "955px",
+                      marginBottom: "20px",
+                      color: "#0072ff",
+                    }}
+                    className="fa fa-print"
+                  ></i>
+                </CCol>
+                <CCol style={{ fontSize: "1.55rem" }} md="12">
+                  <i
+                    id={"locationLibraryDelete"}
+                    style={{
+                      position: "absolute",
+                      top: "7px",
+                      marginLeft: "1000px",
+                      marginBottom: "20px",
+                      color: "green",
+                    }}
+                    className="fa fa-share-alt"
+                  ></i>
+                </CCol>
+              </CRow>
+              <CDataTable
+                items={areasSchema}
+                fields={fields}
+                columnFilter
+                tableFilter
+                tableLabel={"List of Locations"}
+                itemsPerPageSelect
+                itemsPerPage={5}
+                hover
+                sorter
+                pagination
+                scopedSlots={{
+                  show_details: (item, index) => {
+                    return (
+                      <td className="py-2">
+                        <CRow>
+                          <CCol
+                            className={"column-align"}
+                            style={{ fontSize: "1.15rem" }}
+                            md="12"
+                          >
+                            <i
+                              onClick={() => {
+                                toggleDetails(index);
+                              }}
+                            ></i>
+                            <i
+                              style={{
+                                marginRight: "5px",
+                                color: "#3480e2",
+                                cursor: "pointer",
+                              }}
+                              id={"locationLibraryEdit"}
+                              onClick={() => EditCountry(item)}
+                              className="fas fa-edit"
+                            ></i>
+                            <i
+                              onClick={() => deleteConfirm(item._id)}
+                              id={"locationLibraryDelete"}
+                              style={{
+                                marginLeft: "5px",
+                                color: "#e85654",
+                                cursor: "pointer",
+                              }}
+                              className="fa fa-trash"
+                            ></i>
+                          </CCol>
+                        </CRow>
+                      </td>
+                    );
+                  },
+                  details: (item, index) => {},
+                }}
+              />
             </CRow>
           </div>
         </CCard>

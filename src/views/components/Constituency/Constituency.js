@@ -1,411 +1,112 @@
-import {
-  CButton,
-  CCard,
-  CCol,
-  CInput,
-  CLabel,
-  CRow,
-  CSelect,
-} from "@coreui/react";
+import { CButton, CCard, CCol, CInput, CLabel, CRow, CSelect } from "@coreui/react";
 import React, { useState } from "react";
 import Toaster from "src/views/notifications/toaster/Toaster";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
-const Municipality = () => {
-  const [location, setLocation] = useState({
-    state: "",
-    district: "",
-    city: "",
-    ward: "",
-    area: "",
-    street: "",
-    pincode: "",
-  });
-  const [mobilenumber, setMobileNumber] = useState("");
-  const [otpHide, setOtpHide] = useState(false);
-  const [locations, setLocations] = useState({
-    state: "",
-    district: "",
-    city: "",
-    ward: "",
-    area: "",
-    street: "",
-    pincode: "",
-  });
-  const [municipalList, setMunicipalList] = useState(true);
-  const [MunicipalCreate, setmunicipalCreate] = useState(false);
-  const [municipalListadd, setMunicipalListadd] = useState(true);
-  const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
-  const [municipalCorporation, setMunicipalCorporation] = useState({});
-  const [municipalName, setMuniicipalName] = useState("");
 
-  const [locationHide, setLocationHide] = useState({
-    corporation: true,
-    municipalLocation: false,
-    districtPanchayat: false,
-    townPanchayat: false,
-    villagePanchayat: false,
-    cityLocation: false,
-  });
-  const userData = [
-    {
-      SNo: "1",
-      // State: "TamilNadu",
-      // District: "chennai",
-      // Area: "TNagar",
-      Street: "Pondy Bazar",
-    
-    },
-  ];
-  const [checked, setChecked] = useState(false)
-  const handleClick = () => setChecked(!checked)
-  const fields = [
-    {
-      key: "show_details",
-      label: "Select",
-      _style: { width: "3%" },
-      name: <div>Email <input type={"checkbox"} onClick={""}/></div>,
-      sorter: false,
-      filter: false,
-      checked:true,
-    },
-    { key: "SNo", label: "S.NO", _style: { width: "5%" },    sorter: false,
-    filter: false, },
-    // { key: "State", label: "State", _style: { width: "10%" } },
-    // { key: "District", label: "District", _style: { width: "10%" } },
-    // { key: "Area", label: "Ward", _style: { width: "10%" } },
-    { key: "Street", label: "Name of the Street", _style: { width: "10%" } },
+function Constituency() {
 
-    // { key: "male", label: "Male", _style: { width: "10%" } },
-    // { key: "female", label: "Female", _style: { width: "10%" } },
-    { key: "show_details1", label: "Action", _style: { width: "10%" },    sorter: false,
-    filter: false, },
-  ];
-  const [passing, setPassing] = useState("");
   const [error, setError] = useState("");
-  const saveCorporation = async () => {
-    setLocationHide({
-      ...locationHide,
-      municipalLocation: true,
-      corporation: false,
-    });
-
-    if (passing === "") {
-      let body = {
-        state: locations.state,
-        district: locations.district,
-        city: locations.city,
-        area: locations.area,
-        ward: locations.ward,
-        street: locations.street,
+  const [municipalListadd, setMunicipalListadd] = useState(true);
+    const [municipalList, setMunicipalList] = useState(true);
+    const [MunicipalCreate, setmunicipalCreate] = useState(false);
+    const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
+    const [ParliamentaryConstituency, setParliamentaryConstituency] = useState({});
+    const [municipalName, setMuniicipalName] = useState("");
+  
+    const enableCreate = async () => {
+        await setMunicipalList(false);
+        await setmunicipalCreate(true);
       };
-      console.log(body);
-      try {
-        const response = await saveCreateCorporation(JSON.stringify(body));
-        console.log(body, "createfirst");
-        if (response) {
-          toast.success(response);
-        }
-      } catch (error) {
-        toast.error(error);
-      }
-    }
-  };
-  const CancelState1 = async () => {
-   
-    setPassing("");
-    // await setMunicipalList1(true);
-    // await setmunicipalCreate1(false);
-  };
-  const saveMunicipalLocation = () => {
-    setLocationHide({
-      ...locationHide,
-      municipalLocation: false,
-      districtPanchayat: true,
-    });
-  };
-  const saveDistrictPanchayat = () => {
-    console.log(locationHide, "hidr");
-    setLocationHide({
-      ...locationHide,
-      districtPanchayat: false,
-      townPanchayat: true,
-    });
-  };
-  const savetownPanchayat = () => {
-    console.log(locationHide, "hidr");
-    setLocationHide({
-      ...locationHide,
-      villagePanchayat: true,
-      townPanchayat: false,
-    });
-  };
-  const saveVillagePanchayat = () => {
-    console.log(locationHide, "hidr");
-    setLocationHide({
-      ...locationHide,
-      villagePanchayat: false,
-      cityLocation: true,
-    });
-  };
-  const cityLocation = () => {
-    setLocationHide({
-      ...locationHide,
-      cityLocation: true,
-      townPanchayat: false,
-    });
-  };
-  const cancelcityLocation = () => {
-    setLocationHide({
-      ...locationHide,
-      cityLocation: false,
-      corporation: true,
-    });
-  };
-  const changeHandler = (e) => {
-    setLocations({ ...locations, [e.target.name]: e.target.value });
-  };
-  const otpChangeHandle = (e) => {
-    setMobileNumber(e.target.value);
-    if (mobilenumber.length > 8) {
-      setOtpHide(true);
-    } else {
-      setError("enter valid data");
-    }
-  };
-  const enableCreate = async () => {
-    await setMunicipalList(false);
-    await setmunicipalCreate(true);
-  };
 
-  const enableCreateadd = async () => {
-    await setMunicipalListadd(false);
-    await setmunicipalCreateadd(true);
-  };
-
-  const editState = async () => {
-    await setMunicipalList(false);
-    await setmunicipalCreate(true);
-    // formik.values.StateName = stateName.stateName;
-    // formik.values.Abbreviation2 = stateName.abbreviation;
-    // formik.values.Code2 = stateName.code;
-    // setPassing(stateName._id);
-    // getState();
-    // getAllAreas();
-  };
-  
-  const editStateadd = async () => {
-    await setMunicipalListadd(false);
-    await setmunicipalCreateadd(true);
-    // formik.values.StateName = stateName.stateName;
-    // formik.values.Abbreviation2 = stateName.abbreviation;
-    // formik.values.Code2 = stateName.code;
-    // setPassing(stateName._id);
-    // getState();
-    // getAllAreas();
-  };
-  const CancelState = async () => {
-    setPassing("");
-    await setMunicipalList(true);
-    await setmunicipalCreate(false);
-  };
-  const[hideMappingMunicipality, setHideMappingMunicipality] =useState(true)
-  const[hideMunicipality, setMunicipality] =useState(false)
-  const changeMunicipality = ()=>{
-    setHideMappingMunicipality(false)
-    setMunicipality(true)
-  }
-  const CancelStateadd = async () => {
-    setPassing("");
-    await setMunicipalListadd(true);
-    await setmunicipalCreateadd(false);
-  };
-  
-  return (
-    <div>
-        {hideMappingMunicipality && (
-         <div>
-         <CCard className={"cardSave"}>
-           <div className={"main-headerlabel"}>
-             <span className={"header-label"}>Municipality</span>
-           </div>
-           {locationHide.corporation && (
-             <div>
-               <div style={{ marginLeft: "-26px" }}>
-                 <div className={"row-headerlabel"}>
-                   <span  style={{marginLeft:"70px"}} className={"header-label"}>
-                     {" "}
-                     Municipality{" "}
-                   </span>
-                 </div>
-                 <CRow style={{marginTop:"45px"}}>
-                 <CCol md="10">
-                   <CCol
-                     md="5"
-                     style={{
-                       marginLeft: "5px",
-                       float: "right",
-                       marginTop:"-20px"
-                     }}
-                   >
-        
-                     <CButton
-                       style={{
-                         float: "right",
-                         marginRight: "865px",
-                       }}
-                       id={"saveAbbreviationConfigureCode"}
-                       className={"saveBtn"}
-                       onClick={changeMunicipality}
-                     >
-                      Add Municipality 
-                     </CButton>{" "}
-                   </CCol>
-                 </CCol>
-               </CRow>
-                 <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                
-                
-                <CCol className={"column-align"} md="4">
-                  <CLabel className={"label-name"}>
-                  State
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <CSelect
-                    className={"input-align"}
-                    id={"municipalstatename"}
-                    name={"state"}
-                    placeholder={"Select State"}
-                    value={locations.district}
-                    onChange={changeHandler}
-                  />
-                </CCol>
-                <CCol className={"column-align"} md="4">
-                     <CLabel className={"label-name"}>
-                       District / City
-                       <span className={"text-danger"}>*</span>
-                     </CLabel>
-                     <CSelect
-                       className={"input-align"}
-                       id={"municipaldistrict"}
-                       name={"city"}
-                       placeholder={" Corporation Name"}
-                       value={locations.city}
-                       onChange={changeHandler}
-                     />
-                   </CCol>
-                
-              </CRow>
-                 
-                 <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-            
-                   <CCol className={"column-align"} md="4">
-                  <CLabel className={"label-name"}>
-                  Municipality
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <CSelect
-                    className={"input-align"}
-                    id={"municipaldistrict"}
-                    name={"city"}
-                    placeholder={" Corporation Name"}
-                    value={locations.city}
-                    onChange={changeHandler}
-                  />
-                </CCol>
-                   <CCol className={"column-align"} md="4">
-                     <CLabel className={"label-name"}>
-                     Ward
-                       <span className={"text-danger"}>*</span>
-                     </CLabel>
-                     <CSelect
-                       className={"input-align"}
-                       id={"municipalstatename"}
-                       name={"Ward"}
-                       placeholder={"Select Ward"}
-                       value={locations.district}
-                       onChange={changeHandler}
-                     />
-                   </CCol>
-                 </CRow>
-                
-                
-               </div>
-              
-               <CRow style={{ padding: "4%", marginTop: "-1.5%" }}>
-                 <CDataTable
-                   items={userData}
-                   fields={fields}
-                   columnFilter
-                   tableFilter
-                   tableLabel={"List of Streets"}
-                   itemsPerPageSelect
-                   itemsPerPage={5}
-                   hover
-                   sorter
-                   checked
-                   pagination
-                   scopedSlots={{
-                     show_details: (item, index) => {
-                       return (
-                         <td className="py-2">
-                           <CRow>
-                             <CCol style={{ fontSize: "1.15rem" }} md="12">
-                               <i
-                                 onClick={() => {
-                                   //   toggleDetails(index);
-                                 }}
-                               ></i>
-                               {/* <i
-                                   style={{
-                                     marginRight: "5px",
-                                     color: "#3480e2",
-                                     cursor: "pointer",
-                                   }}
-                                   id={"locationLibraryEdit"}
-                                   onClick={() => EditCountry(item)}
-                                   className="fas fa-edit"
-                                 ></i>
-                                 <i
-                                   onClick={() => deleteConfirm(item._id)}
-                                   id={"locationLibraryDelete"}
-                                   style={{
-                                     marginLeft: "5px",
-                                     color: "#e85654",
-                                     cursor: "pointer",
-                                   }}
-                                   className="fa fa-trash"
-                                 ></i> */}
-                             </CCol>
-                           </CRow>
-                         </td>
-                       );
-                     },
-                     details: (item, index) => {},
-                   }}
-                 />
-               </CRow>
-             </div>
-           )}
-   
-         </CCard>
-       </div>
-      )}
-
-      {hideMunicipality && (
+      const enableCreateadd = async () => {
+        await setMunicipalListadd(false);
+        await setmunicipalCreateadd(true);
+      };
+    
+      const editState = async () => {
+        await setMunicipalList(false);
+        await setmunicipalCreate(true);
+        // formik.values.StateName = stateName.stateName;
+        // formik.values.Abbreviation2 = stateName.abbreviation;
+        // formik.values.Code2 = stateName.code;
+        // setPassing(stateName._id);
+        // getState();
+        // getAllAreas();
+      };
+      const editStateadd = async () => {
+        await setMunicipalListadd(false);
+        await setmunicipalCreateadd(true);
+        // formik.values.StateName = stateName.stateName;
+        // formik.values.Abbreviation2 = stateName.abbreviation;
+        // formik.values.Code2 = stateName.code;
+        // setPassing(stateName._id);
+        // getState();
+        // getAllAreas();
+      };
+    
+      const CancelState = async () => {
+       
+        setPassing("");
+        await setMunicipalList(true);
+        await setmunicipalCreate(false);
+      };
+      const CancelStateadd = async () => {
+       
+        setPassing("");
+        await setMunicipalListadd(true);
+        await setmunicipalCreateadd(false);
+      };
+      const [passing, setPassing] = useState("");
+      const userData = [
+        {
+          SNo: "1",
+        //   State: "TamilNadu",
+        //   District: "chennai",
+        //   Area: "TNagar",
+          Street: "Pondy Bazar",
+        },
+      ];
+      const fields = [
+        {
+            key: "show_details",
+            label: "Select",
+            _style: { width: "3%" },
+            name: <div>Email <input type={"checkbox"} onClick={""}/></div>,
+            sorter: false,
+            filter: false,
+          },
+        { key: "SNo", label: "S.NO", _style: { width: "10%" }, sorter: false,
+        filter: false, },
+        // { key: "State", label: "State", _style: { width: "10%" } },
+        // { key: "District", label: "District", _style: { width: "10%" } },
+        // { key: "Area", label: "Ward", _style: { width: "10%" } },
+        { key: "Street", label: "Name of the Street", _style: { width: "10%" } },
+      
+        // { key: "male", label: "Male", _style: { width: "10%" } },
+        // { key: "female", label: "Female", _style: { width: "10%" } },
+        { key: "show_details1", label: "Action", _style: { width: "10%" },    sorter: false,
+        filter: false, },
+          ];
+    
+    return (
         <div>
-           <CCard className={"cardSave"}>
+            <CCard className={"cardSave"}>
         <div className={"main-headerlabel"}>
-          <span className={"header-label"}> Municipality</span>
+          <span className={"header-label"}>Constituency</span>
         </div>
-        {locationHide.corporation && (
-          <div>
-            <div style={{ marginLeft: "-26px" }}>
+        <CRow className={"row-alignment"} style={{ marginLeft: "-76px" }}>
+          <CCol className={"column-align"} md="12" lg="12" sm="12">
+            <p className="mandatory_txt" style={{ marginLeft: "50px" }}>
+              Mandatory fields are marked with an asterisk (*)
+                </p>
+
+           <div style={{ marginLeft: "-20px" }}>
               <div className={"row-headerlabel"}>
-                <span style={{ marginLeft: "70px" }} className={"header-label"}>
+                <span  style={{marginLeft:"70px"}} className={"header-label"}>
                   {" "}
-                  Adding Municipality{" "}
+                  Adding CONSTITUENCY{" "}
                 </span>
               </div>
               <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
@@ -413,21 +114,21 @@ const Municipality = () => {
                   <React.Fragment>
                     <CCol className={"column-align"} md={4} lg={4}>
                       <CLabel className={"label-name-1"}>
-                        Municipality
+                      Parliamentary Constituency
                         <span className={"text-danger"}> *</span>
                       </CLabel>
                       <CSelect
                         placeholder="Select Municipal Corporation"
-                        id={"municipalcorporation"}
+                        id={"ParliamentaryConstituency"}
                         type={"text"}
-                        value={municipalCorporation}
+                        value={ParliamentaryConstituency}
                         // isDisabled={CountryCreate || CityCreate || AreaCreate}
                       />
                     </CCol>
                     <CCol className={"column-align"} md={1} lg={1}>
                       <CButton
                         shape={"pill"}
-                        id={"addmunicipalcorporation"}
+                        id={"addParliamentaryConstituency"}
                         style={{ marginTop: "30px" }}
                         className={"saveBtn"}
                         onClick={enableCreate}
@@ -445,7 +146,7 @@ const Municipality = () => {
                             style={{
                               marginTop: "30px",
                             }}
-                            id={"locationLibraryStateEdit"}
+                            id={"ParliamentaryConstituencyEdit"}
                             className={"btn btn-success"}
                             onClick={editState}
                             // disabled={
@@ -464,7 +165,7 @@ const Municipality = () => {
                     <CRow className={"column-align3"} sm={12} md={12} lg={12}>
                       <CCol md="3">
                         <CLabel className={"label-name-3"}>
-                          Municipality Name
+                           Parliamentary 
                           <span className={"text-danger"}> *</span>
                         </CLabel>
 
@@ -472,11 +173,11 @@ const Municipality = () => {
                           // onKeyPress={(e) =>
                           //   FormValidation.value_Without_Number_Symbols(e)
                           // }
-                          id={"MunicipalName"}
-                          name={"municipalname"}
+                          id={"ParliamentarydConstituency"}
+                          name={"Parliamentary Constituency"}
                           // value={states.statename}
                           // onChange={statechangeHandler}
-                          placeholder="Enter Municipality Name"
+                          placeholder="Enter Parliamentary Constituency"
                           maxlength="60"
                           size="60"
                         />
@@ -493,7 +194,7 @@ const Municipality = () => {
                           //     e
                           //   )
                           // }
-                          id={"municipalabrreviation"}
+                          id={"ParliamentaryConstituencyabrreviation"}
                           name={"abbreviation"}
                           // value={states.abbreviation}
                           // onChange={statechangeHandler}
@@ -508,7 +209,7 @@ const Municipality = () => {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                          id={"municipalcode"}
+                          id={"ParliamentaryConstituencycode"}
                           // onKeyPress={(e) =>
                           //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
                           //     e
@@ -526,7 +227,7 @@ const Municipality = () => {
                       <CCol md="3">
                         <CButton
                           shape={"pill"}
-                          id={"municipalsave"}
+                          id={"ParliamentaryConstituencysave"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
                           // onClick={State}
@@ -535,7 +236,7 @@ const Municipality = () => {
                         </CButton>
                         <CButton
                           shape={"pill"}
-                          id={"municipalcancel"}
+                          id={"ParliamentaryConstituencylcancel"}
                           style={{ marginTop: "30px", marginLeft: "20px" }}
                           className={"cancelBtn"}
                           onClick={CancelState}
@@ -548,18 +249,18 @@ const Municipality = () => {
                   </React.Fragment>
                 )}
               </CRow>
-
+        
               <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
                 {municipalListadd && (
                   <React.Fragment>
                     <CCol className={"column-align"} md={4} lg={4}>
                       <CLabel className={"label-name-1"}>
-                        Ward Number
+                        Legislative Assembly Constituency 
                         <span className={"text-danger"}> *</span>
                       </CLabel>
                       <CSelect
                         placeholder="Select the State Name"
-                        id={"municipalcorporation"}
+                        id={"Legislative"}
                         type={"text"}
 
                         // isDisabled={CountryCreate || CityCreate || AreaCreate}
@@ -568,7 +269,7 @@ const Municipality = () => {
                     <CCol className={"column-align"} md={1} lg={1}>
                       <CButton
                         shape={"pill"}
-                        id={"addmunicipalcorporation"}
+                        id={"addLegislative1"}
                         style={{ marginTop: "30px" }}
                         className={"saveBtn"}
                         onClick={enableCreateadd}
@@ -586,7 +287,7 @@ const Municipality = () => {
                             style={{
                               marginTop: "30px",
                             }}
-                            id={"locationLibraryStateEdit"}
+                            id={"LegislativeEdit1"}
                             className={"btn btn-success"}
                             onClick={editStateadd}
                             // disabled={
@@ -605,7 +306,8 @@ const Municipality = () => {
                     <CRow className={"column-align3"} sm={12} md={12} lg={12}>
                       <CCol md="3">
                         <CLabel className={"label-name-3"}>
-                          Ward Number
+                        Legislative Assembly
+ 
                           <span className={"text-danger"}> *</span>
                         </CLabel>
 
@@ -613,8 +315,8 @@ const Municipality = () => {
                           // onKeyPress={(e) =>
                           //   FormValidation.value_Without_Number_Symbols(e)
                           // }
-                          id={"wardname"}
-                          name={"municipalname"}
+                          id={"Legislative1"}
+                          name={"Legislative"}
                           // value={states.statename}
                           // onChange={statechangeHandler}
                           placeholder="State Name"
@@ -634,7 +336,7 @@ const Municipality = () => {
                           //     e
                           //   )
                           // }
-                          id={"wardabbreviation"}
+                          id={"Legislativeabbreviation"}
                           name={"abbreviation"}
                           // value={states.abbreviation}
                           // onChange={statechangeHandler}
@@ -649,13 +351,13 @@ const Municipality = () => {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                          id={"wardcode"}
+                          id={"Legislativecode"}
                           // onKeyPress={(e) =>
                           //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
                           //     e
                           //   )
                           // }
-                          name={"wardcode"}
+                          name={"Legislativecode"}
                           // value={states.code}
                           // onChange={statechangeHandler}
                           // style={{ textTransform: "uppercase" }}
@@ -667,7 +369,7 @@ const Municipality = () => {
                       <CCol md="3">
                         <CButton
                           shape={"pill"}
-                          id={"wardsave"}
+                          id={"Legislativesave1"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
                           // onClick={State}
@@ -688,84 +390,104 @@ const Municipality = () => {
                     </CRow>
                   </React.Fragment>
                 )}
-              </CRow>
-              <CCol>
-                <CLabel
-                  style={{
-                    fontSize: "20PX",
-                    fontFamily: "Open Sans",
-                    fontWeight: "700",
-                    marginLeft: "55px",
-                    marginTop: "20px",
-                  }}
-                >
-                  Selection Area
-                </CLabel>
-              </CCol>
-              <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                <CCol className={"column-align"} md="4">
-                  <CLabel className={"label-name"}>
-                    State
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <CSelect
-                    className={"input-align"}
-                    id={"municipalstatename"}
-                    name={"state"}
-                    placeholder={"Select State"}
-                    value={locations.district}
-                    onChange={changeHandler}
-                  />
-                </CCol>
-                <CCol className={"column-align"} md="4">
-                  <CLabel className={"label-name"}>
-                    District / City
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <CSelect
-                    className={"input-align"}
-                    id={"municipaldistrict"}
-                    name={"city"}
-                    placeholder={" Corporation Name"}
-                    value={locations.city}
-                    onChange={changeHandler}
-                  />
-                </CCol>
-              </CRow>
-              <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                <CCol className={"column-align"} md="4">
-                  <CLabel className={"label-name"}>
-                    Area
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <CSelect
-                    className={"input-align"}
-                    id={"municipalarea"}
-                    name={"area"}
-                    placeholder={" Corporation Name"}
-                    value={locations.city}
-                    onChange={changeHandler}
-                  />
-                </CCol>
-              </CRow>
+              </CRow> 
            
-            </div>
-            <CRow style={{ marginTop: "30px" }}>
+           <CRow>
+        <CCol>
+  <CLabel style={{fontSize:"20PX", fontFamily:"Open Sans", fontWeight:"700", marginLeft:"71px", marginTop:"20px"}}>
+    Selection Area
+  </CLabel>
+</CCol>
+</CRow>
+<CRow className={"row-alignment"} md="12" sm="12" lg="12"  style={{marginLeft:"-16px"}}>
+             
+
+             <CCol className={"column-align"} md="4">
+               <CLabel className={"label-name"}>
+               State
+                 <span className={"text-danger"}>*</span>
+               </CLabel>
+               <CSelect
+                  styles={{marginLeft:"50px"}}
+                    type={"text"}
+                    id={"CONSTITUENCYstate"}
+                    className={"input-align"}
+                    placeholder="CSelect the State"
+                  />
+             </CCol>
+             <CCol className={"column-align"} md="4">
+               <CLabel className={"label-name"}>
+                 District / City
+                 <span className={"text-danger"}>*</span>
+               </CLabel>
+               <CSelect
+                  styles={{marginLeft:"50px"}}
+                    type={"text"}
+                    id={"CONSTITUENCYcity"}
+                    className={"input-align"}
+                    placeholder="CSelect the District / City "
+                  />
+             </CCol>
+             
+           </CRow>
+
+           <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{marginLeft:"-16px"}}>
+           <CCol className={"column-align"} md="4">
+                                 <CLabel className={"label-name"}>
+                  Area / Village
+                    <span className={"text-danger"}>*</span>
+                  </CLabel>
+                  <CSelect
+                    type={"text"}
+                    id={"constituencyarea"}
+                    className={"input-align"}
+                    placeholder="CSelect the Area / Village"
+                  />
+                </CCol>
+              
+                <CCol className={"column-align"} md="4">
+                  <CLabel className={"label-name"}>
+                  Ward Name
+                          <span className={"text-danger"}> *</span>
+                  </CLabel>
+                  <CSelect
+                    type={"text"}
+                    id={"constituencyward"}
+                    className={"input-align"}
+                    placeholder="CSelect the Ward"
+                   
+                  />
+               </CCol>
+               </CRow>
+               <CRow className={"row-alignment"} md="12" sm="12" lg="12"  style={{marginLeft:"-16px"}}>
+               <CCol className={"column-align"} md="4">
+                  <CLabel className={"label-name"}>
+                  Street Name
+                    <span className={"text-danger"}>*</span>
+                  </CLabel>
+                  <CSelect
+                    type={"text"}
+                    id={"constituencystreet"}
+                    className={"input-align"}
+                    placeholder="CSelect the Street "
+                  
+                  />
+                </CCol>
+</CRow>
+<CRow>
               <CCol md="10">
                 <CCol
                   md="5"
                   style={{
-                    marginLeft: "255px",
-                    position:"absolute",
-                    float: "right",
-                    marginTop: "-65px",
+                    marginTop: "-35px",
+                    marginLeft:"285px"
                   }}
                 >
                   <CButton
                     style={{
                       float: "right",
                     }}
-                    id={"cancelAbbreviationConfigureCode"}
+                    id={"cancelconstituency"}
                     className={"cancelBtn"}
                   >
                     CANCEL
@@ -775,16 +497,15 @@ const Municipality = () => {
                       float: "right",
                       marginRight: "15px",
                     }}
-                    id={"saveAbbreviationConfigureCode"}
+                    id={"saveconstituencyAbbreviationConfigureCode"}
                     className={"saveBtn"}
-                    onClick={saveCorporation}
                   >
                     Save
                   </CButton>{" "}
                 </CCol>
               </CCol>
             </CRow>
-            <CRow style={{ padding: "4%", marginTop: "-3.5%" }}>
+            <CRow style={{ padding: "6%", marginTop: "-3.5%" }}>
               <CDataTable
                 items={userData}
                 fields={fields}
@@ -795,14 +516,12 @@ const Municipality = () => {
                 itemsPerPage={5}
                 hover
                 sorter
-                checked
                 pagination
                 scopedSlots={{
                   show_details: (item, index) => {
                     return (
                       <td className="py-2">
-                        <CRow>
-                          <CInput
+                           <CInput
                             type={"checkbox"}
                             // onClick={() => {
                             //   let data = item._id;
@@ -820,6 +539,7 @@ const Municipality = () => {
                               marginBottom: "10px",
                             }}
                           />
+                        <CRow>
                           <CCol style={{ fontSize: "1.15rem" }} md="12">
                             <i
                               onClick={() => {
@@ -868,13 +588,13 @@ const Municipality = () => {
                                   color: "#3480e2",
                                   cursor: "pointer",
                                 }}
-                                id={"locationLibraryEdit"}
+                                id={"constituencyEditicon"}
                                 // onClick={() => EditCountry(item)}
                                 className="fas fa-edit"
                               ></i>
                               <i
                                 // onClick={() => deleteConfirm(item._id)}
-                                id={"locationLibraryDelete"}
+                                id={"constituencyDelete"}
                                 style={{
                                   marginLeft: "5px",
                                   color: "#e85654",
@@ -891,17 +611,13 @@ const Municipality = () => {
                 }}
               />
             </CRow>
-          </div>
-        )}
 
-    
-       
-      </CCard>
+           </div>
+</CCol>
+</CRow>
+        </CCard>
         </div>
-      )}
-     
-    </div>
-  );
-};
+    )
+}
 
-export default Municipality;
+export default Constituency

@@ -1,54 +1,82 @@
-import React, { Component, createContext } from 'react'
+import React from "react";
+// import State from "../views/components/state/State";
+import {
+  getEntityList,
+  getProfile,
+  getAllConfigurationList,
+} from "./ApiService";
+import GlobalReducer from "./GlobalReducer";
 
-const GlobalContext = createContext({
-    user: {},
-    currentRouterLocation: '',
-    driverCount:0,
-    carrierCount:0,
-    setValue: () => {},
-})
+let initialState = { entity: { typeOfOffice: "Office Type" } };
 
-class GlobalContextProvider extends Component {
-    constructor (props) {
-        super(props)
-        this.setValue = this.setValue.bind(this)
-    }
+export const GlobalContext = React.createContext(initialState);
+const Global = ({ children }) => {
+  const [state, dispatch] = React.useReducer(GlobalReducer, initialState);
 
-    setValue = (object) => {
+  React.useEffect(() => {
+    getAllProfile();
+    getConfigurationList();
+  }, []);
 
-        for (var key in object) {
-            console.log('Setting Shared value', `${key}: ${object[key]}`)
-            this.setState({
-                [key]: object[key],
-            })
+  const getAllProfile = async () => {
+    var response;
+    const Token = await localStorage.getItem("token");
+    if (Token) {
+      try {
+        response = await getProfile(Token);
+
+        if (response) {
+          if (response.success) {
+            await dispatch({
+              type: "PROFILE",
+              value: response.data,
+              token: Token,
+            });
+            getAllEntityList(response.data.client._id);
+          }
         }
+      } catch (e) {
+        console.log(e);
+      }
     }
+  };
 
-    state = {
-        user: {},
-        currentRouterLocation: '',
-        driverCount:0,
-        carrierCount:0,
-        setValue: () => {},
+  const getAllEntityList = async (val) => {
+    var response;
+    try {
+      response = await getEntityList(`client=${val}`);
+      if (response) {
+        if (response.data) {
+          await dispatch({ type: "ENTITY", value: response.data });
+        }
+      }
+    } catch (e) {
+      console.log(e);
     }
-
-    render () {
-        return (
-            <GlobalContext.Provider
-                value={{
-                    user: this.state.user,
-                    driverCount:0,
-                    carrierCount:0,
-                    setValue: this.setValue,
-                    currentRouterLocation: this.state.currentRouterLocation,
-                }}>
-                {this.props.children}
-            </GlobalContext.Provider>
-        )
+  };
+  const getConfigurationList = async () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      var response;
+      try {
+        response = await getAllConfigurationList(token);
+        if (response.success) {
+          await dispatch({
+            type: "PAGEHEADERCONFIGURATION",
+            value: response.data,
+          });
+        }
+      } catch (e) {
+        console.log(e);
+      }
     }
+  };
 
-}
+  return (
+    <GlobalContext.Provider value={{ State: state, StateDispatch: dispatch }}>
+      {children}
+    </GlobalContext.Provider>
+  );
+};
 
-const GlobalContextConsumer = GlobalContext.Consumer
-
-export { GlobalContextConsumer, GlobalContextProvider, GlobalContext }
+export default Global;
