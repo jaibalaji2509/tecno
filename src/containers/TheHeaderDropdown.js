@@ -5,7 +5,7 @@ import {
   CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
-  CImg
+ 
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 

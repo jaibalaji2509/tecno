@@ -2,7 +2,6 @@ import React from 'react'
 import {
   CBreadcrumb,
   CBreadcrumbItem,
-  CBreadcrumbRouter,
   CCard,
   CCardBody,
   CCardHeader,

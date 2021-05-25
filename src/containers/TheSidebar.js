@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {
-  CCreateElement,
   CSidebar,
   CSidebarBrand,
   CSidebarNav,
@@ -11,6 +10,7 @@ import {
   CSidebarNavDropdown,
   CSidebarNavItem,
   CImg,
+  CLabel,
   CLabel,
 } from '@coreui/react'
 

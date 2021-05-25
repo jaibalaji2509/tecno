@@ -16,8 +16,9 @@ import {
   CDropdown,
   CForm,
   CInput,
+  CInput,
   CButton,
-  CImg
+ 
 } from '@coreui/react'
 import { DocsLink } from 'src/reusable'
 

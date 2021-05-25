@@ -13,7 +13,7 @@ import {
   CDropdownMenu,
   CDropdownToggle,
   CRow,
-  CFormGroup,
+  CInput,
   CLabel,
   CInput,
   CInputCheckbox

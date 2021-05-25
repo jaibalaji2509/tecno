@@ -6,7 +6,6 @@ import {
   CCardBody,
   CCardHeader,
   CCol,
-  CDataTable,
   CRow,
   CPagination
 } from '@coreui/react'

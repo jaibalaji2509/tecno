@@ -46,16 +46,16 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'));
 const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
 const Location = React.lazy(() => import('./views/components/location/Location'));
-const OfficeType = React.lazy(() => import('./views/components/OfficeType/OfficeType'));
-const WingLocation = React.lazy(() => import('./views/components/WingLocation/WingLocation'));
+const OfficeType = React.lazy(() => import('./views/components/officeType/OfficeType'));
+const WingLocation = React.lazy(() => import('./views/components/wingLocation/WingLocation'));
 
-const Constituency = React.lazy(() => import('./views/components/Constituency/Constituency'));
+const Constituency = React.lazy(() => import('./views/components/constituency/Constituency'));
 const Municipality = React.lazy(() => import('./views/components/municipality/Municipality'));
 const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
 const VillagePanchayat = React.lazy(() => import('./views/components/villagepanchayat/VillagePanchayat'));
 const MappingMunicipalCorpoation = React.lazy(() => import('./views/components/mappingmunicipalcorporation/MappingMunicipalCorpoation'));
-const AddMemberRegister = React.lazy(() => import('./views/components/MemberRegistration/AddMemberRegister'));
-const MemberRegistration = React.lazy(() => import('./views/components/MemberRegistration/MemberRegistration'));
+const MemberRegistration = React.lazy(() => import('./views/components/memberRegistration/MemberRegistration'));
+const ViewConstituency = React.lazy(() => import('./views/components/constituency/ViewConstituency'));
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -110,10 +110,10 @@ const routes = [
   {path:"/villagepanchayat", exact:true, name : "Village Panchayat", component:VillagePanchayat},
   {path:"/mappingmunicipalcorporation", exact:true, name : "Mapping Municipal Corporation", component:MappingMunicipalCorpoation},
   {path:"/Constituency", exact:true, name : "Constituency", component:Constituency},
-  { path: '/AddMemberRegister',  exact: true, name: 'AddMemberRegister', component: AddMemberRegister },
   { path: '/MemberRegistration',  exact: true, name: 'MemberRegistration', component: MemberRegistration },
   { path: '/OfficeType',  exact: true, name: 'OfficeType', component: OfficeType },
   { path: '/WingLocation',  exact: true, name: 'WingLocation', component: WingLocation },
+  { path: '/ViewConstituency',  exact: true, name: 'ViewConstituency', component: ViewConstituency },
 
 ];
 

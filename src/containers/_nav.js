@@ -75,7 +75,7 @@ const _nav =  [
   {
     id:"AdminSetupSideBar",
     _tag: "CSidebarNavDropdown",
-    name: "Party Member Registration",
+    name: "Party Member Management",
     route: "/AdminSetup",
     
     icon: 'cil-drop',

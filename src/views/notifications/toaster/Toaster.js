@@ -9,12 +9,12 @@ import {
   CToaster,
   CForm,
   CInput,
+  CInput,
   CInputCheckbox,
   CButton,
   CContainer,
   CRow,
   CCol,
-  CFormGroup,
   CLabel
 } from '@coreui/react'
 import { DocsLink } from 'src/reusable'

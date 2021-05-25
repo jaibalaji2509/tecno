@@ -8,7 +8,6 @@ import {
   CCol,
   CRow,
   CCollapse,
-  CFade,
   CSwitch,
   CLink
 } from  '@coreui/react'

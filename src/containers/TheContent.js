@@ -4,7 +4,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
-import { CContainer, CFade } from '@coreui/react'
+import { CContainer, } from '@coreui/react'
 
 // routes config
 import routes from '../routes'

@@ -9,7 +9,7 @@ import {
   CLabel,
   CWidgetDropdown,
   CImg,
-  CInput,
+ CInput
 } from "@coreui/react";
 import { useFormik } from "formik";
 import * as yup from "yup";

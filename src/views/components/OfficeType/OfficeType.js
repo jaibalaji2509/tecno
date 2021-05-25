@@ -6,17 +6,17 @@ import React, { useState, useEffect } from "react";
       CButton, 
       CLabel, 
       CInput, 
-      CWidgetDropdown,
+      CInput,
       CDropdown,
       CDropdownMenu,
       CDropdownItem,
       CDropdownToggle } from "@coreui/react";
       import CIcon from '@coreui/icons-react'
+      import Select from "react-select";
     import CDataTable from "../../CoreComponents/table/CDataTable";
     import { saveCreateMemberRegister } from "../../../services/ApiService";
     import { useHistory } from "react-router-dom";
     import "./Office.css"
-import WingOffice from "./WingOffice";
     // import { colors } from "react-select/src/theme";
     
     function OfficeType() {
@@ -45,7 +45,7 @@ import WingOffice from "./WingOffice";
         { key: "WingOffice", label: "Type of Wing Office", _style: { width: "10%" } },
         { key: "Abbreviation", label: "Abbreviation", _style: { width: "10%" } },
         { key: "Code", label: "Code", _style: { width: "10%" } },
-        { key: "Reporting To", label: "Reporting To", _style: { width: "10%" } },
+        { key: "ReportingTo", label: "Hierarchy ReportingTo", _style: { width: "10%" } },
         {
           label: "Action",
           key: "show_details1",
@@ -68,33 +68,136 @@ import WingOffice from "./WingOffice";
               <div>
             
             <div className={"main-headerlabel"}>
-              <span className={"header-label"}>Type of Wing Office</span>
+              <span className={"header-label"}>Wing Office</span>
             </div>
          
-                <CButton
-                  id={"memberregisteraddbutton"}
-                  className={"saveBtn"}
-                  onClick={enableCreate}
+        
+               <div style={{ marginLeft: "-26px" }}>
+                 <div className={"row-headerlabel"}>
+                   <span  style={{marginLeft:"70px"}} className={"header-label"}>
+                     {" "}
+                     ADD NEW TYPE OF WING OFFICE{" "}
+                   </span>
+                 </div>
+     <CRow className={"row-alignment"} style={{ marginLeft: "-76px" }}>
+  <CCol className={"column-align"} md="12" lg="12" sm="12">
+    <p className="mandatory_txt" style={{ marginLeft: "90px" }}>
+      Mandatory fields are marked with an asterisk (*)
+        </p>
+        </CCol>
+        </CRow>
+
+</div>
+
+<CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                <CCol className={"column-align"} md={4} >
+                  <CLabel className={"label-name"}>
+                    Type of Wing Office
+                    <span className={"text-danger"}>*</span>
+                  </CLabel>
+                  <CInput
+                    type={"text"}
+                    className={"input-align"}
+                    name={"Type of Wing Office"}
+                    id={"wingofficename"}
+                    placeholder="Type of Wing Office"
+                  />
+                </CCol>
+
+                <CCol className={"column-align"} md={4} >
+                  <CLabel className={"label-name"}>
+                  Abbreviation 
+                    <span className={"text-danger"}>*</span>
+                  </CLabel>
+                  <CInput
+                    type={"text"}
+                    className={"input-align"}
+                    name={"Abbreviation"}
+                    id={"WingAbbreviation "}
+                    placeholder="Enter the Abbreviation"
+                  />
+                </CCol>
+            
+              </CRow>
+
+              <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                <CCol className={"column-align"} md={4}>
+                  <CLabel className={"label-name"}>
+                    Code
+                    <span className={"text-danger"}>*</span>
+                  </CLabel>
+                  <CInput
+                    type={"text"}
+                    className={"input-align"}
+                    name={"Code"}
+                    id={"wingcode"}
+                    placeholder="Enter the Code"
+                  />
+                </CCol>
+
+                <CCol className={"column-align"} md={4}>
+                  <CLabel className={"label-name"}>
+                  Hierarchy ReportingTo 
+                    <span className={"text-danger"}>*</span>
+                  </CLabel>
+                  <Select
+                    type={"text"}
+                    id={"wingReportingTo"}
+                    className={"select"}
+                    placeholder="Select the Hierarchy ReportingTo"
+                   
+                  />
+                </CCol>
+            
+              </CRow>
+              <CRow>
+              <CCol md="10">
+                <CCol
+                  md="5"
                   style={{
-                    marginLeft: "2.5%",
-                    width: "150px",
-                    cursor: "pointer",
-                    marginTop: "50px",
-                    marginBottom:"-50px",
-                    height: "35px",
+                    marginTop: "18px",
+                    float: "right",
                   }}
                 >
-    
-                  Add WING OFFICE
-                      </CButton>
-    
+                  <CButton
+                    style={{
+                      float: "right",
+                    }}
+                    id={"cancelwing"}
+                    className={"cancelBtn"}
+                  >
+                    CANCEL
+                  </CButton>
+                  <CButton
+                    style={{
+                      float: "right",
+                      marginRight: "15px",
+                    }}
+                    id={"savewing"}
+                    className={"saveBtn"}
+                    // onClick={() => {
+                    //   MemberRegiter();
+                    // }}
+                  >
+                    Save
+                  </CButton>{" "}
+                </CCol>
+              </CCol>
+            </CRow>
+           
+        
+
+              </div>
+            )}
+      
+ 
                 <CRow style={{ padding: "4%", marginTop: "1.5%" }}>
                   <CDataTable
                     items={userData}
                     fields={fields}
                     columnFilter
                     tableFilter
-                    tableLabel={"List of TYPE OF WING OFFICE"}
+                    tableLabel={"List of TYPE OF Party WING OFFICE"}
                     itemsPerPageSelect
                     itemsPerPage={5}
                     hover
@@ -195,18 +298,10 @@ import WingOffice from "./WingOffice";
                     }}
                   />
                 </CRow>
+                </CCard>
               </div>
+ 
             )}
-    
-            {hide && (
-              <div>
-                <WingOffice />
-              </div>
-            )}
-          </CCard>
-        </div>
-      )
-    }
-    
+  
     export default OfficeType
  

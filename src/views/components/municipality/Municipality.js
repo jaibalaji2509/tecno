@@ -5,6 +5,7 @@ import {
   CInput,
   CLabel,
   CRow,
+  CInput,
   CSelect,
 } from "@coreui/react";
 import React, { useState } from "react";

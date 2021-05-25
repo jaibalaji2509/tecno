@@ -1,4 +1,4 @@
-import { CButton, CCard, CCol, CInput, CLabel, CRow, CSelect } from "@coreui/react";
+import { CButton, CCard, CCol, CInput, CInput,CLabel, CRow, CSelect } from "@coreui/react";
 import React, { useState } from "react";
 import Toaster from "src/views/notifications/toaster/Toaster";
 import CDataTable from "../../CoreComponents/table/CDataTable";
@@ -9,112 +9,157 @@ function Constituency() {
 
   const [error, setError] = useState("");
   const [municipalListadd, setMunicipalListadd] = useState(true);
-    const [municipalList, setMunicipalList] = useState(true);
-    const [MunicipalCreate, setmunicipalCreate] = useState(false);
-    const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
-    const [ParliamentaryConstituency, setParliamentaryConstituency] = useState({});
-    const [municipalName, setMuniicipalName] = useState("");
-  
-    const enableCreate = async () => {
-        await setMunicipalList(false);
-        await setmunicipalCreate(true);
-      };
+  const [municipalList, setMunicipalList] = useState(true);
+  const [MunicipalCreate, setmunicipalCreate] = useState(false);
+  const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
+  const [ParliamentaryConstituency, setParliamentaryConstituency] = useState({});
+  const [municipalName, setMuniicipalName] = useState("");
 
-      const enableCreateadd = async () => {
-        await setMunicipalListadd(false);
-        await setmunicipalCreateadd(true);
-      };
-    
-      const editState = async () => {
-        await setMunicipalList(false);
-        await setmunicipalCreate(true);
-        // formik.values.StateName = stateName.stateName;
-        // formik.values.Abbreviation2 = stateName.abbreviation;
-        // formik.values.Code2 = stateName.code;
-        // setPassing(stateName._id);
-        // getState();
-        // getAllAreas();
-      };
-      const editStateadd = async () => {
-        await setMunicipalListadd(false);
-        await setmunicipalCreateadd(true);
-        // formik.values.StateName = stateName.stateName;
-        // formik.values.Abbreviation2 = stateName.abbreviation;
-        // formik.values.Code2 = stateName.code;
-        // setPassing(stateName._id);
-        // getState();
-        // getAllAreas();
-      };
-    
-      const CancelState = async () => {
-       
-        setPassing("");
-        await setMunicipalList(true);
-        await setmunicipalCreate(false);
-      };
-      const CancelStateadd = async () => {
-       
-        setPassing("");
-        await setMunicipalListadd(true);
-        await setmunicipalCreateadd(false);
-      };
-      const [passing, setPassing] = useState("");
-      const userData = [
-        {
-          SNo: "1",
-        //   State: "TamilNadu",
-        //   District: "chennai",
-        //   Area: "TNagar",
-          Street: "Pondy Bazar",
-        },
-      ];
-      const fields = [
-        {
-            key: "show_details",
-            label: "Select",
-            _style: { width: "3%" },
-            name: <div>Email <input type={"checkbox"} onClick={""}/></div>,
-            sorter: false,
-            filter: false,
-          },
-        { key: "SNo", label: "S.NO", _style: { width: "10%" }, sorter: false,
-        filter: false, },
-        // { key: "State", label: "State", _style: { width: "10%" } },
-        // { key: "District", label: "District", _style: { width: "10%" } },
-        // { key: "Area", label: "Ward", _style: { width: "10%" } },
-        { key: "Street", label: "Name of the Street", _style: { width: "10%" } },
-      
-        // { key: "male", label: "Male", _style: { width: "10%" } },
-        // { key: "female", label: "Female", _style: { width: "10%" } },
-        { key: "show_details1", label: "Action", _style: { width: "10%" },    sorter: false,
-        filter: false, },
-          ];
-    
-    return (
-        <div>
-            <CCard className={"cardSave"}>
+  const enableCreate = async () => {
+    await setMunicipalList(false);
+    await setmunicipalCreate(true);
+  };
+
+  const enableCreateadd = async () => {
+    await setMunicipalListadd(false);
+    await setmunicipalCreateadd(true);
+  };
+
+  const editState = async () => {
+    await setMunicipalList(false);
+    await setmunicipalCreate(true);
+    // formik.values.StateName = stateName.stateName;
+    // formik.values.Abbreviation2 = stateName.abbreviation;
+    // formik.values.Code2 = stateName.code;
+    // setPassing(stateName._id);
+    // getState();
+    // getAllAreas();
+  };
+  const editStateadd = async () => {
+    await setMunicipalListadd(false);
+    await setmunicipalCreateadd(true);
+    // formik.values.StateName = stateName.stateName;
+    // formik.values.Abbreviation2 = stateName.abbreviation;
+    // formik.values.Code2 = stateName.code;
+    // setPassing(stateName._id);
+    // getState();
+    // getAllAreas();
+  };
+
+  const CancelState = async () => {
+
+    setPassing("");
+    await setMunicipalList(true);
+    await setmunicipalCreate(false);
+  };
+  const CancelStateadd = async () => {
+
+    setPassing("");
+    await setMunicipalListadd(true);
+    await setmunicipalCreateadd(false);
+  };
+    const [hide, setHide] = useState(false)
+  const [memberhide, setMemberHide] = useState(true)
+
+  const [passing, setPassing] = useState("");
+  const userData = [
+    {
+      SNo: "1",
+      //   State: "TamilNadu",
+      //   District: "chennai",
+      //   Area: "TNagar",
+      Street: "Pondy Bazar",
+    },
+  ];
+  const fields = [
+    {
+      key: "show_details",
+      label: "Select",
+      _style: { width: "3%" },
+      name: <div>Email <input type={"checkbox"} onClick={""} /></div>,
+      sorter: false,
+      filter: false,
+    },
+    {
+      key: "SNo", label: "S.NO", _style: { width: "10%" }, sorter: false,
+      filter: false,
+    },
+    { key: "State", label: "State", _style: { width: "10%" } },
+    { key: "District", label: "District", _style: { width: "10%" } },
+    { key: "Parliamentary", label: "Parliamentary Constituency ", _style: { width: "10%" } },
+    { key: "Legislative", label: "Legislative Assembly Constituency", _style: { width: "10%" } },
+
+    { key: "Area", label: "Area ", _style: { width: "10%" } },
+    // { key: "female", label: "Female", _style: { width: "10%" } },
+    {
+      key: "show_details1", label: "Action", _style: { width: "10%" }, sorter: false,
+      filter: false,
+    },
+  ];
+
+  const counter = () => {
+    setHide(true);
+    setMemberHide(false)
+  }
+
+  return (
+    <div>
+      <CCard className={"cardSave"}>
         <div className={"main-headerlabel"}>
           <span className={"header-label"}>Constituency</span>
         </div>
+        {memberhide && (
+          <div>
         <CRow className={"row-alignment"} style={{ marginLeft: "-76px" }}>
           <CCol className={"column-align"} md="12" lg="12" sm="12">
             <p className="mandatory_txt" style={{ marginLeft: "50px" }}>
               Mandatory fields are marked with an asterisk (*)
                 </p>
 
-           <div style={{ marginLeft: "-20px" }}>
+            <div style={{ marginLeft: "-20px" }}>
               <div className={"row-headerlabel"}>
-                <span  style={{marginLeft:"70px"}} className={"header-label"}>
+                <span style={{ marginLeft: "70px" }} className={"header-label"}>
                   {" "}
                   Adding CONSTITUENCY{" "}
                 </span>
               </div>
+              <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-16px" }}>
+
+
+                <CCol className={"column-align"} md="4">
+                  <CLabel className={"label-name"}>
+                    State
+                 <span className={"text-danger"}>*</span>
+                  </CLabel>
+                  <CSelect
+                    styles={{ marginLeft: "50px" }}
+                    type={"text"}
+                    id={"CONSTITUENCY"}
+                    className={"input-align"}
+                    placeholder="Select the State"
+                  />
+                </CCol>
+                <CCol className={"column-align"} md="4">
+                  <CLabel className={"label-name"}>
+                    District / City
+                 <span className={"text-danger"}>*</span>
+                  </CLabel>
+                  <CSelect
+                    styles={{ marginLeft: "50px" }}
+                    type={"text"}
+                    id={"CONSTITUENCYcity"}
+                    className={"input-align"}
+                    placeholder="CSelect the District / City "
+                  />
+                </CCol>
+              </CRow>
+
               <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
                 {municipalList && (
                   <React.Fragment>
                     <CCol className={"column-align"} md={4} lg={4}>
                       <CLabel className={"label-name-1"}>
-                      Parliamentary Constituency
+                        Parliamentary Constituency
                         <span className={"text-danger"}> *</span>
                       </CLabel>
                       <CSelect
@@ -122,7 +167,7 @@ function Constituency() {
                         id={"ParliamentaryConstituency"}
                         type={"text"}
                         value={ParliamentaryConstituency}
-                        // isDisabled={CountryCreate || CityCreate || AreaCreate}
+                      // isDisabled={CountryCreate || CityCreate || AreaCreate}
                       />
                     </CCol>
                     <CCol className={"column-align"} md={1} lg={1}>
@@ -132,7 +177,7 @@ function Constituency() {
                         style={{ marginTop: "30px" }}
                         className={"saveBtn"}
                         onClick={enableCreate}
-                        // disabled={CountryCreate || CityCreate || AreaCreate}
+                      // disabled={CountryCreate || CityCreate || AreaCreate}
                       >
                         ADD
                       </CButton>
@@ -149,9 +194,9 @@ function Constituency() {
                             id={"ParliamentaryConstituencyEdit"}
                             className={"btn btn-success"}
                             onClick={editState}
-                            // disabled={
-                            //   CountryCreate || CityCreate || AreaCreate
-                            // }
+                          // disabled={
+                          //   CountryCreate || CityCreate || AreaCreate
+                          // }
                           >
                             EDIT
                           </CButton>
@@ -165,7 +210,7 @@ function Constituency() {
                     <CRow className={"column-align3"} sm={12} md={12} lg={12}>
                       <CCol md="3">
                         <CLabel className={"label-name-3"}>
-                           Parliamentary 
+                          Parliamentary
                           <span className={"text-danger"}> *</span>
                         </CLabel>
 
@@ -219,7 +264,7 @@ function Constituency() {
                           // value={states.code}
                           // onChange={statechangeHandler}
                           // style={{ textTransform: "uppercase" }}
-                            placeholder="Enter Code"
+                          placeholder="Enter Code"
                           maxlength="5"
                           size="5"
                         />
@@ -230,7 +275,7 @@ function Constituency() {
                           id={"ParliamentaryConstituencysave"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
-                          // onClick={State}
+                        // onClick={State}
                         >
                           {passing !== "" ? "UPDATE" : "SAVE"}
                         </CButton>
@@ -249,13 +294,13 @@ function Constituency() {
                   </React.Fragment>
                 )}
               </CRow>
-        
+
               <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
                 {municipalListadd && (
                   <React.Fragment>
                     <CCol className={"column-align"} md={4} lg={4}>
                       <CLabel className={"label-name-1"}>
-                        Legislative Assembly Constituency 
+                        Legislative Assembly Constituency
                         <span className={"text-danger"}> *</span>
                       </CLabel>
                       <CSelect
@@ -263,7 +308,7 @@ function Constituency() {
                         id={"Legislative"}
                         type={"text"}
 
-                        // isDisabled={CountryCreate || CityCreate || AreaCreate}
+                      // isDisabled={CountryCreate || CityCreate || AreaCreate}
                       />
                     </CCol>
                     <CCol className={"column-align"} md={1} lg={1}>
@@ -273,7 +318,7 @@ function Constituency() {
                         style={{ marginTop: "30px" }}
                         className={"saveBtn"}
                         onClick={enableCreateadd}
-                        // disabled={CountryCreate || CityCreate || AreaCreate}
+                      // disabled={CountryCreate || CityCreate || AreaCreate}
                       >
                         ADD
                       </CButton>
@@ -290,9 +335,9 @@ function Constituency() {
                             id={"LegislativeEdit1"}
                             className={"btn btn-success"}
                             onClick={editStateadd}
-                            // disabled={
-                            //   CountryCreate || CityCreate || AreaCreate
-                            // }
+                          // disabled={
+                          //   CountryCreate || CityCreate || AreaCreate
+                          // }
                           >
                             EDIT
                           </CButton>
@@ -306,8 +351,8 @@ function Constituency() {
                     <CRow className={"column-align3"} sm={12} md={12} lg={12}>
                       <CCol md="3">
                         <CLabel className={"label-name-3"}>
-                        Legislative Assembly
- 
+                          Legislative Assembly
+                          
                           <span className={"text-danger"}> *</span>
                         </CLabel>
 
@@ -372,7 +417,7 @@ function Constituency() {
                           id={"Legislativesave1"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
-                          // onClick={State}
+                        // onClick={State}
                         >
                           {passing !== "" ? "UPDATE" : "SAVE"}
                         </CButton>
@@ -390,51 +435,20 @@ function Constituency() {
                     </CRow>
                   </React.Fragment>
                 )}
-              </CRow> 
-           
-           <CRow>
-        <CCol>
-  <CLabel style={{fontSize:"20PX", fontFamily:"Open Sans", fontWeight:"700", marginLeft:"71px", marginTop:"20px"}}>
-    Selection Area
+              </CRow>
+
+              <CRow>
+                <CCol>
+                  <CLabel style={{ fontSize: "20PX", fontFamily: "Open Sans", fontWeight: "700", marginLeft: "71px", marginTop: "20px" }}>
+                    Selection Area
   </CLabel>
-</CCol>
-</CRow>
-<CRow className={"row-alignment"} md="12" sm="12" lg="12"  style={{marginLeft:"-16px"}}>
-             
+                </CCol>
+              </CRow>
 
-             <CCol className={"column-align"} md="4">
-               <CLabel className={"label-name"}>
-               State
-                 <span className={"text-danger"}>*</span>
-               </CLabel>
-               <CSelect
-                  styles={{marginLeft:"50px"}}
-                    type={"text"}
-                    id={"CONSTITUENCYstate"}
-                    className={"input-align"}
-                    placeholder="CSelect the State"
-                  />
-             </CCol>
-             <CCol className={"column-align"} md="4">
-               <CLabel className={"label-name"}>
-                 District / City
-                 <span className={"text-danger"}>*</span>
-               </CLabel>
-               <CSelect
-                  styles={{marginLeft:"50px"}}
-                    type={"text"}
-                    id={"CONSTITUENCYcity"}
-                    className={"input-align"}
-                    placeholder="CSelect the District / City "
-                  />
-             </CCol>
-             
-           </CRow>
-
-           <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{marginLeft:"-16px"}}>
-           <CCol className={"column-align"} md="4">
-                                 <CLabel className={"label-name"}>
-                  Area / Village
+              <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-16px" }}>
+                <CCol className={"column-align"} md="4">
+                  <CLabel className={"label-name"}>
+                    Area / Village
                     <span className={"text-danger"}>*</span>
                   </CLabel>
                   <CSelect
@@ -444,10 +458,10 @@ function Constituency() {
                     placeholder="CSelect the Area / Village"
                   />
                 </CCol>
-              
+
                 <CCol className={"column-align"} md="4">
                   <CLabel className={"label-name"}>
-                  Ward Name
+                    Ward Name
                           <span className={"text-danger"}> *</span>
                   </CLabel>
                   <CSelect
@@ -455,14 +469,14 @@ function Constituency() {
                     id={"constituencyward"}
                     className={"input-align"}
                     placeholder="CSelect the Ward"
-                   
+
                   />
-               </CCol>
-               </CRow>
-               <CRow className={"row-alignment"} md="12" sm="12" lg="12"  style={{marginLeft:"-16px"}}>
-               <CCol className={"column-align"} md="4">
+                </CCol>
+              </CRow>
+              <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-16px" }}>
+                <CCol className={"column-align"} md="4">
                   <CLabel className={"label-name"}>
-                  Street Name
+                    Street Name
                     <span className={"text-danger"}>*</span>
                   </CLabel>
                   <CSelect
@@ -470,58 +484,61 @@ function Constituency() {
                     id={"constituencystreet"}
                     className={"input-align"}
                     placeholder="CSelect the Street "
-                  
+
                   />
                 </CCol>
-</CRow>
-<CRow>
-              <CCol md="10">
-                <CCol
-                  md="5"
-                  style={{
-                    marginTop: "-35px",
-                    marginLeft:"285px"
-                  }}
-                >
-                  <CButton
+              </CRow>
+              <CRow>
+                <CCol md="10">
+                  <CCol
+                    md="5"
                     style={{
-                      float: "right",
+                      marginTop: "-35px",
+                      marginLeft: "285px"
                     }}
-                    id={"cancelconstituency"}
-                    className={"cancelBtn"}
                   >
-                    CANCEL
+                    <CButton
+                      style={{
+                        float: "right",
+                      }}
+                      id={"cancelconstituency"}
+                      className={"cancelBtn"}
+                    >
+                      CANCEL
                   </CButton>
-                  <CButton
-                    style={{
-                      float: "right",
-                      marginRight: "15px",
-                    }}
-                    id={"saveconstituencyAbbreviationConfigureCode"}
-                    className={"saveBtn"}
-                  >
-                    Save
+                    <CButton
+                      style={{
+                        float: "right",
+                        marginRight: "15px",
+                      }}
+                      id={"saveconstituencyAbbreviationConfigureCode"}
+                      className={"saveBtn"}
+                    >
+                      Save
                   </CButton>{" "}
+                  </CCol>
                 </CCol>
-              </CCol>
-            </CRow>
-            <CRow style={{ padding: "6%", marginTop: "-3.5%" }}>
-              <CDataTable
-                items={userData}
-                fields={fields}
-                columnFilter
-                tableFilter
-                tableLabel={"List of Streets"}
-                itemsPerPageSelect
-                itemsPerPage={5}
-                hover
-                sorter
-                pagination
-                scopedSlots={{
-                  show_details: (item, index) => {
-                    return (
-                      <td className="py-2">
-                           <CInput
+              </CRow>
+
+
+
+              <CRow style={{ padding: "6%", marginTop: "-3.5%" }}>
+                <CDataTable
+                  items={userData}
+                  fields={fields}
+                  columnFilter
+                  tableFilter
+                  tableLabel={"List of Streets"}
+                  itemsPerPageSelect
+                  itemsPerPage={5}
+                  hover
+                  sorter
+                  pagination
+                  scopedSlots={{
+                    show_details: (item, index) => {
+                      return (
+                        <td className="py-2">
+                          <CInput
                             type={"checkbox"}
                             // onClick={() => {
                             //   let data = item._id;
@@ -539,14 +556,14 @@ function Constituency() {
                               marginBottom: "10px",
                             }}
                           />
-                        <CRow>
-                          <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              onClick={() => {
-                                //   toggleDetails(index);
-                              }}
-                            ></i>
-                            {/* <i
+                          <CRow>
+                            <CCol style={{ fontSize: "1.15rem" }} md="12">
+                              <i
+                                onClick={() => {
+                                  //   toggleDetails(index);
+                                }}
+                              ></i>
+                              {/* <i
                                 style={{
                                   marginRight: "5px",
                                   color: "#3480e2",
@@ -566,23 +583,23 @@ function Constituency() {
                                 }}
                                 className="fa fa-trash"
                               ></i> */}
-                          </CCol>
-                        </CRow>
-                      </td>
-                    );
-                  },
-                  show_details1: (item, index) => {
-                    return (
-                      <td className="py-2">
-                        <CRow>
-                    
-                          <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              onClick={() => {
-                                //   toggleDetails(index);
-                              }}
-                            ></i>
-                            <i
+                            </CCol>
+                          </CRow>
+                        </td>
+                      );
+                    },
+                    show_details1: (item, index) => {
+                      return (
+                        <td className="py-2">
+                          <CRow>
+
+                            <CCol style={{ fontSize: "1.15rem" }} md="12">
+                              <i
+                                onClick={() => {
+                                  //   toggleDetails(index);
+                                }}
+                              ></i>
+                              <i
                                 style={{
                                   marginRight: "5px",
                                   color: "#3480e2",
@@ -602,22 +619,103 @@ function Constituency() {
                                 }}
                                 className="fa fa-trash"
                               ></i>
-                          </CCol>
-                        </CRow>
-                      </td>
-                    );
-                  },
-                  details: (item, index) => {},
-                }}
-              />
-            </CRow>
+                              <i 
+                               style={{
+                                marginLeft: "5px",
+                                color: "green",
+                                cursor: "pointer",
+                              }}
+                              id={"removeicon"}
+                              className="fas fa-eraser"></i>
+                                <i
+                             style={{
+                              marginRight: "5px",
+                              marginLeft:"5px",
+                              color: "#3480e2",
+                              cursor: "pointer",
 
-           </div>
-</CCol>
-</CRow>
-        </CCard>
+                            }}
+                            id={"viewicon"}
+                            className="fa fa-eye"
+                            ></i>
+                            </CCol>
+                          </CRow>
+                        </td>
+                      );
+                    },
+                    details: (item, index) => { },
+                  }}
+                />
+              </CRow>
+
+            </div>
+          </CCol>
+        </CRow>
+       
         </div>
-    )
+        )}
+      </CCard>
+
+      {hide && (
+  < div >
+                
+                <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-16px" ,marginTop:"-550px"}}>
+                <CCol className={"column-align"} md="4">
+                  <CLabel className={"label-name"}>
+                    Ward Name
+                         
+                  </CLabel>
+                  <CSelect
+                    type={"text"}
+                    id={"constituencyward"}
+                    className={"input-align"}
+                    placeholder="CSelect the Ward"
+
+                  />
+                </CCol>
+                <CCol className={"column-align"} md="4">
+                  <CLabel className={"label-name"}>
+                    Street Name
+                   
+                  </CLabel>
+                  <CSelect
+                    type={"text"}
+                    id={"constituencystreet"}
+                    className={"input-align"}
+                    placeholder="CSelect the Street "
+
+                  />
+                </CCol>
+              </CRow>
+              <CRow>
+                <CCol md="10">
+                  <CCol
+                    md="5"
+                    style={{
+                      marginTop: "-35px",
+                      marginLeft: "285px"
+                    }}
+                  >
+                    <CButton
+                      style={{
+                        float: "right",
+                        marginTop:"60px",
+                        marginRight:"-350px"
+                      }}
+                      id={"cancelconstituency"}
+                      className={"cancelBtn"}
+                    >
+                      Back
+                  </CButton>
+              </CCol>
+</CCol>
+</CRow>     
+</div>
+)}
+
+    </div>
+  )
 }
+
 
 export default Constituency
