@@ -56,7 +56,7 @@ const VillagePanchayat = React.lazy(() => import('./views/components/villagepanc
 const PartyOffice = React.lazy(() => import('./views/components/partyoffice/PartyOffice'));
 const AddMemberRegister = React.lazy(() => import('./views/components/MemberRegistration/AddMemberRegister'));
 const MemberRegistration = React.lazy(() => import('./views/components/MemberRegistration/MemberRegistration'));
-
+const PartyOfficeLocation = React.lazy(() => import('./views/components/partyofficelocation/PartyOfficeLocation'));
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', exact: true ,component: Dashboard },
@@ -102,7 +102,7 @@ const routes = [
   {path:"/locationlibrary", exact:true, name:'Location Library', component:LocationLibrary},
   {path:"/tabslist", exact:true, name : "TabsList", component:TabsList},
   // { path: '/AddMemberRegister',  exact: true, name: 'AddMemberRegister', component: AddMemberRegister },
-  // { path: '/MemberRegistration',  exact: true, name: 'MemberRegistration', component: MemberRegistration },
+  { path: '/partyofficelocation',  exact: true, name: 'Party OfficeLocation', component: PartyOfficeLocation  },
 
   {path:"/municipalcorporation", exact:true, name : "Municipal Corporation", component:MunicipalCorporation},
   {path:"/municipality", exact:true, name : "Municipality", component:Municipality},

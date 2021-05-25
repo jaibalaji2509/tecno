@@ -48,16 +48,21 @@ const PartyOffice = () => {
     // },
   ];
   const fields = [
-    { key: "SNo", label: "S.NO", _style: { width: "10%" },    sorter: false,
+    { key: "SNo", label: "S.NO", _style: { width: "5%" },    sorter: false,
     filter: false, },
     // { key: "State", label: "State", _style: { width: "10%" } },
   
-    { key: "Street", label: "Type of Party Office", _style: { width: "10%" } },
+    { key: "Street", label: "Type of Party Office", _style: { width: "15%" } },
     { key: "District", label: "Abbreviation", _style: { width: "10%" } },
     { key: "Area", label: "Code", _style: { width: "10%" } },
-    { key: "male", label: "Reporting TO", _style: { width: "10%" } },
+    { key: "male", label: "Reporting To Office", _style: { width: "12%" } },
     // { key: "female", label: "Female", _style: { width: "10%" } },
-    { key: "Street", label: "Action", _style: { width: "10%" },    sorter: false,
+  
+    { key: "Street", label: "Entered By", _style: { width: "7%" },    sorter: false,
+    filter: false, },
+    { key: "Street", label: "Entered On", _style: { width: "7%" },    sorter: false,
+    filter: false, },
+    { key: "Street", label: "Action", _style: { width: "5%" },    sorter: false,
     filter: false, },
   ];
   const [passing, setPassing] = useState("");
@@ -190,35 +195,160 @@ const PartyOffice = () => {
                  <div className={"row-headerlabel"}>
                    <span  style={{marginLeft:"70px"}} className={"header-label"}>
                      {" "}
-                       Party Office{" "}
+                     Adding Party Office{" "}
                    </span>
                  </div>
-                 <CRow style={{marginTop:"45px"}}>
-                 <CCol md="10">
-                   <CCol
-                     md="5"
-                     style={{
-                       marginLeft: "5px",
-                       float: "right",
-                       marginTop:"-20px"
-                     }}
-                   >
+                 <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+             
+
+             <CCol className={"column-align"} md="4">
+               <CLabel className={"label-name"}>
+               Type of Party Office
+                 <span className={"text-danger"}>*</span>
+               </CLabel>
+               <CInput
+                 className={"input-align"}
+                 id={"municipalstatename"}
+                 name={"state"}
+                 placeholder={"Enter Party Office"}
+                 value={locations.district}
+                 onChange={changeHandler}
+               />
+             </CCol>
+             <CCol className={"column-align"} md="4">
+               <CLabel className={"label-name"}>
+               Abbreviation
+                 <span className={"text-danger"}>*</span>
+               </CLabel>
+               <CInput
+                 className={"input-align"}
+                 id={"municipaldistrict"}
+                 name={"city"}
+                 placeholder={"Enter Abbreviation"}
+                 value={locations.city}
+                 onChange={changeHandler}
+               />
+             </CCol>
+             
+           </CRow>
+           <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+          
+           <CCol className={"column-align"} md="4">
+               <CLabel className={"label-name"}>
+               Code
+                 <span className={"text-danger"}>*</span>
+               </CLabel>
+               <CInput
+                 className={"input-align"}
+                 id={"municipaldistrict"}
+                 name={"city"}
+                 placeholder={"Enter Code"}
+                 value={locations.city}
+                 onChange={changeHandler}
+               />
+             </CCol>
+           <CCol className={"column-align"} md="4">
+               <CLabel className={"label-name"}>
+                Reporting To Office
+                 <span className={"text-danger"}>*</span>
+               </CLabel>
+               <CSelect
+                 className={"input-align"}
+                 id={"municipalarea"}
+                 name={"area"}
+                 placeholder={"Select Reporting To"}
+                 value={locations.city}
+                 onChange={changeHandler}
+               />
+             </CCol>
         
-                     <CButton
-                       style={{
-                         float: "right",
-                         marginRight: "1030px",
-                       }}
-                       id={"saveAbbreviationConfigureCode"}
-                       className={"saveBtn"}
-                       onClick={changeMunicipalCorporation}
-                     >
-                      Add Party Office
-                     </CButton>{" "}
-                   </CCol>
-                 </CCol>
-               </CRow>
+         
+        </CRow>
+        <CRow style={{marginTop:"60px"}}>
+              <CCol md="10">
+                <CCol
+                  md="5"
+                  style={{
+                    marginLeft: "555px",
+                    float: "right",
+                    marginTop:"-25px",
+                    position:"absolute"
+                  }}
+                >
+                  <CButton
+                    style={{
+                      float: "right",
+                    }}
+                    id={"cancelAbbreviationConfigureCode"}
+                    className={"cancelBtn"}
+                  >
+                    CANCEL
+                  </CButton>
+                  <CButton
+                    style={{
+                      float: "right",
+                      marginRight: "15px",
+                    }}
+                    id={"saveAbbreviationConfigureCode"}
+                    className={"saveBtn"}
+                    onClick={saveCorporation}
+                  >
+                    Save
+                  </CButton>{" "}
+                </CCol>
+              </CCol>
+            </CRow>
+
                </div>
+               <CRow>
+                <CCol style={{ fontSize: "1.55rem" }} md="12">
+                  <i
+                    id={"locationLibraryDelete"}
+                    style={{
+                      position: "absolute",
+                      top: "80px",
+                      marginLeft: "955px",
+                      marginBottom: "20px",
+                      color: "#0072ff",
+                    }}
+                    className="fa fa-print"
+                  ></i>
+                </CCol>
+                <CCol style={{ fontSize: "1.55rem" }} md="12">
+                  <i
+                    id={"locationLibraryDelete"}
+                    style={{
+                      position: "absolute",
+                      top: "80px",
+                      marginLeft: "1000px",
+                      marginBottom: "20px",
+                      color: "green",
+                    }}
+                    className="fa fa-share-alt"
+                  ></i>
+                </CCol>
+              </CRow>
+              
+            <CRow>
+                  <CCol style={{top:"20px"}}>
+                    <img
+                      id={"employeeDataorgEmployeeData"}
+                      alt={""}
+                      src={
+                        "https://img.icons8.com/fluent/2x/organization-chart-people.png"
+                      }
+                      style={{
+                        height: "40px",
+                        width: "40px",
+                        marginRight: "80px",
+                        float: "right",
+                        cursor: "pointer",
+                        
+                      }}
+                    //   onClick={() => setPrimary(!primary)}
+                    />
+                  </CCol>
+                </CRow>
                <CRow style={{ padding: "4%", marginTop: "-1.5%" }}>
                  <CDataTable
                    items={userData}
@@ -294,109 +424,9 @@ const PartyOffice = () => {
                 </span>
               </div>
         
-     <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-             
-
-                <CCol className={"column-align"} md="4">
-                  <CLabel className={"label-name"}>
-                  Type of PartyOffice
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <CInput
-                    className={"input-align"}
-                    id={"municipalstatename"}
-                    name={"state"}
-                    placeholder={"Select State"}
-                    value={locations.district}
-                    onChange={changeHandler}
-                  />
-                </CCol>
-                <CCol className={"column-align"} md="4">
-                  <CLabel className={"label-name"}>
-                  Abbreviation
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <CInput
-                    className={"input-align"}
-                    id={"municipaldistrict"}
-                    name={"city"}
-                    placeholder={" Corporation Name"}
-                    value={locations.city}
-                    onChange={changeHandler}
-                  />
-                </CCol>
-                
-              </CRow>
-              <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-             
-              <CCol className={"column-align"} md="4">
-                  <CLabel className={"label-name"}>
-                  Code
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <CInput
-                    className={"input-align"}
-                    id={"municipaldistrict"}
-                    name={"city"}
-                    placeholder={" Corporation Name"}
-                    value={locations.city}
-                    onChange={changeHandler}
-                  />
-                </CCol>
-              <CCol className={"column-align"} md="4">
-                  <CLabel className={"label-name"}>
-                   Reporting To
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <CSelect
-                    className={"input-align"}
-                    id={"municipalarea"}
-                    name={"area"}
-                    placeholder={" Corporation Name"}
-                    value={locations.city}
-                    onChange={changeHandler}
-                  />
-                </CCol>
-           
-            
-           </CRow>
-            
             
             </div>
-            <CRow style={{marginTop:"60px"}}>
-              <CCol md="10">
-                <CCol
-                  md="5"
-                  style={{
-                    marginLeft: "555px",
-                    float: "right",
-                    marginTop:"-25px",
-                    position:"absolute"
-                  }}
-                >
-                  <CButton
-                    style={{
-                      float: "right",
-                    }}
-                    id={"cancelAbbreviationConfigureCode"}
-                    className={"cancelBtn"}
-                  >
-                    CANCEL
-                  </CButton>
-                  <CButton
-                    style={{
-                      float: "right",
-                      marginRight: "15px",
-                    }}
-                    id={"saveAbbreviationConfigureCode"}
-                    className={"saveBtn"}
-                    onClick={saveCorporation}
-                  >
-                    Save
-                  </CButton>{" "}
-                </CCol>
-              </CCol>
-            </CRow>
+            
 </div>
         )}
 

@@ -37,7 +37,12 @@ const VillagePanchayat = () => {
   const [MunicipalCreate, setmunicipalCreate] = useState(false);
   const [municipalCorporation, setMunicipalCorporation] = useState({});
   const [municipalName, setMuniicipalName] = useState("");
-
+  const [villageList, setvillageList] = useState(true);
+  const [villageCreate, setVillageCreate] = useState(false);
+  const [panchayatList, setPanchayatlist] = useState(true);
+  const [panchayatCreate, setpanchayatCreate] = useState(false);
+  const [wardList, setWardList] = useState(true);
+  const [wardCreate, setWardCreate] = useState(false);
   const [locationHide, setLocationHide] = useState({
     corporation: true,
     municipalLocation: false,
@@ -170,6 +175,18 @@ const VillagePanchayat = () => {
     await setmunicipalCreate(true);
   };
 
+  const addPanchayat = async () => {
+    await setPanchayatlist(false);
+    await setpanchayatCreate(true);
+  };
+  const addVillage = async () => {
+    await setvillageList(false);
+    await setVillageCreate(true);
+  };
+  const addWard = async () => {
+    await setWardList(false);
+    await setWardCreate(true);
+  };
   const editState = async () => {
     await setMunicipalList(false);
     await setmunicipalCreate(true);
@@ -184,6 +201,21 @@ const VillagePanchayat = () => {
     setPassing("");
     await setMunicipalList(true);
     await setmunicipalCreate(false);
+  };
+  const cancelVillage = async () => {
+    setPassing("");
+    await setvillageList(true);
+    await setVillageCreate(false);
+  };
+  const cancelWard = async () => {
+    setPassing("");
+    await setWardList(true);
+    await setWardCreate(false);
+  };
+  const cancelPanchayat = async () => {
+    setPassing("");
+    await setPanchayatlist(true);
+    await setpanchayatCreate(false);
   };
   const [hideMappingVillage, setHideMappingVillage] = useState(true);
   const [hideVillagePanchayat, setHideVillagePanchayat] = useState(false);
@@ -226,7 +258,7 @@ const VillagePanchayat = () => {
                         <CButton
                           style={{
                             float: "right",
-                            marginRight: "968px",
+                            marginRight: "830px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
@@ -515,7 +547,7 @@ const VillagePanchayat = () => {
               </CRow>
 
               <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
-                {municipalList && (
+                {panchayatList && (
                   <React.Fragment>
                     <CCol className={"column-align"} md={4} lg={4}>
                       <CLabel className={"label-name-1"}>
@@ -536,7 +568,7 @@ const VillagePanchayat = () => {
                         id={"addmunicipalcorporation"}
                         style={{ marginTop: "30px" }}
                         className={"saveBtn"}
-                        onClick={enableCreate}
+                        onClick={addPanchayat}
                         // disabled={CountryCreate || CityCreate || AreaCreate}
                       >
                         ADD
@@ -565,7 +597,7 @@ const VillagePanchayat = () => {
                     ) : null}
                   </React.Fragment>
                 )}
-                {MunicipalCreate && (
+                {panchayatCreate && (
                   <React.Fragment>
                     <CRow className={"column-align3"} sm={12} md={12} lg={12}>
                       <CCol md="3">
@@ -644,7 +676,7 @@ const VillagePanchayat = () => {
                           id={"municipalcancel"}
                           style={{ marginTop: "30px", marginLeft: "20px" }}
                           className={"cancelBtn"}
-                          onClick={CancelState}
+                          onClick={cancelPanchayat}
                         >
                           CANCEL
                         </CButton>
@@ -655,7 +687,7 @@ const VillagePanchayat = () => {
                 )}
               </CRow>
               <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
-                {municipalList && (
+                {villageList && (
                   <React.Fragment>
                     <CCol className={"column-align"} md={4} lg={4}>
                       <CLabel className={"label-name-1"}>
@@ -676,7 +708,7 @@ const VillagePanchayat = () => {
                         id={"addmunicipalcorporation"}
                         style={{ marginTop: "30px" }}
                         className={"saveBtn"}
-                        onClick={enableCreate}
+                        onClick={addVillage}
                         // disabled={CountryCreate || CityCreate || AreaCreate}
                       >
                         ADD
@@ -705,7 +737,7 @@ const VillagePanchayat = () => {
                     ) : null}
                   </React.Fragment>
                 )}
-                {MunicipalCreate && (
+                {villageCreate && (
                   <React.Fragment>
                     <CRow className={"column-align3"} sm={12} md={12} lg={12}>
                       <CCol md="3">
@@ -784,7 +816,7 @@ const VillagePanchayat = () => {
                           id={"municipalcancel"}
                           style={{ marginTop: "30px", marginLeft: "20px" }}
                           className={"cancelBtn"}
-                          onClick={CancelState}
+                          onClick={cancelVillage}
                         >
                           CANCEL
                         </CButton>
@@ -796,7 +828,7 @@ const VillagePanchayat = () => {
               </CRow>
 
               <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
-                {municipalList && (
+                {wardList && (
                   <React.Fragment>
                     <CCol className={"column-align"} md={4} lg={4}>
                       <CLabel className={"label-name-1"}>
@@ -817,7 +849,7 @@ const VillagePanchayat = () => {
                         id={"addmunicipalcorporation"}
                         style={{ marginTop: "30px" }}
                         className={"saveBtn"}
-                        onClick={enableCreate}
+                        onClick={addWard}
                         // disabled={CountryCreate || CityCreate || AreaCreate}
                       >
                         ADD
@@ -846,7 +878,7 @@ const VillagePanchayat = () => {
                     ) : null}
                   </React.Fragment>
                 )}
-                {MunicipalCreate && (
+                {wardCreate && (
                   <React.Fragment>
                     <CRow className={"column-align3"} sm={12} md={12} lg={12}>
                       <CCol md="3">
@@ -925,7 +957,7 @@ const VillagePanchayat = () => {
                           id={"wardcancel"}
                           style={{ marginTop: "30px", marginLeft: "20px" }}
                           className={"cancelBtn"}
-                          onClick={CancelState}
+                          onClick={cancelWard}
                         >
                           CANCEL
                         </CButton>

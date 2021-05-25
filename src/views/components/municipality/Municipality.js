@@ -58,6 +58,8 @@ const Municipality = () => {
     
     },
   ];
+  const [checked, setChecked] = useState(false)
+  const handleClick = () => setChecked(!checked)
   const fields = [
     {
       key: "show_details",
@@ -66,6 +68,7 @@ const Municipality = () => {
       name: <div>Email <input type={"checkbox"} onClick={""}/></div>,
       sorter: false,
       filter: false,
+      checked:true,
     },
     { key: "SNo", label: "S.NO", _style: { width: "5%" },    sorter: false,
     filter: false, },
@@ -112,8 +115,8 @@ const Municipality = () => {
   const CancelState1 = async () => {
    
     setPassing("");
-    await setMunicipalList1(true);
-    await setmunicipalCreate1(false);
+    // await setMunicipalList1(true);
+    // await setmunicipalCreate1(false);
   };
   const saveMunicipalLocation = () => {
     setLocationHide({
@@ -250,7 +253,7 @@ const Municipality = () => {
                      <CButton
                        style={{
                          float: "right",
-                         marginRight: "1010px",
+                         marginRight: "865px",
                        }}
                        id={"saveAbbreviationConfigureCode"}
                        className={"saveBtn"}
@@ -341,6 +344,7 @@ const Municipality = () => {
                    itemsPerPage={5}
                    hover
                    sorter
+                   checked
                    pagination
                    scopedSlots={{
                      show_details: (item, index) => {
@@ -791,6 +795,7 @@ const Municipality = () => {
                 itemsPerPage={5}
                 hover
                 sorter
+                checked
                 pagination
                 scopedSlots={{
                   show_details: (item, index) => {

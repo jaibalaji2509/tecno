@@ -62,11 +62,7 @@ const TownPanchayat = () => {
       key: "show_details",
       label: "Select",
       _style: { width: "3%" },
-      name: (
-        <div>
-          Email <input type={"checkbox"} onClick={""} />
-        </div>
-      ),
+    
       sorter: false,
       filter: false,
     },
@@ -207,16 +203,16 @@ const TownPanchayat = () => {
     setHideTownPanchayat(true);
   };
   const enableCreate1 = async () => {
-    await setMunicipalList1(false);
-    await setmunicipalCreate1(true);
+    // await setMunicipalList1(false);
+    // await setmunicipalCreate1(true);
     const enableCreateadd = async () => {
       await setMunicipalListadd(false);
       await setmunicipalCreateadd(true);
     };
 
     const editStateadd = async () => {
-      await setMunicipalListadd(false);
-      await setmunicipalCreateadd(true);
+      // await setMunicipalListadd(false);
+      // await setmunicipalCreateadd(true);
       // formik.values.StateName = stateName.stateName;
       // formik.values.Abbreviation2 = stateName.abbreviation;
       // formik.values.Code2 = stateName.code;
