@@ -1,12 +1,4 @@
 import React from 'react';
-import LocationLibrary from './views/components/location_library/Locationlibrary';
-import TabsList from './views/components/tabslist/TabsList';
-import MunicipalCorporation from './views/components/municipalcorporation/MunicipalCorporation';
-import Login from './views/pages/login/Login';
-// import VillagePanchayat from './views/components/villagepanchayat/VillagePanchayat';
-
-
-
 
 const Toaster = React.lazy(() => import('./views/notifications/toaster/Toaster'));
 const Tables = React.lazy(() => import('./views/base/tables/Tables'));
@@ -25,6 +17,17 @@ const Paginations = React.lazy(() => import('./views/base/paginations/Pagnations
 const Popovers = React.lazy(() => import('./views/base/popovers/Popovers'));
 const ProgressBar = React.lazy(() => import('./views/base/progress-bar/ProgressBar'));
 const Switches = React.lazy(() => import('./views/base/switches/Switches'));
+
+const Terminate = React.lazy(() => import('./views/components/terminate/terminate'));
+const Promote = React.lazy(() => import('./views/components/promote/promote'));
+const Transfer = React.lazy(() => import('./views/components/transfer/transfer'));
+const Suspend = React.lazy(() => import('./views/components/suspend/suspend'));
+const Revoke = React.lazy(() => import('./views/components/revoke/revoke'));
+
+const Login = React.lazy(() => import('./views/pages/login/Login'));
+const LocationLibrary = React.lazy(() => import('./views/components/location_library/Locationlibrary'));
+const TabsList = React.lazy(() => import('./views/components/tabslist/TabsList'));
+const MunicipalCorporation = React.lazy(() => import('./views/components/municipalcorporation/MunicipalCorporation'));
 
 const Tabs = React.lazy(() => import('./views/base/tabs/Tabs'));
 const Tooltips = React.lazy(() => import('./views/base/tooltips/Tooltips'));
@@ -115,6 +118,11 @@ const routes = [
   { path: '/ViewConstituency',  exact: true, name: 'Constituency', component: ViewConstituency },
   { path: '/Terminate',  exact: true, name: 'Terminate Member', component: Terminate },
 
+  { path: '/memberPromote',  exact: true, name: 'Member Promote', component: Promote },
+  { path: '/memberSuspend',  exact: true, name: 'Member Suspend', component: Suspend },
+  { path: '/memberTransfer',  exact: true, name: 'Member Transfer', component: Transfer },
+  { path: '/memberTerminate',  exact: true, name: 'Member Terminate', component: Terminate },
+  { path: '/memberRevoke',  exact: true, name: 'Member Revoke', component: Revoke },
 ];
 
 export default routes;

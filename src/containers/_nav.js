@@ -1,117 +1,106 @@
-import React from 'react'
-import CIcon from '@coreui/icons-react'
+import React from "react";
+import CIcon from "@coreui/icons-react";
 // import { TiGroup } from "react-icons/ti";
 // import { MdLocationOn,MdContactMail,MdAssignmentTurnedIn } from "react-icons/md";
-const _nav =  [
+const _nav = [
   {
-    _tag: 'CSidebarNavItem',
-    name: 'Dashboard',
-    to: '/dashboard',
-    icon: <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon"/>,
+    _tag: "CSidebarNavItem",
+    name: "Dashboard",
+    to: "/dashboard",
+    icon: <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon" />,
     badge: {
-      color: 'info',
-      text: 'NEW',
-    }
+      color: "info",
+      text: "NEW",
+    },
   },
- 
-
   {
-    _tag: 'CSidebarNavItem',
-    name: 'Location Library',
-    to: '/locationlibrary',
-    icon: 'cil-drop',
+    _tag: "CSidebarNavItem",
+    name: "Location Library",
+    to: "/locationlibrary",
+    icon: "cil-drop",
   },
-
   {
-    id:"AdminSetupSideBar",
+    id: "AdminSetupSideBar",
     _tag: "CSidebarNavDropdown",
     name: "Ward Library",
     route: "/AdminSetup",
-    
-    icon: 'cil-drop',
-
+    icon: "cil-drop",
     _children: [
       {
-        id:"CSidebarNavItemSideBar",
+        id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
         name: "Municipal Corporation",
         to: "/Municipalcorporation",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
-
       {
-        id:"AdminandSubAdminSideBar",
+        id: "AdminandSubAdminSideBar",
         _tag: "CSidebarNavItem",
         name: "Municipality",
         to: "/municipality",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
-
       {
-        id:"EntityListSideBar",
+        id: "EntityListSideBar",
         _tag: "CSidebarNavItem",
         name: "Town Panchayat",
         to: "/townpanchayat",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
-
       {
-        id:"LocationLibrarySideBar",
+        id: "LocationLibrarySideBar",
         _tag: "CSidebarNavItem",
         name: "Village Panchayat",
         to: "/villagepanchayat",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
       {
-        id:"AdminandSubAdminSideBar",
+        id: "AdminandSubAdminSideBar",
         _tag: "CSidebarNavItem",
         name: "Constituency",
         to: "/ViewConstituency",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
- 
-  ],
+    ],
   },
   {
-    id:"AdminSetupSideBar",
+    id: "AdminSetupSideBar",
     _tag: "CSidebarNavDropdown",
     name: "Party Organization Setup",
     route: "/AdminSetup",
-    
-    icon: 'cil-drop',
-
+    icon: "cil-drop",
     _children: [
       {
-        id:"CSidebarNavItemSideBar",
+        id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
-        name: 'Type of Party Office',
-        to: '/partyoffice',
+        name: "Type of Party Office",
+        to: "/partyoffice",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
       {
-        id:"CSidebarNavItemSideBar",
+        id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
-        name: 'Type of Party Wing Office',
-        to: '/OfficeType',
+        name: "Type of Party Wing Office",
+        to: "/OfficeType",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
       {
-        id:"CSidebarNavItemSideBar",
+        id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
-        name: 'Party Office Location',
-        to: '/partyofficelocation',
+        name: "Party Office Location",
+        to: "/partyofficelocation",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
-      
+
       {
-        id:"AdminandSubAdminSideBar",
+        id: "AdminandSubAdminSideBar",
         _tag: "CSidebarNavItem",
         name: 'Party   Wings Office Location',
         to: "/PartyWingsOfficeLocation",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
       {
-        id:"AdminandSubAdminSideBar",
+        id: "AdminandSubAdminSideBar",
         _tag: "CSidebarNavItem",
         name: "Party Posting",
         to: "/partyposting",
@@ -119,9 +108,8 @@ const _nav =  [
       },
     ],
   },
- 
   {
-    id:"AdminSetupSideBar",
+    id: "AdminSetupSideBar",
     _tag: "CSidebarNavDropdown",
     name: "Party Member Registration",
     route: "/AdminSetup",
@@ -146,90 +134,99 @@ const _nav =  [
       },
   
       {
-        id:"CSidebarNavItemSideBar",
+        id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
-        name: 'Suspend Mmember',
-        to: '/MemberRegistration',
+        name: "Promote Party Member",
+        to: "/memberPromote",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
   
       {
-        id:"CSidebarNavItemSideBar",
+        id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
         name: 'Terminate Member ',
         to: '/Terminate',
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
   
+        name: "Suspend Party Member",
+        to: "/memberSuspend",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
       {
-        id:"CSidebarNavItemSideBar",
+        id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
-        name: 'Assign Party Posting',
-        to: '/MemberRegistration',
+        name: "Transfer Party Member",
+        to: "/memberTransfer",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
       
   
       {
-        id:"CSidebarNavItemSideBar",
+        id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
-        name: 'Promote',
-        to: '/MemberRegistration',
+        name: "Terminate Party Member",
+        to: "/memberTerminate",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
  
       {
-        id:"CSidebarNavItemSideBar",
+        id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
-        name: 'Transfer',
-        to: '/MemberRegistration',
+        name: "Revoke Party Member",
+        to: "/memberRevoke",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
   
+    ],
+  },
+  {
+    id: "AdminSetupSideBar",
+    _tag: "CSidebarNavDropdown",
+    name: "Party Member Registration",
+    route: "/AdminSetup",
+    icon: "cil-drop",
+    _children: [
       {
-        id:"CSidebarNavItemSideBar",
+        id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
-        name: 'Map Public Representation',
-        to: '/MemberRegistration',
+        name: "Map Public Representation",
+        to: "/MemberRegistration",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
     ],
   },
   {
-    id:"AdminSetupSideBar",
+    id: "AdminSetupSideBar",
     _tag: "CSidebarNavDropdown",
     name: "Kpost Management",
     route: "/AdminSetup",
-    
-    icon: 'cil-drop',
-
+    icon: "cil-drop",
     _children: [
       {
-        id:"CSidebarNavItemSideBar",
+        id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
-        name: 'Allocate CC',
-        to: '/MemberRegistration',
+        name: "Allocate CC",
+        to: "/MemberRegistration",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
-    ],
-    _children: [
       {
-        id:"CSidebarNavItemSideBar",
+        id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
-        name: ' Allocate Contacts',
-        to: '/MemberRegistration10',
+        name: " Allocate Contacts",
+        to: "/MemberRegistration10",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
     ],
   },
-  
+
   // {
   //   _tag: 'CSidebarNavItem',
   //   name: 'Member Registration',
   //   to: '/MemberRegistration',
   //   icon: 'cil-drop',
   // },
- 
+
   // {
   //   _tag: 'CSidebarNavItem',
   //   name: 'Typography',
@@ -515,6 +512,6 @@ const _nav =  [
   //   _tag: 'CSidebarNavDivider',
   //   className: 'm-2'
   // }
-]
+];
 
-export default _nav
+export default _nav;
