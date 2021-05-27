@@ -87,19 +87,25 @@ const Suspend = () => {
                 <CContainer>
                   <CRow style={{ padding: "10px 0px" }}>
                     <CCol>
-                      <CLabel>Type Of Office</CLabel>
+                      <CLabel>
+                        <b>Type Of Office</b>
+                      </CLabel>
                       <Select isDisabled={filterVal !== "TypeOfPartyOffice"} />
                     </CCol>
                   </CRow>
                   <CRow style={{ padding: "10px 0px" }}>
                     <CCol>
-                      <CLabel>Type Of Party / Party Wings Office</CLabel>
+                      <CLabel>
+                        <b>Type Of Party / Party Wings Office</b>
+                      </CLabel>
                       <Select isDisabled={filterVal !== "TypeOfPartyOffice"} />
                     </CCol>
                   </CRow>
                   <CRow style={{ padding: "10px 0px" }}>
                     <CCol>
-                      <CLabel>Name of the Office Location</CLabel>
+                      <CLabel>
+                        <b>Name of the Office Location</b>
+                      </CLabel>
                       <Select isDisabled={filterVal !== "TypeOfPartyOffice"} />
                     </CCol>
                   </CRow>
@@ -109,13 +115,17 @@ const Suspend = () => {
                 <CContainer>
                   <CRow style={{ padding: "10px 0px" }}>
                     <CCol>
-                      <CLabel>State</CLabel>
+                      <CLabel>
+                        <b>State</b>
+                      </CLabel>
                       <Select isDisabled={filterVal !== "Location"} />
                     </CCol>
                   </CRow>
                   <CRow style={{ padding: "10px 0px" }}>
                     <CCol>
-                      <CLabel>District / City</CLabel>
+                      <CLabel>
+                        <b>District / City</b>
+                      </CLabel>
                       <Select isDisabled={filterVal !== "Location"} />
                     </CCol>
                   </CRow>
@@ -125,15 +135,7 @@ const Suspend = () => {
             <CRow style={{ padding: "10px 0px" }}>
               <CDataTable
                 tableLabel={"Suspended Party Member List"}
-                items={[
-                  {
-                    data1: "data1",
-                    data2: "data2",
-                    data3: "data3",
-                    data4: "data4",
-                    data5: "data5",
-                  },
-                ]}
+                items={[]}
                 fields={[
                   { key: "sNo", label: "Sl. No", _style: { width: "1%" } },
                   {
@@ -212,79 +214,101 @@ const Suspend = () => {
               </CCol>
               <CCol></CCol>
             </CRow>
-            <CRow style={{ margin: "30px 0px" }}>
-              <CCol>
-                <CContainer>
-                  <CCol>
-                    <CLabel className="form-check-label">
-                      <b>Name</b>
-                    </CLabel>
-                  </CCol>
-                  <CCol></CCol>
-                </CContainer>
-              </CCol>
-              <CCol>
-                <CContainer>
-                  <CCol>
-                    <CLabel className="form-check-label">
-                      <b>Gender</b>
-                    </CLabel>
-                  </CCol>
-                  <CCol></CCol>
-                </CContainer>
-              </CCol>
-            </CRow>
-            <CRow style={{ margin: "30px 0px" }}>
-              <CCol>
-                <CContainer>
-                  <CCol>
-                    <CLabel className="form-check-label">
-                      <b>DOB</b>
-                    </CLabel>
-                  </CCol>
-                  <CCol></CCol>
-                </CContainer>
-              </CCol>
-              <CCol>
-                <CContainer>
-                  <CCol>
-                    <CLabel className="form-check-label">
-                      <b>Qualification</b>
-                    </CLabel>
-                  </CCol>
-                  <CCol></CCol>
-                </CContainer>
-              </CCol>
-            </CRow>
-            <CRow style={{ margin: "30px 0px" }}>
-              <CCol>
-                <CContainer>
-                  <CCol>
-                    <CLabel className="form-check-label">
-                      <b>Occupation</b>
-                    </CLabel>
-                  </CCol>
-                  <CCol></CCol>
-                </CContainer>
-              </CCol>
-            </CRow>
             <CRow>
+              <CCol lg={"2"}>
+                <div
+                  style={{
+                    width: "130px",
+                    height: "150px",
+                    margin: '30px 20px',
+                    background: "#d3d3d3",
+                  }}
+                ></div>
+              </CCol>
+              <CCol lg={"10"}>
+                <CRow style={{ margin: "30px 0px" }}>
+                  <CCol>
+                    <CContainer>
+                      <CCol>
+                        <CLabel className="form-check-label">
+                          <b>Name</b>
+                        </CLabel>
+                      </CCol>
+                      <CCol></CCol>
+                    </CContainer>
+                  </CCol>
+                  <CCol>
+                    <CContainer>
+                      <CCol>
+                        <CLabel className="form-check-label">
+                          <b>Gender</b>
+                        </CLabel>
+                      </CCol>
+                      <CCol></CCol>
+                    </CContainer>
+                  </CCol>
+                </CRow>
+                <CRow style={{ margin: "30px 0px" }}>
+                  <CCol>
+                    <CContainer>
+                      <CCol>
+                        <CLabel className="form-check-label">
+                          <b>DOB</b>
+                        </CLabel>
+                      </CCol>
+                      <CCol></CCol>
+                    </CContainer>
+                  </CCol>
+                  <CCol>
+                    <CContainer>
+                      <CCol>
+                        <CLabel className="form-check-label">
+                          <b>Qualification</b>
+                        </CLabel>
+                      </CCol>
+                      <CCol></CCol>
+                    </CContainer>
+                  </CCol>
+                </CRow>
+                <CRow style={{ margin: "30px 0px" }}>
+                  <CCol>
+                    <CContainer>
+                      <CCol>
+                        <CLabel className="form-check-label">
+                          <b>Occupation</b>
+                        </CLabel>
+                      </CCol>
+                      <CCol></CCol>
+                    </CContainer>
+                  </CCol>
+                </CRow>
+              </CCol>
+            </CRow>
+            <CRow style={{ margin: "30px 0px" }}>
               <CCol>
-                <CLabel>Reason</CLabel>
+                <CLabel>
+                  <b>Reason</b>
+                </CLabel>
                 <CInput type={"text"}></CInput>
               </CCol>
               <CCol>
-                <CLabel>Detail for Suspension</CLabel>
+                <CLabel>
+                  <b>Detail for Suspension</b>
+                </CLabel>
                 <CInput type={"text"}></CInput>
               </CCol>
             </CRow>
-            <CRow>
+            <CRow style={{ margin: "30px 0px" }}>
               <CCol>
-                <CLabel>From</CLabel>
+                <CLabel>
+                  <b>From</b>
+                </CLabel>
                 <CInput type={"date"}></CInput>
               </CCol>
               <CCol>
-                <CLabel>To</CLabel>
+                <CLabel>
+                  <b>To</b>
+                </CLabel>
                 <CInput type={"date"}></CInput>
               </CCol>
             </CRow>
