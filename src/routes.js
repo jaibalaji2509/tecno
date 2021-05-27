@@ -57,6 +57,8 @@ const PartyOffice = React.lazy(() => import('./views/components/partyoffice/Part
 const AddMemberRegister = React.lazy(() => import('./views/components/MemberRegistration/AddMemberRegister'));
 const MemberRegistration = React.lazy(() => import('./views/components/MemberRegistration/MemberRegistration'));
 const PartyOfficeLocation = React.lazy(() => import('./views/components/partyofficelocation/PartyOfficeLocation'));
+const PartyPosting = React.lazy(() => import('./views/components/partyposting/PartyPosting'));
+const AssignPartyPosting = React.lazy(() => import('./views/components/assignpartyposting/AssignPartyPosting'));
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', exact: true ,component: Dashboard },
@@ -114,6 +116,8 @@ const routes = [
   { path: '/MemberRegistration',  exact: true, name: 'MemberRegistration', component: MemberRegistration },
   { path: '/OfficeType',  exact: true, name: 'OfficeType', component: OfficeType },
   { path: '/WingLocation',  exact: true, name: 'WingLocation', component: WingLocation },
+  { path: '/partyposting',  exact: true, name: 'Party Posting', component: PartyPosting },
+  { path: '/assignpartyposting',  exact: true, name: 'Assign Party Posting', component:AssignPartyPosting },
 
 ];
 

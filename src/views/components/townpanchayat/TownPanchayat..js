@@ -67,8 +67,9 @@ const TownPanchayat = () => {
     // { key: "State", label: "State", _style: { width: "10%" } },
     // { key: "District", label: "District", _style: { width: "10%" } },
     // { key: "Area", label: "Ward", _style: { width: "10%" } },
-    { key: "Street", label: "Name of the Street", _style: { width: "10%" } },
-
+    { key: "Street", label: "Street Name", _style: { width: "10%" } },
+    { key: "Street", label: "Ward Name", _style: { width: "10%" } },
+   
     // { key: "male", label: "Male", _style: { width: "10%" } },
     // { key: "female", label: "Female", _style: { width: "10%" } },
   
@@ -226,7 +227,7 @@ const TownPanchayat = () => {
                       </CCol>
                     </CRow>
                     <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                      <CCol className={"column-align"} md="4">
+                      <CCol className={"column-align"} md="3">
                         <CLabel className={"label-name"}>
                           State
                           <span className={"text-danger"}>*</span>
@@ -240,9 +241,23 @@ const TownPanchayat = () => {
                           onChange={changeHandler}
                         />
                       </CCol>
-                      <CCol className={"column-align"} md="4">
+                      <CCol className={"column-align"} md="3">
                         <CLabel className={"label-name"}>
                           District / City
+                          <span className={"text-danger"}>*</span>
+                        </CLabel>
+                        <CSelect
+                          className={"input-align"}
+                          id={"municipaldistrict"}
+                          name={"city"}
+                          placeholder={" Corporation Name"}
+                          value={locations.city}
+                          onChange={changeHandler}
+                        />
+                      </CCol>
+                      <CCol className={"column-align"} md="3">
+                        <CLabel className={"label-name"}>
+                          Town Panchayat
                           <span className={"text-danger"}>*</span>
                         </CLabel>
                         <CSelect
@@ -257,21 +272,21 @@ const TownPanchayat = () => {
                     </CRow>
 
                     <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                      <CCol className={"column-align"} md="4">
+                      <CCol className={"column-align"} md="3">
                         <CLabel className={"label-name"}>
-                          Town Panchayat
+                        Area
                           <span className={"text-danger"}>*</span>
                         </CLabel>
                         <CSelect
                           className={"input-align"}
                           id={"municipaldistrict"}
-                          name={"city"}
-                          placeholder={" Corporation Name"}
+                          name={"Area"}
+                          placeholder={" Select Area"}
                           value={locations.city}
                           onChange={changeHandler}
                         />
                       </CCol>
-                      <CCol className={"column-align"} md="4">
+                      <CCol className={"column-align"} md="3">
                         <CLabel className={"label-name"}>
                           Ward
                           <span className={"text-danger"}>*</span>
