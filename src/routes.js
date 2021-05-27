@@ -47,22 +47,17 @@ const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
 const Location = React.lazy(() => import('./views/components/location/Location'));
 const OfficeType = React.lazy(() => import('./views/components/officetype/OfficeType'));
-const WingLocation = React.lazy(() => import('./views/components/winglocation/WingLocation'));
+const PartyWingsOfficeLocation = React.lazy(() => import('./views/components/winglocation/PartyWingsOfficeLocation'));
 
 const Municipality = React.lazy(() => import('./views/components/municipality/Municipality'));
 const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
 const VillagePanchayat = React.lazy(() => import('./views/components/villagepanchayat/VillagePanchayat'));
-<<<<<<< HEAD
-const MappingMunicipalCorpoation = React.lazy(() => import('./views/components/mappingmunicipalcorporation/MappingMunicipalCorpoation'));
 const MemberRegistration = React.lazy(() => import('./views/components/memberregistration/MemberRegistration'));
 const ViewConstituency = React.lazy(() => import('./views/components/constituency/ViewConstituency'));
+const Terminate = React.lazy(() => import('./views/components/terminate/Terminate'));
 
-=======
 const PartyOffice = React.lazy(() => import('./views/components/partyoffice/PartyOffice'));
-const AddMemberRegister = React.lazy(() => import('./views/components/MemberRegistration/AddMemberRegister'));
-const MemberRegistration = React.lazy(() => import('./views/components/MemberRegistration/MemberRegistration'));
 const PartyOfficeLocation = React.lazy(() => import('./views/components/partyofficelocation/PartyOfficeLocation'));
->>>>>>> 428e255e9eaa1da28dfa99a3fdce24e2cc71c33f
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', exact: true ,component: Dashboard },
@@ -107,21 +102,18 @@ const routes = [
   { path: '/users/:id', exact: true, name: 'User Details', component: User },
   {path:"/locationlibrary", exact:true, name:'Location Library', component:LocationLibrary},
   {path:"/tabslist", exact:true, name : "TabsList", component:TabsList},
-  // { path: '/AddMemberRegister',  exact: true, name: 'AddMemberRegister', component: AddMemberRegister },
   { path: '/partyofficelocation',  exact: true, name: 'Party OfficeLocation', component: PartyOfficeLocation  },
 
   {path:"/municipalcorporation", exact:true, name : "Municipal Corporation", component:MunicipalCorporation},
   {path:"/municipality", exact:true, name : "Municipality", component:Municipality},
   {path:"/townpanchayat", exact:true, name : "Municipality", component:TownPanchayat},
   {path:"/villagepanchayat", exact:true, name : "Village Panchayat", component:VillagePanchayat},
-  {path:"/mappingmunicipalcorporation", exact:true, name : "Mapping Municipal Corporation", component:MappingMunicipalCorpoation},
   {path:"/partyoffice", exact:true, name : "Party Office", component:PartyOffice},
-  {path:"/Constituency", exact:true, name : "Constituency", component:Constituency},
-  { path: '/AddMemberRegister',  exact: true, name: 'AddMemberRegister', component: AddMemberRegister },
-  { path: '/MemberRegistration',  exact: true, name: 'MemberRegistration', component: MemberRegistration },
-  { path: '/OfficeType',  exact: true, name: 'OfficeType', component: OfficeType },
-  { path: '/WingLocation',  exact: true, name: 'WingLocation', component: WingLocation },
-  { path: '/ViewConstituency',  exact: true, name: 'ViewConstituency', component: ViewConstituency },
+  { path: '/MemberRegistration',  exact: true, name: 'Member Registration', component: MemberRegistration },
+  { path: '/OfficeType',  exact: true, name: 'PARTY WINGS OFFICE', component: OfficeType },
+  { path: '/PartyWingsOfficeLocation',  exact: true, name: 'Party Wings Office Location', component: PartyWingsOfficeLocation },
+  { path: '/ViewConstituency',  exact: true, name: 'Constituency', component: ViewConstituency },
+  { path: '/Terminate',  exact: true, name: 'Terminate Member', component: Terminate },
 
 ];
 

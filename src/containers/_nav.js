@@ -106,8 +106,8 @@ const _nav =  [
       {
         id:"AdminandSubAdminSideBar",
         _tag: "CSidebarNavItem",
-        name: "Party Wings Office Location",
-        to: "/WingLocation",
+        name: 'Party   Wings Office Location',
+        to: "/PartyWingsOfficeLocation",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
       {
@@ -136,8 +136,7 @@ const _nav =  [
         to: '/MemberRegistration',
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
-    ],
-    _children: [
+    
       {
         id:"CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
@@ -145,8 +144,7 @@ const _nav =  [
         to: '/MemberRegistration',
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
-    ],
-    _children: [
+  
       {
         id:"CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
@@ -154,17 +152,15 @@ const _nav =  [
         to: '/MemberRegistration',
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
-    ],
-    _children: [
+  
       {
         id:"CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
         name: 'Terminate Member ',
-        to: '/MemberRegistration',
+        to: '/Terminate',
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
-    ],
-    _children: [
+  
       {
         id:"CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
@@ -173,8 +169,7 @@ const _nav =  [
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
       
-    ],
-    _children: [
+  
       {
         id:"CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
@@ -182,8 +177,7 @@ const _nav =  [
         to: '/MemberRegistration',
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
-    ],
-    _children: [
+ 
       {
         id:"CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
@@ -191,8 +185,7 @@ const _nav =  [
         to: '/MemberRegistration',
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
-    ],
-    _children: [
+  
       {
         id:"CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",

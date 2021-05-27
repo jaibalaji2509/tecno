@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { CImg, 
+import React, { useState } from "react";
+import { 
   CRow, 
   CCard,
   CCol,
@@ -10,33 +10,28 @@ import { CImg,
   CInputRadio,
   CFormGroup,
   CSelect,
-  CDropdownMenu,
-  CDropdownItem,
-  CDropdownToggle } from "@coreui/react";
-  import CIcon from '@coreui/icons-react'
-import CDataTable from "../../CoreComponents/table/CDataTable";
-import { saveCreateMemberRegister } from "../../../services/ApiService";
-import { useHistory } from "react-router-dom";
+   } from "@coreui/react";
+  import CDataTable from "../../CoreComponents/table/CDataTable";
 import "./MemberRegistration.css"
 import Select from "react-select";
-// import { colors } from "react-select/src/theme";
+// import DEFAULT_IMAGE from "../../../assets/img/camera-icon.png";
+import { toast } from "react-toastify";
 
+             
 function MemberRegistration() {
-  const [show, setShow] = useState(false)
-	const [ward, setWard] = useState("")
-  const [files, setFiles] = useState("");
-  const [steetSchema, setStreet] = useState([]);
-  const [Education, setEducation] = useState([]);
-  const [Occupation, setOccupation] = useState([]);
-  const history = useHistory();
+  const [, setSelected] = useState({});
+  const [steetSchema, ] = useState([]);
+  const [Education, ] = useState([]);
+  const [Occupation, ] = useState([]);
+  const [, setFiles] = useState("");
+  const [, setPI] = useState("");
+  const [sideBar1, setSideBar1] = useState(false);
+  const [menu, setMenu] = useState({
+    style: 'menu',
+    menuStatus: 'open',
+    style3: 'menu1',
+});
 
-  
-	// const pinchange = (e) => {
-	// 	setWard(e.target.value)
-	// 	if (ward.length > 4) {
-	// 		setShow(true)
-	// 	}
-	// }
   const userData1 = [
 
   ];
@@ -60,6 +55,47 @@ function MemberRegistration() {
       filter: false,
     },
   ];
+  const handleClickhistory = () => {
+    switch (menu.menuStatus) {
+         case 'open':
+              setMenu({
+                   menuStatus: 'close',
+                   style3: 'menu2',
+                   style: 'menu active',
+              });
+              setSideBar1(true);
+              break;
+         case 'close':
+              setMenu({
+                   menuStatus: 'open',
+                   style3: 'menu1',
+                   style: 'menu',
+              });
+              setTimeout(() => {
+                   setSideBar1(false);
+              }, 1000);
+              break;
+    }
+};
+
+  const handleSave = async (file, folder) => {
+    if (file === undefined) {
+      let e = "cancelled";
+      return console.log(e);
+    }
+    if (file.size > 1048576) {
+      return toast.warning("Please choose below 1 MB file");
+    } else {
+      const imgUri = URL.createObjectURL(file);
+      setPI(file);
+      setFiles(imgUri);
+    }
+  };
+
+  const handleClick = (e) => {
+    document.getElementById("profileImage").click();
+  };
+
 
   const userData = [
     {
@@ -77,14 +113,6 @@ function MemberRegistration() {
   const [hide, setHide] = useState(false)
   const [memberhide, setMemberHide] = useState(true)
   const fields = [
-    // {
-    //   key: "show_details",
-    //   label: "Select",
-    //   _style: { width: "3%" },
-    //   name: <div>Email <input type={"checkbox"} onClick={""} /></div>,
-    //   sorter: false,
-    //   filter: false,
-    // },
     { key: "SNo", label: "S.NO", _style: { width: "1%" },sorter: false,
     filter: false, },
     { key: "Name of Member", label: "Name of Member", _style: { width: "10%" } },
@@ -106,9 +134,227 @@ function MemberRegistration() {
     setHide(true);
     setMemberHide(false)
   }
+  const cancelCreate = () => {
+    setHide(false);
+    setMemberHide(true)
+  }
+
   return (
     <div>
-      
+        {sideBar1 && (
+                    <div>
+                   <CCard>
+                         <CRow className={''}>
+                              <CCol md='12' lg='12' sm='12'>
+                                   <div>
+                                        <span style={{ fontSize: '22px', fontWeight: '700' }}>Member History </span>
+                                   </div>
+                              </CCol>
+                         </CRow>
+                         <CRow>
+                              <CCol md='2' lg='2' sm='2'>
+                                   <img
+                                        alt={''}
+                                        type='text'
+                                        // src={selected ? selected.profileImage : DEFAULT_NOIMAGE}
+                                        style={{
+                                             width: '150px',
+                                             height: '160px',
+                                             position: 'relative',
+                                             background: '#fff',
+                                             left: '0%',
+                                             top: '9%',
+                                             
+                                        }}
+                                   />
+                              </CCol>
+                              <CCol md='10' lg='10' sm='10' style={{ marginTop: '4%' }}>
+                                   <CRow className={'LengthDataw'}>
+                                        <CCol>
+                                             <CLabel className={'form-labels-9 col-md-5 reAssign-Label'}>Name of the Member :</CLabel>
+
+                                             <CLabel className={'reAssign-Detail'}></CLabel>
+                                        </CCol>
+
+                                        <CCol>
+                                             <CLabel className={'form-labels-9 col-md-5 reAssign-Label'}>Address : </CLabel>
+
+                                             <CLabel className={'reAssign-Detail'} style={{ marginLeft: '-41px' }}>
+                                                  {/* {selected.employeeRole ? selected.employeeRole.dccDescription : '-'} */}
+                                             </CLabel>
+                                        </CCol>
+                                   </CRow>
+
+
+                              </CCol>
+                         </CRow>
+                         <CRow>
+              <CCol style={{ fontSize: "1.55rem" }} md="12">
+                <i
+                  id={"locationLibraryDelete"}
+                  style={{
+                    position: "absolute",
+                    top: "80px",
+                    marginLeft: "955px",
+                    marginBottom: "20px",
+                    color: "#0072ff",
+                  }}
+                  className="fa fa-print"
+                ></i>
+              </CCol>
+              <CCol style={{ fontSize: "1.55rem" }} md="12">
+                <i
+                  id={"locationLibraryDelete"}
+                  style={{
+                    position: "absolute",
+                    top: "80px",
+                    marginLeft: "1000px",
+                    marginBottom: "20px",
+                    color: "green",
+                  }}
+                  className="fa fa-share-alt"
+                ></i>
+              </CCol>
+            </CRow>
+
+
+                         <CRow>
+                              <CCol
+                                   style={{
+                                        margin: '20px 0px 10px 10px',
+                                        maxHeight: '290px',
+                                        minHeight: '290px',
+                                        overflow: 'auto',
+                                   }}>
+                                            <CDataTable
+                                        tableLabel={'List of Party Posts'}
+                                        columnFilter
+                                        footer
+                                        tableFilter
+                                        hover
+                                        sorter
+                                        scopedSlots={{
+                                             status: (item) => <td></td>,
+                                        }}
+                                        items={[
+                                             {
+                                                  name1: 'sadasd',
+                                                  name6: 'sadasd',
+                                                  name5: 'sadasd',
+                                                  name4: 'sadasd',
+                                                  name3: 'sadasd',
+                                                  name2: 'sadasd',
+                                             },
+                                             {
+                                                  name1: 'sadasd',
+                                                  name6: 'sadasd',
+                                                  name5: 'sadasd',
+                                                  name4: 'sadasd',
+                                                  name3: 'sadasd',
+                                                  name2: 'sadasd',
+                                             },
+                                             {
+                                                  name1: 'sadasd',
+                                                  name6: 'sadasd',
+                                                  name5: 'sadasd',
+                                                  name4: 'sadasd',
+                                                  name3: 'sadasd',
+                                                  name2: 'sadasd',
+                                             },
+                                             {
+                                                  name1: 'sadasd',
+                                                  name6: 'sadasd',
+                                                  name5: 'sadasd',
+                                                  name4: 'sadasd',
+                                                  name3: 'sadasd',
+                                                  name2: 'sadasd',
+                                             },
+                                             {
+                                                  name1: 'sadasd',
+                                                  name6: 'sadasd',
+                                                  name5: 'sadasd',
+                                                  name4: 'sadasd',
+                                                  name3: 'sadasd',
+                                                  name2: 'sadasd',
+                                             },
+                                             {
+                                                  name1: 'sadasd',
+                                                  name6: 'sadasd',
+                                                  name5: 'sadasd',
+                                                  name4: 'sadasd',
+                                                  name3: 'sadasd',
+                                                  name2: 'sadasd',
+                                             },
+                                             {
+                                                  name1: 'sadasd',
+                                                  name6: 'sadasd',
+                                                  name5: 'sadasd',
+                                                  name4: 'sadasd',
+                                                  name3: 'sadasd',
+                                                  name2: 'sadasd',
+                                             },
+                                             {
+                                                  name1: 'sadasd',
+                                                  name6: 'sadasd',
+                                                  name5: 'sadasd',
+                                                  name4: 'sadasd',
+                                                  name3: 'sadasd',
+                                                  name2: 'sadasd',
+                                             },
+                                             {
+                                                  name1: 'sadasd',
+                                                  name6: 'sadasd',
+                                                  name5: 'sadasd',
+                                                  name4: 'sadasd',
+                                                  name3: 'sadasd',
+                                                  name2: 'sadasd',
+                                             },
+                                             {
+                                                  name1: 'sadasd',
+                                                  name6: 'sadasd',
+                                                  name5: 'sadasd',
+                                                  name4: 'sadasd',
+                                                  name3: 'sadasd',
+                                                  name2: 'sadasd',
+                                             },
+                                             {
+                                                  name1: 'sadasd',
+                                                  name6: 'sadasd',
+                                                  name5: 'sadasd',
+                                                  name4: 'sadasd',
+                                                  name3: 'sadasd',
+                                                  name2: 'sadasd',
+                                             },
+                                             {
+                                                  name1: 'sadasd',
+                                                  name6: 'sadasd',
+                                                  name5: 'sadasd',
+                                                  name4: 'sadasd',
+                                                  name3: 'sadasd',
+                                                  name2: 'sadasd',
+                                             },
+                                        ]}
+                                        fields={[
+                                             { key: 'name1' },
+                                             { key: 'name2' },
+                                             { key: 'name3' },
+                                             { key: 'name4' },
+                                             { key: 'name5' },
+                                             { key: 'name6' },
+                                        ]}
+                                   />
+                              </CCol>
+                         </CRow>
+                         <CButton
+                              style={{ position: 'absolute', top: '15px', right: '15px' }}
+                              className={'cancelBtn'}
+                              onClick={handleClickhistory}>
+                              Back
+                         </CButton>
+                         </CCard>
+                    </div>
+               )}
+
       <CCard className={"cardSave"}>
       {memberhide && (        
           <div>
@@ -127,7 +373,6 @@ function MemberRegistration() {
           <span style={{marginLeft:"-50px", fontSize:"30px",}}>Male</span>
           <span style={{marginLeft:"-162px", marginTop:"30px"}}>2</span>
    <br/><br/>
-          {/* <CImg style={{width:"20px",height:"20px"}} src="https://icons.iconarchive.com/icons/custom-icon-design/flatastic-7/512/Male-icon.png"/> */}
         </CWidgetDropdown>
       </CCol>
 
@@ -142,7 +387,6 @@ color="gradient-info"
                     <span style={{marginLeft:"-30px", fontSize:"30px",}}>Female</span>
                     <span style={{marginLeft:"-165px", marginTop:"30px"}}>2</span>
           <br/><br/>
-                    {/* <CImg style={{width:"20px", height:"20px"}} src="https://icons.iconarchive.com/icons/custom-icon-design/flatastic-7/512/Female-icon.png"/> */}
         </CWidgetDropdown>
       </CCol>
 
@@ -157,7 +401,6 @@ color="gradient-warning"
                   <span style={{marginLeft:"-75px", fontSize:"30px",}}>TransGender</span>
                   <span style={{marginLeft:"-200px", marginTop:"30px"}}>1</span>
          <br/><br/>
-          {/* <CImg style={{width:"20px", height:"20px"}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/A_TransGender-Symbol_Plain3.svg/878px-A_TransGender-Symbol_Plain3.svg.png"/> */}
         </CWidgetDropdown>
       </CCol>
 
@@ -172,7 +415,6 @@ color="gradient-danger"
            <span style={{marginLeft:"-73px", fontSize:"30px",}}>Total Count</span>
            <span style={{marginLeft:"-204px", marginTop:"30px"}}>5</span>
    <br/><br/>
-          {/* <CImg style={{width:"20px", height:"20px"}} src="https://p.kindpng.com/picc/s/265-2652987_persons-png-transparent-png.png"/> */}
         </CWidgetDropdown>
       </CCol>
     </CRow>
@@ -255,6 +497,36 @@ color="gradient-danger"
 
               Add Member
                   </CButton>
+                  <CRow>
+              <CCol style={{ fontSize: "1.55rem" }} md="12">
+                <i
+                  id={"locationLibraryDelete"}
+                  style={{
+                    position: "absolute",
+                    top: "80px",
+                    marginLeft: "955px",
+                    marginBottom: "20px",
+                    color: "#0072ff",
+                  }}
+                  className="fa fa-print"
+                ></i>
+              </CCol>
+              <CCol style={{ fontSize: "1.55rem" }} md="12">
+                <i
+                  id={"locationLibraryDelete"}
+                  style={{
+                    position: "absolute",
+                    top: "80px",
+                    marginLeft: "1000px",
+                    marginBottom: "20px",
+                    color: "green",
+                  }}
+                  className="fa fa-share-alt"
+                ></i>
+              </CCol>
+            </CRow>
+
+
 
             <CRow style={{ padding: "4%", marginTop: "1.5%" }}>
               <CDataTable
@@ -275,15 +547,6 @@ color="gradient-danger"
                         <CInput
                           type={"checkbox"}
                           value={"select"}
-                          // onClick={() => {
-                          //   let data = item._id;
-                          //   if (`${checked}` === `${data}`) {
-                          //     setChecked("");
-                          //   } else {
-                          //     getToRoleEmpMovement(item);
-                          //   }
-                          // }}
-                          // checked={checked === `${item._id}`}
                           style={{
                             width: "15px",
                             height: "15px",
@@ -293,31 +556,6 @@ color="gradient-danger"
                         />
                         <CRow>
                           <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              onClick={() => {
-                                //   toggleDetails(index);
-                              }}
-                            ></i>
-                            {/* <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "#3480e2",
-                                  cursor: "pointer",
-                                }}
-                                id={"locationLibraryEdit"}
-                                onClick={() => EditCountry(item)}
-                                className="fas fa-edit"
-                              ></i>
-                              <i
-                                onClick={() => deleteConfirm(item._id)}
-                                id={"locationLibraryDelete"}
-                                style={{
-                                  marginLeft: "5px",
-                                  color: "#e85654",
-                                  cursor: "pointer",
-                                }}
-                                className="fa fa-trash"
-                              ></i> */}
                           </CCol>
                         </CRow>
                       </td>
@@ -330,22 +568,15 @@ color="gradient-danger"
 
                           <CCol style={{ fontSize: "1.15rem" }} md="12">
                             <i
-                              onClick={() => {
-                                //   toggleDetails(index);
-                              }}
-                            ></i>
-                            <i
                               style={{
                                 marginRight: "5px",
                                 color: "#3480e2",
                                 cursor: "pointer",
                               }}
                               id={"memberregisterediticon"}
-                              // onClick={() => EditCountry(item)}
                               className="fas fa-edit"
                             ></i>
                             <i
-                              // onClick={() => deleteConfirm(item._id)}
                               id={"memberregisterdelete"}
                               style={{
                                 marginLeft: "5px",
@@ -375,7 +606,11 @@ color="gradient-danger"
                             }}
                             id={"memberregisterediticon"}
                              className="fa fa-history"
-                             ></i>
+                             onClick={() => {
+                              setSelected();
+                              handleClickhistory();
+                            }}
+                           ></i>
                           </CCol>
                         </CRow>
                       </td>
@@ -402,11 +637,7 @@ color="gradient-danger"
       Mandatory fields are marked with an asterisk (*)
         </p>
     <div style={{ marginLeft: "-26px" }}>
-      {/* <CRow className={"row-alignment"} md="12" sm="12" lg="12"> */}
-      {/* 
-
-      </CRow> */}
-
+ 
       <CRow className={"row-alignment"} md="12" sm="12" lg="12">
         <CCol className={"column-align"} md={3}>
           <CLabel className={"label-name"}>
@@ -435,48 +666,7 @@ color="gradient-danger"
             placeholder="Last Name"
           />
         </CCol>
-{/*                 
-        <CCol className={"column-align"} md="3">
-          <CInput
-          type={"file"}
-            className={"input-align"}
-            id={"memberregisterprofileImage"}
-            name={"file"}
-            type={"file"}
-            id={"profileImage"}
-            accept={"image/*"}
-            style={{ display: "none" }}
-
-          />
-
-          <div
-            id={"memberregisterhandleclick"}
-            style={{
-              height: "80px",
-              width: "80px",
-              border: "1px dashed black",
-              marginLeft: "20px",
-            }}
-
-          >
-            <img
-              alt=""
-              style={{
-                width: "100%",
-                height: "100%",
-                position: "acsolute",
-              }}
-            />
-          </div>
-          <CLabel className={"label-name"}>
-            Upload Image
-      </CLabel>
-
-
-        </CCol> */}
       </CRow>
-
-
 
       <CRow className={"row-alignment"} md="12" sm="12" lg="12">
         <CCol className={"column-align"} md={3}>
@@ -579,7 +769,7 @@ color="gradient-danger"
       <CRow className={"row-alignment"} md="12" sm="12" lg="12">
         <CCol className={"column-align"} md="3">
           <CLabel className={"label-name"}>
-            Door No.
+          Address line
                   <span className={"text-danger"}> *</span>
 
           </CLabel>
@@ -587,7 +777,7 @@ color="gradient-danger"
             className={"input-align"}
             name={"Address"}
             id={"memberregisteraddress1"}
-            placeholder="Address Line 1"
+            placeholder="Address Line"
           />
 
         </CCol>
@@ -601,13 +791,8 @@ color="gradient-danger"
             id={"memberregisterpincode"}
             name={"Pincode"}
             placeholder={"Pincode"}
-            // value={ward}
-            // onChange={pinchange}
           />
         </CCol>
-
-     {/* {show && ( */}
-
 
 <CCol className={"column-align"} md="3">
           <CLabel className={"label-name"}>
@@ -666,15 +851,6 @@ color="gradient-danger"
         </CCol>
 </CRow>
 
-
-     {/* )}/ */}
-
-
-    
-     
-
-
-
     </div>
     <CRow>
       <CCol md="10">
@@ -691,8 +867,7 @@ color="gradient-danger"
             }}
             id={"cancelabbreviationconfigurecode"}
             className={"cancelBtn"}
-          onClick={()=> history.push("/MemberRegistration")}
-          >
+            onClick={cancelCreate}          >
             CANCEL
           </CButton>
           <CButton
@@ -702,15 +877,64 @@ color="gradient-danger"
             }}
             id={"saveAbbreviationConfigureCode"}
             className={"saveBtn"}
-            // onClick={() => {
-            //   MemberRegiter();
-            // }}
           >
             Save
           </CButton>{" "}
         </CCol>
       </CCol>
     </CRow>
+
+    <CRow style={{ marginLeft:"1200px",position:"absolute" ,marginTop:"30px"}}>
+                    <CCol sm="6" lg="3" style={{ marginLeft: "10px" }}>
+                    <CCol md="3">
+                    <CInput
+               
+                name="file"
+                type="file"
+                id="profileImage"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={(e) => {
+                  handleSave(e.target.files[0], "profileImage");
+                }}
+              />
+              </CCol>
+            <div
+              id={"addEmployeehandleClick"}
+              style={{
+                height: "100px",
+                width: "100px",
+                border: "1px dashed black",
+                marginTop:"-670px",
+                marginLeft:"-300px"
+              }}
+              onClick={() => handleClick()}
+            >
+              <img
+                alt=""
+                // src={files !== "" ? files : DEFAULT_IMAGE}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  position: "acsolute",
+                }}
+              />
+            </div>
+
+            <CLabel className={"form-label1"}
+            style={{
+              marginLeft:"-300px"
+            }}
+            >
+              Upload Image
+              <span className={"text-danger"}> *</span>
+            </CLabel>
+
+
+                </CCol>
+                </CRow>
+
+
     <CRow style={{ padding: "4%", marginTop: "1.5%" }}>
       <CDataTable
         items={userData1}
@@ -731,7 +955,6 @@ color="gradient-danger"
                   <CCol style={{ fontSize: "1.15rem" }} md="12">
                     <i
                       onClick={() => {
-                        //   toggleDetails(index);
                       }}
                     ></i>
 

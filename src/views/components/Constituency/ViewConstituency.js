@@ -1,18 +1,15 @@
 import { CButton, CCard, CCol, CInput, CLabel, CRow, CSelect } from "@coreui/react";
 import React, { useState } from "react";
-import Toaster from "src/views/notifications/toaster/Toaster";
 import CDataTable from "../../CoreComponents/table/CDataTable";
-import { saveCreateCorporation } from "../../../services/ApiService";
-import { toast } from "react-toastify";
 
 function ViewConstituency() {
-  const [error, setError] = useState("");
+  const [error, ] = useState("");
   const [municipalListadd, setMunicipalListadd] = useState(true);
   const [municipalList, setMunicipalList] = useState(true);
   const [MunicipalCreate, setmunicipalCreate] = useState(false);
   const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
-  const [ParliamentaryConstituency, setParliamentaryConstituency] = useState({});
-  const [municipalName, setMuniicipalName] = useState("");
+  const [ParliamentaryConstituency, ] = useState({});
+  const [municipalName, ] = useState("");
 
   const enableCreate = async () => {
     await setMunicipalList(false);
@@ -27,22 +24,10 @@ function ViewConstituency() {
   const editState = async () => {
     await setMunicipalList(false);
     await setmunicipalCreate(true);
-    // formik.values.StateName = stateName.stateName;
-    // formik.values.Abbreviation2 = stateName.abbreviation;
-    // formik.values.Code2 = stateName.code;
-    // setPassing(stateName._id);
-    // getState();
-    // getAllAreas();
   };
   const editStateadd = async () => {
     await setMunicipalListadd(false);
     await setmunicipalCreateadd(true);
-    // formik.values.StateName = stateName.stateName;
-    // formik.values.Abbreviation2 = stateName.abbreviation;
-    // formik.values.Code2 = stateName.code;
-    // setPassing(stateName._id);
-    // getState();
-    // getAllAreas();
   };
 
   const CancelState = async () => {
@@ -62,9 +47,6 @@ function ViewConstituency() {
   const userData = [
     {
       SNo: "1",
-      //   State: "TamilNadu",
-      //   District: "chennai",
-      //   Area: "TNagar",
       Street: "Pondy Bazar",
     },
   ];
@@ -81,13 +63,14 @@ function ViewConstituency() {
       key: "SNo", label: "S.NO", _style: { width: "10%" }, sorter: false,
       filter: false,
     },
-    { key: "State", label: "State", _style: { width: "10%" } },
-    { key: "District", label: "District", _style: { width: "10%" } },
-    { key: "Parliamentary", label: "Parliamentary Constituency ", _style: { width: "10%" } },
-    { key: "Legislative", label: "Legislative Assembly Constituency", _style: { width: "10%" } },
+    { key: "Area", label: "Area / Village ", _style: { width: "10%" } },
+    { key: "Ward", label: "Ward", _style: { width: "10%" } },
+    { key: "Street", label: "Street Name", _style: { width: "10%" } },
+    { key: "Total", label: "Total  ", _style: { width: "10%" } },
+    { key: "Male", label: "Male ", _style: { width: "10%" } },
+    { key: "female", label: "Female", _style: { width: "10%" } },
+    { key: "Transgender", label: "Transgender", _style: { width: "10%" } },
 
-    { key: "Area", label: "Area ", _style: { width: "10%" } },
-    // { key: "female", label: "Female", _style: { width: "10%" } },
     {
       key: "show_details1", label: "Action", _style: { width: "10%" }, sorter: false,
       filter: false,
@@ -98,9 +81,6 @@ function ViewConstituency() {
     const userDataview = [
       {
         SNo: "1.",
-        //   State: "TamilNadu",
-        //   District: "chennai",
-        //   Area: "TNagar",
         Street: "Pondy Bazar",
       },
         
@@ -111,13 +91,10 @@ function ViewConstituency() {
     const fieldsview = [
       { key: "SNo", label: "S.NO", _style: { width: "1%" },sorter: false,
       filter: false, },
-      { key: "Area", label: "Area / Locality", _style: { width: "10%" } },
-      { key: "ward", label: "Ward", _style: { width: "10%" } },
-      { key: "streetcount", label: "Street Name", _style: { width: "10%" } },
-      { key: "total", label: "Total Count", _style: { width: "10%" } },
-      { key: "Malecount", label: "Male Count", _style: { width: "10%" } },
-      { key: "Femalecount", label: "Female Count", _style: { width: "10%" } },
-      { key: "transgendecount", label: "TransGender Count", _style: { width: "10%" } },
+      { key: "Parliamentary", label: "Parliamentary Constituency", _style: { width: "10%" } },
+      { key: "Legislative", label: "Legislative Assembly constituency", _style: { width: "10%" } },
+      { key: "Village", label: "Village / Ward", _style: { width: "10%" } },
+      { key: "Street", label: "Street", _style: { width: "10%" } },
 
       {
         label: "Action",
@@ -133,7 +110,11 @@ function ViewConstituency() {
     setHide(true);
     setMemberHide(false)
   }
-  
+  const cancelview = () => {
+    setHide(false);
+    setMemberHide(true)
+  }
+
     return (
         <div>
                {memberhide && (        
@@ -142,28 +123,8 @@ function ViewConstituency() {
         <div className={"main-headerlabel"}>
           <span className={"header-label"}>Constituency</span>
         </div>
-
-
-        {/* <CButton
-              id={"memberregisteraddbutton"}
-              className={"saveBtn"}
-              onClick={viewcreate}
-              style={{
-                marginLeft: "2.5%",
-                width: "150px",
-                cursor: "pointer",
-                marginTop: "50px",
-                marginBottom:"-50px"
-              }}
-            > */}
-{/* 
-              Add Constituency
-                  </CButton> */}
-
               <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-16px" , marginTop:"40px"}}>
-
-
-                <CCol className={"column-align"} md="5">
+              <CCol className={"column-align"} md="5">
                   <CLabel className={"label-name"}>
                     State
                  <span className={"text-danger"}>*</span>
@@ -191,8 +152,7 @@ function ViewConstituency() {
                 </CCol>
               </CRow>
 
-              <CRow className={"row-alignment"}  md="12" sm="12" lg="12" style={{ marginLeft: "5px" }}>
-               
+              <CRow className={"row-alignment"}  md="12" sm="12" lg="12" style={{ marginLeft: "5px" }}>   
               <CCol className={"column-align"} md="5">
                       <CLabel className={"label-name-1"}>
                         Parliamentary Constituency
@@ -202,8 +162,6 @@ function ViewConstituency() {
                         placeholder="Select Parliamentary Constituency"
                         id={"parliamentaryconstituency"}
                         type={"text"}
-                       
-                      // isDisabled={CountryCreate || CityCreate || AreaCreate}
                       />
                     </CCol>
                     <CCol className={"column-align"} md="5">
@@ -215,11 +173,53 @@ function ViewConstituency() {
                         placeholder="Select Legislative Assembly Constituency"
                         id={"legislativeAssemblyconstitue"}
                         type={"text"}
-                     style={{marginLeft:"5px"}}                      // isDisabled={CountryCreate || CityCreate || AreaCreate}
+                     style={{marginLeft:"5px"}}                   
                       />
                     </CCol>
                     </CRow>
-                    <CRow style={{ padding: "4%", marginTop: "1.5%" }}>
+                    <CButton
+                    style={{
+                      float: "right",
+                      marginRight: "764px",
+                      marginTop:"30px",
+                      width:"200px",
+                      marginLeft:"38px",
+                    }}
+                    id={"addconstituency"}
+                    onClick={viewcreate}
+                    className={"saveBtn"}
+                  >
+                    Add Constituency
+                  </CButton>{" "}       
+                    <CRow>
+              <CCol style={{ fontSize: "1.55rem" }} md="12">
+                <i
+                  id={"locationLibraryDelete"}
+                  style={{
+                    position: "absolute",
+                    top: "80px",
+                    marginLeft: "955px",
+                    marginBottom: "20px",
+                    color: "#0072ff",
+                  }}
+                  className="fa fa-print"
+                ></i>
+              </CCol>
+              <CCol style={{ fontSize: "1.55rem" }} md="12">
+                <i
+                  id={"locationLibraryDelete"}
+                  style={{
+                    position: "absolute",
+                    top: "80px",
+                    marginLeft: "1000px",
+                    marginBottom: "20px",
+                    color: "green",
+                  }}
+                  className="fa fa-share-alt"
+                ></i>
+              </CCol>
+            </CRow>
+              <CRow style={{ padding: "4%", marginTop: "1.5%" }}>
               <CDataTable
                 items={userDataview}
                 fields={fieldsview}
@@ -236,13 +236,7 @@ function ViewConstituency() {
                     return (
                       <td className="py-2">
                         <CRow>
-
                           <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              onClick={() => {
-                                //   toggleDetails(index);
-                              }}
-                            ></i>
                             <i
                               style={{
                                 marginRight: "5px",
@@ -250,11 +244,9 @@ function ViewConstituency() {
                                 cursor: "pointer",
                               }}
                               id={"constituencyediticon"}
-                              // onClick={() => EditCountry(item)}
                               className="fas fa-edit"
                             ></i>
                             <i
-                              // onClick={() => deleteConfirm(item._id)}
                               id={"constituencydelete"}
                               style={{
                                 marginLeft: "5px",
@@ -277,9 +269,7 @@ function ViewConstituency() {
                             marginLeft:"5px",
                             color: "#3480e2",
                             cursor: "pointer",
-
                           }}
-                          onClick={viewcreate}
                           id={"viewicon"}
                           className="fa fa-eye"
                           ></i>
@@ -292,9 +282,6 @@ function ViewConstituency() {
                 }}
               />
             </CRow>
-
-
-
       </CCard>
 </div>
             )}
@@ -319,8 +306,6 @@ function ViewConstituency() {
                 </span>
               </div>
               <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-16px" }}>
-
-
                 <CCol className={"column-align"} md="4">
                   <CLabel className={"label-name"}>
                     State
@@ -362,7 +347,6 @@ function ViewConstituency() {
                         id={"parliamentaryconstituency"}
                         type={"text"}
                         value={ParliamentaryConstituency}
-                      // isDisabled={CountryCreate || CityCreate || AreaCreate}
                       />
                     </CCol>
                     <CCol className={"column-align"} md={1} lg={1}>
@@ -372,13 +356,10 @@ function ViewConstituency() {
                         style={{ marginTop: "30px" }}
                         className={"saveBtn"}
                         onClick={enableCreate}
-                      // disabled={CountryCreate || CityCreate || AreaCreate}
                       >
                         ADD
                       </CButton>
                     </CCol>
-                    {/* {countryName.edit && <React.Fragment></React.Fragment>} */}
-
                     {municipalName.edit === true ? (
                       <React.Fragment>
                         <CCol md={3} lg={3}>
@@ -410,13 +391,8 @@ function ViewConstituency() {
                         </CLabel>
 
                         <CInput
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Symbols(e)
-                          // }
                           id={"parliamentarydconstituency"}
                           name={"Parliamentary Constituency"}
-                          // value={states.statename}
-                          // onChange={statechangeHandler}
                           placeholder="Enter Parliamentary Constituency"
                           maxlength="60"
                           size="60"
@@ -429,15 +405,8 @@ function ViewConstituency() {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                          //     e
-                          //   )
-                          // }
                           id={"parliamentaryconstituencyabrreviation"}
                           name={"abbreviation"}
-                          // value={states.abbreviation}
-                          // onChange={statechangeHandler}
                           placeholder="Enter Abbreviation"
                           maxlength="5"
                           size="5"
@@ -450,15 +419,7 @@ function ViewConstituency() {
                         </CLabel>
                         <CInput
                           id={"parliamentaryconstituencycode"}
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                          //     e
-                          //   )
-                          // }
                           name={"code"}
-                          // value={states.code}
-                          // onChange={statechangeHandler}
-                          // style={{ textTransform: "uppercase" }}
                           placeholder="Enter Code"
                           maxlength="5"
                           size="5"
@@ -470,7 +431,6 @@ function ViewConstituency() {
                           id={"parliamentaryconstituencysave"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
-                        // onClick={State}
                         >
                           {passing !== "" ? "UPDATE" : "SAVE"}
                         </CButton>
@@ -502,8 +462,6 @@ function ViewConstituency() {
                         placeholder="Select the State Name"
                         id={"legislative"}
                         type={"text"}
-
-                      // isDisabled={CountryCreate || CityCreate || AreaCreate}
                       />
                     </CCol>
                     <CCol className={"column-align"} md={1} lg={1}>
@@ -513,13 +471,10 @@ function ViewConstituency() {
                         style={{ marginTop: "30px" }}
                         className={"saveBtn"}
                         onClick={enableCreateadd}
-                      // disabled={CountryCreate || CityCreate || AreaCreate}
                       >
                         ADD
                       </CButton>
                     </CCol>
-                    {/* {countryName.edit && <React.Fragment></React.Fragment>} */}
-
                     {municipalName.edit === true ? (
                       <React.Fragment>
                         <CCol md={3} lg={3}>
@@ -530,9 +485,6 @@ function ViewConstituency() {
                             id={"legislativeedit"}
                             className={"btn btn-success"}
                             onClick={editStateadd}
-                          // disabled={
-                          //   CountryCreate || CityCreate || AreaCreate
-                          // }
                           >
                             EDIT
                           </CButton>
@@ -547,18 +499,11 @@ function ViewConstituency() {
                       <CCol md="3">
                         <CLabel className={"label-name-3"}>
                           Legislative Assembly
-                          
                           <span className={"text-danger"}> *</span>
                         </CLabel>
-
                         <CInput
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Symbols(e)
-                          // }
                           id={"legislative"}
                           name={"Legislative"}
-                          // value={states.statename}
-                          // onChange={statechangeHandler}
                           placeholder="State Name"
                           maxlength="60"
                           size="60"
@@ -571,15 +516,8 @@ function ViewConstituency() {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                          //     e
-                          //   )
-                          // }
                           id={"legislativeabbreviation"}
                           name={"abbreviation"}
-                          // value={states.abbreviation}
-                          // onChange={statechangeHandler}
                           placeholder="Enter Abbreviation"
                           maxlength="5"
                           size="5"
@@ -592,15 +530,7 @@ function ViewConstituency() {
                         </CLabel>
                         <CInput
                           id={"legislativecode"}
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                          //     e
-                          //   )
-                          // }
                           name={"Legislativecode"}
-                          // value={states.code}
-                          // onChange={statechangeHandler}
-                          // style={{ textTransform: "uppercase" }}
                           placeholder="Enter Code"
                           maxlength="5"
                           size="5"
@@ -612,7 +542,6 @@ function ViewConstituency() {
                           id={"legislativesave"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
-                        // onClick={State}
                         >
                           {passing !== "" ? "UPDATE" : "SAVE"}
                         </CButton>
@@ -635,8 +564,8 @@ function ViewConstituency() {
               <CRow>
                 <CCol>
                   <CLabel style={{ fontSize: "20PX", fontFamily: "Open Sans", fontWeight: "700", marginLeft: "71px", marginTop: "20px" }}>
-                    Selection Area
-  </CLabel>
+                  Select Street
+                    </CLabel>
                 </CCol>
               </CRow>
 
@@ -698,6 +627,7 @@ function ViewConstituency() {
                       }}
                       id={"cancelconstituency"}
                       className={"cancelBtn"}
+                      onClick={cancelview}
                     >
                       CANCEL
                   </CButton>
@@ -714,9 +644,6 @@ function ViewConstituency() {
                   </CCol>
                 </CCol>
               </CRow>
-
-
-
               <CRow style={{ padding: "6%", marginTop: "-3.5%" }}>
                 <CDataTable
                   items={userData}
@@ -735,15 +662,6 @@ function ViewConstituency() {
                         <td className="py-2">
                           <CInput
                             type={"checkbox"}
-                            // onClick={() => {
-                            //   let data = item._id;
-                            //   if (`${checked}` === `${data}`) {
-                            //     setChecked("");
-                            //   } else {
-                            //     getToRoleEmpMovement(item);
-                            //   }
-                            // }}
-                            // checked={checked === `${item._id}`}
                             style={{
                               width: "15px",
                               height: "15px",
@@ -753,31 +671,6 @@ function ViewConstituency() {
                           />
                           <CRow>
                             <CCol style={{ fontSize: "1.15rem" }} md="12">
-                              <i
-                                onClick={() => {
-                                  //   toggleDetails(index);
-                                }}
-                              ></i>
-                              {/* <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "#3480e2",
-                                  cursor: "pointer",
-                                }}
-                                id={"locationLibraryEdit"}
-                                onClick={() => EditCountry(item)}
-                                className="fas fa-edit"
-                              ></i>
-                              <i
-                                onClick={() => deleteConfirm(item._id)}
-                                id={"locationLibraryDelete"}
-                                style={{
-                                  marginLeft: "5px",
-                                  color: "#e85654",
-                                  cursor: "pointer",
-                                }}
-                                className="fa fa-trash"
-                              ></i> */}
                             </CCol>
                           </CRow>
                         </td>
@@ -790,22 +683,15 @@ function ViewConstituency() {
 
                             <CCol style={{ fontSize: "1.15rem" }} md="12">
                               <i
-                                onClick={() => {
-                                  //   toggleDetails(index);
-                                }}
-                              ></i>
-                              <i
                                 style={{
                                   marginRight: "5px",
                                   color: "#3480e2",
                                   cursor: "pointer",
                                 }}
                                 id={"constituencyediticon"}
-                                // onClick={() => EditCountry(item)}
                                 className="fas fa-edit"
                               ></i>
                               <i
-                                // onClick={() => deleteConfirm(item._id)}
                                 id={"constituencydelete"}
                                 style={{
                                   marginLeft: "5px",
@@ -814,25 +700,6 @@ function ViewConstituency() {
                                 }}
                                 className="fa fa-trash"
                               ></i>
-                              {/* <i 
-                               style={{
-                                marginLeft: "5px",
-                                color: "green",
-                                cursor: "pointer",
-                              }}
-                              id={"removeicon"}
-                              className="fas fa-eraser"></i>
-                                <i
-                             style={{
-                              marginRight: "5px",
-                              marginLeft:"5px",
-                              color: "#3480e2",
-                              cursor: "pointer",
-
-                            }}
-                            id={"viewicon"}
-                            className="fa fa-eye"
-                            ></i> */}
                             </CCol>
                           </CRow>
                         </td>
@@ -852,5 +719,4 @@ function ViewConstituency() {
                    </div>     
     )
 }
-
 export default ViewConstituency

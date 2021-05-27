@@ -8,22 +8,10 @@ import {
   CSelect,
 } from "@coreui/react";
 import React, { useState } from "react";
-import Toaster from "src/views/notifications/toaster/Toaster";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
 const TownPanchayat = () => {
-  const [location, setLocation] = useState({
-    state: "",
-    district: "",
-    city: "",
-    ward: "",
-    area: "",
-    street: "",
-    pincode: "",
-  });
-  const [mobilenumber, setMobileNumber] = useState("");
-  const [otpHide, setOtpHide] = useState(false);
   const [locations, setLocations] = useState({
     state: "",
     district: "",
@@ -36,9 +24,9 @@ const TownPanchayat = () => {
   const [municipalList, setMunicipalList] = useState(true);
   const [MunicipalCreate, setmunicipalCreate] = useState(false);
   const [municipalListadd, setMunicipalListadd] = useState(true);
-  const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
-  const [municipalCorporation, setMunicipalCorporation] = useState({});
-  const [municipalName, setMuniicipalName] = useState("");
+  const [, setmunicipalCreateadd] = useState(false);
+  const [municipalCorporation, ] = useState({});
+  const [municipalName, ] = useState("");
 
   const [locationHide, setLocationHide] = useState({
     corporation: true,
@@ -51,9 +39,7 @@ const TownPanchayat = () => {
   const userData = [
     {
       SNo: "1",
-      // State: "TamilNadu",
-      // District: "chennai",
-      // Area: "TNagar",
+    
       Street: "CP Ramaswamy Street",
     },
   ];
@@ -73,13 +59,7 @@ const TownPanchayat = () => {
       sorter: false,
       filter: false,
     },
-    // { key: "State", label: "State", _style: { width: "10%" } },
-    // { key: "District", label: "District", _style: { width: "10%" } },
-    // { key: "Area", label: "Ward", _style: { width: "10%" } },
     { key: "Street", label: "Name of the Street", _style: { width: "10%" } },
-
-    // { key: "male", label: "Male", _style: { width: "10%" } },
-    // { key: "female", label: "Female", _style: { width: "10%" } },
     {
       key: "Action",
       label: "Action",
@@ -89,7 +69,7 @@ const TownPanchayat = () => {
     },
   ];
   const [passing, setPassing] = useState("");
-  const [error, setError] = useState("");
+  const [error, ] = useState("");
   const saveCorporation = async () => {
     setLocationHide({
       ...locationHide,
@@ -119,61 +99,8 @@ const TownPanchayat = () => {
     }
   };
 
-  const saveMunicipalLocation = () => {
-    setLocationHide({
-      ...locationHide,
-      municipalLocation: false,
-      districtPanchayat: true,
-    });
-  };
-  const saveDistrictPanchayat = () => {
-    console.log(locationHide, "hidr");
-    setLocationHide({
-      ...locationHide,
-      districtPanchayat: false,
-      townPanchayat: true,
-    });
-  };
-  const savetownPanchayat = () => {
-    console.log(locationHide, "hidr");
-    setLocationHide({
-      ...locationHide,
-      villagePanchayat: true,
-      townPanchayat: false,
-    });
-  };
-  const saveVillagePanchayat = () => {
-    console.log(locationHide, "hidr");
-    setLocationHide({
-      ...locationHide,
-      villagePanchayat: false,
-      cityLocation: true,
-    });
-  };
-  const cityLocation = () => {
-    setLocationHide({
-      ...locationHide,
-      cityLocation: true,
-      townPanchayat: false,
-    });
-  };
-  const cancelcityLocation = () => {
-    setLocationHide({
-      ...locationHide,
-      cityLocation: false,
-      corporation: true,
-    });
-  };
   const changeHandler = (e) => {
     setLocations({ ...locations, [e.target.name]: e.target.value });
-  };
-  const otpChangeHandle = (e) => {
-    setMobileNumber(e.target.value);
-    if (mobilenumber.length > 8) {
-      setOtpHide(true);
-    } else {
-      setError("enter valid data");
-    }
   };
   const enableCreate = async () => {
     await setMunicipalList(false);
@@ -183,12 +110,7 @@ const TownPanchayat = () => {
   const editState = async () => {
     await setMunicipalList(false);
     await setmunicipalCreate(true);
-    // formik.values.StateName = stateName.stateName;
-    // formik.values.Abbreviation2 = stateName.abbreviation;
-    // formik.values.Code2 = stateName.code;
-    // setPassing(stateName._id);
-    // getState();
-    // getAllAreas();
+    
   };
   const CancelState = async () => {
     setPassing("");
@@ -202,23 +124,14 @@ const TownPanchayat = () => {
     setHideMappingTown(false);
     setHideTownPanchayat(true);
   };
-  const enableCreate1 = async () => {
-    // await setMunicipalList1(false);
-    // await setmunicipalCreate1(true);
+    
     const enableCreateadd = async () => {
       await setMunicipalListadd(false);
       await setmunicipalCreateadd(true);
     };
 
     const editStateadd = async () => {
-      // await setMunicipalListadd(false);
-      // await setmunicipalCreateadd(true);
-      // formik.values.StateName = stateName.stateName;
-      // formik.values.Abbreviation2 = stateName.abbreviation;
-      // formik.values.Code2 = stateName.code;
-      // setPassing(stateName._id);
-      // getState();
-      // getAllAreas();
+      
     };
     const CancelStateadd = async () => {
       setPassing("");
@@ -351,31 +264,7 @@ const TownPanchayat = () => {
                             <td className="py-2">
                               <CRow>
                                 <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                  <i
-                                    onClick={() => {
-                                      //   toggleDetails(index);
-                                    }}
-                                  ></i>
-                                  {/* <i
-                                   style={{
-                                     marginRight: "5px",
-                                     color: "#3480e2",
-                                     cursor: "pointer",
-                                   }}
-                                   id={"locationLibraryEdit"}
-                                   onClick={() => EditCountry(item)}
-                                   className="fas fa-edit"
-                                 ></i>
-                                 <i
-                                   onClick={() => deleteConfirm(item._id)}
-                                   id={"locationLibraryDelete"}
-                                   style={{
-                                     marginLeft: "5px",
-                                     color: "#e85654",
-                                     cursor: "pointer",
-                                   }}
-                                   className="fa fa-trash"
-                                 ></i> */}
+                                
                                 </CCol>
                               </CRow>
                             </td>
@@ -424,7 +313,6 @@ const TownPanchayat = () => {
                               id={"municipalcorporation"}
                               type={"text"}
                               value={municipalCorporation}
-                              // isDisabled={CountryCreate || CityCreate || AreaCreate}
                             />
                           </CCol>
                           <CCol className={"column-align"} md={1} lg={1}>
@@ -434,12 +322,10 @@ const TownPanchayat = () => {
                               style={{ marginTop: "30px" }}
                               className={"saveBtn"}
                               onClick={enableCreate}
-                              // disabled={CountryCreate || CityCreate || AreaCreate}
                             >
                               ADD
                             </CButton>
                           </CCol>
-                          {/* {countryName.edit && <React.Fragment></React.Fragment>} */}
 
                           {municipalName.edit === true ? (
                             <React.Fragment>
@@ -451,9 +337,6 @@ const TownPanchayat = () => {
                                   id={"locationLibraryStateEdit"}
                                   className={"btn btn-success"}
                                   onClick={editState}
-                                  // disabled={
-                                  //   CountryCreate || CityCreate || AreaCreate
-                                  // }
                                 >
                                   EDIT
                                 </CButton>
@@ -477,13 +360,8 @@ const TownPanchayat = () => {
                               </CLabel>
 
                               <CInput
-                                // onKeyPress={(e) =>
-                                //   FormValidation.value_Without_Number_Symbols(e)
-                                // }
                                 id={"MunicipalName"}
                                 name={"municipalname"}
-                                // value={states.statename}
-                                // onChange={statechangeHandler}
                                 placeholder="Enter Town Panchayat Name"
                                 maxlength="60"
                                 size="60"
@@ -496,15 +374,8 @@ const TownPanchayat = () => {
                                 <span className={"text-danger"}> *</span>
                               </CLabel>
                               <CInput
-                                // onKeyPress={(e) =>
-                                //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                                //     e
-                                //   )
-                                // }
                                 id={"municipalabrreviation"}
                                 name={"abbreviation"}
-                                // value={states.abbreviation}
-                                // onChange={statechangeHandler}
                                 placeholder="Enter Abbreviation"
                                 maxlength="5"
                                 size="5"
@@ -517,15 +388,7 @@ const TownPanchayat = () => {
                               </CLabel>
                               <CInput
                                 id={"municipalcode"}
-                                // onKeyPress={(e) =>
-                                //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                                //     e
-                                //   )
-                                // }
                                 name={"code"}
-                                // value={states.code}
-                                // onChange={statechangeHandler}
-
                                 placeholder="Enter Code"
                                 maxlength="5"
                                 size="5"
@@ -537,7 +400,6 @@ const TownPanchayat = () => {
                                 id={"municipalsave"}
                                 style={{ marginTop: "30px" }}
                                 className={"saveBtn"}
-                                // onClick={State}
                               >
                                 {passing !== "" ? "UPDATE" : "SAVE"}
                               </CButton>
@@ -575,8 +437,6 @@ const TownPanchayat = () => {
                               placeholder="Select the State Name"
                               id={"municipalcorporation"}
                               type={"text"}
-
-                              // isDisabled={CountryCreate || CityCreate || AreaCreate}
                             />
                           </CCol>
                           <CCol className={"column-align"} md={1} lg={1}>
@@ -586,12 +446,10 @@ const TownPanchayat = () => {
                               style={{ marginTop: "30px" }}
                               className={"saveBtn"}
                               onClick={enableCreateadd}
-                              // disabled={CountryCreate || CityCreate || AreaCreate}
                             >
                               ADD
                             </CButton>
                           </CCol>
-                          {/* {countryName.edit && <React.Fragment></React.Fragment>} */}
 
                           {municipalName.edit === true ? (
                             <React.Fragment>
@@ -603,9 +461,6 @@ const TownPanchayat = () => {
                                   id={"locationLibraryStateEdit"}
                                   className={"btn btn-success"}
                                   onClick={editStateadd}
-                                  // disabled={
-                                  //   CountryCreate || CityCreate || AreaCreate
-                                  // }
                                 >
                                   EDIT
                                 </CButton>
@@ -630,13 +485,8 @@ const TownPanchayat = () => {
                               </CLabel>
 
                               <CInput
-                                // onKeyPress={(e) =>
-                                //   FormValidation.value_Without_Number_Symbols(e)
-                                // }
                                 id={"wardname"}
                                 name={"municipalname"}
-                                // value={states.statename}
-                                // onChange={statechangeHandler}
                                 placeholder="Enter Ward Number"
                                 maxlength="60"
                                 size="60"
@@ -649,15 +499,8 @@ const TownPanchayat = () => {
                                 <span className={"text-danger"}> *</span>
                               </CLabel>
                               <CInput
-                                // onKeyPress={(e) =>
-                                //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                                //     e
-                                //   )
-                                // }
                                 id={"wardabbreviation"}
                                 name={"abbreviation"}
-                                // value={states.abbreviation}
-                                // onChange={statechangeHandler}
                                 placeholder="Enter Abbreviation"
                                 maxlength="5"
                                 size="5"
@@ -670,14 +513,7 @@ const TownPanchayat = () => {
                               </CLabel>
                               <CInput
                                 id={"wardcode"}
-                                // onKeyPress={(e) =>
-                                //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                                //     e
-                                //   )
-                                // }
                                 name={"wardcode"}
-                                // value={states.code}
-                                // onChange={statechangeHandler}
 
                                 placeholder="Enter Code"
                                 maxlength="5"
@@ -690,7 +526,6 @@ const TownPanchayat = () => {
                                 id={"wardsave"}
                                 style={{ marginTop: "30px" }}
                                 className={"saveBtn"}
-                                // onClick={State}
                               >
                                 {passing !== "" ? "UPDATE" : "SAVE"}
                               </CButton>
@@ -771,40 +606,6 @@ const TownPanchayat = () => {
                         />
                       </CCol>
                     </CRow>
-                    {/* <CCol className={"column-align"} md="3">
-                <CLabel className={"label-name"}>
-                  Mobile Number
-                  <span className={"text-danger"}>*</span>
-                </CLabel>
-                <CInput
-                  type={"number"}
-                  className={"input-align"}
-                  id={"corporationStreets"}
-                  name={"streets"}
-                  placeholder={"Enter Street"}
-                  value={mobilenumber}
-                  onChange={otpChangeHandle}
-                
-                />
-                <span className="text-danger">{error}</span>
-              </CCol>
-              {otpHide && (
-                <CCol className={"column-align"} md="3">
-                  <CLabel className={"label-name"}>
-                  OTP
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <CInput
-                    type={"number"}
-                    className={"input-align"}
-                    id={"corporationStreets"}
-                    name={"streets"}
-                    placeholder={"Enter otp"}
-                   
-                   
-                  />
-                </CCol>
-              )} */}
                   </div>
                   <CRow style={{ marginTop: "30px" }}>
                     <CCol md="10">
@@ -858,15 +659,6 @@ const TownPanchayat = () => {
                             <td className="py-2">
                               <CInput
                                 type={"checkbox"}
-                                // onClick={() => {
-                                //   let data = item._id;
-                                //   if (`${checked}` === `${data}`) {
-                                //     setChecked("");
-                                //   } else {
-                                //     getToRoleEmpMovement(item);
-                                //   }
-                                // }}
-                                // checked={checked === `${item._id}`}
                                 style={{
                                   width: "15px",
                                   height: "15px",
@@ -876,31 +668,6 @@ const TownPanchayat = () => {
                               />
                               <CRow>
                                 <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                  <i
-                                    onClick={() => {
-                                      //   toggleDetails(index);
-                                    }}
-                                  ></i>
-                                  {/* <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "#3480e2",
-                                  cursor: "pointer",
-                                }}
-                                id={"locationLibraryEdit"}
-                                onClick={() => EditCountry(item)}
-                                className="fas fa-edit"
-                              ></i>
-                              <i
-                                onClick={() => deleteConfirm(item._id)}
-                                id={"locationLibraryDelete"}
-                                style={{
-                                  marginLeft: "5px",
-                                  color: "#e85654",
-                                  cursor: "pointer",
-                                }}
-                                className="fa fa-trash"
-                              ></i> */}
                                 </CCol>
                               </CRow>
                             </td>
@@ -918,5 +685,5 @@ const TownPanchayat = () => {
       </div>
     );
   };
-};
+
 export default TownPanchayat;
