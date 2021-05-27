@@ -17,8 +17,6 @@ const Paginations = React.lazy(() => import('./views/base/paginations/Pagnations
 const Popovers = React.lazy(() => import('./views/base/popovers/Popovers'));
 const ProgressBar = React.lazy(() => import('./views/base/progress-bar/ProgressBar'));
 const Switches = React.lazy(() => import('./views/base/switches/Switches'));
-
-const Terminate = React.lazy(() => import('./views/components/terminate/terminate'));
 const Promote = React.lazy(() => import('./views/components/promote/promote'));
 const Transfer = React.lazy(() => import('./views/components/transfer/transfer'));
 const Suspend = React.lazy(() => import('./views/components/suspend/suspend'));
@@ -56,13 +54,14 @@ const Municipality = React.lazy(() => import('./views/components/municipality/Mu
 const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
 const VillagePanchayat = React.lazy(() => import('./views/components/villagepanchayat/VillagePanchayat'));
 const MemberRegistration = React.lazy(() => import('./views/components/memberregistration/MemberRegistration'));
-const ViewConstituency = React.lazy(() => import('./views/components/constituency/ViewConstituency'));
 const Terminate = React.lazy(() => import('./views/components/terminate/Terminate'));
+const ViewConstituency = React.lazy(() => import('./views/components/Constituency/Constituency'));
 
 const PartyOffice = React.lazy(() => import('./views/components/partyoffice/PartyOffice'));
 const PartyOfficeLocation = React.lazy(() => import('./views/components/partyofficelocation/PartyOfficeLocation'));
 const routes = [
   { path: '/', exact: true, name: 'Home' },
+  { path: '/ViewConstituency',  exact: true, name: 'Constituency', component: ViewConstituency },
   { path: '/dashboard', name: 'Dashboard', exact: true ,component: Dashboard },
   { path: '/theme', name: 'Theme', component: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', component: Colors },
@@ -115,13 +114,11 @@ const routes = [
   { path: '/MemberRegistration',  exact: true, name: 'Member Registration', component: MemberRegistration },
   { path: '/OfficeType',  exact: true, name: 'PARTY WINGS OFFICE', component: OfficeType },
   { path: '/PartyWingsOfficeLocation',  exact: true, name: 'Party Wings Office Location', component: PartyWingsOfficeLocation },
-  { path: '/ViewConstituency',  exact: true, name: 'Constituency', component: ViewConstituency },
   { path: '/Terminate',  exact: true, name: 'Terminate Member', component: Terminate },
 
   { path: '/memberPromote',  exact: true, name: 'Member Promote', component: Promote },
   { path: '/memberSuspend',  exact: true, name: 'Member Suspend', component: Suspend },
   { path: '/memberTransfer',  exact: true, name: 'Member Transfer', component: Transfer },
-  { path: '/memberTerminate',  exact: true, name: 'Member Terminate', component: Terminate },
   { path: '/memberRevoke',  exact: true, name: 'Member Revoke', component: Revoke },
 ];
 

@@ -144,11 +144,14 @@ const _nav = [
       {
         id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
-        name: 'Terminate Member ',
+        name: 'Terminate Party Member ',
         to: '/Terminate',
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
   
+      {
+        id: "CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
         name: "Suspend Party Member",
         to: "/memberSuspend",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
@@ -160,15 +163,7 @@ const _nav = [
         to: "/memberTransfer",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
-      
-  
-      {
-        id: "CSidebarNavItemSideBar",
-        _tag: "CSidebarNavItem",
-        name: "Terminate Party Member",
-        to: "/memberTerminate",
-        icon: <CIcon className={"c-sidebar-nav-icon"} />,
-      },
+    
  
       {
         id: "CSidebarNavItemSideBar",
@@ -196,6 +191,7 @@ const _nav = [
       },
     ],
   },
+
   {
     id: "AdminSetupSideBar",
     _tag: "CSidebarNavDropdown",
