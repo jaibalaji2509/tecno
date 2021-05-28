@@ -55,7 +55,6 @@ import {
       villagePanchayat: false,
       cityLocation: false,
     });
-    const [PI, setPI] = useState("");
     const userData = [
       // {
       //   SNo: "1",
@@ -262,6 +261,8 @@ import {
       setHideMappingmunicipal(false);
       setHideCorporation(true);
     };
+    const [PI, setPI] = useState("");
+
     const handleSave = async (file, folder) => {
         if (file === undefined) {
           let e = "cancelled";

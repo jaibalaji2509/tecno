@@ -11,6 +11,7 @@ import React, { useState } from "react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
+
 const TownPanchayat = () => {
   const [locations, setLocations] = useState({
     state: "",

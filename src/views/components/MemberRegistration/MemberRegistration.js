@@ -14,7 +14,7 @@ import {
   import CDataTable from "../../CoreComponents/table/CDataTable";
 import "./MemberRegistration.css"
 import Select from "react-select";
-// import DEFAULT_IMAGE from "../../../assets/img/camera-icon.png";
+import DEFAULT_IMAGE from "../../../assets/img/camera-icon.png";
 import { toast } from "react-toastify";
 
              
@@ -23,9 +23,9 @@ function MemberRegistration() {
   const [steetSchema, ] = useState([]);
   const [Education, ] = useState([]);
   const [Occupation, ] = useState([]);
-  const [, setFiles] = useState("");
   const [, setPI] = useState("");
   const [sideBar1, setSideBar1] = useState(false);
+  const [files, setFiles] = useState("");
   const [menu, setMenu] = useState({
     style: 'menu',
     menuStatus: 'open',
@@ -887,8 +887,18 @@ color="gradient-danger"
     <CRow style={{ marginLeft:"1200px",position:"absolute" ,marginTop:"30px"}}>
                     <CCol sm="6" lg="3" style={{ marginLeft: "10px" }}>
                     <CCol md="3">
-                    <CInput
-               
+                    <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              paddingLeft: "0%",
+              justifyContent: "center",
+              marginTop: "1%",
+            }}
+          >
+            <CCol md="3">
+              <CInput
+                id={"addEmployeeProfileImage"}
                 name="file"
                 type="file"
                 id="profileImage"
@@ -898,21 +908,22 @@ color="gradient-danger"
                   handleSave(e.target.files[0], "profileImage");
                 }}
               />
-              </CCol>
+            </CCol>
+            {/* <p>{JSON.stringify(state.profileImage)}</p> */}
             <div
               id={"addEmployeehandleClick"}
               style={{
                 height: "100px",
                 width: "100px",
                 border: "1px dashed black",
-                marginTop:"-670px",
-                marginLeft:"-300px"
+                marginLeft:"-300px",
+                marginTop:"-1191px"
               }}
               onClick={() => handleClick()}
             >
               <img
                 alt=""
-                // src={files !== "" ? files : DEFAULT_IMAGE}
+                src={files !== "" ? files : DEFAULT_IMAGE}
                 style={{
                   width: "100%",
                   height: "100%",
@@ -921,17 +932,13 @@ color="gradient-danger"
               />
             </div>
 
-            <CLabel className={"form-label1"}
-            style={{
-              marginLeft:"-300px"
-            }}
-            >
+            <CLabel style={{marginLeft:"-300px"}}>
               Upload Image
               <span className={"text-danger"}> *</span>
             </CLabel>
-
-
+          </div>
                 </CCol>
+              </CCol>
                 </CRow>
 
 

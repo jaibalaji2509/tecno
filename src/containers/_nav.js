@@ -136,7 +136,7 @@ const _nav = [
         id:"CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
         name: 'Member Count',
-        to: '/MemberRegistration',
+        to: '/MemberuRegistration',
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
   
@@ -182,22 +182,7 @@ const _nav = [
   
     ],
   },
-  {
-    id: "AdminSetupSideBar",
-    _tag: "CSidebarNavDropdown",
-    name: "Party Member Registration",
-    route: "/AdminSetup",
-    icon: "cil-drop",
-    _children: [
-      {
-        id: "CSidebarNavItemSideBar",
-        _tag: "CSidebarNavItem",
-        name: "Map Public Representation",
-        to: "/MemberRegistration",
-        icon: <CIcon className={"c-sidebar-nav-icon"} />,
-      },
-    ],
-  },
+  
 
   {
     id: "AdminSetupSideBar",
