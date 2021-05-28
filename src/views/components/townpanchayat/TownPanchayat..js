@@ -24,10 +24,11 @@ const TownPanchayat = () => {
   const [municipalList, setMunicipalList] = useState(true);
   const [MunicipalCreate, setmunicipalCreate] = useState(false);
   const [municipalListadd, setMunicipalListadd] = useState(true);
-  const [, setmunicipalCreateadd] = useState(false);
-  const [municipalCorporation, ] = useState({});
-  const [municipalName, ] = useState("");
-
+  const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
+  const [municipalCorporation, setMunicipalCorporation] = useState({});
+  const [municipalName, setMuniicipalName] = useState("");
+  const [wardnumberList, seatWardNumberList] = useState(true);
+  const [wardNumberCreate, setWardNumberCreate] = useState(false);
   const [locationHide, setLocationHide] = useState({
     corporation: true,
     municipalLocation: false,
@@ -37,11 +38,13 @@ const TownPanchayat = () => {
     cityLocation: false,
   });
   const userData = [
-    {
-      SNo: "1",
-    
-      Street: "CP Ramaswamy Street",
-    },
+    // {
+    //   SNo: "1",
+    //   // State: "TamilNadu",
+    //   // District: "chennai",
+    //   // Area: "TNagar",
+    //   Street: "CP Ramaswamy Street",
+    // },
   ];
   const fields = [
     {
@@ -55,11 +58,33 @@ const TownPanchayat = () => {
     {
       key: "SNo",
       label: "S.NO",
+      _style: { width: "5%" },
+      sorter: false,
+      filter: false,
+    },
+    // { key: "State", label: "State", _style: { width: "10%" } },
+    // { key: "District", label: "District", _style: { width: "10%" } },
+    // { key: "Area", label: "Ward", _style: { width: "10%" } },
+    { key: "Street", label: "Street Name", _style: { width: "10%" } },
+    { key: "Street", label: "Ward Name", _style: { width: "10%" } },
+   
+    // { key: "male", label: "Male", _style: { width: "10%" } },
+    // { key: "female", label: "Female", _style: { width: "10%" } },
+  
+    {
+      key: "Action",
+      label: "Enteerd by",
       _style: { width: "10%" },
       sorter: false,
       filter: false,
     },
-    { key: "Street", label: "Name of the Street", _style: { width: "10%" } },
+    {
+      key: "Action",
+      label: "Entered On",
+      _style: { width: "10%" },
+      sorter: false,
+      filter: false,
+    },
     {
       key: "Action",
       label: "Action",
@@ -69,35 +94,37 @@ const TownPanchayat = () => {
     },
   ];
   const [passing, setPassing] = useState("");
-  const [error, ] = useState("");
-  const saveCorporation = async () => {
-    setLocationHide({
-      ...locationHide,
-      municipalLocation: true,
-      corporation: false,
-    });
+  const [error, setError] = useState("");
+  // const saveCorporation = async () => {
+  //   setLocationHide({
+  //     ...locationHide,
+  //     municipalLocation: true,
+  //     corporation: false,
+  //   });
 
-    if (passing === "") {
-      let body = {
-        state: locations.state,
-        district: locations.district,
-        city: locations.city,
-        area: locations.area,
-        ward: locations.ward,
-        street: locations.street,
-      };
-      console.log(body);
-      try {
-        const response = await saveCreateCorporation(JSON.stringify(body));
-        console.log(body, "createfirst");
-        if (response) {
-          toast.success(response);
-        }
-      } catch (error) {
-        toast.error(error);
-      }
-    }
-  };
+  //   if (passing === "") {
+  //     let body = {
+  //       state: locations.state,
+  //       district: locations.district,
+  //       city: locations.city,
+  //       area: locations.area,
+  //       ward: locations.ward,
+  //       street: locations.street,
+  //     };
+  //     console.log(body);
+  //     try {
+  //       const response = await saveCreateCorporation(JSON.stringify(body));
+  //       console.log(body, "createfirst");
+  //       if (response) {
+  //         toast.success(response);
+  //       }
+  //     } catch (error) {
+  //       toast.error(error);
+  //     }
+  //   }
+  // };
+
+
 
   const changeHandler = (e) => {
     setLocations({ ...locations, [e.target.name]: e.target.value });
@@ -124,19 +151,20 @@ const TownPanchayat = () => {
     setHideMappingTown(false);
     setHideTownPanchayat(true);
   };
+ 
     
-    const enableCreateadd = async () => {
-      await setMunicipalListadd(false);
-      await setmunicipalCreateadd(true);
+    const addWardNumber = async () => {
+      await seatWardNumberList(false);
+      await setWardNumberCreate(true);
     };
 
     const editStateadd = async () => {
       
     };
-    const CancelStateadd = async () => {
+    const cancelWardNumber = async () => {
       setPassing("");
-      await setMunicipalListadd(true);
-      await setmunicipalCreateadd(false);
+      await seatWardNumberList(true);
+      await setWardNumberCreate(false);
     };
 
     return (
@@ -172,7 +200,7 @@ const TownPanchayat = () => {
                           <CButton
                             style={{
                               float: "right",
-                              marginRight: "980px",
+                              marginRight: "835px",
                             }}
                             id={"saveAbbreviationConfigureCode"}
                             className={"saveBtn"}
@@ -184,7 +212,7 @@ const TownPanchayat = () => {
                       </CCol>
                     </CRow>
                     <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                      <CCol className={"column-align"} md="4">
+                      <CCol className={"column-align"} md="3">
                         <CLabel className={"label-name"}>
                           State
                           <span className={"text-danger"}>*</span>
@@ -198,9 +226,23 @@ const TownPanchayat = () => {
                           onChange={changeHandler}
                         />
                       </CCol>
-                      <CCol className={"column-align"} md="4">
+                      <CCol className={"column-align"} md="3">
                         <CLabel className={"label-name"}>
                           District / City
+                          <span className={"text-danger"}>*</span>
+                        </CLabel>
+                        <CSelect
+                          className={"input-align"}
+                          id={"municipaldistrict"}
+                          name={"city"}
+                          placeholder={" Corporation Name"}
+                          value={locations.city}
+                          onChange={changeHandler}
+                        />
+                      </CCol>
+                      <CCol className={"column-align"} md="3">
+                        <CLabel className={"label-name"}>
+                          Town Panchayat
                           <span className={"text-danger"}>*</span>
                         </CLabel>
                         <CSelect
@@ -215,21 +257,21 @@ const TownPanchayat = () => {
                     </CRow>
 
                     <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                      <CCol className={"column-align"} md="4">
+                      <CCol className={"column-align"} md="3">
                         <CLabel className={"label-name"}>
-                          Town Panchayat
+                        Area
                           <span className={"text-danger"}>*</span>
                         </CLabel>
                         <CSelect
                           className={"input-align"}
                           id={"municipaldistrict"}
-                          name={"city"}
-                          placeholder={" Corporation Name"}
+                          name={"Area"}
+                          placeholder={" Select Area"}
                           value={locations.city}
                           onChange={changeHandler}
                         />
                       </CCol>
-                      <CCol className={"column-align"} md="4">
+                      <CCol className={"column-align"} md="3">
                         <CLabel className={"label-name"}>
                           Ward
                           <span className={"text-danger"}>*</span>
@@ -426,7 +468,7 @@ const TownPanchayat = () => {
                       className={"row-alignment"}
                       style={{ marginLeft: "5px" }}
                     >
-                      {municipalListadd && (
+                      {wardnumberList && (
                         <React.Fragment>
                           <CCol className={"column-align"} md={4} lg={4}>
                             <CLabel className={"label-name-1"}>
@@ -445,7 +487,8 @@ const TownPanchayat = () => {
                               id={"addmunicipalcorporation"}
                               style={{ marginTop: "30px" }}
                               className={"saveBtn"}
-                              onClick={enableCreateadd}
+                              onClick={addWardNumber}
+                              // disabled={CountryCreate || CityCreate || AreaCreate}
                             >
                               ADD
                             </CButton>
@@ -470,7 +513,7 @@ const TownPanchayat = () => {
                         </React.Fragment>
                       )}
 
-                      {MunicipalCreate && (
+                      {wardNumberCreate && (
                         <React.Fragment>
                           <CRow
                             className={"column-align3"}
@@ -537,7 +580,7 @@ const TownPanchayat = () => {
                                   marginLeft: "20px",
                                 }}
                                 className={"cancelBtn"}
-                                onClick={CancelStateadd}
+                                onClick={cancelWardNumber}
                               >
                                 CANCEL
                               </CButton>
@@ -634,7 +677,7 @@ const TownPanchayat = () => {
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
-                          onClick={saveCorporation}
+                          // onClick={saveCorporation}
                         >
                           Save
                         </CButton>{" "}

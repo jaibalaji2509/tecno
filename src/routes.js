@@ -59,6 +59,8 @@ const ViewConstituency = React.lazy(() => import('./views/components/Constituenc
 
 const PartyOffice = React.lazy(() => import('./views/components/partyoffice/PartyOffice'));
 const PartyOfficeLocation = React.lazy(() => import('./views/components/partyofficelocation/PartyOfficeLocation'));
+const PartyPosting = React.lazy(() => import('./views/components/partyposting/PartyPosting'));
+const AssignPartyPosting = React.lazy(() => import('./views/components/assignpartyposting/AssignPartyPosting'));
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/ViewConstituency',  exact: true, name: 'Constituency', component: ViewConstituency },
@@ -108,13 +110,20 @@ const routes = [
 
   {path:"/municipalcorporation", exact:true, name : "Municipal Corporation", component:MunicipalCorporation},
   {path:"/municipality", exact:true, name : "Municipality", component:Municipality},
-  {path:"/townpanchayat", exact:true, name : "Municipality", component:TownPanchayat},
+  {path:"/townpanchayat", exact:true, name : "Town Panchayat", component:TownPanchayat},
   {path:"/villagepanchayat", exact:true, name : "Village Panchayat", component:VillagePanchayat},
   {path:"/partyoffice", exact:true, name : "Party Office", component:PartyOffice},
   { path: '/MemberRegistration',  exact: true, name: 'Member Registration', component: MemberRegistration },
   { path: '/OfficeType',  exact: true, name: 'PARTY WINGS OFFICE', component: OfficeType },
   { path: '/PartyWingsOfficeLocation',  exact: true, name: 'Party Wings Office Location', component: PartyWingsOfficeLocation },
   { path: '/Terminate',  exact: true, name: 'Terminate Member', component: Terminate },
+  // {path:"/Constituency", exact:true, name : "Constituency", component:Constituency},
+  // { path: '/AddMemberRegister',  exact: true, name: 'AddMemberRegister', component: AddMemberRegister },
+  // { path: '/MemberRegistration',  exact: true, name: 'MemberRegistration', component: MemberRegistration },
+  // { path: '/OfficeType',  exact: true, name: 'OfficeType', component: OfficeType },
+  // { path: '/WingLocation',  exact: true, name: 'WingLocation', component: WingLocation },
+  { path: '/partyposting',  exact: true, name: 'Party Posting', component: PartyPosting },
+  { path: '/assignpartyposting',  exact: true, name: 'Assign Party Posting', component:AssignPartyPosting },
 
   { path: '/memberPromote',  exact: true, name: 'Member Promote', component: Promote },
   { path: '/memberSuspend',  exact: true, name: 'Member Suspend', component: Suspend },

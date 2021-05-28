@@ -59,7 +59,15 @@ const VillagePanchayat = () => {
       filter: false,
     },
     { key: "SNo", label: "S.NO", _style: { width: "10%" } },
-    { key: "Street", label: "Name of the Street", _style: { width: "10%" } },
+    // { key: "State", label: "State", _style: { width: "10%" } },
+    // { key: "District", label: "District", _style: { width: "10%" } },
+    // { key: "Area", label: "Ward", _style: { width: "10%" } },
+    { key: "Street", label: "Street Name", _style: { width: "10%" } },
+    { key: "Street", label: "Ward Name", _style: { width: "10%" } },
+    { key: "Streets", label: "Entered By", _style: { width: "10%" } },
+    { key: "Streets", label: "Entered On", _style: { width: "10%" } },
+    // { key: "male", label: "Male", _style: { width: "10%" } },
+    // { key: "female", label: "Female", _style: { width: "10%" } },
     { key: "Action", label: "Action", _style: { width: "10%" } },
   ];
   const [passing, setPassing] = useState("");
@@ -193,7 +201,7 @@ const VillagePanchayat = () => {
                     </CCol>
                   </CRow>
                   <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                    <CCol className={"column-align"} md="4">
+                    <CCol className={"column-align"} md="3">
                       <CLabel className={"label-name"}>
                         State
                         <span className={"text-danger"}>*</span>
@@ -207,7 +215,7 @@ const VillagePanchayat = () => {
                         onChange={changeHandler}
                       />
                     </CCol>
-                    <CCol className={"column-align"} md="4">
+                    <CCol className={"column-align"} md="3">
                       <CLabel className={"label-name"}>
                         District / City
                         <span className={"text-danger"}>*</span>
@@ -221,10 +229,7 @@ const VillagePanchayat = () => {
                         onChange={changeHandler}
                       />
                     </CCol>
-                  </CRow>
-
-                  <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                    <CCol className={"column-align"} md="4">
+                    <CCol className={"column-align"} md="3">
                       <CLabel className={"label-name"}>
                       Village panchayat
                         <span className={"text-danger"}>*</span>
@@ -238,7 +243,24 @@ const VillagePanchayat = () => {
                         onChange={changeHandler}
                       />
                     </CCol>
-                    <CCol className={"column-align"} md="4">
+                  </CRow>
+
+                  <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                    <CCol className={"column-align"} md="3">
+                      <CLabel className={"label-name"}>
+                   Area
+                        <span className={"text-danger"}>*</span>
+                      </CLabel>
+                -      <CSelect
+                        className={"input-align"}
+                        id={"municipaldistrict"}
+                        name={"Area"}
+                        placeholder={"Area"}
+                        value={locations.city}
+                        onChange={changeHandler}
+                      />
+                    </CCol>
+                    <CCol className={"column-align"} md="3">
                       <CLabel className={"label-name"}>
                         Ward
                         <span className={"text-danger"}>*</span>

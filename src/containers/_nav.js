@@ -106,6 +106,13 @@ const _nav = [
         to: "/partyposting",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
+      {
+        id:"AdminandSubAdminSideBar",
+        _tag: "CSidebarNavItem",
+        name: "Assign Party Posting",
+        to: "/assignpartyposting",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
     ],
   },
   {
