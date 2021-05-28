@@ -10,8 +10,10 @@ import {
 import React, { useState } from "react";
 import Select from "react-select";
 import CDataTable from "src/views/CoreComponents/table/DataTable";
+import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
 
 const Terminate = () => {
+  const [files, setFiles] = useState("");
   const [show, setShow] = useState(false);
   const [filterVal, setFilterVal] = useState("");
   return (
@@ -211,6 +213,19 @@ const Terminate = () => {
           <div className={"main-headerlabel"}>
             <span className={"header-label"}>Details of Party Member</span>
           </div>
+          <CCol>
+                    <CLabel
+                      style={{
+                        fontSize: "20PX",
+                        fontFamily: "Open Sans",
+                        fontWeight: "700",
+                        marginTop: "60px",
+                      }}
+                    >
+                      Select Party Member
+                    </CLabel>
+                  </CCol>
+
           <CContainer>
             <CRow>
               <CCol>
@@ -221,77 +236,61 @@ const Terminate = () => {
               </CCol>
               <CCol></CCol>
             </CRow>
-            <CRow>
-              <CCol lg={"2"}>
-                <div
-                  style={{
-                    width: "130px",
-                    height: "150px",
-                    margin: '30px 20px',
-                    background: "#d3d3d3",
-                  }}
-                ></div>
-              </CCol>
-              <CCol lg={"10"}>
-                <CRow style={{ margin: "30px 0px" }}>
-                  <CCol>
-                    <CContainer>
-                      <CCol>
-                        <CLabel className="form-check-label">
-                          <b>Name</b>
-                        </CLabel>
-                      </CCol>
-                      <CCol></CCol>
-                    </CContainer>
-                  </CCol>
-                  <CCol>
-                    <CContainer>
-                      <CCol>
-                        <CLabel className="form-check-label">
-                          <b>Gender</b>
-                        </CLabel>
-                      </CCol>
-                      <CCol></CCol>
-                    </CContainer>
-                  </CCol>
-                </CRow>
-                <CRow style={{ margin: "30px 0px" }}>
-                  <CCol>
-                    <CContainer>
-                      <CCol>
-                        <CLabel className="form-check-label">
-                          <b>DOB</b>
-                        </CLabel>
-                      </CCol>
-                      <CCol></CCol>
-                    </CContainer>
-                  </CCol>
-                  <CCol>
-                    <CContainer>
-                      <CCol>
-                        <CLabel className="form-check-label">
-                          <b>Qualification</b>
-                        </CLabel>
-                      </CCol>
-                      <CCol></CCol>
-                    </CContainer>
-                  </CCol>
-                </CRow>
-                <CRow style={{ margin: "30px 0px" }}>
-                  <CCol>
-                    <CContainer>
-                      <CCol>
-                        <CLabel className="form-check-label">
-                          <b>Occupation</b>
-                        </CLabel>
-                      </CCol>
-                      <CCol></CCol>
-                    </CContainer>
-                  </CCol>
-                </CRow>
-              </CCol>
-            </CRow>
-            <CRow style={{ margin: "30px 0px" }}>
+            <CRow className={"row-alignment"}>
+                    <CCol className={"column-align"} md="4">
+                      <CLabel className={"label-name"}>
+                        Name
+                        <span>-</span>
+                      </CLabel>
+                    </CCol>
+                    <CCol className={"column-align"} md="4">
+                      <CLabel className={"label-name"}>
+                        Gender
+                        <span>-</span>
+                      </CLabel>
+                    </CCol>
+                    <CCol>
+                      <img
+                        type="text"
+                        alt=""
+                        src={files !== "" ? files : DEFAULT_IMAGE}
+                        style={{
+                          width: "150px",
+                          height: "200px",
+                          position: "relative",
+                          background: "#fff",
+                          left: "-40%",
+                          top: "-3%",
+                        }}
+                      />
+                    </CCol>
+                  </CRow>
+                  <CRow
+                    className={"row-alignment"}
+                    style={{ marginTop: "-140px" }}
+                  >
+                    <CCol className={"column-align"} md="4">
+                      <CLabel className={"label-name"}>
+                        DOB
+                        <span>-</span>
+                      </CLabel>
+                    </CCol>
+                    <CCol className={"column-align"} md="4">
+                      <CLabel className={"label-name"}>
+                        Education
+                        <span>-</span>
+                      </CLabel>
+                    </CCol>
+                  </CRow>
+                  <CRow className={"row-alignment"}>
+                    <CCol className={"column-align"} md="4">
+                      <CLabel className={"label-name"}>
+                        Occupation
+                        <span>-</span>
+                      </CLabel>
+                    </CCol>
+                  </CRow>
+                      <CRow style={{ margin: "30px 0px" }}>
               <CCol>
                 <CLabel>
                   <b>Reason</b>

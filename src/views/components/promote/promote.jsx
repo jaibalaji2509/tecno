@@ -10,32 +10,12 @@ import {
   } from "@coreui/react";
   import Select from "react-select";
   import CDataTable from "src/views/CoreComponents/table/DataTable";
-  import { toast } from "react-toastify";
-  import DEFAULT_IMAGE from "../../../assets/img/camera-icon.png";
-    
+  import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
+
   const Promote = () => {
-    const [PI, setPI] = useState("");
     const [files, setFiles] = useState("");
     const [show, setShow] = useState(false);
     const [filterVal, setFilterVal] = useState("");
-    const handleSave = async (file, folder) => {
-        if (file === undefined) {
-          let e = "cancelled";
-          return console.log(e);
-        }
-        if (file.size > 1048576) {
-          return toast.warning("Please choose below 1 MB file");
-        } else {
-          const imgUri = URL.createObjectURL(file);
-          setPI(file);
-          setFiles(imgUri);
-        }
-      };
-    
-      const handleClick = (e) => {
-        document.getElementById("profileImage").click();
-      };
-
     return (
       <React.Fragment>
         {show === false ? (
@@ -232,6 +212,19 @@ import {
             <div className={"main-headerlabel"}>
               <span className={"header-label"}>Adding Promote Party Member</span>
             </div>
+            <CCol>
+                    <CLabel
+                      style={{
+                        fontSize: "20PX",
+                        fontFamily: "Open Sans",
+                        fontWeight: "700",
+                        marginTop: "60px",
+                      }}
+                    >
+                      Select Party Member
+                    </CLabel>
+                  </CCol>
+                 
             <CContainer>
               <CRow>
                 <CCol>
@@ -242,109 +235,61 @@ import {
                 </CCol>
                 <CCol></CCol>
               </CRow>
-<div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              paddingLeft: "0%",
-              justifyContent: "center",
-              marginTop: "1%",
-            }}
-          >
-            <CCol md="3">
-              <CInput
-                id={"addEmployeeProfileImage"}
-                name="file"
-                type="file"
-                id="profileImage"
-                accept="image/*"
-                style={{ display: "none" }}
-                onChange={(e) => {
-                  handleSave(e.target.files[0], "profileImage");
-                }}
-              />
-            </CCol>
-            {/* <p>{JSON.stringify(state.profileImage)}</p> */}
-            <div
-              id={"addEmployeehandleClick"}
-              style={{
-                height: "100px",
-                width: "100px",
-                border: "1px dashed black",
-                marginLeft:"73px"
-              }}
-              onClick={() => handleClick()}
-            >
-              <img
-                alt=""
-                src={files !== "" ? files : DEFAULT_IMAGE}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  position: "acsolute",
-                }}
-              />
-            </div>
-
-            <CLabel style={{marginLeft:"77px"}}>
-              Upload Image
-              <span className={"text-danger"}> *</span>
-            </CLabel>
-          </div>
-                  <CRow className={"row-alignment"}>
+              <CRow className={"row-alignment"}>
                     <CCol className={"column-align"} md="4">
-                        <CLabel className={"label-name"}>
+                      <CLabel className={"label-name"}>
                         Name
-                          <span >-</span>
-                        </CLabel>
-                      
-                      </CCol>
-                      <CCol className={"column-align"} md="4">
-                        <CLabel className={"label-name"}>
+                        <span>-</span>
+                      </CLabel>
+                    </CCol>
+                    <CCol className={"column-align"} md="4">
+                      <CLabel className={"label-name"}>
                         Gender
-                          <span >-</span>
-                        </CLabel>
-                      
-                      </CCol>
-                      
-                      
-               
+                        <span>-</span>
+                      </CLabel>
+                    </CCol>
+                    <CCol>
+                      <img
+                        type="text"
+                        alt=""
+                        src={files !== "" ? files : DEFAULT_IMAGE}
+                        style={{
+                          width: "150px",
+                          height: "200px",
+                          position: "relative",
+                          background: "#fff",
+                          left: "-40%",
+                          top: "-3%",
+                        }}
+                      />
+                    </CCol>
                   </CRow>
-                  <CRow className={"row-alignment"}>
+                  <CRow
+                    className={"row-alignment"}
+                    style={{ marginTop: "-140px" }}
+                  >
                     <CCol className={"column-align"} md="4">
-                        <CLabel className={"label-name"}>
+                      <CLabel className={"label-name"}>
                         DOB
-                          <span >-</span>
-                        </CLabel>
-                      
-                      </CCol>
-                      <CCol className={"column-align"} md="4">
-                        <CLabel className={"label-name"}>
+                        <span>-</span>
+                      </CLabel>
+                    </CCol>
+                    <CCol className={"column-align"} md="4">
+                      <CLabel className={"label-name"}>
                         Education
-                          <span >-</span>
-                        </CLabel>
-                      
-                      </CCol>
-                      
-                      
-               
+                        <span>-</span>
+                      </CLabel>
+                    </CCol>
                   </CRow>
                   <CRow className={"row-alignment"}>
                     <CCol className={"column-align"} md="4">
-                        <CLabel className={"label-name"}>
+                      <CLabel className={"label-name"}>
                         Occupation
-                          <span >-</span>
-                        </CLabel>
-                      
-                      </CCol>
-                
-                      
-                      
-               
+                        <span>-</span>
+                      </CLabel>
+                    </CCol>
                   </CRow>
-            
-               
-               <CRow style={{ margin: "30px 0px" }}>
+             <CRow style={{ margin: "30px 0px" }}>
                 <CCol>
                   <CLabel>
                     <b>Reason</b>
