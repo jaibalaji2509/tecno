@@ -123,7 +123,7 @@ const routes = [
   { path: '/PartyWingsOfficeLocation',  exact: true, name: 'Party Wings Office Location', component: PartyWingsOfficeLocation },
   { path: '/Terminate',  exact: true, name: 'Terminate Member', component: Terminate },
   // {path:"/Constituency", exact:true, name : "Constituency", component:Constituency},
-  // { path: '/AddMemberRegister',  exact: true, name: 'AddMemberRegister', component: AddMemberRegister },
+  { path: '/AddMemberRegister',  exact: true, name: 'AddMemberRegister', component: AddMemberRegister },
   { path: '/MemberRegistration',  exact: true, name: 'MemberRegistration', component: MemberRegistration },
   // { path: '/OfficeType',  exact: true, name: 'OfficeType', component: OfficeType },
   // { path: '/WingLocation',  exact: true, name: 'WingLocation', component: WingLocation },
