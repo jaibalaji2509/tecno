@@ -60,6 +60,8 @@ const PartyOffice = React.lazy(() => import('./views/components/partyoffice/Part
 const AddMemberRegister = React.lazy(() => import('./views/components/MemberRegistration/AddMemberRegister'));
 const MemberRegistration = React.lazy(() => import('./views/components/MemberRegistration/MemberRegistration'));
 const PartyOfficeLocation = React.lazy(() => import('./views/components/partyofficelocation/PartyOfficeLocation'));
+const PartyPosting = React.lazy(() => import('./views/components/partyposting/PartyPosting'));
+const AssignPartyPosting = React.lazy(() => import('./views/components/assignpartyposting/AssignPartyPosting'));
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', exact: true ,component: Dashboard },
@@ -109,7 +111,7 @@ const routes = [
 
   {path:"/municipalcorporation", exact:true, name : "Municipal Corporation", component:MunicipalCorporation},
   {path:"/municipality", exact:true, name : "Municipality", component:Municipality},
-  {path:"/townpanchayat", exact:true, name : "Municipality", component:TownPanchayat},
+  {path:"/townpanchayat", exact:true, name : "Town Panchayat", component:TownPanchayat},
   {path:"/villagepanchayat", exact:true, name : "Village Panchayat", component:VillagePanchayat},
   {path:"/partyoffice", exact:true, name : "Party Office", component:PartyOffice},
   {path:"/Constituency", exact:true, name : "Constituency", component:Constituency},
@@ -122,6 +124,9 @@ const routes = [
   { path: '/memberTransfer',  exact: true, name: 'Member Transfer', component: Transfer },
   { path: '/memberTerminate',  exact: true, name: 'Member Terminate', component: Terminate },
   { path: '/memberRevoke',  exact: true, name: 'Member Revoke', component: Revoke },
+  { path: '/partyposting',  exact: true, name: 'Party Posting', component: PartyPosting },
+  { path: '/assignpartyposting',  exact: true, name: 'Assign Party Posting', component:AssignPartyPosting },
+
 ];
 
 export default routes;
