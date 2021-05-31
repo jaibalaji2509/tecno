@@ -116,8 +116,8 @@ function ViewConstituency() {
   }
 
     return (
-        <div>
-               {memberhide && (        
+      <React.Fragment>
+      {memberhide && (        
           <div>
               <CCard className={"cardSave"}>
         <div className={"main-headerlabel"}>
@@ -716,7 +716,7 @@ function ViewConstituency() {
       </CCard>
         </div>
             )}
-                   </div>     
+    </React.Fragment>
     )
 }
 export default ViewConstituency

@@ -1,6 +1,229 @@
 import Axios from "axios";
 import { toast } from "react-toastify";
 
+
+
+export async function getAllRole(query) {
+  let querys = query || ``;
+  const token = localStorage.getItem(`token`);
+  const response = await fetch(`/role/getAllRoles?${querys}`, {
+    method: `get`,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  });
+  if (response.status === 200) {
+    return await response.json();
+  } else if (response.status === 401) {
+    localStorage.removeItem("token");
+    window.location.pathname = "/login";
+    throw new Error(`User Unauthorized. Please login again.`);
+  } else {
+    let errorResponse = await response.json();
+    throw new Error(errorResponse.error);
+  }
+}
+export async function getFutureJob(body) {
+  try {
+    let bodys = body || ``;
+    const token = localStorage.getItem(`token`);
+    const response = await fetch(`/employeeMovement/future?${bodys}`, {
+      method: `get`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    });
+    if (response.status === 200) {
+      return await response.json();
+    } else if (response.status === 401) {
+      localStorage.removeItem("token");
+      window.location.pathname = "/login";
+      throw new Error(`User Unauthorized. Please login again.`);
+    } else {
+      let errorResponse = await response.json();
+      throw new Error(errorResponse.error);
+    }
+  } catch (e) {
+    throw e;
+  }
+}
+export async function getTree(query) {
+  try {
+    let token = localStorage.getItem("token");
+    const response = await fetch(`/officeLocation/tree${query}`, {
+      method: `get`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    });
+    if (response.status === 401) {
+      localStorage.removeItem("token");
+      window.location.pathname = "/login";
+      throw new Error(`User Unauthorized. Please login again.`);
+    }
+    return await response.json();
+  } catch (e) {
+    throw e;
+  }
+}
+export async function addPromoteEmployee(body) {
+  let data = body;
+  let token = localStorage.getItem("token");
+  let response;
+  try {
+    response = await fetch("/employeeMovement/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `${token}`,
+      },
+      body: JSON.stringify(data),
+    });
+    if (response.status === 401) {
+      localStorage.removeItem("token");
+      window.location.pathname = "/login";
+      throw new Error(`User Unauthorized. Please login again.`);
+    }
+    return response.json();
+  } catch (e) {
+    throw e;
+  }
+}
+export async function getAllDepartment() {
+  const token = localStorage.getItem(`token`);
+  const response = await fetch(`/department/getAll`, {
+    method: `get`,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  });
+  if (response.status === 200) {
+    return await response.json();
+  } else if (response.status === 401) {
+    localStorage.removeItem("token");
+    window.location.pathname = "/login";
+    throw new Error(`User Unauthorized. Please login again.`);
+  } else {
+    let errorResponse = await response.json();
+    throw new Error(errorResponse.error);
+  }
+}
+export async function getAllDesignation(id) {
+  const token = localStorage.getItem(`token`);
+  const response = await fetch(`/designation/getAll`, {
+    method: `get`,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  });
+  if (response.status === 200) {
+    return await response.json();
+  } else if (response.status === 401) {
+    localStorage.removeItem("token");
+    window.location.pathname = "/login";
+    throw new Error(`User Unauthorized. Please login again.`);
+  } else {
+    let errorResponse = await response.json();
+    throw new Error(errorResponse.error);
+  }
+}
+export async function getAllEmployeeMovement(body) {
+  try {
+    let bodys = body || ``;
+    const token = localStorage.getItem(`token`);
+    const response = await fetch(`/employeeMovement/getAll?${bodys}`, {
+      method: `get`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    });
+    if (response.status === 200) {
+      return await response.json();
+    } else if (response.status === 401) {
+      localStorage.removeItem("token");
+      window.location.pathname = "/login";
+      throw new Error(`User Unauthorized. Please login again.`);
+    } else {
+      let errorResponse = await response.json();
+      throw new Error(errorResponse.error);
+    }
+  } catch (e) {
+    throw e;
+  }
+}
+export async function getAllRoleMaster(query) {
+  let querys = query || ``;
+  const token = localStorage.getItem(`token`);
+  const response = await fetch(`/roleMaster/getAll?${querys}`, {
+    method: `get`,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  });
+  if (response.status === 200) {
+    return await response.json();
+  } else if (response.status === 401) {
+    localStorage.removeItem("token");
+    window.location.pathname = "/login";
+    throw new Error(`User Unauthorized. Please login again.`);
+  } else {
+    let errorResponse = await response.json();
+    throw new Error(errorResponse.error);
+  }
+}
+
+export async function getRoleByUser(query) {
+  let querys = query || ``;
+  const token = localStorage.getItem(`token`);
+  const response = await fetch(`/role/getRoleByUser?${querys}`, {
+    method: `get`,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  });
+  if (response.status === 200) {
+    return await response.json();
+  } else if (response.status === 401) {
+    localStorage.removeItem("token");
+    window.location.pathname = "/login";
+    throw new Error(`User Unauthorized. Please login again.`);
+  } else {
+    let errorResponse = await response.json();
+    throw new Error(errorResponse.error);
+  }
+}
+
+export async function updateEmployeeMovement(body) {
+  let data = JSON.stringify(body);
+  let token = localStorage.getItem("token");
+  try {
+    const response = await fetch(`/employeeMovement/update`, {
+      method: `put`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+      body: data,
+    });
+    if (response.status === 401) {
+      localStorage.removeItem("token");
+      window.location.pathname = "/login";
+      throw new Error(`User Unauthorized. Please login again.`);
+    }
+    return await response.json();
+  } catch (e) {
+    throw e;
+  }
+}
+
 export async function createOfficeType(body) {
   try {
     let token = localStorage.getItem("token");
