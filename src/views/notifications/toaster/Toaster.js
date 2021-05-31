@@ -14,8 +14,8 @@ import {
   CContainer,
   CRow,
   CCol,
-  CFormGroup,
-  CLabel
+  CLabel,
+  CFormGroup
 } from '@coreui/react'
 import { DocsLink } from 'src/reusable'
 

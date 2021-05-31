@@ -5,10 +5,9 @@ import {
   CToggler,
   CHeaderBrand,
   CHeaderNav,
-  CHeaderNavItem,
+  CBreadcrumbRouter,
   CHeaderNavLink,
   CSubheader,
-  CBreadcrumbRouter,
   CLink
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'

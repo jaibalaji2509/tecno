@@ -1,6 +1,5 @@
-import { CButton, CCard, CCol, CInput, CLabel, CRow, CSelect } from "@coreui/react";
+import { CButton, CCard, CCol, CLabel, CRow, CSelect, CInput } from "@coreui/react";
 import React, { useState } from "react";
-import Toaster from "src/views/notifications/toaster/Toaster";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
@@ -14,8 +13,7 @@ const MunicipalCorporation = () => {
     street: "",
     pincode: "",
   });
-  const [mobilenumber, setMobileNumber] = useState("");
-  const [otpHide, setOtpHide] = useState(false);
+  
   const [locations, setLocations] = useState({
     state: "",
     district: "",
@@ -29,8 +27,8 @@ const MunicipalCorporation = () => {
   const [MunicipalCreate, setmunicipalCreate] = useState(false);
   const [municipalListadd, setMunicipalListadd] = useState(true);
   const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
-  const [municipalCorporation, setMunicipalCorporation] = useState({});
-  const[municipalName, setMuniicipalName] =useState("")
+  const [municipalCorporation, ] = useState({});
+  const[municipalName, ] =useState("")
 
   const [locationHide, setLocationHide] = useState({
     corporation: true,
@@ -41,13 +39,7 @@ const MunicipalCorporation = () => {
     cityLocation: false,
   });
   const userData = [
-    // {
-    //   SNo: "1",
-    //   State: "TamilNadu",
-    //   District: "chennai",
-    //   Area: "TNagar",
-    //   Street: "Pondy Bazar",
-    // },
+   
   ];
   const fields = [
     { key: "SNo", label: "S.NO", _style: { width: "3%" },    sorter: false,
@@ -65,7 +57,7 @@ const MunicipalCorporation = () => {
     filter: false, },
   ];
   const [passing, setPassing] = useState("");
-  const [error, setError] =useState("")
+  const [error, ] =useState("")
   const saveCorporation = async () => {
     setLocationHide({
       ...locationHide,
@@ -118,14 +110,6 @@ const MunicipalCorporation = () => {
       townPanchayat: false,
     });
   };
-  const saveVillagePanchayat = () => {
-    console.log(locationHide, "hidr");
-    setLocationHide({
-      ...locationHide,
-      villagePanchayat: false,
-      cityLocation: true,
-    });
-  };
   const cityLocation = () => {
     setLocationHide({
       ...locationHide,
@@ -143,15 +127,6 @@ const MunicipalCorporation = () => {
   const changeHandler = (e) => {
     setLocations({ ...locations, [e.target.name]: e.target.value });
   };
-  const otpChangeHandle = (e) => {
-     setMobileNumber(e.target.value)
-    if(mobilenumber.length > 8){
-      setOtpHide(true)
-    }
-    else{
-      setError("enter valid data")
-    }
-  };
   const enableCreate = async () => {
     await setMunicipalList(false);
     await setmunicipalCreate(true);
@@ -160,12 +135,6 @@ const MunicipalCorporation = () => {
   const editState = async () => {
     await setMunicipalList(false);
     await setmunicipalCreate(true);
-    // formik.values.StateName = stateName.stateName;
-    // formik.values.Abbreviation2 = stateName.abbreviation;
-    // formik.values.Code2 = stateName.code;
-    // setPassing(stateName._id);
-    // getState();
-    // getAllAreas();
   };
   const CancelState = async () => {
    
@@ -181,12 +150,6 @@ const MunicipalCorporation = () => {
   const editStateadd = async () => {
     await setMunicipalListadd(false);
     await setmunicipalCreateadd(true);
-    // formik.values.StateName = stateName.stateName;
-    // formik.values.Abbreviation2 = stateName.abbreviation;
-    // formik.values.Code2 = stateName.code;
-    // setPassing(stateName._id);
-    // getState();
-    // getAllAreas();
   };
   const CancelStateadd = async () => {
    
@@ -344,31 +307,6 @@ const MunicipalCorporation = () => {
                          <td className="py-2">
                            <CRow>
                              <CCol style={{ fontSize: "1.15rem" }} md="12">
-                               <i
-                                 onClick={() => {
-                                   //   toggleDetails(index);
-                                 }}
-                               ></i>
-                               {/* <i
-                                   style={{
-                                     marginRight: "5px",
-                                     color: "#3480e2",
-                                     cursor: "pointer",
-                                   }}
-                                   id={"locationLibraryEdit"}
-                                   onClick={() => EditCountry(item)}
-                                   className="fas fa-edit"
-                                 ></i>
-                                 <i
-                                   onClick={() => deleteConfirm(item._id)}
-                                   id={"locationLibraryDelete"}
-                                   style={{
-                                     marginLeft: "5px",
-                                     color: "#e85654",
-                                     cursor: "pointer",
-                                   }}
-                                   className="fa fa-trash"
-                                 ></i> */}
                              </CCol>
                            </CRow>
                          </td>
@@ -413,7 +351,6 @@ const MunicipalCorporation = () => {
                           id={"municipalcorporation"}
                           type={"text"}
                          value={municipalCorporation}
-                          // isDisabled={CountryCreate || CityCreate || AreaCreate}
                         />
                       </CCol>
                       <CCol className={"column-align"} md={1} lg={1}>
@@ -423,12 +360,10 @@ const MunicipalCorporation = () => {
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
                           onClick={enableCreate}
-                          // disabled={CountryCreate || CityCreate || AreaCreate}
                         >
                           ADD
                         </CButton>
                       </CCol>
-                      {/* {countryName.edit && <React.Fragment></React.Fragment>} */}
 
                       {municipalName.edit === true ? (
                         <React.Fragment>
@@ -440,9 +375,6 @@ const MunicipalCorporation = () => {
                               id={"locationLibraryStateEdit"}
                               className={"btn btn-success"}
                               onClick={editState}
-                              // disabled={
-                              //   CountryCreate || CityCreate || AreaCreate
-                              // }
                             >
                               EDIT
                             </CButton>
@@ -463,13 +395,8 @@ const MunicipalCorporation = () => {
                         </CLabel>
 
                         <CInput
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Symbols(e)
-                          // }
                           id={"MunicipalName"}
                           name={"municipalname"}
-                          // value={states.statename}
-                          // onChange={statechangeHandler}
                           placeholder="State Name"
                           maxlength="60"
                           size="60"
@@ -483,15 +410,8 @@ const MunicipalCorporation = () => {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                          //     e
-                          //   )
-                          // }
                           id={"municipalabrreviation"}
                           name={"abbreviation"}
-                          // value={states.abbreviation}
-                          // onChange={statechangeHandler}
                           placeholder="Enter Abbreviation"
                           maxlength="5"
                           size="5"
@@ -505,14 +425,7 @@ const MunicipalCorporation = () => {
                         </CLabel>
                         <CInput
                           id={"municipalcode"}
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                          //     e
-                          //   )
-                          // }
                           name={"code"}
-                          // value={states.code}
-                          // onChange={statechangeHandler}
                           style={{ textTransform: "uppercase" }}
                           placeholder="Enter Code"
                           maxlength="5"
@@ -526,7 +439,6 @@ const MunicipalCorporation = () => {
                           id={"municipalsave"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
-                          // onClick={State}
                         >
                           {passing !== "" ? "UPDATE" : "SAVE"}
                         </CButton>
@@ -558,8 +470,6 @@ const MunicipalCorporation = () => {
                           placeholder="Select the State Name"
                           id={"municipalcorporation"}
                           type={"text"}
-                         
-                          // isDisabled={CountryCreate || CityCreate || AreaCreate}
                         />
                       </CCol>
                       <CCol className={"column-align"} md={1} lg={1}>
@@ -569,13 +479,10 @@ const MunicipalCorporation = () => {
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
                           onClick={enableCreateadd}
-                          // disabled={CountryCreate || CityCreate || AreaCreate}
                         >
                           ADD
                         </CButton>
                       </CCol>
-                      {/* {countryName.edit && <React.Fragment></React.Fragment>} */}
-
                       {municipalName.edit === true ? (
                         <React.Fragment>
                           <CCol md={3} lg={3}>
@@ -586,9 +493,6 @@ const MunicipalCorporation = () => {
                               id={"locationLibraryStateEdit"}
                               className={"btn btn-success"}
                               onClick={editStateadd}
-                              // disabled={
-                              //   CountryCreate || CityCreate || AreaCreate
-                              // }
                             >
                               EDIT
                             </CButton>
@@ -609,13 +513,8 @@ const MunicipalCorporation = () => {
                         </CLabel>
 
                         <CInput
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Symbols(e)
-                          // }
                           id={"wardname"}
                           name={"municipalname"}
-                          // value={states.statename}
-                          // onChange={statechangeHandler}
                           placeholder="State Name"
                           maxlength="60"
                           size="60"
@@ -629,15 +528,8 @@ const MunicipalCorporation = () => {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                          //     e
-                          //   )
-                          // }
                           id={"wardabbreviation"}
                           name={"abbreviation"}
-                          // value={states.abbreviation}
-                          // onChange={statechangeHandler}
                           placeholder="Enter Abbreviation"
                           maxlength="5"
                           size="5"
@@ -651,14 +543,7 @@ const MunicipalCorporation = () => {
                         </CLabel>
                         <CInput
                           id={"wardcode"}
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                          //     e
-                          //   )
-                          // }
                           name={"wardcode"}
-                          // value={states.code}
-                          // onChange={statechangeHandler}
                           style={{ textTransform: "uppercase" }}
                           placeholder="Enter Code"
                           maxlength="5"
@@ -672,7 +557,6 @@ const MunicipalCorporation = () => {
                           id={"wardsave"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
-                          // onClick={State}
                         >
                           {passing !== "" ? "UPDATE" : "SAVE"}
                         </CButton>
@@ -746,43 +630,7 @@ const MunicipalCorporation = () => {
                     onChange={changeHandler}
                   />
                 </CCol>
-           
-            
            </CRow>
-              {/* <CCol className={"column-align"} md="3">
-                <CLabel className={"label-name"}>
-                  Mobile Number
-                  <span className={"text-danger"}>*</span>
-                </CLabel>
-                <CInput
-                  type={"number"}
-                  className={"input-align"}
-                  id={"corporationStreets"}
-                  name={"streets"}
-                  placeholder={"Enter Street"}
-                  value={mobilenumber}
-                  onChange={otpChangeHandle}
-                
-                />
-                <span className="text-danger">{error}</span>
-              </CCol>
-              {otpHide && (
-                <CCol className={"column-align"} md="3">
-                  <CLabel className={"label-name"}>
-                  OTP
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <CInput
-                    type={"number"}
-                    className={"input-align"}
-                    id={"corporationStreets"}
-                    name={"streets"}
-                    placeholder={"Enter otp"}
-                   
-                   
-                  />
-                </CCol>
-              )} */}
             </div>
             <CRow style={{marginTop:"30px"}}>
               <CCol md="10">
@@ -836,31 +684,6 @@ const MunicipalCorporation = () => {
                       <td className="py-2">
                         <CRow>
                           <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              onClick={() => {
-                                //   toggleDetails(index);
-                              }}
-                            ></i>
-                            {/* <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "#3480e2",
-                                  cursor: "pointer",
-                                }}
-                                id={"locationLibraryEdit"}
-                                onClick={() => EditCountry(item)}
-                                className="fas fa-edit"
-                              ></i>
-                              <i
-                                onClick={() => deleteConfirm(item._id)}
-                                id={"locationLibraryDelete"}
-                                style={{
-                                  marginLeft: "5px",
-                                  color: "#e85654",
-                                  cursor: "pointer",
-                                }}
-                                className="fa fa-trash"
-                              ></i> */}
                           </CCol>
                         </CRow>
                       </td>
@@ -1017,31 +840,6 @@ const MunicipalCorporation = () => {
                       <td className="py-2">
                         <CRow>
                           <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              onClick={() => {
-                                //   toggleDetails(index);
-                              }}
-                            ></i>
-                            {/* <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "#3480e2",
-                                  cursor: "pointer",
-                                }}
-                                id={"locationLibraryEdit"}
-                                onClick={() => EditCountry(item)}
-                                className="fas fa-edit"
-                              ></i>
-                              <i
-                                onClick={() => deleteConfirm(item._id)}
-                                id={"locationLibraryDelete"}
-                                style={{
-                                  marginLeft: "5px",
-                                  color: "#e85654",
-                                  cursor: "pointer",
-                                }}
-                                className="fa fa-trash"
-                              ></i> */}
                           </CCol>
                         </CRow>
                       </td>
@@ -1183,31 +981,6 @@ const MunicipalCorporation = () => {
                       <td className="py-2">
                         <CRow>
                           <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              onClick={() => {
-                                //   toggleDetails(index);
-                              }}
-                            ></i>
-                            {/* <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "#3480e2",
-                                  cursor: "pointer",
-                                }}
-                                id={"locationLibraryEdit"}
-                                onClick={() => EditCountry(item)}
-                                className="fas fa-edit"
-                              ></i>
-                              <i
-                                onClick={() => deleteConfirm(item._id)}
-                                id={"locationLibraryDelete"}
-                                style={{
-                                  marginLeft: "5px",
-                                  color: "#e85654",
-                                  cursor: "pointer",
-                                }}
-                                className="fa fa-trash"
-                              ></i> */}
                           </CCol>
                         </CRow>
                       </td>
@@ -1348,31 +1121,6 @@ const MunicipalCorporation = () => {
                       <td className="py-2">
                         <CRow>
                           <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              onClick={() => {
-                                //   toggleDetails(index);
-                              }}
-                            ></i>
-                            {/* <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "#3480e2",
-                                  cursor: "pointer",
-                                }}
-                                id={"locationLibraryEdit"}
-                                onClick={() => EditCountry(item)}
-                                className="fas fa-edit"
-                              ></i>
-                              <i
-                                onClick={() => deleteConfirm(item._id)}
-                                id={"locationLibraryDelete"}
-                                style={{
-                                  marginLeft: "5px",
-                                  color: "#e85654",
-                                  cursor: "pointer",
-                                }}
-                                className="fa fa-trash"
-                              ></i> */}
                           </CCol>
                         </CRow>
                       </td>
@@ -1542,31 +1290,6 @@ const MunicipalCorporation = () => {
                       <td className="py-2">
                         <CRow>
                           <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              onClick={() => {
-                                //   toggleDetails(index);
-                              }}
-                            ></i>
-                            {/* <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "#3480e2",
-                                  cursor: "pointer",
-                                }}
-                                id={"locationLibraryEdit"}
-                                onClick={() => EditCountry(item)}
-                                className="fas fa-edit"
-                              ></i>
-                              <i
-                                onClick={() => deleteConfirm(item._id)}
-                                id={"locationLibraryDelete"}
-                                style={{
-                                  marginLeft: "5px",
-                                  color: "#e85654",
-                                  cursor: "pointer",
-                                }}
-                                className="fa fa-trash"
-                              ></i> */}
                           </CCol>
                         </CRow>
                       </td>
@@ -1705,31 +1428,6 @@ const MunicipalCorporation = () => {
                       <td className="py-2">
                         <CRow>
                           <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              onClick={() => {
-                                //   toggleDetails(index);
-                              }}
-                            ></i>
-                            {/* <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "#3480e2",
-                                  cursor: "pointer",
-                                }}
-                                id={"locationLibraryEdit"}
-                                onClick={() => EditCountry(item)}
-                                className="fas fa-edit"
-                              ></i>
-                              <i
-                                onClick={() => deleteConfirm(item._id)}
-                                id={"locationLibraryDelete"}
-                                style={{
-                                  marginLeft: "5px",
-                                  color: "#e85654",
-                                  cursor: "pointer",
-                                }}
-                                className="fa fa-trash"
-                              ></i> */}
                           </CCol>
                         </CRow>
                       </td>

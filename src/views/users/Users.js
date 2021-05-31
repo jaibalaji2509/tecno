@@ -6,9 +6,9 @@ import {
   CCardBody,
   CCardHeader,
   CCol,
-  CDataTable,
   CRow,
-  CPagination
+  CPagination,
+  CDataTable
 } from '@coreui/react'
 
 import usersData from './UsersData'
