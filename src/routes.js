@@ -21,6 +21,7 @@ const Promote = React.lazy(() => import('./views/components/promote/Promote'));
 const Transfer = React.lazy(() => import('./views/components/transfer/transfer'));
 const Suspend = React.lazy(() => import('./views/components/suspend/suspend'));
 const Revoke = React.lazy(() => import('./views/components/revoke/revoke'));
+const Terminate = React.lazy(() => import('./views/components/terminate/Terminate'));
 
 const Login = React.lazy(() => import('./views/pages/login/Login'));
 const LocationLibrary = React.lazy(() => import('./views/components/location_library/Locationlibrary'));
@@ -47,23 +48,22 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'));
 const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
 const Location = React.lazy(() => import('./views/components/location/Location'));
-const OfficeType = React.lazy(() => import('./views/components/officetype/OfficeType'));
-const PartyWingsOfficeLocation = React.lazy(() => import('./views/components/winglocation/PartyWingsOfficeLocation'));
+
 
 const Municipality = React.lazy(() => import('./views/components/municipality/Municipality'));
 const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
 const VillagePanchayat = React.lazy(() => import('./views/components/villagepanchayat/VillagePanchayat'));
 const MemberRegistration = React.lazy(() => import('./views/components/memberregistration/MemberRegistration'));
-const Terminate = React.lazy(() => import('./views/components/terminate/Terminate'));
-const ViewConstituency = React.lazy(() => import('./views/components/Constituency/Constituency'));
-
+const Constituency = React.lazy(() => import('./views/components/constituency/Constituency'));
+const PartyWingsOfficeType = React.lazy(() => import('./views/components/partywingsofficetype/PartyWingsOfficeType'));
+const PartyWingsOfficeLocation = React.lazy(() => import('./views/components/winglocation/PartyWingsOfficeLocation'));
 const PartyOffice = React.lazy(() => import('./views/components/partyoffice/PartyOffice'));
 const PartyOfficeLocation = React.lazy(() => import('./views/components/partyofficelocation/PartyOfficeLocation'));
 const PartyPosting = React.lazy(() => import('./views/components/partyposting/PartyPosting'));
 const AssignPartyPosting = React.lazy(() => import('./views/components/assignpartyposting/AssignPartyPosting'));
 const routes = [
   { path: '/', exact: true, name: 'Home' },
-  { path: '/ViewConstituency',  exact: true, name: 'Constituency', component: ViewConstituency },
+
   { path: '/dashboard', name: 'Dashboard', exact: true ,component: Dashboard },
   { path: '/theme', name: 'Theme', component: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', component: Colors },
@@ -113,27 +113,20 @@ const routes = [
   {path:"/townpanchayat", exact:true, name : "Town Panchayat", component:TownPanchayat},
   {path:"/villagepanchayat", exact:true, name : "Village Panchayat", component:VillagePanchayat},
   {path:"/partyoffice", exact:true, name : "Party Office", component:PartyOffice},
-  {path:"/Constituency", exact:true, name : "Constituency", component:Constituency},
-  { path: '/AddMemberRegister',  exact: true, name: 'AddMemberRegister', component: AddMemberRegister },
-  { path: '/MemberRegistration',  exact: true, name: 'MemberRegistration', component: MemberRegistration },
-  { path: '/OfficeType',  exact: true, name: 'OfficeType', component: OfficeType },
-  { path: '/WingLocation',  exact: true, name: 'WingLocation', component: WingLocation },
-  { path: '/MemberRegistration',  exact: true, name: 'Member Registration', component: MemberRegistration },
-  { path: '/OfficeType',  exact: true, name: 'PARTY WINGS OFFICE', component: OfficeType },
-  { path: '/PartyWingsOfficeLocation',  exact: true, name: 'Party Wings Office Location', component: PartyWingsOfficeLocation },
-  { path: '/Terminate',  exact: true, name: 'Terminate Member', component: Terminate },
-  // {path:"/Constituency", exact:true, name : "Constituency", component:Constituency},
-  { path: '/AddMemberRegister',  exact: true, name: 'AddMemberRegister', component: AddMemberRegister },
-  { path: '/MemberRegistration',  exact: true, name: 'MemberRegistration', component: MemberRegistration },
-  // { path: '/OfficeType',  exact: true, name: 'OfficeType', component: OfficeType },
-  // { path: '/WingLocation',  exact: true, name: 'WingLocation', component: WingLocation },
+  {path:"/constituency", exact:true, name : "Constituency", component:Constituency},
+
+,
+
+  { path: '/WingLocation',  exact: true, name: 'WingLocation', component: PartyWingsOfficeLocation },
+  { path: '/memberRegistration',  exact: true, name: 'Member Registration', component: MemberRegistration },
+  { path: '/partywingsoffice',  exact: true, name: 'PartyWingsOfficeType', component: PartyWingsOfficeType },
   { path: '/partyposting',  exact: true, name: 'Party Posting', component: PartyPosting },
   { path: '/assignpartyposting',  exact: true, name: 'Assign Party Posting', component:AssignPartyPosting },
-
   { path: '/memberPromote',  exact: true, name: 'Member Promote', component: Promote },
   { path: '/memberSuspend',  exact: true, name: 'Member Suspend', component: Suspend },
   { path: '/memberTransfer',  exact: true, name: 'Member Transfer', component: Transfer },
   { path: '/memberRevoke',  exact: true, name: 'Member Revoke', component: Revoke },
+  { path: '/memberTerminate',  exact: true, name: 'Terminate Member', component: Terminate },
 ];
 
 export default routes;

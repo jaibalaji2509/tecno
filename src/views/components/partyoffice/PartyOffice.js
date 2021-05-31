@@ -138,45 +138,15 @@ const PartyOffice = () => {
   const changeHandler = (e) => {
     setLocations({ ...locations, [e.target.name]: e.target.value });
   };
-  const otpChangeHandle = (e) => {
-     setMobileNumber(e.target.value)
-    if(mobilenumber.length > 8){
-      setOtpHide(true)
-    }
-    else{
-      setError("enter valid data")
-    }
-  };
-  const enableCreate = async () => {
-    await setMunicipalList(false);
-    await setmunicipalCreate(true);
-  };
 
-  const editState = async () => {
-    await setMunicipalList(false);
-    await setmunicipalCreate(true);
-    // formik.values.StateName = stateName.stateName;
-    // formik.values.Abbreviation2 = stateName.abbreviation;
-    // formik.values.Code2 = stateName.code;
-    // setPassing(stateName._id);
-    // getState();
-    // getAllAreas();
-  };
-  const CancelState = async () => {
-   
-    setPassing("");
-    await setMunicipalList(true);
-    await setmunicipalCreate(false);
-  };
-  // const [hideMappingMunicipal, setHideMappingmunicipal] =useState(true)
-  // const[hideCorporation, setHideCorporation] =useState(false)
+
+  const [hideMappingMunicipal, setHideMappingmunicipal] =useState(true)
+  const[hideCorporation, setHideCorporation] =useState(false)
   const changeMunicipalCorporation = ()=>{
     setHideMappingmunicipal(false)
     setHideCorporation(true)
   }
   const officeType=[{value:"Head Office", label:"Head Office"}]
-  const [hideMappingMunicipal, ] =useState(true)
-  const[hideCorporation, ] =useState(false)
   return (
 
     <div>

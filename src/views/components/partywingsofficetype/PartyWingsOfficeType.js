@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
-const OfficeType = () => {
+const PartyWingsOfficeType = () => {
   const [location, setLocation] = useState({
     state: "",
     district: "",
@@ -32,6 +32,17 @@ const OfficeType = () => {
     cityLocation: false,
   });
   const userData = [
+    {
+      SNo: "1",
+      WingOffice: "HEAD OFFICE",
+      NAMEOFWINGOFFICE: "HEADOFFICEMUMBAI",
+      ReportingTo: "---",
+      address: "State Bank Bhavan",
+      area: "MADAM CAMMA ROAD",
+      city: "MUMBAI",
+      pinccode: "400021",
+
+    },
   ];
   const fields = [
     { key: "SNo", label: "S.NO", _style: { width: "5%" },    sorter: false,
@@ -42,12 +53,9 @@ const OfficeType = () => {
     { key: "Area", label: "Code", _style: { width: "10%" } },
     { key: "male", label: "Reporting To ", _style: { width: "12%" } },
   
-    { key: "Street", label: "Entered By", _style: { width: "7%" },    sorter: false,
-    filter: false, },
-    { key: "Street", label: "Entered On", _style: { width: "7%" },    sorter: false,
-    filter: false, },
-    { key: "Street", label: "Action", _style: { width: "5%" },    sorter: false,
-    filter: false, },
+    { key: "Street", label: "Entered By", _style: { width: "7%" }, },
+    { key: "Street", label: "Entered On", _style: { width: "7%" },  },
+    { key: "Street", label: "Action", _style: { width: "5%" }, },
   ];
   const [passing, ] = useState("");
   const saveCorporation = async () => {
@@ -152,7 +160,7 @@ const OfficeType = () => {
                  id={"municipalstatename"}
                  name={"state"}
                  placeholder={"Enter Party Office"}
-                 value={locations.district}
+                 value="Branch Office"
                  onChange={changeHandler}
                />
              </CCol>
@@ -166,7 +174,7 @@ const OfficeType = () => {
                  id={"municipaldistrict"}
                  name={"city"}
                  placeholder={"Enter Abbreviation"}
-                 value={locations.city}
+                 value="boff"
                  onChange={changeHandler}
                />
              </CCol>
@@ -184,7 +192,7 @@ const OfficeType = () => {
                  id={"municipaldistrict"}
                  name={"city"}
                  placeholder={"Enter Code"}
-                 value={locations.city}
+                 value="BO"
                  onChange={changeHandler}
                />
              </CCol>
@@ -200,7 +208,9 @@ const OfficeType = () => {
                  placeholder={"Select Hierarchy Reporting To"}
                  value={locations.city}
                  onChange={changeHandler}
-               />
+               >
+                 <option>Head Office</option>
+               </CSelect>
              </CCol>
         
          
@@ -1097,4 +1107,4 @@ const OfficeType = () => {
   );
 };
 
-export default OfficeType;
+export default PartyWingsOfficeType;
