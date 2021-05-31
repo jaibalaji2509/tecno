@@ -444,42 +444,15 @@ const CDataTable = (props) => {
     <React.Fragment>
       <div style={{ width: "100%" }} ref={innerRef}>
         <div className="row">
-          <div
-            className={
-              tableFilter && filterDay && itemsPerPageSelect
-                ? `col-sm-3 form-inline`
-                : filterDay && itemsPerPageSelect
-                ? `col-sm-6 form-inline`
-                : filterDay && tableFilter
-                ? `col-sm-6 form-inline`
-                : itemsPerPageSelect && tableFilter
-                ? `col-sm-6 form-inline`
-                : `col-sm-9 form-inline`
-            }
-          >
-            <CLabel
-              style={{
-                textTransform: "uppercase",
-                color: "#000000",
-                fontWeight: "700",
-                fontSize: "18px",
-                lineHeight: "28px",
-                fontFamily: "Open Sans",
-                marginTop: "10px",
-                letterSpacing: "0.5px",
-              }}
-            >
-              {tableLabel}
-            </CLabel>
-          </div>
           {(tableFilter || cleaner) && (
-            <div className="col-sm-3 form-inline p-1 justify-content-sm-end">
+            <div className="col-sm-6 form-inline">
               {tableFilter && (
                 <>
                   <label>{tableFilterData.label}</label>
                   <input
                     className="form-control"
                     type="text"
+                    style={{ width: "275px" }}
                     placeholder={tableFilterData.placeholder}
                     onInput={(e) => {
                       tableFilterChange(e.target.value, "input");
@@ -500,9 +473,33 @@ const CDataTable = (props) => {
                 ))}
             </div>
           )}
+        </div>
+        <div className="row">
+          <div
+            className={
+              filterDay && itemsPerPageSelect
+                ? `col-sm-4 form-inline`
+                : `col-sm-8 form-inline`
+            }
+          >
+            <CLabel
+              style={{
+                textTransform: "uppercase",
+                color: "#000000",
+                fontWeight: "700",
+                fontSize: "18px",
+                lineHeight: "28px",
+                fontFamily: "Open Sans",
+                marginTop: "10px",
+                letterSpacing: "0.5px",
+              }}
+            >
+              {tableLabel}
+            </CLabel>
+          </div>
           {filterDay && (
             <div
-              className="col-sm-3 form-inline p-1 justify-content-sm-end"
+              className="col-sm-4 form-inline p-1 justify-content-sm-end"
               style={{ float: "right" }}
             >
               <label className="mr-2">Filter by day</label>
@@ -525,8 +522,7 @@ const CDataTable = (props) => {
           )}
           {itemsPerPageSelect && (
             <div
-              className="col-sm-3 form-inline p-1 justify-content-sm-end"
-              style={{ float: "right" }}
+              className="itemPerPageAlign col-sm-4 form-inline p-1"
             >
               <label className="mr-2">{paginationSelect.label}</label>
               <select

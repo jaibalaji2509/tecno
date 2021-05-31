@@ -1189,7 +1189,6 @@ function LocationLibrary(props) {
                     </CCol>
                   </CRow>
                 </CRow>
-
                 <CRow className={"row-alignment"}>
                   {CityList && (
                     <React.Fragment>

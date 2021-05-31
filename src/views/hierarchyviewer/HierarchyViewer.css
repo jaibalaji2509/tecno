@@ -1,0 +1,152 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.orgchart ul li {
+  display: inline-block;
+  position: relative;
+}
+.orgchart {
+  background-image: none !important;
+}
+
+.orgchart-container {
+  border: none !important;
+  margin-top: -20px;
+  height: 4 00px;
+
+}
+.orgchart-container1 {
+  border: none !important;
+  padding:-5px;
+  
+}
+.h1 {
+  text-align: 'center';
+}
+.orgchart .top-level .title {
+  background-color: #006699;
+}
+.orgchart .top-level .content {
+  border-color: #006699;
+}
+.orgchart .middle-level .title {
+  background-color: #009933;
+}
+.orgchart .middle-level .content {
+  border-color: #009933;
+}
+.orgchart .bottom-level .title {
+  background-color: #993366;
+}
+.orgchart .bottom-level .content {
+  border-color: #993366;
+}
+/* .orgchart ul li .oc-node .oc-content {
+  background-color: none !important;
+  border:none !important;
+  height: 30px;
+} */
+
+/* .orgchart ul li .oc-node .oc-content {
+  box-sizing: border-box;
+  padding: 2px;
+  width: 150px;
+  height: 30px;
+  font-size: 0.75rem;
+  border: 1px solid rgba(217, 83, 79, 0.8);
+  border-radius: 0 0 4px 4px;
+  text-align: center;
+  background-color: #ffff;
+  color: #333;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  
+}
+
+.orgchart ul li .oc-node .oc-heading {
+  border: 1px solid rgba(217, 83, 79, 0.8);
+  box-sizing: border-box;
+  padding: 2px;
+  margin: 0;
+  width: 150px;
+  height: 30px;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: rgba(217, 83, 79, 0.8);;
+  color: #ffff;
+  border-radius: 4px 4px 0 0;
+}
+
+.orgchart > ul > li > ul li > .oc-node::before {
+  content: "";
+  position: absolute;
+  top: -11px;
+  left: calc(50% - 1px);
+  width: 2px;
+  height: 9px;
+  background-color: rgba(217, 83, 79, 0.8);
+} */
+
+.orgchart ul li .oc-node .oc-content {
+  box-sizing: border-box;
+  padding: 2px;
+  width: 130px;
+  height: 20px;
+  font-size: 0.625rem;
+  border: 1px solid rgba(217, 83, 79, 0.8);
+  border-radius: 0 0 4px 4px;
+  text-align: center;
+  background-color: #fff;
+  color: #333;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.orgchart ul li .oc-node:not(:only-child)::after {
+    content: "";
+    position: absolute;
+    bottom: -27px;
+    left: calc(50% - 1px);
+    width: 2px;
+    height: 30px;
+    background-color: rgba(217, 83, 79, 0.8);
+}
+
+.orgchart ul li .oc-node .oc-heading {
+  box-sizing: border-box;
+  padding: 2px;
+  margin: 0;
+  width: 151px;
+  height: 25px;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: rgba(217, 83, 79, 0.8);
+  color: #fff;
+  border-radius: 4px 4px 0 0;
+}
+
+.orgchart ul li .oc-node .oc-content {
+  box-sizing: border-box;
+  padding: 2px;
+  width: 150px;
+  height: 25px;
+  font-size: 0.625rem;
+  border: 1px solid rgba(217, 83, 79, 0.8);
+  border-radius: 0 0 4px 4px;
+  text-align: center;
+  background-color: #fff;
+  color: #333;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
