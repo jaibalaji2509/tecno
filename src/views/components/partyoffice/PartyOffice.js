@@ -4,6 +4,7 @@ import Toaster from "src/views/notifications/toaster/Toaster";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
+import Select, { components } from "react-select";
 const PartyOffice = () => {
   const [location, setLocation] = useState({
     state: "",
@@ -39,13 +40,24 @@ const PartyOffice = () => {
     cityLocation: false,
   });
   const userData = [
-    // {
-    //   SNo: "1",
-    //   State: "TamilNadu",
-    //   District: "chennai",
-    //   Area: "TNagar",
-    //   Street: "Pondy Bazar",
-    // },
+    {
+      SNo: "1",
+      Street: "Head office",
+      District: "HOF",
+      Area: "HO",
+      male: " - ",
+      ENTERBY:"Sathish ",
+      ENTERON:"12/05/2021"
+    },
+    {
+      SNo: "2",
+      Street: "Branch office",
+      District: "BOFF",
+      Area: "BO",
+      male: " Head office ",
+      ENTERBY:"Sathish ",
+      ENTERON:"12/05/2021"
+    },
   ];
   const fields = [
     { key: "SNo", label: "S.NO", _style: { width: "5%" },    sorter: false,
@@ -58,11 +70,11 @@ const PartyOffice = () => {
     { key: "male", label: "Reporting To Office", _style: { width: "12%" } },
     // { key: "female", label: "Female", _style: { width: "10%" } },
   
-    { key: "Street", label: "Entered By", _style: { width: "7%" },    sorter: false,
+    { key: "ENTERBY", label: "Entered By", _style: { width: "7%" },    sorter: false,
     filter: false, },
-    { key: "Street", label: "Entered On", _style: { width: "7%" },    sorter: false,
+    { key: "ENTERON", label: "Entered On", _style: { width: "7%" },    sorter: false,
     filter: false, },
-    { key: "Street", label: "Action", _style: { width: "5%" },    sorter: false,
+    { key: "show_details", label: "Action", _style: { width: "5%" },    sorter: false,
     filter: false, },
   ];
   const [passing, setPassing] = useState("");
@@ -180,6 +192,7 @@ const PartyOffice = () => {
     setHideMappingmunicipal(false)
     setHideCorporation(true)
   }
+  const officeType=[{value:"Head Office", label:"Head Office"}]
   return (
 
     <div>
@@ -209,10 +222,10 @@ const PartyOffice = () => {
                <CInput
                  className={"input-align"}
                  id={"municipalstatename"}
-                 name={"state"}
+                 name={"PartyOffice"}
                  placeholder={"Enter Party Office"}
-                 value={locations.district}
-                 onChange={changeHandler}
+                //  value={locations.district}
+                //  onChange={changeHandler}
                />
              </CCol>
              <CCol className={"column-align"} md="4">
@@ -223,10 +236,10 @@ const PartyOffice = () => {
                <CInput
                  className={"input-align"}
                  id={"municipaldistrict"}
-                 name={"city"}
+                 name={"Abbreviation"}
                  placeholder={"Enter Abbreviation"}
-                 value={locations.city}
-                 onChange={changeHandler}
+                //  value={locations.city}
+                //  onChange={changeHandler}
                />
              </CCol>
              
@@ -252,13 +265,14 @@ const PartyOffice = () => {
                 Reporting To Office
                  <span className={"text-danger"}>*</span>
                </CLabel>
-               <CSelect
+               <Select
                  className={"input-align"}
                  id={"municipalarea"}
                  name={"area"}
                  placeholder={"Select Reporting To"}
-                 value={locations.city}
-                 onChange={changeHandler}
+                //  value={locations.city}
+                //  onChange={changeHandler}
+                options={officeType}
                />
              </CCol>
         
@@ -372,18 +386,18 @@ const PartyOffice = () => {
                                    //   toggleDetails(index);
                                  }}
                                ></i>
-                               {/* <i
+                               <i
                                    style={{
                                      marginRight: "5px",
                                      color: "#3480e2",
                                      cursor: "pointer",
                                    }}
                                    id={"locationLibraryEdit"}
-                                   onClick={() => EditCountry(item)}
+                                  //  onClick={() => EditCountry(item)}
                                    className="fas fa-edit"
                                  ></i>
                                  <i
-                                   onClick={() => deleteConfirm(item._id)}
+                                  //  onClick={() => deleteConfirm(item._id)}
                                    id={"locationLibraryDelete"}
                                    style={{
                                      marginLeft: "5px",
@@ -391,7 +405,7 @@ const PartyOffice = () => {
                                      cursor: "pointer",
                                    }}
                                    className="fa fa-trash"
-                                 ></i> */}
+                                 ></i>
                              </CCol>
                            </CRow>
                          </td>
