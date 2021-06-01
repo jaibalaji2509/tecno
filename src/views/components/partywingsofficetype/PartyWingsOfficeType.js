@@ -3,12 +3,8 @@ import React, { useState } from "react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
-<<<<<<< HEAD:src/views/components/partywingsofficetype/PartyWingOfficeType.js
 
 const WingsofficeType = () => {
-=======
-const PartyWingsOfficeType = () => {
->>>>>>> d7ef24ea83e60c9a9b36f3421a347d569119394c:src/views/components/partywingsofficetype/PartyWingsOfficeType.js
   const [location, setLocation] = useState({
     state: "",
     district: "",
@@ -39,7 +35,6 @@ const PartyWingsOfficeType = () => {
   const userData = [
     {
       SNo: "1",
-<<<<<<< HEAD:src/views/components/partywingsofficetype/PartyWingOfficeType.js
       party: "Head Office",
       abbri: "hoff",
       code: "HO",
@@ -58,17 +53,6 @@ const PartyWingsOfficeType = () => {
       by: "jai",
       on: "12/05/2021",
     },
-=======
-      WingOffice: "HEAD OFFICE",
-      NAMEOFWINGOFFICE: "HEADOFFICEMUMBAI",
-      ReportingTo: "---",
-      address: "State Bank Bhavan",
-      area: "MADAM CAMMA ROAD",
-      city: "MUMBAI",
-      pinccode: "400021",
-
-    },
->>>>>>> d7ef24ea83e60c9a9b36f3421a347d569119394c:src/views/components/partywingsofficetype/PartyWingsOfficeType.js
   ];
   const fields = [
     { key: "SNo", label: "S.NO", _style: { width: "5%" },    sorter: false,
@@ -79,15 +63,9 @@ const PartyWingsOfficeType = () => {
     { key: "code", label: "Code", _style: { width: "10%" } },
     { key: "to", label: "Reporting To ", _style: { width: "12%" } },
   
-<<<<<<< HEAD:src/views/components/partywingsofficetype/PartyWingOfficeType.js
     { key: "by", label: "Entered By", _style: { width: "7%" }, },
     { key: "on", label: "Entered On", _style: { width: "7%" },  },
     { key: "show_details", label: "Action", _style: { width: "5%" }, },
-=======
-    { key: "Street", label: "Entered By", _style: { width: "7%" }, },
-    { key: "Street", label: "Entered On", _style: { width: "7%" },  },
-    { key: "Street", label: "Action", _style: { width: "5%" }, },
->>>>>>> d7ef24ea83e60c9a9b36f3421a347d569119394c:src/views/components/partywingsofficetype/PartyWingsOfficeType.js
   ];
   const [passing, ] = useState("");
   const saveCorporation = async () => {
@@ -1158,8 +1136,4 @@ const PartyWingsOfficeType = () => {
   );
 };
 
-<<<<<<< HEAD:src/views/components/partywingsofficetype/PartyWingOfficeType.js
 export default WingsofficeType;
-=======
-export default PartyWingsOfficeType;
->>>>>>> d7ef24ea83e60c9a9b36f3421a347d569119394c:src/views/components/partywingsofficetype/PartyWingsOfficeType.js

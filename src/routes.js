@@ -21,6 +21,7 @@ const Promote = React.lazy(() => import('./views/components/promote/Promote'));
 const Transfer = React.lazy(() => import('./views/components/transfer/transfer'));
 const Suspend = React.lazy(() => import('./views/components/suspend/suspend'));
 const Revoke = React.lazy(() => import('./views/components/revoke/revoke'));
+const Terminate = React.lazy(() => import('./views/components/terminate/Terminate'));
 
 const Login = React.lazy(() => import('./views/pages/login/Login'));
 const LocationLibrary = React.lazy(() => import('./views/components/location_library/Locationlibrary'));
@@ -54,16 +55,16 @@ const Municipality = React.lazy(() => import('./views/components/municipality/Mu
 const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
 const VillagePanchayat = React.lazy(() => import('./views/components/villagepanchayat/VillagePanchayat'));
 const MemberRegistration = React.lazy(() => import('./views/components/memberregistration/MemberRegistration'));
-const Terminate = React.lazy(() => import('./views/components/terminate/Terminate'));
-const ViewConstituency = React.lazy(() => import('./views/components/Constituency/Constituency'));
-
+// const Constituency = React.lazy(() => import('./views/components/constituency/Constituency'));
+// const PartyWingsOfficeType = React.lazy(() => import('./views/components/partywingsofficetype/PartyWingsOfficeType'));
+// const PartyWingsOfficeLocation = React.lazy(() => import('./views/components/winglocation/PartyWingsOfficeLocation'));
 const PartyOffice = React.lazy(() => import('./views/components/partyoffice/PartyOffice'));
 const PartyOfficeLocation = React.lazy(() => import('./views/components/partyofficelocation/PartyOfficeLocation'));
 const PartyPosting = React.lazy(() => import('./views/components/partyposting/PartyPosting'));
 const AssignPartyPosting = React.lazy(() => import('./views/components/assignpartyposting/AssignPartyPosting'));
 const routes = [
   { path: '/', exact: true, name: 'Home' },
-  { path: '/ViewConstituency',  exact: true, name: 'Constituency', component: ViewConstituency },
+
   { path: '/dashboard', name: 'Dashboard', exact: true ,component: Dashboard },
   { path: '/theme', name: 'Theme', component: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', component: Colors },
@@ -106,7 +107,7 @@ const routes = [
   { path: '/users/:id', exact: true, name: 'User Details', component: User },
   {path:"/locationlibrary", exact:true, name:'Location Library', component:LocationLibrary},
   {path:"/tabslist", exact:true, name : "TabsList", component:TabsList},
-  { path: '/partyofficelocation',  exact: true, name: 'Party OfficeLocation', component: PartyOfficeLocation  },
+  { path: '/partyofficelocation',  exact: true, name: 'Type of Party Office Location', component: PartyOfficeLocation  },
 
   {path:"/municipalcorporation", exact:true, name : "Municipal Corporation", component:MunicipalCorporation},
   {path:"/municipality", exact:true, name : "Municipality", component:Municipality},
@@ -117,18 +118,13 @@ const routes = [
   { path: '/WingsofficeType',  exact: true, name: 'PARTY WINGS OFFICE', component: WingsofficeType },
   { path: '/PartyWingsOfficeLocation',  exact: true, name: 'Party Wings Office Location', component: PartyWingsOfficeLocation },
   { path: '/Terminate',  exact: true, name: 'Terminate Member', component: Terminate },
-  // {path:"/Constituency", exact:true, name : "Constituency", component:Constituency},
-  // { path: '/AddMemberRegister',  exact: true, name: 'AddMemberRegister', component: AddMemberRegister },
-  // { path: '/MemberRegistration',  exact: true, name: 'MemberRegistration', component: MemberRegistration },
-  // { path: '/OfficeType',  exact: true, name: 'OfficeType', component: OfficeType },
-  // { path: '/WingLocation',  exact: true, name: 'WingLocation', component: WingLocation },
   { path: '/partyposting',  exact: true, name: 'Party Posting', component: PartyPosting },
   { path: '/assignpartyposting',  exact: true, name: 'Assign Party Posting', component:AssignPartyPosting },
-
   { path: '/memberPromote',  exact: true, name: 'Member Promote', component: Promote },
   { path: '/memberSuspend',  exact: true, name: 'Member Suspend', component: Suspend },
   { path: '/memberTransfer',  exact: true, name: 'Member Transfer', component: Transfer },
   { path: '/memberRevoke',  exact: true, name: 'Member Revoke', component: Revoke },
+  { path: '/memberTerminate',  exact: true, name: 'Terminate Member', component: Terminate },
 ];
 
 export default routes;

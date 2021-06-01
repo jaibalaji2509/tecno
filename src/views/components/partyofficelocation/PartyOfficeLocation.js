@@ -25,6 +25,27 @@ function PartyOfficeLocation() {
     setCreatepartyOffice(false);
   };
   const userData = [
+    {
+      SNo: "1",
+      NAMEOFWINGOFFICE: "Chennai Wing Office",
+      WingOffice: "Head Office",
+      ReportingTo: "-",
+      address: "Jones Road  ",
+      area:"Saidapet",
+     
+      city:"Sathish ",
+      pinccode:"31/05/2021"
+    },
+    {
+      SNo: "2",
+      NAMEOFWINGOFFICE: "Chennai Youth Association",
+      WingOffice: "Branch Office",
+      ReportingTo: "-",
+      address: "Abiramipuram Street  ",
+      area:"Mylapore",
+      city:"Sathish ",
+      pinccode:"31/05/2021"
+    },
   ];
 
   const fields = [
@@ -65,17 +86,20 @@ function PartyOfficeLocation() {
       filter: false,
     },
   ];
+  const officeType=[{value:"Head Office", label:"Head Office"}] 
+  const partyofficeType=[{value:"Head Office", label:"Head Office"},{value:"Branch Office", label:"Branch Office"}] 
+  const locations = [ {value:"TamilNadu Chennai Mylapore - 600005",label:"TamilNadu Chennai Mylapore - 600005"}]
   return (
     <div>
       {addPartyOffice && (
         <div>
           <CCard className={"cardSave"}>
             <div className={"main-headerlabel"}>
-              <span className={"header-label"}>party Office Location</span>
+              <span className={"header-label"}>Type of Party Office Location</span>
             </div>
 
             <CRow style={{ marginTop: "130px" }}>
-              <CCol md="10">
+              <CCol md="10" lg="10" sm="10">
                 <CCol
                   md="5"
                   style={{
@@ -88,7 +112,7 @@ function PartyOfficeLocation() {
                   <CButton
                     style={{
                       float: "right",
-                      marginRight: "820px",
+                      marginRight: "810px",
                     }}
                     id={"saveAbbreviationConfigureCode"}
                     className={"saveBtn"}
@@ -179,60 +203,61 @@ function PartyOfficeLocation() {
                       </CWidgetDropdown>
                     </CCol>
                   </CRow>
+                  <CRow>
+                <CCol style={{ fontSize: "1.55rem" }} md="12">
+                  <i
+                    id={"locationLibraryDelete"}
+                    style={{
+                      position: "absolute",
+                      top: "100px",
+                      marginLeft: "820px",
+                      marginBottom: "20px",
+                      color: "#0072ff",
+                    }}
+                    className="fa fa-print"
+                  ></i>
+                </CCol>
+                <CCol style={{ fontSize: "1.55rem" }} md="12">
+                  <i
+                    id={"locationLibraryDelete"}
+                    style={{
+                      position: "absolute",
+                      top: "100px",
+                      marginLeft: "900px",
+                      marginBottom: "910px",
+                      color: "green",
+                    }}
+                    className="fa fa-share-alt"
+                  ></i>
+                </CCol>
+              </CRow>
+              
             <CRow>
-              <CCol style={{ fontSize: "1.55rem" }} md="12">
-                <i
-                  id={"locationLibraryDelete"}
-                  style={{
-                    position: "absolute",
-                    top: "80px",
-                    marginLeft: "955px",
-                    marginBottom: "20px",
-                    color: "#0072ff",
-                  }}
-                  className="fa fa-print"
-                ></i>
-              </CCol>
-              <CCol style={{ fontSize: "1.55rem" }} md="12">
-                <i
-                  id={"locationLibraryDelete"}
-                  style={{
-                    position: "absolute",
-                    top: "80px",
-                    marginLeft: "1000px",
-                    marginBottom: "20px",
-                    color: "green",
-                  }}
-                  className="fa fa-share-alt"
-                ></i>
-              </CCol>
-            </CRow>
-
-            <CRow>
-              <CCol style={{ top: "20px" }}>
-                <img
-                  id={"employeeDataorgEmployeeData"}
-                  alt={""}
-                  src={
-                    "https://img.icons8.com/fluent/2x/organization-chart-people.png"
-                  }
-                  style={{
-                    height: "40px",
-                    width: "40px",
-                    marginRight: "80px",
-                    float: "right",
-                    cursor: "pointer",
-                  }}
-                />
-              </CCol>
-            </CRow>
+                  <CCol style={{top:"90px"}}>
+                    <img
+                      id={"employeeDataorgEmployeeData"}
+                      alt={""}
+                      src={
+                        "https://img.icons8.com/fluent/2x/organization-chart-people.png"
+                      }
+                      style={{
+                        height: "40px",
+                        width: "40px",
+                        marginRight: "290px",
+                        float: "right",
+                        cursor: "pointer",
+                        
+                      }}
+                    />
+                  </CCol>
+                </CRow>
             <CRow style={{ padding: "4%", marginTop: "-1.5%" }}>
               <CDataTable
                 items={userData}
                 fields={fields}
                 columnFilter
                 tableFilter
-                tableLabel={"List of party Office Location"}
+                tableLabel={"List of Type of party Office Location"}
                 itemsPerPageSelect
                 itemsPerPage={5}
                 hover
@@ -322,21 +347,25 @@ function PartyOfficeLocation() {
                   id={"wingReportingTo"}
                   className={"select"}
                   placeholder="Select the Party Office"
+                  options={partyofficeType}
                 />
               </CCol>
-              <CCol className={"column-align"} md={5} lg={5}>
-                <CLabel className={"label-name"}>
-                  Reporting To Office
-                  <span className={"text-danger"}>*</span>
-                  <span style={{ color: "green" }}>-</span>
-                </CLabel>
-                <Select
-                  type={"text"}
-                  id={"wingReportingTo"}
-                  className={"select"}
-                  placeholder="Select the ReportingTo"
-                />
-              </CCol>
+              <CCol className={"column-align"} md="4">
+               <CLabel className={"label-name"}>
+                Reporting To Office
+                 <span className={"text-danger"}>*</span>
+               </CLabel>
+               <Select
+                 className={"input-align"}
+                 id={"municipalarea"}
+                 name={"area"}
+                 placeholder={"Select Reporting To"}
+                //  value={locations.city}
+                //  onChange={changeHandler}
+                options={officeType}
+               />
+             </CCol>
+        
             </CRow>
 
             <CRow className={"row-alignment"} md="12" sm="12" lg="12">
@@ -385,6 +414,7 @@ function PartyOfficeLocation() {
                   id={"wingSearchLocation"}
                   className={"select"}
                   placeholder="Country,State,City,Area"
+                  options={locations}
                 />
               </CCol>
             </CRow>

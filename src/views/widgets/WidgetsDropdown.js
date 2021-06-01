@@ -19,8 +19,8 @@ const WidgetsDropdown = () => {
       <CCol sm="6" lg="3">
         <CWidgetDropdown
           color="gradient-primary"
-          header="9.823"
-          text="Members online"
+          // header="Total"
+          // text="10"
           footerSlot={
             <ChartLineSimple
               pointed
@@ -32,7 +32,10 @@ const WidgetsDropdown = () => {
               labels="months"
             />
           }
+          
         >
+            <span style={{fontSize:"26px", fontWeight:"700",marginTop:"-5px"}}>Total</span>
+           <span style={{fontSize:"20px", fontWeight:"600",textAlign:"center",marginTop:"30px",marginLeft:"-130px"}}>10</span>
           <CDropdown>
             <CDropdownToggle color="transparent">
               <CIcon name="cil-settings"/>
@@ -50,8 +53,8 @@ const WidgetsDropdown = () => {
       <CCol sm="6" lg="3">
         <CWidgetDropdown
           color="gradient-info"
-          header="9.823"
-          text="Members online"
+          // header="Male"
+          // text="05"
           footerSlot={
             <ChartLineSimple
               pointed
@@ -65,6 +68,8 @@ const WidgetsDropdown = () => {
             />
           }
         >
+             <span style={{fontSize:"26px", fontWeight:"700",marginTop:"-5px"}}>Male</span>
+           <span style={{fontSize:"20px", fontWeight:"600",textAlign:"center",marginTop:"30px",marginLeft:"-130px"}}>05</span>
           <CDropdown>
             <CDropdownToggle caret={false} color="transparent">
               <CIcon name="cil-location-pin"/>
@@ -82,8 +87,8 @@ const WidgetsDropdown = () => {
       <CCol sm="6" lg="3">
         <CWidgetDropdown
           color="gradient-warning"
-          header="9.823"
-          text="Members online"
+          // header="Female"
+          // text="03"
           footerSlot={
             <ChartLineSimple
               className="mt-3"
@@ -96,7 +101,10 @@ const WidgetsDropdown = () => {
               labels="months"
             />
           }
+          
         >
+            <span style={{fontSize:"26px", fontWeight:"700",marginTop:"-5px"}}>Female</span>
+           <span style={{fontSize:"20px", fontWeight:"600",textAlign:"center",marginTop:"30px",marginLeft:"-130px"}}>03</span>
           <CDropdown>
             <CDropdownToggle color="transparent">
               <CIcon name="cil-settings"/>
@@ -114,8 +122,8 @@ const WidgetsDropdown = () => {
       <CCol sm="6" lg="3">
         <CWidgetDropdown
           color="gradient-danger"
-          header="9.823"
-          text="Members online"
+          // header="Tansgender"
+          // text="02"
           footerSlot={
             <ChartBarSimple
               className="mt-3 mx-3"
@@ -124,8 +132,12 @@ const WidgetsDropdown = () => {
               label="Members"
               labels="months"
             />
+           
           }
+          
         >
+            <span style={{fontSize:"26px", fontWeight:"700",marginTop:"-5px"}}>Transgender</span>
+           <span style={{fontSize:"20px", fontWeight:"600",textAlign:"center",marginTop:"30px",marginLeft:"-130px"}}>02</span>
           <CDropdown>
             <CDropdownToggle caret className="text-white" color="transparent">
               <CIcon name="cil-settings"/>

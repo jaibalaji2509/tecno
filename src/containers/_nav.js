@@ -58,7 +58,7 @@ const _nav = [
         id: "AdminandSubAdminSideBar",
         _tag: "CSidebarNavItem",
         name: "Constituency",
-        to: "/ViewConstituency",
+        to: "/constituency ",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
     ],
@@ -74,7 +74,7 @@ const _nav = [
         id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
         name: "Type of Party Office",
-        to: "/partyoffice",
+        to: "/TypeOfpartyOffice",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
       {
@@ -87,7 +87,7 @@ const _nav = [
       {
         id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
-        name: "Party Office Location",
+        name: "Type of Party Office Location",
         to: "/partyofficelocation",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
@@ -118,28 +118,11 @@ const _nav = [
   {
     id: "AdminSetupSideBar",
     _tag: "CSidebarNavDropdown",
-    name: "Party Member Registration",
-    route: "/AdminSetup",
-    
+    name: "Party Member",
+    route: "/partyMember",    
     icon: 'cil-drop',
 
     _children: [
-      {
-        id:"CSidebarNavItemSideBar",
-        _tag: "CSidebarNavItem",
-        name: 'Member Registration',
-        to: '/MemberRegistration',
-        icon: <CIcon className={"c-sidebar-nav-icon"} />,
-      },
-    
-      {
-        id:"CSidebarNavItemSideBar",
-        _tag: "CSidebarNavItem",
-        name: 'Member Count',
-        to: '/MemberuRegistration',
-        icon: <CIcon className={"c-sidebar-nav-icon"} />,
-      },
-  
       {
         id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
@@ -147,7 +130,6 @@ const _nav = [
         to: "/memberPromote",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
-  
       {
         id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
@@ -155,7 +137,6 @@ const _nav = [
         to: '/Terminate',
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
-  
       {
         id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
@@ -170,40 +151,34 @@ const _nav = [
         to: "/memberTransfer",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
-    
- 
       {
         id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
         name: "Revoke Party Member",
         to: "/memberRevoke",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
-      },
-  
+      },  
     ],
   },
-  
-
-
   {
     id: "AdminSetupSideBar",
     _tag: "CSidebarNavDropdown",
-    name: "Kpost Management",
+    name: "Party Member Registration",
     route: "/AdminSetup",
-    icon: "cil-drop",
+    icon: 'cil-drop',
     _children: [
       {
-        id: "CSidebarNavItemSideBar",
+        id:"CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
-        name: "Allocate CC",
-        to: "/MemberRegistration",
+        name: 'Member Registration',
+        to: '/MemberRegistration',
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
-      },
+      },    
       {
-        id: "CSidebarNavItemSideBar",
+        id:"CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
-        name: " Allocate Contacts",
-        to: "/MemberRegistration10",
+        name: 'Member Count',
+        to: '/memberRegistration',
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
     ],

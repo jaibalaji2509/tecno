@@ -2,7 +2,7 @@ import { CButton, CCard, CCol, CInput, CLabel, CRow, CSelect } from "@coreui/rea
 import React, { useState } from "react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 
-function ViewConstituency() {
+function Constituency() {
   const [error, ] = useState("");
   const [municipalListadd, setMunicipalListadd] = useState(true);
   const [municipalList, setMunicipalList] = useState(true);
@@ -719,4 +719,4 @@ function ViewConstituency() {
     </React.Fragment>
     )
 }
-export default ViewConstituency
+export default Constituency
