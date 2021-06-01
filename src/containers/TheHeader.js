@@ -8,6 +8,7 @@ import {
   CBreadcrumbRouter,
   CHeaderNavLink,
   CSubheader,
+  CHeaderNavItem,
   CLink
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
@@ -53,10 +54,10 @@ const TheHeader = () => {
       </CHeaderBrand>
 
       <CHeaderNav className="d-md-down-none mr-auto">
-        {/* <CHeaderNavItem className="px-3" >
-          <CHeaderNavLink to="/dashboard">Dashboard</CHeaderNavLink>
+        <CHeaderNavItem className="px-3" style={{fontSize:"22px",fontWeight:"700",color:"black", marginLeft:"350px"}}>
+          <CHeaderNavLink to="/dashboard" style={{color:"black"}}>Dravidar Munnatra Kazhagam</CHeaderNavLink>
         </CHeaderNavItem>
-        <CHeaderNavItem  className="px-3">
+        {/* <CHeaderNavItem  className="px-3">
           <CHeaderNavLink to="/users">Users</CHeaderNavLink>
         </CHeaderNavItem>
         <CHeaderNavItem className="px-3">

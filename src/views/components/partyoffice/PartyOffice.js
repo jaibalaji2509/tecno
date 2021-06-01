@@ -49,7 +49,7 @@ const PartyOffice = () => {
       Area: "BO",
       male: " Head office ",
       ENTERBY:"Sathish ",
-      ENTERON:"12/05/2021"
+      ENTERON:"31/05/2021"
     },
   ];
   const fields = [
@@ -154,17 +154,17 @@ const PartyOffice = () => {
          <div>
          <CCard className={"cardSave"}>
            <div className={"main-headerlabel"}>
-             <span className={"header-label"}> party Office</span>
+             <span className={"header-label"}> Adding Type of Party Office</span>
            </div>
            {locationHide.corporation && (
              <div>
                <div style={{ marginLeft: "-26px" }}>
-                 <div className={"row-headerlabel"}>
+                 {/* <div className={"row-headerlabel"}>
                    <span  style={{marginLeft:"70px"}} className={"header-label"}>
                      {" "}
                      Adding Party Office{" "}
                    </span>
-                 </div>
+                 </div> */}
                  <CRow className={"row-alignment"} md="12" sm="12" lg="12">
              
 
@@ -210,8 +210,8 @@ const PartyOffice = () => {
                  id={"municipaldistrict"}
                  name={"city"}
                  placeholder={"Enter Code"}
-                 value={locations.city}
-                 onChange={changeHandler}
+                //  value={locations.city}
+                //  onChange={changeHandler}
                />
              </CCol>
            <CCol className={"column-align"} md="4">
@@ -274,8 +274,8 @@ const PartyOffice = () => {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "80px",
-                      marginLeft: "955px",
+                      top: "90px",
+                      marginLeft: "820px",
                       marginBottom: "20px",
                       color: "#0072ff",
                     }}
@@ -287,9 +287,9 @@ const PartyOffice = () => {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "80px",
-                      marginLeft: "1000px",
-                      marginBottom: "20px",
+                      top: "90px",
+                      marginLeft: "900px",
+                      marginBottom: "910px",
                       color: "green",
                     }}
                     className="fa fa-share-alt"
@@ -298,7 +298,7 @@ const PartyOffice = () => {
               </CRow>
               
             <CRow>
-                  <CCol style={{top:"20px"}}>
+                  <CCol style={{top:"80px"}}>
                     <img
                       id={"employeeDataorgEmployeeData"}
                       alt={""}
@@ -308,7 +308,7 @@ const PartyOffice = () => {
                       style={{
                         height: "40px",
                         width: "40px",
-                        marginRight: "80px",
+                        marginRight: "290px",
                         float: "right",
                         cursor: "pointer",
                         
@@ -316,13 +316,13 @@ const PartyOffice = () => {
                     />
                   </CCol>
                 </CRow>
-               <CRow style={{ padding: "4%", marginTop: "-1.5%" }}>
+               <CRow style={{ padding: "4%", marginTop: "-3.5%" }}>
                  <CDataTable
                    items={userData}
                    fields={fields}
                    columnFilter
                    tableFilter
-                   tableLabel={"List of Party Office"}
+                   tableLabel={"List of Type of Party Office"}
                    itemsPerPageSelect
                    itemsPerPage={5}
                    hover

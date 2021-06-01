@@ -106,17 +106,14 @@ const routes = [
   { path: '/users/:id', exact: true, name: 'User Details', component: User },
   {path:"/locationlibrary", exact:true, name:'Location Library', component:LocationLibrary},
   {path:"/tabslist", exact:true, name : "TabsList", component:TabsList},
-  { path: '/partyofficelocation',  exact: true, name: 'Party OfficeLocation', component: PartyOfficeLocation  },
+  { path: '/partyofficelocation',  exact: true, name: 'Type of Party Office Location', component: PartyOfficeLocation  },
 
   {path:"/municipalcorporation", exact:true, name : "Municipal Corporation", component:MunicipalCorporation},
   {path:"/municipality", exact:true, name : "Municipality", component:Municipality},
   {path:"/townpanchayat", exact:true, name : "Town Panchayat", component:TownPanchayat},
   {path:"/villagepanchayat", exact:true, name : "Village Panchayat", component:VillagePanchayat},
-  {path:"/partyoffice", exact:true, name : "Party Office", component:PartyOffice},
+  {path:"/TypeOfpartyOffice", exact:true, name : "Type of Party Office", component:PartyOffice},
   {path:"/constituency", exact:true, name : "Constituency", component:Constituency},
-
-,
-
   { path: '/WingLocation',  exact: true, name: 'WingLocation', component: PartyWingsOfficeLocation },
   { path: '/memberRegistration',  exact: true, name: 'Member Registration', component: MemberRegistration },
   { path: '/partywingsoffice',  exact: true, name: 'PartyWingsOfficeType', component: PartyWingsOfficeType },
