@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
-const OfficeType = () => {
+
+const WingsofficeType = () => {
   const [location, setLocation] = useState({
     state: "",
     district: "",
@@ -32,22 +33,39 @@ const OfficeType = () => {
     cityLocation: false,
   });
   const userData = [
+    {
+      SNo: "1",
+      party: "Head Office",
+      abbri: "hoff",
+      code: "HO",
+      to: "---",
+      by: "jai",
+      on: "12/05/2021",
+     
+
+    },
+    {
+      SNo: "2",
+      party: "Branch Office",
+      abbri: "boff",
+      code: "BO",
+      to: "Head Office",
+      by: "jai",
+      on: "12/05/2021",
+    },
   ];
   const fields = [
     { key: "SNo", label: "S.NO", _style: { width: "5%" },    sorter: false,
     filter: false, },
   
-    { key: "Street", label: "Type of Party Office", _style: { width: "15%" } },
-    { key: "District", label: "Abbreviation", _style: { width: "10%" } },
-    { key: "Area", label: "Code", _style: { width: "10%" } },
-    { key: "male", label: "Reporting To ", _style: { width: "12%" } },
+    { key: "party", label: "Type of Party Office", _style: { width: "15%" } },
+    { key: "abbri", label: "Abbreviation", _style: { width: "10%" } },
+    { key: "code", label: "Code", _style: { width: "10%" } },
+    { key: "to", label: "Reporting To ", _style: { width: "12%" } },
   
-    { key: "Street", label: "Entered By", _style: { width: "7%" },    sorter: false,
-    filter: false, },
-    { key: "Street", label: "Entered On", _style: { width: "7%" },    sorter: false,
-    filter: false, },
-    { key: "Street", label: "Action", _style: { width: "5%" },    sorter: false,
-    filter: false, },
+    { key: "by", label: "Entered By", _style: { width: "7%" }, },
+    { key: "on", label: "Entered On", _style: { width: "7%" },  },
+    { key: "show_details", label: "Action", _style: { width: "5%" }, },
   ];
   const [passing, ] = useState("");
   const saveCorporation = async () => {
@@ -128,7 +146,7 @@ const OfficeType = () => {
          <div>
          <CCard className={"cardSave"}>
            <div className={"main-headerlabel"}>
-             <span className={"header-label"}> Type of party Wings Office</span>
+             <span className={"header-label"}> Adding Party Wings Office</span>
            </div>
            {locationHide.corporation && (
              <div>
@@ -136,7 +154,7 @@ const OfficeType = () => {
                  <div className={"row-headerlabel"}>
                    <span  style={{marginLeft:"70px"}} className={"header-label"}>
                      {" "}
-                     Adding Party Wing Office{" "}
+                     {" "}
                    </span>
                  </div>
                  <CRow className={"row-alignment"} md="12" sm="12" lg="12">
@@ -152,7 +170,7 @@ const OfficeType = () => {
                  id={"municipalstatename"}
                  name={"state"}
                  placeholder={"Enter Party Office"}
-                 value={locations.district}
+                 value="Branch Office"
                  onChange={changeHandler}
                />
              </CCol>
@@ -166,7 +184,7 @@ const OfficeType = () => {
                  id={"municipaldistrict"}
                  name={"city"}
                  placeholder={"Enter Abbreviation"}
-                 value={locations.city}
+                 value="boff"
                  onChange={changeHandler}
                />
              </CCol>
@@ -184,7 +202,7 @@ const OfficeType = () => {
                  id={"municipaldistrict"}
                  name={"city"}
                  placeholder={"Enter Code"}
-                 value={locations.city}
+                 value="BO"
                  onChange={changeHandler}
                />
              </CCol>
@@ -200,7 +218,9 @@ const OfficeType = () => {
                  placeholder={"Select Hierarchy Reporting To"}
                  value={locations.city}
                  onChange={changeHandler}
-               />
+               >
+                 <option>Head Office</option>
+               </CSelect>
              </CCol>
         
          
@@ -304,14 +324,33 @@ const OfficeType = () => {
                    pagination
                    scopedSlots={{
                      show_details: (item, index) => {
-                       return (
-                         <td className="py-2">
-                           <CRow>
-                             <CCol style={{ fontSize: "1.15rem" }} md="12">
-                             </CCol>
-                           </CRow>
-                         </td>
-                       );
+                      return (
+                        <td className="py-2">
+                          <CRow>
+  
+                            <CCol style={{ fontSize: "1.15rem" }} md="12">
+                              <i
+                                style={{
+                                  marginRight: "5px",
+                                  color: "#3480e2",
+                                  cursor: "pointer",
+                                }}
+                                id={"memberregisterediticon"}
+                                className="fas fa-edit"
+                              ></i>
+                              <i
+                                id={"memberregisterdelete"}
+                                style={{
+                                  marginLeft: "5px",
+                                  color: "#e85654",
+                                  cursor: "pointer",
+                                }}
+                                className="fa fa-trash"
+                              ></i>
+                            </CCol>
+                          </CRow>
+                        </td>
+                      );
                      },
                      details: (item, index) => {},
                    }}
@@ -1097,4 +1136,4 @@ const OfficeType = () => {
   );
 };
 
-export default OfficeType;
+export default WingsofficeType;

@@ -81,7 +81,7 @@ const _nav = [
         id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
         name: "Type of Party Wing Office",
-        to: "/OfficeType",
+        to: "/WingsofficeType",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
       {
@@ -183,6 +183,7 @@ const _nav = [
     ],
   },
   
+
 
   {
     id: "AdminSetupSideBar",

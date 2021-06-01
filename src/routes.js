@@ -47,7 +47,7 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'));
 const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
 const Location = React.lazy(() => import('./views/components/location/Location'));
-const OfficeType = React.lazy(() => import('./views/components/officetype/OfficeType'));
+const WingsofficeType = React.lazy(() => import('./views/components/partywingsofficetype/PartyWingOfficeType'));
 const PartyWingsOfficeLocation = React.lazy(() => import('./views/components/winglocation/PartyWingsOfficeLocation'));
 
 const Municipality = React.lazy(() => import('./views/components/municipality/Municipality'));
@@ -114,7 +114,7 @@ const routes = [
   {path:"/villagepanchayat", exact:true, name : "Village Panchayat", component:VillagePanchayat},
   {path:"/partyoffice", exact:true, name : "Party Office", component:PartyOffice},
   { path: '/MemberRegistration',  exact: true, name: 'Member Registration', component: MemberRegistration },
-  { path: '/OfficeType',  exact: true, name: 'PARTY WINGS OFFICE', component: OfficeType },
+  { path: '/WingsofficeType',  exact: true, name: 'PARTY WINGS OFFICE', component: WingsofficeType },
   { path: '/PartyWingsOfficeLocation',  exact: true, name: 'Party Wings Office Location', component: PartyWingsOfficeLocation },
   { path: '/Terminate',  exact: true, name: 'Terminate Member', component: Terminate },
   // {path:"/Constituency", exact:true, name : "Constituency", component:Constituency},
