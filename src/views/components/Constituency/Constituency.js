@@ -197,7 +197,7 @@ function Constituency() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "80px",
+                    top: "120px",
                     marginLeft: "955px",
                     marginBottom: "20px",
                     color: "#0072ff",
@@ -210,7 +210,7 @@ function Constituency() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "80px",
+                    top: "120px",
                     marginLeft: "1000px",
                     marginBottom: "20px",
                     color: "green",

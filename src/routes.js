@@ -22,6 +22,8 @@ const Transfer = React.lazy(() => import('./views/components/transfer/transfer')
 const Suspend = React.lazy(() => import('./views/components/suspend/suspend'));
 const Revoke = React.lazy(() => import('./views/components/revoke/revoke'));
 const Terminate = React.lazy(() => import('./views/components/terminate/Terminate'));
+const ConstituencyMember = React.lazy(() => import('./views/components/constituency/ConstituencyMember'));
+const Constituency = React.lazy(() => import('./views/components/constituency/Constituency'));
 
 const Login = React.lazy(() => import('./views/pages/login/Login'));
 const LocationLibrary = React.lazy(() => import('./views/components/location_library/Locationlibrary'));
@@ -55,9 +57,6 @@ const Municipality = React.lazy(() => import('./views/components/municipality/Mu
 const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
 const VillagePanchayat = React.lazy(() => import('./views/components/villagepanchayat/VillagePanchayat'));
 const MemberRegistration = React.lazy(() => import('./views/components/memberregistration/MemberRegistration'));
-// const Constituency = React.lazy(() => import('./views/components/constituency/Constituency'));
-// const PartyWingsOfficeType = React.lazy(() => import('./views/components/partywingsofficetype/PartyWingsOfficeType'));
-// const PartyWingsOfficeLocation = React.lazy(() => import('./views/components/winglocation/PartyWingsOfficeLocation'));
 const PartyOffice = React.lazy(() => import('./views/components/partyoffice/PartyOffice'));
 const PartyOfficeLocation = React.lazy(() => import('./views/components/partyofficelocation/PartyOfficeLocation'));
 const PartyPosting = React.lazy(() => import('./views/components/partyposting/PartyPosting'));
@@ -125,6 +124,8 @@ const routes = [
   { path: '/memberTransfer',  exact: true, name: 'Member Transfer', component: Transfer },
   { path: '/memberRevoke',  exact: true, name: 'Member Revoke', component: Revoke },
   { path: '/memberTerminate',  exact: true, name: 'Terminate Member', component: Terminate },
+  { path: '/ConstituencyMember',  exact: true, name: 'Constituency Member', component: ConstituencyMember },
+  { path: '/Constituency',  exact: true, name: 'Constituency', component: Constituency },
 ];
 
 export default routes;

@@ -58,7 +58,7 @@ const _nav = [
         id: "AdminandSubAdminSideBar",
         _tag: "CSidebarNavItem",
         name: "Constituency",
-        to: "/constituency ",
+        to: "/Constituency",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
     ],
@@ -178,9 +178,27 @@ const _nav = [
         id:"CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
         name: 'Member Count',
-        to: '/memberRegistration',
+        to: '/',
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
+    ],
+  },
+
+  {
+    id: "AdminSetupSideBar",
+    _tag: "CSidebarNavDropdown",
+    name: "Party Member Management",
+    route: "/AdminSetup",
+    icon: 'cil-drop',
+    _children: [
+      {
+        id:"CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: 'Map Public Representative',
+        to: '/ConstituencyMember',
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },    
+     
     ],
   },
 

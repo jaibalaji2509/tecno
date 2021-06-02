@@ -3,12 +3,8 @@ import React, { useState } from "react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
-<<<<<<< HEAD:src/views/components/partywingsofficetype/PartyWingOfficeType.js
 
 const WingsofficeType = () => {
-=======
-const PartyWingsOfficeType = () => {
->>>>>>> d7ef24ea83e60c9a9b36f3421a347d569119394c:src/views/components/partywingsofficetype/PartyWingsOfficeType.js
   const [location, setLocation] = useState({
     state: "",
     district: "",
@@ -39,7 +35,6 @@ const PartyWingsOfficeType = () => {
   const userData = [
     {
       SNo: "1",
-<<<<<<< HEAD:src/views/components/partywingsofficetype/PartyWingOfficeType.js
       party: "Head Office",
       abbri: "hoff",
       code: "HO",
@@ -56,19 +51,8 @@ const PartyWingsOfficeType = () => {
       code: "BO",
       to: "Head Office",
       by: "jai",
-      on: "12/05/2021",
+      on: "31/05/2021",
     },
-=======
-      WingOffice: "HEAD OFFICE",
-      NAMEOFWINGOFFICE: "HEADOFFICEMUMBAI",
-      ReportingTo: "---",
-      address: "State Bank Bhavan",
-      area: "MADAM CAMMA ROAD",
-      city: "MUMBAI",
-      pinccode: "400021",
-
-    },
->>>>>>> d7ef24ea83e60c9a9b36f3421a347d569119394c:src/views/components/partywingsofficetype/PartyWingsOfficeType.js
   ];
   const fields = [
     { key: "SNo", label: "S.NO", _style: { width: "5%" },    sorter: false,
@@ -79,15 +63,9 @@ const PartyWingsOfficeType = () => {
     { key: "code", label: "Code", _style: { width: "10%" } },
     { key: "to", label: "Reporting To ", _style: { width: "12%" } },
   
-<<<<<<< HEAD:src/views/components/partywingsofficetype/PartyWingOfficeType.js
     { key: "by", label: "Entered By", _style: { width: "7%" }, },
     { key: "on", label: "Entered On", _style: { width: "7%" },  },
     { key: "show_details", label: "Action", _style: { width: "5%" }, },
-=======
-    { key: "Street", label: "Entered By", _style: { width: "7%" }, },
-    { key: "Street", label: "Entered On", _style: { width: "7%" },  },
-    { key: "Street", label: "Action", _style: { width: "5%" }, },
->>>>>>> d7ef24ea83e60c9a9b36f3421a347d569119394c:src/views/components/partywingsofficetype/PartyWingsOfficeType.js
   ];
   const [passing, ] = useState("");
   const saveCorporation = async () => {
@@ -282,57 +260,57 @@ const PartyWingsOfficeType = () => {
               </CCol>
             </CRow>
 
-               </div>
-               
-               <CRow>
-                <CCol style={{ fontSize: "1.55rem" }} md="12">
-                  <i
-                    id={"locationLibraryDelete"}
-                    style={{
-                      position: "absolute",
-                      top: "80px",
-                      marginLeft: "955px",
-                      marginBottom: "20px",
-                      color: "#0072ff",
-                    }}
-                    className="fa fa-print"
-                  ></i>
-                </CCol>
-                <CCol style={{ fontSize: "1.55rem" }} md="12">
-                  <i
-                    id={"locationLibraryDelete"}
-                    style={{
-                      position: "absolute",
-                      top: "80px",
-                      marginLeft: "1000px",
-                      marginBottom: "20px",
-                      color: "green",
-                    }}
-                    className="fa fa-share-alt"
-                  ></i>
-                </CCol>
-              </CRow>
-              
+               </div>           <CRow>
+              <CCol style={{ fontSize: "1.55rem" }} md="12">
+                <i
+                  id={"locationLibraryDelete"}
+                  style={{
+                    position: "absolute",
+                    top: "118px",
+                    marginLeft: "940px",
+                    marginBottom: "20px",
+                    color: "#0072ff",
+                    cursor: "pointer",
+                  }}
+                  className="fa fa-print"
+                ></i>
+              </CCol>
+              <CCol style={{ fontSize: "1.55rem" }} md="12">
+                <i
+                  id={"locationLibraryDelete"}
+                  style={{
+                    position: "absolute",
+                    top: "118px",
+                    marginLeft: "980px",
+                    marginBottom: "20px",
+                    color: "green",
+                    cursor: "pointer",
+                  }}
+                  className="fa fa-share-alt"
+                ></i>
+              </CCol>
+            </CRow>
+
             <CRow>
-                  <CCol style={{top:"20px"}}>
-                    <img
-                      id={"employeeDataorgEmployeeData"}
-                      alt={""}
-                      src={
-                        "https://img.icons8.com/fluent/2x/organization-chart-people.png"
-                      }
-                      style={{
-                        height: "40px",
-                        width: "40px",
-                        marginRight: "80px",
-                        float: "right",
-                        cursor: "pointer",
-                        
-                      }}
-                    />
-                  </CCol>
-                </CRow>
-               <CRow style={{ padding: "4%", marginTop: "-1.5%" }}>
+              <CCol style={{ top: "20px" }}>
+                <img
+                  id={"employeeDataorgEmployeeData"}
+                  alt={""}
+                  src={
+                    "https://img.icons8.com/fluent/2x/organization-chart-people.png"
+                  }
+                  style={{
+                    height: "40px",
+                    width: "40px",
+                    marginRight: "238px",
+                    marginTop:"88px",
+                    float: "right",
+                    cursor: "pointer",
+                  }}
+                />
+              </CCol>
+            </CRow>
+               <CRow style={{ padding: "4%", marginTop: "-8.5%" }}>
                  <CDataTable
                    items={userData}
                    fields={fields}
@@ -1158,8 +1136,4 @@ const PartyWingsOfficeType = () => {
   );
 };
 
-<<<<<<< HEAD:src/views/components/partywingsofficetype/PartyWingOfficeType.js
 export default WingsofficeType;
-=======
-export default PartyWingsOfficeType;
->>>>>>> d7ef24ea83e60c9a9b36f3421a347d569119394c:src/views/components/partywingsofficetype/PartyWingsOfficeType.js
