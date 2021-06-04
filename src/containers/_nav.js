@@ -118,11 +118,18 @@ const _nav = [
   {
     id: "AdminSetupSideBar",
     _tag: "CSidebarNavDropdown",
-    name: "Party Member",
+    name: "Party Member Managrmrnt",
     route: "/partyMember",    
     icon: 'cil-drop',
-
+   
     _children: [
+      {
+        id: "CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: "Map Public Representative",
+        to: "/rajyasabha",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
       {
         id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",

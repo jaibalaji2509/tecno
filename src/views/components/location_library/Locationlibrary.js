@@ -40,11 +40,11 @@ function LocationLibrary(props) {
   const [stateSchema, setState] = useState([]);
   const [countrySchema, setCountry] = useState([]);
   const [AreaCreate, setAreaCreate] = useState(false);
-  const [StreetCreate, ] = useState(false);
+  const [StreetCreate, setStreetCreate] = useState(false);
   const [AreaList, setAreaList] = useState(true);
-  const [StreetList, ] = useState(true);
+  const [StreetList,setStreetList ] = useState(true);
   const [CountryCreate, setCountryCreate] = useState(false);
-  const [, setCountryList] = useState(true);
+  const [countryList, setCountryList] = useState(true);
   const [CityCreate, setCityCreate] = useState(false);
   const [CityList, setCityList] = useState(true);
   const [StateCreate, setStateCreate] = useState(false);
@@ -583,7 +583,10 @@ function LocationLibrary(props) {
     await setAreaList(false);
     await setAreaCreate(true);
   };
-
+const addStreet = async()=>{
+  await setStreetList(false);
+    await setStreetCreate(true);
+}
   const EditCountry = async (data) => {
     await setAddHide(false);
     await setSaveHide(true);
@@ -617,18 +620,31 @@ function LocationLibrary(props) {
     let val4 = formik.values.Code4;
     formik.values.Code4 = val4.toUpperCase();
   }, [formik.values]);
+
+  const selectState = [{value:"TamilNadu", label:"TamilNadu"}]
+  
+  const selectCity = [{value:"Chennai", label:"Chennai"}]
+  
+  const selectStreet = [{value:"Pondy Baza", label:"Pondy Baza"}]
+  
+  const selectVillage = [{value:"TNagar", label:"TNagar"}]
+
+  const userData =[{sNo:"1",stateName:"TamlNadu",cityName:"Chennai",areaName:"Alwarpet", pincode:"600018",Street:"St Marys Road"},
+  {sNo:"2",stateName:"TamlNadu",cityName:"Chennai",areaName:"TNagar", pincode:"600017",Street:"Pondy Bazar"}
+
+]
   const fields = [
     { key: "sNo", _style: { width: "10%" },    sorter: false,
     filter: false, },
     { key: "stateName", label: "State ", _style: { width: "20%" } },
-    { key: "cityName", label: "District / City", _style: { width: "20%" } },
+    { key: "cityName", label: "District / City", _style: { width: "15%" } },
     {
       key: "areaName",
       label: "Village / Area / Locality",
       _style: { width: "20%" },
     },
-    { key: "pincode", label: "Pincode", _style: { width: "20%" } },
-    { key: "pincode", label: "Street ", _style: { width: "20%" } },
+    { key: "pincode", label: "Pincode", _style: { width: "10%" } },
+    { key: "Street", label: "Street ", _style: { width: "20%" } },
 
     {
       label: "Action",
@@ -703,7 +719,7 @@ function LocationLibrary(props) {
           <div>
             <div className={"main-headerlabel"}>
               <span style={{ marginLeft: "15px" }} className={"header-label"}>
-                Location Master
+                Location Library
               </span>
             </div>
 
@@ -733,7 +749,7 @@ function LocationLibrary(props) {
                             }
                           }}
                           value={stateName}
-                          options={stateSchema}
+                          options={selectState}
                           isDisabled={CountryCreate || CityCreate || AreaCreate}
                         />
                       </CCol>
@@ -753,7 +769,7 @@ function LocationLibrary(props) {
 
                       {stateName.edit === true ? (
                         <React.Fragment>
-                          <CCol md={3} lg={3}>
+                          <CCol md={3} lg={3} className={"column-align"} style={{marginLeft:"-20px"}}> 
                             <CButton
                               style={{
                                 marginTop: "30px",
@@ -926,7 +942,7 @@ function LocationLibrary(props) {
                             }
                           }}
                           value={cityName}
-                          options={citySchema}
+                          options={selectCity}
                           isDisabled={
                             CountryCreate || StateCreate || AreaCreate
                           }
@@ -954,7 +970,7 @@ function LocationLibrary(props) {
 
                       {cityName.edit === true && (
                         <React.Fragment>
-                          <CCol className={"column-align"} md={3} lg={3}>
+                          <CCol md={3} lg={3} className={"column-align"} style={{marginLeft:"-20px"}}> 
                             <CButton
                               style={{ marginTop: "30px" }}
                               className={"btn btn-success"}
@@ -1018,12 +1034,12 @@ function LocationLibrary(props) {
                             maxlength="5"
                             size="5"
                           />
-                          {formik.errors.Abbreviation3 ? (
+                          {/* {formik.errors.Abbreviation3 ? (
                             <div className="text-danger">
                               {" "}
                               {formik.errors.Abbreviation3}
                             </div>
-                          ) : null}
+                          ) : null} */}
                         </CCol>
                         <CCol md="3">
                           <CLabel className={"label-name-3"}>
@@ -1045,14 +1061,14 @@ function LocationLibrary(props) {
                             maxlength="5"
                             size="5"
                           />
-                          {formik.errors.Code3 ? (
+                          {/* {formik.errors.Code3 ? (
                             <div className="text-danger">
                               {" "}
                               {formik.errors.Code3}
                             </div>
-                          ) : null}
+                          ) : null} */}
                         </CCol>
-                        <CCol className={"column-align"} md="3">
+                        <CCol  md="3">
                           <CButton
                             shape={"pill"}
                             style={{ marginTop: "30px" }}
@@ -1125,7 +1141,7 @@ function LocationLibrary(props) {
                             }
                           }}
                           value={areaName.value ? areaName : null}
-                          options={areaSchema}
+                          options={selectVillage}
                           isDisabled={
                             CountryCreate || StateCreate || CityCreate
                           }
@@ -1152,7 +1168,7 @@ function LocationLibrary(props) {
                       )}
                       {areaName.edit && (
                         <React.Fragment>
-                          <CCol className={"column-align"} md={3} lg={3}>
+                           <CCol md={3} lg={3} className={"column-align"} style={{marginLeft:"-20px"}}> 
                             <CButton
                               id={"locationLibraryAreaEdit"}
                               style={{ marginTop: "30px" }}
@@ -1195,7 +1211,7 @@ function LocationLibrary(props) {
                   {AreaCreate && (
                     <React.Fragment>
                       <CRow className={"column-align3"} sm={12} md={12} lg={12}>
-                        <CCol md="3">
+                        <CCol md="2">
                           <CLabel className={"label-name-3"}>
                             Area Name
                             <span className={"text-danger"}> *</span>
@@ -1212,12 +1228,12 @@ function LocationLibrary(props) {
                             maxlength="60"
                             size="60"
                           />
-                          {formik.errors.AreaName ? (
+                          {/* {formik.errors.AreaName ? (
                             <div className="text-danger">
                               {" "}
                               {formik.errors.AreaName}
                             </div>
-                          ) : null}
+                          ) : null} */}
                         </CCol>
 
                         <CCol md="2">
@@ -1239,12 +1255,12 @@ function LocationLibrary(props) {
                             maxlength="5"
                             size="5"
                           />
-                          {formik.errors.Abbreviation4 ? (
+                          {/* {formik.errors.Abbreviation4 ? (
                             <div className="text-danger">
                               {" "}
                               {formik.errors.Abbreviation4}
                             </div>
-                          ) : null}
+                          ) : null} */}
                         </CCol>
                         <CCol md="2">
                           <CLabel className={"label-name-3"}>
@@ -1266,13 +1282,31 @@ function LocationLibrary(props) {
                             maxlength="5"
                             size="5"
                           />
-                          {formik.errors.Code4 ? (
+                          {/* {formik.errors.Code4 ? (
                             <div className="text-danger">
                               {" "}
                               {formik.errors.Code4}
                             </div>
-                          ) : null}
+                          ) : null} */}
                         </CCol>
+             <CCol md="2">
+             <CLabel className={"label-name-1"}>
+                      Pincode
+                      <span className={"text-danger"}> *</span>
+                    </CLabel>
+                    <CInput
+                      onKeyPress={(e) => FormValidation.value_Only_Number(e)}
+                      name={"Pincode"}
+                      type={"text"}
+                      id={"locationLibraryAreaPincode"}
+                      onChange={formik.handleChange}
+                      value={formik.values.Pincode}
+                      placeholder="Enter Pincode"
+                      autoComplete="none"
+                      maxlength="6"
+                      size="6"
+                    />
+             </CCol>
                         <CCol md="2">
                           <CButton
                             style={{ marginTop: "30px" }}
@@ -1283,7 +1317,7 @@ function LocationLibrary(props) {
                             SAVE
                           </CButton>
                           <CButton
-                            style={{ marginTop: "30px", marginLeft: "20px" }}
+                            style={{ marginTop: "-50px", marginLeft: "80px" }}
                             className={"cancelBtn"}
                             onClick={CancelArea}
                             id={"locationLibraryAreaCancel"}
@@ -1324,32 +1358,7 @@ function LocationLibrary(props) {
                     </CCol>
                   </CRow>
                 </CRow>
-                <CRow className={"row-alignment"}>
-                  <CCol className={"column-align"} md={4} lg={4}>
-                    <CLabel className={"label-name-1"}>
-                      Pincode
-                      <span className={"text-danger"}> *</span>
-                    </CLabel>
-                    <CInput
-                      onKeyPress={(e) => FormValidation.value_Only_Number(e)}
-                      name={"Pincode"}
-                      type={"text"}
-                      id={"locationLibraryAreaPincode"}
-                      onChange={formik.handleChange}
-                      value={formik.values.Pincode}
-                      placeholder="Enter Pincode"
-                      autoComplete="none"
-                      maxlength="6"
-                      size="6"
-                    />
-                    {formik.errors.Pincode ? (
-                      <div className="text-danger">
-                        {" "}
-                        {formik.errors.Pincode}
-                      </div>
-                    ) : null}
-                  </CCol>
-                </CRow>
+             
 
                 <CRow className={"row-alignment"}>
                   {StreetList && (
@@ -1370,7 +1379,7 @@ function LocationLibrary(props) {
                             }
                           }}
                           value={streetName.value ? streetName : null}
-                          options={areaSchema}
+                          options={selectStreet}
                           isDisabled={
                             CountryCreate || StateCreate || CityCreate
                           }
@@ -1385,7 +1394,7 @@ function LocationLibrary(props) {
                               shape={"pill"}
                               style={{ marginTop: "30px" }}
                               className={"saveBtn"}
-                              onClick={areaCreate}
+                              onClick={addStreet}
                               disabled={
                                 CountryCreate || StateCreate || CityCreate
                               }
@@ -1397,7 +1406,7 @@ function LocationLibrary(props) {
                       )}
                       {streetName.edit && (
                         <React.Fragment>
-                          <CCol className={"column-align"} md={3} lg={3}>
+                          <CCol md={3} lg={3} className={"column-align"} style={{marginLeft:"-20px"}}> 
                             <CButton
                               id={"locationLibraryAreaEdit"}
                               style={{ marginTop: "30px" }}
@@ -1414,25 +1423,25 @@ function LocationLibrary(props) {
                       )}
                       {saveHide && (
                         <React.Fragment>
-                          <CCol className={"column-align"} md="2">
-                            <CButton
-                              style={{ marginTop: "30px" }}
-                              className={"saveBtn"}
-                              id={"locationLibraryAreaSave"}
-                            >
-                              SAVE
-                            </CButton>
-
-                            <CButton
-                              style={{ marginTop: "30px", marginLeft: "20px" }}
-                              className={"cancelBtn"}
-                              onClick={CancelEdit}
-                              id={"locationLibraryAreaCancel"}
-                            >
-                              CANCEL
-                            </CButton>
-                            {error !== "" ? <p>{error}</p> : null}
-                          </CCol>
+                            {/* <CCol md="2">
+                          <CButton
+                            style={{ marginTop: "30px" }}
+                            className={"saveBtn"}
+                            onClick={Area}
+                            id={"locationLibraryAreaSave"}
+                          >
+                            SAVE
+                          </CButton>
+                          <CButton
+                            style={{ marginTop: "30px", marginLeft: "20px" }}
+                            className={"cancelBtn"}
+                            onClick={CancelArea}
+                            id={"locationLibraryAreaCancel"}
+                          >
+                            CANCEL
+                          </CButton>
+                          {error !== "" ? <p>{error}</p> : null}
+                        </CCol> */}
                         </React.Fragment>
                       )}
                     </React.Fragment>
@@ -1458,15 +1467,15 @@ function LocationLibrary(props) {
                             maxlength="60"
                             size="60"
                           />
-                          {formik.errors.AreaName ? (
+                          {/* {formik.errors.AreaName ? (
                             <div className="text-danger">
                               {" "}
                               {formik.errors.AreaName}
                             </div>
-                          ) : null}
+                          ) : null} */}
                         </CCol>
-
-                        <CCol md="2">
+                       
+                        <CCol md="3">
                           <CLabel className={"label-name-3"}>
                             Abbreviation
                             <span className={"text-danger"}> *</span>
@@ -1485,14 +1494,14 @@ function LocationLibrary(props) {
                             maxlength="5"
                             size="5"
                           />
-                          {formik.errors.Abbreviation4 ? (
+                          {/* {formik.errors.Abbreviation4 ? (
                             <div className="text-danger">
                               {" "}
                               {formik.errors.Abbreviation4}
                             </div>
-                          ) : null}
+                          ) : null} */}
                         </CCol>
-                        <CCol md="2">
+                        <CCol md="3">
                           <CLabel className={"label-name-3"}>
                             Code
                             <span className={"text-danger"}> *</span>
@@ -1512,14 +1521,14 @@ function LocationLibrary(props) {
                             maxlength="5"
                             size="5"
                           />
-                          {formik.errors.Code4 ? (
+                          {/* {formik.errors.Code4 ? (
                             <div className="text-danger">
                               {" "}
                               {formik.errors.Code4}
                             </div>
-                          ) : null}
+                          ) : null} */}
                         </CCol>
-                        <CCol className={"column-align"} md="2">
+                        <CCol md="2">
                           <CButton
                             style={{ marginTop: "30px" }}
                             className={"saveBtn"}
@@ -1529,7 +1538,7 @@ function LocationLibrary(props) {
                             SAVE
                           </CButton>
                           <CButton
-                            style={{ marginTop: "30px", marginLeft: "20px" }}
+                            style={{ marginTop: "-55px", marginLeft: "80px" }}
                             className={"cancelBtn"}
                             onClick={CancelArea}
                             id={"locationLibraryAreaCancel"}
@@ -1541,7 +1550,7 @@ function LocationLibrary(props) {
                       </CRow>
                     </React.Fragment>
                   )}
-                   <CRow style={{marginTop:"10px", marginLeft:"1200px",position:"absolute" }}>
+                   <CRow style={{marginTop:"90px", marginLeft:"1200px",position:"absolute" }}>
                     <CCol sm="3" lg="3" style={{ marginLeft: "10px" }}>
                       <CWidgetDropdown
                         style={{
@@ -1574,7 +1583,7 @@ function LocationLibrary(props) {
             </CRow>
 
             <CRow
-              style={{ padding: "1%", marginTop: "1.5%", marginLeft: "27px" }}
+              style={{ padding: "1%", marginTop: "4.5%", marginLeft: "27px" }}
             >
               <CRow>
                 <CCol style={{ fontSize: "1.55rem" }} md="12">
@@ -1582,8 +1591,8 @@ function LocationLibrary(props) {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "7px",
-                      marginLeft: "955px",
+                      top: "37px",
+                      marginLeft: "945px",
                       marginBottom: "20px",
                       color: "#0072ff",
                     }}
@@ -1595,7 +1604,7 @@ function LocationLibrary(props) {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "7px",
+                      top: "37px",
                       marginLeft: "1000px",
                       marginBottom: "20px",
                       color: "green",
@@ -1605,7 +1614,7 @@ function LocationLibrary(props) {
                 </CCol>
               </CRow>
               <CDataTable
-                items={areasSchema}
+                items={userData}
                 fields={fields}
                 columnFilter
                 tableFilter
@@ -1621,7 +1630,7 @@ function LocationLibrary(props) {
                       <td className="py-2">
                         <CRow>
                           <CCol
-                            className={"column-align"}
+                         
                             style={{ fontSize: "1.15rem" }}
                             md="12"
                           >

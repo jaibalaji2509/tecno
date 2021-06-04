@@ -28,7 +28,7 @@ function PartyOfficeLocation() {
     {
       SNo: "1",
       NAMEOFWINGOFFICE: "Chennai Wing Office",
-      WingOffice: "Head Office",
+      WingOffice: "Head Quaters",
       ReportingTo: "-",
       address: "Jones Road  ",
       area:"Saidapet",
@@ -39,8 +39,8 @@ function PartyOfficeLocation() {
     {
       SNo: "2",
       NAMEOFWINGOFFICE: "Chennai Youth Association",
-      WingOffice: "Branch Office",
-      ReportingTo: "-",
+      WingOffice: "District Party Office",
+      ReportingTo: "Head Quaters",
       address: "Abiramipuram Street  ",
       area:"Mylapore",
       city:"Sathish ",
@@ -72,8 +72,8 @@ function PartyOfficeLocation() {
       label: "Reporting To Office",
       _style: { width: "15%" },
     },
-    { key: "address", label: "Address 1", _style: { width: "10%" } },
-    { key: "area", label: "Area Name", _style: { width: "10%" } },
+    { key: "address", label: "Address ", _style: { width: "20%" } },
+    // { key: "area", label: "Area Name", _style: { width: "10%" } },
     { key: "city", label: "Entered By", _style: { width: "10%" } },
     { key: "pinccode", label: "Entered On", _style: { width: "10%" } },
 
