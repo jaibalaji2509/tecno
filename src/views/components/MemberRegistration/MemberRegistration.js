@@ -427,7 +427,7 @@ color="gradient-danger"
     State
  <span className={"text-danger"}>*</span>
   </CLabel>
-  <CSelect
+  <Select
     styles={{ marginLeft: "50px" }}
     type={"text"}
     id={"memberregister"}
@@ -440,12 +440,12 @@ color="gradient-danger"
     District / City
  <span className={"text-danger"}>*</span>
   </CLabel>
-  <CSelect
+  <Select
     styles={{ marginLeft: "50px" }}
     type={"text"}
     id={"memberregistercity"}
     className={"input-align"}
-    placeholder="CSelect the District / City "
+    placeholder="Select the District / City "
   />
 </CCol>
 </CRow>
@@ -458,7 +458,7 @@ color="gradient-danger"
     Area / Village
  <span className={"text-danger"}>*</span>
   </CLabel>
-  <CSelect
+  <Select
     styles={{ marginLeft: "50px" }}
     type={"text"}
     id={"memberregisterarea"}
@@ -471,12 +471,12 @@ color="gradient-danger"
    Street
  <span className={"text-danger"}>*</span>
   </CLabel>
-  <CSelect
+  <Select
     styles={{ marginLeft: "50px" }}
     type={"text"}
     id={"memberregisterstreet"}
     className={"input-align"}
-    placeholder="CSelect the Street"
+    placeholder="Select the Street"
   />
 </CCol>
 </CRow>
