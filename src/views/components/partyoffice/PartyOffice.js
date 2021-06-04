@@ -35,7 +35,7 @@ const PartyOffice = () => {
   const userData = [
     {
       SNo: "1",
-      Street: "Head office",
+      Street: "Head Quaters",
       District: "HOF",
       Area: "HO",
       male: " - ",
@@ -44,10 +44,10 @@ const PartyOffice = () => {
     },
     {
       SNo: "2",
-      Street: "Branch office",
+      Street: "District Party office",
       District: "BOFF",
       Area: "BO",
-      male: " Head office ",
+      male: " Head Quaters ",
       ENTERBY:"Sathish ",
       ENTERON:"31/05/2021"
     },

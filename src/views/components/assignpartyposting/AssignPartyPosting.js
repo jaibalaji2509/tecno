@@ -13,6 +13,7 @@ import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
 import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
+import Select, { components } from "react-select";
 const AssignPartyPosting = () => {
   const [location, setLocation] = useState({
     state: "",
@@ -55,16 +56,22 @@ const AssignPartyPosting = () => {
     villagePanchayat: false,
     cityLocation: false,
   });
+  const [typeofOfficess, setTypeofOfficess] = useState("");
   const [PI, setPI] = useState("");
   const userData = [
-    // {
-    //   SNo: "1",
-    //   State: "TamilNadu",
-    //   District: "chennai",
-    //   Area: "TNagar",
-    //   Street: "Pondy Bazar",
-    // },
+    {
+        SNo: "1",
+        Name: "Volunteer Team",
+        Type: "Head Quaters",
+        Department: "Voluntery",
+        Designation: "Secretary",
+        Role: "General",
+        Status:"Assigned",
+        EnteredBy:"01/06/2021",
+        EnteredOn:"06/06/2021"
+      }
   ];
+
   const fields = [
     {
       key: "SNo",
@@ -76,23 +83,49 @@ const AssignPartyPosting = () => {
     // { key: "State", label: "State", _style: { width: "10%" } },
     // { key: "District", label: "District", _style: { width: "10%" } },
     // { key: "Area", label: "Ward", _style: { width: "10%" } },
-    { key: "Street", label: "Name of Party Office", _style: { width: "10%" } },
-    { key: "Street", label: "Type of Office", _style: { width: "10%" } },
-    { key: "Street", label: "Department", _style: { width: "10%" } },
-    { key: "Street", label: "Designation", _style: { width: "10%" } },
-    { key: "Street", label: "Role", _style: { width: "10%" } },
-    { key: "Street", label: "Status", _style: { width: "10%" } },
-    { key: "Street", label: " From Date", _style: { width: "10%" } },
-    { key: "Street", label: " To Date", _style: { width: "10%" } },
+    { key: "Name", label: "Name of Party Office", _style: { width: "10%" } },
+    { key: "Type", label: "Type of Office", _style: { width: "10%" } },
+    { key: "Department", label: "Department", _style: { width: "10%" } },
+    { key: "Designation", label: "Designation", _style: { width: "10%" } },
+    { key: "Role", label: "Role", _style: { width: "10%" } },
+    { key: "Status", label: "Status", _style: { width: "10%" } },
+    { key: "EnteredBy", label: " From Date", _style: { width: "10%" } },
+    { key: "EnteredOn", label: " To Date", _style: { width: "10%" } },
     // { key: "male", label: "Male", _style: { width: "10%" } },
     // { key: "female", label: "Female", _style: { width: "10%" } },
     {
-      key: "Street",
+      key: "show_details",
       label: "Action",
       _style: { width: "10%" },
       sorter: false,
       filter: false,
     },
+  ];
+  const userData1 = [
+    {
+        SNo: "1",
+        Name: "Volunteer Team",
+        Type: "Head Quaters",
+        Department: "Voluntery",
+        Designation: "Secretary",
+        Role: "General",
+        Status:"Assigned",
+        Member:"Arun",
+        EnteredBy:"Sathiskumar",
+        EnteredOn:"01/06/2021"
+      },
+      {
+        SNo: "2",
+        Name: "Lawyers Association",
+        Type: "District Branch Office",
+        Department: "Lawyers",
+        Designation: "Vice President",
+        Role: "General",
+        Status:"Assigned",
+        Member:"Sathish",
+        EnteredBy:"Sathiskumar",
+        EnteredOn:"01/06/2021"
+      }
   ];
   const fields1 = [
     {
@@ -102,20 +135,20 @@ const AssignPartyPosting = () => {
       sorter: false,
       filter: false,
     },
-    { key: "Street", label: "Type of Office", _style: { width: "10%" } },
-    { key: "Street", label: "Name of Office", _style: { width: "10%" } },
-    { key: "Street", label: "Department", _style: { width: "10%" } },
-    { key: "Street", label: "Designation", _style: { width: "10%" } },
-    { key: "Street", label: "Role", _style: { width: "10%" } },
+    { key: "Type", label: "Type of Office", _style: { width: "10%" } },
+    { key: "Name", label: "Name of Office", _style: { width: "10%" } },
+    { key: "Department", label: "Department", _style: { width: "10%" } },
+    { key: "Designation", label: "Designation", _style: { width: "10%" } },
+    { key: "Role", label: "Role", _style: { width: "10%" } },
 
-    { key: "Street", label: "Name of the Member", _style: { width: "10%" } },
+    { key: "Member", label: "Name of the Member", _style: { width: "10%" } },
 
-    { key: "Street", label: "Assigned By", _style: { width: "10%" } },
-    { key: "Street", label: "Assigned On", _style: { width: "10%" } },
+    { key: "EnteredBy", label: "Assigned By", _style: { width: "10%" } },
+    { key: "EnteredOn", label: "Assigned On", _style: { width: "10%" } },
     // { key: "male", label: "Male", _style: { width: "10%" } },
     // { key: "female", label: "Female", _style: { width: "10%" } },
     {
-      key: "Street",
+      key: "show_details",
       label: "Action",
       _style: { width: "10%" },
       sorter: false,
@@ -152,7 +185,48 @@ const AssignPartyPosting = () => {
       }
     }
   };
-
+  const selectTypeofOffice = [
+    { value: "Head Quaters", label: "Head Quaters" },
+    { value: "District Party Office", label: "District Party Office" },
+  ];
+  const selectDepartment = [
+    { value: "Physician", label: "Physician" },
+    { value: "Weaver", label: "Weaver" },
+  ];
+  const selectDesignation = [
+    { value: "Team Leader", label: "Team Leader" },
+    { value: "Vice President", label: "Vice President" },
+  ];
+  const selectTypeofParty = [
+    { value: "Youth Wings Association", label: "Youth Wings Association" },
+    { value: "Lawyers Wings Association", label: "Lawyers Wings Association" },
+  ];
+  const selectLocation = [
+    {
+      value: "Chennai Youth Wings Office ",
+      label: "Chennai Youth Wings Office ",
+    },
+    {
+      value: "Chennai Lawyers Wings Office ",
+      label: "Chennai Lawyers Wings Office",
+    },
+  ];
+  const selectRole = [
+    { value: "General", label: "General" },
+    { value: "General", label: "General" },
+  ];
+  const selectAdministartive = [
+    {
+      value: "Head Quaters Chennai Physician Under Secretary General ",
+      label: "Head Quaters Chennai Physician Under Secretary General",
+    },
+  ];
+  const selectFunctional = [
+    {
+      value: "Head Quaters Chennai Physician  Secretary General ",
+      label: "Head Quaters Chennai Physician  Secretary General",
+    },
+  ];
   const saveMunicipalLocation = () => {
     setLocationHide({
       ...locationHide,
@@ -240,7 +314,7 @@ const AssignPartyPosting = () => {
     await setMunicipalListadd(false);
     await setmunicipalCreateadd(true);
   };
-
+const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
   const editStateadd = async () => {
     await setMunicipalListadd(false);
     await setmunicipalCreateadd(true);
@@ -286,7 +360,9 @@ const AssignPartyPosting = () => {
         <div>
           <CCard className={"cardSave"}>
             <div className={"main-headerlabel"}>
-              <span className={"header-label"}>View Assigned Party Posting</span>
+              <span className={"header-label"}>
+                View Assigned Party Posting
+              </span>
             </div>
             {locationHide.corporation && (
               <div>
@@ -313,25 +389,25 @@ const AssignPartyPosting = () => {
                         <CButton
                           style={{
                             float: "right",
-                            marginRight: "835px",
+                            marginRight: "855px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
                           onClick={changeMunicipalCorporation}
                         >
-                           Assign Party Posting
+                          Assign Party Posting
                         </CButton>{" "}
                       </CCol>
                     </CCol>
                   </CRow>
                   <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                     <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
+                      <CLabel className={"label-name-1"}>
                         Type of Office
                         <span className={"text-danger"}>*</span>
                       </CLabel>
-                      <CSelect
-                        className={"input-align"}
+                      <Select
+                        // className={"input-align"}
                         id={"municipalstatename"}
                         name={"state"}
                         placeholder={"Select Type of Office"}
@@ -340,11 +416,11 @@ const AssignPartyPosting = () => {
                       />
                     </CCol>
                     <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
+                      <CLabel className={"label-name-1"}>
                         Type of Party / Party Wings Office
                         <span className={"text-danger"}>*</span>
                       </CLabel>
-                      <CSelect
+                      <Select
                         className={"input-align"}
                         id={"municipaldistrict"}
                         name={"city"}
@@ -357,12 +433,12 @@ const AssignPartyPosting = () => {
 
                   <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                     <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
+                      <CLabel className={"label-name-1"}>
                         Name of the Office Location
                         <span className={"text-danger"}>*</span>
                       </CLabel>
-                      <CSelect
-                        className={"input-align"}
+                      <Select
+                        // className={"input-align"}
                         id={"municipaldistrict"}
                         name={"city"}
                         placeholder={" Select Office Location"}
@@ -377,11 +453,11 @@ const AssignPartyPosting = () => {
                   style={{
                     padding: "4%",
                     marginTop: "-1.5%",
-                    marginLeft: "-5px",
+                    marginLeft: "-25px",
                   }}
                 >
                   <CDataTable
-                    items={userData}
+                    items={userData1}
                     fields={fields1}
                     columnFilter
                     tableFilter
@@ -402,18 +478,18 @@ const AssignPartyPosting = () => {
                                     //   toggleDetails(index);
                                   }}
                                 ></i>
-                                {/* <i
+                                <i
                                      style={{
                                        marginRight: "5px",
                                        color: "#3480e2",
                                        cursor: "pointer",
                                      }}
                                      id={"locationLibraryEdit"}
-                                     onClick={() => EditCountry(item)}
+                                    //  onClick={() => EditCountry(item)}
                                      className="fas fa-edit"
                                    ></i>
                                    <i
-                                     onClick={() => deleteConfirm(item._id)}
+                                    //  onClick={() => deleteConfirm(item._id)}
                                      id={"locationLibraryDelete"}
                                      style={{
                                        marginLeft: "5px",
@@ -421,7 +497,7 @@ const AssignPartyPosting = () => {
                                        cursor: "pointer",
                                      }}
                                      className="fa fa-trash"
-                                   ></i> */}
+                                   ></i>
                               </CCol>
                             </CRow>
                           </td>
@@ -456,19 +532,26 @@ const AssignPartyPosting = () => {
                     </span>
                   </div> */}
 
-                  <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                  <CRow
+                    className={"row-alignment"}
+                    md="12"
+                    sm="12"
+                    lg="12"
+                    style={{ marginLeft: "7px" }}
+                  >
                     <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
+                      <CLabel className={"label-name-1"}>
                         Type of Office
                         <span className={"text-danger"}>*</span>
                       </CLabel>
-                      <CSelect
-                        className={"input-align"}
+                      <Select
+                        // className={"input-align"}
                         id={"municipalstatename"}
-                        name={"state"}
+                        // name={"municipalTypeofOffice"}
                         placeholder={"Select Type of Office"}
-                        value={locations.district}
-                        onChange={changeHandler}
+                        value={typeofOfficess}
+                        onChange={(e) => setTypeofOfficess(e)}
+                        options={selectTypeofOffice}
                       />
                     </CCol>
 
@@ -477,28 +560,37 @@ const AssignPartyPosting = () => {
                         Department Name
                         <span className={"text-danger"}> *</span>
                       </CLabel>
-                      <CSelect
-                        placeholder="Select   Department Name"
-                        id={"municipalcorporation"}
-                        type={"text"}
-                        value={municipalCorporation}
-                        // isDisabled={CountryCreate || CityCreate || AreaCreate}
+                      <Select
+                        // className={"input-align"}
+                        // id={"municipalstatename"}
+                        name={"municipalDepartment"}
+                        placeholder={"Select Department"}
+                        value={locations.district}
+                        onChange={(e) => setLocations(e)}
+                        options={selectDepartment}
                       />
                     </CCol>
                   </CRow>
-                  <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                  <CRow
+                    className={"row-alignment"}
+                    md="12"
+                    sm="12"
+                    lg="12"
+                    style={{ marginLeft: "7px" }}
+                  >
                     <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
+                      <CLabel className={"label-name-1"}>
                         Type of Party / Party Wings Office
                         <span className={"text-danger"}>*</span>
                       </CLabel>
-                      <CSelect
-                        className={"input-align"}
+                      <Select
+                        // className={"input-align"}
                         id={"municipalarea"}
-                        name={"area"}
+                        name={"partyPostingTypeofWings"}
                         placeholder={" Select Office Location"}
                         value={locations.city}
-                        onChange={changeHandler}
+                        onChange={(e) => setLocations(e)}
+                        options={selectTypeofParty}
                       />
                     </CCol>
 
@@ -507,28 +599,35 @@ const AssignPartyPosting = () => {
                         Designation Name
                         <span className={"text-danger"}> *</span>
                       </CLabel>
-                      <CSelect
-                        placeholder="Select   Department Name"
-                        id={"municipalcorporation"}
+                      <Select
+                        //   className={"input-align"}
+                        placeholder="Select Designation "
+                        id={"partypostingDesignation"}
                         type={"text"}
-                        value={municipalCorporation}
+                        value={locations.city}
+                        onChange={(e) => setLocations(e)}
+                        options={selectDesignation}
                         // isDisabled={CountryCreate || CityCreate || AreaCreate}
                       />
                     </CCol>
                   </CRow>
-                  <CRow className={"row-alignment"}>
+                  <CRow
+                    className={"row-alignment"}
+                    style={{ marginLeft: "7px" }}
+                  >
                     <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
+                      <CLabel className={"label-name-1"}>
                         Name of the Office Location
                         <span className={"text-danger"}>*</span>
                       </CLabel>
-                      <CSelect
-                        className={"input-align"}
+                      <Select
+                        // className={"input-align"}
                         id={"municipalstatename"}
-                        name={"state"}
-                        placeholder={"Select Type of Office"}
+                        name={"partyPostingOfficeLocation"}
+                        placeholder={"Select Office Location"}
                         value={locations.district}
-                        onChange={changeHandler}
+                        onChange={(e) => setLocations(e)}
+                        options={selectLocation}
                       />
                     </CCol>
 
@@ -537,20 +636,24 @@ const AssignPartyPosting = () => {
                         Role Name
                         <span className={"text-danger"}> *</span>
                       </CLabel>
-                      <CSelect
+                      <Select
+                        // className={"input-align"}
                         placeholder="Select Role Name"
                         id={"municipalcorporation"}
+                        name={"partyPostingrole   "}
                         type={"text"}
-                        value={municipalCorporation}
-                        // isDisabled={CountryCreate || CityCreate || AreaCreate}
+                        value={locations.district}
+                        onChange={(e) => setLocations(e)}
+                        options={selectRole}
                       />
                     </CCol>
                   </CRow>
+
                   <CCol md="10">
                     <CCol
                       md="5"
                       style={{
-                        marginLeft: "265px",
+                        marginLeft: "500px",
                         float: "right",
                         marginTop: "30px",
                         position: "absolute",
@@ -597,13 +700,14 @@ const AssignPartyPosting = () => {
                         Name of the Member
                         <span className={"text-danger"}>*</span>
                       </CLabel>
-                      <CSelect
+                      <Select
                         className={"input-align"}
                         id={"municipalstatename"}
                         name={"state"}
                         placeholder={"Select Type of Office"}
                         value={locations.district}
-                        onChange={changeHandler}
+                        onChange={(e) => setLocations(e)}
+                        options={selectName}
                       />
                     </CCol>
                   </CRow>
@@ -612,13 +716,23 @@ const AssignPartyPosting = () => {
                     <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name"}>
                         Name
-                        <span>-</span>
+                        <span
+                          style={{ fontSize: "14px", fontFamily: "normal" }}
+                        >
+                          {" "}
+                          - SathishKumar
+                        </span>
                       </CLabel>
                     </CCol>
                     <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name"}>
                         Gender
-                        <span>-</span>
+                        <span
+                          style={{ fontSize: "14px", fontFamily: "normal" }}
+                        >
+                          {" "}
+                          - Male
+                        </span>
                       </CLabel>
                     </CCol>
                     <CCol>
@@ -644,20 +758,36 @@ const AssignPartyPosting = () => {
                     <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name"}>
                         DOB
-                        <span>-</span>
+                        <span
+                          style={{ fontSize: "14px", fontFamily: "normal" }}
+                        >
+                          {" "}
+                          - 22/07/1996
+                        </span>
                       </CLabel>
                     </CCol>
                     <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name"}>
                         Education
-                        <span>-</span>
+                        <span
+                          style={{ fontSize: "14px", fontFamily: "normal" }}
+                        >
+                          {" "}
+                          - Mechanical Engineer
+                        </span>
                       </CLabel>
                     </CCol>
                   </CRow>
                   <CRow className={"row-alignment"}>
                     <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name"}>
-                        Occupation
+                        Occupation{" "}
+                        <span
+                          style={{ fontSize: "14px", fontFamily: "normal" }}
+                        >
+                          {" "}
+                          - Software Developer                                              
+                        </span>{" "}
                         <span>-</span>
                       </CLabel>
                     </CCol>
@@ -676,7 +806,7 @@ const AssignPartyPosting = () => {
                     fields={fields}
                     columnFilter
                     tableFilter
-                    tableLabel={"List of Other Party Posting Held By -  "}
+                    tableLabel={"List of Other Party Posting Held By - Sathish  "}
                     itemsPerPageSelect
                     itemsPerPage={5}
                     hover
@@ -688,11 +818,16 @@ const AssignPartyPosting = () => {
                           <td className="py-2">
                             <CRow>
                               <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                <i
-                                  onClick={() => {
-                                    //   toggleDetails(index);
-                                  }}
-                                ></i>
+                              <i
+                                    //  onClick={() => deleteConfirm(item._id)}
+                                     id={"locationLibraryDelete"}
+                                     style={{
+                                       marginLeft: "5px",
+                                       color: "#e85654",
+                                       cursor: "pointer",
+                                     }}
+                                     className="fa fa-trash"
+                                   ></i>
                               </CCol>
                             </CRow>
                           </td>

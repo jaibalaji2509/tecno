@@ -37,7 +37,10 @@ option {
 .c-header.c-header-fixed {
   background-color: whblite;
 }
-
+.label-name-1{
+  font-size: "24px";
+  font-weight: 700;
+}
 .navbar-brand {
   color: white;
 }

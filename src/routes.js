@@ -61,6 +61,7 @@ const PartyOffice = React.lazy(() => import('./views/components/partyoffice/Part
 const PartyOfficeLocation = React.lazy(() => import('./views/components/partyofficelocation/PartyOfficeLocation'));
 const PartyPosting = React.lazy(() => import('./views/components/partyposting/PartyPosting'));
 const AssignPartyPosting = React.lazy(() => import('./views/components/assignpartyposting/AssignPartyPosting'));
+const RajyaSabha = React.lazy(() => import('./views/components/rajyasabha/RajyaSabha'));
 const routes = [
   { path: '/', exact: true, name: 'Home' },
 
@@ -124,6 +125,7 @@ const routes = [
   { path: '/memberTransfer',  exact: true, name: 'Member Transfer', component: Transfer },
   { path: '/memberRevoke',  exact: true, name: 'Member Revoke', component: Revoke },
   { path: '/memberTerminate',  exact: true, name: 'Terminate Member', component: Terminate },
+  { path: '/rajyaSabha',  exact: true, name: 'Rajya Sabha', component: RajyaSabha },
 ];
 
 export default routes;
