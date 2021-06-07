@@ -137,6 +137,7 @@ const Terminate = () => {
             <CRow style={{  padding: "2%"}}>
               <CDataTable
                 items={[]}
+                tableLabel={"List of Terminated Member"}
                 fields={[
                   { key: "sNo", label: "Sl. No", _style: { width: "1%" } },
                   {
@@ -157,12 +158,12 @@ const Terminate = () => {
                   {
                     key: "designation",
                     label: "Current Party Postings",
-                    _style: { width: "10%" },
+                    _style: { width: "15%" },
                   },
-                  { key: "role", label: "Name of the Office", _style: { width: "10%" } },
-                  { key: "status", label: "Type of Office", _style: { width: "5%" } },
-                  { key: "from", label: "Suspend From", _style: { width: "10%" } },
-                  { key: "to", label: "Suspend To", _style: { width: "5%" } },
+                  { key: "role", label: "Name of the Office", _style: { width: "15%" } },
+                  { key: "status", label: "Type of Office", _style: { width: "15%" } },
+                  { key: "from", label: "Terminate On", _style: { width: "10%" } },
+                  { key: "to", label: "Terminated By", _style: { width: "10%" } },
                   {
                     key: "show_details",
                     label: "Action",
@@ -171,7 +172,6 @@ const Terminate = () => {
                 ]}
                 columnFilter
                 tableFilter
-                tableLabel={"List of Terminated Members"}
                 itemsPerPageSelect
                 itemsPerPage={5}
                 hover
@@ -290,76 +290,10 @@ const Terminate = () => {
                       </CLabel>
                     </CCol>
                   </CRow>
-                  <CRow style={{ padding: "2%" }}>
-              <CDataTable
-                tableLabel={"List of Party Posting "}
-                items={[]}
-                fields={[
-                  { key: "sNo", label: "Sl. No", _style: { width: "1%" } },
-                  {
-                    key: "membername",
-                    label: "Name of the Party Office",
-                    _style: { width: "19%" },
-                  },
-                  {
-                    key: "gender",
-                    label: "Type of Office",
-                    _style: { width: "10%" },
-                  },
-                  {
-                    key: "department",
-                    label: "Department",
-                    _style: { width: "10%" },
-                  },
-                  {
-                    key: "designation",
-                    label: "Designation",
-                    _style: { width: "10%" },
-                  },
-                  { key: "role", label: "Role", _style: { width: "10%" } },
-                  { key: "status", label: "Status", _style: { width: "5%" } },
-                  { key: "from", label: "From date", _style: { width: "10%" } },
-                  { key: "to", label: "To date", _style: { width: "10%" } },
-
-                  {
-                    key: "show_details",
-                    label: "Action",
-                    _style: { width: "10%" },
-                  },
-                ]}
-                columnFilter
-                tableFilter
-                itemsPerPageSelect
-                itemsPerPage={5}
-                hover
-                sorter
-                pagination
-                scopedSlots={{
-                  show_details: (item, index) => {
-                    return (
-                      <td className="py-2">
-                        <i
-                          style={{ fontSize: "25px", margin: "0px 5px" }}
-                          className="fab fa-rev"
-                        ></i>
-                        <i
-                          style={{ fontSize: "25px", margin: "0px 5px" }}
-                          className="fas fa-eye"
-                        ></i>
-                        <i
-                          style={{ fontSize: "25px", margin: "0px 5px" }}
-                          className="fa fa-trash"
-                        ></i>
-                      </td>
-                    );
-                  },
-                }}
-              />
-            </CRow>
 
             <CRow style={{ padding: "2%" }}>
               <CDataTable
-                tableLabel={"History of Terminate "}
+                tableLabel={"Details of earlier suspension "}
                 items={[]}
                 fields={[
                   { key: "sNo", label: "Sl. No", _style: { width: "1%" } },

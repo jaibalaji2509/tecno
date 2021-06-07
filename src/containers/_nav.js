@@ -58,7 +58,7 @@ const _nav = [
         id: "AdminandSubAdminSideBar",
         _tag: "CSidebarNavItem",
         name: "Constituency",
-        to: "/constituency ",
+        to: "/Constituency",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
     ],
@@ -81,7 +81,7 @@ const _nav = [
         id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
         name: "Type of Party Wing Office",
-        to: "/partywingsoffice",
+        to: "/WingsofficeType",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
       {
@@ -127,8 +127,9 @@ const _nav = [
         id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
         name: "Map Public Representative",
-        to: "/rajyasabha",
+        to: "/MapPublicRepresent",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      
       },
       {
         id: "CSidebarNavItemSideBar",
@@ -185,10 +186,44 @@ const _nav = [
         id:"CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
         name: 'Member Count',
-        to: '/memberRegistration',
+        to: '/',
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
     ],
+  },
+  {
+    id: "AdminSetupSideBar",
+    _tag: "CSidebarNavDropdown",
+    name: "Map Public Representative",
+    route: "/partyMember",    
+    icon: 'cil-drop',
+   
+    _children: [
+      {
+        id: "CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: "Rajya Sabha",
+        to: "/RajyaSabha",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      
+      },
+      {
+        id: "CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: "Constituency Member",
+        to: "/ConstituencyMember",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      
+      },
+      {
+        id: "CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: "Member Town Panchayat",
+        to: "/MemberTownPanchayat",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      
+      },
+    ]
   },
 
   // {

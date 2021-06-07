@@ -22,6 +22,8 @@ const Transfer = React.lazy(() => import('./views/components/transfer/transfer')
 const Suspend = React.lazy(() => import('./views/components/suspend/suspend'));
 const Revoke = React.lazy(() => import('./views/components/revoke/revoke'));
 const Terminate = React.lazy(() => import('./views/components/terminate/Terminate'));
+const ConstituencyMember = React.lazy(() => import('./views/components/constituency/ConstituencyMember'));
+const Constituency = React.lazy(() => import('./views/components/constituency/Constituency'));
 
 const Login = React.lazy(() => import('./views/pages/login/Login'));
 const LocationLibrary = React.lazy(() => import('./views/components/location_library/Locationlibrary'));
@@ -48,20 +50,20 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'));
 const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
 const Location = React.lazy(() => import('./views/components/location/Location'));
-
+const WingsofficeType = React.lazy(() => import('./views/components/partywingsofficetype/PartyWingOfficeType'));
+const PartyWingsOfficeLocation = React.lazy(() => import('./views/components/winglocation/PartyWingsOfficeLocation'));
+const RajyaSabha = React.lazy(() => import('./views/components/rajyasabha/RajyaSabha'));
+const MapPublicRepresent = React.lazy(() => import('./views/components/mappublicrepresenttative/MapPublicRepresent'));
+const MemberTownPanchayat = React.lazy(() => import('./views/components/membertownpanchayat/MemberTownPanchayat'));
 
 const Municipality = React.lazy(() => import('./views/components/municipality/Municipality'));
 const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
 const VillagePanchayat = React.lazy(() => import('./views/components/villagepanchayat/VillagePanchayat'));
 const MemberRegistration = React.lazy(() => import('./views/components/memberregistration/MemberRegistration'));
-const Constituency = React.lazy(() => import('./views/components/constituency/Constituency'));
-const PartyWingsOfficeType = React.lazy(() => import('./views/components/partywingsofficetype/PartyWingsOfficeType'));
-const PartyWingsOfficeLocation = React.lazy(() => import('./views/components/winglocation/PartyWingsOfficeLocation'));
 const PartyOffice = React.lazy(() => import('./views/components/partyoffice/PartyOffice'));
 const PartyOfficeLocation = React.lazy(() => import('./views/components/partyofficelocation/PartyOfficeLocation'));
 const PartyPosting = React.lazy(() => import('./views/components/partyposting/PartyPosting'));
 const AssignPartyPosting = React.lazy(() => import('./views/components/assignpartyposting/AssignPartyPosting'));
-const RajyaSabha = React.lazy(() => import('./views/components/rajyasabha/RajyaSabha'));
 const routes = [
   { path: '/', exact: true, name: 'Home' },
 
@@ -124,6 +126,16 @@ const routes = [
   { path: '/WingLocation',  exact: true, name: 'WingLocation', component: PartyWingsOfficeLocation },
   { path: '/memberRegistration',  exact: true, name: 'Member Registration', component: MemberRegistration },
   { path: '/partywingsoffice',  exact: true, name: 'PartyWingsOfficeType', component: PartyWingsOfficeType },
+  
+
+  
+  { path: '/MemberRegistration',  exact: true, name: 'Member Registration', component: MemberRegistration },
+  { path: '/WingsofficeType',  exact: true, name: 'PARTY WINGS OFFICE', component: WingsofficeType },
+  { path: '/PartyWingsOfficeLocation',  exact: true, name: 'Party Wings Office Location', component: PartyWingsOfficeLocation },
+  { path: '/Terminate',  exact: true, name: 'Terminate Member', component: Terminate },
+
+
+
   { path: '/partyposting',  exact: true, name: 'Party Posting', component: PartyPosting },
   { path: '/assignpartyposting',  exact: true, name: 'Assign Party Posting', component:AssignPartyPosting },
   { path: '/memberPromote',  exact: true, name: 'Member Promote', component: Promote },
@@ -134,7 +146,12 @@ const routes = [
   { path: '/assignpartyposting',  exact: true, name: 'Assign Party Posting', component:AssignPartyPosting },
 
   { path: '/memberTerminate',  exact: true, name: 'Terminate Member', component: Terminate },
+  { path: '/ConstituencyMember',  exact: true, name: 'Constituency Member', component: ConstituencyMember },
+  { path: '/Constituency',  exact: true, name: 'Constituency', component: Constituency },
   { path: '/rajyaSabha',  exact: true, name: 'Rajya Sabha', component: RajyaSabha },
+  { path: '/MapPublicRepresent',  exact: true, name: 'Map Public Represent', component: MapPublicRepresent },
+  { path: '/MemberTownPanchayat',  exact: true, name: 'Member of Town Panchayat', component: MemberTownPanchayat },
+
 ];
 
 export default routes;
