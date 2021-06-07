@@ -23,6 +23,7 @@ const Suspend = () => {
             minHeight: `${window.innerHeight - 198}px`,
             maxHeight: `${window.innerHeight - 198}px`,
             overflow: "auto",
+            padding: "0px 20px 0px 30px",
           }}
         >
           <div className={"main-headerlabel"}>
@@ -199,6 +200,7 @@ const Suspend = () => {
             minHeight: `${window.innerHeight - 198}px`,
             maxHeight: `${window.innerHeight - 198}px`,
             overflow: "auto",
+            padding: "0px 20px 0px 30px",
           }}
         >
           <div className={"main-headerlabel"}>
@@ -220,7 +222,7 @@ const Suspend = () => {
                   style={{
                     width: "130px",
                     height: "150px",
-                    margin: '30px 20px',
+                    margin: "30px 20px",
                     background: "#d3d3d3",
                   }}
                 ></div>
