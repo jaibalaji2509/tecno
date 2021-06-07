@@ -127,8 +127,9 @@ const _nav = [
         id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
         name: "Map Public Representative",
-        to: "/rajyasabha",
+        to: "/MapPublicRepresent",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      
       },
       {
         id: "CSidebarNavItemSideBar",
@@ -190,23 +191,39 @@ const _nav = [
       },
     ],
   },
-
   {
     id: "AdminSetupSideBar",
     _tag: "CSidebarNavDropdown",
-    name: "Party Member Management",
-    route: "/AdminSetup",
+    name: "Map Public Representative",
+    route: "/partyMember",    
     icon: 'cil-drop',
+   
     _children: [
       {
-        id:"CSidebarNavItemSideBar",
+        id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
-        name: 'Map Public Representative',
-        to: '/ConstituencyMember',
+        name: "Rajya Sabha",
+        to: "/RajyaSabha",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
-      },    
-     
-    ],
+      
+      },
+      {
+        id: "CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: "Constituency Member",
+        to: "/ConstituencyMember",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      
+      },
+      {
+        id: "CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: "Member Town Panchayat",
+        to: "/MemberTownPanchayat",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      
+      },
+    ]
   },
 
   // {

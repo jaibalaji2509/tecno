@@ -52,6 +52,9 @@ const User = React.lazy(() => import('./views/users/User'));
 const Location = React.lazy(() => import('./views/components/location/Location'));
 const WingsofficeType = React.lazy(() => import('./views/components/partywingsofficetype/PartyWingOfficeType'));
 const PartyWingsOfficeLocation = React.lazy(() => import('./views/components/winglocation/PartyWingsOfficeLocation'));
+const RajyaSabha = React.lazy(() => import('./views/components/rajyasabha/RajyaSabha'));
+const MapPublicRepresent = React.lazy(() => import('./views/components/mappublicrepresenttative/MapPublicRepresent'));
+const MemberTownPanchayat = React.lazy(() => import('./views/components/membertownpanchayat/MemberTownPanchayat'));
 
 const Municipality = React.lazy(() => import('./views/components/municipality/Municipality'));
 const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
@@ -61,7 +64,6 @@ const PartyOffice = React.lazy(() => import('./views/components/partyoffice/Part
 const PartyOfficeLocation = React.lazy(() => import('./views/components/partyofficelocation/PartyOfficeLocation'));
 const PartyPosting = React.lazy(() => import('./views/components/partyposting/PartyPosting'));
 const AssignPartyPosting = React.lazy(() => import('./views/components/assignpartyposting/AssignPartyPosting'));
-const RajyaSabha = React.lazy(() => import('./views/components/rajyasabha/RajyaSabha'));
 const routes = [
   { path: '/', exact: true, name: 'Home' },
 
@@ -128,6 +130,9 @@ const routes = [
   { path: '/ConstituencyMember',  exact: true, name: 'Constituency Member', component: ConstituencyMember },
   { path: '/Constituency',  exact: true, name: 'Constituency', component: Constituency },
   { path: '/rajyaSabha',  exact: true, name: 'Rajya Sabha', component: RajyaSabha },
+  { path: '/MapPublicRepresent',  exact: true, name: 'Map Public Represent', component: MapPublicRepresent },
+  { path: '/MemberTownPanchayat',  exact: true, name: 'Member of Town Panchayat', component: MemberTownPanchayat },
+
 ];
 
 export default routes;
