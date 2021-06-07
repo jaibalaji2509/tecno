@@ -1,6 +1,5 @@
 import { CButton, CCard, CCol, CInput, CLabel, CRow } from "@coreui/react";
 import React, { useState } from "react";
-import Toaster from "src/views/notifications/toaster/Toaster";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
@@ -14,8 +13,6 @@ const Location = () => {
     street: "",
     pincode: "",
   });
-  const [mobilenumber, setMobileNumber] = useState("");
-  const [otpHide, setOtpHide] = useState(false);
   const [locations, setLocations] = useState({
     state: "",
     district: "",
@@ -34,13 +31,7 @@ const Location = () => {
     cityLocation: false,
   });
   const userData = [
-    // {
-    //   SNo: "1",
-    //   State: "TamilNadu",
-    //   District: "chennai",
-    //   Area: "TNagar",
-    //   Street: "Pondy Bazar",
-    // },
+
   ];
   const fields = [
     { key: "SNo", label: "S.NO", _style: { width: "10%" } },
@@ -49,8 +40,7 @@ const Location = () => {
     { key: "Area", label: "Ward", _style: { width: "10%" } },
     { key: "Street", label: "Street", _style: { width: "10%" } },
   ];
-  const [passing, setPassing] = useState("");
-  const [error, setError] =useState("")
+  const [passing,] = useState("");
   const saveCorporation = async () => {
     setLocationHide({
       ...locationHide,
@@ -103,14 +93,6 @@ const Location = () => {
       townPanchayat: false,
     });
   };
-  const saveVillagePanchayat = () => {
-    console.log(locationHide, "hidr");
-    setLocationHide({
-      ...locationHide,
-      villagePanchayat: false,
-      cityLocation: true,
-    });
-  };
   const cityLocation = () => {
     setLocationHide({
       ...locationHide,
@@ -127,15 +109,6 @@ const Location = () => {
   };
   const changeHandler = (e) => {
     setLocations({ ...locations, [e.target.name]: e.target.value });
-  };
-  const otpChangeHandle = (e) => {
-     setMobileNumber(e.target.value)
-    if(mobilenumber.length > 8){
-      setOtpHide(true)
-    }
-    else{
-      setError("enter valid data")
-    }
   };
   return (
     <div>
@@ -243,40 +216,6 @@ const Location = () => {
                   />
                 </CCol>
               </CRow>
-              {/* <CCol className={"column-align"} md="3">
-                <CLabel className={"label-name"}>
-                  Mobile Number
-                  <span className={"text-danger"}>*</span>
-                </CLabel>
-                <CInput
-                  type={"number"}
-                  className={"input-align"}
-                  id={"corporationStreets"}
-                  name={"streets"}
-                  placeholder={"Enter Street"}
-                  value={mobilenumber}
-                  onChange={otpChangeHandle}
-                
-                />
-                <span className="text-danger">{error}</span>
-              </CCol>
-              {otpHide && (
-                <CCol className={"column-align"} md="3">
-                  <CLabel className={"label-name"}>
-                  OTP
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <CInput
-                    type={"number"}
-                    className={"input-align"}
-                    id={"corporationStreets"}
-                    name={"streets"}
-                    placeholder={"Enter otp"}
-                   
-                   
-                  />
-                </CCol>
-              )} */}
             </div>
             <CRow>
               <CCol md="10">
@@ -328,31 +267,6 @@ const Location = () => {
                       <td className="py-2">
                         <CRow>
                           <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              onClick={() => {
-                                //   toggleDetails(index);
-                              }}
-                            ></i>
-                            {/* <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "#3480e2",
-                                  cursor: "pointer",
-                                }}
-                                id={"locationLibraryEdit"}
-                                onClick={() => EditCountry(item)}
-                                className="fas fa-edit"
-                              ></i>
-                              <i
-                                onClick={() => deleteConfirm(item._id)}
-                                id={"locationLibraryDelete"}
-                                style={{
-                                  marginLeft: "5px",
-                                  color: "#e85654",
-                                  cursor: "pointer",
-                                }}
-                                className="fa fa-trash"
-                              ></i> */}
                           </CCol>
                         </CRow>
                       </td>
@@ -509,31 +423,6 @@ const Location = () => {
                       <td className="py-2">
                         <CRow>
                           <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              onClick={() => {
-                                //   toggleDetails(index);
-                              }}
-                            ></i>
-                            {/* <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "#3480e2",
-                                  cursor: "pointer",
-                                }}
-                                id={"locationLibraryEdit"}
-                                onClick={() => EditCountry(item)}
-                                className="fas fa-edit"
-                              ></i>
-                              <i
-                                onClick={() => deleteConfirm(item._id)}
-                                id={"locationLibraryDelete"}
-                                style={{
-                                  marginLeft: "5px",
-                                  color: "#e85654",
-                                  cursor: "pointer",
-                                }}
-                                className="fa fa-trash"
-                              ></i> */}
                           </CCol>
                         </CRow>
                       </td>
@@ -675,31 +564,6 @@ const Location = () => {
                       <td className="py-2">
                         <CRow>
                           <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              onClick={() => {
-                                //   toggleDetails(index);
-                              }}
-                            ></i>
-                            {/* <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "#3480e2",
-                                  cursor: "pointer",
-                                }}
-                                id={"locationLibraryEdit"}
-                                onClick={() => EditCountry(item)}
-                                className="fas fa-edit"
-                              ></i>
-                              <i
-                                onClick={() => deleteConfirm(item._id)}
-                                id={"locationLibraryDelete"}
-                                style={{
-                                  marginLeft: "5px",
-                                  color: "#e85654",
-                                  cursor: "pointer",
-                                }}
-                                className="fa fa-trash"
-                              ></i> */}
                           </CCol>
                         </CRow>
                       </td>
@@ -840,31 +704,6 @@ const Location = () => {
                       <td className="py-2">
                         <CRow>
                           <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              onClick={() => {
-                                //   toggleDetails(index);
-                              }}
-                            ></i>
-                            {/* <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "#3480e2",
-                                  cursor: "pointer",
-                                }}
-                                id={"locationLibraryEdit"}
-                                onClick={() => EditCountry(item)}
-                                className="fas fa-edit"
-                              ></i>
-                              <i
-                                onClick={() => deleteConfirm(item._id)}
-                                id={"locationLibraryDelete"}
-                                style={{
-                                  marginLeft: "5px",
-                                  color: "#e85654",
-                                  cursor: "pointer",
-                                }}
-                                className="fa fa-trash"
-                              ></i> */}
                           </CCol>
                         </CRow>
                       </td>
@@ -1034,31 +873,6 @@ const Location = () => {
                       <td className="py-2">
                         <CRow>
                           <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              onClick={() => {
-                                //   toggleDetails(index);
-                              }}
-                            ></i>
-                            {/* <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "#3480e2",
-                                  cursor: "pointer",
-                                }}
-                                id={"locationLibraryEdit"}
-                                onClick={() => EditCountry(item)}
-                                className="fas fa-edit"
-                              ></i>
-                              <i
-                                onClick={() => deleteConfirm(item._id)}
-                                id={"locationLibraryDelete"}
-                                style={{
-                                  marginLeft: "5px",
-                                  color: "#e85654",
-                                  cursor: "pointer",
-                                }}
-                                className="fa fa-trash"
-                              ></i> */}
                           </CCol>
                         </CRow>
                       </td>
@@ -1197,31 +1011,6 @@ const Location = () => {
                       <td className="py-2">
                         <CRow>
                           <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              onClick={() => {
-                                //   toggleDetails(index);
-                              }}
-                            ></i>
-                            {/* <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "#3480e2",
-                                  cursor: "pointer",
-                                }}
-                                id={"locationLibraryEdit"}
-                                onClick={() => EditCountry(item)}
-                                className="fas fa-edit"
-                              ></i>
-                              <i
-                                onClick={() => deleteConfirm(item._id)}
-                                id={"locationLibraryDelete"}
-                                style={{
-                                  marginLeft: "5px",
-                                  color: "#e85654",
-                                  cursor: "pointer",
-                                }}
-                                className="fa fa-trash"
-                              ></i> */}
                           </CCol>
                         </CRow>
                       </td>

@@ -5,8 +5,8 @@ import {
   CCardBody,
   CCardHeader,
   CCol,
-  CDataTable,
-  CRow
+  CRow,
+  CDataTable
 } from '@coreui/react'
 import { DocsLink } from 'src/reusable'
 

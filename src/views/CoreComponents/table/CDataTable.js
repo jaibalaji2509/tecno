@@ -22,7 +22,7 @@ const CDataTable = (props) => {
   };
 
   const onDayFilterChange = (val) => {
-    setChange(false);
+    setChange(true);
     if (val === 0) {
       setAllItems(props.items);
     } else {
