@@ -9,15 +9,12 @@ import {
   CSelect,
 } from "@coreui/react";
 import React, { useState } from "react";
-import Toaster from "src/views/notifications/toaster/Toaster";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
 import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
-import Select, { components } from "react-select";
-import { Dropdown, Menu } from "antd";
+import Select from "react-select";
 import "./ConstituencyMember.css";
-// import { from } from "core-js/core/array";
 const ConstituencyMember = () => {
   const [location, setLocation] = useState({
     state: "",
@@ -90,19 +87,6 @@ const ConstituencyMember = () => {
     setGridThree(false)
     setGridFour(true)
   }
-  const userData = [
-    {
-      SNo: "1",
-      Name: "JaiBalaji",
-      Type: "Head Quaters",
-      Department: "Voluntery",
-      Designation: "Secretary",
-      Role: "General",
-      Status: "Assigned",
-      EnteredBy: "01/06/2021",
-      EnteredOn: "06/06/2021",
-    },
-  ];
 
   const fields = [
     { key: "sNo", label: "Sl. No", _style: { width: "1%" } },
@@ -189,8 +173,6 @@ const ConstituencyMember = () => {
 
     { key: "EnteredBy", label: "Assigned By", _style: { width: "10%" } },
     { key: "EnteredOn", label: "Assigned On", _style: { width: "10%" } },
-    // { key: "male", label: "Male", _style: { width: "10%" } },
-    // { key: "female", label: "Female", _style: { width: "10%" } },
     {
       key: "show_details",
       label: "Action",
@@ -235,89 +217,6 @@ const ConstituencyMember = () => {
     { value: "	O. Panneerselvam, AIADMK since 11 May 2021", label: "	O. Panneerselvam, AIADMK since 11 May 2021" },
     { value: "stalin", label: "Udhayanidhi Youth Wing Secretary of DMK, 	25/9, Chittaranjan Road, Cenotaph Road, Alwarpet, Chennai - 600018, Tamil Nadu, India" }
   ];
-  const selectDepartment = [
-    { value: "Physician", label: "Physician" },
-    { value: "Weaver", label: "Weaver" },
-  ];
-  const selectDesignation = [
-    { value: "Team Leader", label: "Team Leader" },
-    { value: "Vice President", label: "Vice President" },
-  ];
-  const selectTypeofParty = [
-    { value: "Youth Wings Association", label: "Youth Wings Association" },
-    { value: "Lawyers Wings Association", label: "Lawyers Wings Association" },
-  ];
-  const selectLocation = [
-    {
-      value: "Chennai Youth Wings Office ",
-      label: "Chennai Youth Wings Office ",
-    },
-    {
-      value: "Chennai Lawyers Wings Office ",
-      label: "Chennai Lawyers Wings Office",
-    },
-  ];
-  const selectRole = [
-    { value: "General", label: "General" },
-    { value: "General", label: "General" },
-  ];
-  const selectAdministartive = [
-    {
-      value: "Head Quaters Chennai Physician Under Secretary General ",
-      label: "Head Quaters Chennai Physician Under Secretary General",
-    },
-  ];
-  const selectFunctional = [
-    {
-      value: "Head Quaters Chennai Physician  Secretary General ",
-      label: "Head Quaters Chennai Physician  Secretary General",
-    },
-  ];
-  const saveMunicipalLocation = () => {
-    setLocationHide({
-      ...locationHide,
-      municipalLocation: false,
-      districtPanchayat: true,
-    });
-  };
-  const saveDistrictPanchayat = () => {
-    console.log(locationHide, "hidr");
-    setLocationHide({
-      ...locationHide,
-      districtPanchayat: false,
-      townPanchayat: true,
-    });
-  };
-  const savetownPanchayat = () => {
-    console.log(locationHide, "hidr");
-    setLocationHide({
-      ...locationHide,
-      villagePanchayat: true,
-      townPanchayat: false,
-    });
-  };
-  const saveVillagePanchayat = () => {
-    console.log(locationHide, "hidr");
-    setLocationHide({
-      ...locationHide,
-      villagePanchayat: false,
-      cityLocation: true,
-    });
-  };
-  const cityLocation = () => {
-    setLocationHide({
-      ...locationHide,
-      cityLocation: true,
-      townPanchayat: false,
-    });
-  };
-  const cancelcityLocation = () => {
-    setLocationHide({
-      ...locationHide,
-      cityLocation: false,
-      corporation: true,
-    });
-  };
   const SelectType = [
     { value: "All", label: "All" },
     { value: "Parliamentry Assembly", label: "Parlimentry Assemblly" },
@@ -346,64 +245,6 @@ const ConstituencyMember = () => {
     { value: "chepauk", label: "Chepauk-Thiruvallikeni constituency" }
   ]
 
-  const changeHandler = (e) => {
-    setLocations({ ...locations, [e.target.name]: e.target.value });
-  };
-  const otpChangeHandle = (e) => {
-    setMobileNumber(e.target.value);
-    if (mobilenumber.length > 8) {
-      setOtpHide(true);
-    } else {
-      setError("enter valid data");
-    }
-  };
-  const addDepartment = async () => {
-    await setDepartmentList(false);
-    await setDepartmentCreate(true);
-  };
-  const addDesignation = async () => {
-    await setDesignationList(false);
-    await setDesignationCreate(true);
-  };
-  const addRole = async () => {
-    await setRoleList(false);
-    await setRoleCreate(true);
-  };
-  const editState = async () => {
-    await setMunicipalList(false);
-    await setmunicipalCreate(true);
-    // formik.values.StateName = stateName.stateName;
-    // formik.values.Abbreviation2 = stateName.abbreviation;
-    // formik.values.Code2 = stateName.code;
-    // setPassing(stateName._id);
-    // getState();
-    // getAllAreas();
-  };
-  const CancelState = async () => {
-    setPassing("");
-    await setMunicipalList(true);
-    await setmunicipalCreate(false);
-  };
-  const enableCreateadd = async () => {
-    await setMunicipalListadd(false);
-    await setmunicipalCreateadd(true);
-  };
-  const selectName = [{ value: "Sathishkumar", label: "SathishKumar" }];
-  const editStateadd = async () => {
-    await setMunicipalListadd(false);
-    await setmunicipalCreateadd(true);
-    // formik.values.StateName = stateName.stateName;
-    // formik.values.Abbreviation2 = stateName.abbreviation;
-    // formik.values.Code2 = stateName.code;
-    // setPassing(stateName._id);
-    // getState();
-    // getAllAreas();
-  };
-  const CancelStateadd = async () => {
-    setPassing("");
-    await setMunicipalListadd(true);
-    await setmunicipalCreateadd(false);
-  };
 
   const [hideMappingMunicipal, setHideMappingmunicipal] = useState(true);
   const [hideCorporation, setHideCorporation] = useState(false);
@@ -415,23 +256,6 @@ const ConstituencyMember = () => {
     setHideMappingmunicipal(true);
     setHideCorporation(false);
   };
-  const handleSave = async (file, folder) => {
-    if (file === undefined) {
-      let e = "cancelled";
-      return console.log(e);
-    }
-    if (file.size > 1048576) {
-      return toast.warning("Please choose below 1 MB file");
-    } else {
-      const imgUri = URL.createObjectURL(file);
-      setPI(file);
-      setFiles(imgUri);
-    }
-  };
-
-  //     const handleClick = () => {
-  //      setSideBar1(false)
-  //    };
 
   const handleClick = () => {
     switch (menu.menuStatus) {
@@ -490,12 +314,11 @@ const ConstituencyMember = () => {
     menuStatus: "open",
     style3: "menu1",
   });
-  const [selected, setSelected] = useState({});
 
   return (
     <div className={menu.style3}>
       {sideBar1 && (
-        <div className={menu.style} style={{ minHeight: "600px", }}>
+        <div className={menu.style} style={{ minHeight: "800px", }}>
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
               <div>
@@ -532,7 +355,7 @@ const ConstituencyMember = () => {
               </CLabel>
             </CCol>
             <CCol>
-              {/* <img
+              <img
                 type="text"
                 alt=""
                 src={files !== "" ? files : DEFAULT_IMAGE}
@@ -544,8 +367,7 @@ const ConstituencyMember = () => {
                   left: "-40%",
                   top: "-3%",
                 }}
-              /> */}
-              <img src="https://static.theprint.in/wp-content/uploads/2020/03/Anbazhagan-696x392.png" style={{ height: "100px", marginLeft: "-200px" }} />
+              />
 
             </CCol>
           </CRow>
@@ -568,10 +390,10 @@ const ConstituencyMember = () => {
               </CRow>
               <CRow style={{ marginTop: "25px" }}>
             <CCol>
-              <CButton style={{ marginTop: "20px" }} onClick={chairshow} className={"saveBtn"}>Party Posting</CButton>
-              <CButton className={"saveBtn"} style={{ marginTop: "20px", marginLeft: "10px" }} onClick={gridshow}>PUBLIC REPRESENTATIVE POSTING</CButton>
-              <CButton onClick={partshow} className={"saveBtn"} style={{ marginTop: "20px", marginLeft: "10px" }}>STATE MINISTRY PORTFOLIO</CButton>
-              <CButton onClick={centralgrid} className={"saveBtn"} style={{ marginTop: "20px", marginLeft: "10px" }}>CENTRAL MINISTERS PORTFOLIO</CButton>
+              <CButton id="constimemberhistorygrid1" style={{ marginTop: "20px" }} onClick={chairshow} className={"saveBtn"}>Party Posting</CButton>
+              <CButton id="constimemberhistorygrid2" className={"saveBtn"} style={{ marginTop: "20px", marginLeft: "10px" }} onClick={gridshow}>PUBLIC REPRESENTATIVE POSTING</CButton>
+              <CButton id="constimemberhistorygrid3" onClick={partshow} className={"saveBtn"} style={{ marginTop: "20px", marginLeft: "10px" }}>STATE MINISTRY PORTFOLIO</CButton>
+              <CButton id="constimemberhistorygrid4"  onClick={centralgrid} className={"saveBtn"} style={{ marginTop: "20px", marginLeft: "10px" }}>CENTRAL MINISTERS PORTFOLIO</CButton>
             </CCol></CRow>
 
               { gridone && (
@@ -803,6 +625,7 @@ const ConstituencyMember = () => {
             className={"menu"}
             style={{ position: "absolute", top: "15px", right: "15px" }}
             className={"cancelBtn"}
+            id="constimemberhistoryback"
             onClick={() => {
               handleClick();
               handleClick2();
@@ -850,7 +673,7 @@ const ConstituencyMember = () => {
               </CLabel>
             </CCol>
             <CCol>
-              {/* <img
+              <img
                 type="text"
                 alt=""
                 src={files !== "" ? files : DEFAULT_IMAGE}
@@ -862,8 +685,7 @@ const ConstituencyMember = () => {
                   left: "-40%",
                   top: "-3%",
                 }}
-              /> */}
-              <img src="https://static.theprint.in/wp-content/uploads/2020/03/Anbazhagan-696x392.png" style={{ height: "100px", marginLeft: "-200px" }} />
+              />
             </CCol>
           </CRow>
           <CRow className={"row-alignment"} style={{ marginLeft: "-61px" }}>
@@ -1015,12 +837,9 @@ const ConstituencyMember = () => {
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        // className={"input-align"}
                         id={"constituencymemtype"}
                         name={"state"}
                         placeholder={"Select Constituency"}
-                        // value={locations.district}
-                        // onChange={changeHandler}
                         options={SelectType}
                       />
                     </CCol>
@@ -1033,8 +852,6 @@ const ConstituencyMember = () => {
                         id={"constituencymemstatus"}
                         name={"Status"}
                         placeholder={" Select Status "}
-                        // value={locations.city}
-                        // onChange={changeHandler}
                         options={Selectstatus}
                       />
                     </CCol>
@@ -1046,12 +863,9 @@ const ConstituencyMember = () => {
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        // className={"input-align"}
                         id={"constituencymemtype"}
                         name={"state"}
                         placeholder={"Select State"}
-                        // value={locations.district}
-                        // onChange={changeHandler}
                         options={selectstate}
                       />
                     </CCol>
@@ -1064,8 +878,6 @@ const ConstituencyMember = () => {
                         id={"constituencymemcity"}
                         name={"Status"}
                         placeholder={" Select Status "}
-                        // value={locations.city}
-                        // onChange={changeHandler}
                         options={selectcity}
                       />
                     </CCol>
@@ -1124,21 +936,11 @@ const ConstituencyMember = () => {
                                     color: "#3480e2",
                                     cursor: "pointer",
                                   }}
-                                  id={"memberregisterediticon"}
+                                  id={"constimemediticon"}
                                   className="fas fa-edit"
                                 ></i>
-                                {/* <i
-                                    id={"memberregisterdelete"}
-                                    style={{
-                                      marginLeft: "5px",
-                                      color: "#e85654",
-                                      cursor: "pointer",
-                                    }}
-                                    className="fa fa-trash"
-                                  ></i> */}
                                 <i
-                                  //  onClick={() => deleteConfirm(item._id)}
-                                  id={"locationLibraryDelete"}
+                                  id={"constimemDelete"}
                                   style={{
                                     marginLeft: "5px",
                                     color: "black",
@@ -1147,8 +949,7 @@ const ConstituencyMember = () => {
                                   className="fa fa-remove"
                                 ></i>
                                 <i
-                                  //  onClick={() => deleteConfirm(item._id)}
-                                  id={"locationLibraryDelete"}
+                                  id={"constimemDelete"}
                                   style={{
                                     marginLeft: "5px",
 
@@ -1167,7 +968,7 @@ const ConstituencyMember = () => {
                                     marginLeft: "10px",
                                   }}
                                   onClick={handleClick}
-                                  id={"memberregisterediticon"}
+                                  id={"constimemediticon"}
                                   className="fa fa-history"
                                 ></i>
                               </CCol>
@@ -1197,15 +998,6 @@ const ConstituencyMember = () => {
             {locationHide.corporation && (
               <div>
                 <div style={{ marginLeft: "-26px" }}>
-                  {/* <div className={"row-headerlabel"}>
-                      <span
-                        style={{ marginLeft: "70px" }}
-                        className={"header-label"}
-                      >
-                        {" "}
-                        Assign Party Posting{" "}
-                      </span>
-                    </div> */}
                   <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                     <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name-1"}>
@@ -1213,12 +1005,9 @@ const ConstituencyMember = () => {
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        // className={"input-align"}
                         id={"constituencymemtype"}
                         name={"state"}
                         placeholder={"Select Constituency"}
-                        // value={locations.district}
-                        // onChange={changeHandler}
                         options={SelectType}
                       />
                     </CCol>
@@ -1231,8 +1020,6 @@ const ConstituencyMember = () => {
                         id={"constituencymemtype"}
                         name={"state"}
                         placeholder={"Select State"}
-                        // value={locations.district}
-                        // onChange={changeHandler}
                         options={selectstate}
                       />
                     </CCol>
@@ -1247,8 +1034,6 @@ const ConstituencyMember = () => {
                         id={"constituencymemcity"}
                         name={"Status"}
                         placeholder={" Select Status "}
-                        // value={locations.city}
-                        // onChange={changeHandler}
                         options={selectcity}
                       />
                     </CCol>
@@ -1280,9 +1065,7 @@ const ConstituencyMember = () => {
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        // className={"input-align"}
-                        id={"municipalstatename"}
-                        // name={"municipalTypeofOffice"}
+                        id={"constimemstatename"}
                         placeholder={"Select Party member"}
                         value={typeofOfficess}
                         onChange={(e) => setTypeofOfficess(e)}
@@ -1329,7 +1112,7 @@ const ConstituencyMember = () => {
                       </CLabel>
                     </CCol>
                     <CCol>
-                      {/* <img
+                      <img
                         type="text"
                         alt=""
                         src={files !== "" ? files : DEFAULT_IMAGE}
@@ -1341,8 +1124,7 @@ const ConstituencyMember = () => {
                           left: "-40%",
                           top: "-3%",
                         }}
-                      /> */}
-                      <img src="https://www.oneindia.com/img/2021/02/udhayanidhistalin-1609309372-1614259503-1614275624.jpg" style={{ height: "100px", marginLeft: "-200px" }} />
+                      />
 
                     </CCol>
                   </CRow>
@@ -1374,13 +1156,13 @@ const ConstituencyMember = () => {
                       <CLabel className={"label-name-1"}>
                         Date of Appointment{" "}
                       </CLabel>
-                      <CInput type="date" id={"rajyasabhadatefrom"} />
+                      <CInput type="date" id={"constimemdatefrom"} />
                     </CCol>
                     <CCol className={"column-align"} md="4" style={{ marginTop: "60px" }}>
                       <CLabel className={"label-name-1"}>
                         Date of Retirmment{" "}
                       </CLabel>
-                      <CInput type="date" id={"rajyasabhadatefrom"} />
+                      <CInput type="date" id={"constimemdatefrom"} />
                     </CCol>
 
                     <CCol md="10">

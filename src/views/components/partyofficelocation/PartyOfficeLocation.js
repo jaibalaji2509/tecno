@@ -73,7 +73,6 @@ function PartyOfficeLocation() {
       _style: { width: "15%" },
     },
     { key: "address", label: "Address ", _style: { width: "20%" } },
-    // { key: "area", label: "Area Name", _style: { width: "10%" } },
     { key: "city", label: "Entered By", _style: { width: "10%" } },
     { key: "pinccode", label: "Entered On", _style: { width: "10%" } },
 
@@ -360,8 +359,7 @@ function PartyOfficeLocation() {
                  id={"municipalarea"}
                  name={"area"}
                  placeholder={"Select Reporting To"}
-                //  value={locations.city}
-                //  onChange={changeHandler}
+                
                 options={officeType}
                />
              </CCol>

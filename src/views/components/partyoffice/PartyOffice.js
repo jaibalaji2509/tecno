@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
-import Select, { components } from "react-select";
+import Select from "react-select";
 const PartyOffice = () => {
   const [location, setLocation] = useState({
     state: "",
@@ -159,12 +159,7 @@ const PartyOffice = () => {
            {locationHide.corporation && (
              <div>
                <div style={{ marginLeft: "-26px" }}>
-                 {/* <div className={"row-headerlabel"}>
-                   <span  style={{marginLeft:"70px"}} className={"header-label"}>
-                     {" "}
-                     Adding Party Office{" "}
-                   </span>
-                 </div> */}
+                
                  <CRow className={"row-alignment"} md="12" sm="12" lg="12">
              
 
@@ -178,8 +173,7 @@ const PartyOffice = () => {
                  id={"municipalstatename"}
                  name={"PartyOffice"}
                  placeholder={"Enter Party Office"}
-                //  value={locations.district}
-                //  onChange={changeHandler}
+               
                />
              </CCol>
              <CCol className={"column-align"} md="4">
@@ -192,8 +186,7 @@ const PartyOffice = () => {
                  id={"municipaldistrict"}
                  name={"Abbreviation"}
                  placeholder={"Enter Abbreviation"}
-                //  value={locations.city}
-                //  onChange={changeHandler}
+                
                />
              </CCol>
              
@@ -210,8 +203,7 @@ const PartyOffice = () => {
                  id={"municipaldistrict"}
                  name={"city"}
                  placeholder={"Enter Code"}
-                //  value={locations.city}
-                //  onChange={changeHandler}
+                
                />
              </CCol>
            <CCol className={"column-align"} md="4">
@@ -224,8 +216,7 @@ const PartyOffice = () => {
                  id={"municipalarea"}
                  name={"area"}
                  placeholder={"Select Reporting To"}
-                //  value={locations.city}
-                //  onChange={changeHandler}
+               
                 options={officeType}
                />
              </CCol>
@@ -336,7 +327,7 @@ const PartyOffice = () => {
                              <CCol style={{ fontSize: "1.15rem" }} md="12">
                                <i
                                  onClick={() => {
-                                   //   toggleDetails(index);
+                                  
                                  }}
                                ></i>
                                <i
@@ -346,11 +337,11 @@ const PartyOffice = () => {
                                      cursor: "pointer",
                                    }}
                                    id={"locationLibraryEdit"}
-                                  //  onClick={() => EditCountry(item)}
+                                 
                                    className="fas fa-edit"
                                  ></i>
                                  <i
-                                  //  onClick={() => deleteConfirm(item._id)}
+                                  
                                    id={"locationLibraryDelete"}
                                    style={{
                                      marginLeft: "5px",
