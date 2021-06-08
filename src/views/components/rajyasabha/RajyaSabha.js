@@ -6,6 +6,7 @@ import {
   CLabel,
   CRow,
   CSelect,
+  CTextarea,
 } from "@coreui/react";
 import React, { useState } from "react";
 import Toaster from "src/views/notifications/toaster/Toaster";
@@ -109,24 +110,36 @@ const RajyaSabha = () => {
       Name: "Jai Balaji",
       Type: "Male",
       Department: "25",
-      Designation: "01/06/2021/",
-      Role: "02/06/2021",
-      Status: "Assigned",
+      Designation: "01/06/2015",
+      Role: "02/06/2020",
+      Status: "InActive",
       Member: "Arun",
       EnteredBy: "Sathiskumar",
-      EnteredOn: "01/06/2021",
+      EnteredOn: "05/06/2020",
     },
     {
       SNo: "2",
+      Name: "Sathish Kumar",
+      Type: "Male",
+      Department: "26",
+      Designation: "08/05/2018",
+      Role: "24/05/2026",
+      Status: "Active",
+      Member: "Arun",
+      EnteredBy: "Sathiskumar",
+      EnteredOn: "05/06/2021",
+    },
+    {
+      SNo: "3",
       Name: "Arun Kumar",
       Type: "Male",
       Department: "23",
-      Designation: "08/06/2019",
+      Designation: "08/01/2019",
       Role: "24/05/2028",
-      Status: "Assigned",
+      Status: "Active",
       Member: "Arun",
       EnteredBy: "Sathiskumar",
-      EnteredOn: "01/06/2021",
+      EnteredOn: "24/05/2028",
     },
   ];
   const fields1 = [
@@ -190,8 +203,14 @@ const RajyaSabha = () => {
   const [sideBar1, setSideBar1] = useState(false);
   const [sideBar2, setSideBar2] = useState(false);
   const selectTypeofOffice = [
-    { value: "Arun Kumar", label: "Arun Kumar" },
-    { value: "Sathish Kumae", label: "Sathish Kumaer" },
+    {
+      value: "Arun Kumar",
+      label: "Arun Kumar TamilNadu Chennai Mylapore - 60004",
+    },
+    {
+      value: "Sathish Kumar ",
+      label: "Sathish Kumar TamilNadu Chennai TNagar - 600017",
+    },
   ];
   const selectDepartment = [
     { value: "Physician", label: "Physician" },
@@ -417,7 +436,12 @@ const RajyaSabha = () => {
     style3: "menu1",
   });
   const [selected, setSelected] = useState({});
-
+  const [gridShow, setGridShow] = useState({
+    view1: false,
+    view2: false,
+    view3: false,
+    view4:false
+  });
   return (
     <div className={menu.style3}>
       {sideBar1 && (
@@ -432,7 +456,7 @@ const RajyaSabha = () => {
                     marginLeft: "20px",
                   }}
                 >
-                  Employee History{" "}
+                  Member History{" "}
                 </span>
               </div>
             </CCol>
@@ -484,43 +508,259 @@ const RajyaSabha = () => {
                 DOB
                 <span style={{ fontSize: "14px", fontFamily: "normal" }}>
                   {" "}
-                  - 23/05/1998
+                  - 23/05/1990
                 </span>
               </CLabel>
             </CCol>
           </CRow>
-          <CRow>
-            <CCol
-              style={{
-                marginLeft: "30px",
+          <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+            }}
+            id={"memberregisterediticon"}
+            className="fa fa-eye"
+            onClick={() =>
+              setGridShow({
+                ...gridShow,
+                view1: true,
+                view2: false,
+                view3: false,
+                view: false,
+              })
+            }
+          >
+            Party Posting
+          </i>
+          <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"memberregisterediticon"}
+            className="fa fa-eye"
+            onClick={() =>
+              setGridShow({
+                ...gridShow,
+                view2: true,
+                view1: false,
+                view3: false,
+                view4: false,
+              })
+            }
+          >
+            Representative Posting
+          </i>
+          <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"memberregisterediticon"}
+            className="fa fa-eye"
+            onClick={() =>
+              setGridShow({
+                ...gridShow,
+                view3: true,
+                view2: false,
+                view1: false,
+                view4: false,
+              })
+            }
+          >
+            State Ministers Portofolio
+          </i>
+          <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"memberregisterediticon"}
+            className="fa fa-eye"
+            onClick={() =>
+              setGridShow({
+                ...gridShow,
+                view4: true,
+                view2: false,
+                view1: false,
+                view3: false,
+              })
+            }
+          >
+            Central Ministers Portofolio
+          </i>
+          {gridShow.view1 && (
+            <CRow>
+              <CCol
+                style={{
+                  marginLeft: "30px",
 
-                maxHeight: "290px",
-                minHeight: "290px",
-                marginBottom: "-25px",
-                overflow: "auto",
-              }}
-            >
-              <CDataTable
-                tableLabel={"History No of Times as MP - Rajya Sabha"}
-                columnFilter
-                tableFilter
-                hover
-                sorter
-                scopedSlots={{
-                  status: (item) => <td></td>,
+                  maxHeight: "290px",
+                  minHeight: "290px",
+                  marginBottom: "-25px",
+                  overflow: "auto",
                 }}
-                items={[
-                  {
-                    SNo: "1",
-                    FromDate: "12/05/20018",
-                    ToDate: "04/06/201",
+              >
+                <CDataTable
+                  tableLabel={"Details of Party Posting"}
+                  columnFilter
+                  tableFilter
+                  hover
+                  sorter
+                  scopedSlots={{
+                    status: (item) => <td></td>,
+                  }}
+                  items={[
+                    {
+                      SNo: "1",
+                      NameofParty: "08/06/2019",
+                      TypeofOffice: "24/06/2025",
+                      Department: "",
+                      designation: "",
+                      Role: "",
+                      FromDate: "",
+                      ToDate: "",
 
-                    Status: "Assigned",
-                  },
-                ]}
-              />
-            </CCol>
-          </CRow>
+                      Status: "Active",
+                    },
+                    // {
+                    //   SNo: "2",
+                    //   FromDate: "21/05/2008",
+                    //   ToDate: "21/05/2014",
+
+                    //   Status: "InActive",
+                    // },
+                  ]}
+                />
+              </CCol>
+            </CRow>
+          )}
+
+          {gridShow.view2 && (
+            <CRow>
+              <CCol
+                style={{
+                  marginLeft: "30px",
+
+                  maxHeight: "290px",
+                  minHeight: "290px",
+                  marginBottom: "-25px",
+                  overflow: "auto",
+                }}
+              >
+                <CDataTable
+                  tableLabel={"Details of Public Representative Posting"}
+                  columnFilter
+                  tableFilter
+                  hover
+                  sorter
+                  scopedSlots={{
+                    status: (item) => <td></td>,
+                  }}
+                  items={[
+                    {
+                      SNo: "1",
+                      NameofRepresentativePosting: "08/06/2019",
+                      FromDate: "24/06/2025",
+                      ToDate: "Active",
+                      Status: "",
+                    },
+                  ]}
+                />
+              </CCol>
+            </CRow>
+          )}
+
+          {gridShow.view3 && (
+            <CRow>
+              <CCol
+                style={{
+                  marginLeft: "30px",
+
+                  maxHeight: "290px",
+                  minHeight: "290px",
+                  marginBottom: "-25px",
+                  overflow: "auto",
+                }}
+              >
+                <CDataTable
+                  tableLabel={"Details of State Ministers Portofolio"}
+                  columnFilter
+                  tableFilter
+                  hover
+                  sorter
+                  scopedSlots={{
+                    status: (item) => <td></td>,
+                  }}
+                  items={[
+                    {
+                      SNo: "1",
+                      NameofMinistry: "08/06/2019",
+                      FromDate: "24/06/2025",
+                      ToDate: "",
+                    },
+                  ]}
+                />
+              </CCol>
+            </CRow>
+          )}
+
+          {gridShow.view4 && (
+            <CRow>
+              <CCol
+                style={{
+                  marginLeft: "30px",
+
+                  maxHeight: "290px",
+                  minHeight: "290px",
+                  marginBottom: "-25px",
+                  overflow: "auto",
+                }}
+              >
+                <CDataTable
+                  tableLabel={"Details of Central Ministers Portofolio"}
+                  columnFilter
+                  tableFilter
+                  hover
+                  sorter
+                  scopedSlots={{
+                    status: (item) => <td></td>,
+                  }}
+                  items={[
+                    {
+                      SNo: "1",
+                      NameofMinistry: "08/06/2019",
+                      FromDate: "24/06/2025",
+                      ToDate: "",
+                    },
+                  ]}
+                />
+              </CCol>
+            </CRow>
+          )}
           <CButton
             className={"menu"}
             style={{ position: "absolute", top: "15px", right: "15px" }}
@@ -642,11 +882,11 @@ const RajyaSabha = () => {
                 Note
                 <span className={"text-danger"}>*</span>
               </CLabel>
-              <Select
-                style={{ width: "50px", height: "50px" }}
+              <CTextarea
+                style={{ height: "80px" }}
                 id={"rajyasabhaStatus"}
                 name={"Status"}
-                placeholder={" Select Status "}
+                placeholder={" Enter Text "}
                 value={locations.city}
                 onChange={changeHandler}
               />
@@ -908,7 +1148,7 @@ const RajyaSabha = () => {
                           style={{ fontSize: "14px", fontFamily: "normal" }}
                         >
                           {" "}
-                          - Arun Kumae
+                          - Arun Kumar
                         </span>
                       </CLabel>
                     </CCol>

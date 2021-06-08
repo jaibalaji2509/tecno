@@ -154,7 +154,7 @@ html:not([dir="rtl"]) .c-sidebar-nav-dropdown-toggle:after {
 
 .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-link,
 .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-dropdown-toggle {
-  color: #fff;
+  color: #000;
 }
 
 .c-sidebar .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-dropdown-toggle svg {
