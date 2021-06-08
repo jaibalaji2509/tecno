@@ -1,6 +1,8 @@
 import { CButton, CCard, CCol, CInput, CLabel, CRow, CSelect } from "@coreui/react";
 import React, { useState } from "react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
+import Select from "react-select";
+
 
 function Constituency() {
   const [error, ] = useState("");
@@ -129,7 +131,7 @@ function Constituency() {
                     State
                  <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CSelect
+                  <Select
                     styles={{ marginLeft: "50px" }}
                     type={"text"}
                     id={"constituency"}
@@ -142,37 +144,40 @@ function Constituency() {
                     District / City
                  <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CSelect
+                  <Select
                     styles={{ marginLeft: "50px" }}
                     type={"text"}
                     id={"constituencycity"}
                     className={"input-align"}
-                    placeholder="CSelect the District / City "
+                    placeholder="Select the District / City "
                   />
                 </CCol>
               </CRow>
 
-              <CRow className={"row-alignment"}  md="12" sm="12" lg="12" style={{ marginLeft: "5px" }}>   
+              <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-16px" , marginTop:"40px"}}>
               <CCol className={"column-align"} md="5">
-                      <CLabel className={"label-name-1"}>
+                      <CLabel className={"label-name"}>
                         Parliamentary Constituency
                         <span className={"text-danger"}> *</span>
                       </CLabel>
-                      <CSelect
+                      <Select
                         placeholder="Select Parliamentary Constituency"
                         id={"parliamentaryconstituency"}
                         type={"text"}
+                        className={"input-align"}
+                        style={{marginLeft:"5px"}}    
                       />
                     </CCol>
                     <CCol className={"column-align"} md="5">
-                      <CLabel className={"label-name-1"}>
+                      <CLabel className={"label-name"}>
                       Legislative Assembly Constituency 
                         <span className={"text-danger"}> *</span>
                       </CLabel>
-                      <CSelect
+                      <Select
                         placeholder="Select Legislative Assembly Constituency"
                         id={"legislativeAssemblyconstitue"}
                         type={"text"}
+                        className={"input-align"}
                      style={{marginLeft:"5px"}}                   
                       />
                     </CCol>
@@ -197,7 +202,7 @@ function Constituency() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "80px",
+                    top: "120px",
                     marginLeft: "955px",
                     marginBottom: "20px",
                     color: "#0072ff",
@@ -210,7 +215,7 @@ function Constituency() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "80px",
+                    top: "120px",
                     marginLeft: "1000px",
                     marginBottom: "20px",
                     color: "green",
@@ -311,7 +316,7 @@ function Constituency() {
                     State
                  <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CSelect
+                  <Select
                     styles={{ marginLeft: "50px" }}
                     type={"text"}
                     id={"constituency"}
@@ -324,12 +329,12 @@ function Constituency() {
                     District / City
                  <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CSelect
+                  <Select
                     styles={{ marginLeft: "50px" }}
                     type={"text"}
                     id={"constituencycity"}
                     className={"input-align"}
-                    placeholder="CSelect the District / City "
+                    placeholder="Select the District / City "
                   />
                 </CCol>
               </CRow>
@@ -342,7 +347,7 @@ function Constituency() {
                         Parliamentary Constituency
                         <span className={"text-danger"}> *</span>
                       </CLabel>
-                      <CSelect
+                      <Select
                         placeholder="Select Municipal Corporation"
                         id={"parliamentaryconstituency"}
                         type={"text"}
@@ -458,7 +463,7 @@ function Constituency() {
                         Legislative Assembly Constituency
                         <span className={"text-danger"}> *</span>
                       </CLabel>
-                      <CSelect
+                      <Select
                         placeholder="Select the State Name"
                         id={"legislative"}
                         type={"text"}
@@ -575,11 +580,11 @@ function Constituency() {
                     Area / Village
                     <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CSelect
+                  <Select
                     type={"text"}
                     id={"constituencyarea"}
                     className={"input-align"}
-                    placeholder="CSelect the Area / Village"
+                    placeholder="Select the Area / Village"
                   />
                 </CCol>
 
@@ -588,11 +593,11 @@ function Constituency() {
                     Ward Name
                           <span className={"text-danger"}> *</span>
                   </CLabel>
-                  <CSelect
+                  <Select
                     type={"text"}
                     id={"constituencyward"}
                     className={"input-align"}
-                    placeholder="CSelect the Ward"
+                    placeholder="Select the Ward"
 
                   />
                 </CCol>
@@ -603,11 +608,11 @@ function Constituency() {
                     Street Name
                     <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CSelect
+                  <Select
                     type={"text"}
                     id={"constituencystreet"}
                     className={"input-align"}
-                    placeholder="CSelect the Street "
+                    placeholder="Select the Street "
 
                   />
                 </CCol>

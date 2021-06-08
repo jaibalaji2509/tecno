@@ -5,8 +5,8 @@ import {
   CInput,
   CLabel,
   CRow,
-  CSelect,
   CTextarea,
+  CSelect,
 } from "@coreui/react";
 import React, { useState } from "react";
 import Toaster from "src/views/notifications/toaster/Toaster";
@@ -16,8 +16,9 @@ import { toast } from "react-toastify";
 import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
 import Select, { components } from "react-select";
 import { Dropdown, Menu } from "antd";
-import "./RajyaSabha.css";
-const RajyaSabha = () => {
+import "./ConstituencyMember.css";
+// import { from } from "core-js/core/array";
+const ConstituencyMember = () => {
   const [location, setLocation] = useState({
     state: "",
     district: "",
@@ -61,6 +62,34 @@ const RajyaSabha = () => {
   });
   const [typeofOfficess, setTypeofOfficess] = useState("");
   const [PI, setPI] = useState("");
+  const [gridone, setGridOne] = useState(true)
+  const [gridtwo, setGridTwo] = useState(false)
+  const [gridthree, setGridThree] = useState(false)
+  const [gridfour, setGridFour] = useState(false)
+  const gridshow = () => {
+    setGridOne(false);
+    setGridTwo(true)
+    setGridThree(false)
+    setGridFour(false)
+  }
+  const chairshow = () => {
+    setGridOne(true);
+    setGridTwo(false)
+    setGridThree(false)
+    setGridFour(false)
+  }
+  const partshow = () => {
+    setGridOne(false);
+    setGridTwo(false)
+    setGridThree(true)
+    setGridFour(false)
+  }
+  const centralgrid = () => {
+    setGridOne(false);
+    setGridTwo(false)
+    setGridThree(false)
+    setGridFour(true)
+  }
   const userData = [
     {
       SNo: "1",
@@ -76,71 +105,71 @@ const RajyaSabha = () => {
   ];
 
   const fields = [
+    { key: "sNo", label: "Sl. No", _style: { width: "1%" } },
     {
-      key: "SNo",
-      label: "S.NO",
-      _style: { width: "3%" },
-      sorter: false,
-      filter: false,
+      key: "typeconstituency",
+      label: "Type of Constituency",
+      _style: { width: "19%" },
     },
-    // { key: "State", label: "State", _style: { width: "10%" } },
-    // { key: "District", label: "District", _style: { width: "10%" } },
-    // { key: "Area", label: "Ward", _style: { width: "10%" } },
-    { key: "Name", label: "Name of Party Mmeber", _style: { width: "20%" } },
-    { key: "Type", label: "Gender", _style: { width: "10%" } },
-    { key: "Department", label: "Age", _style: { width: "10%" } },
-    { key: "Designation", label: "From Date", _style: { width: "10%" } },
-    { key: "Role", label: "To Date", _style: { width: "10%" } },
-    { key: "Status", label: "Status", _style: { width: "10%" } },
-    { key: "EnteredBy", label: "Entered By", _style: { width: "10%" } },
-    { key: "EnteredOn", label: " Entered on", _style: { width: "10%" } },
-    // { key: "male", label: "Male", _style: { width: "10%" } },
-    // { key: "female", label: "Female", _style: { width: "10%" } },
     {
-      key: "show_details",
-      label: "Action",
+      key: "name",
+      label: "Name of Constituency",
       _style: { width: "10%" },
-      sorter: false,
-      filter: false,
+    },
+    {
+      key: "state",
+      label: "State",
+      _style: { width: "10%" },
+    },
+    {
+      key: "city",
+      label: "District / City",
+      _style: { width: "10%" },
+    },
+    { key: "member", label: "Name of the Member", _style: { width: "15%" } },
+    { key: "from", label: "From Date", _style: { width: "10%" } },
+    { key: "to", label: "To Date", _style: { width: "5%" } },
+    { key: "status", label: "Status", _style: { width: "5%" } },
+    {
+      key: "show_details1",
+      label: "Action",
+      _style: { width: "20%" },
     },
   ];
   const userData1 = [
     {
-      SNo: "1",
-      Name: "Jai Balaji",
-      Type: "Male",
-      Department: "25",
-      Designation: "01/06/2015",
-      Role: "02/06/2020",
-      Status: "InActive",
-      Member: "Arun",
-      EnteredBy: "Sathiskumar",
-      EnteredOn: "05/06/2020",
+      sNo: "1",
+      typeconstituency: "Legistative Assembly",
+      name: "Ambattur",
+      state: "TamilNadu",
+      city: "Chennai",
+      member: "Joseph Samuel",
+      from: "27/3/2021",
+      to: "27/3/2026",
+      status: "Active",
     },
     {
-      SNo: "2",
-      Name: "Sathish Kumar",
-      Type: "Male",
-      Department: "26",
-      Designation: "08/05/2018",
-      Role: "24/05/2026",
-      Status: "Active",
-      Member: "Arun",
-      EnteredBy: "Sathiskumar",
-      EnteredOn: "05/06/2021",
+      sNo: "2",
+      typeconstituency: "Legistative Assembly",
+      name: "	Park Town",
+      state: "TamilNadu",
+      city: "Chennai",
+      member: "K. Anbazhagan",
+      from: "7/3/1967",
+      to: "7/3/1971",
+      status: "Died",
     },
     {
-      SNo: "3",
-      Name: "Arun Kumar",
-      Type: "Male",
-      Department: "23",
-      Designation: "08/01/2019",
-      Role: "24/05/2028",
-      Status: "Active",
-      Member: "Arun",
-      EnteredBy: "Sathiskumar",
-      EnteredOn: "24/05/2028",
-    },
+      sNo: "3",
+      typeconstituency: "Legistative Assembly",
+      name: " Chepauk-Thiruvallikeni",
+      state: "TamilNadu",
+      city: "Chennai",
+      member: "Udhayanidhi Stalin",
+      from: "11/5/2021",
+      to: "11/5/2026",
+      status: "Active",
+    }
   ];
   const fields1 = [
     {
@@ -203,14 +232,8 @@ const RajyaSabha = () => {
   const [sideBar1, setSideBar1] = useState(false);
   const [sideBar2, setSideBar2] = useState(false);
   const selectTypeofOffice = [
-    {
-      value: "Arun Kumar",
-      label: "Arun Kumar TamilNadu Chennai Mylapore - 60004",
-    },
-    {
-      value: "Sathish Kumar ",
-      label: "Sathish Kumar TamilNadu Chennai TNagar - 600017",
-    },
+    { value: "	O. Panneerselvam, AIADMK since 11 May 2021", label: "	O. Panneerselvam, AIADMK since 11 May 2021" },
+    { value: "stalin", label: "Udhayanidhi Youth Wing Secretary of DMK, 	25/9, Chittaranjan Road, Cenotaph Road, Alwarpet, Chennai - 600018, Tamil Nadu, India" }
   ];
   const selectDepartment = [
     { value: "Physician", label: "Physician" },
@@ -295,6 +318,34 @@ const RajyaSabha = () => {
       corporation: true,
     });
   };
+  const SelectType = [
+    { value: "All", label: "All" },
+    { value: "Parliamentry Assembly", label: "Parlimentry Assemblly" },
+    { value: "legistative", label: "Legistative Assembly" },
+  ];
+  const selectestatusupdate = [{
+    value: "register", label: "Registration"
+  },
+  { value: "die", label: "Died" },
+  ];
+  const Selectstatus = [
+    { value: "all", label: "All" },
+    { value: "active", label: "Active" },
+    { value: "retired", label: "Retired" },
+    { value: "resigned", label: "Resigned" },
+    { value: "died", label: "Died" },
+  ];
+  const selectstate = [
+    { value: 'tamilnadu', label: "Tamilnadu" },
+  ];
+  const selectcity = [
+    { value: "chennai", label: "Chennai" },
+  ]
+  const selectname = [
+    { value: "ambattur", label: "Ambattur" },
+    { value: "chepauk", label: "Chepauk-Thiruvallikeni constituency" }
+  ]
+
   const changeHandler = (e) => {
     setLocations({ ...locations, [e.target.name]: e.target.value });
   };
@@ -359,6 +410,10 @@ const RajyaSabha = () => {
   const changeMunicipalCorporation = () => {
     setHideMappingmunicipal(false);
     setHideCorporation(true);
+  };
+  const cancelbuttonadd = () => {
+    setHideMappingmunicipal(true);
+    setHideCorporation(false);
   };
   const handleSave = async (file, folder) => {
     if (file === undefined) {
@@ -436,16 +491,11 @@ const RajyaSabha = () => {
     style3: "menu1",
   });
   const [selected, setSelected] = useState({});
-  const [gridShow, setGridShow] = useState({
-    view1: false,
-    view2: false,
-    view3: false,
-    view4:false
-  });
+
   return (
     <div className={menu.style3}>
       {sideBar1 && (
-        <div className={menu.style}>
+        <div className={menu.style} style={{ minHeight: "600px", }}>
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
               <div>
@@ -468,13 +518,13 @@ const RajyaSabha = () => {
                 Name
                 <span style={{ fontSize: "14px", fontFamily: "normal" }}>
                   {" "}
-                  - Arun Kumar
+                  - K. Anbazhagan
                 </span>
               </CLabel>
             </CCol>
             <CCol className={"column-align"} md="4">
               <CLabel className={"label-name"}>
-                Gende
+                Gender
                 <span style={{ fontSize: "14px", fontFamily: "normal" }}>
                   {" "}
                   - Male
@@ -482,7 +532,7 @@ const RajyaSabha = () => {
               </CLabel>
             </CCol>
             <CCol>
-              <img
+              {/* <img
                 type="text"
                 alt=""
                 src={files !== "" ? files : DEFAULT_IMAGE}
@@ -494,272 +544,260 @@ const RajyaSabha = () => {
                   left: "-40%",
                   top: "-3%",
                 }}
-              />
+              /> */}
+              <img src="https://static.theprint.in/wp-content/uploads/2020/03/Anbazhagan-696x392.png" style={{ height: "100px", marginLeft: "-200px" }} />
+
             </CCol>
           </CRow>
 
-          <CRow className={"row-alignment"} style={{ marginLeft: "-61px" }}>
-            <CCol
-              className={"column-align"}
-              md="4"
-              style={{ marginTop: "-120px" }}
-            >
-              <CLabel className={"label-name"}>
-                DOB
+         
+              <CRow className={"row-alignment"} style={{ marginLeft: "-61px", marginTop: "15px" }}>
+                <CCol
+                  className={"column-align"}
+                  md="4"
+                  style={{ marginTop: "-60px" }}
+                >
+                  <CLabel className={"label-name"}>
+                    Age
                 <span style={{ fontSize: "14px", fontFamily: "normal" }}>
-                  {" "}
-                  - 23/05/1990
+                      {" "}
+                  - 98
                 </span>
-              </CLabel>
-            </CCol>
-          </CRow>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-            }}
-            id={"memberregisterediticon"}
-            className="fa fa-eye"
-            onClick={() =>
-              setGridShow({
-                ...gridShow,
-                view1: true,
-                view2: false,
-                view3: false,
-                view: false,
-              })
-            }
-          >
-            Party Posting
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"memberregisterediticon"}
-            className="fa fa-eye"
-            onClick={() =>
-              setGridShow({
-                ...gridShow,
-                view2: true,
-                view1: false,
-                view3: false,
-                view4: false,
-              })
-            }
-          >
-            Representative Posting
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"memberregisterediticon"}
-            className="fa fa-eye"
-            onClick={() =>
-              setGridShow({
-                ...gridShow,
-                view3: true,
-                view2: false,
-                view1: false,
-                view4: false,
-              })
-            }
-          >
-            State Ministers Portofolio
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"memberregisterediticon"}
-            className="fa fa-eye"
-            onClick={() =>
-              setGridShow({
-                ...gridShow,
-                view4: true,
-                view2: false,
-                view1: false,
-                view3: false,
-              })
-            }
-          >
-            Central Ministers Portofolio
-          </i>
-          {gridShow.view1 && (
-            <CRow>
-              <CCol
-                style={{
-                  marginLeft: "30px",
+                  </CLabel>
+                </CCol>
+              </CRow>
+              <CRow style={{ marginTop: "25px" }}>
+            <CCol>
+              <CButton style={{ marginTop: "20px" }} onClick={chairshow} className={"saveBtn"}>Party Posting</CButton>
+              <CButton className={"saveBtn"} style={{ marginTop: "20px", marginLeft: "10px" }} onClick={gridshow}>PUBLIC REPRESENTATIVE POSTING</CButton>
+              <CButton onClick={partshow} className={"saveBtn"} style={{ marginTop: "20px", marginLeft: "10px" }}>STATE MINISTRY PORTFOLIO</CButton>
+              <CButton onClick={centralgrid} className={"saveBtn"} style={{ marginTop: "20px", marginLeft: "10px" }}>CENTRAL MINISTERS PORTFOLIO</CButton>
+            </CCol></CRow>
 
-                  maxHeight: "290px",
-                  minHeight: "290px",
-                  marginBottom: "-25px",
-                  overflow: "auto",
-                }}
-              >
-                <CDataTable
-                  tableLabel={"Details of Party Posting"}
-                  columnFilter
-                  tableFilter
-                  hover
-                  sorter
-                  scopedSlots={{
-                    status: (item) => <td></td>,
+              { gridone && (
+            <div>
+              <CRow >
+                <CCol
+                  style={{
+                    marginLeft: "30px",
+
+                    maxHeight: "290px",
+                    minHeight: "290px",
+                    marginBottom: "-25px",
+                    overflow: "auto",
+                    marginTop: "50px"
                   }}
-                  items={[
-                    {
-                      SNo: "1",
-                      NameofParty: "08/06/2019",
-                      TypeofOffice: "24/06/2025",
-                      Department: "",
-                      designation: "",
-                      Role: "",
-                      FromDate: "",
-                      ToDate: "",
+                >
 
-                      Status: "Active",
+                  <CDataTable
+                    items={[{
+                      sNo: "1",
+                      typeconstituency: "Dravida Munnetra Kazhagam",
+                      name: "	Purasawalkam",
+                      state: "Minister for Health and Social Welfare",
+                      city: "Member of Parliament",
+                      member: "General Secretary",
+                      from: "15 March 1971",
+                      to: '31 January 1976'
                     },
-                    // {
-                    //   SNo: "2",
-                    //   FromDate: "21/05/2008",
-                    //   ToDate: "21/05/2014",
-
-                    //   Status: "InActive",
-                    // },
-                  ]}
-                />
-              </CCol>
-            </CRow>
+                    { sNo: "2" },
+                    { sNo: "3" },
+                    { sNo: "4" },
+                    { sNo: "5" },
+                    { sNo: "6" },
+                    { sNo: "7" },
+                    ]}
+                    fields={[{ key: "sNo", label: "Sl. No", _style: { width: "1%" } },
+                    {
+                      key: "typeconstituency",
+                      label: "Name of Party / Party Wings Office",
+                      _style: { width: "19%" },
+                    },
+                    {
+                      key: "name",
+                      label: "Type of Office",
+                      _style: { width: "10%" },
+                    },
+                    {
+                      key: "state",
+                      label: "Department",
+                      _style: { width: "10%" },
+                    },
+                    {
+                      key: "city",
+                      label: "Designation",
+                      _style: { width: "10%" },
+                    },
+                    { key: "member", label: "Role", _style: { width: "10%" } },
+                    { key: "from", label: "From Date", _style: { width: "10%" } },
+                    { key: "to", label: "To Date", _style: { width: "10%" } },
+                    ]}
+                    columnFilter
+                    tableFilter
+                    tableLabel={"Details of Party Posting"}
+                    itemsPerPageSelect
+                    itemsPerPage={5}
+                    hover
+                    sorter
+                    pagination
+                  />
+                </CCol>
+              </CRow>
+            </div>
           )}
+          { gridtwo && (
+            <div>
+              <CRow>
+                <CCol
+                  style={{
+                    marginLeft: "30px",
 
-          {gridShow.view2 && (
-            <CRow>
-              <CCol
-                style={{
-                  marginLeft: "30px",
-
-                  maxHeight: "290px",
-                  minHeight: "290px",
-                  marginBottom: "-25px",
-                  overflow: "auto",
-                }}
-              >
-                <CDataTable
-                  tableLabel={"Details of Public Representative Posting"}
-                  columnFilter
-                  tableFilter
-                  hover
-                  sorter
-                  scopedSlots={{
-                    status: (item) => <td></td>,
+                    maxHeight: "290px",
+                    minHeight: "290px",
+                    marginBottom: "-25px",
+                    overflow: "auto",
+                    marginTop: "50px"
                   }}
-                  items={[
-                    {
-                      SNo: "1",
-                      NameofRepresentativePosting: "08/06/2019",
-                      FromDate: "24/06/2025",
-                      ToDate: "Active",
-                      Status: "",
+                >
+                  <CDataTable
+                    items={[{
+                      sNo: "1",
+                      name: "Member of Tamil Nadu legislative assembly",
+                      from: "14 May 2001",
+                      to: "12 May 2006",
+                      status: "Died",
                     },
-                  ]}
-                />
-              </CCol>
-            </CRow>
+                    ]}
+                    fields={[{ key: "sNo", label: "Sl. No", _style: { width: "1%" } },
+
+                    {
+                      key: "name",
+                      label: "Name of Representative Posting",
+                      _style: { width: "10%" },
+                    },
+                    { key: "from", label: "From Date", _style: { width: "10%" } },
+                    { key: "to", label: "To Date", _style: { width: "5%" } },
+                    { key: "status", label: "Status", _style: { width: "5%" } },
+                    ]}
+                    columnFilter
+                    tableFilter
+                    tableLabel={"Details of Public Representative Posting"}
+                    itemsPerPageSelect
+                    itemsPerPage={5}
+                    hover
+                    sorter
+                    pagination
+                  />
+                </CCol>
+              </CRow>
+            </div>
           )}
+          { gridthree && (
+            <div>
+              <CRow>
+                <CCol
+                  style={{
+                    marginLeft: "30px",
 
-          {gridShow.view3 && (
-            <CRow>
-              <CCol
-                style={{
-                  marginLeft: "30px",
-
-                  maxHeight: "290px",
-                  minHeight: "290px",
-                  marginBottom: "-25px",
-                  overflow: "auto",
-                }}
-              >
-                <CDataTable
-                  tableLabel={"Details of State Ministers Portofolio"}
-                  columnFilter
-                  tableFilter
-                  hover
-                  sorter
-                  scopedSlots={{
-                    status: (item) => <td></td>,
+                    maxHeight: "290px",
+                    minHeight: "290px",
+                    marginBottom: "-25px",
+                    overflow: "auto",
+                    marginTop: "50px"
                   }}
-                  items={[
-                    {
-                      SNo: "1",
-                      NameofMinistry: "08/06/2019",
-                      FromDate: "24/06/2025",
-                      ToDate: "",
+                >
+                  <CDataTable
+                    items={[{
+                      sNo: "1",
+                      typeconstituency: "Minister of Education",
+                      name: "cabinet ministerial portfolios",
+                      from: "16 May 1996",
+                      to: "15 May 2001"
                     },
-                  ]}
-                />
-              </CCol>
-            </CRow>
+
+                    ]}
+                    fields={[{ key: "sNo", label: "Sl. No", _style: { width: "1%" } },
+                    {
+                      key: "typeconstituency",
+                      label: "Name of the Ministry",
+                      _style: { width: "19%" },
+                    },
+                    {
+                      key: "name",
+                      label: "Portfolio",
+                      _style: { width: "10%" },
+                    },
+
+                    { key: "from", label: "From Date", _style: { width: "10%" } },
+                    { key: "to", label: "To Date", _style: { width: "5%" } },
+                    ]}
+                    columnFilter
+                    tableFilter
+                    tableLabel={"Details of State Ministry Portfolio"}
+                    itemsPerPageSelect
+                    itemsPerPage={5}
+                    hover
+                    sorter
+                    pagination
+                  />
+                </CCol>
+              </CRow>
+            </div>
           )}
+          { gridfour && (
+            <div>
 
-          {gridShow.view4 && (
-            <CRow>
-              <CCol
-                style={{
-                  marginLeft: "30px",
+              <CRow>
+                <CCol
+                  style={{
+                    marginLeft: "30px",
 
-                  maxHeight: "290px",
-                  minHeight: "290px",
-                  marginBottom: "-25px",
-                  overflow: "auto",
-                }}
-              >
-                <CDataTable
-                  tableLabel={"Details of Central Ministers Portofolio"}
-                  columnFilter
-                  tableFilter
-                  hover
-                  sorter
-                  scopedSlots={{
-                    status: (item) => <td></td>,
+                    maxHeight: "290px",
+                    minHeight: "290px",
+                    marginBottom: "-25px",
+                    overflow: "auto",
+                    marginTop: "50px"
                   }}
-                  items={[
-                    {
-                      SNo: "1",
-                      NameofMinistry: "08/06/2019",
-                      FromDate: "24/06/2025",
-                      ToDate: "",
+                >
+                  <CDataTable
+                    items={[{
+                      sNo: "1",
+                      typeconstituency: "Minister of Finance",
+                      name: "cabinet ministerial portfolios",
+                      from: "17 May 2006",
+                      to: " 15 May 2011",
                     },
-                  ]}
-                />
-              </CCol>
-            </CRow>
+
+                    ]}
+                    fields={[{ key: "sNo", label: "Sl. No", _style: { width: "1%" } },
+                    {
+                      key: "typeconstituency",
+                      label: "Name of the Ministry",
+                      _style: { width: "19%" },
+                    },
+                    {
+                      key: "name",
+                      label: "Portfolio",
+                      _style: { width: "10%" },
+                    },
+
+                    { key: "from", label: "From Date", _style: { width: "10%" } },
+                    { key: "to", label: "To Date", _style: { width: "5%" } },
+
+
+                    ]}
+                    columnFilter
+                    tableFilter
+                    tableLabel={"Details of Central Ministers Portfolio"}
+                    itemsPerPageSelect
+                    itemsPerPage={5}
+                    hover
+                    sorter
+                    pagination
+                  />
+                </CCol>
+              </CRow>
+            </div>
           )}
           <CButton
             className={"menu"}
@@ -798,13 +836,13 @@ const RajyaSabha = () => {
                 Name
                 <span style={{ fontSize: "14px", fontFamily: "normal" }}>
                   {" "}
-                  - Arun Kumar
+                  - K. Anbazhagan
                 </span>
               </CLabel>
             </CCol>
             <CCol className={"column-align"} md="4">
               <CLabel className={"label-name"}>
-                Gende
+                Gender
                 <span style={{ fontSize: "14px", fontFamily: "normal" }}>
                   {" "}
                   - Male
@@ -812,7 +850,7 @@ const RajyaSabha = () => {
               </CLabel>
             </CCol>
             <CCol>
-              <img
+              {/* <img
                 type="text"
                 alt=""
                 src={files !== "" ? files : DEFAULT_IMAGE}
@@ -824,25 +862,26 @@ const RajyaSabha = () => {
                   left: "-40%",
                   top: "-3%",
                 }}
-              />
+              /> */}
+              <img src="https://static.theprint.in/wp-content/uploads/2020/03/Anbazhagan-696x392.png" style={{ height: "100px", marginLeft: "-200px" }} />
             </CCol>
           </CRow>
           <CRow className={"row-alignment"} style={{ marginLeft: "-61px" }}>
             <CCol
               className={"column-align"}
               md="4"
-              style={{ marginTop: "-120px" }}
+              style={{ marginTop: "20px" }}
             >
               <CLabel className={"label-name"}>
-                DOB
+                Age
                 <span style={{ fontSize: "14px", fontFamily: "normal" }}>
                   {" "}
-                  - 23/05/1998
+                  - 98
                 </span>
               </CLabel>
             </CCol>
           </CRow>
-          <CCol style={{ marginTop: "-90px", marginLeft: "-40px" }}>
+          <CCol style={{ marginTop: "0px", marginLeft: "-40px" }}>
             <CLabel
               style={{
                 fontSize: "20PX",
@@ -869,27 +908,28 @@ const RajyaSabha = () => {
                 <span className={"text-danger"}>*</span>
               </CLabel>
               <Select
-                // className={"input-align"}
-                id={"rajyasabhaState"}
-                name={"state"}
-                placeholder={"Select Status"}
-                value={locations.district}
-                onChange={changeHandler}
+                style={{ width: "50px", height: "50px" }}
+                id={"constituencymemstatus"}
+                name={"Status"}
+                placeholder={" Select Status "}
+                // value={locations.city}
+                // onChange={changeHandler}
+                options={selectestatusupdate}
               />
             </CCol>
             <CCol className={"column-align"} md="4">
               <CLabel className={"label-name-1"}>
                 Note
-                <span className={"text-danger"}>*</span>
+                    <span className={"text-danger"}> *</span>
               </CLabel>
               <CTextarea
-                style={{ height: "80px" }}
-                id={"rajyasabhaStatus"}
-                name={"Status"}
-                placeholder={" Enter Text "}
-                value={locations.city}
-                onChange={changeHandler}
-              />
+                id={"contimemnote"}
+                placeholder="Enter Description for Termination"
+                style={{ height: "80px", marginLeft: "10px" }}
+
+                min="10"
+                max="500"
+              ></CTextarea>
             </CCol>
             <CCol md="10">
               <CCol
@@ -938,20 +978,12 @@ const RajyaSabha = () => {
         <div>
           <CCard className={"cardSave"}>
             <div className={"main-headerlabel"}>
-              <span className={"header-label"}>View Rajya Sabha</span>
+              <span className={"header-label"}>Constituency Member</span>
             </div>
             {locationHide.corporation && (
               <div>
                 <div style={{ marginLeft: "-26px" }}>
-                  {/* <div className={"row-headerlabel"}>
-                      <span
-                        style={{ marginLeft: "70px" }}
-                        className={"header-label"}
-                      >
-                        {" "}
-                        Assign Party Posting{" "}
-                      </span>
-                    </div> */}
+
                   <CRow style={{ marginTop: "45px" }}>
                     <CCol md="10">
                       <CCol
@@ -965,15 +997,46 @@ const RajyaSabha = () => {
                         <CButton
                           style={{
                             float: "right",
-                            marginRight: "830px",
+                            marginRight: "780px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
                           onClick={changeMunicipalCorporation}
                         >
-                          Add Member to MP
+                          Add Member to Constituency
                         </CButton>{" "}
                       </CCol>
+                    </CCol>
+                  </CRow>
+                  <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                    <CCol className={"column-align"} md="4">
+                      <CLabel className={"label-name-1"}>
+                        Type of Constituency
+                        <span className={"text-danger"}>*</span>
+                      </CLabel>
+                      <Select
+                        // className={"input-align"}
+                        id={"constituencymemtype"}
+                        name={"state"}
+                        placeholder={"Select Constituency"}
+                        // value={locations.district}
+                        // onChange={changeHandler}
+                        options={SelectType}
+                      />
+                    </CCol>
+                    <CCol className={"column-align"} md="4">
+                      <CLabel className={"label-name-1"}>
+                        Status
+                        <span className={"text-danger"}>*</span>
+                      </CLabel>
+                      <Select
+                        id={"constituencymemstatus"}
+                        name={"Status"}
+                        placeholder={" Select Status "}
+                        // value={locations.city}
+                        // onChange={changeHandler}
+                        options={Selectstatus}
+                      />
                     </CCol>
                   </CRow>
                   <CRow className={"row-alignment"} md="12" sm="12" lg="12">
@@ -984,27 +1047,30 @@ const RajyaSabha = () => {
                       </CLabel>
                       <Select
                         // className={"input-align"}
-                        id={"rajyasabhaState"}
+                        id={"constituencymemtype"}
                         name={"state"}
                         placeholder={"Select State"}
-                        value={locations.district}
-                        onChange={changeHandler}
+                        // value={locations.district}
+                        // onChange={changeHandler}
+                        options={selectstate}
                       />
                     </CCol>
                     <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name-1"}>
-                        Status
+                        District / City
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        id={"rajyasabhaStatus"}
+                        id={"constituencymemcity"}
                         name={"Status"}
                         placeholder={" Select Status "}
-                        value={locations.city}
-                        onChange={changeHandler}
+                        // value={locations.city}
+                        // onChange={changeHandler}
+                        options={selectcity}
                       />
                     </CCol>
                   </CRow>
+
                 </div>
 
                 <CRow
@@ -1019,7 +1085,7 @@ const RajyaSabha = () => {
                     fields={fields}
                     columnFilter
                     tableFilter
-                    tableLabel={"List of MP - Rjay Sabha"}
+                    tableLabel={"List of member of constituency"}
                     itemsPerPageSelect
                     itemsPerPage={5}
                     hover
@@ -1028,9 +1094,48 @@ const RajyaSabha = () => {
                     scopedSlots={{
                       show_details: (item, index) => {
                         return (
-                          <td className="py-1">
+                          <td className="py-2">
+                            <CInput
+                              type={"checkbox"}
+                              value={"select"}
+                              style={{
+                                width: "15px",
+                                height: "15px",
+                                marginLeft: "30px",
+                                marginBottom: "10px",
+                              }}
+                            />
                             <CRow>
-                              <CCol style={{ fontSize: "1.15rem" }} md="16">
+                              <CCol style={{ fontSize: "1.15rem" }} md="12">
+                              </CCol>
+                            </CRow>
+                          </td>
+                        );
+                      },
+                      show_details1: (item, index) => {
+                        return (
+                          <td className="py-2">
+                            <CRow>
+
+                              <CCol style={{ fontSize: "1.15rem" }} md="12">
+                                <i
+                                  style={{
+                                    marginRight: "5px",
+                                    color: "#3480e2",
+                                    cursor: "pointer",
+                                  }}
+                                  id={"memberregisterediticon"}
+                                  className="fas fa-edit"
+                                ></i>
+                                {/* <i
+                                    id={"memberregisterdelete"}
+                                    style={{
+                                      marginLeft: "5px",
+                                      color: "#e85654",
+                                      cursor: "pointer",
+                                    }}
+                                    className="fa fa-trash"
+                                  ></i> */}
                                 <i
                                   //  onClick={() => deleteConfirm(item._id)}
                                   id={"locationLibraryDelete"}
@@ -1041,37 +1146,37 @@ const RajyaSabha = () => {
                                   }}
                                   className="fa fa-remove"
                                 ></i>
-
                                 <i
                                   //  onClick={() => deleteConfirm(item._id)}
                                   id={"locationLibraryDelete"}
                                   style={{
                                     marginLeft: "5px",
-                                    marginLeft: "10px",
+
                                     color: "rgb(55, 224, 39)",
                                     cursor: "pointer",
                                   }}
                                   className="fa fa-refresh"
                                   onClick={handleClick2}
                                 ></i>
+
                                 <i
                                   style={{
-                                    marginRight: "5px",
-                                    marginLeft: "18px",
+
                                     color: "#3480e2",
                                     cursor: "pointer",
-                                    position: "absolute",
+                                    marginLeft: "10px",
                                   }}
+                                  onClick={handleClick}
                                   id={"memberregisterediticon"}
                                   className="fa fa-history"
-                                  onClick={handleClick}
                                 ></i>
                               </CCol>
                             </CRow>
                           </td>
                         );
                       },
-                      details: (item, index) => {},
+
+                      details: (item, index) => { },
                     }}
                   />
                 </CRow>
@@ -1083,10 +1188,10 @@ const RajyaSabha = () => {
 
       {hideCorporation && (
         <div>
-          <CCard className={"cardSave"}>
+          <CCard className={"cardSave"} style={{ minHeight: "900px" }}>
             <div className={"main-headerlabel"}>
               <span className={"header-label"}>
-                Mapping Member to MP - Rajya Sabha
+                Adding Member to Constituency
               </span>
             </div>
             {locationHide.corporation && (
@@ -1101,6 +1206,66 @@ const RajyaSabha = () => {
                         Assign Party Posting{" "}
                       </span>
                     </div> */}
+                  <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                    <CCol className={"column-align"} md="4">
+                      <CLabel className={"label-name-1"}>
+                        Type of Constituency
+                        <span className={"text-danger"}>*</span>
+                      </CLabel>
+                      <Select
+                        // className={"input-align"}
+                        id={"constituencymemtype"}
+                        name={"state"}
+                        placeholder={"Select Constituency"}
+                        // value={locations.district}
+                        // onChange={changeHandler}
+                        options={SelectType}
+                      />
+                    </CCol>
+                    <CCol className={"column-align"} md="4">
+                      <CLabel className={"label-name-1"}>
+                        State
+                        <span className={"text-danger"}>*</span>
+                      </CLabel>
+                      <Select
+                        id={"constituencymemtype"}
+                        name={"state"}
+                        placeholder={"Select State"}
+                        // value={locations.district}
+                        // onChange={changeHandler}
+                        options={selectstate}
+                      />
+                    </CCol>
+                  </CRow>
+                  <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                    <CCol className={"column-align"} md="4">
+                      <CLabel className={"label-name-1"}>
+                        District / City
+                        <span className={"text-danger"}>*</span>
+                      </CLabel>
+                      <Select
+                        id={"constituencymemcity"}
+                        name={"Status"}
+                        placeholder={" Select Status "}
+                        // value={locations.city}
+                        // onChange={changeHandler}
+                        options={selectcity}
+                      />
+                    </CCol>
+                    <CCol className={"column-align"} md="4">
+                      <CLabel className={"label-name-1"}>
+                        Name of the Constituency
+                        <span className={"text-danger"}>*</span>
+                      </CLabel>
+                      <Select
+                        type={"text"}
+                        id={"constituencymemname"}
+                        className={"input-align"}
+                        placeholder="Select....."
+                        options={selectname}
+                      />
+                    </CCol>
+                  </CRow>
 
                   <CRow
                     className={"row-alignment"}
@@ -1136,7 +1301,7 @@ const RajyaSabha = () => {
                         marginTop: "60px",
                       }}
                     >
-                      Mmeber Details Display
+                      Member Details 
                     </CLabel>
                   </CCol>
 
@@ -1148,13 +1313,13 @@ const RajyaSabha = () => {
                           style={{ fontSize: "14px", fontFamily: "normal" }}
                         >
                           {" "}
-                          - Arun Kumar
+                          - Udhayanidhi Stalin
                         </span>
                       </CLabel>
                     </CCol>
                     <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name"}>
-                        Gende
+                        Gender
                         <span
                           style={{ fontSize: "14px", fontFamily: "normal" }}
                         >
@@ -1164,7 +1329,7 @@ const RajyaSabha = () => {
                       </CLabel>
                     </CCol>
                     <CCol>
-                      <img
+                      {/* <img
                         type="text"
                         alt=""
                         src={files !== "" ? files : DEFAULT_IMAGE}
@@ -1176,21 +1341,23 @@ const RajyaSabha = () => {
                           left: "-40%",
                           top: "-3%",
                         }}
-                      />
+                      /> */}
+                      <img src="https://www.oneindia.com/img/2021/02/udhayanidhistalin-1609309372-1614259503-1614275624.jpg" style={{ height: "100px", marginLeft: "-200px" }} />
+
                     </CCol>
                   </CRow>
                   <CRow
                     className={"row-alignment"}
                     style={{ marginTop: "-140px" }}
                   >
-                    <CCol className={"column-align"} md="4">
+                    <CCol className={"column-align"} md="4" style={{ marginTop: "120px" }}>
                       <CLabel className={"label-name"}>
                         Age
                         <span
                           style={{ fontSize: "14px", fontFamily: "normal" }}
                         >
                           {" "}
-                          - 23
+                          - 43
                         </span>
                       </CLabel>
                     </CCol>
@@ -1203,51 +1370,53 @@ const RajyaSabha = () => {
                       top: "10px",
                     }}
                   >
-                    <CCol className={"column-align"} md="4">
+                    <CCol className={"column-align"} md="4" style={{ marginTop: "60px" }}>
                       <CLabel className={"label-name-1"}>
                         Date of Appointment{" "}
                       </CLabel>
                       <CInput type="date" id={"rajyasabhadatefrom"} />
                     </CCol>
-                    <CCol className={"column-align"} md="4">
+                    <CCol className={"column-align"} md="4" style={{ marginTop: "60px" }}>
                       <CLabel className={"label-name-1"}>
                         Date of Retirmment{" "}
                       </CLabel>
                       <CInput type="date" id={"rajyasabhadatefrom"} />
                     </CCol>
-                  </CRow>
-                  <CCol md="10">
-                    <CCol
-                      md="5"
-                      style={{
-                        marginLeft: "500px",
-                        float: "right",
-                        marginTop: "30px",
-                        position: "absolute",
-                      }}
-                    >
-                      <CButton
+
+                    <CCol md="10">
+                      <CCol
+                        md="5"
                         style={{
+                          marginLeft: "500px",
                           float: "right",
+                          marginTop: "30px",
+                          position: "absolute",
                         }}
-                        id={"cancelAbbreviationConfigureCode"}
-                        className={"cancelBtn"}
                       >
-                        CANCEL
+                        <CButton
+                          style={{
+                            float: "right",
+                          }}
+                          onClick={cancelbuttonadd}
+                          id={"cancelAbbreviationConfigureCode"}
+                          className={"cancelBtn"}
+                        >
+                          CANCEL
                       </CButton>
-                      <CButton
-                        style={{
-                          float: "right",
-                          marginRight: "15px",
-                        }}
-                        id={"saveAbbreviationConfigureCode"}
-                        className={"saveBtn"}
-                        onClick={saveCorporation}
-                      >
-                        Map Member
+                        <CButton
+                          style={{
+                            float: "right",
+                            marginRight: "15px",
+                          }}
+                          id={"saveAbbreviationConfigureCode"}
+                          className={"saveBtn"}
+                          onClick={saveCorporation}
+                        >
+                          Save
                       </CButton>{" "}
+                      </CCol>
                     </CCol>
-                  </CCol>
+                  </CRow>
                 </div>
               </div>
             )}
@@ -1258,4 +1427,5 @@ const RajyaSabha = () => {
   );
 };
 
-export default RajyaSabha;
+export default ConstituencyMember;
+

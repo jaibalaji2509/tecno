@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
-const PartyWingsOfficeType = () => {
+
+const WingsofficeType = () => {
   const [location, setLocation] = useState({
     state: "",
     district: "",
@@ -34,28 +35,37 @@ const PartyWingsOfficeType = () => {
   const userData = [
     {
       SNo: "1",
-      WingOffice: "HEAD OFFICE",
-      NAMEOFWINGOFFICE: "HEADOFFICEMUMBAI",
-      ReportingTo: "---",
-      address: "State Bank Bhavan",
-      area: "MADAM CAMMA ROAD",
-      city: "MUMBAI",
-      pinccode: "400021",
+      party: "Head Office",
+      abbri: "hoff",
+      code: "HO",
+      to: "---",
+      by: "jai",
+      on: "12/05/2021",
+     
 
+    },
+    {
+      SNo: "2",
+      party: "Branch Office",
+      abbri: "boff",
+      code: "BO",
+      to: "Head Office",
+      by: "jai",
+      on: "31/05/2021",
     },
   ];
   const fields = [
     { key: "SNo", label: "S.NO", _style: { width: "5%" },    sorter: false,
     filter: false, },
   
-    { key: "Street", label: "Type of Party Office", _style: { width: "15%" } },
-    { key: "District", label: "Abbreviation", _style: { width: "10%" } },
-    { key: "Area", label: "Code", _style: { width: "10%" } },
-    { key: "male", label: "Reporting To ", _style: { width: "12%" } },
+    { key: "party", label: "Type of Party Office", _style: { width: "15%" } },
+    { key: "abbri", label: "Abbreviation", _style: { width: "10%" } },
+    { key: "code", label: "Code", _style: { width: "10%" } },
+    { key: "to", label: "Reporting To ", _style: { width: "12%" } },
   
-    { key: "Street", label: "Entered By", _style: { width: "7%" }, },
-    { key: "Street", label: "Entered On", _style: { width: "7%" },  },
-    { key: "Street", label: "Action", _style: { width: "5%" }, },
+    { key: "by", label: "Entered By", _style: { width: "7%" }, },
+    { key: "on", label: "Entered On", _style: { width: "7%" },  },
+    { key: "show_details", label: "Action", _style: { width: "5%" }, },
   ];
   const [passing, ] = useState("");
   const saveCorporation = async () => {
@@ -136,7 +146,7 @@ const PartyWingsOfficeType = () => {
          <div>
          <CCard className={"cardSave"}>
            <div className={"main-headerlabel"}>
-             <span className={"header-label"}> Type of party Wings Office</span>
+             <span className={"header-label"}> Adding Party Wings Office</span>
            </div>
            {locationHide.corporation && (
              <div>
@@ -144,7 +154,7 @@ const PartyWingsOfficeType = () => {
                  <div className={"row-headerlabel"}>
                    <span  style={{marginLeft:"70px"}} className={"header-label"}>
                      {" "}
-                     Adding Party Wing Office{" "}
+                     {" "}
                    </span>
                  </div>
                  <CRow className={"row-alignment"} md="12" sm="12" lg="12">
@@ -250,57 +260,57 @@ const PartyWingsOfficeType = () => {
               </CCol>
             </CRow>
 
-               </div>
-               
-               <CRow>
-                <CCol style={{ fontSize: "1.55rem" }} md="12">
-                  <i
-                    id={"locationLibraryDelete"}
-                    style={{
-                      position: "absolute",
-                      top: "80px",
-                      marginLeft: "955px",
-                      marginBottom: "20px",
-                      color: "#0072ff",
-                    }}
-                    className="fa fa-print"
-                  ></i>
-                </CCol>
-                <CCol style={{ fontSize: "1.55rem" }} md="12">
-                  <i
-                    id={"locationLibraryDelete"}
-                    style={{
-                      position: "absolute",
-                      top: "80px",
-                      marginLeft: "1000px",
-                      marginBottom: "20px",
-                      color: "green",
-                    }}
-                    className="fa fa-share-alt"
-                  ></i>
-                </CCol>
-              </CRow>
-              
+               </div>           <CRow>
+              <CCol style={{ fontSize: "1.55rem" }} md="12">
+                <i
+                  id={"locationLibraryDelete"}
+                  style={{
+                    position: "absolute",
+                    top: "118px",
+                    marginLeft: "940px",
+                    marginBottom: "20px",
+                    color: "#0072ff",
+                    cursor: "pointer",
+                  }}
+                  className="fa fa-print"
+                ></i>
+              </CCol>
+              <CCol style={{ fontSize: "1.55rem" }} md="12">
+                <i
+                  id={"locationLibraryDelete"}
+                  style={{
+                    position: "absolute",
+                    top: "118px",
+                    marginLeft: "980px",
+                    marginBottom: "20px",
+                    color: "green",
+                    cursor: "pointer",
+                  }}
+                  className="fa fa-share-alt"
+                ></i>
+              </CCol>
+            </CRow>
+
             <CRow>
-                  <CCol style={{top:"20px"}}>
-                    <img
-                      id={"employeeDataorgEmployeeData"}
-                      alt={""}
-                      src={
-                        "https://img.icons8.com/fluent/2x/organization-chart-people.png"
-                      }
-                      style={{
-                        height: "40px",
-                        width: "40px",
-                        marginRight: "80px",
-                        float: "right",
-                        cursor: "pointer",
-                        
-                      }}
-                    />
-                  </CCol>
-                </CRow>
-               <CRow style={{ padding: "4%", marginTop: "-1.5%" }}>
+              <CCol style={{ top: "20px" }}>
+                <img
+                  id={"employeeDataorgEmployeeData"}
+                  alt={""}
+                  src={
+                    "https://img.icons8.com/fluent/2x/organization-chart-people.png"
+                  }
+                  style={{
+                    height: "40px",
+                    width: "40px",
+                    marginRight: "238px",
+                    marginTop:"88px",
+                    float: "right",
+                    cursor: "pointer",
+                  }}
+                />
+              </CCol>
+            </CRow>
+               <CRow style={{ padding: "4%", marginTop: "-8.5%" }}>
                  <CDataTable
                    items={userData}
                    fields={fields}
@@ -314,14 +324,33 @@ const PartyWingsOfficeType = () => {
                    pagination
                    scopedSlots={{
                      show_details: (item, index) => {
-                       return (
-                         <td className="py-2">
-                           <CRow>
-                             <CCol style={{ fontSize: "1.15rem" }} md="12">
-                             </CCol>
-                           </CRow>
-                         </td>
-                       );
+                      return (
+                        <td className="py-2">
+                          <CRow>
+  
+                            <CCol style={{ fontSize: "1.15rem" }} md="12">
+                              <i
+                                style={{
+                                  marginRight: "5px",
+                                  color: "#3480e2",
+                                  cursor: "pointer",
+                                }}
+                                id={"memberregisterediticon"}
+                                className="fas fa-edit"
+                              ></i>
+                              <i
+                                id={"memberregisterdelete"}
+                                style={{
+                                  marginLeft: "5px",
+                                  color: "#e85654",
+                                  cursor: "pointer",
+                                }}
+                                className="fa fa-trash"
+                              ></i>
+                            </CCol>
+                          </CRow>
+                        </td>
+                      );
                      },
                      details: (item, index) => {},
                    }}
@@ -1107,4 +1136,4 @@ const PartyWingsOfficeType = () => {
   );
 };
 
-export default PartyWingsOfficeType;
+export default WingsofficeType;

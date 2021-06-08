@@ -7,11 +7,10 @@ import {
   CInput,
   CLabel,
   CRow,
-  CSelect,
 } from "@coreui/react";
-// import CSelect from "react-CSelect";
 import CDataTable from "src/views/CoreComponents/table/DataTable";
 import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
+import Select from "react-select";
 
 const Promote = () => {
   const [files, setFiles] = useState("");
@@ -77,7 +76,7 @@ const Promote = () => {
                   for="exampleCheck1"
                 >
                   Type of Party Office
-                  </CLabel>
+                </CLabel>
               </CCol>
               <CCol style={{ padding: "0px 50px" }} lg={"6"}>
                 <CInput
@@ -95,7 +94,7 @@ const Promote = () => {
                   for="exampleCheck1"
                 >
                   Location
-                  </CLabel>
+                </CLabel>
               </CCol>
             </CRow>
             <CRow>
@@ -106,9 +105,7 @@ const Promote = () => {
                       <CLabel>
                         <b>Type Of Office</b>
                       </CLabel>
-                      <CSelect isDisabled={filterVal !== "TypeOfPartyOffice"} >
-                      <option value="Headoffice">Head Office</option>
-                      </CSelect>
+                      <Select isDisabled={filterVal !== "TypeOfPartyOffice"} />
                     </CCol>
                   </CRow>
                   <CRow style={{ padding: "10px 0px" }}>
@@ -116,10 +113,7 @@ const Promote = () => {
                       <CLabel>
                         <b>Type Of Party / Party Wings Office</b>
                       </CLabel>
-                      <CSelect isDisabled={filterVal !== "TypeOfPartyOffice"}>                                           <option value="Headoffice">Head Office</option>
-                      <option value="Headofficechennai">HEAD OFFICE CHENNAI	</option>
-                      </CSelect>
- 
+                      <Select isDisabled={filterVal !== "TypeOfPartyOffice"} />
                     </CCol>
                   </CRow>
                   <CRow style={{ padding: "10px 0px" }}>
@@ -127,10 +121,7 @@ const Promote = () => {
                       <CLabel>
                         <b>Name of the Office Location</b>
                       </CLabel>
-                      <CSelect isDisabled={filterVal !== "TypeOfPartyOffice"} >                                           <option value="Headoffice">Head Office</option>
-                      <option value="location">Chennai Greams Road	</option>
-                      </CSelect>
- 
+                      <Select isDisabled={filterVal !== "TypeOfPartyOffice"} />
                     </CCol>
                   </CRow>
                 </CContainer>
@@ -142,10 +133,7 @@ const Promote = () => {
                       <CLabel>
                         <b>State</b>
                       </CLabel>
-                      <CSelect isDisabled={filterVal !== "Location"} >                                           <option value="Headoffice">Head Office</option>
-                      <option value="state">TamilNadu	</option>
-                      </CSelect>
- 
+                      <Select isDisabled={filterVal !== "Location"} />
                     </CCol>
                   </CRow>
                   <CRow style={{ padding: "10px 0px" }}>
@@ -153,16 +141,13 @@ const Promote = () => {
                       <CLabel>
                         <b>District / City</b>
                       </CLabel>
-                      <CSelect isDisabled={filterVal !== "Location"}  >                                           <option value="Headoffice">Head Office</option>
-                      <option value="City">Chennai	</option>
-                      </CSelect>
- 
+                      <Select isDisabled={filterVal !== "Location"} />
                     </CCol>
                   </CRow>
                 </CContainer>
               </CCol>
             </CRow>
-            <CRow style={{ padding: "2%" }}>
+                        <CRow style={{ padding: "2%" }}>
               <CDataTable
                 tableLabel={"List of Promoted Members "}
                 items={[]}
@@ -199,7 +184,7 @@ const Promote = () => {
                 ]}
                 columnFilter
                 tableFilter
-                itemsPerPageCSelect
+                itemsPerPageSelect
                 itemsPerPage={5}
                 hover
                 sorter
@@ -249,7 +234,7 @@ const Promote = () => {
                 marginTop: "60px",
               }}
             >
-              CSelect Party Member
+              Select Party Member
                     </CLabel>
           </CCol>
 
@@ -259,9 +244,9 @@ const Promote = () => {
                 <CLabel className="form-check-label">
                   <b>Party Member</b>
                 </CLabel>
-                <CSelect>
+                <Select>
                   <option>HEAD OFFICE, MAHARASTRA, MUMBAI, MADAM CAMMA ROAD, ADMINISTRATION, CHAIRMAN, GENERAL...</option>
-                </CSelect>
+                </Select>
               </CCol>
               <CCol></CCol>
             </CRow>
@@ -338,14 +323,14 @@ const Promote = () => {
                   Type of Vaccancy
                   <span className={"text-danger"}>*</span>
                 </CLabel>
-                <CSelect
+                <Select
                   type={"text"}
                   id={"wingReportingTo"}
-                  className={"CSelect"}
-                  placeholder="CSelect the Type of Vaccancy"
+                  className={"Select"}
+                  placeholder="Select the Type of Vaccancy"
                 >
                   <option>All Roles</option>
-                </CSelect>
+                </Select>
               </CCol>
               <CCol className={"column-align"} md={3}>
                 <CLabel className={"label-name"}>
@@ -353,14 +338,14 @@ const Promote = () => {
                   <span className={"text-danger"}>*</span>
                   <span style={{ color: "green" }}>-</span>
                 </CLabel>
-                <CSelect
+                <Select
                   type={"text"}
                   id={"wingReportingTo"}
-                  className={"CSelect"}
-                  placeholder="CSelect..."
+                  className={"Select"}
+                  placeholder="Select..."
                 >
                    <option>Department</option>
-                </CSelect>
+                </Select>
               </CCol>
               <CCol className={"column-align"} md={3}>
                 <CButton
@@ -380,18 +365,18 @@ const Promote = () => {
             <CRow className={"row-alignment"} md="12" sm="12" lg="12">
               <CCol className={"column-align"} md="3">
                 <CLabel className={"label-name"}>
-                  CSelect by DepartMent
+                  Select by DepartMent
                   <span className={"text-danger"}>*</span>
                 </CLabel>
-                <CSelect
+                <Select
                   type={"text"}
                   isDisabled
                   id={"wingReportingTo"}
-                  className={"CSelect"}
-                  placeholder="CSelect...."
+                  className={"Select"}
+                  placeholder="Select...."
                 >
                    <option>Agriculture</option>
-                </CSelect>
+                </Select>
               </CCol>
               <CCol className={"column-align"} md={3}>
                 <CLabel className={"label-name"}>
@@ -399,14 +384,14 @@ const Promote = () => {
                   <span className={"text-danger"}>*</span>
                   <span style={{ color: "green" }}>-</span>
                 </CLabel>
-                <CSelect
+                <Select
                   type={"text"}
                   id={"wingReportingTo"}
-                  className={"CSelect"}
-                  placeholder="CSelect..."
+                  className={"Select"}
+                  placeholder="Select..."
                 >
                    <option>Head Office</option>
-                </CSelect>
+                </Select>
               </CCol>
             </CRow>
 
@@ -449,7 +434,7 @@ const Promote = () => {
                 ]}
                 columnFilter
                 tableFilter
-                itemsPerPageCSelect
+                itemsPerPageSelect
                 itemsPerPage={5}
                 hover
                 sorter

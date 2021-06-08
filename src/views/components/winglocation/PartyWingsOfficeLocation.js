@@ -7,11 +7,11 @@ import {
   CLabel,
   CButton,
   CInput,
-  
+  CSelect,
   CWidgetDropdown
 } from "@coreui/react";
 import {} from "../../../services/ApiService";
-import Select from "react-select";
+// import CSelect from "react-CSelect";
 
 function PartyWingsOfficeLocation() {
   const [addPartyOffice, setAddPartyOffice] = useState(true);
@@ -26,6 +26,26 @@ function PartyWingsOfficeLocation() {
     setCreatepartyOffice(false);
   };
   const userData = [
+    {
+      SNo: "1",
+      NAMEOFWINGOFFICE: "Chennai Wing Office",
+      WingOffice: "Head Quaters",
+      ReportingTo: "-",
+      address: "Jones Road",
+      area: "Saidapet",
+      by: "Jai",
+      on: "31/05/2021", 
+    },
+    // {
+    //   SNo: "2",
+    //   NAMEOFWINGOFFICE: "Chennai Youth  Association",
+    //   WingOffice: "District Party Office",
+    //   ReportingTo: "Head Quaters",
+    //   address: "Abiramipuram Street",
+    //   area: "Mylapore",
+    //   by: "Jai",
+    //   on: "31/05/2021", 
+    // }
   ];
 
   const fields = [
@@ -52,7 +72,10 @@ function PartyWingsOfficeLocation() {
       label: "Hierarchy Reporting Office",
       _style: { width: "15%" },
     },
-    { key: "address", label: "Address", _style: { width: "10%" } },
+    { key: "address", label: "Address 1", _style: { width: "15%" } },
+    { key: "by", label: "Entered By", _style: { width: "10%" } },
+    { key: "on", label: "Entered On", _style: { width: "10%" } },
+
     {
       label: "Action",
       key: "show_details1",
@@ -182,10 +205,11 @@ function PartyWingsOfficeLocation() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "80px",
-                    marginLeft: "955px",
+                    top: "118px",
+                    marginLeft: "940px",
                     marginBottom: "20px",
                     color: "#0072ff",
+                    cursor: "pointer",
                   }}
                   className="fa fa-print"
                 ></i>
@@ -195,10 +219,11 @@ function PartyWingsOfficeLocation() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "80px",
-                    marginLeft: "988px",
+                    top: "118px",
+                    marginLeft: "980px",
                     marginBottom: "20px",
                     color: "green",
+                    cursor: "pointer",
                   }}
                   className="fa fa-share-alt"
                 ></i>
@@ -217,21 +242,21 @@ function PartyWingsOfficeLocation() {
                     height: "40px",
                     width: "40px",
                     marginRight: "238px",
-                    marginTop:"53px",
+                    marginTop:"88px",
                     float: "right",
                     cursor: "pointer",
                   }}
                 />
               </CCol>
             </CRow>
-            <CRow style={{ padding: "4%", marginTop: "-5.5%" }}>
+            <CRow style={{ padding: "4%", marginTop: "-7.5%" }}>
               <CDataTable
                 items={userData}
                 fields={fields}
                 columnFilter
                 tableFilter
                 tableLabel={"List of party Wings Office Location"}
-                itemsPerPageSelect
+                itemsPerPageCSelect
                 itemsPerPage={5}
                 hover
                 sorter
@@ -311,12 +336,16 @@ function PartyWingsOfficeLocation() {
                   Type of Party Wings Office
                   <span className={"text-danger"}>*</span>
                 </CLabel>
-                <Select
+                <CSelect
                   type={"text"}
                   id={"wingReportingTo"}
-                  className={"select"}
-                  placeholder="Select the Party Office"
-                />
+                  className={"Select"}
+                  style={{marginLeft:"20px"}}
+                  placeholder="CSelect the Party Office"
+                >
+                  <option>District Party Office</option>
+                </CSelect>
+
               </CCol>
               <CCol className={"column-align"} md={5} lg={5}>
                 <CLabel className={"label-name"}>
@@ -324,12 +353,15 @@ function PartyWingsOfficeLocation() {
                   <span className={"text-danger"}>*</span>
                   <span style={{ color: "green" }}>-</span>
                 </CLabel>
-                <Select
+                <CSelect
                   type={"text"}
                   id={"wingReportingTo"}
-                  className={"select"}
-                  placeholder="Select the ReportingTo"
-                />
+                  className={"Select"}
+                  style={{marginLeft:"20px"}}
+                  placeholder="CSelect the ReportingTo"
+                >
+                  <option>Head Quaters</option>
+                </CSelect>
               </CCol>
             </CRow>
 
@@ -345,6 +377,7 @@ function PartyWingsOfficeLocation() {
                   name={"Address1"}
                   id={"WinglocationAddress1"}
                   placeholder="Enter Name of Party Office"
+               
                 />
               </CCol>
             </CRow>
@@ -374,17 +407,34 @@ function PartyWingsOfficeLocation() {
                   Search Location for
                   <span className={"text-danger"}>*</span>
                 </CLabel>
-                <Select
+                <CSelect
                   type={"text"}
                   id={"wingSearchLocation"}
-                  className={"select"}
+                  className={"Select"}
+                  style={{marginLeft:"20px"}}
                   placeholder="Country,State,City,Area"
-                />
+                >
+          <option>TamilNadu Chennai Mylapore-600005</option>
+                </CSelect>
               </CCol>
             </CRow>
 
             <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-             
+            <CCol className={"column-align"} md={5} lg={5}>
+                <CLabel className={"label-name"}>
+                  Pincode
+                  <span className={"text-danger"}>*</span>
+                </CLabel>
+                <CInput
+                  type={"text"}
+                  className={"input-align"}
+                  name={"Pincode "}
+                  id={"WinglocatioPincode"}
+                  placeholder="Enter Pincode "
+                />
+              </CCol>
+
+
               <CCol className={"column-align"} md={5} lg={5}>
                 <CLabel className={"label-name"}>
                   State
@@ -396,9 +446,13 @@ function PartyWingsOfficeLocation() {
                   name={"State"}
                   id={"WinglocationState"}
                   placeholder="Enter State"
+                
                 />
               </CCol>
-              <CCol className={"column-align"} md={5} lg={5}>
+            </CRow>
+
+            <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+            <CCol className={"column-align"} md={5} lg={5}>
                 <CLabel className={"label-name"}>
                   District/City
                   <span className={"text-danger"}>*</span>
@@ -411,9 +465,6 @@ function PartyWingsOfficeLocation() {
                   placeholder="Enter City "
                 />
               </CCol>
-            </CRow>
-
-            <CRow className={"row-alignment"} md="12" sm="12" lg="12">
               
               <CCol className={"column-align"} md={5} lg={5}>
                 <CLabel className={"label-name"}>
@@ -429,21 +480,7 @@ function PartyWingsOfficeLocation() {
                 />
               </CCol>
               
-               <CCol className={"column-align"} md={5} lg={5}>
-                <CLabel className={"label-name"}>
-                  Pincode
-                  <span className={"text-danger"}>*</span>
-                </CLabel>
-                <CInput
-                  type={"text"}
-                  className={"input-align"}
-                  name={"Pincode "}
-                  id={"WinglocatioPincode"}
-                  placeholder="Enter Pincode "
-                />
-              </CCol>
-
-
+              
 
             </CRow>
             <CRow className={"row-alignment"} md="12" sm="12" lg="12">
