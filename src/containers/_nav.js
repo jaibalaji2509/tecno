@@ -115,6 +115,9 @@ const _nav = [
       },
     ],
   },
+
+  
+
   {
     id: "AdminSetupSideBar",
     _tag: "CSidebarNavDropdown",
@@ -122,15 +125,41 @@ const _nav = [
     route: "/partyMember",    
     icon: 'cil-drop',
    
+  
     _children: [
+      {
+        id: "AdminSetupSideBar",
+        _tag: "CSidebarNavDropdown",
+        name: "Map Publc Representative",
+        route: "/rajyasabha1",
+        icon: 'cil-drop',
+        _children: [
+          {
+            _tag: "CSidebarNavItem",
+            name: "Rajya Sabha",
+            to: "/rajyasabha",
+          },
+          {
+            _tag: "CSidebarNavItem",
+            name: "Constituency Member  ",
+            to: "/RoleMenu",
+          },
+          {
+            _tag: "CSidebarNavItem",
+            name: "Member Town",
+            to: "/UserMenu",
+          },
+        ]
+
+      },
       {
         id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
-        name: "Map Public Representative",
-        to: "/MapPublicRepresent",
+        name: "Revoke Party Member",
+        to: "/memberRevoke",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
-      
-      },
+      },  
+     
       {
         id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
@@ -165,7 +194,7 @@ const _nav = [
         name: "Revoke Party Member",
         to: "/memberRevoke",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
-      },  
+      },
     ],
   },
   {

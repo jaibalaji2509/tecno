@@ -43,7 +43,7 @@ const TheSidebar = () => {
         to="/"
         style={{ backgroundColor: "#fff" }}
       >
-        <CLabel style={{fontSize:"18px", fontWeight:"bold",backgroundColor:"#225da2 ", color:"white", position:"absolute"}}>
+        <CLabel style={{fontSize:"18px", fontWeight:"bold",backgroundColor:"#225da2 ", color:"white", position:"fixed"}}>
           POLITICAL-PARTY
         </CLabel>
       </CSidebarBrand>
