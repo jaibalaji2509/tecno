@@ -17,13 +17,13 @@ const Paginations = React.lazy(() => import('./views/base/paginations/Pagnations
 const Popovers = React.lazy(() => import('./views/base/popovers/Popovers'));
 const ProgressBar = React.lazy(() => import('./views/base/progress-bar/ProgressBar'));
 const Switches = React.lazy(() => import('./views/base/switches/Switches'));
-const Promote = React.lazy(() => import('./views/components/promote/Promote'));
+const Promote = React.lazy(() => import('./views/components/promote/promote'));
 const Transfer = React.lazy(() => import('./views/components/transfer/transfer'));
 const Suspend = React.lazy(() => import('./views/components/suspend/suspend'));
 const Revoke = React.lazy(() => import('./views/components/revoke/revoke'));
 const Terminate = React.lazy(() => import('./views/components/terminate/Terminate'));
-const ConstituencyMember = React.lazy(() => import('./views/components/constituency/ConstituencyMember'));
-const Constituency = React.lazy(() => import('./views/components/constituency/Constituency'));
+const ConstituencyMember = React.lazy(() => import('./views/components/Constituency/ConstituencyMember'));
+const Constituency = React.lazy(() => import('./views/components/Constituency/Constituency'));
 
 const Login = React.lazy(() => import('./views/pages/login/Login'));
 const LocationLibrary = React.lazy(() => import('./views/components/location_library/Locationlibrary'));
@@ -59,11 +59,14 @@ const MemberTownPanchayat = React.lazy(() => import('./views/components/memberto
 const Municipality = React.lazy(() => import('./views/components/municipality/Municipality'));
 const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
 const VillagePanchayat = React.lazy(() => import('./views/components/villagepanchayat/VillagePanchayat'));
-const MemberRegistration = React.lazy(() => import('./views/components/memberregistration/MemberRegistration'));
+const MemberRegistration = React.lazy(() => import('./views/components/MemberRegistration/MemberRegistration'));
 const PartyOffice = React.lazy(() => import('./views/components/partyoffice/PartyOffice'));
 const PartyOfficeLocation = React.lazy(() => import('./views/components/partyofficelocation/PartyOfficeLocation'));
 const PartyPosting = React.lazy(() => import('./views/components/partyposting/PartyPosting'));
 const AssignPartyPosting = React.lazy(() => import('./views/components/assignpartyposting/AssignPartyPosting'));
+
+// const AddMemberRegister = React.lazy(() => import('./views/components/MemberRegistration'))
+
 const routes = [
   { path: '/', exact: true, name: 'Home' },
 
@@ -117,15 +120,15 @@ const routes = [
   {path:"/villagepanchayat", exact:true, name : "Village Panchayat", component:VillagePanchayat},
   {path:"/partyoffice", exact:true, name : "Party Office", component:PartyOffice},
   {path:"/Constituency", exact:true, name : "Constituency", component:Constituency},
-  { path: '/AddMemberRegister',  exact: true, name: 'AddMemberRegister', component: AddMemberRegister },
+  // { path: '/AddMemberRegister',  exact: true, name: 'AddMemberRegister', component: AddMemberRegister },
   { path: '/MemberRegistration',  exact: true, name: 'MemberRegistration', component: MemberRegistration },
-  { path: '/OfficeType',  exact: true, name: 'OfficeType', component: OfficeType },
-  { path: '/WingLocation',  exact: true, name: 'WingLocation', component: WingLocation },
+  // { path: '/OfficeType',  exact: true, name: 'OfficeType', component: OfficeType },
+  // { path: '/WingLocation',  exact: true, name: 'WingLocation', component: WingLocation },
   {path:"/TypeOfpartyOffice", exact:true, name : "Type of Party Office", component:PartyOffice},
   {path:"/constituency", exact:true, name : "Constituency", component:Constituency},
   { path: '/WingLocation',  exact: true, name: 'WingLocation', component: PartyWingsOfficeLocation },
   { path: '/memberRegistration',  exact: true, name: 'Member Registration', component: MemberRegistration },
-  { path: '/partywingsoffice',  exact: true, name: 'PartyWingsOfficeType', component: PartyWingsOfficeType },
+  // { path: '/partywingsoffice',  exact: true, name: 'PartyWingsOfficeType', component: PartyWingsOfficeType },
   
 
   

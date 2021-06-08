@@ -14,7 +14,7 @@ import {
 } from "@coreui/react";
 
 import { BrowserRouter as Router } from "react-router-dom";
-import ConstituencyMember from "../constituency/ConstituencyMember";
+import ConstituencyMember from "../Constituency/ConstituencyMember";
 import RajyaSabha from "../rajyasabha/RajyaSabha";
 import MemberTownPanchayat from "../membertownpanchayat/MemberTownPanchayat";
 

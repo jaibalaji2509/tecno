@@ -7,6 +7,10 @@ import {
   CLabel,
   CRow,
   CSelect,
+  CModal,
+  CModalHeader,
+  CModalTitle,
+  CModalBody
 } from "@coreui/react";
 import React, { useState, useEffect } from "react";
 import Toaster from "src/views/notifications/toaster/Toaster";
@@ -14,6 +18,7 @@ import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
 import "./PartyOffice.css";
+import Select from "react-select";
 const PartyOffice = () => {
   const [location, setLocation] = useState({
     state: "",
@@ -38,6 +43,7 @@ const PartyOffice = () => {
   const [MunicipalCreate, setmunicipalCreate] = useState(false);
   const [municipalCorporation, setMunicipalCorporation] = useState({});
   const [municipalName, setMuniicipalName] = useState("");
+  const [hover, setHover] = useState(-1);
   const [width, setWidth] = useState({ w1: 0, w2: 0 });
   const [colors, setColors] = useState([]);
   const [locationHide, setLocationHide] = useState({
