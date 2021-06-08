@@ -68,7 +68,7 @@ const MemberTownPanchayat = () => {
     const [chairtwo, setchairTwo] = useState(true)
     const [vice, setvice] = useState(false)
     const [partypost, setpartypost] = useState(false)
-    const [townc, setTownC] = useState(true)
+    const [townc, setTownC] = useState(false)
     const [townv, setTownV] = useState(false)
     const [townw, setTownW] = useState(false)
 

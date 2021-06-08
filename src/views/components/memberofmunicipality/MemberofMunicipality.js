@@ -70,7 +70,7 @@ const MemberofMunicipality = () => {
     const [gridtwo, setGridTwo] = useState(false)
     const [gridthree, setGridThree] = useState(false)
     const [gridfour, setGridFour] = useState(false)
-    const [townc, setTownC] = useState(true)
+    const [townc, setTownC] = useState(false)
     const [townv, setTownV] = useState(false)
     const [townw, setTownW] = useState(false)
 
