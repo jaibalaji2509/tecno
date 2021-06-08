@@ -17,8 +17,8 @@ import { toast } from "react-toastify";
 import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
 import Select, { components } from "react-select";
 import { Dropdown, Menu } from "antd";
-import "./MemberTownPanchayat.css";
-const MemberTownPanchayat = () => {
+import "./MemberofMunicipality.css";
+const MemberofMunicipality = () => {
     const [location, setLocation] = useState({
         state: "",
         district: "",
@@ -62,12 +62,14 @@ const MemberTownPanchayat = () => {
     });
     const [typeofOfficess, setTypeofOfficess] = useState("");
     const [PI, setPI] = useState("");
-    const [gridone, setGridOne] = useState(true)
-    const [gridtwo, setGridTwo] = useState(false)
     const [chairone, setchairOne] = useState(false)
     const [chairtwo, setchairTwo] = useState(true)
     const [vice, setvice] = useState(false)
     const [partypost, setpartypost] = useState(false)
+    const [gridone, setGridOne] = useState(true)
+    const [gridtwo, setGridTwo] = useState(false)
+    const [gridthree, setGridThree] = useState(false)
+    const [gridfour, setGridFour] = useState(false)
     const [townc, setTownC] = useState(true)
     const [townv, setTownV] = useState(false)
     const [townw, setTownW] = useState(false)
@@ -91,21 +93,31 @@ const MemberTownPanchayat = () => {
       }
 
 
-  const gridshow = () =>{
-    setchairTwo(false)
-    setvice(true)
-    setchairOne(false);
-  }
-  const chairshow = () =>{
-    setchairTwo(true);
-    setchairOne(false)
-    setvice(false)
-  }
-  const partshow = () =>{
-    setchairTwo(false)
-    setvice(false)
-    setchairOne(true);
-  }
+
+    const gridshow = () => {
+      setGridOne(false);
+      setGridTwo(true)
+      setGridThree(false)
+      setGridFour(false)
+    }
+    const chairshow = () => {
+      setGridOne(true);
+      setGridTwo(false)
+      setGridThree(false)
+      setGridFour(false)
+    }
+    const partshow = () => {
+      setGridOne(false);
+      setGridTwo(false)
+      setGridThree(true)
+      setGridFour(false)
+    }
+    const centralgrid = () => {
+      setGridOne(false);
+      setGridTwo(false)
+      setGridThree(false)
+      setGridFour(true)
+    }
     const userData = [
 
     ];
@@ -449,255 +461,302 @@ const noward=[
     const [selected, setSelected] = useState({});
 
     return (
-        <div className={menu.style3}>
-            {sideBar1 && (
-                <div className={menu.style} style={{ minHeight: "1500px", }}>
-                    <CRow className={""}>
-                        <CCol md="12" lg="12" sm="12">
-                            <div>
-                                <span
-                                    style={{
-                                        fontSize: "22px",
-                                        fontWeight: "700",
-                                        marginLeft: "20px",
-                                    }}
-                                >
-                                    History Page{" "}
-                                </span>
-                            </div>
-                        </CCol>
-                    </CRow>
-                    <CRow className={"row-alignment"} style={{ marginLeft: "-61px" }}>
-                        <CCol className={"column-align"} md="4">
-                            <CLabel className={"label-name"}>
-                                Name
-                  <span style={{ fontSize: "14px", fontFamily: "normal" }}>
-                                    {" "}
-                    - M Venkatesh
-                  </span>
-                            </CLabel>
-                        </CCol>
-                        <CCol className={"column-align"} md="4">
-                            <CLabel className={"label-name"}>
-                                Gender
-                  <span style={{ fontSize: "14px", fontFamily: "normal" }}>
-                                    {" "}
-                    - Male
-                  </span>
-                            </CLabel>
-                        </CCol>
-                        <CCol>
-                            <img
-                                type="text"
-                                alt=""
-                                src={files !== "" ? files : DEFAULT_IMAGE}
-                                style={{
-                                    width: "150px",
-                                    height: "200px",
-                                    position: "relative",
-                                    background: "#fff",
-                                    left: "-40%",
-                                    top: "-3%",
-                                }}
-                            />
-                        </CCol>
-                    </CRow>
+<div className={menu.style3}>
+      {sideBar1 && (
+        <div className={menu.style} style={{ minHeight: "800px", }}>
+          <CRow className={""}>
+            <CCol md="12" lg="12" sm="12">
+              <div>
+                <span
+                  style={{
+                    fontSize: "22px",
+                    fontWeight: "700",
+                    marginLeft: "20px",
+                  }}
+                >
+                  Member History{" "}
+                </span>
+              </div>
+            </CCol>
+          </CRow>
 
-                    <CRow className={"row-alignment"} style={{ marginLeft: "-61px" }}>
-                        <CCol
-                            className={"column-align"}
-                            md="4"
-                            style={{ marginTop: "-120px" }}
-                        >
-                            <CLabel className={"label-name"}>
-                                DOB
-                  <span style={{ fontSize: "14px", fontFamily: "normal" }}>
-                                    {" "}
-                    - 20/5/1979
-                  </span>
-                            </CLabel>
-                        </CCol>
-                    </CRow>
-                    <CButton  style={{marginTop:"20px"}} onClick={chairshow} className={"saveBtn"}>Chairman</CButton>
-                    <CButton  className={"saveBtn"} style={{marginTop:"20px",marginLeft:"10px"}} onClick={gridshow}>Vice-Chairman</CButton>
-                    <CButton onClick={partshow} className={"saveBtn"} style={{marginTop:"20px",marginLeft:"10px"}}>Party Posting</CButton>
+          <CRow className={"row-alignment"} style={{ marginLeft: "-61px" }}>
+            <CCol className={"column-align"} md="4">
+              <CLabel className={"label-name"}>
+                Name
+                <span style={{ fontSize: "14px", fontFamily: "normal" }}>
+                  {" "}
+                  - 
+                </span>
+              </CLabel>
+            </CCol>
+            <CCol className={"column-align"} md="4">
+              <CLabel className={"label-name"}>
+                Gender
+                <span style={{ fontSize: "14px", fontFamily: "normal" }}>
+                  {" "}
+                  -
+                </span>
+              </CLabel>
+            </CCol>
+            <CCol>
+              <img
+                type="text"
+                alt=""
+                src={files !== "" ? files : DEFAULT_IMAGE}
+                style={{
+                  width: "150px",
+                  height: "200px",
+                  position: "relative",
+                  background: "#fff",
+                  left: "-40%",
+                  top: "-3%",
+                }}
+              />
 
-{chairtwo && (
-    <div>
-                    <CRow>
-                        <CCol
-                            style={{
-                                marginLeft: "30px",
+            </CCol>
+          </CRow>
 
-                                maxHeight: "290px",
-                                minHeight: "290px",
-                                marginBottom: "-25px",
-                                overflow: "auto",
-                                marginTop:"10px"
-                            }}
-                        >
-                            <CDataTable
-                                tableLabel={"History of Chairman"}
-                                columnFilter
-                                tableFilter
-                                hover
-                                sorter
-                                pagination
-                                scopedSlots={{
-                                    status: (item) => <td></td>,
-                                }}
-                                items={[
-                                  {
-                                    SNo:"1",
-                                    from:"25/5/2020",
-                                    to:"24/5/2025",
-                                    Status:"ACTIVE",
-                                  },
-                                ]}
-                                fields={[
+         
+              <CRow className={"row-alignment"} style={{ marginLeft: "-61px", marginTop: "15px" }}>
+                <CCol
+                  className={"column-align"}
+                  md="4"
+                  style={{ marginTop: "-60px" }}
+                >
+                  <CLabel className={"label-name"}>
+                    DOB
+                <span style={{ fontSize: "14px", fontFamily: "normal" }}>
+                      {" "}
+                  - 
+                </span>
+                  </CLabel>
+                </CCol>
+              </CRow>
+              <CRow style={{ marginTop: "25px" }}>
+            <CCol>
+              <CButton style={{ marginTop: "20px" }} onClick={chairshow} className={"saveBtn"}>Chairman</CButton>
+              <CButton className={"saveBtn"} style={{ marginTop: "20px", marginLeft: "10px" }} onClick={gridshow}>Vice Chairman</CButton>
+              <CButton onClick={partshow} className={"saveBtn"} style={{ marginTop: "20px", marginLeft: "10px" }}>Party Posting</CButton>
+              <CButton onClick={centralgrid} className={"saveBtn"} style={{ marginTop: "20px", marginLeft: "10px" }}>Ward Member</CButton>
+            </CCol></CRow>
 
-                                    {
-                                        key: "SNo",
-                                        label: "S.NO",
-                                        _style: { width: "3%" },
-                                        sorter: false,
-                                        filter: false,
-                                    },
-                                    { key: "from", label: "From Date", _style: { width: "10%" } },
-                                    { key: "to", label: "To Date", _style: { width: "10%" } },
-                                    { key: "Status", label: "Status", _style: { width: "10%" } },
-                                ]}
-
-                            />
-                        </CCol>
-                    </CRow>
-                    </div>
-)}
-        {vice && (
+              { gridone && (
             <div>
-                    <CRow>
-                        <CCol
-                            style={{
-                                marginLeft: "30px",
+              <CRow >
+                <CCol
+                  style={{
+                    marginLeft: "30px",
 
-                                maxHeight: "290px",
-                                minHeight: "290px",
-                                marginBottom: "-25px",
-                                overflow: "auto",
-                                marginTop: "10px"
-                            }}
-                        >
-                            <CDataTable
-                                tableLabel={"History of Vice Chairman"}
-                                columnFilter
-                                tableFilter
-                                hover
-                                sorter
-                                pagination
-                                scopedSlots={{
-                                    status: (item) => <td></td>,
-                                }}
-                                items={[
-                                    {
-                                        SNo:"1",
-                                        from:"17/5/2020",
-                                        to:"17/5/2025",
-                                        Status:"ACTIVE",
-                                      },
-                                ]}
-                                fields={[
+                    maxHeight: "290px",
+                    minHeight: "290px",
+                    marginBottom: "-25px",
+                    overflow: "auto",
+                    marginTop: "50px"
+                  }}
+                >
 
-                                    {
-                                        key: "SNo",
-                                        label: "S.NO",
-                                        _style: { width: "3%" },
-                                        sorter: false,
-                                        filter: false,
-                                    },
-                                    { key: "from", label: "From Date", _style: { width: "10%" } },
-                                    { key: "to", label: "To Date", _style: { width: "10%" } },
-                                    { key: "Status", label: "Status", _style: { width: "10%" } },
-                                ]}
+                  <CDataTable
+                    items={[{
+                      sNo: "1",
+                      from: "15 March 1971",
+                      to: '31 January 1976',
+                      status:"Active",
+                    },
+                   
+                    ]}
+                    fields={[{ key: "sNo", label: "Sl. No", _style: { width: "1%" } },
+                    { key: "from", label: "From Date", _style: { width: "10%" } },
+                    { key: "to", label: "To Date", _style: { width: "10%" } },
+                    { key: "status", label: "Status", _style: { width: "10%" } },
 
-                            />
-                        </CCol>
-                    </CRow>
-                    </div>
-        )}
+                    ]}
+                    columnFilter
+                    tableFilter
+                    tableLabel={"History of Chairman"}
+                    itemsPerPageSelect
+                    itemsPerPage={5}
+                    hover
+                    sorter
+                    pagination
+                  />
+                </CCol>
+              </CRow>
+            </div>
+          )}
+          { gridtwo && (
+            <div>
+              <CRow>
+                <CCol
+                  style={{
+                    marginLeft: "30px",
 
-                    { chairone && (
-    <div>
-                      <CRow>
-                        <CCol
-                            style={{
-                                marginLeft: "30px",
+                    maxHeight: "290px",
+                    minHeight: "290px",
+                    marginBottom: "-25px",
+                    overflow: "auto",
+                    marginTop: "50px"
+                  }}
+                >
+                  <CDataTable
+                    items={[{
+                      sNo: "1",
+                      from: "14 May 2001",
+                      to: "12 May 2006",
+                      status: "Died",
+                    },
+                    ]}
+                    fields={[{ key: "sNo", label: "Sl. No", _style: { width: "1%" } },
+                    { key: "from", label: "From Date", _style: { width: "10%" } },
+                    { key: "to", label: "To Date", _style: { width: "10%" } },
+                    { key: "status", label: "Status", _style: { width: "10%" } },
 
-                                maxHeight: "290px",
-                                minHeight: "290px",
-                                marginBottom: "-25px",
-                                overflow: "auto",
-                                marginTop: "10px",
-                            }}
-                        >
-                            <CDataTable
-                                tableLabel={"History of Party Posting"}
-                                columnFilter
-                                tableFilter
-                                hover
-                                sorter
-                                pagination
-                                scopedSlots={{
-                                    status: (item) => <td></td>,
-                                }}
-                                items={[ {
-                                    SNo:"1",
-                                    name:"DMK",
-                                    type:"Councillor Office",
-                                    department:"Education",
-                                    designation:"Arts",
-                                    role:"Councillor",
-                                    from:"17/02/2019",
-                                    to:"17/02/2020",
-                                    Status:"Active"
-                                  },]}
-                                fields={[
+                    ]}
+                    columnFilter
+                    tableFilter
+                    tableLabel={"History of Vice Chairman"}
+                    itemsPerPageSelect
+                    itemsPerPage={5}
+                    hover
+                    sorter
+                    pagination
+                  />
+                </CCol>
+              </CRow>
+            </div>
+          )}
+          { gridthree && (
+            <div>
+              <CRow>
+                <CCol
+                  style={{
+                    marginLeft: "30px",
 
-                                    {
-                                        key: "SNo",
-                                        label: "S.NO",
-                                        _style: { width: "3%" },
-                                        sorter: false,
-                                        filter: false,
-                                    },
-                                    { key: "name", label: "Name of the Party Office", _style: { width: "10%" } },
-                                    { key: "type", label: "Type of Office", _style: { width: "10%" } },
-                                    { key: "department", label: "Department", _style: { width: "10%" } },
-                                    { key: "designation", label: "Designation", _style: { width: "10%" } },
-                                    { key: "role", label: "Role", _style: { width: "10%" } },
-                                    { key: "from", label: "From Date", _style: { width: "10%" } },
-                                    { key: "to", label: "To Date", _style: { width: "10%" } },
-                                    { key: "Status", label: "Status", _style: { width: "10%" } },
-                                ]}
+                    maxHeight: "290px",
+                    minHeight: "290px",
+                    marginBottom: "-25px",
+                    overflow: "auto",
+                    marginTop: "50px"
+                  }}
+                >
+                  <CDataTable
+                    items={[{
+                      sNo: "1",
+                      typeconstituency: "Minister of Education",
+                      name: "cabinet ministerial portfolios",
+                      from: "16 May 1996",
+                      to: "15 May 2001"
+                    },
 
-                            />
-                        </CCol>
-                    </CRow>
-</div>
-)}
-                    <CButton
-                        className={"menu"}
-                        style={{ position: "absolute", top: "15px", right: "15px" }}
-                        className={"cancelBtn"}
-                        onClick={() => {
-                            handleClick();
-                            handleClick2();
-                        }}
-                    >
-                        Back
-            </CButton>
-                </div>
-            )}
-            {sideBar2 && (
+                    ]}
+                    fields={[{ key: "sNo", label: "Sl. No", _style: { width: "1%" } },
+                    {
+                        key: "Name",
+                        label: "Name of Party / Party Wings Office",
+                        _style: { width: "19%" },
+                      },
+                      {
+                        key: "Type",
+                        label: "Type of Office",
+                        _style: { width: "10%" },
+                      },
+                      {
+                        key: "Department",
+                        label: "Department",
+                        _style: { width: "10%" },
+                      },
+                      {
+                        key: "ciDesignationty",
+                        label: "Designation",
+                        _style: { width: "10%" },
+                      },
+                      { key: "role", label: "Role", _style: { width: "10%" } },
+                      { key: "from", label: "From Date", _style: { width: "10%" } },
+                      { key: "to", label: "To Date", _style: { width: "10%" } },
+                      ]}
+                      columnFilter
+                    tableFilter
+                    tableLabel={"History of Party Posting"}
+                    itemsPerPageSelect
+                    itemsPerPage={5}
+                    hover
+                    sorter
+                    pagination
+                  />
+                </CCol>
+              </CRow>
+            </div>
+          )}
+          { gridfour && (
+            <div>
+
+              <CRow>
+                <CCol
+                  style={{
+                    marginLeft: "30px",
+
+                    maxHeight: "290px",
+                    minHeight: "290px",
+                    marginBottom: "-25px",
+                    overflow: "auto",
+                    marginTop: "50px"
+                  }}
+                >
+                  <CDataTable
+                    items={[{
+                      sNo: "1",
+                      typeconstituency: "Minister of Finance",
+                      name: "cabinet ministerial portfolios",
+                      from: "17 May 2006",
+                      to: " 15 May 2011",
+                    },
+
+                    ]}
+                    fields={[{ key: "sNo", label: "Sl. No", _style: { width: "1%" } },
+                    {
+                      key: "Town",
+                      label: "Town Panchayat",
+                      _style: { width: "19%" },
+                    },
+                    {
+                      key: "ward",
+                      label: "Ward No",
+                      _style: { width: "10%" },
+                    },
+
+                    { key: "from", label: "From Date", _style: { width: "10%" } },
+                    { key: "to", label: "To Date", _style: { width: "5%" } },
+                    { key: "status", label: "Status", _style: { width: "5%" } },
+
+
+                    ]}
+                    columnFilter
+                    tableFilter
+                    tableLabel={"History As a Ward Member"}
+                    itemsPerPageSelect
+                    itemsPerPage={5}
+                    hover
+                    sorter
+                    pagination
+                  />
+                </CCol>
+              </CRow>
+            </div>
+          )}
+          <CButton
+            className={"menu"}
+            style={{ position: "absolute", top: "15px", right: "15px" }}
+            className={"cancelBtn"}
+            onClick={() => {
+              handleClick();
+              handleClick2();
+            }}
+          >
+            Back
+          </CButton>
+        </div>
+      )}
+               {sideBar2 && (
                 <div className={menu.style1}>
                     <CRow className={""}>
                         <CCol md="12" lg="12" sm="12">
@@ -861,7 +920,7 @@ const noward=[
                 <div>
                     <CCard className={"cardSave"}>
                         <div className={"main-headerlabel"}>
-                            <span className={"header-label"}>Member of Town Panchayat</span>
+                            <span className={"header-label"}>Member of Municipality</span>
                         </div>
                         {locationHide.corporation && (
                             <div>
@@ -926,7 +985,7 @@ const noward=[
                                     <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                                         <CCol className={"column-align"} md="4">
                                             <CLabel className={"label-name-1"}>
-                                                Town Panchayat
+                                            Municipality
                           <span className={"text-danger"}>*</span>
                                             </CLabel>
                                             <Select
@@ -945,7 +1004,7 @@ const noward=[
                           <span className={"text-danger"}>*</span>
                                             </CLabel>
                                             <CCol md="12" style={{marginLeft:"-10px"}}>
-                                                <CFormGroup variant="custom-radio" inline>
+                                            <CFormGroup variant="custom-radio" inline>
                                                     <CInputRadio custom id="inline-radio1" onClick={townchair} name="inline-radios" value="option1" />
                                                     <CLabel variant="custom-checkbox" htmlFor="inline-radio1">Chairman</CLabel>
                                                 </CFormGroup>
@@ -961,8 +1020,7 @@ const noward=[
                                         </CCol>
                                     </CRow>
                                 </div>
-
-{ townc && (
+                                { townc && (
     <div>
                                 <CRow
                                     style={{
@@ -976,7 +1034,7 @@ const noward=[
                                         fields={fields}
                                         columnFilter
                                         tableFilter
-                                        tableLabel={"List of Chairman of Town Panchayat"}
+                                        tableLabel={"List of Chairman of Municipality"}
                                         itemsPerPageSelect
                                         itemsPerPage={5}
                                         hover
@@ -1032,10 +1090,10 @@ const noward=[
                                         }}
                                     />
                                 </CRow>
-                                </div>
-)}
-{ townv && (
-    <div>
+</div>
+                                )}
+                                { townv && (
+                                    <div>
                                 <CRow
                                     style={{
                                         padding: "4%",
@@ -1075,7 +1133,7 @@ const noward=[
                                         ]}
                                         columnFilter
                                         tableFilter
-                                        tableLabel={"List of Vice-Chairman of Town Panchayat"}
+                                        tableLabel={"List of Vice-Chairman of Municipality"}
                                         itemsPerPageSelect
                                         itemsPerPage={5}
                                         hover
@@ -1133,9 +1191,9 @@ const noward=[
                                     />
                                 </CRow>
                                 </div>
-)}
-{ townw && (
-    <div>
+                                )}
+                                { townw && (
+                                    <div>
                                 <CRow
                                     style={{
                                         padding: "4%",
@@ -1181,7 +1239,7 @@ const noward=[
                                         ]}
                                         columnFilter
                                         tableFilter
-                                        tableLabel={"List of Ward Member of Town Panchayat"}
+                                        tableLabel={"List of Ward Member of Municipality"}
                                         itemsPerPageSelect
                                         itemsPerPage={5}
                                         hover
@@ -1238,7 +1296,7 @@ const noward=[
                                     />
                                 </CRow>
                                 </div>
-)}
+                                )}
                             </div>
                         )}
                     </CCard>
@@ -1297,7 +1355,7 @@ const noward=[
                                     <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                                         <CCol className={"column-align"} md="4">
                                             <CLabel className={"label-name-1"}>
-                                                Town Panchayat
+                                                Municipality
                           <span className={"text-danger"}>*</span>
                                             </CLabel>
                                             <Select
@@ -1392,7 +1450,7 @@ const noward=[
                                                     style={{ fontSize: "14px", fontFamily: "normal" }}
                                                 >
                                                     {" "}
-                            - M Venkatesh
+                            -
                           </span>
                                             </CLabel>
                                         </CCol>
@@ -1403,7 +1461,7 @@ const noward=[
                                                     style={{ fontSize: "14px", fontFamily: "normal" }}
                                                 >
                                                     {" "}
-                            - Male
+                            - 
                           </span>
                                             </CLabel>
                                         </CCol>
@@ -1434,7 +1492,7 @@ const noward=[
                                                     style={{ fontSize: "14px", fontFamily: "normal" }}
                                                 >
                                                     {" "}
-                            - 42
+                            -
                           </span>
                                             </CLabel>
                                         </CCol>
@@ -1516,13 +1574,7 @@ const noward=[
                                 scopedSlots={{
                                     status: (item) => <td></td>,
                                 }}
-                                items={[{SNo:"1.",
-                            town:"Kundrathur",
-                            ward:"018",
-                            from:"17/02/2020",
-                            to:"17/02/2025",
-                                Status:"Active"
-                        }]}
+                                items={[]}
                                 fields={[
 
                                     {
@@ -1552,4 +1604,4 @@ const noward=[
     );
 };
 
-export default MemberTownPanchayat;
+export default MemberofMunicipality;

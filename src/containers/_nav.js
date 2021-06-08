@@ -223,6 +223,14 @@ const _nav = [
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       
       },
+      {
+        id: "CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: "Member of Municipality ",
+        to: "/MemberofMunicipality",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      
+      },
     ]
   },
 

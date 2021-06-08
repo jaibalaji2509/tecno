@@ -55,6 +55,7 @@ const PartyWingsOfficeLocation = React.lazy(() => import('./views/components/win
 const RajyaSabha = React.lazy(() => import('./views/components/rajyasabha/RajyaSabha'));
 const MapPublicRepresent = React.lazy(() => import('./views/components/mappublicrepresenttative/MapPublicRepresent'));
 const MemberTownPanchayat = React.lazy(() => import('./views/components/membertownpanchayat/MemberTownPanchayat'));
+const MemberofMunicipality = React.lazy(() => import('./views/components/memberofmunicipality/MemberofMunicipality'));
 
 const Municipality = React.lazy(() => import('./views/components/municipality/Municipality'));
 const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
@@ -132,6 +133,7 @@ const routes = [
   { path: '/rajyaSabha',  exact: true, name: 'Rajya Sabha', component: RajyaSabha },
   { path: '/MapPublicRepresent',  exact: true, name: 'Map Public Represent', component: MapPublicRepresent },
   { path: '/MemberTownPanchayat',  exact: true, name: 'Member of Town Panchayat', component: MemberTownPanchayat },
+  { path: '/MemberofMunicipality',  exact: true, name: 'Member of Municipality', component: MemberofMunicipality },
 
 ];
 
