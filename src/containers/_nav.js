@@ -160,6 +160,14 @@ const _nav = [
             icon: <CIcon className={"c-sidebar-nav-icon"} />,
           
           },
+          {
+            id: "CSidebarNavItemSideBar",
+            _tag: "CSidebarNavItem",
+            name: "Member Corporation",
+            to: "/corporation",
+            icon: <CIcon className={"c-sidebar-nav-icon"} />,
+          
+          },
           
         ]
 
