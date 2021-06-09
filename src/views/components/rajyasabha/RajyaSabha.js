@@ -628,15 +628,15 @@ const RajyaSabha = () => {
                   items={[
                     {
                       SNo: "1",
-                      NameofParty: "08/06/2019",
-                      TypeofOffice: "24/06/2025",
-                      Department: "",
-                      designation: "",
-                      Role: "",
-                      FromDate: "",
-                      ToDate: "",
+                      NameofParty: "Youth Wing Association",
+                      TypeofOffice: "District Office",
+                      Department: " Youth Wings",
+                      designation: "Chairman",
+                      Role: "General",
+                      FromDate: "12/08/2010",
+                      ToDate: "25/06/2020",
 
-                      Status: "Active",
+                      Status: "Retired",
                     },
                    ]}
                 />
