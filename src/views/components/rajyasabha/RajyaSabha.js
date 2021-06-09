@@ -9,13 +9,11 @@ import {
   CTextarea,
 } from "@coreui/react";
 import React, { useState } from "react";
-import Toaster from "src/views/notifications/toaster/Toaster";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
 import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
-import Select, { components } from "react-select";
-import { Dropdown, Menu } from "antd";
+import Select  from "react-select";
 import "./RajyaSabha.css";
 const RajyaSabha = () => {
   const [location, setLocation] = useState({
@@ -62,17 +60,7 @@ const RajyaSabha = () => {
   const [typeofOfficess, setTypeofOfficess] = useState("");
   const [PI, setPI] = useState("");
   const userData = [
-    {
-      SNo: "1",
-      Name: "JaiBalaji",
-      Type: "Head Quaters",
-      Department: "Voluntery",
-      Designation: "Secretary",
-      Role: "General",
-      Status: "Assigned",
-      EnteredBy: "01/06/2021",
-      EnteredOn: "06/06/2021",
-    },
+  
   ];
 
   const fields = [
@@ -360,6 +348,10 @@ const RajyaSabha = () => {
     setHideMappingmunicipal(false);
     setHideCorporation(true);
   };
+  const cancelchangeMunicipalCorporation = () => {
+    setHideMappingmunicipal(true);
+    setHideCorporation(false);
+  };
   const handleSave = async (file, folder) => {
     if (file === undefined) {
       let e = "cancelled";
@@ -646,14 +638,7 @@ const RajyaSabha = () => {
 
                       Status: "Retired",
                     },
-                    // {
-                    //   SNo: "2",
-                    //   FromDate: "21/05/2008",
-                    //   ToDate: "21/05/2014",
-
-                    //   Status: "InActive",
-                    // },
-                  ]}
+                   ]}
                 />
               </CCol>
             </CRow>
@@ -871,7 +856,7 @@ const RajyaSabha = () => {
                 <span className={"text-danger"}>*</span>
               </CLabel>
               <Select
-                // className={"input-align"}
+               
                 id={"rajyasabhaState"}
                 name={"state"}
                 placeholder={"Select Status"}
@@ -945,15 +930,7 @@ const RajyaSabha = () => {
             {locationHide.corporation && (
               <div>
                 <div style={{ marginLeft: "-26px" }}>
-                  {/* <div className={"row-headerlabel"}>
-                      <span
-                        style={{ marginLeft: "70px" }}
-                        className={"header-label"}
-                      >
-                        {" "}
-                        Assign Party Posting{" "}
-                      </span>
-                    </div> */}
+                 
                   <CRow style={{ marginTop: "45px" }}>
                     <CCol md="10">
                       <CCol
@@ -985,7 +962,7 @@ const RajyaSabha = () => {
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        // className={"input-align"}
+                        
                         id={"rajyasabhaState"}
                         name={"state"}
                         placeholder={"Select State"}
@@ -1034,7 +1011,7 @@ const RajyaSabha = () => {
                             <CRow>
                               <CCol style={{ fontSize: "1.15rem" }} md="16">
                                 <i
-                                  //  onClick={() => deleteConfirm(item._id)}
+                                  
                                   id={"locationLibraryDelete"}
                                   style={{
                                     marginLeft: "5px",
@@ -1045,7 +1022,7 @@ const RajyaSabha = () => {
                                 ></i>
 
                                 <i
-                                  //  onClick={() => deleteConfirm(item._id)}
+                                  
                                   id={"locationLibraryDelete"}
                                   style={{
                                     marginLeft: "5px",
@@ -1094,16 +1071,7 @@ const RajyaSabha = () => {
             {locationHide.corporation && (
               <div>
                 <div style={{ marginLeft: "-26px" }}>
-                  {/* <div className={"row-headerlabel"}>
-                      <span
-                        style={{ marginLeft: "70px" }}
-                        className={"header-label"}
-                      >
-                        {" "}
-                        Assign Party Posting{" "}
-                      </span>
-                    </div> */}
-
+                  
                   <CRow
                     className={"row-alignment"}
                     md="12"
@@ -1234,10 +1202,12 @@ const RajyaSabha = () => {
                         }}
                         id={"cancelAbbreviationConfigureCode"}
                         className={"cancelBtn"}
+                        onClick={cancelchangeMunicipalCorporation}
                       >
                         CANCEL
                       </CButton>
                       <CButton
+                      
                         style={{
                           float: "right",
                           marginRight: "15px",

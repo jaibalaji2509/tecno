@@ -53,7 +53,6 @@ const Location = React.lazy(() => import('./views/components/location/Location')
 const WingsofficeType = React.lazy(() => import('./views/components/partywingsofficetype/PartyWingOfficeType'));
 const PartyWingsOfficeLocation = React.lazy(() => import('./views/components/winglocation/PartyWingsOfficeLocation'));
 const RajyaSabha = React.lazy(() => import('./views/components/rajyasabha/RajyaSabha'));
-const MapPublicRepresent = React.lazy(() => import('./views/components/mappublicrepresenttative/MapPublicRepresent'));
 const MemberTownPanchayat = React.lazy(() => import('./views/components/membertownpanchayat/MemberTownPanchayat'));
 const MemberofMunicipality = React.lazy(() => import('./views/components/memberofmunicipality/MemberofMunicipality'));
 const Corporation = React.lazy(() => import('./views/components/corporation/Corporation'));
@@ -132,7 +131,6 @@ const routes = [
   { path: '/Constituency',  exact: true, name: 'Constituency', component: Constituency },
   { path: '/rajyaSabha',  exact: true, name: 'Rajya Sabha', component: RajyaSabha },
   { path: '/corporation',  exact: true, name: 'Member Corporation', component: Corporation },
-  { path: '/MapPublicRepresent',  exact: true, name: 'Map Public Represent', component: MapPublicRepresent },
   { path: '/MemberTownPanchayat',  exact: true, name: 'Member of Town Panchayat', component: MemberTownPanchayat },
   { path: '/MemberofMunicipality',  exact: true, name: 'Member of Municipality', component: MemberofMunicipality },
 

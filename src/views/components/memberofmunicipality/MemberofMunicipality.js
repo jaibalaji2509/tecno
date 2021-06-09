@@ -10,13 +10,11 @@ import {
     CFormGroup,
 } from "@coreui/react";
 import React, { useState } from "react";
-import Toaster from "src/views/notifications/toaster/Toaster";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
 import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
-import Select, { components } from "react-select";
-import { Dropdown, Menu } from "antd";
+import Select from "react-select";
 import "./MemberofMunicipality.css";
 const MemberofMunicipality = () => {
     const [location, setLocation] = useState({
@@ -852,7 +850,7 @@ const noward=[
                             </CLabel>
                             <Select
                                 // className={"input-align"}
-                                id={"rajyasabhaState"}
+                                id={"memmunicipalState"}
                                 name={"state"}
                                 placeholder={"Select Status"}
                                 value={locations.district}
@@ -866,7 +864,7 @@ const noward=[
                             </CLabel>
                             <Select
                                 style={{ width: "50px", height: "50px" }}
-                                id={"rajyasabhaStatus"}
+                                id={"memmunicipalStatus"}
                                 name={"Status"}
                                 placeholder={" Select Status "}
                                 value={locations.city}
@@ -958,7 +956,7 @@ const noward=[
                                             </CLabel>
                                             <Select
                                                 // className={"input-align"}
-                                                id={"memtownState"}
+                                                id={"memmunicipalState"}
                                                 name={"state"}
                                                 placeholder={"Select State"}
                                                 // value={locations.district}
@@ -972,7 +970,7 @@ const noward=[
                           <span className={"text-danger"}>*</span>
                                             </CLabel>
                                             <Select
-                                                id={"memtownCity"}
+                                                id={"memmunicipalCity"}
                                                 name={"Status"}
                                                 placeholder={" Select Status "}
                                                 // value={locations.city}
@@ -990,7 +988,7 @@ const noward=[
                                             </CLabel>
                                             <Select
                                                 // className={"input-align"}
-                                                id={"memtowntown"}
+                                                id={"memmunicipaltown"}
                                                 name={"state"}
                                                 placeholder={"Select Town Panchayat"}
                                                 // value={locations.district}
@@ -1048,7 +1046,7 @@ const noward=[
                                                             <CCol style={{ fontSize: "1.15rem" }} md="16">
                                                                 <i
                                                                     //  onClick={() => deleteConfirm(item._id)}
-                                                                    id={"locationLibraryDelete"}
+                                                                    id={"memmunicipalDelete"}
                                                                     style={{
                                                                         marginLeft: "5px",
                                                                         color: "black",
@@ -1059,7 +1057,7 @@ const noward=[
 
                                                                 <i
                                                                     //  onClick={() => deleteConfirm(item._id)}
-                                                                    id={"locationLibraryDelete"}
+                                                                    id={"memmunicipalDelete"}
                                                                     style={{
                                                                         marginLeft: "5px",
                                                                         marginLeft: "10px",
@@ -1077,7 +1075,7 @@ const noward=[
                                                                         cursor: "pointer",
                                                                         position: "absolute",
                                                                     }}
-                                                                    id={"memberregisterediticon"}
+                                                                    id={"memmunicipalediticon"}
                                                                     className="fa fa-history"
                                                                     onClick={handleClick}
                                                                 ></i>
@@ -1147,7 +1145,7 @@ const noward=[
                                                             <CCol style={{ fontSize: "1.15rem" }} md="16">
                                                                 <i
                                                                     //  onClick={() => deleteConfirm(item._id)}
-                                                                    id={"locationLibraryDelete"}
+                                                                    id={"memmunicipalDelete"}
                                                                     style={{
                                                                         marginLeft: "5px",
                                                                         color: "black",
@@ -1158,7 +1156,7 @@ const noward=[
 
                                                                 <i
                                                                     //  onClick={() => deleteConfirm(item._id)}
-                                                                    id={"locationLibraryDelete"}
+                                                                    id={"memmunicipalDelete"}
                                                                     style={{
                                                                         marginLeft: "5px",
                                                                         marginLeft: "10px",
@@ -1177,7 +1175,7 @@ const noward=[
                                                                         cursor: "pointer",
                                                                         position: "absolute",
                                                                     }}
-                                                                    id={"memberregisterediticon"}
+                                                                    id={"memmunicipalediticon"}
                                                                     className="fa fa-history"
                                                                     onClick={handleClick}
                                                                 ></i>
@@ -1253,7 +1251,7 @@ const noward=[
                                                             <CCol style={{ fontSize: "1.15rem" }} md="16">
                                                                 <i
                                                                     //  onClick={() => deleteConfirm(item._id)}
-                                                                    id={"locationLibraryDelete"}
+                                                                    id={"memmunicipalDelete"}
                                                                     style={{
                                                                         marginLeft: "5px",
                                                                         color: "black",
@@ -1264,7 +1262,7 @@ const noward=[
 
                                                                 <i
                                                                     //  onClick={() => deleteConfirm(item._id)}
-                                                                    id={"locationLibraryDelete"}
+                                                                    id={"memmunicipalDelete"}
                                                                     style={{
                                                                         marginLeft: "5px",
                                                                         marginLeft: "10px",
@@ -1282,7 +1280,7 @@ const noward=[
                                                                         cursor: "pointer",
                                                                         position: "absolute",
                                                                     }}
-                                                                    id={"memberregisterediticon"}
+                                                                    id={"memmunicipalediticon"}
                                                                     className="fa fa-history"
                                                                     onClick={handleClick}
                                                                 ></i>
@@ -1331,7 +1329,7 @@ const noward=[
                                             </CLabel>
                                             <Select
                                                 // className={"input-align"}
-                                                id={"memtownState"}
+                                                id={"memmunicipalState"}
                                                 name={"state"}
                                                 placeholder={"Select State"}
                                               options={stateselect}
@@ -1343,7 +1341,7 @@ const noward=[
                           <span className={"text-danger"}>*</span>
                                             </CLabel>
                                             <Select
-                                                id={"memtownCity"}
+                                                id={"memmunicipalCity"}
                                                 name={"Status"}
                                                 placeholder={" Select District / City "}
                                                 // value={locations.city}
@@ -1360,7 +1358,7 @@ const noward=[
                                             </CLabel>
                                             <Select
                                                 // className={"input-align"}
-                                                id={"memtowntown"}
+                                                id={"memmunicipaltown"}
                                                 name={"state"}
                                                 placeholder={"Select Town Panchayat"}
                                                 // value={locations.district}
@@ -1397,7 +1395,7 @@ const noward=[
                                             </CLabel>
                                             <Select
                                                 // className={"input-align"}
-                                                id={"memtownward"}
+                                                id={"memmunicipalward"}
                                                 name={"state"}
                                                 placeholder={"Select Ward No"}
                                                 options={noward}
@@ -1418,7 +1416,7 @@ const noward=[
                                             </CLabel>
                                             <Select
                                                 // className={"input-align"}
-                                                id={"municipalstatename"}
+                                                id={"memmunicipalstatename"}
                                                 // name={"municipalTypeofOffice"}
                                                 placeholder={"Select Party member"}
                                                 value={typeofOfficess}
@@ -1509,13 +1507,13 @@ const noward=[
                                             <CLabel className={"label-name-1"}>
                                                From Date {" "}
                                             </CLabel>
-                                            <CInput type="date" id={"rajyasabhadatefrom"} />
+                                            <CInput type="date" id={"memmunicipaldatefrom"} />
                                         </CCol>
                                         <CCol className={"column-align"} md="4">
                                             <CLabel className={"label-name-1"}>
                                                To Date{" "}
                                             </CLabel>
-                                            <CInput type="date" id={"rajyasabhadatefrom"} />
+                                            <CInput type="date" id={"memmunicipaldatefrom"} />
                                         </CCol>
                                     </CRow>
                                    

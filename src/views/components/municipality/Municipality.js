@@ -55,15 +55,12 @@ const Municipality = () => {
     },
     { key: "SNo", label: "S.NO", _style: { width: "5%" },    sorter: false,
     filter: false, },
-    // { key: "State", label: "State", _style: { width: "10%" } },
-    // { key: "District", label: "District", _style: { width: "10%" } },
-    // { key: "Area", label: "Ward", _style: { width: "10%" } },
+   
     { key: "Street", label: "Street Name", _style: { width: "10%" } },
     { key: "Street", label: "Ward Name", _style: { width: "10%" } },
     { key: "Street", label: "Entered By", _style: { width: "10%" } },
     { key: "Street", label: "Entered On", _style: { width: "10%" } },
-    // { key: "male", label: "Male", _style: { width: "10%" } },
-    // { key: "female", label: "Female", _style: { width: "10%" } },
+   
     { key: "show_details1", label: "Action", _style: { width: "10%" },    sorter: false,
     filter: false, },
   ];
