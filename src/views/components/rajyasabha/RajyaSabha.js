@@ -348,6 +348,10 @@ const RajyaSabha = () => {
     setHideMappingmunicipal(false);
     setHideCorporation(true);
   };
+  const cancelchangeMunicipalCorporation = () => {
+    setHideMappingmunicipal(true);
+    setHideCorporation(false);
+  };
   const handleSave = async (file, folder) => {
     if (file === undefined) {
       let e = "cancelled";
@@ -1196,10 +1200,12 @@ const RajyaSabha = () => {
                         }}
                         id={"cancelAbbreviationConfigureCode"}
                         className={"cancelBtn"}
+                        onClick={cancelchangeMunicipalCorporation}
                       >
                         CANCEL
                       </CButton>
                       <CButton
+                      
                         style={{
                           float: "right",
                           marginRight: "15px",
