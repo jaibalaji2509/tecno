@@ -355,6 +355,10 @@ const PartyPosting = () => {
     setHideMappingmunicipal(false);
     setHideCorporation(true);
   };
+  const cancelchange = () => {
+    setHideMappingmunicipal(true);
+    setHideCorporation(false);
+  };
   const [typeofOfficess, setTypeofOfficess] =useState("")
   return (
     <div>
@@ -367,15 +371,6 @@ const PartyPosting = () => {
             {locationHide.corporation && (
               <div>
                 <div style={{ marginLeft: "-26px" }}>
-                  {/* <div className={"row-headerlabel"}>
-                    <span
-                      style={{ marginLeft: "70px" }}
-                      className={"header-label"}
-                    >
-                      {" "}
-                      Party Posting{" "}
-                    </span>
-                  </div> */}
                   <CRow style={{ marginTop: "45px" }}>
                     <CCol md="10">
                       <CCol
@@ -470,7 +465,7 @@ const PartyPosting = () => {
                               <CCol style={{ fontSize: "1.15rem" }} md="12">
                                 <i
                                   onClick={() => {
-                                    //   toggleDetails(index);
+                                  
                                   }}
                                 ></i>
                                 <i
@@ -480,11 +475,11 @@ const PartyPosting = () => {
                                      cursor: "pointer",
                                    }}
                                    id={"locationLibraryEdit"}
-                                //    onClick={() => EditCountry(item)}
+                               
                                    className="fas fa-edit"
                                  ></i>
                                  <i
-                                //    onClick={() => deleteConfirm(item._id)}
+                               
                                    id={"locationLibraryDelete"}
                                    style={{
                                      marginLeft: "5px",
@@ -517,15 +512,7 @@ const PartyPosting = () => {
             {locationHide.corporation && (
               <div>
                 <div style={{ marginLeft: "-26px" }}>
-                  {/* <div className={"row-headerlabel"}>
-                    <span
-                      style={{ marginLeft: "70px" }}
-                      className={"header-label"}
-                    >
-                      {" "}
-                      Adding Party Posting{" "}
-                    </span>
-                  </div> */}
+                  
 
                   <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                     <CCol className={"column-align"} md="4">
@@ -534,9 +521,9 @@ const PartyPosting = () => {
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        // className={"input-align"}
+                        
                         id={"municipalstatename"}
-                        // name={"municipalTypeofOffice"}
+                        
                         placeholder={"Select Type of Office"}
                         value={typeofOfficess}
                         onChange={(e)=>setTypeofOfficess(e)}
@@ -551,8 +538,7 @@ const PartyPosting = () => {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <Select
-                        // className={"input-align"}
-                        // id={"municipalstatename"}
+                        
                          name={"municipalDepartment"}
                         placeholder={"Select Department"}
                         value={locations.district}
@@ -567,12 +553,12 @@ const PartyPosting = () => {
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
                           onClick={addDepartment}
-                          // disabled={CountryCreate || CityCreate || AreaCreate}
+                          
                         >
                           ADD
                         </CButton>
                       </CCol>
-                      {/* {countryName.edit && <React.Fragment></React.Fragment>} */}
+                     
 
                       {municipalName.edit === true ? (
                         <React.Fragment>
@@ -584,9 +570,7 @@ const PartyPosting = () => {
                               id={"locationLibraryStateEdit"}
                               className={"btn btn-success"}
                               onClick={editState}
-                              // disabled={
-                              //   CountryCreate || CityCreate || AreaCreate
-                              // }
+                            
                             >
                               EDIT
                             </CButton>
@@ -607,13 +591,10 @@ const PartyPosting = () => {
                         </CLabel>
 
                         <CInput
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Symbols(e)
-                          // }
+                          
                           id={"MunicipalName"}
                           name={"municipalname"}
-                          // value={states.statename}
-                          // onChange={statechangeHandler}
+                          
                           placeholder=" Department Name"
                           maxlength="60"
                           size="60"
@@ -627,15 +608,10 @@ const PartyPosting = () => {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                          //     e
-                          //   )
-                          // }
+                         
                           id={"municipalabrreviation"}
                           name={"abbreviation"}
-                          // value={states.abbreviation}
-                          // onChange={statechangeHandler}
+                         
                           placeholder="Enter Abbreviation"
                           maxlength="5"
                           size="5"
@@ -649,14 +625,9 @@ const PartyPosting = () => {
                         </CLabel>
                         <CInput
                           id={"municipalcode"}
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                          //     e
-                          //   )
-                          // }
+                         
                           name={"code"}
-                          // value={states.code}
-                          // onChange={statechangeHandler}
+                          
                           style={{ textTransform: "uppercase" }}
                           placeholder="Enter Code"
                           maxlength="5"
@@ -670,7 +641,7 @@ const PartyPosting = () => {
                           id={"municipalsave"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
-                          // onClick={State}
+                         
                         >
                           {passing !== "" ? "UPDATE" : "SAVE"}
                         </CButton>
@@ -698,7 +669,7 @@ const PartyPosting = () => {
                       </CLabel>
                       <Select
                      
-                        // className={"input-align"}
+                       
                         id={"municipalarea"}
                         name={"partyPostingTypeofWings"}
                         placeholder={" Select Office Location"}
@@ -715,14 +686,14 @@ const PartyPosting = () => {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <Select
-                        //   className={"input-align"}
+                     
                           placeholder="Select Designation "
                           id={"partypostingDesignation"}
                           type={"text"}
                           value={locations.city}
                           onChange={(e)=>setLocations(e)}
                           options={selectDesignation}
-                          // isDisabled={CountryCreate || CityCreate || AreaCreate}
+                         
                         />
                       </CCol>
                       <CCol className={"column-align"} md={1} lg={1}>
@@ -732,12 +703,12 @@ const PartyPosting = () => {
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
                           onClick={addDesignation}
-                          // disabled={CountryCreate || CityCreate || AreaCreate}
+                         
                         >
                           ADD
                         </CButton>
                       </CCol>
-                      {/* {countryName.edit && <React.Fragment></React.Fragment>} */}
+                    
 
                       {municipalName.edit === true ? (
                         <React.Fragment>
@@ -749,9 +720,7 @@ const PartyPosting = () => {
                               id={"locationLibraryStateEdit"}
                               className={"btn btn-success"}
                               onClick={editState}
-                              // disabled={
-                              //   CountryCreate || CityCreate || AreaCreate
-                              // }
+                            
                             >
                               EDIT
                             </CButton>
@@ -772,13 +741,10 @@ const PartyPosting = () => {
                         </CLabel>
 
                         <CInput
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Symbols(e)
-                          // }
+                         
                           id={"MunicipalName"}
                           name={"municipalname"}
-                          // value={states.statename}
-                          // onChange={statechangeHandler}
+                         
                           placeholder=" Department Name"
                           maxlength="60"
                           size="60"
@@ -792,15 +758,10 @@ const PartyPosting = () => {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                          //     e
-                          //   )
-                          // }
+                         
                           id={"municipalabrreviation"}
                           name={"abbreviation"}
-                          // value={states.abbreviation}
-                          // onChange={statechangeHandler}
+                         
                           placeholder="Enter Abbreviation"
                           maxlength="5"
                           size="5"
@@ -814,14 +775,9 @@ const PartyPosting = () => {
                         </CLabel>
                         <CInput
                           id={"municipalcode"}
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                          //     e
-                          //   )
-                          // }
+                         
                           name={"code"}
-                          // value={states.code}
-                          // onChange={statechangeHandler}
+                         
                           style={{ textTransform: "uppercase" }}
                           placeholder="Enter Code"
                           maxlength="5"
@@ -835,7 +791,7 @@ const PartyPosting = () => {
                           id={"municipalsave"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
-                          // onClick={State}
+                         
                         >
                           {passing !== "" ? "UPDATE" : "SAVE"}
                         </CButton>
@@ -861,7 +817,7 @@ const PartyPosting = () => {
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        // className={"input-align"}
+                        
                         id={"municipalstatename"}
                         name={"partyPostingOfficeLocation"}
                         placeholder={"Select Office Location"}
@@ -878,7 +834,7 @@ const PartyPosting = () => {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <Select
-                        // className={"input-align"}
+                       
                           placeholder="Select Role Name"
                           id={"municipalcorporation"}
                           name={"partyPostingrole   "}
@@ -895,12 +851,12 @@ const PartyPosting = () => {
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
                           onClick={addRole}
-                          // disabled={CountryCreate || CityCreate || AreaCreate}
+                         
                         >
                           ADD
                         </CButton>
                       </CCol>
-                      {/* {countryName.edit && <React.Fragment></React.Fragment>} */}
+                     
 
                       {municipalName.edit === true ? (
                         <React.Fragment>
@@ -912,9 +868,7 @@ const PartyPosting = () => {
                               id={"locationLibraryStateEdit"}
                               className={"btn btn-success"}
                               onClick={editState}
-                              // disabled={
-                              //   CountryCreate || CityCreate || AreaCreate
-                              // }
+                             
                             >
                               EDIT
                             </CButton>
@@ -935,13 +889,10 @@ const PartyPosting = () => {
                         </CLabel>
 
                         <CInput
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Symbols(e)
-                          // }
+                          
                           id={"MunicipalName"}
                           name={"municipalname"}
-                          // value={states.statename}
-                          // onChange={statechangeHandler}
+                          
                           placeholder="Role Name"
                           maxlength="60"
                           size="60"
@@ -955,15 +906,10 @@ const PartyPosting = () => {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                          //     e
-                          //   )
-                          // }
+                          
                           id={"municipalabrreviation"}
                           name={"abbreviation"}
-                          // value={states.abbreviation}
-                          // onChange={statechangeHandler}
+                         
                           placeholder="Enter Abbreviation"
                           maxlength="5"
                           size="5"
@@ -977,14 +923,9 @@ const PartyPosting = () => {
                         </CLabel>
                         <CInput
                           id={"municipalcode"}
-                          // onKeyPress={(e) =>
-                          //   FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                          //     e
-                          //   )
-                          // }
+                         
                           name={"code"}
-                          // value={states.code}
-                          // onChange={statechangeHandler}
+                          
                           style={{ textTransform: "uppercase" }}
                           placeholder="Enter Code"
                           maxlength="5"
@@ -998,7 +939,7 @@ const PartyPosting = () => {
                           id={"municipalsave"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
-                          // onClick={State}
+                          
                         >
                           {passing !== "" ? "UPDATE" : "SAVE"}
                         </CButton>
@@ -1039,6 +980,7 @@ const PartyPosting = () => {
                         }}
                         id={"cancelAbbreviationConfigureCode"}
                         className={"cancelBtn"}
+                        onClick={cancelchange}
                       >
                         CANCEL
                       </CButton>
@@ -1131,21 +1073,11 @@ const PartyPosting = () => {
                               <CCol style={{ fontSize: "1.15rem" }} md="12">
                                 <i
                                   onClick={() => {
-                                    //   toggleDetails(index);
+                                   
                                   }}
                                 ></i>
-                                {/* <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "#3480e2",
-                                  cursor: "pointer",
-                                }}
-                                id={"locationLibraryEdit"}
-                                onClick={() => EditCountry(item)}
-                                className="fas fa-edit"
-                              ></i> */}
+                               
                               <i
-                                // onClick={() => deleteConfirm(item._id)}
                                 id={"locationLibraryDelete"}
                                 style={{
                                   marginLeft: "5px",
@@ -1238,7 +1170,6 @@ const PartyPosting = () => {
                             <CRow>
                               <CCol style={{ fontSize: "1.15rem" }} md="12">
                               <i
-                                // onClick={() => deleteConfirm(item._id)}
                                 id={"locationLibraryDelete"}
                                 style={{
                                   marginLeft: "5px",
