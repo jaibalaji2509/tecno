@@ -184,68 +184,7 @@ function LocationLibrary(props) {
     await setAreaCreate(false);
   };
 
-  const Country = async () => {
-    if (passing === "") {
-      var response;
-      let body = {
-        countryname: countrys.countryname,
-        abbreviation: countrys.abbreviation,
-        code: countrys.code,
-      };
-
-      try {
-        response = await createCountry(JSON.stringify(body));
-        if (response.success === true) {
-          setPassing("");
-          toast.success(response.message, { autoClose: 1000 });
-          setTimeout(() => {
-            setCountryCreate(false);
-            setCountryList(true);
-          }, 1300);
-          response.Country = {
-            ...response.Country,
-            value: response.Country._id,
-            label: response.Country.countryName,
-          };
-
-          setCountry([...countrySchema, response.Country]);
-          formik.values = {};
-          formik.handleReset({});
-          return 0;
-        }
-        toast.error(response.error);
-      } catch (e) {
-        console.log(e);
-      }
-    } else {
-      var responce;
-      try {
-        responce = await updateCountry(
-          formik.values.CountryName,
-          formik.values.Abbreviation1,
-          formik.values.Code1,
-          passing
-        );
-        if (responce.success) {
-          setPassing("");
-          toast.success(responce.message, { autoClose: 1000 });
-          setTimeout(() => {
-            setCountryCreate(false);
-            setCountryList(true);
-          }, 1300);
-          setCountryName("");
-          setStateName("");
-          setCityName("");
-          setAreaName("");
-          setState([]);
-          setCity([]);
-          setArea([]);
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    }
-  };
+ 
 
   const State = async () => {
     if (passing === "") {
