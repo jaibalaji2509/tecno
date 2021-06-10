@@ -355,6 +355,10 @@ const PartyPosting = () => {
     setHideMappingmunicipal(false);
     setHideCorporation(true);
   };
+  const cancelchange = () => {
+    setHideMappingmunicipal(true);
+    setHideCorporation(false);
+  };
   const [typeofOfficess, setTypeofOfficess] =useState("")
   return (
     <div>
@@ -1039,6 +1043,7 @@ const PartyPosting = () => {
                         }}
                         id={"cancelAbbreviationConfigureCode"}
                         className={"cancelBtn"}
+                        onClick={cancelchange}
                       >
                         CANCEL
                       </CButton>

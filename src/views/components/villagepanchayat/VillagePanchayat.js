@@ -5,9 +5,10 @@ import {
   CInput,
   CLabel,
   CRow,
-  CSelect,
+  
 } from "@coreui/react";
 import React, { useState } from "react";
+import Select  from "react-select";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
@@ -59,15 +60,12 @@ const VillagePanchayat = () => {
       filter: false,
     },
     { key: "SNo", label: "S.NO", _style: { width: "10%" } },
-    // { key: "State", label: "State", _style: { width: "10%" } },
-    // { key: "District", label: "District", _style: { width: "10%" } },
-    // { key: "Area", label: "Ward", _style: { width: "10%" } },
+   
     { key: "Street", label: "Street Name", _style: { width: "10%" } },
     { key: "Street", label: "Ward Name", _style: { width: "10%" } },
     { key: "Streets", label: "Entered By", _style: { width: "10%" } },
     { key: "Streets", label: "Entered On", _style: { width: "10%" } },
-    // { key: "male", label: "Male", _style: { width: "10%" } },
-    // { key: "female", label: "Female", _style: { width: "10%" } },
+    
     { key: "Action", label: "Action", _style: { width: "10%" } },
   ];
   const [passing, setPassing] = useState("");
@@ -154,6 +152,10 @@ const VillagePanchayat = () => {
     setHideMappingVillage(false);
     setHideVillagePanchayat(true);
   };
+  const cancelchange = () => {
+    setHideMappingVillage(true);
+    setHideVillagePanchayat(false);
+  };
   return (
     <div>
       {hideMappingVillage && (
@@ -206,7 +208,7 @@ const VillagePanchayat = () => {
                         State
                         <span className={"text-danger"}>*</span>
                       </CLabel>
-                      <CSelect
+                      <Select
                         className={"input-align"}
                         id={"municipalstatename"}
                         name={"state"}
@@ -220,7 +222,7 @@ const VillagePanchayat = () => {
                         District / City
                         <span className={"text-danger"}>*</span>
                       </CLabel>
-                      <CSelect
+                      <Select
                         className={"input-align"}
                         id={"municipaldistrict"}
                         name={"city"}
@@ -234,7 +236,7 @@ const VillagePanchayat = () => {
                       Village panchayat
                         <span className={"text-danger"}>*</span>
                       </CLabel>
-                -      <CSelect
+                -      <Select
                         className={"input-align"}
                         id={"municipaldistrict"}
                         name={"city"}
@@ -251,7 +253,7 @@ const VillagePanchayat = () => {
                    Area
                         <span className={"text-danger"}>*</span>
                       </CLabel>
-                -      <CSelect
+                -      <Select
                         className={"input-align"}
                         id={"municipaldistrict"}
                         name={"Area"}
@@ -265,7 +267,7 @@ const VillagePanchayat = () => {
                         Ward
                         <span className={"text-danger"}>*</span>
                       </CLabel>
-                      <CSelect
+                      <Select
                         className={"input-align"}
                         id={"municipalstatename"}
                         name={"Ward"}
@@ -337,7 +339,7 @@ const VillagePanchayat = () => {
                         District Panchayat
                         <span className={"text-danger"}> *</span>
                       </CLabel>
-                      <CSelect
+                      <Select
                         placeholder="Select District Panchayat"
                         id={"municipalcorporation"}
                         type={"text"}
@@ -451,7 +453,7 @@ const VillagePanchayat = () => {
                         Panchayat Union
                         <span className={"text-danger"}> *</span>
                       </CLabel>
-                      <CSelect
+                      <Select
                         placeholder="Select Municipal Corporation"
                         id={"municipalcorporation"}
                         type={"text"}
@@ -565,7 +567,7 @@ const VillagePanchayat = () => {
                         Village Panchayat
                         <span className={"text-danger"}> *</span>
                       </CLabel>
-                      <CSelect
+                      <Select
                         placeholder="Select Municipal Corporation"
                         id={"municipalcorporation"}
                         type={"text"}
@@ -679,7 +681,7 @@ const VillagePanchayat = () => {
                         Ward Number
                         <span className={"text-danger"}> *</span>
                       </CLabel>
-                      <CSelect
+                      <Select
                         placeholder="Select the State Name"
                         id={"municipalcorporation"}
                         type={"text"}
@@ -802,7 +804,7 @@ const VillagePanchayat = () => {
                     State
                     <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CSelect
+                  <Select
                     className={"input-align"}
                     id={"municipalstatename"}
                     name={"state"}
@@ -816,7 +818,7 @@ const VillagePanchayat = () => {
                     District / City
                     <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CSelect
+                  <Select
                     className={"input-align"}
                     id={"municipaldistrict"}
                     name={"city"}
@@ -832,7 +834,7 @@ const VillagePanchayat = () => {
                     Area
                     <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CSelect
+                  <Select
                     className={"input-align"}
                     id={"municipalarea"}
                     name={"area"}
@@ -860,6 +862,7 @@ const VillagePanchayat = () => {
                     }}
                     id={"cancelAbbreviationConfigureCode"}
                     className={"cancelBtn"}
+                    onClick={cancelchange}
                   >
                     CANCEL
                   </CButton>
