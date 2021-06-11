@@ -668,10 +668,10 @@ const RajyaSabha = () => {
                   items={[
                     {
                       SNo: "1",
-                      NameofRepresentativePosting: "08/06/2019",
-                      FromDate: "24/06/2025",
-                      ToDate: "Active",
-                      Status: "",
+                      NameofRepresentativePosting: "LokSabha",
+                      FromDate: "24/06/2005",
+                      ToDate: "11/04/2010",
+                      Status: "InActive",
                     },
                   ]}
                 />
@@ -703,9 +703,10 @@ const RajyaSabha = () => {
                   items={[
                     {
                       SNo: "1",
-                      NameofMinistry: "08/06/2019",
-                      FromDate: "24/06/2025",
-                      ToDate: "",
+                      NameofMinistry: "State Minister",
+                      FromDate: "20/06/2010",
+                      ToDate: "22/05/2015",
+                      Status:"InActiive"
                     },
                   ]}
                 />
@@ -737,9 +738,10 @@ const RajyaSabha = () => {
                   items={[
                     {
                       SNo: "1",
-                      NameofMinistry: "08/06/2019",
-                      FromDate: "24/06/2025",
-                      ToDate: "",
+                      NameofMinistry: "Central Minister",
+                      FromDate: "28/02/20",
+                      ToDate: "30/02/2025",
+                      Status:"Active"
                     },
                   ]}
                 />

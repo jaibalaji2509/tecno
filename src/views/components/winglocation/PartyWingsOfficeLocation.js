@@ -107,7 +107,7 @@ function PartyWingsOfficeLocation() {
                   <CButton
                     style={{
                       float: "right",
-                      marginRight: "764px",
+                      marginRight: "734px",
                     }}
                     id={"saveAbbreviationConfigureCode"}
                     className={"saveBtn"}

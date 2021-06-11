@@ -150,12 +150,7 @@ const Municipality = () => {
            {locationHide.corporation && (
              <div>
                <div style={{ marginLeft: "-26px" }}>
-                 <div className={"row-headerlabel"}>
-                   <span  style={{marginLeft:"70px"}} className={"header-label"}>
-                     {" "}
-                     Municipality{" "}
-                   </span>
-                 </div>
+                
                  <CRow style={{marginTop:"45px"}}>
                  <CCol md="10">
                    <CCol
@@ -170,7 +165,7 @@ const Municipality = () => {
                      <CButton
                        style={{
                          float: "right",
-                         marginRight: "865px",
+                         marginRight: "855px",
                        }}
                        id={"saveAbbreviationConfigureCode"}
                        className={"saveBtn"}
@@ -323,7 +318,7 @@ const Municipality = () => {
                         <span className={"text-danger"}> *</span>
                       </CLabel>
                       <Select
-                        placeholder="Select Municipal Corporation"
+                        placeholder="Select Municipality"
                         id={"municipalcorporation"}
                         type={"text"}
                         value={municipalCorporation}
@@ -361,9 +356,9 @@ const Municipality = () => {
                 )}
                 {MunicipalCreate && (
                   <React.Fragment>
-                    <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                    <CRow className={"row-alignment"} style={{marginLeft:"45px", marginTop:"20px"}} sm={12} md={12} lg={12}>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Municipality Name
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -378,7 +373,7 @@ const Municipality = () => {
                       </CCol>
 
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Abbreviation
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -391,7 +386,7 @@ const Municipality = () => {
                         />
                       </CCol>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Code
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -437,7 +432,7 @@ const Municipality = () => {
                         <span className={"text-danger"}> *</span>
                       </CLabel>
                       <Select
-                        placeholder="Select the State Name"
+                        placeholder="Select Ward Number"
                         id={"municipalcorporation"}
                         type={"text"}
                       />
@@ -474,9 +469,9 @@ const Municipality = () => {
                 )}
                 {MunicipalCreateadd && (
                   <React.Fragment>
-                    <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                    <CRow className={"row-alignment"} style={{marginLeft:"45px", marginTop:"20px"}} sm={12} md={12} lg={12}>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Ward Number
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -491,7 +486,7 @@ const Municipality = () => {
                       </CCol>
 
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Abbreviation
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -504,7 +499,7 @@ const Municipality = () => {
                         />
                       </CCol>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Code
                           <span className={"text-danger"}> *</span>
                         </CLabel>

@@ -169,15 +169,7 @@ const VillagePanchayat = () => {
             {locationHide.corporation && (
               <div>
                 <div style={{ marginLeft: "-26px" }}>
-                  <div className={"row-headerlabel"}>
-                    <span
-                      style={{ marginLeft: "70px" }}
-                      className={"header-label"}
-                    >
-                      {" "}
-                      Village panchayat{" "}
-                    </span>
-                  </div>
+                  
                   <CRow style={{ marginTop: "45px" }}>
                     <CCol md="10">
                       <CCol
@@ -191,7 +183,7 @@ const VillagePanchayat = () => {
                         <CButton
                           style={{
                             float: "right",
-                            marginRight: "830px",
+                            marginRight: "810px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
@@ -320,17 +312,12 @@ const VillagePanchayat = () => {
     <div>
   <CCard className={"cardSave"}>
         <div className={"main-headerlabel"}>
-          <span className={"header-label"}> Village Panchayat</span>
+          <span className={"header-label"}>Adding Village Panchayat</span>
         </div>
         {locationHide.corporation && (
           <div>
             <div style={{ marginLeft: "-26px" }}>
-              <div className={"row-headerlabel"}>
-                <span style={{ marginLeft: "70px" }} className={"header-label"}>
-                  {" "}
-                  Adding Village Panchayat{" "}
-                </span>
-              </div>
+              
               <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
                 {municipalList && (
                   <React.Fragment>
@@ -378,9 +365,9 @@ const VillagePanchayat = () => {
                 )}
                 {MunicipalCreate && (
                   <React.Fragment>
-                    <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                    <CRow  className={"row-alignment"} style={{marginLeft:"45px", marginTop:"20px"}} sm={12} md={12} lg={12}>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           District panchayat
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -395,7 +382,7 @@ const VillagePanchayat = () => {
                       </CCol>
 
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Abbreviation
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -408,7 +395,7 @@ const VillagePanchayat = () => {
                         />
                       </CCol>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Code
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -492,9 +479,9 @@ const VillagePanchayat = () => {
                 )}
                 {panchayatCreate && (
                   <React.Fragment>
-                    <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                    <CRow  className={"row-alignment"} style={{marginLeft:"45px", marginTop:"20px"}} sm={12} md={12} lg={12}>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Panchayat Union
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -509,7 +496,7 @@ const VillagePanchayat = () => {
                       </CCol>
 
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Abbreviation
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -522,7 +509,7 @@ const VillagePanchayat = () => {
                         />
                       </CCol>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Code
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -606,9 +593,9 @@ const VillagePanchayat = () => {
                 )}
                 {villageCreate && (
                   <React.Fragment>
-                    <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                    <CRow  className={"row-alignment"} style={{marginLeft:"45px", marginTop:"20px"}} sm={12} md={12} lg={12}>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Village Panchayat
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -623,7 +610,7 @@ const VillagePanchayat = () => {
                       </CCol>
 
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Abbreviation
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -636,7 +623,7 @@ const VillagePanchayat = () => {
                         />
                       </CCol>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Code
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -719,9 +706,9 @@ const VillagePanchayat = () => {
                 )}
                 {wardCreate && (
                   <React.Fragment>
-                    <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                    <CRow  className={"row-alignment"} style={{marginLeft:"45px", marginTop:"20px"}} sm={12} md={12} lg={12}>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Ward Number
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -736,7 +723,7 @@ const VillagePanchayat = () => {
                       </CCol>
 
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Abbreviation
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -749,7 +736,7 @@ const VillagePanchayat = () => {
                         />
                       </CCol>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Code
                           <span className={"text-danger"}> *</span>
                         </CLabel>

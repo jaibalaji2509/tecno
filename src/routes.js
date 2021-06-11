@@ -64,6 +64,8 @@ const PartyOffice = React.lazy(() => import('./views/components/partyoffice/Part
 const PartyOfficeLocation = React.lazy(() => import('./views/components/partyofficelocation/PartyOfficeLocation'));
 const PartyPosting = React.lazy(() => import('./views/components/partyposting/PartyPosting'));
 const AssignPartyPosting = React.lazy(() => import('./views/components/assignpartyposting/AssignPartyPosting'));
+const StateMinister = React.lazy(() => import('./views/components/stateminister/StateMinister'));
+const CentralMinister = React.lazy(() => import('./views/components/centralminister/CentralMinister'));
 const routes = [
   { path: '/', exact: true, name: 'Home' },
 
@@ -133,7 +135,8 @@ const routes = [
   { path: '/corporation',  exact: true, name: 'Member Corporation', component: Corporation },
   { path: '/MemberTownPanchayat',  exact: true, name: 'Member of Town Panchayat', component: MemberTownPanchayat },
   { path: '/MemberofMunicipality',  exact: true, name: 'Member of Municipality', component: MemberofMunicipality },
-
+  { path: '/stateminister',  exact: true, name: 'State Minister', component: StateMinister },
+  { path: '/centralminister',  exact: true, name: 'Central Minister', component: CentralMinister },
 ];
 
 export default routes;
