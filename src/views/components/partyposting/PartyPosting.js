@@ -366,7 +366,7 @@ const PartyPosting = () => {
         <div>
           <CCard className={"cardSave"}>
             <div className={"main-headerlabel"}>
-              <span className={"header-label"}> Adding Party Posting</span>
+              <span className={"header-label"}> Viewed Party Posting</span>
             </div>
             {locationHide.corporation && (
               <div>
@@ -397,12 +397,12 @@ const PartyPosting = () => {
                   </CRow>
                   <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                     <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
+                      <CLabel className={"label-name-1"}>
                         Type of Office
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        className={"input-align"}
+                      
                         id={"municipalstatename"}
                         name={"state"}
                         placeholder={"Select Type of Office"}
@@ -411,12 +411,12 @@ const PartyPosting = () => {
                       />
                     </CCol>
                     <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
+                      <CLabel className={"label-name-1"}>
                         Type of Party / Party Wings Office
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        className={"input-align"}
+                      
                         id={"municipaldistrict"}
                         name={"city"}
                         placeholder={" Select Type of Party "}
@@ -428,12 +428,12 @@ const PartyPosting = () => {
 
                   <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                     <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
+                      <CLabel className={"label-name-1"}>
                         Name of the Office Location
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        className={"input-align"}
+                      
                         id={"municipaldistrict"}
                         name={"city"}
                         placeholder={" Select Office Location"}
@@ -1013,7 +1013,7 @@ const PartyPosting = () => {
                   </CCol>
                   <CRow className={"row-alignment"} style={{marginLeft:"-40px"}}>
                   <CCol className={"column-align"} md="6">
-                      <CLabel className={"label-name"}>
+                      <CLabel className={"label-name-1"}>
                       Hierarchy Report to
                         <span className={"text-danger"}>*</span>
                       </CLabel>
@@ -1111,7 +1111,7 @@ const PartyPosting = () => {
                   </CCol>
                   <CRow className={"row-alignment"} style={{marginLeft:"-36px"}}>
                   <CCol className={"column-align"} md="6">
-                      <CLabel className={"label-name"}>
+                      <CLabel className={"label-name-1"}>
                       Hierarchy Report to
                         <span className={"text-danger"}>*</span>
                       </CLabel>

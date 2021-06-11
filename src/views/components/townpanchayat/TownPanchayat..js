@@ -140,15 +140,7 @@ const canceltownchange = () => {
               {locationHide.corporation && (
                 <div>
                   <div style={{ marginLeft: "-26px" }}>
-                    <div className={"row-headerlabel"}>
-                      <span
-                        style={{ marginLeft: "70px" }}
-                        className={"header-label"}
-                      >
-                        {" "}
-                        Town Panchayat{" "}
-                      </span>
-                    </div>
+                   
                     <CRow style={{ marginTop: "45px" }}>
                       <CCol md="10">
                         <CCol
@@ -162,7 +154,7 @@ const canceltownchange = () => {
                           <CButton
                             style={{
                               float: "right",
-                              marginRight: "835px",
+                              marginRight: "825px",
                             }}
                             id={"saveAbbreviationConfigureCode"}
                             className={"saveBtn"}
@@ -352,13 +344,13 @@ const canceltownchange = () => {
                       {MunicipalCreate && (
                         <React.Fragment>
                           <CRow
-                            className={"column-align3"}
+                           className={"row-alignment"} style={{marginLeft:"45px", marginTop:"20px"}}
                             sm={12}
                             md={12}
                             lg={12}
                           >
                             <CCol md="3">
-                              <CLabel className={"label-name-3"}>
+                              <CLabel className={"label-name-1"}>
                                 Town Panchayat
                                 <span className={"text-danger"}> *</span>
                               </CLabel>
@@ -373,7 +365,7 @@ const canceltownchange = () => {
                             </CCol>
 
                             <CCol md="3">
-                              <CLabel className={"label-name-3"}>
+                              <CLabel className={"label-name-1"}>
                                 Abbreviation
                                 <span className={"text-danger"}> *</span>
                               </CLabel>
@@ -386,7 +378,7 @@ const canceltownchange = () => {
                               />
                             </CCol>
                             <CCol md="3">
-                              <CLabel className={"label-name-3"}>
+                              <CLabel className={"label-name-1"}>
                                 Code
                                 <span className={"text-danger"}> *</span>
                               </CLabel>
@@ -477,13 +469,13 @@ const canceltownchange = () => {
                       {wardNumberCreate && (
                         <React.Fragment>
                           <CRow
-                            className={"column-align3"}
+                          className={"row-alignment"} style={{marginLeft:"45px", marginTop:"20px"}}
                             sm={12}
                             md={12}
                             lg={12}
                           >
                             <CCol md="3">
-                              <CLabel className={"label-name-3"}>
+                              <CLabel className={"label-name-1"}>
                                 Ward Number
                                 <span className={"text-danger"}> *</span>
                               </CLabel>
@@ -498,7 +490,7 @@ const canceltownchange = () => {
                             </CCol>
 
                             <CCol md="3">
-                              <CLabel className={"label-name-3"}>
+                              <CLabel className={"label-name-1"}>
                                 Abbreviation
                                 <span className={"text-danger"}> *</span>
                               </CLabel>
@@ -511,7 +503,7 @@ const canceltownchange = () => {
                               />
                             </CCol>
                             <CCol md="3">
-                              <CLabel className={"label-name-3"}>
+                              <CLabel className={"label-name-1"}>
                                 Code
                                 <span className={"text-danger"}> *</span>
                               </CLabel>
