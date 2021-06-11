@@ -1,4 +1,4 @@
-import { CButton, CCard, CCol, CInput, CLabel, CRow, CSelect } from "@coreui/react";
+import { CButton, CCard, CCol, CInput, CLabel, CRow } from "@coreui/react";
 import React, { useState } from "react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import Select from "react-select";
@@ -125,8 +125,8 @@ function Constituency() {
         <div className={"main-headerlabel"}>
           <span className={"header-label"}>Constituency</span>
         </div>
-              <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-16px" , marginTop:"40px"}}>
-              <CCol className={"column-align"} md="5">
+              <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+              <CCol className={"column-align"} md="4">
                   <CLabel className={"label-name"}>
                     State
                  <span className={"text-danger"}>*</span>
@@ -139,7 +139,7 @@ function Constituency() {
                     placeholder="Select the State"
                   />
                 </CCol>
-                <CCol className={"column-align"} md="5">
+                <CCol className={"column-align"} md="4">
                   <CLabel className={"label-name"}>
                     District / City
                  <span className={"text-danger"}>*</span>
@@ -154,8 +154,8 @@ function Constituency() {
                 </CCol>
               </CRow>
 
-              <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-16px" , marginTop:"40px"}}>
-              <CCol className={"column-align"} md="5">
+              <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+              <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name"}>
                         Parliamentary Constituency
                         <span className={"text-danger"}> *</span>
@@ -168,7 +168,7 @@ function Constituency() {
                         style={{marginLeft:"5px"}}    
                       />
                     </CCol>
-                    <CCol className={"column-align"} md="5">
+                    <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name"}>
                       Legislative Assembly Constituency 
                         <span className={"text-danger"}> *</span>

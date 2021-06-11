@@ -5,7 +5,7 @@ import {
     CInput,
     CLabel,
     CRow,
-    CSelect,
+    CTextarea,
     CInputRadio,
     CFormGroup,
 } from "@coreui/react";
@@ -55,7 +55,7 @@ const MemberTownPanchayat = () => {
     const [gridone, setGridOne] = useState(true)
     const [gridtwo, setGridTwo] = useState(false)
     const [chairone, setchairOne] = useState(false)
-    const [chairtwo, setchairTwo] = useState(true)
+    const [chairtwo, setchairTwo] = useState(false)
     const [vice, setvice] = useState(false)
     const [partypost, setpartypost] = useState(false)
     const [townc, setTownC] = useState(false)
@@ -496,9 +496,58 @@ const noward=[
                             </CLabel>
                         </CCol>
                     </CRow>
-                    <CButton id={"memtownhistorygrid1"}  style={{marginTop:"20px"}} onClick={chairshow} className={"saveBtn"}>Chairman</CButton>
-                    <CButton id={"memtownhistorygrid2"}  className={"saveBtn"} style={{marginTop:"20px",marginLeft:"10px"}} onClick={gridshow}>Vice-Chairman</CButton>
-                    <CButton id={"memtownhistorygrid3"} onClick={partshow} className={"saveBtn"} style={{marginTop:"20px",marginLeft:"10px"}}>Party Posting</CButton>
+                    <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"memberregisterediticon"}
+            className="fa fa-eye"
+            onClick={chairshow}
+          >
+            Chairman
+          </i>
+          <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"memberregisterediticon"}
+            className="fa fa-eye"
+            onClick={gridshow}
+            >
+            Vice-Chairman
+        
+          </i>
+          <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"memberregisterediticon"}
+            className="fa fa-eye"
+            onClick={partshow}
+          >
+           Party Posting
+          </i>
 
 {chairtwo && (
     <div>
@@ -779,18 +828,18 @@ const noward=[
                             />
                         </CCol>
                         <CCol className={"column-align"} md="4">
-                            <CLabel className={"label-name-1"}>
-                                Note
-                  <span className={"text-danger"}>*</span>
-                            </CLabel>
-                            <Select
-                                style={{ width: "50px", height: "50px" }}
-                                id={"memtownStatus"}
-                                name={"Status"}
-                                placeholder={" Select Status "}
-                                value={locations.city}
-                                onChange={changeHandler}
-                            />
+                        <CLabel className={"label-name-1"}>
+                Note
+                    <span className={"text-danger"}> *</span>
+              </CLabel>
+              <CTextarea
+                id={"contimemnote"}
+                placeholder="Enter Description for Termination"
+                style={{ height: "80px", marginLeft: "10px" }}
+
+                min="10"
+                max="500"
+              ></CTextarea>
                         </CCol>
                         <CCol md="10">
                             <CCol

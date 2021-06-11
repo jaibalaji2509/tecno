@@ -466,7 +466,7 @@ const RajyaSabha = () => {
             </CCol>
             <CCol className={"column-align"} md="4">
               <CLabel className={"label-name"}>
-                Gende
+                Gender
                 <span style={{ fontSize: "14px", fontFamily: "normal" }}>
                   {" "}
                   - Male
@@ -789,7 +789,7 @@ const RajyaSabha = () => {
             </CCol>
             <CCol className={"column-align"} md="4">
               <CLabel className={"label-name"}>
-                Gende
+                Gender
                 <span style={{ fontSize: "14px", fontFamily: "normal" }}>
                   {" "}
                   - Male
@@ -996,7 +996,7 @@ const RajyaSabha = () => {
                     fields={fields}
                     columnFilter
                     tableFilter
-                    tableLabel={"List of MP - Rjay Sabha"}
+                    tableLabel={"List of MP - Rajya Sabha"}
                     itemsPerPageSelect
                     itemsPerPage={5}
                     hover
@@ -1104,7 +1104,7 @@ const RajyaSabha = () => {
                         marginTop: "60px",
                       }}
                     >
-                      Mmeber Details Display
+                      Member Details Display
                     </CLabel>
                   </CCol>
 
@@ -1122,7 +1122,7 @@ const RajyaSabha = () => {
                     </CCol>
                     <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name"}>
-                        Gende
+                        Gender
                         <span
                           style={{ fontSize: "14px", fontFamily: "normal" }}
                         >
