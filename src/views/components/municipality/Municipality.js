@@ -5,9 +5,10 @@ import {
   CInput,
   CLabel,
   CRow,
-  CSelect,
+  
 } from "@coreui/react";
 import React, { useState } from "react";
+import Select  from "react-select";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
@@ -55,15 +56,12 @@ const Municipality = () => {
     },
     { key: "SNo", label: "S.NO", _style: { width: "5%" },    sorter: false,
     filter: false, },
-    // { key: "State", label: "State", _style: { width: "10%" } },
-    // { key: "District", label: "District", _style: { width: "10%" } },
-    // { key: "Area", label: "Ward", _style: { width: "10%" } },
+   
     { key: "Street", label: "Street Name", _style: { width: "10%" } },
     { key: "Street", label: "Ward Name", _style: { width: "10%" } },
     { key: "Street", label: "Entered By", _style: { width: "10%" } },
     { key: "Street", label: "Entered On", _style: { width: "10%" } },
-    // { key: "male", label: "Male", _style: { width: "10%" } },
-    // { key: "female", label: "Female", _style: { width: "10%" } },
+   
     { key: "show_details1", label: "Action", _style: { width: "10%" },    sorter: false,
     filter: false, },
   ];
@@ -130,6 +128,11 @@ const Municipality = () => {
     setHideMappingMunicipality(false)
     setMunicipality(true)
   }
+  const cancelmunici = ()=>{
+    setHideMappingMunicipality(true)
+    setMunicipality(false)
+  }
+
   const CancelStateadd = async () => {
     setPassing("");
     await setMunicipalListadd(true);
@@ -147,12 +150,7 @@ const Municipality = () => {
            {locationHide.corporation && (
              <div>
                <div style={{ marginLeft: "-26px" }}>
-                 <div className={"row-headerlabel"}>
-                   <span  style={{marginLeft:"70px"}} className={"header-label"}>
-                     {" "}
-                     Municipality{" "}
-                   </span>
-                 </div>
+                
                  <CRow style={{marginTop:"45px"}}>
                  <CCol md="10">
                    <CCol
@@ -167,7 +165,7 @@ const Municipality = () => {
                      <CButton
                        style={{
                          float: "right",
-                         marginRight: "865px",
+                         marginRight: "855px",
                        }}
                        id={"saveAbbreviationConfigureCode"}
                        className={"saveBtn"}
@@ -186,7 +184,7 @@ const Municipality = () => {
                   State
                     <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CSelect
+                  <Select
                     className={"input-align"}
                     id={"municipalstatename"}
                     name={"state"}
@@ -200,7 +198,7 @@ const Municipality = () => {
                        District / City
                        <span className={"text-danger"}>*</span>
                      </CLabel>
-                     <CSelect
+                     <Select
                        className={"input-align"}
                        id={"municipaldistrict"}
                        name={"city"}
@@ -215,7 +213,7 @@ const Municipality = () => {
                   Municipality
                     <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CSelect
+                  <Select
                     className={"input-align"}
                     id={"municipaldistrict"}
                     name={"Municipality"}
@@ -233,7 +231,7 @@ const Municipality = () => {
                   Area
                     <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CSelect
+                  <Select
                     className={"input-align"}
                     id={"municipaldistrict"}
                     name={"Area"}
@@ -247,7 +245,7 @@ const Municipality = () => {
                      Ward
                        <span className={"text-danger"}>*</span>
                      </CLabel>
-                     <CSelect
+                     <Select
                        className={"input-align"}
                        id={"municipalstatename"}
                        name={"Ward"}
@@ -319,8 +317,8 @@ const Municipality = () => {
                         Municipality
                         <span className={"text-danger"}> *</span>
                       </CLabel>
-                      <CSelect
-                        placeholder="Select Municipal Corporation"
+                      <Select
+                        placeholder="Select Municipality"
                         id={"municipalcorporation"}
                         type={"text"}
                         value={municipalCorporation}
@@ -358,9 +356,9 @@ const Municipality = () => {
                 )}
                 {MunicipalCreate && (
                   <React.Fragment>
-                    <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                    <CRow className={"row-alignment"} style={{marginLeft:"45px", marginTop:"20px"}} sm={12} md={12} lg={12}>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Municipality Name
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -375,7 +373,7 @@ const Municipality = () => {
                       </CCol>
 
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Abbreviation
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -388,7 +386,7 @@ const Municipality = () => {
                         />
                       </CCol>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Code
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -433,8 +431,8 @@ const Municipality = () => {
                         Ward Number
                         <span className={"text-danger"}> *</span>
                       </CLabel>
-                      <CSelect
-                        placeholder="Select the State Name"
+                      <Select
+                        placeholder="Select Ward Number"
                         id={"municipalcorporation"}
                         type={"text"}
                       />
@@ -471,9 +469,9 @@ const Municipality = () => {
                 )}
                 {MunicipalCreateadd && (
                   <React.Fragment>
-                    <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                    <CRow className={"row-alignment"} style={{marginLeft:"45px", marginTop:"20px"}} sm={12} md={12} lg={12}>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Ward Number
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -488,7 +486,7 @@ const Municipality = () => {
                       </CCol>
 
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Abbreviation
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -501,7 +499,7 @@ const Municipality = () => {
                         />
                       </CCol>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Code
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -556,7 +554,7 @@ const Municipality = () => {
                     State
                     <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CSelect
+                  <Select
                     className={"input-align"}
                     id={"municipalstatename"}
                     name={"state"}
@@ -570,7 +568,7 @@ const Municipality = () => {
                     District / City
                     <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CSelect
+                  <Select
                     className={"input-align"}
                     id={"municipaldistrict"}
                     name={"city"}
@@ -586,7 +584,7 @@ const Municipality = () => {
                     Area
                     <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CSelect
+                  <Select
                     className={"input-align"}
                     id={"municipalarea"}
                     name={"area"}
@@ -615,6 +613,7 @@ const Municipality = () => {
                     }}
                     id={"cancelAbbreviationConfigureCode"}
                     className={"cancelBtn"}
+                    onClick={cancelmunici}
                   >
                     CANCEL
                   </CButton>

@@ -389,7 +389,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                         <CButton
                           style={{
                             float: "right",
-                            marginRight: "855px",
+                            marginRight: "825px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}

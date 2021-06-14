@@ -1,8 +1,9 @@
-import { CButton, CCard, CCol, CInput, CLabel, CRow, CSelect } from "@coreui/react";
+import { CButton, CCard, CCol, CInput, CLabel, CRow,  } from "@coreui/react";
 import React, { useState } from "react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
+import Select  from "react-select";
 
 const WingsofficeType = () => {
   const [location, setLocation] = useState({
@@ -211,7 +212,7 @@ const WingsofficeType = () => {
                Hierarchy  Reporting To Office
                  <span className={"text-danger"}>*</span>
                </CLabel>
-               <CSelect
+               <Select
                  className={"input-align"}
                  id={"municipalarea"}
                  name={"area"}
@@ -220,7 +221,7 @@ const WingsofficeType = () => {
                  onChange={changeHandler}
                >
                  <option>Head Office</option>
-               </CSelect>
+               </Select>
              </CCol>
         
          

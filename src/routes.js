@@ -53,10 +53,9 @@ const Location = React.lazy(() => import('./views/components/location/Location')
 const WingsofficeType = React.lazy(() => import('./views/components/partywingsofficetype/PartyWingOfficeType'));
 const PartyWingsOfficeLocation = React.lazy(() => import('./views/components/winglocation/PartyWingsOfficeLocation'));
 const RajyaSabha = React.lazy(() => import('./views/components/rajyasabha/RajyaSabha'));
-const MapPublicRepresent = React.lazy(() => import('./views/components/mappublicrepresenttative/MapPublicRepresent'));
 const MemberTownPanchayat = React.lazy(() => import('./views/components/membertownpanchayat/MemberTownPanchayat'));
 const MemberofMunicipality = React.lazy(() => import('./views/components/memberofmunicipality/MemberofMunicipality'));
-
+const Corporation = React.lazy(() => import('./views/components/corporation/Corporation'));
 const Municipality = React.lazy(() => import('./views/components/municipality/Municipality'));
 const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
 const VillagePanchayat = React.lazy(() => import('./views/components/villagepanchayat/VillagePanchayat'));
@@ -68,6 +67,8 @@ const AssignPartyPosting = React.lazy(() => import('./views/components/assignpar
 
 // const AddMemberRegister = React.lazy(() => import('./views/components/MemberRegistration'))
 
+const StateMinister = React.lazy(() => import('./views/components/stateminister/StateMinister'));
+const CentralMinister = React.lazy(() => import('./views/components/centralminister/CentralMinister'));
 const routes = [
   { path: '/', exact: true, name: 'Home' },
 
@@ -153,10 +154,11 @@ const routes = [
   { path: '/ConstituencyMember',  exact: true, name: 'Constituency Member', component: ConstituencyMember },
   { path: '/Constituency',  exact: true, name: 'Constituency', component: Constituency },
   { path: '/rajyaSabha',  exact: true, name: 'Rajya Sabha', component: RajyaSabha },
-  { path: '/MapPublicRepresent',  exact: true, name: 'Map Public Represent', component: MapPublicRepresent },
+  { path: '/corporation',  exact: true, name: 'Member Corporation', component: Corporation },
   { path: '/MemberTownPanchayat',  exact: true, name: 'Member of Town Panchayat', component: MemberTownPanchayat },
   { path: '/MemberofMunicipality',  exact: true, name: 'Member of Municipality', component: MemberofMunicipality },
-
+  { path: '/stateminister',  exact: true, name: 'State Minister', component: StateMinister },
+  { path: '/centralminister',  exact: true, name: 'Central Minister', component: CentralMinister },
 ];
 
 export default routes;

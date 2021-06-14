@@ -10,14 +10,13 @@ import {
   CModal,
   CModalHeader,
   CModalTitle,
-  CModalBody
+  CModalBody,
 } from "@coreui/react";
 import React, { useState, useEffect } from "react";
 import Toaster from "src/views/notifications/toaster/Toaster";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
-import "./PartyOffice.css";
 import Select from "react-select";
 const PartyOffice = () => {
   const [location, setLocation] = useState({
@@ -241,15 +240,6 @@ const PartyOffice = () => {
             {locationHide.corporation && (
               <div>
                 <div style={{ marginLeft: "-26px" }}>
-                  <div className={"row-headerlabel"}>
-                    <span
-                      style={{ marginLeft: "70px" }}
-                      className={"header-label"}
-                    >
-                      {" "}
-                      Adding Party Office{" "}
-                    </span>
-                  </div>
                   <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                     <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name"}>
@@ -261,8 +251,6 @@ const PartyOffice = () => {
                         id={"municipalstatename"}
                         name={"PartyOffice"}
                         placeholder={"Enter Party Office"}
-                        //  value={locations.district}
-                        //  onChange={changeHandler}
                       />
                     </CCol>
                     <CCol className={"column-align"} md="4">
@@ -275,8 +263,6 @@ const PartyOffice = () => {
                         id={"municipaldistrict"}
                         name={"Abbreviation"}
                         placeholder={"Enter Abbreviation"}
-                        //  value={locations.city}
-                        //  onChange={changeHandler}
                       />
                     </CCol>
                   </CRow>
@@ -291,8 +277,6 @@ const PartyOffice = () => {
                         id={"municipaldistrict"}
                         name={"city"}
                         placeholder={"Enter Code"}
-                        //  value={locations.city}
-                        //  onChange={changeHandler}
                       />
                     </CCol>
                     <CCol className={"column-align"} md="4">
@@ -305,223 +289,7 @@ const PartyOffice = () => {
                         id={"municipalarea"}
                         name={"area"}
                         placeholder={"Select Reporting To"}
-                        //  value={locations.city}
-                        //  onChange={changeHandler}
                         options={officeType}
-                      />
-                    </CCol>
-                  </CRow>
-                </div>
-              </div>
-            )}
-            {array && (
-              <div
-                id={"scrollDiv3"}
-                className={"scrollForCard"}
-                style={{
-                  height: "110px",
-                  background: "white",
-                  overflow: "hidden",
-                }}
-              >
-                <CRow style={{ width: "max-content" }} id={"scrollRow3"}>
-                  {width.w2 > width.w1 ? (
-                    <CButton
-                      id={"employeeDataScrollDiv2"}
-                      onClick={() => {
-                        scrollLeft(
-                          document.getElementById("scrollDiv3"),
-                          -300,
-                          1000
-                        );
-                      }}
-                      className={"scrollButton-3"}
-                    >
-                      <i className="fas fa-arrow-left alignArrow"></i>
-                    </CButton>
-                  ) : null}
-                  {array.map((x, i) => (
-                    <CCard
-                      key={i}
-                      className={"scrollCard"}
-                      style={{ borderColor: colors[i] }}
-                      onClick={() => {
-                        // setHover({ index: i, data: x.separate })
-                      }}
-                    >
-                      <CLabel
-                        className={"scrollCardText"}
-                        style={{ color: colors[i] }}
-                      >
-                        {x}
-                      </CLabel>
-                      <CLabel
-                        className={"scrollCardText EmpCountNo"}
-                        style={{
-                          color: colors[i],
-                          fontSize: "17px !important",
-                        }}
-                      >
-                        {x}
-                      </CLabel>
-
-                      {hover.index === i && (
-                        <CModal
-                          show={hover.index === i}
-                          onClose={() => setHover(-1)}
-                          aria-labelledby="contained-modal-title-vcenter"
-                          centered
-                          style={{
-                            justifyContent: "left",
-                            maxWidth: "300px",
-                            left: "300px",
-                            top: "-125px",
-                            maxHeight: "635px !important",
-                            height: "150px",
-                          }}
-                        >
-                          <CModalHeader
-                            closeButton
-                            style={{
-                              display: "flex",
-                              width: "100%",
-                              color: "black",
-                              backgroundColor: "white",
-                              justifyContent: "left",
-                            }}
-                          >
-                            <CModalTitle>
-                              <span
-                                className={"font7"}
-                                style={{ fontWeight: "700" }}
-                              >
-                                {" "}
-                                Employee Details
-                              </span>{" "}
-                            </CModalTitle>
-                          </CModalHeader>
-                          <CModalBody>
-                            <span place="left">
-                              {x.separate.map((y, j) => (
-                                <tr key={i}>
-                                  <td
-                                    style={{
-                                      fontSize: "11px",
-                                      color: "black",
-                                      fontWeight: "500",
-                                      color: "green",
-                                      fontFamily: "Open Sans !important",
-                                    }}
-                                  >
-                                    {y.label1}-{y.label2}
-                                  </td>
-                                  <td
-                                    style={{
-                                      fontSize: "11px",
-                                      paddingLeft: "30px",
-                                      color: "black",
-                                      fontWeight: "600",
-                                      fontFamily: "Open Sans !important",
-                                      float: "right",
-                                    }}
-                                  >
-                                    {y.values.length}
-                                  </td>
-                                </tr>
-                              ))}
-                            </span>
-                          </CModalBody>
-                        </CModal>
-                      )}
-                    </CCard>
-                  ))}
-                  {width.w2 > width.w1 ? (
-                    <CButton
-                      id={"employeeDataScrollDiv3"}
-                      onClick={() => {
-                        scrollLeft(
-                          document.getElementById("scrollDiv3"),
-                          300,
-                          1000
-                        );
-                      }}
-                      className={"scrollButton-4"}
-                    >
-                      <i className="fas fa-arrow-right alignArrow"></i>
-                    </CButton>
-                  ) : null}
-                </CRow>
-              </div>
-            )}
-            {locationHide.corporation && (
-              <div>
-                <div style={{ marginLeft: "-26px" }}>
-                  <div className={"row-headerlabel"}>
-                    <span
-                      style={{ marginLeft: "70px" }}
-                      className={"header-label"}
-                    >
-                      {" "}
-                      Adding Party Office{" "}
-                    </span>
-                  </div>
-                  <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                    <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
-                        Type of Party Office
-                        <span className={"text-danger"}>*</span>
-                      </CLabel>
-                      <CInput
-                        className={"input-align"}
-                        id={"municipalstatename"}
-                        name={"state"}
-                        placeholder={"Enter Party Office"}
-                        value={locations.district}
-                        onChange={changeHandler}
-                      />
-                    </CCol>
-                    <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
-                        Abbreviation
-                        <span className={"text-danger"}>*</span>
-                      </CLabel>
-                      <CInput
-                        className={"input-align"}
-                        id={"municipaldistrict"}
-                        name={"city"}
-                        placeholder={"Enter Abbreviation"}
-                        value={locations.city}
-                        onChange={changeHandler}
-                      />
-                    </CCol>
-                  </CRow>
-                  <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                    <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
-                        Code
-                        <span className={"text-danger"}>*</span>
-                      </CLabel>
-                      <CInput
-                        className={"input-align"}
-                        id={"municipaldistrict"}
-                        name={"city"}
-                        placeholder={"Enter Code"}
-                        value={locations.city}
-                        onChange={changeHandler}
-                      />
-                    </CCol>
-                    <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
-                        Reporting To Office
-                        <span className={"text-danger"}>*</span>
-                      </CLabel>
-                      <CSelect
-                        className={"input-align"}
-                        id={"municipalarea"}
-                        name={"area"}
-                        placeholder={"Select Reporting To"}
-                        value={locations.city}
-                        onChange={changeHandler}
                       />
                     </CCol>
                   </CRow>
@@ -559,134 +327,94 @@ const PartyOffice = () => {
                       </CCol>
                     </CCol>
                   </CRow>
-                </div>
-                <CRow>
-                  <CCol style={{ fontSize: "1.55rem" }} md="12">
-                    <i
-                      id={"locationLibraryDelete"}
-                      style={{
-                        position: "absolute",
-                        top: "80px",
-                        marginLeft: "955px",
-                        marginBottom: "20px",
-                        color: "#0072ff",
-                      }}
-                      className="fa fa-print"
-                    ></i>
-                  </CCol>
-                  <CCol style={{ fontSize: "1.55rem" }} md="12">
-                    <i
-                      id={"locationLibraryDelete"}
-                      style={{
-                        position: "absolute",
-                        top: "80px",
-                        marginLeft: "1000px",
-                        marginBottom: "20px",
-                        color: "green",
-                      }}
-                      className="fa fa-share-alt"
-                    ></i>
-                  </CCol>
-                </CRow>
-                <CRow>
-                  <CCol style={{ fontSize: "1.55rem" }} md="12">
-                    <i
-                      id={"locationLibraryDelete"}
-                      style={{
-                        position: "absolute",
-                        top: "90px",
-                        marginLeft: "820px",
-                        marginBottom: "20px",
-                        color: "#0072ff",
-                      }}
-                      className="fa fa-print"
-                    ></i>
-                  </CCol>
-                  <CCol style={{ fontSize: "1.55rem" }} md="12">
-                    <i
-                      id={"locationLibraryDelete"}
-                      style={{
-                        position: "absolute",
-                        top: "90px",
-                        marginLeft: "900px",
-                        marginBottom: "910px",
-                        color: "green",
-                      }}
-                      className="fa fa-share-alt"
-                    ></i>
-                  </CCol>
-                </CRow>
 
-                <CRow>
-                  <CCol style={{ top: "80px" }}>
-                    <img
-                      id={"employeeDataorgEmployeeData"}
-                      alt={""}
-                      src={
-                        "https://img.icons8.com/fluent/2x/organization-chart-people.png"
-                      }
-                      style={{
-                        height: "40px",
-                        width: "40px",
-                        marginRight: "290px",
-                        float: "right",
-                        cursor: "pointer",
+                  <CRow>
+                    <CCol style={{ top: "80px" }}>
+                      <img
+                        id={"employeeDataorgEmployeeData"}
+                        alt={""}
+                        src={
+                          "https://img.icons8.com/fluent/2x/organization-chart-people.png"
+                        }
+                        style={{
+                          height: "40px",
+                          width: "40px",
+                          marginRight: "290px",
+                          float: "right",
+                          cursor: "pointer",
+                        }}
+                      />
+                    </CCol>
+                  </CRow>
+                  <CRow style={{ padding: "4%", marginTop: "-3.5%" }}>
+                    <CDataTable
+                      items={userData}
+                      fields={fields}
+                      columnFilter
+                      tableFilter
+                      tableLabel={"List of Type of Party Office"}
+                      itemsPerPageSelect
+                      itemsPerPage={5}
+                      hover
+                      sorter
+                      pagination
+                      scopedSlots={{
+                        show_details: (item, index) => {
+                          return (
+                            <td className="py-2">
+                              <CRow>
+                                <CCol style={{ fontSize: "1.15rem" }} md="12">
+                                  <i onClick={() => {}}></i>
+                                  <i
+                                    style={{
+                                      marginRight: "5px",
+                                      color: "#3480e2",
+                                      cursor: "pointer",
+                                    }}
+                                    id={"locationLibraryEdit"}
+                                    className="fas fa-edit"
+                                  ></i>
+                                  <i
+                                    id={"locationLibraryDelete"}
+                                    style={{
+                                      marginLeft: "5px",
+                                      color: "#e85654",
+                                      cursor: "pointer",
+                                    }}
+                                    className="fa fa-trash"
+                                  ></i>
+                                </CCol>
+                              </CRow>
+                            </td>
+                          );
+                        },
+                        details: (item, index) => {},
                       }}
                     />
-                  </CCol>
-                </CRow>
-                <CRow style={{ padding: "4%", marginTop: "-3.5%" }}>
-                  <CDataTable
-                    items={userData}
-                    fields={fields}
-                    columnFilter
-                    tableFilter
-                    tableLabel={"List of Type of Party Office"}
-                    itemsPerPageSelect
-                    itemsPerPage={5}
-                    hover
-                    sorter
-                    pagination
-                    scopedSlots={{
-                      show_details: (item, index) => {
-                        return (
-                          <td className="py-2">
-                            <CRow>
-                              <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                <i
-                                  onClick={() => {
-                                    //   toggleDetails(index);
-                                  }}
-                                ></i>
-                                <i
-                                  style={{
-                                    marginRight: "5px",
-                                    color: "#3480e2",
-                                    cursor: "pointer",
-                                  }}
-                                  id={"locationLibraryEdit"}
-                                  //  onClick={() => EditCountry(item)}
-                                  className="fas fa-edit"
-                                ></i>
-                                <i
-                                  //  onClick={() => deleteConfirm(item._id)}
-                                  id={"locationLibraryDelete"}
-                                  style={{
-                                    marginLeft: "5px",
-                                    color: "#e85654",
-                                    cursor: "pointer",
-                                  }}
-                                  className="fa fa-trash"
-                                ></i>
-                              </CCol>
-                            </CRow>
-                          </td>
-                        );
-                      },
-                      details: (item, index) => {},
-                    }}
-                  />
-                </CRow>
+                  </CRow>
+                </div>
+              </div>
+            )}
+          </CCard>
+        </div>
+      )}
+
+      {hideCorporation && (
+        <div>
+          <CCard className={"cardSave"} style={{ minHeight: "450px" }}>
+            {locationHide.corporation && (
+              <div>
+                <div style={{ marginLeft: "-26px" }}>
+                  <div className={"row-headerlabel"}>
+                    <span
+                      style={{ marginLeft: "70px" }}
+                      className={"header-label"}
+                    >
+                      {" "}
+                      Adding Party Office{" "}
+                    </span>
+                  </div>
+                </div>
               </div>
             )}
 

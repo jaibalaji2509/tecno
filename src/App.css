@@ -38,6 +38,7 @@ option {
   background-color: whblite;
 }
 .label-name-1{
+  margin-left: 1px;
   font-size: "24px";
   font-weight: 700;
 }
@@ -1105,9 +1106,14 @@ svg.c-icon.login-icon-v {
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
-  margin-left: 20px;
+  margin-left: 18px;
 }
-
+.label-name-5 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  margin-left: 1px;
+}
 .column-align {
   margin-top: 30px;
   margin-left: 50px;

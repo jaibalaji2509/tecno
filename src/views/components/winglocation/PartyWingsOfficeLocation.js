@@ -7,11 +7,10 @@ import {
   CLabel,
   CButton,
   CInput,
-  CSelect,
   CWidgetDropdown
 } from "@coreui/react";
 import {} from "../../../services/ApiService";
-// import CSelect from "react-CSelect";
+import Select  from "react-select";
 
 function PartyWingsOfficeLocation() {
   const [addPartyOffice, setAddPartyOffice] = useState(true);
@@ -108,7 +107,7 @@ function PartyWingsOfficeLocation() {
                   <CButton
                     style={{
                       float: "right",
-                      marginRight: "764px",
+                      marginRight: "734px",
                     }}
                     id={"saveAbbreviationConfigureCode"}
                     className={"saveBtn"}
@@ -256,7 +255,7 @@ function PartyWingsOfficeLocation() {
                 columnFilter
                 tableFilter
                 tableLabel={"List of party Wings Office Location"}
-                itemsPerPageCSelect
+                itemsPerPageSelect
                 itemsPerPage={5}
                 hover
                 sorter
@@ -336,15 +335,15 @@ function PartyWingsOfficeLocation() {
                   Type of Party Wings Office
                   <span className={"text-danger"}>*</span>
                 </CLabel>
-                <CSelect
+                <Select
                   type={"text"}
                   id={"wingReportingTo"}
                   className={"Select"}
                   style={{marginLeft:"20px"}}
-                  placeholder="CSelect the Party Office"
+                  placeholder="Select the Party Office"
                 >
                   <option>District Party Office</option>
-                </CSelect>
+                </Select>
 
               </CCol>
               <CCol className={"column-align"} md={5} lg={5}>
@@ -353,15 +352,15 @@ function PartyWingsOfficeLocation() {
                   <span className={"text-danger"}>*</span>
                   <span style={{ color: "green" }}>-</span>
                 </CLabel>
-                <CSelect
+                <Select
                   type={"text"}
                   id={"wingReportingTo"}
                   className={"Select"}
                   style={{marginLeft:"20px"}}
-                  placeholder="CSelect the ReportingTo"
+                  placeholder="Select the ReportingTo"
                 >
                   <option>Head Quaters</option>
-                </CSelect>
+                </Select>
               </CCol>
             </CRow>
 
@@ -407,7 +406,7 @@ function PartyWingsOfficeLocation() {
                   Search Location for
                   <span className={"text-danger"}>*</span>
                 </CLabel>
-                <CSelect
+                <Select
                   type={"text"}
                   id={"wingSearchLocation"}
                   className={"Select"}
@@ -415,7 +414,7 @@ function PartyWingsOfficeLocation() {
                   placeholder="Country,State,City,Area"
                 >
           <option>TamilNadu Chennai Mylapore-600005</option>
-                </CSelect>
+                </Select>
               </CCol>
             </CRow>
 

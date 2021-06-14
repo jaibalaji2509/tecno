@@ -5,9 +5,10 @@ import {
   CInput,
   CLabel,
   CRow,
-  CSelect,
+  
 } from "@coreui/react";
 import React, { useState } from "react";
+import Select  from "react-select";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
@@ -59,15 +60,12 @@ const VillagePanchayat = () => {
       filter: false,
     },
     { key: "SNo", label: "S.NO", _style: { width: "10%" } },
-    // { key: "State", label: "State", _style: { width: "10%" } },
-    // { key: "District", label: "District", _style: { width: "10%" } },
-    // { key: "Area", label: "Ward", _style: { width: "10%" } },
+   
     { key: "Street", label: "Street Name", _style: { width: "10%" } },
     { key: "Street", label: "Ward Name", _style: { width: "10%" } },
     { key: "Streets", label: "Entered By", _style: { width: "10%" } },
     { key: "Streets", label: "Entered On", _style: { width: "10%" } },
-    // { key: "male", label: "Male", _style: { width: "10%" } },
-    // { key: "female", label: "Female", _style: { width: "10%" } },
+    
     { key: "Action", label: "Action", _style: { width: "10%" } },
   ];
   const [passing, setPassing] = useState("");
@@ -154,6 +152,10 @@ const VillagePanchayat = () => {
     setHideMappingVillage(false);
     setHideVillagePanchayat(true);
   };
+  const cancelchange = () => {
+    setHideMappingVillage(true);
+    setHideVillagePanchayat(false);
+  };
   return (
     <div>
       {hideMappingVillage && (
@@ -167,15 +169,7 @@ const VillagePanchayat = () => {
             {locationHide.corporation && (
               <div>
                 <div style={{ marginLeft: "-26px" }}>
-                  <div className={"row-headerlabel"}>
-                    <span
-                      style={{ marginLeft: "70px" }}
-                      className={"header-label"}
-                    >
-                      {" "}
-                      Village panchayat{" "}
-                    </span>
-                  </div>
+                  
                   <CRow style={{ marginTop: "45px" }}>
                     <CCol md="10">
                       <CCol
@@ -189,7 +183,7 @@ const VillagePanchayat = () => {
                         <CButton
                           style={{
                             float: "right",
-                            marginRight: "830px",
+                            marginRight: "810px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
@@ -206,7 +200,7 @@ const VillagePanchayat = () => {
                         State
                         <span className={"text-danger"}>*</span>
                       </CLabel>
-                      <CSelect
+                      <Select
                         className={"input-align"}
                         id={"municipalstatename"}
                         name={"state"}
@@ -220,7 +214,7 @@ const VillagePanchayat = () => {
                         District / City
                         <span className={"text-danger"}>*</span>
                       </CLabel>
-                      <CSelect
+                      <Select
                         className={"input-align"}
                         id={"municipaldistrict"}
                         name={"city"}
@@ -234,7 +228,7 @@ const VillagePanchayat = () => {
                       Village panchayat
                         <span className={"text-danger"}>*</span>
                       </CLabel>
-                -      <CSelect
+                -      <Select
                         className={"input-align"}
                         id={"municipaldistrict"}
                         name={"city"}
@@ -251,7 +245,7 @@ const VillagePanchayat = () => {
                    Area
                         <span className={"text-danger"}>*</span>
                       </CLabel>
-                -      <CSelect
+                -      <Select
                         className={"input-align"}
                         id={"municipaldistrict"}
                         name={"Area"}
@@ -265,7 +259,7 @@ const VillagePanchayat = () => {
                         Ward
                         <span className={"text-danger"}>*</span>
                       </CLabel>
-                      <CSelect
+                      <Select
                         className={"input-align"}
                         id={"municipalstatename"}
                         name={"Ward"}
@@ -318,17 +312,12 @@ const VillagePanchayat = () => {
     <div>
   <CCard className={"cardSave"}>
         <div className={"main-headerlabel"}>
-          <span className={"header-label"}> Village Panchayat</span>
+          <span className={"header-label"}>Adding Village Panchayat</span>
         </div>
         {locationHide.corporation && (
           <div>
             <div style={{ marginLeft: "-26px" }}>
-              <div className={"row-headerlabel"}>
-                <span style={{ marginLeft: "70px" }} className={"header-label"}>
-                  {" "}
-                  Adding Village Panchayat{" "}
-                </span>
-              </div>
+              
               <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
                 {municipalList && (
                   <React.Fragment>
@@ -337,7 +326,7 @@ const VillagePanchayat = () => {
                         District Panchayat
                         <span className={"text-danger"}> *</span>
                       </CLabel>
-                      <CSelect
+                      <Select
                         placeholder="Select District Panchayat"
                         id={"municipalcorporation"}
                         type={"text"}
@@ -376,9 +365,9 @@ const VillagePanchayat = () => {
                 )}
                 {MunicipalCreate && (
                   <React.Fragment>
-                    <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                    <CRow  className={"row-alignment"} style={{marginLeft:"45px", marginTop:"20px"}} sm={12} md={12} lg={12}>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           District panchayat
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -393,7 +382,7 @@ const VillagePanchayat = () => {
                       </CCol>
 
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Abbreviation
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -406,7 +395,7 @@ const VillagePanchayat = () => {
                         />
                       </CCol>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Code
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -451,7 +440,7 @@ const VillagePanchayat = () => {
                         Panchayat Union
                         <span className={"text-danger"}> *</span>
                       </CLabel>
-                      <CSelect
+                      <Select
                         placeholder="Select Municipal Corporation"
                         id={"municipalcorporation"}
                         type={"text"}
@@ -490,9 +479,9 @@ const VillagePanchayat = () => {
                 )}
                 {panchayatCreate && (
                   <React.Fragment>
-                    <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                    <CRow  className={"row-alignment"} style={{marginLeft:"45px", marginTop:"20px"}} sm={12} md={12} lg={12}>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Panchayat Union
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -507,7 +496,7 @@ const VillagePanchayat = () => {
                       </CCol>
 
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Abbreviation
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -520,7 +509,7 @@ const VillagePanchayat = () => {
                         />
                       </CCol>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Code
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -565,7 +554,7 @@ const VillagePanchayat = () => {
                         Village Panchayat
                         <span className={"text-danger"}> *</span>
                       </CLabel>
-                      <CSelect
+                      <Select
                         placeholder="Select Municipal Corporation"
                         id={"municipalcorporation"}
                         type={"text"}
@@ -604,9 +593,9 @@ const VillagePanchayat = () => {
                 )}
                 {villageCreate && (
                   <React.Fragment>
-                    <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                    <CRow  className={"row-alignment"} style={{marginLeft:"45px", marginTop:"20px"}} sm={12} md={12} lg={12}>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Village Panchayat
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -621,7 +610,7 @@ const VillagePanchayat = () => {
                       </CCol>
 
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Abbreviation
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -634,7 +623,7 @@ const VillagePanchayat = () => {
                         />
                       </CCol>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Code
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -679,7 +668,7 @@ const VillagePanchayat = () => {
                         Ward Number
                         <span className={"text-danger"}> *</span>
                       </CLabel>
-                      <CSelect
+                      <Select
                         placeholder="Select the State Name"
                         id={"municipalcorporation"}
                         type={"text"}
@@ -717,9 +706,9 @@ const VillagePanchayat = () => {
                 )}
                 {wardCreate && (
                   <React.Fragment>
-                    <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                    <CRow  className={"row-alignment"} style={{marginLeft:"45px", marginTop:"20px"}} sm={12} md={12} lg={12}>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Ward Number
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -734,7 +723,7 @@ const VillagePanchayat = () => {
                       </CCol>
 
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Abbreviation
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -747,7 +736,7 @@ const VillagePanchayat = () => {
                         />
                       </CCol>
                       <CCol md="3">
-                        <CLabel className={"label-name-3"}>
+                        <CLabel className={"label-name-1"}>
                           Code
                           <span className={"text-danger"}> *</span>
                         </CLabel>
@@ -802,7 +791,7 @@ const VillagePanchayat = () => {
                     State
                     <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CSelect
+                  <Select
                     className={"input-align"}
                     id={"municipalstatename"}
                     name={"state"}
@@ -816,7 +805,7 @@ const VillagePanchayat = () => {
                     District / City
                     <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CSelect
+                  <Select
                     className={"input-align"}
                     id={"municipaldistrict"}
                     name={"city"}
@@ -832,7 +821,7 @@ const VillagePanchayat = () => {
                     Area
                     <span className={"text-danger"}>*</span>
                   </CLabel>
-                  <CSelect
+                  <Select
                     className={"input-align"}
                     id={"municipalarea"}
                     name={"area"}
@@ -860,6 +849,7 @@ const VillagePanchayat = () => {
                     }}
                     id={"cancelAbbreviationConfigureCode"}
                     className={"cancelBtn"}
+                    onClick={cancelchange}
                   >
                     CANCEL
                   </CButton>
