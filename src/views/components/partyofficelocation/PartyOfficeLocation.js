@@ -210,7 +210,7 @@ function PartyOfficeLocation() {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "118px",
+                      top: "117px",
                       marginLeft: "860px",
                       marginBottom: "20px",
                       color:"black",
@@ -223,7 +223,7 @@ function PartyOfficeLocation() {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "118px",
+                      top: "117px",
                       marginLeft: "900px",
                       marginBottom: "910px",
                       color: "black",
