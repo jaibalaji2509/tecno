@@ -106,12 +106,14 @@ function PartyOfficeLocation() {
                     float: "right",
                     marginTop: "-10px",
                     top: "33px",
+                    position:"absolute"
                   }}
                 >
                   <CButton
                     style={{
                       float: "right",
-                      marginRight: "785px",
+                      marginRight: "795px",
+                      position:"absolute"
                     }}
                     id={"saveAbbreviationConfigureCode"}
                     className={"saveBtn"}
@@ -211,7 +213,7 @@ function PartyOfficeLocation() {
                       top: "118px",
                       marginLeft: "860px",
                       marginBottom: "20px",
-                      color: "#0072ff",
+                      color:"black",
                     }}
                     className="fa fa-print"
                   ></i>
@@ -224,7 +226,7 @@ function PartyOfficeLocation() {
                       top: "118px",
                       marginLeft: "900px",
                       marginBottom: "910px",
-                      color: "green",
+                      color: "black",
                     }}
                     className="fa fa-share-alt"
                   ></i>

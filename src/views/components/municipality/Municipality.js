@@ -40,29 +40,45 @@ const Municipality = () => {
   const userData = [
     {
       SNo: "1",
-      Street: "Pondy Bazar",
-    
+      Street: "Rangaswamykulam Street",
+      Ward:"0098",
+      EnteredBy:"sathishKumar",
+      EnteredOn:"11/06/2021"
+    },
+    {
+      SNo: "2",
+      Street: "Kamarajar Street",
+      Ward:"0098",
+      EnteredBy:"sathishKumar",
+      EnteredOn:"11/06/2021"
+    },
+    {
+      SNo: "3",
+      Street: " Stpachayapas College sreet",
+      Ward:"0098",
+      EnteredBy:"sathishKumar",
+      EnteredOn:"11/06/2021"
     },
   ];
   const fields = [
-    {
-      key: "show_details",
-      label: "Select",
-      _style: { width: "3%" },
-      name: <div>Email <input type={"checkbox"} onClick={""}/></div>,
-      sorter: false,
-      filter: false,
-      checked:true,
-    },
+    // {
+    //   key: "show_details1",
+    //   label: "Select",
+    //   _style: { width: "3%" },
+     
+    //   sorter: false,
+    //   filter: false,
+     
+    // },
     { key: "SNo", label: "S.NO", _style: { width: "5%" },    sorter: false,
     filter: false, },
    
     { key: "Street", label: "Street Name", _style: { width: "10%" } },
-    { key: "Street", label: "Ward Name", _style: { width: "10%" } },
-    { key: "Street", label: "Entered By", _style: { width: "10%" } },
-    { key: "Street", label: "Entered On", _style: { width: "10%" } },
+    { key: "Ward", label: "Ward Name", _style: { width: "10%" } },
+    { key: "EnteredBy", label: "Entered By", _style: { width: "10%" } },
+    { key: "EnteredOn", label: "Entered On", _style: { width: "10%" } },
    
-    { key: "show_details1", label: "Action", _style: { width: "10%" },    sorter: false,
+    { key: "show_details", label: "Action", _style: { width: "10%" },    sorter: false,
     filter: false, },
   ];
   const [passing, setPassing] = useState("");
@@ -138,7 +154,17 @@ const Municipality = () => {
     await setMunicipalListadd(true);
     await setmunicipalCreateadd(false);
   };
-  
+  const selectState = [{ value: "TamilNadu", label: "TamilNadu" }];
+  const selectDistrict = [{ value: "Kacnhipuram", label: "Kacnhipuram" }];
+  const selectMunicipalcorporation = [
+    { value: "Wallajabhad", label: "Wallajabhad" },
+    { value: "NazharathPet", label: "NazharathPet" },
+  ];
+  const selectArea = [
+    { value: "Kavanthandalam", label: "Kavanthandalam" },
+    { value: "Thammanur ", label: "Thammanur " },
+  ];
+  const selectWard = [{ value: "0097", label: "0097" },{ value: "0098", label: "0098" }];
   return (
     <div>
         {hideMappingMunicipality && (
@@ -165,7 +191,7 @@ const Municipality = () => {
                      <CButton
                        style={{
                          float: "right",
-                         marginRight: "855px",
+                         marginRight: "865px",
                        }}
                        id={"saveAbbreviationConfigureCode"}
                        className={"saveBtn"}
@@ -180,46 +206,44 @@ const Municipality = () => {
                 
                 
                 <CCol className={"column-align"} md="3">
-                  <CLabel className={"label-name"}>
+                  <CLabel className={"label-name-1"}>
                   State
                     <span className={"text-danger"}>*</span>
                   </CLabel>
                   <Select
-                    className={"input-align"}
+                  
                     id={"municipalstatename"}
                     name={"state"}
                     placeholder={"Select State"}
-                    value={locations.district}
-                    onChange={changeHandler}
+                   options={selectState}
                   />
                 </CCol>
                 <CCol className={"column-align"} md="3">
-                     <CLabel className={"label-name"}>
+                     <CLabel className={"label-name-1"}>
                        District / City
                        <span className={"text-danger"}>*</span>
                      </CLabel>
                      <Select
-                       className={"input-align"}
+                     
                        id={"municipaldistrict"}
                        name={"city"}
                        placeholder={" Corporation Name"}
-                       value={locations.city}
-                       onChange={changeHandler}
+                    
+                       options={selectDistrict}
                      />
                    </CCol>
                 
                    <CCol className={"column-align"} md="3">
-                  <CLabel className={"label-name"}>
+                  <CLabel className={"label-name-1"}>
                   Municipality
                     <span className={"text-danger"}>*</span>
                   </CLabel>
                   <Select
-                    className={"input-align"}
+                  
                     id={"municipaldistrict"}
                     name={"Municipality"}
                     placeholder={" Select Municipality"}
-                    value={locations.city}
-                    onChange={changeHandler}
+                  options={selectMunicipalcorporation}
                   />
                 </CCol>
               </CRow>
@@ -227,31 +251,29 @@ const Municipality = () => {
                  <CRow className={"row-alignment"} md="12" sm="12" lg="12">
             
                    <CCol className={"column-align"} md="3">
-                  <CLabel className={"label-name"}>
+                  <CLabel className={"label-name-1"}>
                   Area
                     <span className={"text-danger"}>*</span>
                   </CLabel>
                   <Select
-                    className={"input-align"}
+                 
                     id={"municipaldistrict"}
                     name={"Area"}
                     placeholder={"Select Area"}
-                    value={locations.city}
-                    onChange={changeHandler}
+                  options={selectArea}
                   />
                 </CCol>
                    <CCol className={"column-align"} md="3">
-                     <CLabel className={"label-name"}>
+                     <CLabel className={"label-name-1"}>
                      Ward
                        <span className={"text-danger"}>*</span>
                      </CLabel>
                      <Select
-                       className={"input-align"}
+                       
                        id={"municipalstatename"}
                        name={"Ward"}
                        placeholder={"Select Ward"}
-                       value={locations.district}
-                       onChange={changeHandler}
+                      options={selectWard}
                      />
                    </CCol>
                  </CRow>
@@ -278,11 +300,44 @@ const Municipality = () => {
                          <td className="py-2">
                            <CRow>
                              <CCol style={{ fontSize: "1.15rem" }} md="12">
+                             <i
+                                  id={"locationLibraryDelete"}
+                                  style={{
+                                    marginLeft: "5px",
+                                    color: "blue",
+                                    cursor: "pointer",
+                                  }}
+                                  className="fa fa-edit"
+                                ></i>
+
+                                <i
+                                  id={"locationLibraryDelete"}
+                                  style={{
+                                    marginLeft: "5px",
+                                    marginLeft: "10px",
+                                    color: "red",
+                                    cursor: "pointer",
+                                  }}
+                                  className="fa fa-trash"
+                                ></i>
                              </CCol>
                            </CRow>
                          </td>
                        );
                      },
+                     show_details1: (item, index) => {
+                      return (
+                        <td className="py-2">
+                          <CRow>
+                            <CCol style={{ fontSize: "1.15rem" }} md="12">
+                            <CInput type="checkbox" style={{width:"20px"}}/>
+
+                              
+                            </CCol>
+                          </CRow>
+                        </td>
+                      );
+                    },
                      details: (item, index) => {},
                    }}
                  />
@@ -298,17 +353,12 @@ const Municipality = () => {
         <div>
            <CCard className={"cardSave"}>
         <div className={"main-headerlabel"}>
-          <span className={"header-label"}> Municipality</span>
+          <span className={"header-label"}> Adding Municipality</span>
         </div>
         {locationHide.corporation && (
           <div>
             <div style={{ marginLeft: "-26px" }}>
-              <div className={"row-headerlabel"}>
-                <span style={{ marginLeft: "70px" }} className={"header-label"}>
-                  {" "}
-                  Adding Municipality{" "}
-                </span>
-              </div>
+             
               <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
                 {municipalList && (
                   <React.Fragment>
@@ -321,7 +371,7 @@ const Municipality = () => {
                         placeholder="Select Municipality"
                         id={"municipalcorporation"}
                         type={"text"}
-                        value={municipalCorporation}
+                       options={selectMunicipalcorporation}
                       />
                     </CCol>
                     <CCol className={"column-align"} md={1} lg={1}>
@@ -435,6 +485,7 @@ const Municipality = () => {
                         placeholder="Select Ward Number"
                         id={"municipalcorporation"}
                         type={"text"}
+                        options={selectWard}
                       />
                     </CCol>
                     <CCol className={"column-align"} md={1} lg={1}>
@@ -559,8 +610,7 @@ const Municipality = () => {
                     id={"municipalstatename"}
                     name={"state"}
                     placeholder={"Select State"}
-                    value={locations.district}
-                    onChange={changeHandler}
+                   options={selectState}
                   />
                 </CCol>
                 <CCol className={"column-align"} md="4">
@@ -573,8 +623,7 @@ const Municipality = () => {
                     id={"municipaldistrict"}
                     name={"city"}
                     placeholder={" Corporation Name"}
-                    value={locations.city}
-                    onChange={changeHandler}
+                   options={selectDistrict}
                   />
                 </CCol>
               </CRow>
@@ -589,8 +638,7 @@ const Municipality = () => {
                     id={"municipalarea"}
                     name={"area"}
                     placeholder={" Corporation Name"}
-                    value={locations.city}
-                    onChange={changeHandler}
+                    options={selectArea}
                   />
                 </CCol>
               </CRow>
@@ -645,7 +693,7 @@ const Municipality = () => {
                 checked
                 pagination
                 scopedSlots={{
-                  show_details: (item, index) => {
+                  show_details1: (item, index) => {
                     return (
                       <td className="py-2">
                         <CRow>
@@ -664,7 +712,7 @@ const Municipality = () => {
                       </td>
                     );
                   },
-                  show_details1: (item, index) => {
+                  show_details: (item, index) => {
                     return (
                       <td className="py-2">
                         <CRow>

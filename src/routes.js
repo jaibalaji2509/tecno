@@ -66,6 +66,7 @@ const PartyPosting = React.lazy(() => import('./views/components/partyposting/Pa
 const AssignPartyPosting = React.lazy(() => import('./views/components/assignpartyposting/AssignPartyPosting'));
 const StateMinister = React.lazy(() => import('./views/components/stateminister/StateMinister'));
 const CentralMinister = React.lazy(() => import('./views/components/centralminister/CentralMinister'));
+const ClientInitiation = React.lazy(() => import('./views/components/clientinitiation/ClientInitiation'));
 const routes = [
   { path: '/', exact: true, name: 'Home' },
 
@@ -137,6 +138,7 @@ const routes = [
   { path: '/MemberofMunicipality',  exact: true, name: 'Member of Municipality', component: MemberofMunicipality },
   { path: '/stateminister',  exact: true, name: 'State Minister', component: StateMinister },
   { path: '/centralminister',  exact: true, name: 'Central Minister', component: CentralMinister },
+  { path: '/clientinitiation',  exact: true, name: 'Client Initiation', component: ClientInitiation },
 ];
 
 export default routes;
