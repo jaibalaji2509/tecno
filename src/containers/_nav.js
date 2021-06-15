@@ -74,7 +74,7 @@ const _nav = [
         id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
         name: "Type of Party Office",
-        to: "/TypeOfpartyOffice",
+        to: "/partyoffice",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
       {
