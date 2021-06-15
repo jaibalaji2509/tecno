@@ -204,7 +204,7 @@ function PartyWingsOfficeLocation() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "118px",
+                    top: "122px",
                     marginLeft: "940px",
                     marginBottom: "20px",
                     color: "#0072ff",
@@ -218,7 +218,7 @@ function PartyWingsOfficeLocation() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "118px",
+                    top: "122px",
                     marginLeft: "980px",
                     marginBottom: "20px",
                     color: "green",
@@ -230,7 +230,7 @@ function PartyWingsOfficeLocation() {
             </CRow>
 
             <CRow>
-              <CCol style={{ top: "20px" }}>
+              <CCol style={{ top: "23px" }}>
                 <img
                   id={"employeeDataorgEmployeeData"}
                   alt={""}
@@ -248,7 +248,7 @@ function PartyWingsOfficeLocation() {
                 />
               </CCol>
             </CRow>
-            <CRow style={{ padding: "4%", marginTop: "-7.5%" }}>
+            <CRow style={{ padding: "4%", marginTop: "-8.5%" }}>
               <CDataTable
                 items={userData}
                 fields={fields}

@@ -266,7 +266,7 @@ const PartyOffice = () => {
                     style={{
                       position: "absolute",
                       top: "90px",
-                      marginLeft: "820px",
+                      marginLeft: "865px",
                       marginBottom: "20px",
                       color: "#0072ff",
                     }}
@@ -299,7 +299,7 @@ const PartyOffice = () => {
                       style={{
                         height: "40px",
                         width: "40px",
-                        marginRight: "290px",
+                        marginRight: "325px",
                         float: "right",
                         cursor: "pointer",
                         
