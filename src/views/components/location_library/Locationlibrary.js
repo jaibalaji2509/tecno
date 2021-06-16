@@ -34,7 +34,7 @@ import Select from "react-select";
 function LocationLibrary(props) {
   const [error, setError] = useState("");
   const [passing, setPassing] = useState("");
-  const [areaSchema, setArea] = useState([]);
+  const [, setArea] = useState([]);
   const [areasSchema, setAreas] = useState([]);
   const [citySchema, setCity] = useState([]);
   const [stateSchema, setState] = useState([]);
@@ -44,7 +44,7 @@ function LocationLibrary(props) {
   const [AreaList, setAreaList] = useState(true);
   const [StreetList,setStreetList ] = useState(true);
   const [CountryCreate, setCountryCreate] = useState(false);
-  const [countryList, setCountryList] = useState(true);
+  const [, setCountryList] = useState(true);
   const [CityCreate, setCityCreate] = useState(false);
   const [CityList, setCityList] = useState(true);
   const [StateCreate, setStateCreate] = useState(false);
@@ -973,12 +973,7 @@ const addStreet = async()=>{
                             maxlength="5"
                             size="5"
                           />
-                          {/* {formik.errors.Abbreviation3 ? (
-                            <div className="text-danger">
-                              {" "}
-                              {formik.errors.Abbreviation3}
-                            </div>
-                          ) : null} */}
+                         
                         </CCol>
                         <CCol md="3">
                           <CLabel className={"label-name-3"}>
@@ -1000,12 +995,7 @@ const addStreet = async()=>{
                             maxlength="5"
                             size="5"
                           />
-                          {/* {formik.errors.Code3 ? (
-                            <div className="text-danger">
-                              {" "}
-                              {formik.errors.Code3}
-                            </div>
-                          ) : null} */}
+                         
                         </CCol>
                         <CCol  md="3">
                           <CButton
@@ -1167,12 +1157,7 @@ const addStreet = async()=>{
                             maxlength="60"
                             size="60"
                           />
-                          {/* {formik.errors.AreaName ? (
-                            <div className="text-danger">
-                              {" "}
-                              {formik.errors.AreaName}
-                            </div>
-                          ) : null} */}
+                         
                         </CCol>
 
                         <CCol md="2">
@@ -1194,12 +1179,7 @@ const addStreet = async()=>{
                             maxlength="5"
                             size="5"
                           />
-                          {/* {formik.errors.Abbreviation4 ? (
-                            <div className="text-danger">
-                              {" "}
-                              {formik.errors.Abbreviation4}
-                            </div>
-                          ) : null} */}
+                         
                         </CCol>
                         <CCol md="2">
                           <CLabel className={"label-name-3"}>
@@ -1221,12 +1201,7 @@ const addStreet = async()=>{
                             maxlength="5"
                             size="5"
                           />
-                          {/* {formik.errors.Code4 ? (
-                            <div className="text-danger">
-                              {" "}
-                              {formik.errors.Code4}
-                            </div>
-                          ) : null} */}
+                         
                         </CCol>
              <CCol md="2">
              <CLabel className={"label-name-1"}>
@@ -1362,25 +1337,7 @@ const addStreet = async()=>{
                       )}
                       {saveHide && (
                         <React.Fragment>
-                            {/* <CCol md="2">
-                          <CButton
-                            style={{ marginTop: "30px" }}
-                            className={"saveBtn"}
-                            onClick={Area}
-                            id={"locationLibraryAreaSave"}
-                          >
-                            SAVE
-                          </CButton>
-                          <CButton
-                            style={{ marginTop: "30px", marginLeft: "20px" }}
-                            className={"cancelBtn"}
-                            onClick={CancelArea}
-                            id={"locationLibraryAreaCancel"}
-                          >
-                            CANCEL
-                          </CButton>
-                          {error !== "" ? <p>{error}</p> : null}
-                        </CCol> */}
+                           
                         </React.Fragment>
                       )}
                     </React.Fragment>
@@ -1406,12 +1363,7 @@ const addStreet = async()=>{
                             maxlength="60"
                             size="60"
                           />
-                          {/* {formik.errors.AreaName ? (
-                            <div className="text-danger">
-                              {" "}
-                              {formik.errors.AreaName}
-                            </div>
-                          ) : null} */}
+                          
                         </CCol>
                        
                         <CCol md="3">
@@ -1433,12 +1385,7 @@ const addStreet = async()=>{
                             maxlength="5"
                             size="5"
                           />
-                          {/* {formik.errors.Abbreviation4 ? (
-                            <div className="text-danger">
-                              {" "}
-                              {formik.errors.Abbreviation4}
-                            </div>
-                          ) : null} */}
+                         
                         </CCol>
                         <CCol md="3">
                           <CLabel className={"label-name-3"}>
@@ -1460,12 +1407,7 @@ const addStreet = async()=>{
                             maxlength="5"
                             size="5"
                           />
-                          {/* {formik.errors.Code4 ? (
-                            <div className="text-danger">
-                              {" "}
-                              {formik.errors.Code4}
-                            </div>
-                          ) : null} */}
+                          
                         </CCol>
                         <CCol md="2">
                           <CButton

@@ -265,10 +265,10 @@ const PartyOffice = () => {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "90px",
-                      marginLeft: "820px",
+                      top: "98px",
+                      marginLeft: "865px",
                       marginBottom: "20px",
-                      color: "#0072ff",
+                      color: "black",
                     }}
                     className="fa fa-print"
                   ></i>
@@ -278,10 +278,10 @@ const PartyOffice = () => {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "90px",
+                      top: "98px",
                       marginLeft: "900px",
                       marginBottom: "910px",
-                      color: "green",
+                      color: "black",
                     }}
                     className="fa fa-share-alt"
                   ></i>
@@ -289,7 +289,7 @@ const PartyOffice = () => {
               </CRow>
               
             <CRow>
-                  <CCol style={{top:"80px"}}>
+                  <CCol style={{top:"88px"}}>
                     <img
                       id={"employeeDataorgEmployeeData"}
                       alt={""}
@@ -299,10 +299,9 @@ const PartyOffice = () => {
                       style={{
                         height: "40px",
                         width: "40px",
-                        marginRight: "290px",
+                        marginRight: "325px",
                         float: "right",
                         cursor: "pointer",
-                        
                       }}
                     />
                   </CCol>

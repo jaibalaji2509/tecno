@@ -107,7 +107,7 @@ function PartyWingsOfficeLocation() {
                   <CButton
                     style={{
                       float: "right",
-                      marginRight: "734px",
+                      marginRight: "762px",
                     }}
                     id={"saveAbbreviationConfigureCode"}
                     className={"saveBtn"}
@@ -204,10 +204,10 @@ function PartyWingsOfficeLocation() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "118px",
-                    marginLeft: "940px",
+                    top: "122px",
+                    marginLeft: "865px",
                     marginBottom: "20px",
-                    color: "#0072ff",
+                    color: "black",
                     cursor: "pointer",
                   }}
                   className="fa fa-print"
@@ -218,10 +218,10 @@ function PartyWingsOfficeLocation() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "118px",
-                    marginLeft: "980px",
+                    top: "122px",
+                    marginLeft: "900px",
                     marginBottom: "20px",
-                    color: "green",
+                    color: "black",
                     cursor: "pointer",
                   }}
                   className="fa fa-share-alt"
@@ -230,7 +230,7 @@ function PartyWingsOfficeLocation() {
             </CRow>
 
             <CRow>
-              <CCol style={{ top: "20px" }}>
+              <CCol style={{ top: "23px" }}>
                 <img
                   id={"employeeDataorgEmployeeData"}
                   alt={""}
@@ -240,7 +240,7 @@ function PartyWingsOfficeLocation() {
                   style={{
                     height: "40px",
                     width: "40px",
-                    marginRight: "238px",
+                    marginRight: "320px",
                     marginTop:"88px",
                     float: "right",
                     cursor: "pointer",
@@ -248,7 +248,7 @@ function PartyWingsOfficeLocation() {
                 />
               </CCol>
             </CRow>
-            <CRow style={{ padding: "4%", marginTop: "-7.5%" }}>
+            <CRow style={{ padding: "4%", marginTop: "-8.5%" }}>
               <CDataTable
                 items={userData}
                 fields={fields}

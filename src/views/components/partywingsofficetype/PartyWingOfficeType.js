@@ -267,10 +267,10 @@ const WingsofficeType = () => {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "118px",
-                    marginLeft: "940px",
+                    top: "98px",
+                    marginLeft: "865px",
                     marginBottom: "20px",
-                    color: "#0072ff",
+                    color: "black",
                     cursor: "pointer",
                   }}
                   className="fa fa-print"
@@ -281,10 +281,10 @@ const WingsofficeType = () => {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "118px",
-                    marginLeft: "980px",
+                    top: "98px",
+                    marginLeft: "900px",
                     marginBottom: "20px",
-                    color: "green",
+                    color: "black",
                     cursor: "pointer",
                   }}
                   className="fa fa-share-alt"
@@ -293,7 +293,7 @@ const WingsofficeType = () => {
             </CRow>
 
             <CRow>
-              <CCol style={{ top: "20px" }}>
+              <CCol style={{ top: "-2px" }}>
                 <img
                   id={"employeeDataorgEmployeeData"}
                   alt={""}
@@ -303,7 +303,7 @@ const WingsofficeType = () => {
                   style={{
                     height: "40px",
                     width: "40px",
-                    marginRight: "238px",
+                    marginRight: "320px",
                     marginTop:"88px",
                     float: "right",
                     cursor: "pointer",
@@ -311,7 +311,7 @@ const WingsofficeType = () => {
                 />
               </CCol>
             </CRow>
-               <CRow style={{ padding: "4%", marginTop: "-8.5%" }}>
+               <CRow style={{ padding: "4%", marginTop: "-10.5%" }}>
                  <CDataTable
                    items={userData}
                    fields={fields}

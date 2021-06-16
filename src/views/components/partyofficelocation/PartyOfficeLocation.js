@@ -112,8 +112,9 @@ function PartyOfficeLocation() {
                   <CButton
                     style={{
                       float: "right",
-                      marginRight: "795px",
-                      position:"absolute"
+                      marginRight: "762px",
+                      position:"absolute",
+                      marginLeft:"18px",
                     }}
                     id={"saveAbbreviationConfigureCode"}
                     className={"saveBtn"}
@@ -210,10 +211,10 @@ function PartyOfficeLocation() {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "100px",
-                      marginLeft: "820px",
+                      top: "118px",
+                      marginLeft: "865px",
                       marginBottom: "20px",
-                      color:"black",
+                      color: "black",
                     }}
                     className="fa fa-print"
                   ></i>
@@ -223,8 +224,8 @@ function PartyOfficeLocation() {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "100px",
-                      marginLeft: "885px",
+                      top: "118px",
+                      marginLeft: "900px",
                       marginBottom: "910px",
                       color: "black",
                     }}
@@ -234,7 +235,7 @@ function PartyOfficeLocation() {
               </CRow>
               
             <CRow>
-                  <CCol style={{top:"90px"}}>
+                  <CCol style={{top:"87px"}}>
                     <img
                       id={"employeeDataorgEmployeeData"}
                       alt={""}
@@ -244,15 +245,15 @@ function PartyOfficeLocation() {
                       style={{
                         height: "40px",
                         width: "40px",
-                        marginRight: "290px",
+                        marginRight: "320px",
                         float: "right",
                         cursor: "pointer",
-                        
+                        marginTop:"20px"
                       }}
                     />
                   </CCol>
                 </CRow>
-            <CRow style={{ padding: "4%", marginTop: "-1.5%" }}>
+            <CRow style={{ padding: "4%", marginTop: "-3.5%" }}>
               <CDataTable
                 items={userData}
                 fields={fields}
