@@ -205,9 +205,9 @@ function PartyWingsOfficeLocation() {
                   style={{
                     position: "absolute",
                     top: "122px",
-                    marginLeft: "940px",
+                    marginLeft: "865px",
                     marginBottom: "20px",
-                    color: "#0072ff",
+                    color: "black",
                     cursor: "pointer",
                   }}
                   className="fa fa-print"
@@ -219,9 +219,9 @@ function PartyWingsOfficeLocation() {
                   style={{
                     position: "absolute",
                     top: "122px",
-                    marginLeft: "980px",
+                    marginLeft: "900px",
                     marginBottom: "20px",
-                    color: "green",
+                    color: "black",
                     cursor: "pointer",
                   }}
                   className="fa fa-share-alt"
@@ -240,7 +240,7 @@ function PartyWingsOfficeLocation() {
                   style={{
                     height: "40px",
                     width: "40px",
-                    marginRight: "238px",
+                    marginRight: "320px",
                     marginTop:"88px",
                     float: "right",
                     cursor: "pointer",

@@ -27,10 +27,11 @@ function MemberRegistration() {
   const [sideBar1, setSideBar1] = useState(false);
   const [files, setFiles] = useState("");
   const [menu, setMenu] = useState({
-    style: 'menu',
-    menuStatus: 'open',
-    style3: 'menu1',
-});
+    style: "menu",
+    style1: "menu1",
+    menuStatus: "open",
+    style3: "menu1",
+  });
 
   const userData1 = [
 
@@ -266,118 +267,7 @@ function MemberRegistration() {
             </CLabel>
           </CCol>
         </CRow>
-        <i
-          style={{
-            fontWeight: "700",
-            padding: "10px",
-            backgroundColor: "#1313d4",
-            color: "#fff",
-            borderRadius: "4px",
-            cursor: "pointer",
-            marginBottom: "15px",
-          }}
-          id={"memberregisterediticon"}
-          className="fa fa-eye"
-          onClick={() =>
-            setGridShow({
-              ...gridShow,
-              view1: true,
-              view2: false,
-              view3: false,
-              view: false,
-            })
-          }
-        >
-          Party Posting
-        </i>
-        <i
-          style={{
-            fontWeight: "700",
-            padding: "10px",
-            backgroundColor: "#1313d4",
-            color: "#fff",
-            borderRadius: "4px",
-            cursor: "pointer",
-            marginBottom: "15px",
-            marginLeft: "20px",
-          }}
-          id={"memberregisterediticon"}
-          className="fa fa-eye"
-          onClick={() =>
-            setGridShow({
-              ...gridShow,
-              view2: true,
-              view1: false,
-              view3: false,
-              view4: false,
-            })
-          }
-        >
-          Representative Posting
-        </i>
-        <i
-          style={{
-            fontWeight: "700",
-            padding: "10px",
-            backgroundColor: "#1313d4",
-            color: "#fff",
-            borderRadius: "4px",
-            cursor: "pointer",
-            marginBottom: "15px",
-            marginLeft: "20px",
-          }}
-          id={"memberregisterediticon"}
-          className="fa fa-eye"
-          onClick={() =>
-            setGridShow({
-              ...gridShow,
-              view3: true,
-              view2: false,
-              view1: false,
-              view4: false,
-            })
-          }
-        >
-          State Ministers Portofolio
-        </i>
-        <i
-          style={{
-            fontWeight: "700",
-            padding: "10px",
-            backgroundColor: "#1313d4",
-            color: "#fff",
-            borderRadius: "4px",
-            cursor: "pointer",
-            marginBottom: "15px",
-            marginLeft: "20px",
-          }}
-          id={"memberregisterediticon"}
-          className="fa fa-eye"
-          onClick={() =>
-            setGridShow({
-              ...gridShow,
-              view4: true,
-              view2: false,
-              view1: false,
-              view3: false,
-            })
-          }
-        >
-          Central Ministers Portofolio
-        </i>
-        {gridShow.view1 && (
-          <CRow>
-            <CCol
-              style={{
-                marginLeft: "30px",
-
-                maxHeight: "290px",
-                minHeight: "290px",
-                marginBottom: "-25px",
-                overflow: "auto",
-              }}
-            >
-              <CDataTable
+                      <CDataTable
                 tableLabel={"Details of Party Posting"}
                 columnFilter
                 tableFilter
@@ -401,114 +291,9 @@ function MemberRegistration() {
                   },
                  ]}
               />
-            </CCol>
-          </CRow>
-        )}
+        
+        
 
-        {gridShow.view2 && (
-          <CRow>
-            <CCol
-              style={{
-                marginLeft: "30px",
-
-                maxHeight: "290px",
-                minHeight: "290px",
-                marginBottom: "-25px",
-                overflow: "auto",
-              }}
-            >
-              <CDataTable
-                tableLabel={"Details of Public Representative Posting"}
-                columnFilter
-                tableFilter
-                hover
-                sorter
-                scopedSlots={{
-                  status: (item) => <td></td>,
-                }}
-                items={[
-                  {
-                    SNo: "1",
-                    NameofRepresentativePosting: "LokSabha",
-                    FromDate: "24/06/2005",
-                    ToDate: "11/04/2010",
-                    Status: "InActive",
-                  },
-                ]}
-              />
-            </CCol>
-          </CRow>
-        )}
-
-        {gridShow.view3 && (
-          <CRow>
-            <CCol
-              style={{
-                marginLeft: "30px",
-
-                maxHeight: "290px",
-                minHeight: "290px",
-                marginBottom: "-25px",
-                overflow: "auto",
-              }}
-            >
-              <CDataTable
-                tableLabel={"Details of State Ministers Portofolio"}
-                columnFilter
-                tableFilter
-                hover
-                sorter
-                scopedSlots={{
-                  status: (item) => <td></td>,
-                }}
-                items={[
-                  {
-                    SNo: "1",
-                    NameofMinistry: "State Minister",
-                    FromDate: "20/06/2010",
-                    ToDate: "22/05/2015",
-                    Status:"InActiive"
-                  },
-                ]}
-              />
-            </CCol>
-          </CRow>
-        )}
-
-        {gridShow.view4 && (
-          <CRow>
-            <CCol
-              style={{
-                marginLeft: "30px",
-
-                maxHeight: "290px",
-                minHeight: "290px",
-                marginBottom: "-25px",
-                overflow: "auto",
-              }}
-            >
-              <CDataTable
-                tableLabel={"Details of Central Ministers Portofolio"}
-                columnFilter
-                tableFilter
-                hover
-                sorter
-                scopedSlots={{
-                  status: (item) => <td></td>,
-                }}
-                items={[
-                  {
-                    SNo: "1",
-                    NameofMinistry: "Central Minister",
-                    FromDate: "28/02/20",
-                    ToDate: "30/02/2025",
-                    Status:"Active"
-                  },
-                ]}
-              />
-            </CCol>
-          </CRow>
-        )}
         <CButton
           className={"menu"}
           style={{ position: "absolute", top: "15px", right: "15px" }}
@@ -520,7 +305,9 @@ function MemberRegistration() {
         >
           Back
         </CButton>
-      </div>
+     
+        </div>
+           
     )}
 
       <CCard className={"cardSave"}>
