@@ -268,7 +268,7 @@ const WingsofficeType = () => {
                   style={{
                     position: "absolute",
                     top: "98px",
-                    marginLeft: "865px",
+                    marginLeft: "860px",
                     marginBottom: "20px",
                     color: "black",
                     cursor: "pointer",
@@ -303,7 +303,7 @@ const WingsofficeType = () => {
                   style={{
                     height: "40px",
                     width: "40px",
-                    marginRight: "320px",
+                    marginRight: "315px",
                     marginTop:"88px",
                     float: "right",
                     cursor: "pointer",

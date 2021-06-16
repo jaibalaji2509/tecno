@@ -205,7 +205,7 @@ function PartyWingsOfficeLocation() {
                   style={{
                     position: "absolute",
                     top: "122px",
-                    marginLeft: "865px",
+                    marginLeft: "860px",
                     marginBottom: "20px",
                     color: "black",
                     cursor: "pointer",
@@ -240,7 +240,7 @@ function PartyWingsOfficeLocation() {
                   style={{
                     height: "40px",
                     width: "40px",
-                    marginRight: "320px",
+                    marginRight: "315px",
                     marginTop:"88px",
                     float: "right",
                     cursor: "pointer",
