@@ -265,7 +265,7 @@ const PartyOffice = () => {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "98px",
+                      top: "90px",
                       marginLeft: "860px",
                       marginBottom: "20px",
                       color: "black",
@@ -278,7 +278,7 @@ const PartyOffice = () => {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "98px",
+                      top: "90px",
                       marginLeft: "900px",
                       marginBottom: "910px",
                       color: "black",
@@ -289,7 +289,7 @@ const PartyOffice = () => {
               </CRow>
               
             <CRow>
-                  <CCol style={{top:"88px"}}>
+                  <CCol style={{top:"80px"}}>
                     <img
                       id={"employeeDataorgEmployeeData"}
                       alt={""}

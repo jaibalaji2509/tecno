@@ -211,7 +211,7 @@ function PartyOfficeLocation() {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "118px",
+                      top: "110px",
                       marginLeft: "860px",
                       marginBottom: "20px",
                       color: "black",
@@ -224,7 +224,7 @@ function PartyOfficeLocation() {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "118px",
+                      top: "110px",
                       marginLeft: "900px",
                       marginBottom: "910px",
                       color: "black",
@@ -235,7 +235,7 @@ function PartyOfficeLocation() {
               </CRow>
               
             <CRow>
-                  <CCol style={{top:"87px"}}>
+                  <CCol style={{top:"80px"}}>
                     <img
                       id={"employeeDataorgEmployeeData"}
                       alt={""}

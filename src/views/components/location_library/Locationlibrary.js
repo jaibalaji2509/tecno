@@ -1472,7 +1472,7 @@ const addStreet = async()=>{
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "37px",
+                      top: "30px",
                       marginLeft: "860px",
                       marginBottom: "20px",
                       color: "black",
@@ -1486,7 +1486,7 @@ const addStreet = async()=>{
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "37px",
+                      top: "30px",
                       marginLeft: "900px",
                       marginBottom: "20px",
                       color: "black",
