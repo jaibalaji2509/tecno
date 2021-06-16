@@ -270,7 +270,7 @@ const WingsofficeType = () => {
                     top: "118px",
                     marginLeft: "940px",
                     marginBottom: "20px",
-                    color: "#0072ff",
+                    color: "black",
                     cursor: "pointer",
                   }}
                   className="fa fa-print"
@@ -284,7 +284,7 @@ const WingsofficeType = () => {
                     top: "118px",
                     marginLeft: "980px",
                     marginBottom: "20px",
-                    color: "green",
+                    color: "black",
                     cursor: "pointer",
                   }}
                   className="fa fa-share-alt"

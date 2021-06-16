@@ -220,34 +220,6 @@ function Constituency() {
               </CCol>
             </CRow>
 
-            <CRow>
-              <CCol style={{ fontSize: "1.55rem" }} md="12">
-                <i
-                  id={"locationLibraryDelete"}
-                  style={{
-                    position: "absolute",
-                    top: "120px",
-                    marginLeft: "955px",
-                    marginBottom: "20px",
-                    color: "#0072ff",
-                  }}
-                  className="fa fa-print"
-                ></i>
-              </CCol>
-              <CCol style={{ fontSize: "1.55rem" }} md="12">
-                <i
-                  id={"locationLibraryDelete"}
-                  style={{
-                    position: "absolute",
-                    top: "120px",
-                    marginLeft: "1000px",
-                    marginBottom: "20px",
-                    color: "green",
-                  }}
-                  className="fa fa-share-alt"
-                ></i>
-              </CCol>
-            </CRow>
             <CRow style={{ padding: "4%", marginTop: "1.5%" }}>
               <CDataTable
                 items={userDataview}

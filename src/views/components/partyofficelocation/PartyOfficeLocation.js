@@ -112,8 +112,9 @@ function PartyOfficeLocation() {
                   <CButton
                     style={{
                       float: "right",
-                      marginRight: "795px",
-                      position:"absolute"
+                      marginRight: "762px",
+                      position:"absolute",
+                      marginLeft:"18px",
                     }}
                     id={"saveAbbreviationConfigureCode"}
                     className={"saveBtn"}
@@ -210,10 +211,10 @@ function PartyOfficeLocation() {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "117px",
+                      top: "118px",
                       marginLeft: "860px",
                       marginBottom: "20px",
-                      color:"black",
+                      color: "#0072ff",
                     }}
                     className="fa fa-print"
                   ></i>
@@ -223,10 +224,10 @@ function PartyOfficeLocation() {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "117px",
+                      top: "118px",
                       marginLeft: "900px",
                       marginBottom: "910px",
-                      color: "black",
+                      color: "green",
                     }}
                     className="fa fa-share-alt"
                   ></i>
