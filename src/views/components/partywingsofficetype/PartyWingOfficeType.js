@@ -267,8 +267,8 @@ const WingsofficeType = () => {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "98px",
-                    marginLeft: "865px",
+                    top: "80px",
+                    marginLeft: "860px",
                     marginBottom: "20px",
                     color: "black",
                     cursor: "pointer",
@@ -281,7 +281,7 @@ const WingsofficeType = () => {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "98px",
+                    top: "80px",
                     marginLeft: "900px",
                     marginBottom: "20px",
                     color: "black",
@@ -293,7 +293,7 @@ const WingsofficeType = () => {
             </CRow>
 
             <CRow>
-              <CCol style={{ top: "-2px" }}>
+              <CCol style={{ top: "-10px" }}>
                 <img
                   id={"employeeDataorgEmployeeData"}
                   alt={""}
@@ -303,8 +303,8 @@ const WingsofficeType = () => {
                   style={{
                     height: "40px",
                     width: "40px",
-                    marginRight: "320px",
-                    marginTop:"88px",
+                    marginRight: "315px",
+                    marginTop:"80px",
                     float: "right",
                     cursor: "pointer",
                   }}

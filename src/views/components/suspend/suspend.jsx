@@ -80,6 +80,7 @@ const Suspend = () => {
                 >
                   Location
                 </CLabel>
+                
               </CCol>
             </CRow>
             <CRow>

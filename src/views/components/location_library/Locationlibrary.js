@@ -1472,10 +1472,11 @@ const addStreet = async()=>{
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "37px",
-                      marginLeft: "945px",
+                      top: "30px",
+                      marginLeft: "860px",
                       marginBottom: "20px",
-                      color: "#0072ff",
+                      color: "black",
+                      marginTop:"15px"
                     }}
                     className="fa fa-print"
                   ></i>
@@ -1485,10 +1486,11 @@ const addStreet = async()=>{
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "37px",
-                      marginLeft: "1000px",
+                      top: "30px",
+                      marginLeft: "900px",
                       marginBottom: "20px",
-                      color: "green",
+                      color: "black",
+                      marginTop:"15px"
                     }}
                     className="fa fa-share-alt"
                   ></i>

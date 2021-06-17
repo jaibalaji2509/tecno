@@ -204,8 +204,8 @@ function PartyWingsOfficeLocation() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "122px",
-                    marginLeft: "865px",
+                    top: "112px",
+                    marginLeft: "860px",
                     marginBottom: "20px",
                     color: "black",
                     cursor: "pointer",
@@ -218,7 +218,7 @@ function PartyWingsOfficeLocation() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "122px",
+                    top: "112px",
                     marginLeft: "900px",
                     marginBottom: "20px",
                     color: "black",
@@ -230,7 +230,7 @@ function PartyWingsOfficeLocation() {
             </CRow>
 
             <CRow>
-              <CCol style={{ top: "23px" }}>
+              <CCol style={{ top: "13px" }}>
                 <img
                   id={"employeeDataorgEmployeeData"}
                   alt={""}
@@ -240,7 +240,7 @@ function PartyWingsOfficeLocation() {
                   style={{
                     height: "40px",
                     width: "40px",
-                    marginRight: "320px",
+                    marginRight: "315px",
                     marginTop:"88px",
                     float: "right",
                     cursor: "pointer",
