@@ -60,7 +60,6 @@ const Municipality = React.lazy(() => import('./views/components/municipality/Mu
 const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
 const VillagePanchayat = React.lazy(() => import('./views/components/villagepanchayat/VillagePanchayat'));
 const MemberRegistration = React.lazy(() => import('./views/components/memberregistration/MemberRegistration'));
-const PartyOffice = React.lazy(() => import('./views/components/partyoffice/PartyOffice'));
 const PartyOfficeLocation = React.lazy(() => import('./views/components/partyofficelocation/PartyOfficeLocation'));
 const PartyPosting = React.lazy(() => import('./views/components/partyposting/PartyPosting'));
 const AssignPartyPosting = React.lazy(() => import('./views/components/assignpartyposting/AssignPartyPosting'));
@@ -118,7 +117,7 @@ const routes = [
   {path:"/municipality", exact:true, name : "Municipality", component:Municipality},
   {path:"/townpanchayat", exact:true, name : "Town Panchayat", component:TownPanchayat},
   {path:"/villagepanchayat", exact:true, name : "Village Panchayat", component:VillagePanchayat},
-  {path:"/partyoffice", exact:true, name : "Party Office", component:PartyOffice},
+
   { path: '/MemberRegistration',  exact: true, name: 'Member Registration', component: MemberRegistration },
   { path: '/WingsofficeType',  exact: true, name: 'PARTY WINGS OFFICE', component: WingsofficeType },
   { path: '/PartyWingsOfficeLocation',  exact: true, name: 'Party Wings Office Location', component: PartyWingsOfficeLocation },

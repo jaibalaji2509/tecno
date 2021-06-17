@@ -204,9 +204,7 @@ const MunicipalCorporation = () => {
       corporation: true,
     });
   };
-  const changeHandler = (e) => {
-    setLocations({ ...locations, [e.target.name]: e.target.value });
-  };
+
   const enableCreate = async () => {
     await setMunicipalList(false);
     await setmunicipalCreate(true);
