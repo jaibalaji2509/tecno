@@ -59,8 +59,7 @@ const Corporation = React.lazy(() => import('./views/components/corporation/Corp
 const Municipality = React.lazy(() => import('./views/components/municipality/Municipality'));
 const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
 const VillagePanchayat = React.lazy(() => import('./views/components/villagepanchayat/VillagePanchayat'));
-const MemberRegistration = React.lazy(() => import('./views/components/MemberRegistration/MemberRegistration'));
-const PartyOffice = React.lazy(() => import('./views/components/partyoffice/PartyOffice'));
+const MemberRegistration = React.lazy(() => import('./views/components/memberregistration/MemberRegistration'));
 const PartyOfficeLocation = React.lazy(() => import('./views/components/partyofficelocation/PartyOfficeLocation'));
 const PartyPosting = React.lazy(() => import('./views/components/partyposting/PartyPosting'));
 const AssignPartyPosting = React.lazy(() => import('./views/components/assignpartyposting/AssignPartyPosting'));
@@ -69,6 +68,7 @@ const AssignPartyPosting = React.lazy(() => import('./views/components/assignpar
 
 const StateMinister = React.lazy(() => import('./views/components/stateminister/StateMinister'));
 const CentralMinister = React.lazy(() => import('./views/components/centralminister/CentralMinister'));
+const ClientInitiation = React.lazy(() => import('./views/components/clientinitiation/ClientInitiation'));
 const routes = [
   { path: '/', exact: true, name: 'Home' },
 
@@ -159,6 +159,7 @@ const routes = [
   { path: '/MemberofMunicipality',  exact: true, name: 'Member of Municipality', component: MemberofMunicipality },
   { path: '/stateminister',  exact: true, name: 'State Minister', component: StateMinister },
   { path: '/centralminister',  exact: true, name: 'Central Minister', component: CentralMinister },
+  { path: '/clientinitiation',  exact: true, name: 'Client Initiation', component: ClientInitiation },
 ];
 
 export default routes;

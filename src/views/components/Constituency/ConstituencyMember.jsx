@@ -59,7 +59,7 @@ const ConstituencyMember = () => {
   });
   const [typeofOfficess, setTypeofOfficess] = useState("");
   const [PI, setPI] = useState("");
-  const [gridone, setGridOne] = useState(true)
+  const [gridone, setGridOne] = useState(false)
   const [gridtwo, setGridTwo] = useState(false)
   const [gridthree, setGridThree] = useState(false)
   const [gridfour, setGridFour] = useState(false)
@@ -390,10 +390,76 @@ const ConstituencyMember = () => {
               </CRow>
               <CRow style={{ marginTop: "25px" }}>
             <CCol>
-              <CButton id="constimemberhistorygrid1" style={{ marginTop: "20px" }} onClick={chairshow} className={"saveBtn"}>Party Posting</CButton>
-              <CButton id="constimemberhistorygrid2" className={"saveBtn"} style={{ marginTop: "20px", marginLeft: "10px" }} onClick={gridshow}>PUBLIC REPRESENTATIVE POSTING</CButton>
-              <CButton id="constimemberhistorygrid3" onClick={partshow} className={"saveBtn"} style={{ marginTop: "20px", marginLeft: "10px" }}>STATE MINISTRY PORTFOLIO</CButton>
-              <CButton id="constimemberhistorygrid4"  onClick={centralgrid} className={"saveBtn"} style={{ marginTop: "20px", marginLeft: "10px" }}>CENTRAL MINISTERS PORTFOLIO</CButton>
+            <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"memberregisterediticon"}
+            className="fa fa-eye"
+            onClick={chairshow}
+          >
+            Party Posting
+          </i>
+          <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"memberregisterediticon"}
+            className="fa fa-eye"
+            onClick={gridshow}
+            >
+              PUBLIC REPRESENTATIVE POSTING
+        
+          </i>
+          <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"memberregisterediticon"}
+            className="fa fa-eye"
+            onClick={partshow}
+          >
+           STATE MINISTRY PORTFOLIO
+          </i>
+          <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"memberregisterediticon"}
+            className="fa fa-eye"
+            onClick={centralgrid}
+          >
+            CENTRAL MINISTERS PORTFOLIO
+          </i>
+       
             </CCol></CRow>
 
               { gridone && (
@@ -734,8 +800,7 @@ const ConstituencyMember = () => {
                 id={"constituencymemstatus"}
                 name={"Status"}
                 placeholder={" Select Status "}
-                // value={locations.city}
-                // onChange={changeHandler}
+                
                 options={selectestatusupdate}
               />
             </CCol>

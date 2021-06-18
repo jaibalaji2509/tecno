@@ -1,3 +1,4 @@
+import { cibTeamviewer } from "@coreui/icons";
 import {
   CButton,
   CCard,
@@ -36,16 +37,29 @@ const TownPanchayat = () => {
     cityLocation: false,
   });
   const userData = [
+    {SNo:"1",
+    Street:"Kalaingar Street",
+    Ward:"kavampair",
+    by:"JAI BALAJI",
+    on:"10/06/2021",
+  },
+  {SNo:"2",
+  Street:"Marriamman Kovil Street",
+  Ward:"Pulivoy",
+  by:"JAI BALAJI",
+  on:"10/06/2021",
+},
      ];
   const fields = [
-    {
-      key: "show_details",
-      label: "Select",
-      _style: { width: "3%" },
-    
-      sorter: false,
-      filter: false,
-    },
+    // {
+    //   key: "show_details",
+    //   label: "Select",
+    //   _style: { width: "3%" },
+    //   name: <div>Email <input type={"checkbox"} onClick={""}/></div>,
+    //   sorter: false,
+    //   filter: false,
+    //   checked:true,
+    // },
     {
       key: "SNo",
       label: "S.NO",
@@ -55,25 +69,25 @@ const TownPanchayat = () => {
     },
     
     { key: "Street", label: "Street Name", _style: { width: "10%" } },
-    { key: "Street", label: "Ward Name", _style: { width: "10%" } },
+    { key: "Ward", label: "Ward Name", _style: { width: "10%" } },
    
   
     {
-      key: "Action",
+      key: "by",
       label: "Enteerd by",
       _style: { width: "10%" },
       sorter: false,
       filter: false,
     },
     {
-      key: "Action",
+      key: "on",
       label: "Entered On",
       _style: { width: "10%" },
       sorter: false,
       filter: false,
     },
     {
-      key: "Action",
+      key: "show_details1",
       label: "Action",
       _style: { width: "10%" },
       sorter: false,
@@ -84,6 +98,26 @@ const TownPanchayat = () => {
   const [error] = useState("");
 
 
+  const stateselect =[
+    {value:"tamil", label:"Tamilnadu"}
+  ];
+  const cityselect =[
+
+    {value:"Kancheepuram",label:"Chengalpattu"}
+  ];
+  const townselect=[
+{value:"puthirankottai",label:"Puthirankottai"},
+{value:"maa",value:"mambakkam"}];
+  const areaselect=[{
+  value:"mariamman",label:"Mariamman Kovil Street"
+},
+{value:"kalaingar",label:"Kalaingar Street"}];
+  const wardno=[{
+    value:"017",label:"018"
+  }];
+  const wardselect=[{
+    value:"1",label:"kavampair"
+  }];
 
   const changeHandler = (e) => {
     setLocations({ ...locations, [e.target.name]: e.target.value });
@@ -176,8 +210,9 @@ const canceltownchange = () => {
                           id={"municipalstatename"}
                           name={"state"}
                           placeholder={"Select State"}
-                          value={locations.district}
-                          onChange={changeHandler}
+                          // value={locations.district}
+                          // onChange={changeHandler}
+                          options={stateselect}
                         />
                       </CCol>
                       <CCol className={"column-align"} md="3">
@@ -190,8 +225,9 @@ const canceltownchange = () => {
                           id={"municipaldistrict"}
                           name={"city"}
                           placeholder={" Corporation Name"}
-                          value={locations.city}
-                          onChange={changeHandler}
+                          // value={locations.city}
+                          // onChange={changeHandler}
+                        options={cityselect}
                         />
                       </CCol>
                       <CCol className={"column-align"} md="3">
@@ -204,8 +240,8 @@ const canceltownchange = () => {
                           id={"municipaldistrict"}
                           name={"city"}
                           placeholder={" Corporation Name"}
-                          value={locations.city}
-                          onChange={changeHandler}
+                          // 
+                          options={townselect}
                         />
                       </CCol>
                     </CRow>
@@ -221,8 +257,9 @@ const canceltownchange = () => {
                           id={"municipaldistrict"}
                           name={"Area"}
                           placeholder={" Select Area"}
-                          value={locations.city}
-                          onChange={changeHandler}
+                          // value={locations.city}
+                          // onChange={changeHandler}
+                          options={areaselect}
                         />
                       </CCol>
                       <CCol className={"column-align"} md="3">
@@ -235,8 +272,9 @@ const canceltownchange = () => {
                           id={"municipalstatename"}
                           name={"Ward"}
                           placeholder={"Select Ward"}
-                          value={locations.district}
-                          onChange={changeHandler}
+                          // value={locations.district}
+                          // onChange={changeHandler}
+                          options={wardselect}
                         />
                       </CCol>
                     </CRow>
@@ -259,8 +297,45 @@ const canceltownchange = () => {
                           return (
                             <td className="py-2">
                               <CRow>
+                                <CInput
+                                  type={"checkbox"}
+                                  style={{
+                                    width: "15px",
+                                    height: "15px",
+                                    marginLeft: "30px",
+                                    marginBottom: "10px",
+                                  }}
+                                />
                                 <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                
+                                </CCol>
+                              </CRow>
+                            </td>
+                          );
+                        },
+                        show_details1: (item, index) => {
+                          return (
+                            <td className="py-2">
+                              <CRow>
+                          
+                                <CCol style={{ fontSize: "1.15rem" }} md="12">
+                                  <i
+                                      style={{
+                                        marginRight: "5px",
+                                        color: "#3480e2",
+                                        cursor: "pointer",
+                                      }}
+                                      id={"locationLibraryEdit"}
+                                      className="fas fa-edit"
+                                    ></i>
+                                    <i
+                                      id={"locationLibraryDelete"}
+                                      style={{
+                                        marginLeft: "5px",
+                                        color: "#e85654",
+                                        cursor: "pointer",
+                                      }}
+                                      className="fa fa-trash"
+                                    ></i>
                                 </CCol>
                               </CRow>
                             </td>
@@ -305,10 +380,11 @@ const canceltownchange = () => {
                               <span className={"text-danger"}> *</span>
                             </CLabel>
                             <Select
-                              placeholder="Select Municipal Corporation"
+                              placeholder="Select Town Panchayat"
                               id={"municipalcorporation"}
                               type={"text"}
-                              value={municipalCorporation}
+                              // value={municipalCorporation}
+                              options={townselect}
                             />
                           </CCol>
                           <CCol className={"column-align"} md={1} lg={1}>
@@ -430,9 +506,10 @@ const canceltownchange = () => {
                               <span className={"text-danger"}> *</span>
                             </CLabel>
                             <Select
-                              placeholder="Select the State Name"
+                              placeholder="Select the Ward Number"
                               id={"municipalcorporation"}
                               type={"text"}
+                              options={wardno}
                             />
                           </CCol>
                           <CCol className={"column-align"} md={1} lg={1}>
@@ -567,8 +644,7 @@ const canceltownchange = () => {
                           id={"municipalstatename"}
                           name={"state"}
                           placeholder={"Select State"}
-                          value={locations.district}
-                          onChange={changeHandler}
+                          options={stateselect}
                         />
                       </CCol>
                       <CCol className={"column-align"} md="4">
@@ -580,9 +656,8 @@ const canceltownchange = () => {
                           className={"input-align"}
                           id={"municipaldistrict"}
                           name={"city"}
-                          placeholder={" Corporation Name"}
-                          value={locations.city}
-                          onChange={changeHandler}
+                          placeholder={" City Name"}
+                          options={cityselect}
                         />
                       </CCol>
                     </CRow>
@@ -594,16 +669,33 @@ const canceltownchange = () => {
                         </CLabel>
                         <Select
                           className={"input-align"}
-                          id={"municipalarea"}
-                          name={"area"}
-                          placeholder={" Corporation Name"}
-                          value={locations.city}
-                          onChange={changeHandler}
+                          id={"municipaldistrict"}
+                          name={"Area"}
+                          placeholder={" Select Area"}
+                          // value={locations.city}
+                          // onChange={changeHandler}
+                          options={areaselect}
                         />
                       </CCol>
+                      {/* <CCol className={"column-align"} md="4">
+                        <CLabel className={"label-name"}>
+                          Ward 
+                          <span className={"text-danger"}>*</span>
+                        </CLabel>
+                        <Select
+                          className={"input-align"}
+                          id={"municipaldistrict"}
+                          name={"Area"}
+                          placeholder={" Select Ward"}
+                          // value={locations.city}
+                          // onChange={changeHandler}
+                          options={townselect}
+                        />
+                      </CCol> */}
+                    
                     </CRow>
                   </div>
-                  <CRow style={{ marginTop: "30px" }}>
+                  <CRow style={{ marginTop: "30px",marginLeft:"650px" }}>
                     <CCol md="10">
                       <CCol
                         md="5"
@@ -654,17 +746,37 @@ const canceltownchange = () => {
                         show_details: (item, index) => {
                           return (
                             <td className="py-2">
-                              <CInput
-                                type={"checkbox"}
-                                style={{
-                                  width: "15px",
-                                  height: "15px",
-                                  marginLeft: "30px",
-                                  marginBottom: "10px",
-                                }}
-                              />
                               <CRow>
+                                <CInput
+                                  type={"checkbox"}
+                                  style={{
+                                    width: "15px",
+                                    height: "15px",
+                                    marginLeft: "30px",
+                                    marginBottom: "10px",
+                                  }}
+                                />
                                 <CCol style={{ fontSize: "1.15rem" }} md="12">
+                                </CCol>
+                              </CRow>
+                            </td>
+                          );
+                        },
+                        show_details1: (item, index) => {
+                          return (
+                            <td className="py-2">
+                              <CRow>
+                          
+                                <CCol style={{ fontSize: "1.15rem" }} md="12">
+                                <i
+                                  id={"constimemDelete"}
+                                  style={{
+                                    marginLeft: "5px",
+                                    color: "black",
+                                    cursor: "pointer",
+                                  }}
+                                  className="fa fa-remove"
+                                ></i>
                                 </CCol>
                               </CRow>
                             </td>
@@ -673,7 +785,7 @@ const canceltownchange = () => {
                         details: (item, index) => {},
                       }}
                     />
-                  </CRow>
+                        </CRow>
                 </div>
               )}
             </CCard>

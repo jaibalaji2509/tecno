@@ -70,6 +70,7 @@ const CentralMinister = () => {
   const [gridtwo, setGridTwo] = useState(false);
   const [gridthree, setGridThree] = useState(false);
   const [gridfour, setGridFour] = useState(false);
+  const [gridfive, setGridFive] = useState(false);
   const [hideChiefMinister, setHideChiefMinister] = useState(false);
   const [hideDeputyChiefMinister, setHideDeputyChiefMinister] = useState(false);
   const [hideMinister, setHideMinister] = useState(false);
@@ -105,20 +106,25 @@ const CentralMinister = () => {
     setGridFour(false);
   };
   const partyShow = () => {
-   
     setGridOne(false);
     setGridTwo(false);
     setGridThree(false);
     setGridFour(true);
   };
-
+  const centralMinister = () => {
+    setGridOne(false);
+    setGridTwo(false);
+    setGridThree(false);
+    setGridFour(false);
+    setGridFive(true);
+  };
   const ministryShow = () => {
     setGridOne(false);
     setGridTwo(false);
     setGridThree(true);
   };
   const userData = [];
-
+  const [filter, setFilter] = React.useState(null);
   const fields = [
     {
       key: "SNo",
@@ -372,6 +378,16 @@ const CentralMinister = () => {
   const selectMinistry = [
     { value: "Transportation Ministry", label: "Transportation Ministry" },
   ];
+  function handleSelectFilter(option, checked) {
+    if(checked){
+      setFilter(option); // add option to filter array
+      let filterArr = fields.filter(row => row.color == option);
+    }else{
+      //if unchecked, remove from filterArr and unfilter the table
+      let filterArr = fields.filter(row => row.color !== option);
+      setFilter(filterArr);
+    }
+  }
   return (
     <div className={menu.style3}>
       {sideBar1 && (
@@ -449,32 +465,40 @@ const CentralMinister = () => {
           <CRow style={{ marginTop: "25px" }}>
             <CCol>
               <CButton
-                style={{ marginTop: "20px" }}
-                onClick={chiefministerShow}
-                className={"saveBtn"}
-              >
-                Chief Minister
-              </CButton>
-              <CButton
-                style={{ marginTop: "20px", marginLeft: "10px"}}
+                style={{ marginTop: "20px", marginLeft: "10px" }}
                 onClick={partyShow}
                 className={"saveBtn"}
               >
-               party Posting
+                party Posting
               </CButton>
+              <CButton
+                style={{ marginTop: "20px", marginLeft: "10px" }}
+                onClick={chiefministerShow}
+                className={"saveBtn"}
+              >
+                As a MP
+              </CButton>
+
               <CButton
                 className={"saveBtn"}
                 style={{ marginTop: "20px", marginLeft: "10px" }}
                 onClick={deputychiefministerShow}
               >
-               Prime Minister
+                As a MLA
               </CButton>
               <CButton
                 onClick={ministryShow}
                 className={"saveBtn"}
                 style={{ marginTop: "20px", marginLeft: "10px" }}
               >
-                Ministry
+                State Minister
+              </CButton>
+              <CButton
+                onClick={centralMinister}
+                className={"saveBtn"}
+                style={{ marginTop: "20px", marginLeft: "10px" }}
+              >
+                Central Minister
               </CButton>
             </CCol>
           </CRow>
@@ -530,7 +554,7 @@ const CentralMinister = () => {
                     ]}
                     columnFilter
                     tableFilter
-                    tableLabel={"History of chief Minister"}
+                    tableLabel={"History of MP"}
                     itemsPerPageSelect
                     itemsPerPage={5}
                     hover
@@ -590,9 +614,10 @@ const CentralMinister = () => {
                         _style: { width: "10%" },
                       },
                     ]}
+                    onSelectFilter={handleSelectFilter}
                     columnFilter
                     tableFilter
-                    tableLabel={"History of Prime Minister "}
+                    tableLabel={"History of MLA "}
                     itemsPerPageSelect
                     itemsPerPage={5}
                     hover
@@ -656,7 +681,7 @@ const CentralMinister = () => {
                     ]}
                     columnFilter
                     tableFilter
-                    tableLabel={"History of Ministry"}
+                    tableLabel={"History of State Minister"}
                     itemsPerPageSelect
                     itemsPerPage={5}
                     hover
@@ -667,7 +692,7 @@ const CentralMinister = () => {
               </CRow>
             </div>
           )}
-  {gridfour && (
+          {gridfour && (
             <div>
               <CRow>
                 <CCol
@@ -721,6 +746,70 @@ const CentralMinister = () => {
                     columnFilter
                     tableFilter
                     tableLabel={"History of Party Posting"}
+                    itemsPerPageSelect
+                    itemsPerPage={5}
+                    hover
+                    sorter
+                    pagination
+                  />
+                </CCol>
+              </CRow>
+            </div>
+          )}
+          {gridfive && (
+            <div>
+              <CRow>
+                <CCol
+                  style={{
+                    marginLeft: "30px",
+
+                    maxHeight: "290px",
+                    minHeight: "290px",
+                    marginBottom: "-25px",
+                    overflow: "auto",
+                    marginTop: "50px",
+                  }}
+                >
+                  <CDataTable
+                    items={[
+                      {
+                        sNo: "1",
+                        Name: "Kalaiyarasan",
+                        Ministry: "Financial Minister",
+                        from: "29/01/1995",
+                        to: "31/02/2000",
+                        status: "InActive",
+                      },
+                    ]}
+                    fields={[
+                      { key: "sNo", label: "Sl. No", _style: { width: "1%" } },
+                      {
+                        key: "Name",
+                        label: "Name of the MLA",
+                        _style: { width: "19%" },
+                      },
+
+                      {
+                        key: "Ministry",
+                        label: "Ministry",
+                        _style: { width: "10%" },
+                      },
+
+                      {
+                        key: "from",
+                        label: "From Date",
+                        _style: { width: "10%" },
+                      },
+                      { key: "to", label: "To Date", _style: { width: "10%" } },
+                      {
+                        key: "status",
+                        label: "Status",
+                        _style: { width: "10%" },
+                      },
+                    ]}
+                    columnFilter
+                    tableFilter
+                    tableLabel={"History of Central Minister"}
                     itemsPerPageSelect
                     itemsPerPage={5}
                     hover

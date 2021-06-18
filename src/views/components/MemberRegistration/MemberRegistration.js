@@ -14,7 +14,7 @@ import {
   import CDataTable from "../../CoreComponents/table/CDataTable";
 import "./MemberRegistration.css"
 import Select from "react-select";
-import DEFAULT_IMAGE from "../../../assets/img/camera-icon.png";
+import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
 import { toast } from "react-toastify";
 
              
@@ -27,10 +27,11 @@ function MemberRegistration() {
   const [sideBar1, setSideBar1] = useState(false);
   const [files, setFiles] = useState("");
   const [menu, setMenu] = useState({
-    style: 'menu',
-    menuStatus: 'open',
-    style3: 'menu1',
-});
+    style: "menu",
+    style1: "menu1",
+    menuStatus: "open",
+    style3: "menu1",
+  });
 
   const userData1 = [
 
@@ -96,6 +97,56 @@ function MemberRegistration() {
     document.getElementById("profileImage").click();
   };
 
+  const handleClickhis = () => {
+    switch (menu.menuStatus) {
+      case "open":
+        setMenu({
+          menuStatus: "close",
+          style3: "menu2",
+          style: "menu active",
+          style1: "menu1",
+        });
+        setSideBar1(true);
+        break;
+      case "close":
+        setMenu({
+          menuStatus: "open",
+          style3: "menu1",
+          style: "menu",
+          style1: "menu1",
+        });
+        setTimeout(() => {
+          setSideBar1(false);
+        }, 1000);
+        break;
+    }
+  };
+  const [sideBar2, setSideBar2] = useState(false);
+
+  const handleClick2 = () => {
+    switch (menu.menuStatus) {
+      case "open":
+        setMenu({
+          menuStatus: "close",
+          style3: "menu2",
+          style: "menu active",
+          style1: "menu active",
+        });
+        setSideBar2(true);
+        break;
+      case "close":
+        setMenu({
+          menuStatus: "open",
+          style3: "menu1",
+          style: "menu",
+          style1: "menu1",
+        });
+        setTimeout(() => {
+          setSideBar2(false);
+        }, 1000);
+        break;
+    }
+  };
 
   const userData = [
     {
@@ -138,222 +189,126 @@ function MemberRegistration() {
     setHide(false);
     setMemberHide(true)
   }
+  const [gridShow, setGridShow] = useState({
+    view1: false,
+    view2: false,
+    view3: false,
+    view4:false
+  });
 
   return (
-    <div>
-        {sideBar1 && (
-                    <div>
-                   <CCard>
-                         <CRow className={''}>
-                              <CCol md='12' lg='12' sm='12'>
-                                   <div>
-                                        <span style={{ fontSize: '22px', fontWeight: '700' }}>Member History </span>
-                                   </div>
-                              </CCol>
-                         </CRow>
-                         <CRow>
-                              <CCol md='2' lg='2' sm='2'>
-                                   <img
-                                        alt={''}
-                                        type='text'
-                                        // src={selected ? selected.profileImage : DEFAULT_NOIMAGE}
-                                        style={{
-                                             width: '150px',
-                                             height: '160px',
-                                             position: 'relative',
-                                             background: '#fff',
-                                             left: '0%',
-                                             top: '9%',
-                                             
-                                        }}
-                                   />
-                              </CCol>
-                              <CCol md='10' lg='10' sm='10' style={{ marginTop: '4%' }}>
-                                   <CRow className={'LengthDataw'}>
-                                        <CCol>
-                                             <CLabel className={'form-labels-9 col-md-5 reAssign-Label'}>Name of the Member :</CLabel>
+    <div className={menu.style3}>
+    {sideBar1 && (
+      <div className={menu.style}>
+        <CRow className={""}>
+          <CCol md="12" lg="12" sm="12">
+            <div>
+              <span
+                style={{
+                  fontSize: "22px",
+                  fontWeight: "700",
+                  marginLeft: "20px",
+                }}
+              >
+                Member History{" "}
+              </span>
+            </div>
+          </CCol>
+        </CRow>
 
-                                             <CLabel className={'reAssign-Detail'}></CLabel>
-                                        </CCol>
+        <CRow className={"row-alignment"} style={{ marginLeft: "-61px" }}>
+          <CCol className={"column-align"} md="4">
+            <CLabel className={"label-name"}>
+              Name
+              <span style={{ fontSize: "14px", fontFamily: "normal" }}>
+                {" "}
+                - Arun Kumar
+              </span>
+            </CLabel>
+          </CCol>
+          <CCol className={"column-align"} md="4">
+            <CLabel className={"label-name"}>
+              Gender
+              <span style={{ fontSize: "14px", fontFamily: "normal" }}>
+                {" "}
+                - Male
+              </span>
+            </CLabel>
+          </CCol>
+          <CCol>
+            <img
+              type="text"
+              alt=""
+              src={files !== "" ? files : DEFAULT_IMAGE}
+              style={{
+                width: "150px",
+                height: "200px",
+                position: "relative",
+                background: "#fff",
+                left: "-40%",
+                top: "-3%",
+              }}
+            />
+          </CCol>
+        </CRow>
 
-                                        <CCol>
-                                             <CLabel className={'form-labels-9 col-md-5 reAssign-Label'}>Address : </CLabel>
+        <CRow className={"row-alignment"} style={{ marginLeft: "-61px" }}>
+          <CCol
+            className={"column-align"}
+            md="4"
+            style={{ marginTop: "-120px" }}
+          >
+            <CLabel className={"label-name"}>
+              DOB
+              <span style={{ fontSize: "14px", fontFamily: "normal" }}>
+                {" "}
+                - 23/05/1990
+              </span>
+            </CLabel>
+          </CCol>
+        </CRow>
+                      <CDataTable
+                tableLabel={"Details of Party Posting"}
+                columnFilter
+                tableFilter
+                hover
+                sorter
+                scopedSlots={{
+                  status: (item) => <td></td>,
+                }}
+                items={[
+                  {
+                    SNo: "1",
+                    NameofParty: "Youth Wing Association",
+                    TypeofOffice: "District Office",
+                    Department: " Youth Wings",
+                    designation: "Chairman",
+                    Role: "General",
+                    FromDate: "12/08/2010",
+                    ToDate: "25/06/2020",
 
-                                             <CLabel className={'reAssign-Detail'} style={{ marginLeft: '-41px' }}>
-                                                  {/* {selected.employeeRole ? selected.employeeRole.dccDescription : '-'} */}
-                                             </CLabel>
-                                        </CCol>
-                                   </CRow>
+                    Status: "Retired",
+                  },
+                 ]}
+              />
+        
+        
 
-
-                              </CCol>
-                         </CRow>
-                         <CRow>
-              <CCol style={{ fontSize: "1.55rem" }} md="12">
-                <i
-                  id={"locationLibraryDelete"}
-                  style={{
-                    position: "absolute",
-                    top: "80px",
-                    marginLeft: "955px",
-                    marginBottom: "20px",
-                    color: "#0072ff",
-                  }}
-                  className="fa fa-print"
-                ></i>
-              </CCol>
-              <CCol style={{ fontSize: "1.55rem" }} md="12">
-                <i
-                  id={"locationLibraryDelete"}
-                  style={{
-                    position: "absolute",
-                    top: "80px",
-                    marginLeft: "1000px",
-                    marginBottom: "20px",
-                    color: "green",
-                  }}
-                  className="fa fa-share-alt"
-                ></i>
-              </CCol>
-            </CRow>
-
-
-                         <CRow>
-                              <CCol
-                                   style={{
-                                        margin: '20px 0px 10px 10px',
-                                        maxHeight: '290px',
-                                        minHeight: '290px',
-                                        overflow: 'auto',
-                                   }}>
-                                            <CDataTable
-                                        tableLabel={'List of Party Posts'}
-                                        columnFilter
-                                        footer
-                                        tableFilter
-                                        hover
-                                        sorter
-                                        scopedSlots={{
-                                             status: (item) => <td></td>,
-                                        }}
-                                        items={[
-                                             {
-                                                  name1: 'sadasd',
-                                                  name6: 'sadasd',
-                                                  name5: 'sadasd',
-                                                  name4: 'sadasd',
-                                                  name3: 'sadasd',
-                                                  name2: 'sadasd',
-                                             },
-                                             {
-                                                  name1: 'sadasd',
-                                                  name6: 'sadasd',
-                                                  name5: 'sadasd',
-                                                  name4: 'sadasd',
-                                                  name3: 'sadasd',
-                                                  name2: 'sadasd',
-                                             },
-                                             {
-                                                  name1: 'sadasd',
-                                                  name6: 'sadasd',
-                                                  name5: 'sadasd',
-                                                  name4: 'sadasd',
-                                                  name3: 'sadasd',
-                                                  name2: 'sadasd',
-                                             },
-                                             {
-                                                  name1: 'sadasd',
-                                                  name6: 'sadasd',
-                                                  name5: 'sadasd',
-                                                  name4: 'sadasd',
-                                                  name3: 'sadasd',
-                                                  name2: 'sadasd',
-                                             },
-                                             {
-                                                  name1: 'sadasd',
-                                                  name6: 'sadasd',
-                                                  name5: 'sadasd',
-                                                  name4: 'sadasd',
-                                                  name3: 'sadasd',
-                                                  name2: 'sadasd',
-                                             },
-                                             {
-                                                  name1: 'sadasd',
-                                                  name6: 'sadasd',
-                                                  name5: 'sadasd',
-                                                  name4: 'sadasd',
-                                                  name3: 'sadasd',
-                                                  name2: 'sadasd',
-                                             },
-                                             {
-                                                  name1: 'sadasd',
-                                                  name6: 'sadasd',
-                                                  name5: 'sadasd',
-                                                  name4: 'sadasd',
-                                                  name3: 'sadasd',
-                                                  name2: 'sadasd',
-                                             },
-                                             {
-                                                  name1: 'sadasd',
-                                                  name6: 'sadasd',
-                                                  name5: 'sadasd',
-                                                  name4: 'sadasd',
-                                                  name3: 'sadasd',
-                                                  name2: 'sadasd',
-                                             },
-                                             {
-                                                  name1: 'sadasd',
-                                                  name6: 'sadasd',
-                                                  name5: 'sadasd',
-                                                  name4: 'sadasd',
-                                                  name3: 'sadasd',
-                                                  name2: 'sadasd',
-                                             },
-                                             {
-                                                  name1: 'sadasd',
-                                                  name6: 'sadasd',
-                                                  name5: 'sadasd',
-                                                  name4: 'sadasd',
-                                                  name3: 'sadasd',
-                                                  name2: 'sadasd',
-                                             },
-                                             {
-                                                  name1: 'sadasd',
-                                                  name6: 'sadasd',
-                                                  name5: 'sadasd',
-                                                  name4: 'sadasd',
-                                                  name3: 'sadasd',
-                                                  name2: 'sadasd',
-                                             },
-                                             {
-                                                  name1: 'sadasd',
-                                                  name6: 'sadasd',
-                                                  name5: 'sadasd',
-                                                  name4: 'sadasd',
-                                                  name3: 'sadasd',
-                                                  name2: 'sadasd',
-                                             },
-                                        ]}
-                                        fields={[
-                                             { key: 'name1' },
-                                             { key: 'name2' },
-                                             { key: 'name3' },
-                                             { key: 'name4' },
-                                             { key: 'name5' },
-                                             { key: 'name6' },
-                                        ]}
-                                   />
-                              </CCol>
-                         </CRow>
-                         <CButton
-                              style={{ position: 'absolute', top: '15px', right: '15px' }}
-                              className={'cancelBtn'}
-                              onClick={handleClickhistory}>
-                              Back
-                         </CButton>
-                         </CCard>
-                    </div>
-               )}
+        <CButton
+          className={"menu"}
+          style={{ position: "absolute", top: "15px", right: "15px" }}
+          className={"cancelBtn"}
+          onClick={() => {
+            handleClickhis();
+            handleClick2();
+          }}
+        >
+          Back
+        </CButton>
+     
+        </div>
+           
+    )}
 
       <CCard className={"cardSave"}>
       {memberhide && (        
@@ -606,11 +561,8 @@ color="gradient-danger"
                             }}
                             id={"memberregisterediticon"}
                              className="fa fa-history"
-                             onClick={() => {
-                              setSelected();
-                              handleClickhistory();
-                            }}
-                           ></i>
+                             onClick={handleClickhis}>
+                             </i>
                           </CCol>
                         </CRow>
                       </td>

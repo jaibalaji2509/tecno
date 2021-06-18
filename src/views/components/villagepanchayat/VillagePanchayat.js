@@ -40,33 +40,52 @@ const VillagePanchayat = () => {
     villagePanchayat: false,
     cityLocation: false,
   });
+  const select=[{value:"tamil",label:"Tamilnadu" },
+{value:"Chengalpattu",label:"Chengalpattu"},
+{value:"Chunampedu",label:"Chunampedu"},
+{value:"Vanniyallur",label:"Vanniyallur"},
+{value:"Agaem",label:"Agaram kuturoad"},
+{value:"porpanthel",label:"porpanthal"},
+{value:"5",label:"05"},
+
+]
   const userData = [
     {
-      SNo: "1",
-            Street: "Pondy Bazar",
+      SNo: "1.",
+            Street: "Agaram kuturoad",
+        Ward:"Porpanthal",
+        by:"Jai Balaji",
+        on:"10/06/2021"
+    },
+    {
+      SNo: "2.",
+            Street: "Achari street",
+        Ward:"Pinayur",
+        by:"Jai Balaji",
+        on:"10/06/2021"
     },
   ];
   const fields = [
-    {
-      key: "show_details",
-      label: "Select",
-      _style: { width: "3%" },
-      name: (
-        <div>
-          Email <input type={"checkbox"} onClick={""} />
-        </div>
-      ),
-      sorter: false,
-      filter: false,
-    },
+    // {
+    //   key: "show_details",
+    //   label: "Select",
+    //   _style: { width: "3%" },
+    //   name: (
+    //     <div>
+    //       Email <input type={"checkbox"} onClick={""} />
+    //     </div>
+    //   ),
+    //   sorter: false,
+    //   filter: false,
+    // },
     { key: "SNo", label: "S.NO", _style: { width: "10%" } },
    
     { key: "Street", label: "Street Name", _style: { width: "10%" } },
-    { key: "Street", label: "Ward Name", _style: { width: "10%" } },
-    { key: "Streets", label: "Entered By", _style: { width: "10%" } },
-    { key: "Streets", label: "Entered On", _style: { width: "10%" } },
+    { key: "Ward", label: "Ward Name", _style: { width: "10%" } },
+    { key: "by", label: "Entered By", _style: { width: "10%" } },
+    { key: "on", label: "Entered On", _style: { width: "10%" } },
     
-    { key: "Action", label: "Action", _style: { width: "10%" } },
+    { key: "show_details1", label: "Action", _style: { width: "10%" } },
   ];
   const [passing, setPassing] = useState("");
   const [error, ] = useState("");
@@ -205,8 +224,9 @@ const VillagePanchayat = () => {
                         id={"municipalstatename"}
                         name={"state"}
                         placeholder={"Select State"}
-                        value={locations.district}
-                        onChange={changeHandler}
+                        // value={locations.district}
+                        // onChange={changeHandler}
+                        options={select}
                       />
                     </CCol>
                     <CCol className={"column-align"} md="3">
@@ -218,9 +238,8 @@ const VillagePanchayat = () => {
                         className={"input-align"}
                         id={"municipaldistrict"}
                         name={"city"}
-                        placeholder={" Corporation Name"}
-                        value={locations.city}
-                        onChange={changeHandler}
+                        placeholder={"Select City Name"}
+                        options={select}
                       />
                     </CCol>
                     <CCol className={"column-align"} md="3">
@@ -232,9 +251,8 @@ const VillagePanchayat = () => {
                         className={"input-align"}
                         id={"municipaldistrict"}
                         name={"city"}
-                        placeholder={" Corporation Name"}
-                        value={locations.city}
-                        onChange={changeHandler}
+                        placeholder={"Select  Village panchayat"}
+                        options={select}
                       />
                     </CCol>
                   </CRow>
@@ -250,8 +268,7 @@ const VillagePanchayat = () => {
                         id={"municipaldistrict"}
                         name={"Area"}
                         placeholder={"Area"}
-                        value={locations.city}
-                        onChange={changeHandler}
+                        options={select}
                       />
                     </CCol>
                     <CCol className={"column-align"} md="3">
@@ -264,8 +281,7 @@ const VillagePanchayat = () => {
                         id={"municipalstatename"}
                         name={"Ward"}
                         placeholder={"Select Ward"}
-                        value={locations.district}
-                        onChange={changeHandler}
+                        options={select}
                       />
                     </CCol>
                   </CRow>
@@ -284,19 +300,40 @@ const VillagePanchayat = () => {
                     sorter
                     pagination
                     scopedSlots={{
-                      show_details: (item, index) => {
+                      show_details1: (item, index) => {
                         return (
                           <td className="py-2">
                             <CRow>
                               <CCol style={{ fontSize: "1.15rem" }} md="12">
                                 <i
                                   onClick={() => {
+                                   
                                   }}
                                 ></i>
+                                <i
+                                    style={{
+                                      marginRight: "5px",
+                                      color: "#3480e2",
+                                      cursor: "pointer",
+                                    }}
+                                    id={"locationLibraryEdit"}
+                                  
+                                    className="fas fa-edit"
+                                  ></i>
+                                  <i
+                                   
+                                    id={"locationLibraryDelete"}
+                                    style={{
+                                      marginLeft: "5px",
+                                      color: "#e85654",
+                                      cursor: "pointer",
+                                    }}
+                                    className="fa fa-trash"
+                                  ></i>
                               </CCol>
                             </CRow>
                           </td>
-                        );
+                          );
                       },
                       details: (item, index) => {},
                     }}
@@ -330,7 +367,8 @@ const VillagePanchayat = () => {
                         placeholder="Select District Panchayat"
                         id={"municipalcorporation"}
                         type={"text"}
-                        value={municipalCorporation}
+                        // value={municipalCorporation}
+                        options={select}
                       />
                     </CCol>
                     <CCol className={"column-align"} md={1} lg={1}>
@@ -441,10 +479,10 @@ const VillagePanchayat = () => {
                         <span className={"text-danger"}> *</span>
                       </CLabel>
                       <Select
-                        placeholder="Select Municipal Corporation"
+                        placeholder="Select Panchayat Union"
                         id={"municipalcorporation"}
                         type={"text"}
-                        value={municipalCorporation}
+                        options={select}
                       />
                     </CCol>
                     <CCol className={"column-align"} md={1} lg={1}>
@@ -555,10 +593,10 @@ const VillagePanchayat = () => {
                         <span className={"text-danger"}> *</span>
                       </CLabel>
                       <Select
-                        placeholder="Select Municipal Corporation"
+                        placeholder="Select Village Panchayat"
                         id={"municipalcorporation"}
                         type={"text"}
-                        value={municipalCorporation}
+                        options={select}
                       />
                     </CCol>
                     <CCol className={"column-align"} md={1} lg={1}>
@@ -669,9 +707,10 @@ const VillagePanchayat = () => {
                         <span className={"text-danger"}> *</span>
                       </CLabel>
                       <Select
-                        placeholder="Select the State Name"
+                        placeholder="Select the Ward Number"
                         id={"municipalcorporation"}
                         type={"text"}
+                        options={select}
                    />
                     </CCol>
                     <CCol className={"column-align"} md={1} lg={1}>
@@ -796,8 +835,7 @@ const VillagePanchayat = () => {
                     id={"municipalstatename"}
                     name={"state"}
                     placeholder={"Select State"}
-                    value={locations.district}
-                    onChange={changeHandler}
+                    options={select}
                   />
                 </CCol>
                 <CCol className={"column-align"} md="4">
@@ -809,9 +847,8 @@ const VillagePanchayat = () => {
                     className={"input-align"}
                     id={"municipaldistrict"}
                     name={"city"}
-                    placeholder={" Corporation Name"}
-                    value={locations.city}
-                    onChange={changeHandler}
+                    placeholder={"Select City Name"}
+                    options={select}
                   />
                 </CCol>
               </CRow>
@@ -825,14 +862,26 @@ const VillagePanchayat = () => {
                     className={"input-align"}
                     id={"municipalarea"}
                     name={"area"}
-                    placeholder={" Corporation Name"}
-                    value={locations.city}
-                    onChange={changeHandler}
+                    placeholder={"Select Area Name"}
+                    options={select}
                   />
                 </CCol>
+                {/* <CCol className={"column-align"} md="4">
+                  <CLabel className={"label-name"}>
+                    Ward
+                    <span className={"text-danger"}>*</span>
+                  </CLabel>
+                  <Select
+                    className={"input-align"}
+                    id={"municipalarea"}
+                    name={"area"}
+                    placeholder={"Select Ward Name"}
+                    options={select}
+                  />
+                </CCol> */}
               </CRow>
             </div>
-            <CRow style={{ marginTop: "30px" }}>
+            <CRow style={{ marginTop: "30px", marginLeft:"650px" }}>
               <CCol md="10">
                 <CCol
                   md="5"
@@ -883,21 +932,37 @@ const VillagePanchayat = () => {
                   show_details: (item, index) => {
                     return (
                       <td className="py-2">
-                        <CInput
-                          type={"checkbox"}
-                          style={{
-                            width: "15px",
-                            height: "15px",
-                            marginLeft: "30px",
-                            marginBottom: "10px",
-                          }}
-                        />
                         <CRow>
+                          <CInput
+                            type={"checkbox"}
+                            style={{
+                              width: "15px",
+                              height: "15px",
+                              marginLeft: "30px",
+                              marginBottom: "10px",
+                            }}
+                          />
                           <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              onClick={() => {
-                              }}
-                            ></i>
+                          </CCol>
+                        </CRow>
+                      </td>
+                    );
+                  },
+                  show_details1: (item, index) => {
+                    return (
+                      <td className="py-2">
+                        <CRow>
+                    
+                          <CCol style={{ fontSize: "1.15rem" }} md="12">
+                          <i
+                            id={"constimemDelete"}
+                            style={{
+                              marginLeft: "5px",
+                              color: "black",
+                              cursor: "pointer",
+                            }}
+                            className="fa fa-remove"
+                          ></i>
                           </CCol>
                         </CRow>
                       </td>
