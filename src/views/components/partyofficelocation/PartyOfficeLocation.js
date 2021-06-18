@@ -212,7 +212,7 @@ function PartyOfficeLocation() {
                     style={{
                       position: "absolute",
                       top: "110px",
-                      marginLeft: "860px",
+                      marginLeft: "700px",
                       marginBottom: "20px",
                       color: "black",
                     }}
@@ -225,7 +225,7 @@ function PartyOfficeLocation() {
                     style={{
                       position: "absolute",
                       top: "110px",
-                      marginLeft: "900px",
+                      marginLeft: "800px",
                       marginBottom: "910px",
                       color: "black",
                     }}
@@ -245,7 +245,7 @@ function PartyOfficeLocation() {
                       style={{
                         height: "40px",
                         width: "40px",
-                        marginRight: "315px",
+                        marginRight: "370px",
                         float: "right",
                         cursor: "pointer",
                         marginTop:"20px"

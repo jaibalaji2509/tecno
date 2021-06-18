@@ -171,7 +171,7 @@ const WingsofficeType = () => {
                  id={"municipalstatename"}
                  name={"state"}
                  placeholder={"Enter Party Office"}
-                 value="Branch Office"
+                
                  onChange={changeHandler}
                />
              </CCol>
@@ -185,7 +185,7 @@ const WingsofficeType = () => {
                  id={"municipaldistrict"}
                  name={"city"}
                  placeholder={"Enter Abbreviation"}
-                 value="boff"
+        
                  onChange={changeHandler}
                />
              </CCol>
@@ -203,7 +203,7 @@ const WingsofficeType = () => {
                  id={"municipaldistrict"}
                  name={"city"}
                  placeholder={"Enter Code"}
-                 value="BO"
+                 
                  onChange={changeHandler}
                />
              </CCol>
@@ -268,7 +268,7 @@ const WingsofficeType = () => {
                   style={{
                     position: "absolute",
                     top: "80px",
-                    marginLeft: "860px",
+                    marginLeft: "700px",
                     marginBottom: "20px",
                     color: "black",
                     cursor: "pointer",
@@ -282,7 +282,7 @@ const WingsofficeType = () => {
                   style={{
                     position: "absolute",
                     top: "80px",
-                    marginLeft: "900px",
+                    marginLeft: "800px",
                     marginBottom: "20px",
                     color: "black",
                     cursor: "pointer",
@@ -303,7 +303,7 @@ const WingsofficeType = () => {
                   style={{
                     height: "40px",
                     width: "40px",
-                    marginRight: "315px",
+                    marginRight: "370px",
                     marginTop:"80px",
                     float: "right",
                     cursor: "pointer",

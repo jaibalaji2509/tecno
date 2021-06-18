@@ -46,47 +46,58 @@ const VillagePanchayat = () => {
 {value:"Vanniyallur",label:"Vanniyallur"},
 {value:"Agaem",label:"Agaram kuturoad"},
 {value:"porpanthel",label:"porpanthal"},
-{value:"5",label:"05"},
+{value:"5",label:"018"},
+{value:"5",label:"019"},
+
 
 ]
   const userData = [
     {
       SNo: "1.",
             Street: "Agaram kuturoad",
-        Ward:"Porpanthal",
+        Ward:"018",
         by:"Jai Balaji",
         on:"10/06/2021"
     },
     {
       SNo: "2.",
             Street: "Achari street",
-        Ward:"Pinayur",
+        Ward:"019",
         by:"Jai Balaji",
         on:"10/06/2021"
     },
   ];
   const fields = [
-    // {
-    //   key: "show_details",
-    //   label: "Select",
-    //   _style: { width: "3%" },
-    //   name: (
-    //     <div>
-    //       Email <input type={"checkbox"} onClick={""} />
-    //     </div>
-    //   ),
-    //   sorter: false,
-    //   filter: false,
-    // },
-    { key: "SNo", label: "S.NO", _style: { width: "10%" } },
+    
+    { key: "SNo", label: "S.NO", _style: { width: "5%" } },
    
     { key: "Street", label: "Street Name", _style: { width: "10%" } },
-    { key: "Ward", label: "Ward Name", _style: { width: "10%" } },
+    { key: "Ward", label: "Ward Number", _style: { width: "10%" } },
     { key: "by", label: "Entered By", _style: { width: "10%" } },
     { key: "on", label: "Entered On", _style: { width: "10%" } },
     
     { key: "show_details1", label: "Action", _style: { width: "10%" } },
   ];
+  const fields1 = [
+    {
+      key: "show_details",
+      label: "Select",
+      _style: { width: "3%" },
+      name: (
+        <div>
+          Email <input type={"checkbox"} onClick={""} />
+        </div>
+      ),
+      sorter: false,
+      filter: false,
+    },
+    { key: "SNo", label: "S.NO", _style: { width: "5%" } },
+   
+    { key: "Street", label: "Street Name", _style: { width: "15%" } },
+    { key: "by", label: "Entered By", _style: { width: "7%" } },
+    { key: "on", label: "Entered On", _style: { width: "7%" } },
+  ];
+
   const [passing, setPassing] = useState("");
   const [error, ] = useState("");
   const saveCorporation = async () => {
@@ -916,10 +927,25 @@ const VillagePanchayat = () => {
                 </CCol>
               </CCol>
             </CRow>
-            <CRow style={{ padding: "4%", marginTop: "-3.5%" }}>
+            <CRow>
+                                <CInput
+                                  type={"checkbox"}
+                                  style={{
+                                    width: "15px",
+                                    height: "15px",
+                                    marginLeft: "78px",
+                                    marginBottom: "10px",
+                                    marginTop:"180px"
+                                  }}
+                                />
+                                <CCol style={{ fontSize: "1.15rem" }} md="12">
+                                </CCol>
+                              </CRow>
+
+            <CRow style={{ padding: "4%", marginTop: "-17%" }}>
               <CDataTable
                 items={userData}
-                fields={fields}
+                fields={fields1}
                 columnFilter
                 tableFilter
                 tableLabel={"List of Streets"}

@@ -1473,7 +1473,7 @@ const addStreet = async()=>{
                     style={{
                       position: "absolute",
                       top: "30px",
-                      marginLeft: "860px",
+                      marginLeft: "700px",
                       marginBottom: "20px",
                       color: "black",
                       marginTop:"15px"
@@ -1487,7 +1487,7 @@ const addStreet = async()=>{
                     style={{
                       position: "absolute",
                       top: "30px",
-                      marginLeft: "900px",
+                      marginLeft: "800px",
                       marginBottom: "20px",
                       color: "black",
                       marginTop:"15px"
