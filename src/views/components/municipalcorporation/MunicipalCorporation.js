@@ -55,7 +55,7 @@ const MunicipalCorporation = () => {
     //   EnteredBy: "Sathishkumar",
     //   Enteredon: "11/06/2021",
     // },
-     {
+    {
       SNo: "1",
       ward: "0018",
       street: "Alwarpet",
@@ -71,9 +71,9 @@ const MunicipalCorporation = () => {
     },
   ];
   const [checked, setChecked] = useState(false);
-    const handleChange = (event) => {
-        setChecked(event.target.checked);
-    };
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
   const userData1 = [
     {
       SNo: "1",
@@ -96,15 +96,15 @@ const MunicipalCorporation = () => {
       EnteredBy: "Sathishkumar",
       Enteredon: "11/06/2021",
     },
-    
   ];
-  
+
   const fields = [
     {
       key: "show_details1",
       label: "Select",
       _style: { width: "3%" },
-    
+      sorter: false,
+      filter: false,
     },
 
     {
@@ -115,23 +115,17 @@ const MunicipalCorporation = () => {
       filter: false,
     },
 
-    { key: "ward", label: "Ward Name", _style: { width: "10%" } , sorter: false,
-    filter: false,},
-    { key: "street", label: "Street Name", _style: { width: "10%" }, sorter: false,
-    filter: false, },
+    { key: "ward", label: "Ward Name", _style: { width: "10%" } },
+    { key: "street", label: "Street Name", _style: { width: "10%" } },
     {
       key: "EnteredBy",
       label: "Entered By",
       _style: { width: "10%" },
-      sorter: false,
-      filter: false,
     },
     {
       key: "Enteredon",
       label: "Entered On",
       _style: { width: "10%" },
-      sorter: false,
-      filter: false,
     },
 
     {
@@ -210,17 +204,16 @@ const MunicipalCorporation = () => {
       corporation: true,
     });
   };
-  const changeHandler = (e) => {
-    setLocations({ ...locations, [e.target.name]: e.target.value });
-  };
+
   const enableCreate = async () => {
     await setMunicipalList(false);
     await setmunicipalCreate(true);
   };
 
-  const editState = async () => {
-    await setMunicipalList(false);
-    await setmunicipalCreate(true);
+  const editMunicipalCorporation = async (item) => {
+    await setHideMappingmunicipal(false);
+    await setHideCorporation(true);
+    await setStateName (item.stateName)
   };
   const CancelState = async () => {
     setPassing("");
@@ -231,8 +224,8 @@ const MunicipalCorporation = () => {
     await setMunicipalListadd(false);
     await setmunicipalCreateadd(true);
   };
-
-  const editStateadd = async () => {
+  const [stateName, setStateName] = useState("");
+  const editMunicipalCorporationadd = async () => {
     await setMunicipalListadd(false);
     await setmunicipalCreateadd(true);
   };
@@ -261,7 +254,10 @@ const MunicipalCorporation = () => {
     { value: "TNagar", label: "TNagar" },
     { value: "Teynampet", label: "Teynampet" },
   ];
-  const selectWard = [{ value: "0017", label: "0017" },{ value: "0018", label: "0018" }];
+  const selectWard = [
+    { value: "0017", label: "0017" },
+    { value: "0018", label: "0018" },
+  ];
   return (
     <div>
       {hideMappingMunicipal && (
@@ -297,6 +293,7 @@ const MunicipalCorporation = () => {
                       </CCol>
                     </CCol>
                   </CRow>
+                  
                   <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                     <CCol className={"column-align"} md="3">
                       <CLabel className={"label-name-1"}>
@@ -307,6 +304,10 @@ const MunicipalCorporation = () => {
                         id={"municipalstatename"}
                         name={"state"}
                         placeholder={"Select State"}
+                        value={stateName}
+                        onChange={(e) =>
+                          setStateName({ stateName: e.target.value })
+                        }
                         options={selectState}
                       />
                     </CCol>
@@ -390,6 +391,7 @@ const MunicipalCorporation = () => {
                                     color: "blue",
                                     cursor: "pointer",
                                   }}
+                                  onClick={() => editMunicipalCorporation(item)}
                                   className="fa fa-edit"
                                 ></i>
 
@@ -469,7 +471,7 @@ const MunicipalCorporation = () => {
                                 }}
                                 id={"locationLibraryStateEdit"}
                                 className={"btn btn-success"}
-                                onClick={editState}
+                                onClick={editMunicipalCorporation}
                               >
                                 EDIT
                               </CButton>
@@ -592,7 +594,7 @@ const MunicipalCorporation = () => {
                                 }}
                                 id={"locationLibraryStateEdit"}
                                 className={"btn btn-success"}
-                                onClick={editStateadd}
+                                onClick={editMunicipalCorporationadd}
                               >
                                 EDIT
                               </CButton>
@@ -769,7 +771,6 @@ const MunicipalCorporation = () => {
                   </CCol>
                 </CRow>
                 <CRow style={{ padding: "4%", marginTop: "-3.5%" }}>
-                  
                   <CDataTable
                     items={userData1}
                     fields={fields}
@@ -782,9 +783,9 @@ const MunicipalCorporation = () => {
                     sorter
                     pagination
                     tableCheckbox
-                   columncheckbox
+                    columncheckbox
                     options={{
-                      selection: true
+                      selection: true,
                     }}
                     scopedSlots={{
                       show_details: (item, index) => {
@@ -814,11 +815,13 @@ const MunicipalCorporation = () => {
                               <CCol style={{ fontSize: "1.15rem" }} md="12">
                                 {/* <CInput type="checkbox" style={{width:"20px"}}/> */}
                                 <CInput
-                                type="checkbox"
-                        checked={checked}
-                        onChange={handleChange}
-                        inputProps={{ "aria-label": "primary checkbox" }}
-                    />
+                                  type="checkbox"
+                                  checked={checked}
+                                  onChange={handleChange}
+                                  inputProps={{
+                                    "aria-label": "primary checkbox",
+                                  }}
+                                />
                               </CCol>
                             </CRow>
                           </td>
