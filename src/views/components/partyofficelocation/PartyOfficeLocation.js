@@ -154,7 +154,7 @@ function PartyOfficeLocation() {
   ];
   const officeType = [{ value: "Head Office", label: "Head Office" }];
   const partyofficeType = [
-    { value: "Head Office", label: "Head Office" },
+    { value: "Head Office", label: "Head Office - Chennai Head Office" },
     { value: "District Office", label: "District Office" },
   ];
   const [typeofPartyOffice, setTypeofPartyOffice] = useState("");
@@ -565,7 +565,7 @@ function PartyOfficeLocation() {
                     height: "40px",
                     width: "40px",
 
-                    marginLeft: "895px",
+                    marginLeft: "955px",
                     marginBottom: "20px",
                   }}
                 />
@@ -576,7 +576,7 @@ function PartyOfficeLocation() {
                   style={{
                     position: "absolute",
                     top: "50px",
-                    marginLeft: "765px",
+                    marginLeft: "795px",
                     marginBottom: "20px",
                     color: "black",
                   }}
@@ -589,7 +589,7 @@ function PartyOfficeLocation() {
                   style={{
                     position: "absolute",
                     top: "50px",
-                    marginLeft: "830px",
+                    marginLeft: "870px",
                     marginBottom: "910px",
                     color: "black",
                   }}

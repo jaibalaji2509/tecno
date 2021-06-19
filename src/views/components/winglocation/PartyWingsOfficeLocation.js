@@ -198,39 +198,13 @@ function PartyWingsOfficeLocation() {
                       </CWidgetDropdown>
                     </CCol>
                   </CRow>
-            <CRow>
-              <CCol style={{ fontSize: "1.55rem" }} md="12">
-                <i
-                  id={"locationLibraryDelete"}
-                  style={{
-                    position: "absolute",
-                    top: "112px",
-                    marginLeft: "860px",
-                    marginBottom: "20px",
-                    color: "black",
-                    cursor: "pointer",
-                  }}
-                  className="fa fa-print"
-                ></i>
-              </CCol>
-              <CCol style={{ fontSize: "1.55rem" }} md="12">
-                <i
-                  id={"locationLibraryDelete"}
-                  style={{
-                    position: "absolute",
-                    top: "112px",
-                    marginLeft: "900px",
-                    marginBottom: "20px",
-                    color: "black",
-                    cursor: "pointer",
-                  }}
-                  className="fa fa-share-alt"
-                ></i>
-              </CCol>
-            </CRow>
-
-            <CRow>
-              <CCol style={{ top: "13px" }}>
+                  <CRow>
+              <CCol
+                style={{ fontSize: "1.55rem", top: "100px" }}
+                md={12}
+                sm={12}
+                lg={12}
+              >
                 <img
                   id={"employeeDataorgEmployeeData"}
                   alt={""}
@@ -240,15 +214,40 @@ function PartyWingsOfficeLocation() {
                   style={{
                     height: "40px",
                     width: "40px",
-                    marginRight: "315px",
-                    marginTop:"88px",
-                    float: "right",
-                    cursor: "pointer",
+
+                    marginLeft: "895px",
+                    marginBottom: "20px",
                   }}
                 />
               </CCol>
+              <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
+                <i
+                  id={"locationLibraryDelete"}
+                  style={{
+                    position: "absolute",
+                    top: "50px",
+                    marginLeft: "765px",
+                    marginBottom: "20px",
+                    color: "black",
+                  }}
+                  className="fa fa-print"
+                ></i>
+              </CCol>
+              <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
+                <i
+                  id={"locationLibraryDelete"}
+                  style={{
+                    position: "absolute",
+                    top: "50px",
+                    marginLeft: "830px",
+                    marginBottom: "910px",
+                    color: "black",
+                  }}
+                  className="fa fa-share-alt"
+                ></i>
+              </CCol>
             </CRow>
-            <CRow style={{ padding: "4%", marginTop: "-8.5%" }}>
+            <CRow style={{ padding: "4%", marginTop: "-3.5%" }}>
               <CDataTable
                 items={userData}
                 fields={fields}
