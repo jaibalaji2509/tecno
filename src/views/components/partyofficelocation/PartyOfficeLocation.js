@@ -190,8 +190,10 @@ function PartyOfficeLocation() {
     }
   };
   const [hidePartyOffice, setHidePartyOffice] = useState(true);
+  const [backbutt, setBackButt] = useState(false);
   const viewTypeofPartyOffice = () => {
     setHidePartyOffice(false);
+    setBackButt(true);
   };
   return (
     <div className={menu.style3}>
@@ -392,6 +394,18 @@ function PartyOfficeLocation() {
                 />
               </CRow>
             </div>
+          )}
+           { backbutt && (
+            <div>
+     <CButton
+            className={"menu"}
+            style={{ position: "absolute", top: "15px", right: "15px" }}
+            className={"cancelBtn"}
+            onClick={addTypeofPartyOffice}
+          >
+            Back
+          </CButton>
+          </div>
           )}
         </div>
       )}

@@ -732,7 +732,7 @@ const MunicipalCorporation = () => {
                         className={"input-align"}
                         id={"municipalarea"}
                         name={"area"}
-                        placeholder={" Corporation Name"}
+                        placeholder={"Select Area"}
                         options={selectArea}
                       />
                     </CCol>
