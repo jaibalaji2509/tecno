@@ -59,20 +59,19 @@ const VillagePanchayat = () => {
         by:"Jai Balaji",
         on:"10/06/2021"
     },
-    {
-      SNo: "2.",
-            Street: "Achari street",
-        Ward:"019",
-        by:"Jai Balaji",
-        on:"10/06/2021"
-    },
+    // {
+    //   SNo: "2.",
+    //         Street: "Achari street",
+    //     Ward:"019",
+    //     by:"Jai Balaji",
+    //     on:"10/06/2021"
+    // },
   ];
   const fields = [
     
     { key: "SNo", label: "S.NO", _style: { width: "5%" } },
-   
-    { key: "Street", label: "Street Name", _style: { width: "10%" } },
     { key: "Ward", label: "Ward Number", _style: { width: "10%" } },
+    { key: "Street", label: "Street Name", _style: { width: "10%" } },
     { key: "by", label: "Entered By", _style: { width: "10%" } },
     { key: "on", label: "Entered On", _style: { width: "10%" } },
     
@@ -93,9 +92,7 @@ const VillagePanchayat = () => {
     },
     { key: "SNo", label: "S.NO", _style: { width: "5%" } },
    
-    { key: "Street", label: "Street Name", _style: { width: "15%" } },
-    { key: "by", label: "Entered By", _style: { width: "7%" } },
-    { key: "on", label: "Entered On", _style: { width: "7%" } },
+    { key: "Street", label: "Street Name", _style: { width: "10%" } },
   ];
 
   const [passing, setPassing] = useState("");
@@ -242,27 +239,27 @@ const VillagePanchayat = () => {
                     </CCol>
                     <CCol className={"column-align"} md="3">
                       <CLabel className={"label-name"}>
-                        District / City
+                        District panchayat
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
                         className={"input-align"}
                         id={"municipaldistrict"}
                         name={"city"}
-                        placeholder={"Select City Name"}
+                        placeholder={"Select District panchayat"}
                         options={select}
                       />
                     </CCol>
                     <CCol className={"column-align"} md="3">
                       <CLabel className={"label-name"}>
-                      Village panchayat
+                      Village Panchayat
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                 -      <Select
                         className={"input-align"}
                         id={"municipaldistrict"}
                         name={"city"}
-                        placeholder={"Select  Village panchayat"}
+                        placeholder={"Select Village panchayat"}
                         options={select}
                       />
                     </CCol>
@@ -271,27 +268,40 @@ const VillagePanchayat = () => {
                   <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                     <CCol className={"column-align"} md="3">
                       <CLabel className={"label-name"}>
-                   Area
+                      District / City
                         <span className={"text-danger"}>*</span>
                       </CLabel>
-                -      <Select
+                      <Select
                         className={"input-align"}
-                        id={"municipaldistrict"}
-                        name={"Area"}
-                        placeholder={"Area"}
+                        id={"municipalpanchayatunion"}
+                        name={"state"}
+                        placeholder={"Select City Name"}
                         options={select}
                       />
                     </CCol>
                     <CCol className={"column-align"} md="3">
                       <CLabel className={"label-name"}>
-                        Ward
+                      Panchayat Union
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
                         className={"input-align"}
-                        id={"municipalstatename"}
-                        name={"Ward"}
-                        placeholder={"Select Ward"}
+                        id={"municipalvillagepanchayat"}
+                        name={"city"}
+                        placeholder={"Select Panchayat Union"}
+                        options={select}
+                      />
+                    </CCol>
+                    <CCol className={"column-align"} md="3">
+                      <CLabel className={"label-name"}>
+                      Ward No
+                        <span className={"text-danger"}>*</span>
+                      </CLabel>
+                -      <Select
+                        className={"input-align"}
+                        id={"municipalwardno"}
+                        name={"city"}
+                        placeholder={"Select Ward No"}
                         options={select}
                       />
                     </CCol>
@@ -365,8 +375,20 @@ const VillagePanchayat = () => {
         {locationHide.corporation && (
           <div>
             <div style={{ marginLeft: "-26px" }}>
-              
-              <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
+            <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{marginLeft:"-5px"}}>
+                <CCol className={"column-align"} md="4">
+                  <CLabel className={"label-name"}>
+                    State
+                    <span className={"text-danger"}>*</span>
+                  </CLabel>
+                  <Select
+                    className={"input-align"}
+                    id={"municipalstatename"}
+                    name={"state"}
+                    placeholder={"Select State"}
+                    options={select}
+                  />
+                </CCol>
                 {municipalList && (
                   <React.Fragment>
                     <CCol className={"column-align"} md={4} lg={4}>
@@ -479,9 +501,22 @@ const VillagePanchayat = () => {
                     </CRow>
                   </React.Fragment>
                 )}
-              </CRow>
-
-              <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
+                
+                </CRow>
+                <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{marginLeft:"-5px"}}>
+                <CCol className={"column-align"} md="4">
+                  <CLabel className={"label-name"}>
+                    District / City
+                    <span className={"text-danger"}>*</span>
+                  </CLabel>
+                  <Select
+                    className={"input-align"}
+                    id={"municipaldistrict"}
+                    name={"city"}
+                    placeholder={"Select City Name"}
+                    options={select}
+                  />
+                </CCol>
                 {panchayatList && (
                   <React.Fragment>
                     <CCol className={"column-align"} md={4} lg={4}>
@@ -594,11 +629,14 @@ const VillagePanchayat = () => {
                     </CRow>
                   </React.Fragment>
                 )}
+
               </CRow>
-              <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
-                {villageList && (
+              <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{marginLeft:"-5px"}}>
+                <CCol className={"column-align"} md="4">
+</CCol>
+{villageList && (
                   <React.Fragment>
-                    <CCol className={"column-align"} md={4} lg={4}>
+                    <CCol className={"column-align"} md={4} lg={4} >
                       <CLabel className={"label-name-1"}>
                         Village Panchayat
                         <span className={"text-danger"}> *</span>
@@ -656,6 +694,7 @@ const VillagePanchayat = () => {
                           maxlength="60"
                           size="60"
                         />
+
                       </CCol>
 
                       <CCol md="3">
@@ -707,9 +746,12 @@ const VillagePanchayat = () => {
                     </CRow>
                   </React.Fragment>
                 )}
-              </CRow>
 
-              <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
+</CRow>              
+
+<CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{marginLeft:"-5px"}}>
+                <CCol className={"column-align"} md="4">
+</CCol>
                 {wardList && (
                   <React.Fragment>
                     <CCol className={"column-align"} md={4} lg={4}>
@@ -832,37 +874,9 @@ const VillagePanchayat = () => {
                     marginTop: "20px",
                   }}
                 >
-                  Selection Area
+                  Select Street
                 </CLabel>
               </CCol>
-              <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                <CCol className={"column-align"} md="4">
-                  <CLabel className={"label-name"}>
-                    State
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <Select
-                    className={"input-align"}
-                    id={"municipalstatename"}
-                    name={"state"}
-                    placeholder={"Select State"}
-                    options={select}
-                  />
-                </CCol>
-                <CCol className={"column-align"} md="4">
-                  <CLabel className={"label-name"}>
-                    District / City
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <Select
-                    className={"input-align"}
-                    id={"municipaldistrict"}
-                    name={"city"}
-                    placeholder={"Select City Name"}
-                    options={select}
-                  />
-                </CCol>
-              </CRow>
               <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                 <CCol className={"column-align"} md="4">
                   <CLabel className={"label-name"}>
@@ -877,19 +891,7 @@ const VillagePanchayat = () => {
                     options={select}
                   />
                 </CCol>
-                {/* <CCol className={"column-align"} md="4">
-                  <CLabel className={"label-name"}>
-                    Ward
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <Select
-                    className={"input-align"}
-                    id={"municipalarea"}
-                    name={"area"}
-                    placeholder={"Select Ward Name"}
-                    options={select}
-                  />
-                </CCol> */}
+               
               </CRow>
             </div>
             <CRow style={{ marginTop: "30px", marginLeft:"650px" }}>
@@ -898,7 +900,7 @@ const VillagePanchayat = () => {
                   md="5"
                   style={{
                     position: "absolute",
-                    marginLeft: "255px",
+                    marginLeft: "-190px",
                     float: "right",
                     marginTop: "-65px",
                   }}

@@ -67,14 +67,13 @@ const TownPanchayat = () => {
       sorter: false,
       filter: false,
     },
-    
-    { key: "Street", label: "Street Name", _style: { width: "10%" } },
     { key: "Ward", label: "Ward Number", _style: { width: "10%" } },
+    { key: "Street", label: "Street Name", _style: { width: "10%" } },
    
   
     {
       key: "by",
-      label: "Enteerd by",
+      label: "Enteerd",
       _style: { width: "10%" },
       sorter: false,
       filter: false,
@@ -112,22 +111,8 @@ const TownPanchayat = () => {
       filter: false,
     },
     
-    { key: "Street", label: "Street Name", _style: { width: "15%" } },
+    { key: "Street", label: "Street Name", _style: { width: "10%" } },
   
-    {
-      key: "by",
-      label: "Enteerd by",
-      _style: { width: "8%" },
-      sorter: false,
-      filter: false,
-    },
-    {
-      key: "on",
-      label: "Entered On",
-      _style: { width: "8%" },
-      sorter: false,
-      filter: false,
-    },
   ];
 
   const [passing, setPassing] = useState("");
@@ -404,10 +389,21 @@ const canceltownchange = () => {
                         Adding Town Panchayat{" "}
                       </span>
                     </div>
-                    <CRow
-                      className={"row-alignment"}
-                      style={{ marginLeft: "5px" }}
-                    >
+                    <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                      <CCol className={"column-align"} md="4">
+                        <CLabel className={"label-name"}>
+                          State
+                          <span className={"text-danger"}>*</span>
+                        </CLabel>
+                        <Select
+                          className={"input-align"}
+                          id={"municipalstatename"}
+                          name={"state"}
+                          placeholder={"Select State"}
+                          options={stateselect}
+                        />
+                      </CCol>
+
                       {municipalList && (
                         <React.Fragment>
                           <CCol className={"column-align"} md={4} lg={4}>
@@ -530,10 +526,21 @@ const canceltownchange = () => {
                       )}
                     </CRow>
 
-                    <CRow
-                      className={"row-alignment"}
-                      style={{ marginLeft: "5px" }}
-                    >
+                    <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                      <CCol className={"column-align"} md="4">
+                        <CLabel className={"label-name"}>
+                          District / City
+                          <span className={"text-danger"}>*</span>
+                        </CLabel>
+                        <Select
+                          className={"input-align"}
+                          id={"municipaldistrict"}
+                          name={"city"}
+                          placeholder={" City Name"}
+                          options={cityselect}
+                        />
+                      </CCol>
+
                       {wardnumberList && (
                         <React.Fragment>
                           <CCol className={"column-align"} md={4} lg={4}>
@@ -666,38 +673,10 @@ const canceltownchange = () => {
                           marginTop: "20px",
                         }}
                       >
-                        Selection Area
+                        Select Street
                       </CLabel>
                     </CCol>
                    
-                    <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                      <CCol className={"column-align"} md="4">
-                        <CLabel className={"label-name"}>
-                          State
-                          <span className={"text-danger"}>*</span>
-                        </CLabel>
-                        <Select
-                          className={"input-align"}
-                          id={"municipalstatename"}
-                          name={"state"}
-                          placeholder={"Select State"}
-                          options={stateselect}
-                        />
-                      </CCol>
-                      <CCol className={"column-align"} md="4">
-                        <CLabel className={"label-name"}>
-                          District / City
-                          <span className={"text-danger"}>*</span>
-                        </CLabel>
-                        <Select
-                          className={"input-align"}
-                          id={"municipaldistrict"}
-                          name={"city"}
-                          placeholder={" City Name"}
-                          options={cityselect}
-                        />
-                      </CCol>
-                    </CRow>
                     <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                       <CCol className={"column-align"} md="4">
                         <CLabel className={"label-name"}>
@@ -722,7 +701,7 @@ const canceltownchange = () => {
                       <CCol
                         md="5"
                         style={{
-                          marginLeft: "255px",
+                          marginLeft: "-200px",
                           position: "absolute",
                           float: "right",
                           marginTop: "-65px",
