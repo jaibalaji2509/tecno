@@ -282,7 +282,7 @@ const MunicipalCorporation = () => {
                         <CButton
                           style={{
                             float: "right",
-                            marginRight: "837px",
+                            marginRight: "1085px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
