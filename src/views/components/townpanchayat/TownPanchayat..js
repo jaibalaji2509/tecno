@@ -50,16 +50,26 @@ const TownPanchayat = () => {
   on:"10/06/2021",
 },
      ];
+     const [select, selectedRows] =useState({checked:true})
+    const handleRowSelection = (row) => {
+
+      const selectedRows = []
+      select.checked.dataTable.forEach((row, i) => {
+      row = row.indexOf(i) > -1
+  
+      selectedRows.push(row)
+  })
+}
   const fields = [
-    // {
-    //   key: "show_details",
-    //   label: "Select",
-    //   _style: { width: "3%" },
-    //   name: <div>Email <input type={"checkbox"} onClick={""}/></div>,
-    //   sorter: false,
-    //   filter: false,
-    //   checked:true,
-    // },
+    {
+      key: "show_details",
+      label: "Select",
+      _style: { width: "3%" },
+      select: <div>Email <input type={"checkbox"} onClick={handleRowSelection}/></div>,
+      sorter: false,
+      filter: false,
+      selectedRows,
+    },
     {
       key: "SNo",
       label: "S.NO",
@@ -312,10 +322,16 @@ const canceltownchange = () => {
                       itemsPerPage={5}
                       hover
                       sorter
+                      onClick={handleRowSelection
+}                      useRowSelect
                       pagination
                       scopedSlots={{
+                        
                         show_details: (item, index) => {
                           return (
+                            
+               
+
                             <td className="py-2">
                               <CRow>
                                 <CInput
@@ -326,9 +342,9 @@ const canceltownchange = () => {
                                     marginLeft: "30px",
                                     marginBottom: "10px",
                                   }}
+                                  onClick={handleRowSelection}
                                 />
-                                <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                </CCol>
+                                
                               </CRow>
                             </td>
                           );
@@ -755,6 +771,7 @@ const canceltownchange = () => {
                       itemsPerPageSelect
                       itemsPerPage={5}
                       hover
+                      checked
                       sorter
                       pagination
                       scopedSlots={{
@@ -771,8 +788,7 @@ const canceltownchange = () => {
                                     marginBottom: "10px",
                                   }}
                                 />
-                                <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                </CCol>
+                              
                               </CRow>
                             </td>
                           );
