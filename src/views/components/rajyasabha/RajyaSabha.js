@@ -946,7 +946,7 @@ const RajyaSabha = () => {
               <div>
                 <div style={{ marginLeft: "-26px" }}>
                   <CRow style={{ marginTop: "45px" }}>
-                    <CCol md="10">
+                    <CCol >
                       <CCol
                         md="5"
                         style={{
@@ -958,7 +958,7 @@ const RajyaSabha = () => {
                         <CButton
                           style={{
                             float: "right",
-                            marginRight: "845px",
+                            marginRight: "1095px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}

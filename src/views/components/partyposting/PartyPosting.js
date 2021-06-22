@@ -372,7 +372,7 @@ const PartyPosting = () => {
               <div>
                 <div style={{ marginLeft: "-26px" }}>
                   <CRow style={{ marginTop: "45px" }}>
-                    <CCol md="10" sm="10" lg="10">
+                    <CCol>
                       <CCol
                         md="5"
                         style={{
@@ -384,7 +384,7 @@ const PartyPosting = () => {
                         <CButton
                           style={{
                             float: "right",
-                            marginRight: "1155px",
+                            marginRight: "1095px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}

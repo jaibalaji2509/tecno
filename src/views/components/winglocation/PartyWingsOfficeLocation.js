@@ -420,7 +420,7 @@ function PartyWingsOfficeLocation() {
             </div>
 
             <CRow style={{ marginTop: "130px" }}>
-              <CCol md="10">
+              <CCol >
                 <CCol
                   md="5"
                   style={{
@@ -433,7 +433,7 @@ function PartyWingsOfficeLocation() {
                   <CButton
                     style={{
                       float: "right",
-                      marginRight: "1025px",
+                      marginRight: "985px",
                     }}
                     id={"saveAbbreviationConfigureCode"}
                     className={"saveBtn"}

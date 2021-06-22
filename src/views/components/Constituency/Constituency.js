@@ -145,7 +145,7 @@ function Constituency() {
               <span className={"header-label"}>Constituency</span>
             </div>
             <CRow style={{ marginTop: "45px" }}>
-                    <CCol md="10">
+                    <CCol >
                       <CCol
                         md="5"
                         style={{
@@ -157,7 +157,7 @@ function Constituency() {
                         <CButton
                           style={{
                             float: "right",
-                            marginRight: "1120px",
+                            marginRight: "1065px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}

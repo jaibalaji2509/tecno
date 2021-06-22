@@ -377,7 +377,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                     </span>
                   </div> */}
                   <CRow style={{ marginTop: "45px" }}>
-                    <CCol md="10">
+                    <CCol >
                       <CCol
                         md="5"
                         style={{
@@ -389,7 +389,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                         <CButton
                           style={{
                             float: "right",
-                            marginRight: "1125px",
+                            marginRight: "1085px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
