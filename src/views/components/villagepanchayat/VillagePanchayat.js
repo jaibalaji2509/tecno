@@ -210,7 +210,7 @@ const VillagePanchayat = () => {
                         <CButton
                           style={{
                             float: "right",
-                            marginRight: "1115px",
+                            marginRight: "820px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
