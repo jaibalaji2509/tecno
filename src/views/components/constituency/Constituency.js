@@ -148,16 +148,12 @@ function Constituency() {
                     <CCol >
                       <CCol
                         md="5"
-                        style={{
-                          marginLeft: "5px",
-                          float: "right",
-                          marginTop: "-20px",
-                        }}
+                       
                       >
                         <CButton
                           style={{
-                            float: "right",
-                            marginRight: "1065px",
+                            
+                            marginLeft: "45px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}

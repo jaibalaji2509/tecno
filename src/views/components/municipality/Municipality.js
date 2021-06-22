@@ -181,17 +181,13 @@ const Municipality = () => {
                  <CCol >
                    <CCol
                      md="5"
-                     style={{
-                       marginLeft: "5px",
-                       float: "right",
-                       marginTop:"-20px"
-                     }}
+                    
                    >
         
                      <CButton
                        style={{
-                         float: "right",
-                         marginRight: "1450px",
+                      
+                         marginLeft: "35px",
                        }}
                        id={"saveAbbreviationConfigureCode"}
                        className={"saveBtn"}
