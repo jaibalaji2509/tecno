@@ -71,13 +71,7 @@ const _nav = [
     icon: "cil-drop",
     _children: [
      
-      {
-        id: "CSidebarNavItemSideBar",
-        _tag: "CSidebarNavItem",
-        name: "Type of Party Wing Office",
-        to: "/WingsofficeType",
-        icon: <CIcon className={"c-sidebar-nav-icon"} />,
-      },
+      
       {
         id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",

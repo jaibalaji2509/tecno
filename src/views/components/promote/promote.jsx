@@ -53,13 +53,14 @@ const Promote = () => {
                   onClick={() => {
                     setShow(true);
                   }}
-                  style={{ margin: "20px 0px" }}
+                  style={{ margin: "20px 10px" }}
                 >
                   Promote Party Mamber
                   </CButton>
               </CCol>
             </CRow>
-            <CRow>
+            
+            <CRow md="12" sm="12" lg="12" >
               <CCol style={{ padding: "0px 50px" }} lg={"6"}>
                 <CInput
                   type="checkbox"
@@ -147,6 +148,8 @@ const Promote = () => {
                 </CContainer>
               </CCol>
             </CRow>
+           
+           
                         <CRow style={{ padding: "2%" }}>
               <CDataTable
                 tableLabel={"List of Promoted Members "}

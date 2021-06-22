@@ -847,7 +847,7 @@ import {
                           <CButton
                             style={{
                               float: "right",
-                              marginRight: "915px",
+                              marginRight: "1185px",
                             }}
                             id={"saveAbbreviationConfigureCode"}
                             className={"saveBtn"}
@@ -1605,7 +1605,7 @@ import {
                       <CCol
                         md="5"
                         style={{
-                          marginLeft: "500px",
+                          marginLeft: "265px",
                           float: "right",
                           marginTop: "30px",
                           position: "absolute",
@@ -1637,7 +1637,7 @@ import {
                     <CRow>
                       <CCol
                         style={{
-                          marginLeft: "40px",
+                          marginLeft: "65px",
   
                           maxHeight: "290px",
                           minHeight: "290px",

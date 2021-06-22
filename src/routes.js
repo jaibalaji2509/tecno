@@ -50,12 +50,11 @@ const Widgets = React.lazy(() => import('./views/widgets/Widgets'));
 const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
 const Location = React.lazy(() => import('./views/components/location/Location'));
-const WingsofficeType = React.lazy(() => import('./views/components/partywingsofficetype/PartyWingOfficeType'));
 const PartyWingsOfficeLocation = React.lazy(() => import('./views/components/winglocation/PartyWingsOfficeLocation'));
 const RajyaSabha = React.lazy(() => import('./views/components/rajyasabha/RajyaSabha'));
 const MemberTownPanchayat = React.lazy(() => import('./views/components/membertownpanchayat/MemberTownPanchayat'));
 const MemberofMunicipality = React.lazy(() => import('./views/components/memberofmunicipality/MemberofMunicipality'));
-const Corporation = React.lazy(() => import('./views/components/corporation/Corporation'));
+const Corporation = React.lazy(() => import('./views/components/memberofcorporation/Corporation'));
 const Municipality = React.lazy(() => import('./views/components/municipality/Municipality'));
 const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
 const VillagePanchayat = React.lazy(() => import('./views/components/villagepanchayat/VillagePanchayat'));
@@ -133,7 +132,6 @@ const routes = [
 
   
   { path: '/MemberRegistration',  exact: true, name: 'Member Registration', component: MemberRegistration },
-  { path: '/WingsofficeType',  exact: true, name: 'PARTY WINGS OFFICE', component: WingsofficeType },
   { path: '/PartyWingsOfficeLocation',  exact: true, name: 'Party Wings Office Location', component: PartyWingsOfficeLocation },
   { path: '/Terminate',  exact: true, name: 'Terminate Member', component: Terminate },
 

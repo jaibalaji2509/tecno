@@ -154,7 +154,7 @@ function PartyOfficeLocation() {
   ];
   const officeType = [{ value: "Head Office", label: "Head Office" }];
   const partyofficeType = [
-    { value: "Head Office", label: "Head Office" },
+    { value: "Head Office", label: "Head Office - Chennai Head Office" },
     { value: "District Office", label: "District Office" },
   ];
   const [typeofPartyOffice, setTypeofPartyOffice] = useState("");
@@ -190,8 +190,10 @@ function PartyOfficeLocation() {
     }
   };
   const [hidePartyOffice, setHidePartyOffice] = useState(true);
+  const [backbutt, setBackButt] = useState(false);
   const viewTypeofPartyOffice = () => {
     setHidePartyOffice(false);
+    setBackButt(true);
   };
   return (
     <div className={menu.style3}>
@@ -393,6 +395,18 @@ function PartyOfficeLocation() {
               </CRow>
             </div>
           )}
+           { backbutt && (
+            <div>
+     <CButton
+            className={"menu"}
+            style={{ position: "absolute", top: "15px", right: "15px" }}
+            className={"cancelBtn"}
+            onClick={addTypeofPartyOffice}
+          >
+            Back
+          </CButton>
+          </div>
+          )}
         </div>
       )}
       {addPartyOffice && (
@@ -548,7 +562,7 @@ function PartyOfficeLocation() {
                 </CWidgetDropdown>
               </CCol>
             </CRow>
-            <CRow>
+            <CRow style={{marginLeft:"280px"}}>
               <CCol
                 style={{ fontSize: "1.55rem", top: "100px" }}
                 md={12}
@@ -565,7 +579,7 @@ function PartyOfficeLocation() {
                     height: "40px",
                     width: "40px",
 
-                    marginLeft: "895px",
+                    marginLeft: "955px",
                     marginBottom: "20px",
                   }}
                 />
@@ -576,7 +590,7 @@ function PartyOfficeLocation() {
                   style={{
                     position: "absolute",
                     top: "50px",
-                    marginLeft: "765px",
+                    marginLeft: "795px",
                     marginBottom: "20px",
                     color: "black",
                   }}
@@ -589,7 +603,7 @@ function PartyOfficeLocation() {
                   style={{
                     position: "absolute",
                     top: "50px",
-                    marginLeft: "830px",
+                    marginLeft: "870px",
                     marginBottom: "910px",
                     color: "black",
                   }}

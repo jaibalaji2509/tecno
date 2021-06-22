@@ -1091,7 +1091,23 @@ svg.c-icon.login-icon-v {
 }
 
 .ant-dropdown {
-  left: 1393px !important;
+  left: 1573px !important;
+}
+.ant-dropdown-menu-item  {
+  display: block;
+  margin: -5px -12px;
+  padding: 5px 12px;
+  color: rgba(0, 0, 0, 0.85);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.ant-dropdown-menu-submenu-title > a {
+  display: block;
+  margin: -5px -12px;
+  padding: 5px 12px;
+  color: rgba(0, 0, 0, 0.85);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 .card.cardSave {
   background: #ffffff;

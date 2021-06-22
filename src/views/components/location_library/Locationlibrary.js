@@ -1466,33 +1466,34 @@ const addStreet = async()=>{
             <CRow
               style={{ padding: "1%", marginTop: "4.5%", marginLeft: "27px" }}
             >
-              <CRow>
-                <CCol style={{ fontSize: "1.55rem" }} md="12">
-                  <i
-                    id={"locationLibraryDelete"}
-                    style={{
-                      position: "absolute",
-                      top: "37px",
-                      marginLeft: "945px",
-                      marginBottom: "20px",
-                      color: "#0072ff",
-                    }}
-                    className="fa fa-print"
-                  ></i>
-                </CCol>
-                <CCol style={{ fontSize: "1.55rem" }} md="12">
-                  <i
-                    id={"locationLibraryDelete"}
-                    style={{
-                      position: "absolute",
-                      top: "37px",
-                      marginLeft: "1000px",
-                      marginBottom: "20px",
-                      color: "green",
-                    }}
-                    className="fa fa-share-alt"
-                  ></i>
-                </CCol>
+              <CRow style={{marginLeft:"350px"}}>
+              
+              <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
+                <i
+                  id={"locationLibraryDelete"}
+                  style={{
+                    position: "absolute",
+                    top: "50px",
+                    marginLeft: "795px",
+                    marginBottom: "20px",
+                    color: "black",
+                  }}
+                  className="fa fa-print"
+                ></i>
+              </CCol>
+              <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
+                <i
+                  id={"locationLibraryDelete"}
+                  style={{
+                    position: "absolute",
+                    top: "50px",
+                    marginLeft: "870px",
+                    marginBottom: "910px",
+                    color: "black",
+                  }}
+                  className="fa fa-share-alt"
+                ></i>
+              </CCol>
               </CRow>
               <CDataTable
                 items={userData}

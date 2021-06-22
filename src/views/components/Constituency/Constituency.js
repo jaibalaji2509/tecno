@@ -144,21 +144,33 @@ function Constituency() {
             <div className={"main-headerlabel"}>
               <span className={"header-label"}>Constituency</span>
             </div>
+            <CRow style={{ marginTop: "45px" }}>
+                    <CCol md="10">
+                      <CCol
+                        md="5"
+                        style={{
+                          marginLeft: "5px",
+                          float: "right",
+                          marginTop: "-20px",
+                        }}
+                      >
+                        <CButton
+                          style={{
+                            float: "right",
+                            marginRight: "1120px",
+                          }}
+                          id={"saveAbbreviationConfigureCode"}
+                          className={"saveBtn"}
+                          onClick={viewcreate}
+                        >
+                           Add Constituency
+                        </CButton>{" "}
+                      </CCol>
+                    </CCol>
+                  </CRow>
+                  
             <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-              <CButton
-                style={{
-                  float: "right",
-                  marginRight: "764px",
-                  marginTop: "30px",
-                  width: "200px",
-                  marginLeft: "75px",
-                }}
-                id={"addconstituency"}
-                onClick={viewcreate}
-                className={"saveBtn"}
-              >
-                Add Constituency
-              </CButton>{" "}
+              
               <CCol className={"column-align"} md="4">
                 <CLabel className={"label-name"}>
                   State
@@ -220,7 +232,7 @@ function Constituency() {
               </CCol>
             </CRow>
 
-            <CRow style={{ padding: "4%", marginTop: "1.5%" }}>
+            <CRow style={{ padding: "4%", marginTop: "1.5%",marginLeft:'2px' }}>
               <CDataTable
                 items={userDataview}
                 fields={fieldsview}
@@ -573,7 +585,7 @@ function Constituency() {
                     </CCol>
                   </CRow>
 
-                  <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-16px" }}>
+                  <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-6px" }}>
                     <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name"}>
                         Area / Village
@@ -603,7 +615,7 @@ function Constituency() {
                       />
                     </CCol>
                   </CRow>
-                  <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-16px" }}>
+                  <CRow className={"row-alignment"} md="12" sm="12" lg="12"  style={{ marginLeft: "-6px" }}>
                     <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name"}>
                         Street Name
@@ -650,7 +662,7 @@ function Constituency() {
                       </CCol>
                     </CCol>
                   </CRow>
-                  <CRow style={{ padding: "6%", marginTop: "-3.5%" }}>
+                  <CRow style={{ padding: "6%", marginTop: "-3.5%" ,marginLeft:"-30px"}}>
                     <CDataTable
                       items={userData}
                       fields={fields}
