@@ -389,7 +389,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                         <CButton
                           style={{
                             float: "right",
-                            marginRight: "825px",
+                            marginRight: "1125px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
@@ -449,13 +449,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                   </CRow>
                 </div>
 
-                <CRow
-                  style={{
-                    padding: "4%",
-                    marginTop: "-1.5%",
-                    marginLeft: "-25px",
-                  }}
-                >
+                <CRow style={{ padding: "4%", marginTop: "-1.5%" ,marginLeft:"-40px"}}>
                   <CDataTable
                     items={userData1}
                     fields={fields1}

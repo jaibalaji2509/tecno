@@ -270,9 +270,9 @@ const MunicipalCorporation = () => {
               <div>
                 <div style={{ marginLeft: "-26px" }}>
                   <CRow style={{ marginTop: "45px" }}>
-                    <CCol md="10">
+                    <CCol md="10" sm = "10" lg="10">
                       <CCol
-                        md="5"
+                        md="5" lg="5" sm="5"
                         style={{
                           marginLeft: "5px",
                           float: "right",
@@ -282,13 +282,13 @@ const MunicipalCorporation = () => {
                         <CButton
                           style={{
                             float: "right",
-                            marginRight: "820px",
+                            marginRight: "1080px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
                           onClick={changeMunicipalCorporation}
                         >
-                          Municipal Corporation
+                          Add Municipal Corporation
                         </CButton>{" "}
                       </CCol>
                     </CCol>
@@ -366,7 +366,7 @@ const MunicipalCorporation = () => {
                   </CRow>
                 </div>
 
-                <CRow style={{ padding: "4%", marginTop: "-1.5%" }}>
+                <CRow style={{ padding: "4%", marginTop: "-1.5%" ,marginLeft:"-40px"}}>
                   <CDataTable
                     items={userData}
                     fields={fields}

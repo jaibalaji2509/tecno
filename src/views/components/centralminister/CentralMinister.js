@@ -1015,7 +1015,7 @@ const CentralMinister = () => {
                         <CButton
                           style={{
                             float: "right",
-                            marginRight: "895px",
+                            marginRight: "1185px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
@@ -1045,7 +1045,7 @@ const CentralMinister = () => {
                     <CLabel
                       className={"label-name-1"}
                       style={{
-                        marginLeft: "560px",
+                        marginLeft: "680px",
                         marginTop: "30px",
                         position: "absolute",
                       }}
@@ -1790,7 +1790,7 @@ const CentralMinister = () => {
                     <CCol
                       md="5"
                       style={{
-                        marginLeft: "500px",
+                        marginLeft: "265px",
                         float: "right",
                         marginTop: "30px",
                         position: "absolute",
@@ -1822,7 +1822,7 @@ const CentralMinister = () => {
                   <CRow>
                     <CCol
                       style={{
-                        marginLeft: "40px",
+                        marginLeft: "65px",
 
                         maxHeight: "290px",
                         minHeight: "290px",

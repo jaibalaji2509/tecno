@@ -884,7 +884,7 @@ const ConstituencyMember = () => {
                         <CButton
                           style={{
                             float: "right",
-                            marginRight: "780px",
+                            marginRight: "1050px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
@@ -950,13 +950,8 @@ const ConstituencyMember = () => {
 
                 </div>
 
-                <CRow
-                  style={{
-                    padding: "4%",
-                    marginTop: "-1.5%",
-                    marginLeft: "-25px",
-                  }}
-                >
+               
+                <CRow style={{ padding: "4%", marginTop: "-1.5%" ,marginLeft:"-40px"}}>
                   <CDataTable
                     items={userData1}
                     fields={fields}
