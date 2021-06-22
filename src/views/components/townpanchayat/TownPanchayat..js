@@ -98,10 +98,10 @@ const TownPanchayat = () => {
       key: "show_details",
       label: "Select",
       _style: { width: "3%" },
-      name: <div>Email <input type={"checkbox"} onClick={""}/></div>,
-      sorter: false,
-      filter: false,
-      checked:true,
+      // name: <div>Email <input type={"checkbox"} onClick={""}/></div>,
+      // sorter: false,
+      // filter: false,
+      // checked:true,
     },
     {
       key: "SNo",
@@ -762,7 +762,7 @@ const canceltownchange = () => {
                           return (
                             <td className="py-2">
                               <CRow>
-                                <CInput
+                                {/* <CInput
                                   type={"checkbox"}
                                   style={{
                                     width: "15px",
@@ -770,9 +770,9 @@ const canceltownchange = () => {
                                     marginLeft: "30px",
                                     marginBottom: "10px",
                                   }}
-                                />
-                                <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                </CCol>
+                                /> */}
+                                {/* <CCol style={{ fontSize: "1.15rem" }} md="12">
+                                </CCol> */}
                               </CRow>
                             </td>
                           );
