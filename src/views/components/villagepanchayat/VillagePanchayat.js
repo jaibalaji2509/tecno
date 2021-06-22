@@ -198,7 +198,7 @@ const VillagePanchayat = () => {
                 <div style={{ marginLeft: "-26px" }}>
                   
                   <CRow style={{ marginTop: "45px" }}>
-                    <CCol  >
+                    <CCol  md="10">
                       <CCol
                         md="5"
                         style={{
@@ -210,7 +210,7 @@ const VillagePanchayat = () => {
                         <CButton
                           style={{
                             float: "right",
-                            marginRight: "1055px",
+                            marginRight: "1115px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
