@@ -13,8 +13,10 @@ import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
 import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
-import Select  from "react-select";
+import Select from "react-select";
 import "./RajyaSabha.css";
+import { Dropdown, Menu } from "antd";
+import 'antd/dist/antd.css';
 const RajyaSabha = () => {
   const [location, setLocation] = useState({
     state: "",
@@ -59,9 +61,7 @@ const RajyaSabha = () => {
   });
   const [typeofOfficess, setTypeofOfficess] = useState("");
   const [PI, setPI] = useState("");
-  const userData = [
-  
-  ];
+  const userData = [];
 
   const fields = [
     {
@@ -432,8 +432,24 @@ const RajyaSabha = () => {
     view1: false,
     view2: false,
     view3: false,
-    view4:false
+    view4: false,
   });
+  const menus = (details) => {
+    return(
+      <Menu>
+      <Menu.Item>
+        <a>Edit</a>
+      </Menu.Item>
+      <Menu.Item>
+        <a>Delete</a>
+      </Menu.Item>
+      <Menu.Item>
+        <a>Renewal</a>
+      </Menu.Item>
+    </Menu>
+    )
+  }
+
   return (
     <div className={menu.style3}>
       {sideBar1 && (
@@ -638,7 +654,7 @@ const RajyaSabha = () => {
 
                       Status: "Retired",
                     },
-                   ]}
+                  ]}
                 />
               </CCol>
             </CRow>
@@ -706,7 +722,7 @@ const RajyaSabha = () => {
                       NameofMinistry: "State Minister",
                       FromDate: "20/06/2010",
                       ToDate: "22/05/2015",
-                      Status:"InActiive"
+                      Status: "InActiive",
                     },
                   ]}
                 />
@@ -741,7 +757,7 @@ const RajyaSabha = () => {
                       NameofMinistry: "Central Minister",
                       FromDate: "28/02/20",
                       ToDate: "30/02/2025",
-                      Status:"Active"
+                      Status: "Active",
                     },
                   ]}
                 />
@@ -856,7 +872,6 @@ const RajyaSabha = () => {
                 <span className={"text-danger"}>*</span>
               </CLabel>
               <Select
-               
                 id={"rajyasabhaState"}
                 name={"state"}
                 placeholder={"Select Status"}
@@ -930,7 +945,6 @@ const RajyaSabha = () => {
             {locationHide.corporation && (
               <div>
                 <div style={{ marginLeft: "-26px" }}>
-                 
                   <CRow style={{ marginTop: "45px" }}>
                     <CCol md="10">
                       <CCol
@@ -944,7 +958,7 @@ const RajyaSabha = () => {
                         <CButton
                           style={{
                             float: "right",
-                            marginRight: "860px",
+                            marginRight: "1145px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
@@ -962,7 +976,6 @@ const RajyaSabha = () => {
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        
                         id={"rajyasabhaState"}
                         name={"state"}
                         placeholder={"Select State"}
@@ -990,7 +1003,7 @@ const RajyaSabha = () => {
                   style={{
                     padding: "4%",
                     marginTop: "-1.5%",
-                    marginLeft: "-25px",
+                    marginLeft: "-40px",
                   }}
                 >
                   <CDataTable
@@ -1010,41 +1023,26 @@ const RajyaSabha = () => {
                           <td className="py-1">
                             <CRow>
                               <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                <i
-                                  
-                                  id={"locationLibraryDelete"}
-                                  style={{
-                                    marginLeft: "5px",
-                                    color: "black",
-                                    cursor: "pointer",
-                                  }}
-                                  className="fa fa-remove"
-                                ></i>
-
-                                <i
-                                  
-                                  id={"locationLibraryDelete"}
-                                  style={{
-                                    marginLeft: "5px",
-                                    marginLeft: "10px",
-                                    color: "rgb(55, 224, 39)",
-                                    cursor: "pointer",
-                                  }}
-                                  className="fa fa-refresh"
-                                  onClick={handleClick2}
-                                ></i>
-                                <i
-                                  style={{
-                                    marginRight: "5px",
-                                    marginLeft: "18px",
-                                    color: "#3480e2",
-                                    cursor: "pointer",
-                                    position: "absolute",
-                                  }}
-                                  id={"memberregisterediticon"}
-                                  className="fa fa-history"
-                                  onClick={handleClick}
-                                ></i>
+                              
+                                <Dropdown
+                                  className={"ant-dropdown-cutomize-by-me"}
+                                  overlay={() => menus(item)}
+                                >
+                                  <a
+                                    className="ant-dropdown-link"
+                                    onClick={(e) => e.preventDefault()}
+                                  >
+                                    <i
+                                      style={{
+                                        marginLeft: "5px",
+                                        color: "black",
+                                      }}
+                                      className="fa fa-ellipsis-v"
+                                      bsStyle="overlay"
+                                      onClick={menus}
+                                    />
+                                  </a>
+                                </Dropdown>
                               </CCol>
                             </CRow>
                           </td>
@@ -1071,7 +1069,6 @@ const RajyaSabha = () => {
             {locationHide.corporation && (
               <div>
                 <div style={{ marginLeft: "-26px" }}>
-                  
                   <CRow
                     className={"row-alignment"}
                     md="12"
@@ -1207,7 +1204,6 @@ const RajyaSabha = () => {
                         CANCEL
                       </CButton>
                       <CButton
-                      
                         style={{
                           float: "right",
                           marginRight: "15px",

@@ -991,7 +991,7 @@ const noward=[
                                 <div style={{ marginLeft: "-26px" }}>
 
                                     <CRow style={{ marginTop: "45px" }}>
-                                        <CCol md="10">
+                                        <CCol md="10" sm="10" lg="10">
                                             <CCol
                                                 md="5"
                                                 style={{
@@ -1003,7 +1003,7 @@ const noward=[
                                                 <CButton
                                                     style={{
                                                         float: "right",
-                                                        marginRight: "915px",
+                                                        marginRight: "1185px",
                                                     }}
                                                     id={"saveAbbreviationConfigureCode"}
                                                     className={"saveBtn"}
@@ -1473,9 +1473,9 @@ const noward=[
                                         md="12"
                                         sm="12"
                                         lg="12"
-                                        style={{ marginLeft: "7px" }}
+                                        style={{ marginLeft: "-17px" }}
                                     >
-                                        <CCol className={"column-align"} md="6">
+                                        <CCol className={"column-align"} md="5">
                                             <CLabel className={"label-name-1"}>
                                                 Search Member
                           <span className={"text-danger"}>*</span>
@@ -1588,7 +1588,7 @@ const noward=[
                                         <CCol
                                             md="5"
                                             style={{
-                                                marginLeft: "500px",
+                                                marginLeft: "265px",
                                                 float: "right",
                                                 marginTop: "30px",
                                                 position: "absolute",
@@ -1619,7 +1619,7 @@ const noward=[
                                     <CRow>
                         <CCol
                             style={{
-                                marginLeft: "30px",
+                                marginLeft: "70px",
 
                                 maxHeight: "290px",
                                 minHeight: "290px",

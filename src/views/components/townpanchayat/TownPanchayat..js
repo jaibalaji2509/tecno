@@ -197,7 +197,7 @@ const canceltownchange = () => {
                   <div style={{ marginLeft: "-26px" }}>
                    
                     <CRow style={{ marginTop: "45px" }}>
-                      <CCol md="10">
+                      <CCol md="10" sm="10" lg="10">
                         <CCol
                           md="5"
                           style={{
@@ -209,7 +209,7 @@ const canceltownchange = () => {
                           <CButton
                             style={{
                               float: "right",
-                              marginRight: "843px",
+                              marginRight: "1125px",
                             }}
                             id={"saveAbbreviationConfigureCode"}
                             className={"saveBtn"}
@@ -301,7 +301,7 @@ const canceltownchange = () => {
                     </CRow>
                   </div>
 
-                  <CRow style={{ padding: "4%", marginTop: "-1.5%" }}>
+                  <CRow style={{ padding: "4%", marginTop: "-1.5%" ,marginLeft:"-30px"}}>
                     <CDataTable
                       items={userData}
                       fields={fields}

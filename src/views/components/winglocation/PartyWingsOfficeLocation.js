@@ -433,7 +433,7 @@ function PartyWingsOfficeLocation() {
                   <CButton
                     style={{
                       float: "right",
-                      marginRight: "762px",
+                      marginRight: "1025px",
                     }}
                     id={"saveAbbreviationConfigureCode"}
                     className={"saveBtn"}
@@ -524,8 +524,8 @@ function PartyWingsOfficeLocation() {
                       </CWidgetDropdown>
                     </CCol>
                   </CRow>
-                  <CRow>
-              <CCol
+                  <CRow style={{marginLeft:"280px"}}>
+                  <CCol
                 style={{ fontSize: "1.55rem", top: "100px" }}
                 md={12}
                 sm={12}
@@ -552,7 +552,7 @@ function PartyWingsOfficeLocation() {
                   style={{
                     position: "absolute",
                     top: "50px",
-                    marginLeft: "765px",
+                    marginLeft: "795px",
                     marginBottom: "20px",
                     color: "black",
                   }}

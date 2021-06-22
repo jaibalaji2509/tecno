@@ -270,9 +270,9 @@ const MunicipalCorporation = () => {
               <div>
                 <div style={{ marginLeft: "-26px" }}>
                   <CRow style={{ marginTop: "45px" }}>
-                    <CCol md="10">
+                    <CCol md="10" sm = "10" lg="10">
                       <CCol
-                        md="5"
+                        md="5" lg="5" sm="5"
                         style={{
                           marginLeft: "5px",
                           float: "right",
@@ -288,7 +288,7 @@ const MunicipalCorporation = () => {
                           className={"saveBtn"}
                           onClick={changeMunicipalCorporation}
                         >
-                          Municipal Corporation
+                          Add Municipal Corporation
                         </CButton>{" "}
                       </CCol>
                     </CCol>
@@ -366,7 +366,7 @@ const MunicipalCorporation = () => {
                   </CRow>
                 </div>
 
-                <CRow style={{ padding: "4%", marginTop: "-1.5%" }}>
+                <CRow style={{ padding: "4%", marginTop: "-1.5%" ,marginLeft:"-40px"}}>
                   <CDataTable
                     items={userData}
                     fields={fields}
@@ -432,15 +432,17 @@ const MunicipalCorporation = () => {
             {locationHide.corporation && (
               <div>
                 <div style={{ marginLeft: "-26px" }}>
-                 
-                  <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{marginLeft:"-7px"}}>
-                    <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
+                  <CRow
+                    className={"row-alignment"}
+                    style={{ marginLeft: "5px" }}
+                  >
+                     <CCol className={"column-align"} md="4">
+                      <CLabel className={"label-name-5"}>
                         State
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        className={"input-align"}
+                      
                         id={"municipalstatename"}
                         name={"state"}
                         placeholder={"Select State"}
@@ -565,18 +567,22 @@ const MunicipalCorporation = () => {
                         </CRow>
                       </React.Fragment>
                     )}
-</CRow>
-<CRow>
-                    <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
+                  </CRow>
+
+                  <CRow
+                    className={"row-alignment"}
+                    style={{ marginLeft: "5px" }}
+                  >
+                          <CCol className={"column-align"} md="4">
+                      <CLabel className={"label-name-5"}>
                         District / City
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        className={"input-align"}
+                       
                         id={"municipaldistrict"}
                         name={"city"}
-                        placeholder={"Select City"}
+                        placeholder={" Corporation Name"}
                         options={selectDistrict}
                       />
                     </CCol>
@@ -632,6 +638,7 @@ const MunicipalCorporation = () => {
                           md={12}
                           lg={12}
                         >
+                     
                           <CCol md="3">
                             <CLabel className={"label-name-5"}>
                               Ward Number
@@ -698,8 +705,25 @@ const MunicipalCorporation = () => {
                       </React.Fragment>
                     )}
                   </CRow>
- <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                    <CCol className={"column-align"} md="4" style={{marginLeft:"60px"}}>
+                  <CCol>
+                    <CLabel
+                      style={{
+                        fontSize: "20PX",
+                        fontFamily: "Open Sans",
+                        fontWeight: "700",
+                        marginLeft: "55px",
+                        marginTop: "20px",
+                      }}
+                    >
+                      Selection Area
+                    </CLabel>
+                  </CCol>
+                  <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                   
+                   
+                  </CRow>
+                  <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                    <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name"}>
                         Area
                         <span className={"text-danger"}>*</span>

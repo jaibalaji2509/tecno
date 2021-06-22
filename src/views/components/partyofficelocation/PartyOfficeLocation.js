@@ -154,7 +154,7 @@ function PartyOfficeLocation() {
   ];
   const officeType = [{ value: "Head Office", label: "Head Office" }];
   const partyofficeType = [
-    { value: "Head Office", label: "Head Office" },
+    { value: "Head Office", label: "Head Office - Chennai Head Office" },
     { value: "District Office", label: "District Office" },
   ];
   const [typeofPartyOffice, setTypeofPartyOffice] = useState("");
@@ -562,7 +562,7 @@ function PartyOfficeLocation() {
                 </CWidgetDropdown>
               </CCol>
             </CRow>
-            <CRow>
+            <CRow style={{marginLeft:"280px"}}>
               <CCol
                 style={{ fontSize: "1.55rem", top: "100px" }}
                 md={12}
@@ -590,7 +590,7 @@ function PartyOfficeLocation() {
                   style={{
                     position: "absolute",
                     top: "50px",
-                    marginLeft: "765px",
+                    marginLeft: "795px",
                     marginBottom: "20px",
                     color: "black",
                   }}
