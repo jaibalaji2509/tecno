@@ -54,7 +54,7 @@ const PartyWingsOfficeLocation = React.lazy(() => import('./views/components/win
 const RajyaSabha = React.lazy(() => import('./views/components/rajyasabha/RajyaSabha'));
 const MemberTownPanchayat = React.lazy(() => import('./views/components/membertownpanchayat/MemberTownPanchayat'));
 const MemberofMunicipality = React.lazy(() => import('./views/components/memberofmunicipality/MemberofMunicipality'));
-const Corporation = React.lazy(() => import('./views/components/corporation/Corporation'));
+const Corporation = React.lazy(() => import('./views/components/memberofcorporation/Corporation'));
 const Municipality = React.lazy(() => import('./views/components/municipality/Municipality'));
 const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
 const VillagePanchayat = React.lazy(() => import('./views/components/villagepanchayat/VillagePanchayat'));
