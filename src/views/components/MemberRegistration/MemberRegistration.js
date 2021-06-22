@@ -356,9 +356,23 @@ function MemberRegistration() {
               </CCol>
             </CRow>
 
-            <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-16px" }}>
+            <CButton
+              id={"memberregisteraddbutton"}
+              className={"saveBtn"}
+              onClick={enableCreate}
+              style={{
+                marginLeft: "4.5%",
+                width: "120px",
+                cursor: "pointer",
+                marginTop: "40px",
+                marginBottom: "-50px"
+              }}
+            >
 
+              Add Member
+            </CButton>
 
+            <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-16px", marginTop:"30px" }}>
               <CCol className={"column-align"} md="5">
                 <CLabel className={"label-name"}>
                   State
@@ -417,25 +431,6 @@ function MemberRegistration() {
                 />
               </CCol>
             </CRow>
-
-
-            <CButton
-              id={"memberregisteraddbutton"}
-              className={"saveBtn"}
-              onClick={enableCreate}
-              style={{
-                marginLeft: "2.5%",
-                width: "120px",
-                cursor: "pointer",
-                marginTop: "50px",
-                marginBottom: "-50px"
-              }}
-            >
-
-              Add Member
-            </CButton>
-
-
 
             <CRow style={{ padding: "4%", marginTop: "1.5%" }}>
               <CDataTable
@@ -497,8 +492,8 @@ function MemberRegistration() {
                             <i
                               style={{
                                 marginRight: "5px",
-                                marginLeft: "10px",
-                                color: "#3480e2",
+                                marginLeft: "13px",
+                                color: "red",
                                 cursor: "pointer",
 
                               }}
@@ -508,7 +503,7 @@ function MemberRegistration() {
                             <i
                               style={{
                                 marginRight: "5px",
-                                marginLeft: "8px",
+                                marginLeft: "10px",
                                 color: "#3480e2",
                                 cursor: "pointer",
 
@@ -763,23 +758,24 @@ function MemberRegistration() {
                       <CCol
                         md="5"
                         style={{
-                          marginTop: "18px",
+                          marginTop: "30px",
                           float: "right",
                         }}
                       >
                         <CButton
                           style={{
-                            float: "right",
+                          float: "right",
                           }}
                           id={"cancelabbreviationconfigurecode"}
                           className={"cancelBtn"}
-                          onClick={cancelCreate}          >
+                          onClick={cancelCreate}
+                          >
                           CANCEL
                         </CButton>
                         <CButton
                           style={{
-                            float: "right",
-                            marginRight: "15px",
+                          float: "right",
+                          marginRight: "15px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
@@ -794,7 +790,7 @@ function MemberRegistration() {
                     <CCol sm="6" lg="3" style={{ marginLeft: "10px" }}>
                       <CCol md="3">
                         <div
-                          style={{
+                            style={{
                             display: "flex",
                             flexDirection: "column",
                             paddingLeft: "0%",
@@ -811,7 +807,7 @@ function MemberRegistration() {
                               accept="image/*"
                               style={{ display: "none" }}
                               onChange={(e) => {
-                                handleSave(e.target.files[0], "profileImage");
+                              handleSave(e.target.files[0], "profileImage");
                               }}
                             />
                           </CCol>
@@ -819,11 +815,11 @@ function MemberRegistration() {
                           <div
                             id={"addEmployeehandleClick"}
                             style={{
-                              height: "100px",
-                              width: "100px",
-                              border: "1px dashed black",
-                              marginLeft: "-300px",
-                              marginTop: "-1191px"
+                            height: "100px",
+                            width: "100px",
+                            border: "1px dashed black",
+                            marginLeft: "-300px",
+                            marginTop: "-1191px"
                             }}
                             onClick={() => handleClick()}
                           >
@@ -831,15 +827,15 @@ function MemberRegistration() {
                               alt=""
                               src={files !== "" ? files : DEFAULT_IMAGE}
                               style={{
-                                width: "100%",
-                                height: "100%",
-                                position: "acsolute",
+                              width: "100%",
+                              height: "100%",
+                              position: "acsolute",
                               }}
                             />
                           </div>
 
                           <CLabel style={{ marginLeft: "-300px" }}>
-                            Upload Image
+                          Click to Upload Image
                             <span className={"text-danger"}> *</span>
                           </CLabel>
                         </div>

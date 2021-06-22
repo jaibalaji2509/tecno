@@ -377,7 +377,7 @@ const ConstituencyMember = () => {
                 <CCol
                   className={"column-align"}
                   md="4"
-                  style={{ marginTop: "-60px" }}
+                  style={{ marginTop: "-120px" }}
                 >
                   <CLabel className={"label-name"}>
                     Age
@@ -1192,7 +1192,7 @@ const ConstituencyMember = () => {
                     className={"row-alignment"}
                     style={{ marginTop: "-140px" }}
                   >
-                    <CCol className={"column-align"} md="4" style={{ marginTop: "120px" }}>
+                    <CCol className={"column-align"} md="4" style={{ marginTop: "35px" }}>
                       <CLabel className={"label-name"}>
                         Age
                         <span

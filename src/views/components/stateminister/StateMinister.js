@@ -428,7 +428,7 @@ import {
               <CCol
                 className={"column-align"}
                 md="4"
-                style={{ marginTop: "-60px" }}
+                style={{ marginTop: "-120px" }}
               >
                 <CLabel className={"label-name"}>
                   DOB
@@ -440,30 +440,60 @@ import {
               </CCol>
             </CRow>
             <CRow style={{ marginTop: "25px" }}>
-              <CCol>
-                <CButton
-                  style={{ marginTop: "20px" }}
-                  onClick={chiefministerShow}
-                  className={"saveBtn"}
-                >
-                  Chief Minister
-                </CButton>
-                <CButton
-                  className={"saveBtn"}
-                  style={{ marginTop: "20px", marginLeft: "10px" }}
-                  onClick={deputychiefministerShow}
+            <CCol>
+            <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"corporationmembericon"}
+            className="fa fa-eye"
+            onClick={chiefministerShow}
+          >
+           Chief Minister
+          </i>
+          <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"corporationmembericon"}
+            className="fa fa-eye"
+            onClick={deputychiefministerShow}
                 >
                  Deputy Chief Minister
-                </CButton>
-                <CButton
-                  onClick={ministryShow}
-                  className={"saveBtn"}
-                  style={{ marginTop: "20px", marginLeft: "10px" }}
-                >
-                 Ministry
-                </CButton>
-              
-              </CCol>
+        
+          </i>
+          <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"corporationmembericon"}
+            className="fa fa-eye"
+            onClick={ministryShow}
+          >
+            Ministry
+          </i>
+            </CCol>
             </CRow>
   
             {gridone && (

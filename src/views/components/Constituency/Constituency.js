@@ -268,19 +268,20 @@ function Constituency() {
                               }}
                               className="fa fa-trash"
                             ></i>
-                            <i
-                              style={{
-                                marginLeft: "5px",
-                                color: "green",
-                                cursor: "pointer",
-                              }}
-                              id={"removeicon"}
-                              className="fas fa-eraser"></i>
+                            <i                                  
+                                  id={"constituencyremove"}
+                                  style={{
+                                    marginLeft: "13px",
+                                    color: "black",
+                                    cursor: "pointer",
+                                  }}
+                                  className="fa fa-remove"
+                                ></i>
                             <i
                               style={{
                                 marginRight: "5px",
-                                marginLeft: "5px",
-                                color: "#3480e2",
+                                marginLeft: "10px",
+                                color: "red",
                                 cursor: "pointer",
                               }}
                               id={"viewicon"}
@@ -333,23 +334,6 @@ function Constituency() {
                         placeholder="Select the State"
                       />
                     </CCol>
-                    <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
-                        District / City
-                        <span className={"text-danger"}>*</span>
-                      </CLabel>
-                      <Select
-                        styles={{ marginLeft: "50px" }}
-                        type={"text"}
-                        id={"constituencycity"}
-                        className={"input-align"}
-                        options={select}
-                        placeholder="Select the District / City "
-                      />
-                    </CCol>
-                  </CRow>
-
-                  <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
                     {municipalList && (
                       <React.Fragment>
                         <CCol className={"column-align"} md={4} lg={4}>
@@ -463,9 +447,23 @@ function Constituency() {
                         </CRow>
                       </React.Fragment>
                     )}
-                  </CRow>
+</CRow>
+                  <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-6px" }}>
 
-                  <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
+                    <CCol className={"column-align"} md="4">
+                      <CLabel className={"label-name"}>
+                        District / City
+                        <span className={"text-danger"}>*</span>
+                      </CLabel>
+                      <Select
+                        styles={{ marginLeft: "50px" }}
+                        type={"text"}
+                        id={"constituencycity"}
+                        className={"input-align"}
+                        options={select}
+                        placeholder="Select the District / City "
+                      />
+                    </CCol>
                     {municipalListadd && (
                       <React.Fragment>
                         <CCol className={"column-align"} md={4} lg={4}>
@@ -575,7 +573,7 @@ function Constituency() {
                         </CRow>
                       </React.Fragment>
                     )}
-                  </CRow>
+                  </CRow> 
 
                   <CRow>
                     <CCol>

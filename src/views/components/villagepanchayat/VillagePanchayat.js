@@ -59,13 +59,13 @@ const VillagePanchayat = () => {
         by:"Jai Balaji",
         on:"10/06/2021"
     },
-    // {
-    //   SNo: "2.",
-    //         Street: "Achari street",
-    //     Ward:"019",
-    //     by:"Jai Balaji",
-    //     on:"10/06/2021"
-    // },
+    {
+      SNo: "2.",
+            Street: "Achari street",
+        Ward:"019",
+        by:"Jai Balaji",
+        on:"10/06/2021"
+    },
   ];
   const fields = [
     

@@ -958,7 +958,7 @@ const RajyaSabha = () => {
                         <CButton
                           style={{
                             float: "right",
-                            marginRight: "1145px",
+                            marginRight: "845px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
