@@ -178,7 +178,7 @@ const Municipality = () => {
                <div style={{ marginLeft: "-26px" }}>
                 
                  <CRow style={{marginTop:"45px"}}>
-                 <CCol md="10" sm="10" lg="10">
+                 <CCol >
                    <CCol
                      md="5"
                      style={{
@@ -191,7 +191,7 @@ const Municipality = () => {
                      <CButton
                        style={{
                          float: "right",
-                         marginRight: "1160px",
+                         marginRight: "1110px",
                        }}
                        id={"saveAbbreviationConfigureCode"}
                        className={"saveBtn"}

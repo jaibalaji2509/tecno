@@ -207,7 +207,7 @@ const canceltownchange = () => {
                   <div style={{ marginLeft: "-26px" }}>
                    
                     <CRow style={{ marginTop: "45px" }}>
-                      <CCol md="10" sm="10" lg="10">
+                      <CCol >
                         <CCol
                           md="5"
                           style={{
@@ -219,7 +219,7 @@ const canceltownchange = () => {
                           <CButton
                             style={{
                               float: "right",
-                              marginRight: "1125px",
+                              marginRight: "1065px",
                             }}
                             id={"saveAbbreviationConfigureCode"}
                             className={"saveBtn"}
