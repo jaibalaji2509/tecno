@@ -520,7 +520,7 @@ const noward=[
                 <CCol
                   className={"column-align"}
                   md="4"
-                  style={{ marginTop: "-60px" }}
+                  style={{ marginTop: "-120px" }}
                 >
                   <CLabel className={"label-name"}>
                     DOB

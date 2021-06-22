@@ -59,13 +59,13 @@ const VillagePanchayat = () => {
         by:"Jai Balaji",
         on:"10/06/2021"
     },
-    // {
-    //   SNo: "2.",
-    //         Street: "Achari street",
-    //     Ward:"019",
-    //     by:"Jai Balaji",
-    //     on:"10/06/2021"
-    // },
+    {
+      SNo: "2.",
+            Street: "Achari street",
+        Ward:"019",
+        by:"Jai Balaji",
+        on:"10/06/2021"
+    },
   ];
   const fields = [
     
@@ -210,7 +210,7 @@ const VillagePanchayat = () => {
                         <CButton
                           style={{
                             float: "right",
-                            marginRight: "810px",
+                            marginRight: "833px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}

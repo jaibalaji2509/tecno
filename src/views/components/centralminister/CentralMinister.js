@@ -451,7 +451,7 @@ const CentralMinister = () => {
             <CCol
               className={"column-align"}
               md="4"
-              style={{ marginTop: "-60px" }}
+              style={{ marginTop: "-120px" }}
             >
               <CLabel className={"label-name"}>
                 DOB
@@ -464,43 +464,94 @@ const CentralMinister = () => {
           </CRow>
           <CRow style={{ marginTop: "25px" }}>
             <CCol>
-              <CButton
-                style={{ marginTop: "20px", marginLeft: "10px" }}
-                onClick={partyShow}
-                className={"saveBtn"}
-              >
-                party Posting
-              </CButton>
-              <CButton
-                style={{ marginTop: "20px", marginLeft: "10px" }}
-                onClick={chiefministerShow}
-                className={"saveBtn"}
-              >
-                As a MP
-              </CButton>
-
-              <CButton
-                className={"saveBtn"}
-                style={{ marginTop: "20px", marginLeft: "10px" }}
-                onClick={deputychiefministerShow}
-              >
-                As a MLA
-              </CButton>
-              <CButton
-                onClick={ministryShow}
-                className={"saveBtn"}
-                style={{ marginTop: "20px", marginLeft: "10px" }}
-              >
-                State Minister
-              </CButton>
-              <CButton
-                onClick={centralMinister}
-                className={"saveBtn"}
-                style={{ marginTop: "20px", marginLeft: "10px" }}
-              >
-                Central Minister
-              </CButton>
-            </CCol>
+           
+            <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"corporationmembericon"}
+            className="fa fa-eye"
+            onClick={partyShow}
+          >
+           party Posting
+          </i>
+          <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"corporationmembericon"}
+            className="fa fa-eye"
+            onClick={chiefministerShow}
+                >
+                 As a MP
+        
+          </i>
+          <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"corporationmembericon"}
+            className="fa fa-eye"
+            onClick={deputychiefministerShow}
+          >
+            As a MLA
+          </i>
+          <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"corporationmembericon"}
+            className="fa fa-eye"
+            onClick={ministryShow}
+          >
+            State Minister
+          </i>
+          <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"corporationmembericon"}
+            className="fa fa-eye"
+            onClick={centralMinister}
+          >
+            Central Minister
+          </i>
+            </CCol>           
           </CRow>
 
           {gridone && (

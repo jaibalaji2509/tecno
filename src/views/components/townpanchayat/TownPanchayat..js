@@ -209,7 +209,7 @@ const canceltownchange = () => {
                           <CButton
                             style={{
                               float: "right",
-                              marginRight: "825px",
+                              marginRight: "843px",
                             }}
                             id={"saveAbbreviationConfigureCode"}
                             className={"saveBtn"}

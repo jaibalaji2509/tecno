@@ -468,7 +468,7 @@ const Corporation = () => {
             <CCol
               className={"column-align"}
               md="4"
-              style={{ marginTop: "-60px" }}
+              style={{ marginTop: "-120px" }}
             >
               <CLabel className={"label-name"}>
                 DOB
@@ -480,35 +480,76 @@ const Corporation = () => {
             </CCol>
           </CRow>
           <CRow style={{ marginTop: "25px" }}>
-            <CCol>
-              <CButton
-                style={{ marginTop: "20px" }}
-                onClick={mayorShow}
-                className={"saveBtn"}
-              >
-                Mayor
-              </CButton>
-              <CButton
-                className={"saveBtn"}
-                style={{ marginTop: "20px", marginLeft: "10px" }}
-                onClick={deputymayorShow}
-              >
-               Deputy Mayor
-              </CButton>
-              <CButton
-                onClick={partshow}
-                className={"saveBtn"}
-                style={{ marginTop: "20px", marginLeft: "10px" }}
-              >
-                Party Posting
-              </CButton>
-              <CButton
-                onClick={councilarShow}
-                className={"saveBtn"}
-                style={{ marginTop: "20px", marginLeft: "10px" }}
-              >
-               Councilar
-              </CButton>
+          <CCol>
+            <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"corporationmembericon"}
+            className="fa fa-eye"
+            onClick={mayorShow}
+          >
+           Mayor
+          </i>
+          <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"corporationmembericon"}
+            className="fa fa-eye"
+            onClick={deputymayorShow}
+            >
+             Deputy Mayor
+        
+          </i>
+          <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"corporationmembericon"}
+            className="fa fa-eye"
+            onClick={partshow}
+          >
+            Party Posting
+          </i>
+          <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"corporationmembericon"}
+            className="fa fa-eye"
+            onClick={councilarShow}
+          >
+           Councilar
+          </i>
             </CCol>
           </CRow>
 
@@ -1116,7 +1157,7 @@ const Corporation = () => {
                                         cursor: "pointer",
                                         position: "absolute",
                                       }}
-                                      id={"memberregisterediticon"}
+                                      id={"corporationmembericon"}
                                       className="fa fa-history"
                                       onClick={handleClick}
                                     ></i>
@@ -1258,7 +1299,7 @@ const Corporation = () => {
                                         cursor: "pointer",
                                         position: "absolute",
                                       }}
-                                      id={"memberregisterediticon"}
+                                      id={"corporationmembericon"}
                                       className="fa fa-history"
                                       onClick={handleClick}
                                     ></i>
@@ -1390,7 +1431,7 @@ const Corporation = () => {
                                         cursor: "pointer",
                                         position: "absolute",
                                       }}
-                                      id={"memberregisterediticon"}
+                                      id={"corporationmembericon"}
                                       className="fa fa-history"
                                       onClick={handleClick}
                                     ></i>
