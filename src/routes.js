@@ -59,7 +59,7 @@ const Corporation = React.lazy(() => import('./views/components/corporation/Corp
 const Municipality = React.lazy(() => import('./views/components/municipality/Municipality'));
 const TownPanchayat = React.lazy(() => import('./views/components/townpanchayat/TownPanchayat.'));
 const VillagePanchayat = React.lazy(() => import('./views/components/villagepanchayat/VillagePanchayat'));
-const MemberRegistration = React.lazy(() => import('./views/components/memberregistration/MemberRegistration'));
+const MemberRegistration = React.lazy(() => import('./views/components/MemberRegistration/MemberRegistration'));
 const PartyOfficeLocation = React.lazy(() => import('./views/components/partyofficelocation/PartyOfficeLocation'));
 const PartyPosting = React.lazy(() => import('./views/components/partyposting/PartyPosting'));
 const AssignPartyPosting = React.lazy(() => import('./views/components/assignpartyposting/AssignPartyPosting'));
@@ -120,13 +120,11 @@ const routes = [
   {path:"/municipality", exact:true, name : "Municipality", component:Municipality},
   {path:"/townpanchayat", exact:true, name : "Town Panchayat", component:TownPanchayat},
   {path:"/villagepanchayat", exact:true, name : "Village Panchayat", component:VillagePanchayat},
-  {path:"/partyoffice", exact:true, name : "Party Office", component:PartyOffice},
   {path:"/Constituency", exact:true, name : "Constituency", component:Constituency},
   // { path: '/AddMemberRegister',  exact: true, name: 'AddMemberRegister', component: AddMemberRegister },
   { path: '/MemberRegistration',  exact: true, name: 'MemberRegistration', component: MemberRegistration },
   // { path: '/OfficeType',  exact: true, name: 'OfficeType', component: OfficeType },
   // { path: '/WingLocation',  exact: true, name: 'WingLocation', component: WingLocation },
-  {path:"/TypeOfpartyOffice", exact:true, name : "Type of Party Office", component:PartyOffice},
   {path:"/constituency", exact:true, name : "Constituency", component:Constituency},
   { path: '/WingLocation',  exact: true, name: 'WingLocation', component: PartyWingsOfficeLocation },
   { path: '/memberRegistration',  exact: true, name: 'Member Registration', component: MemberRegistration },

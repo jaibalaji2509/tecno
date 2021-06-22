@@ -16,7 +16,6 @@ import {
   import { toast } from "react-toastify";
   import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
   import Select, { components } from "react-select";
-  import { Dropdown, Menu } from "antd";
   import "./StateMinister.css";
   const StateMinister = () => {
     const [location, setLocation] = useState({
