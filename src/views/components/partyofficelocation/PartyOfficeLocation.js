@@ -297,7 +297,7 @@ function PartyOfficeLocation() {
                 </div>
               )}
 
-              <CRow>
+              <CRow style={{marginLeft:"14px"}}>
                 <CCol
                   style={{ fontSize: "1.55rem", top: "70px" }}
                   md={12}
@@ -562,7 +562,7 @@ function PartyOfficeLocation() {
                 </CWidgetDropdown>
               </CCol>
             </CRow>
-            <CRow style={{marginLeft:"280px"}}>
+            <CRow style={{marginLeft:"14px"}}>
               <CCol
                 style={{ fontSize: "1.55rem", top: "100px" }}
                 md={12}

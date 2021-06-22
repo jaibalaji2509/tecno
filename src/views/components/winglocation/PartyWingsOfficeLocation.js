@@ -425,15 +425,17 @@ function PartyWingsOfficeLocation() {
                   md="5"
                   style={{
                     marginLeft: "5px",
-                    float: "right",
+                  
                     marginTop: "-10px",
                     top: "33px",
                   }}
                 >
                   <CButton
-                    style={{
-                      float: "right",
-                      marginRight: "985px",
+                     style={{
+                     
+                      
+                      position: "absolute",
+                      marginLeft: "20px",
                     }}
                     id={"saveAbbreviationConfigureCode"}
                     className={"saveBtn"}
@@ -524,7 +526,7 @@ function PartyWingsOfficeLocation() {
                       </CWidgetDropdown>
                     </CCol>
                   </CRow>
-                  <CRow style={{marginLeft:"280px"}}>
+                  <CRow style={{marginLeft:"14px"}}>
                   <CCol
                 style={{ fontSize: "1.55rem", top: "100px" }}
                 md={12}
