@@ -562,7 +562,7 @@ function PartyOfficeLocation() {
                 </CWidgetDropdown>
               </CCol>
             </CRow>
-            <CRow>
+            <CRow style={{marginLeft:"280px"}}>
               <CCol
                 style={{ fontSize: "1.55rem", top: "100px" }}
                 md={12}
