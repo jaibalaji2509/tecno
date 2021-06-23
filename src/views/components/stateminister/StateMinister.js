@@ -900,7 +900,7 @@ import {
                           options={stateselect}
                         />
                       </CCol>
-                      <CLabel className={"label-name-1"} style={{ marginLeft: "560px", marginTop:"30px",position:"absolute"}} >
+                      <CLabel className={"label-name-1"} style={{ marginLeft: "675px", marginTop:"30px",position:"absolute"}} >
                           Type of Role
                           <span className={"text-danger"}>*</span>
                         </CLabel>
