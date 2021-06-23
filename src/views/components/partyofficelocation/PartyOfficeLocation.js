@@ -393,7 +393,7 @@ function PartyOfficeLocation() {
                                 >
                                   <i
                                     style={{
-                                      marginLeft: "5px",
+                                      marginLeft: "35px",
                                       color: "black",
                                     }}
                                     className="fa fa-ellipsis-v"
@@ -658,7 +658,7 @@ function PartyOfficeLocation() {
                               >
                                 <i
                                   style={{
-                                    marginLeft: "5px",
+                                    marginLeft: "35px",
                                     color: "black",
                                   }}
                                   className="fa fa-ellipsis-v"

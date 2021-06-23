@@ -14,6 +14,8 @@ import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
 import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
 import Select, { components } from "react-select";
+import { Dropdown, Menu } from "antd";
+import 'antd/dist/antd.css';
 const AssignPartyPosting = () => {
   const [location, setLocation] = useState({
     state: "",
@@ -354,6 +356,19 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
   const handleClick = (e) => {
     document.getElementById("profileImage").click();
   };
+  const menus = (details) => {
+    return(
+      <Menu>
+        <Menu.Item>
+        <a>Edit</a>
+      </Menu.Item>
+      <Menu.Item>
+        <a>Delete</a>
+      </Menu.Item>
+    </Menu>
+    )
+  }
+
   return (
     <div>
       {hideMappingMunicipal && (
@@ -460,38 +475,33 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                     scopedSlots={{
                       show_details: (item, index) => {
                         return (
-                          <td className="py-2">
+                          <td className="py-1">
                             <CRow>
-                              <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                <i
-                                  onClick={() => {
-                                    //   toggleDetails(index);
-                                  }}
-                                ></i>
-                                <i
-                                     style={{
-                                       marginRight: "5px",
-                                       color: "#3480e2",
-                                       cursor: "pointer",
-                                     }}
-                                     id={"locationLibraryEdit"}
-                                    //  onClick={() => EditCountry(item)}
-                                     className="fas fa-edit"
-                                   ></i>
-                                   <i
-                                    //  onClick={() => deleteConfirm(item._id)}
-                                     id={"locationLibraryDelete"}
-                                     style={{
-                                       marginLeft: "5px",
-                                       color: "#e85654",
-                                       cursor: "pointer",
-                                     }}
-                                     className="fa fa-trash"
-                                   ></i>
+                              <CCol style={{ fontSize: "1.15rem" }} md="16">
+                              
+                                <Dropdown
+                                  className={"ant-dropdown-cutomize-by-me"}
+                                  overlay={() => menus(item)}
+                                >
+                                  <a
+                                    className="ant-dropdown-link"
+                                    onClick={(e) => e.preventDefault()}
+                                  >
+                                    <i
+                                      style={{
+                                        marginLeft: "35px",
+                                        color: "black",
+                                      }}
+                                      className="fa fa-ellipsis-v"
+                                      bsStyle="overlay"
+                                      onClick={menus}
+                                    />
+                                  </a>
+                                </Dropdown>
                               </CCol>
                             </CRow>
                           </td>
-                        );
+                         );
                       },
                       details: (item, index) => {},
                     }}
@@ -805,23 +815,33 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                     scopedSlots={{
                       show_details: (item, index) => {
                         return (
-                          <td className="py-2">
+                          <td className="py-1">
                             <CRow>
-                              <CCol style={{ fontSize: "1.15rem" }} md="12">
-                              <i
-                                    //  onClick={() => deleteConfirm(item._id)}
-                                     id={"locationLibraryDelete"}
-                                     style={{
-                                       marginLeft: "5px",
-                                       color: "#e85654",
-                                       cursor: "pointer",
-                                     }}
-                                     className="fa fa-trash"
-                                   ></i>
+                              <CCol style={{ fontSize: "1.15rem" }} md="16">
+                              
+                                <Dropdown
+                                  className={"ant-dropdown-cutomize-by-me"}
+                                  overlay={() => menus(item)}
+                                >
+                                  <a
+                                    className="ant-dropdown-link"
+                                    onClick={(e) => e.preventDefault()}
+                                  >
+                                    <i
+                                      style={{
+                                        marginLeft: "35px",
+                                        color: "black",
+                                      }}
+                                      className="fa fa-ellipsis-v"
+                                      bsStyle="overlay"
+                                      onClick={menus}
+                                    />
+                                  </a>
+                                </Dropdown>
                               </CCol>
                             </CRow>
                           </td>
-                        );
+                         );
                       },
                       details: (item, index) => {},
                     }}
