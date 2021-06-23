@@ -446,7 +446,7 @@ const menus = (details) => {
                             placeholder="Select District Panchayat"
                             id={"municipalcorporation"}
                             type={"text"}
-                            // value={municipalCorporation}
+                            
                             options={select}
                           />
                         </CCol>
