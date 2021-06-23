@@ -444,7 +444,21 @@ const RajyaSabha = () => {
         <a>Delete</a>
       </Menu.Item>
       <Menu.Item>
-        <a>Renewal</a>
+        <a>Remove</a>
+      </Menu.Item>
+      <Menu.Item>
+      <a
+        onClick={() => {
+          setSelected(details);
+          handleClick2();
+        }}>Update</a>
+      </Menu.Item> <Menu.Item>
+        <a
+        onClick={() => {
+          setSelected(details);
+          handleClick();
+        }}
+        >History</a>
       </Menu.Item>
     </Menu>
     )

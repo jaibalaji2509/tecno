@@ -12,6 +12,8 @@ import {
 import {} from "../../../services/ApiService";
 import Select  from "react-select";
 import "./PartyWingsOfficeLocation.css";
+import { Dropdown, Menu } from "antd";
+import 'antd/dist/antd.css';
 
 function PartyWingsOfficeLocation() {
   const [addPartyOffice, setAddPartyOffice] = useState(true);
@@ -137,7 +139,7 @@ function PartyWingsOfficeLocation() {
 
     {
       label: "Action",
-      key: "show_details1",
+      key: "show_details",
 
       _style: { width: "1%" },
       sorter: false,
@@ -196,6 +198,19 @@ function PartyWingsOfficeLocation() {
   const [locationHide, setLocationHide] = useState({
     corporation: true,
   });
+
+  const menus = (details) => {
+    return(
+      <Menu>
+      <Menu.Item>
+        <a>Edit</a>
+      </Menu.Item>
+      <Menu.Item>
+        <a>Delete</a>
+      </Menu.Item>
+    </Menu>
+    )
+  }
 
   return (
      <div className={menu.style3}>
@@ -364,28 +379,29 @@ function PartyWingsOfficeLocation() {
                   scopedSlots={{
                     show_details: (item, index) => {
                       return (
-                        <td className="py-2">
+                        <td className="py-1">
                           <CRow>
-                            <CCol style={{ fontSize: "1.15rem" }} md="12">
-                              <i onClick={() => {}}></i>
-                              <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "#3480e2",
-                                  cursor: "pointer",
-                                }}
-                                id={"locationLibraryEdit"}
-                                className="fas fa-edit"
-                              ></i>
-                              <i
-                                id={"locationLibraryDelete"}
-                                style={{
-                                  marginLeft: "5px",
-                                  color: "#e85654",
-                                  cursor: "pointer",
-                                }}
-                                className="fa fa-trash"
-                              ></i>
+                            <CCol style={{ fontSize: "1.15rem" }} md="16">
+                            
+                              <Dropdown
+                                className={"ant-dropdown-cutomize-by-me"}
+                                overlay={() => menus(item)}
+                              >
+                                <a
+                                  className="ant-dropdown-link"
+                                  onClick={(e) => e.preventDefault()}
+                                >
+                                  <i
+                                    style={{
+                                      marginLeft: "5px",
+                                      color: "black",
+                                    }}
+                                    className="fa fa-ellipsis-v"
+                                    bsStyle="overlay"
+                                    onClick={menus}
+                                  />
+                                </a>
+                              </Dropdown>
                             </CCol>
                           </CRow>
                         </td>
@@ -590,52 +606,34 @@ function PartyWingsOfficeLocation() {
                 scopedSlots={{
                   show_details: (item, index) => {
                     return (
-                      <td className="py-2">
-                        <CInput
-                          type={"checkbox"}
-                          style={{
-                            width: "15px",
-                            height: "15px",
-                            marginLeft: "30px",
-                            marginBottom: "10px",
-                          }}
-                        />
+                      <td className="py-1">
                         <CRow>
-                          <CCol style={{ fontSize: "1.15rem" }} md="12">
+                          <CCol style={{ fontSize: "1.15rem" }} md="16">
+                          
+                            <Dropdown
+                              className={"ant-dropdown-cutomize-by-me"}
+                              overlay={() => menus(item)}
+                            >
+                              <a
+                                className="ant-dropdown-link"
+                                onClick={(e) => e.preventDefault()}
+                              >
+                                <i
+                                  style={{
+                                    marginLeft: "5px",
+                                    color: "black",
+                                  }}
+                                  className="fa fa-ellipsis-v"
+                                  bsStyle="overlay"
+                                  onClick={menus}
+                                />
+                              </a>
+                            </Dropdown>
                           </CCol>
                         </CRow>
                       </td>
                     );
                   },
-                  show_details1: (item, index) => {
-                    return (
-                      <td className="py-2">
-                        <CRow>
-                          <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              style={{
-                                marginRight: "5px",
-                                color: "#3480e2",
-                                cursor: "pointer",
-                              }}
-                              id={"constituencyEditicon"}
-                              className="fas fa-edit"
-                            ></i>
-                            <i
-                              id={"constituencyDelete"}
-                              style={{
-                                marginLeft: "5px",
-                                color: "#e85654",
-                                cursor: "pointer",
-                              }}
-                              className="fa fa-trash"
-                            ></i>
-                          </CCol>
-                        </CRow>
-                      </td>
-                    );
-                  },
-
                   details: (item, index) => {},
                 }}
               />

@@ -4,6 +4,8 @@ import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
 import Select from "react-select";
+import { Dropdown, Menu } from "antd";
+import 'antd/dist/antd.css';
 
 const MunicipalCorporation = () => {
   const [location, setLocation] = useState({
@@ -279,6 +281,21 @@ const MunicipalCorporation = () => {
     { value: "0017", label: "0017" },
     { value: "0018", label: "0018" },
   ];
+  const menus = (details) => {
+    return(
+      <Menu>
+      <Menu.Item>
+        <a>Edit</a>
+      </Menu.Item>
+      <Menu.Item>
+        <a>Delete</a>
+      </Menu.Item>
+    </Menu>
+    )
+  }
+
+
+
   return (
     <div>
       {hideMappingMunicipal && (
@@ -398,30 +415,29 @@ const MunicipalCorporation = () => {
                     scopedSlots={{
                       show_details: (item, index) => {
                         return (
-                          <td className="py-2">
+                          <td className="py-1">
                             <CRow>
-                              <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                <i
-                                  id={"locationLibraryDelete"}
-                                  style={{
-                                    marginLeft: "5px",
-                                    color: "blue",
-                                    cursor: "pointer",
-                                  }}
-                                  onClick={() => editMunicipalCorporation(item)}
-                                  className="fa fa-edit"
-                                ></i>
-
-                                <i
-                                  id={"locationLibraryDelete"}
-                                  style={{
-                                    marginLeft: "5px",
-                                    marginLeft: "10px",
-                                    color: "red",
-                                    cursor: "pointer",
-                                  }}
-                                  className="fa fa-trash"
-                                ></i>
+                              <CCol style={{ fontSize: "1.15rem" }} md="16">
+                              
+                                <Dropdown
+                                  className={"ant-dropdown-cutomize-by-me"}
+                                  overlay={() => menus(item)}
+                                >
+                                  <a
+                                    className="ant-dropdown-link"
+                                    onClick={(e) => e.preventDefault()}
+                                  >
+                                    <i
+                                      style={{
+                                        marginLeft: "5px",
+                                        color: "black",
+                                      }}
+                                      className="fa fa-ellipsis-v"
+                                      bsStyle="overlay"
+                                      onClick={menus}
+                                    />
+                                  </a>
+                                </Dropdown>
                               </CCol>
                             </CRow>
                           </td>

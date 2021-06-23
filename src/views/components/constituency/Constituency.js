@@ -2,6 +2,8 @@ import { CButton, CCard, CCol, CInput, CLabel, CRow } from "@coreui/react";
 import React, { useState } from "react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import Select from "react-select";
+import { Dropdown, Menu } from "antd";
+import 'antd/dist/antd.css';
 
 
 function Constituency() {
@@ -163,6 +165,24 @@ function Constituency() {
     setHide(false);
     setMemberHide(true)
   }
+  const menus = (details) => {
+    return(
+      <Menu>
+      <Menu.Item>
+        <a>Edit</a>
+      </Menu.Item>
+      <Menu.Item>
+        <a>Delete</a>
+      </Menu.Item>
+      <Menu.Item>
+        <a>Remove</a>
+      </Menu.Item>
+      <Menu.Item>
+        <a>View</a>
+      </Menu.Item>
+    </Menu>
+    )
+  }
 
   return (
     <React.Fragment>
@@ -271,46 +291,29 @@ function Constituency() {
                 scopedSlots={{
                   show_detailsview: (item, index) => {
                     return (
-                      <td className="py-2">
+                      <td className="py-1">
                         <CRow>
-                          <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              style={{
-                                marginRight: "5px",
-                                color: "#3480e2",
-                                cursor: "pointer",
-                              }}
-                              id={"constituencyediticon"}
-                              className="fas fa-edit"
-                            ></i>
-                            <i
-                              id={"constituencydelete"}
-                              style={{
-                                marginLeft: "5px",
-                                color: "#e85654",
-                                cursor: "pointer",
-                              }}
-                              className="fa fa-trash"
-                            ></i>
-                            <i                                  
-                                  id={"constituencyremove"}
+                          <CCol style={{ fontSize: "1.15rem" }} md="16">
+                          
+                            <Dropdown
+                              className={"ant-dropdown-cutomize-by-me"}
+                              overlay={() => menus(item)}
+                            >
+                              <a
+                                className="ant-dropdown-link"
+                                onClick={(e) => e.preventDefault()}
+                              >
+                                <i
                                   style={{
-                                    marginLeft: "13px",
+                                    marginLeft: "5px",
                                     color: "black",
-                                    cursor: "pointer",
                                   }}
-                                  className="fa fa-remove"
-                                ></i>
-                            <i
-                              style={{
-                                marginRight: "5px",
-                                marginLeft: "10px",
-                                color: "red",
-                                cursor: "pointer",
-                              }}
-                              id={"viewicon"}
-                              className="fa fa-eye"
-                            ></i>
+                                  className="fa fa-ellipsis-v"
+                                  bsStyle="overlay"
+                                  onClick={menus}
+                                />
+                              </a>
+                            </Dropdown>
                           </CCol>
                         </CRow>
                       </td>

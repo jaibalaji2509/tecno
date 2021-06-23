@@ -15,6 +15,8 @@ import { toast } from "react-toastify";
 import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
 import Select from "react-select";
 import "./ConstituencyMember.css";
+import { Dropdown, Menu } from "antd";
+import 'antd/dist/antd.css';
 const ConstituencyMember = () => {
   const [location, setLocation] = useState({
     state: "",
@@ -314,6 +316,37 @@ const ConstituencyMember = () => {
     menuStatus: "open",
     style3: "menu1",
   });
+  const [selected, setSelected] = useState({});
+  const menus = (details) => {
+    return(
+      <Menu>
+      <Menu.Item>
+        <a>Edit</a>
+      </Menu.Item>
+      <Menu.Item>
+        <a>Delete</a>
+      </Menu.Item>
+      <Menu.Item>
+        <a>Remove</a>
+      </Menu.Item>
+      <Menu.Item>
+      <a
+        onClick={() => {
+          setSelected(details);
+          handleClick2();
+        }}>Update</a>
+      </Menu.Item> <Menu.Item>
+        <a
+        onClick={() => {
+          setSelected(details);
+          handleClick();
+        }}
+        >History</a>
+      </Menu.Item>
+    </Menu>
+    )
+  }
+
 
   return (
     <div className={menu.style3}>
@@ -960,79 +993,36 @@ const ConstituencyMember = () => {
                     sorter
                     pagination
                     scopedSlots={{
-                      show_details: (item, index) => {
-                        return (
-                          <td className="py-2">
-                            <CInput
-                              type={"checkbox"}
-                              value={"select"}
-                              style={{
-                                width: "15px",
-                                height: "15px",
-                                marginLeft: "30px",
-                                marginBottom: "10px",
-                              }}
-                            />
-                            <CRow>
-                              <CCol style={{ fontSize: "1.15rem" }} md="12">
-                              </CCol>
-                            </CRow>
-                          </td>
-                        );
-                      },
                       show_details1: (item, index) => {
                         return (
-                          <td className="py-2">
+                          <td className="py-1">
                             <CRow>
-
-                              <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                <i
-                                  style={{
-                                    marginRight: "5px",
-                                    color: "#3480e2",
-                                    cursor: "pointer",
-                                  }}
-                                  id={"constimemediticon"}
-                                  className="fas fa-edit"
-                                ></i>
-                                <i
-                                  id={"constimemDelete"}
-                                  style={{
-                                    marginLeft: "5px",
-                                    color: "black",
-                                    cursor: "pointer",
-                                  }}
-                                  className="fa fa-remove"
-                                ></i>
-                                <i
-                                  id={"constimemDelete"}
-                                  style={{
-                                    marginLeft: "5px",
-
-                                    color: "rgb(55, 224, 39)",
-                                    cursor: "pointer",
-                                  }}
-                                  className="fa fa-refresh"
-                                  onClick={handleClick2}
-                                ></i>
-
-                                <i
-                                  style={{
-
-                                    color: "#3480e2",
-                                    cursor: "pointer",
-                                    marginLeft: "10px",
-                                  }}
-                                  onClick={handleClick}
-                                  id={"constimemediticon"}
-                                  className="fa fa-history"
-                                ></i>
+                              <CCol style={{ fontSize: "1.15rem" }} md="16">
+                              
+                                <Dropdown
+                                  className={"ant-dropdown-cutomize-by-me"}
+                                  overlay={() => menus(item)}
+                                >
+                                  <a
+                                    className="ant-dropdown-link"
+                                    onClick={(e) => e.preventDefault()}
+                                  >
+                                    <i
+                                      style={{
+                                        marginLeft: "5px",
+                                        color: "black",
+                                      }}
+                                      className="fa fa-ellipsis-v"
+                                      bsStyle="overlay"
+                                      onClick={menus}
+                                    />
+                                  </a>
+                                </Dropdown>
                               </CCol>
                             </CRow>
                           </td>
                         );
                       },
-
                       details: (item, index) => { },
                     }}
                   />
