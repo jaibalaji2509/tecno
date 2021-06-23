@@ -450,7 +450,7 @@ const menus = (details) => {
                             options={select}
                           />
                         </CCol>
-                        <CCol className={"column-align"} md={1} lg={1}>
+                        {/* <CCol className={"column-align"} md={1} lg={1}>
                           <CButton
                             shape={"pill"}
                             id={"addmunicipalcorporation"}
@@ -460,23 +460,44 @@ const menus = (details) => {
                           >
                             ADD
                           </CButton>
-                        </CCol>
-                        <CCol md={1} lg={1} style={{marginTop:"30px"}}>
+                        </CCol> */}
+                          <CCol md={1} lg={1}>
+                <CButton
+                  style={{
+                    marginLeft: "0px",
+                    marginTop:"51px",
+                    backgroundColor: "#3273e9",
+                    borderLine: "5px !important",
+                    borderColor: "white",
+                    fontSize: "1.25rem",
+                    color: "#ffff",
+                  }}
+                  onClick={enableCreate}
+                  class={"fa fa-plus"}
+                
+                ></CButton>
+              </CCol>
+              <CCol md={1} lg={1}>
+                <i
+                  style={{
+                    marginLeft: "-77px",
+                    marginTop: "53px",
+
+                    fontSize: "1.45rem",
+                    color: "#3cd3ad",
+                  }}
+                  class={"fa fa-eye"}
+                 
+                ></i>
+              </CCol>
+                        <CCol md={1} lg={1} style={{marginTop:"50px",marginLeft:"-163px"}}>
                     <ReactFileReader handleFiles={handleFiles} fileTypes={'.CSV'}>
-                    <button className='btn'>Upload</button>
-                    <CSVLink data={state} >Download me</CSVLink>
+                    <i className="fa fa-upload" style={{fontSize:"1.45rem"}} />
+                    <CSVLink data={state} ><i className="fa fa-download" style={{fontSize:"1.45rem",marginLeft:"25px",color:"#ea384d"}}/></CSVLink>
                     </ReactFileReader>
                     
                     </CCol>
-                        {/* <CCol className={"column-align"} md={1} lg={1}>
-                          <CInput
-                            id="myInput"
-                            type="file"
-                            fileTypes={'.csv'}
-                          
-                           onChange={handleFiles}
-                          />
-                        </CCol> */}
+                  
 
                         {municipalName.edit === true ? (
                           <React.Fragment>
@@ -604,7 +625,7 @@ const menus = (details) => {
                             options={select}
                           />
                         </CCol>
-                        <CCol className={"column-align"} md={1} lg={1}>
+                        {/* <CCol className={"column-align"} md={1} lg={1}>
                           <CButton
                             shape={"pill"}
                             id={"addmunicipalcorporation"}
@@ -614,8 +635,43 @@ const menus = (details) => {
                           >
                             ADD
                           </CButton>
-                        </CCol>
+                        </CCol> */}
+  <CCol md={1} lg={1}>
+                <CButton
+                  style={{
+                    marginLeft: "0px",
+                    marginTop:"51px",
+                    backgroundColor: "#3273e9",
+                    borderLine: "5px !important",
+                    borderColor: "white",
+                    fontSize: "1.25rem",
+                    color: "#ffff",
+                  }}
+                  onClick={addPanchayat}
+                  class={"fa fa-plus"}
+                
+                ></CButton>
+              </CCol>
+              <CCol md={1} lg={1}>
+                <i
+                  style={{
+                    marginLeft: "-77px",
+                    marginTop: "53px",
 
+                    fontSize: "1.45rem",
+                    color: "#3cd3ad",
+                  }}
+                  class={"fa fa-eye"}
+                 
+                ></i>
+              </CCol>
+                        <CCol md={1} lg={1} style={{marginTop:"50px",marginLeft:"-163px"}}>
+                    <ReactFileReader handleFiles={handleFiles} fileTypes={'.CSV'}>
+                    <i className="fa fa-upload" style={{fontSize:"1.45rem"}} />
+                    <CSVLink data={state} ><i className="fa fa-download" style={{fontSize:"1.45rem",marginLeft:"25px",color:"#ea384d"}}/></CSVLink>
+                    </ReactFileReader>
+                    
+                    </CCol>
                         {municipalName.edit === true ? (
                           <React.Fragment>
                             <CCol md={3} lg={3}>
@@ -730,7 +786,7 @@ const menus = (details) => {
                             options={select}
                           />
                         </CCol>
-                        <CCol className={"column-align"} md={1} lg={1}>
+                        {/* <CCol className={"column-align"} md={1} lg={1}>
                           <CButton
                             shape={"pill"}
                             id={"addmunicipalcorporation"}
@@ -740,8 +796,43 @@ const menus = (details) => {
                           >
                             ADD
                           </CButton>
-                        </CCol>
+                        </CCol> */}
+<CCol md={1} lg={1}>
+                <CButton
+                  style={{
+                    marginLeft: "0px",
+                    marginTop:"51px",
+                    backgroundColor: "#3273e9",
+                    borderLine: "5px !important",
+                    borderColor: "white",
+                    fontSize: "1.25rem",
+                    color: "#ffff",
+                  }}
+                  onClick={addVillage}
+                  class={"fa fa-plus"}
+                
+                ></CButton>
+              </CCol>
+              <CCol md={1} lg={1}>
+                <i
+                  style={{
+                    marginLeft: "-77px",
+                    marginTop: "53px",
 
+                    fontSize: "1.45rem",
+                    color: "#3cd3ad",
+                  }}
+                  class={"fa fa-eye"}
+                 
+                ></i>
+              </CCol>
+                        <CCol md={1} lg={1} style={{marginTop:"50px",marginLeft:"-163px"}}>
+                    <ReactFileReader handleFiles={handleFiles} fileTypes={'.CSV'}>
+                    <i className="fa fa-upload" style={{fontSize:"1.45rem"}} />
+                    <CSVLink data={state} ><i className="fa fa-download" style={{fontSize:"1.45rem",marginLeft:"25px",color:"#ea384d"}}/></CSVLink>
+                    </ReactFileReader>
+                    
+                    </CCol>
                         {municipalName.edit === true ? (
                           <React.Fragment>
                             <CCol md={3} lg={3}>
@@ -857,7 +948,7 @@ const menus = (details) => {
                             options={select}
                           />
                         </CCol>
-                        <CCol className={"column-align"} md={1} lg={1}>
+                        {/* <CCol className={"column-align"} md={1} lg={1}>
                           <CButton
                             shape={"pill"}
                             id={"addmunicipalcorporation"}
@@ -867,7 +958,43 @@ const menus = (details) => {
                           >
                             ADD
                           </CButton>
-                        </CCol>
+                        </CCol> */}
+                        <CCol md={1} lg={1}>
+                <CButton
+                  style={{
+                    marginLeft: "0px",
+                    marginTop:"51px",
+                    backgroundColor: "#3273e9",
+                    borderLine: "5px !important",
+                    borderColor: "white",
+                    fontSize: "1.25rem",
+                    color: "#ffff",
+                  }}
+                  onClick={addWard}
+                  class={"fa fa-plus"}
+                
+                ></CButton>
+              </CCol>
+              <CCol md={1} lg={1}>
+                <i
+                  style={{
+                    marginLeft: "-77px",
+                    marginTop: "53px",
+
+                    fontSize: "1.45rem",
+                    color: "#3cd3ad",
+                  }}
+                  class={"fa fa-eye"}
+                 
+                ></i>
+              </CCol>
+                        <CCol md={1} lg={1} style={{marginTop:"50px",marginLeft:"-163px"}}>
+                    <ReactFileReader handleFiles={handleFiles} fileTypes={'.CSV'}>
+                    <i className="fa fa-upload" style={{fontSize:"1.45rem"}} />
+                    <CSVLink data={state} ><i className="fa fa-download" style={{fontSize:"1.45rem",marginLeft:"25px",color:"#ea384d"}}/></CSVLink>
+                    </ReactFileReader>
+                    
+                    </CCol>
 
                         {municipalName.edit === true ? (
                           <React.Fragment>
