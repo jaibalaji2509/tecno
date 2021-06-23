@@ -16,6 +16,8 @@ import { toast } from "react-toastify";
 import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
 import Select from "react-select";
 import "./MemberTownPanchayat.css";
+import { Dropdown, Menu } from "antd";
+import 'antd/dist/antd.css';
 const MemberTownPanchayat = () => {
   const [mobilenumber, setMobileNumber] = useState("");
   const [otpHide, setOtpHide] = useState(false);
@@ -411,6 +413,29 @@ const MemberTownPanchayat = () => {
     style3: "menu1",
   });
   const [selected, setSelected] = useState({});
+  const menus = (details) => {
+    return(
+      <Menu>
+      <Menu.Item>
+        <a>Remove</a>
+      </Menu.Item>
+      <Menu.Item>
+      <a
+        onClick={() => {
+          setSelected(details);
+          handleClick2();
+        }}>Update</a>
+      </Menu.Item> <Menu.Item>
+        <a
+        onClick={() => {
+          setSelected(details);
+          handleClick();
+        }}
+        >History</a>
+      </Menu.Item>
+    </Menu>
+    )
+  }
 
   return (
     <div className={menu.style3}>
@@ -1058,39 +1083,26 @@ const MemberTownPanchayat = () => {
                               <td className="py-1">
                                 <CRow>
                                   <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                    <i
-                                      id={"memtownDelete"}
-                                      style={{
-                                        marginLeft: "5px",
-                                        color: "black",
-                                        cursor: "pointer",
-                                      }}
-                                      className="fa fa-remove"
-                                    ></i>
-
-                                    <i
-                                      id={"memtownDelete"}
-                                      style={{
-                                        marginLeft: "5px",
-                                        marginLeft: "10px",
-                                        color: "rgb(55, 224, 39)",
-                                        cursor: "pointer",
-                                      }}
-                                      className="fa fa-refresh"
-                                      onClick={handleClick2}
-                                    ></i>
-                                    <i
-                                      style={{
-                                        marginRight: "5px",
-                                        marginLeft: "18px",
-                                        color: "#3480e2",
-                                        cursor: "pointer",
-                                        position: "absolute",
-                                      }}
-                                      id={"memtownediticon"}
-                                      className="fa fa-history"
-                                      onClick={handleClick}
-                                    ></i>
+                                  
+                                    <Dropdown
+                                      className={"ant-dropdown-cutomize-by-me"}
+                                      overlay={() => menus(item)}
+                                    >
+                                      <a
+                                        className="ant-dropdown-link"
+                                        onClick={(e) => e.preventDefault()}
+                                      >
+                                        <i
+                                          style={{
+                                            marginLeft: "5px",
+                                            color: "black",
+                                          }}
+                                          className="fa fa-ellipsis-v"
+                                          bsStyle="overlay"
+                                          onClick={menus}
+                                        />
+                                      </a>
+                                    </Dropdown>
                                   </CCol>
                                 </CRow>
                               </td>
@@ -1172,39 +1184,26 @@ const MemberTownPanchayat = () => {
                               <td className="py-1">
                                 <CRow>
                                   <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                    <i
-                                      id={"memtownDelete"}
-                                      style={{
-                                        marginLeft: "5px",
-                                        color: "black",
-                                        cursor: "pointer",
-                                      }}
-                                      className="fa fa-remove"
-                                    ></i>
-
-                                    <i
-                                      id={"memtownDelete"}
-                                      style={{
-                                        marginLeft: "5px",
-                                        marginLeft: "10px",
-                                        color: "rgb(55, 224, 39)",
-                                        cursor: "pointer",
-                                      }}
-                                      className="fa fa-refresh"
-                                      onClick={handleClick2}
-                                    ></i>
-                                    <i
-                                      style={{
-                                        marginRight: "5px",
-                                        marginLeft: "18px",
-                                        color: "#3480e2",
-                                        cursor: "pointer",
-                                        position: "absolute",
-                                      }}
-                                      id={"memtownediticon"}
-                                      className="fa fa-history"
-                                      onClick={handleClick}
-                                    ></i>
+                                  
+                                    <Dropdown
+                                      className={"ant-dropdown-cutomize-by-me"}
+                                      overlay={() => menus(item)}
+                                    >
+                                      <a
+                                        className="ant-dropdown-link"
+                                        onClick={(e) => e.preventDefault()}
+                                      >
+                                        <i
+                                          style={{
+                                            marginLeft: "5px",
+                                            color: "black",
+                                          }}
+                                          className="fa fa-ellipsis-v"
+                                          bsStyle="overlay"
+                                          onClick={menus}
+                                        />
+                                      </a>
+                                    </Dropdown>
                                   </CCol>
                                 </CRow>
                               </td>
@@ -1297,39 +1296,26 @@ const MemberTownPanchayat = () => {
                               <td className="py-1">
                                 <CRow>
                                   <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                    <i
-                                      id={"memtownDelete"}
-                                      style={{
-                                        marginLeft: "5px",
-                                        color: "black",
-                                        cursor: "pointer",
-                                      }}
-                                      className="fa fa-remove"
-                                    ></i>
-
-                                    <i
-                                      id={"memtownDelete"}
-                                      style={{
-                                        marginLeft: "5px",
-                                        marginLeft: "10px",
-                                        color: "rgb(55, 224, 39)",
-                                        cursor: "pointer",
-                                      }}
-                                      className="fa fa-refresh"
-                                      onClick={handleClick2}
-                                    ></i>
-                                    <i
-                                      style={{
-                                        marginRight: "5px",
-                                        marginLeft: "18px",
-                                        color: "#3480e2",
-                                        cursor: "pointer",
-                                        position: "absolute",
-                                      }}
-                                      id={"memtownediticon"}
-                                      className="fa fa-history"
-                                      onClick={handleClick}
-                                    ></i>
+                                  
+                                    <Dropdown
+                                      className={"ant-dropdown-cutomize-by-me"}
+                                      overlay={() => menus(item)}
+                                    >
+                                      <a
+                                        className="ant-dropdown-link"
+                                        onClick={(e) => e.preventDefault()}
+                                      >
+                                        <i
+                                          style={{
+                                            marginLeft: "5px",
+                                            color: "black",
+                                          }}
+                                          className="fa fa-ellipsis-v"
+                                          bsStyle="overlay"
+                                          onClick={menus}
+                                        />
+                                      </a>
+                                    </Dropdown>
                                   </CCol>
                                 </CRow>
                               </td>

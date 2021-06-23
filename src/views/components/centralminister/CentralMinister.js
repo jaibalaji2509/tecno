@@ -17,6 +17,8 @@ import { toast } from "react-toastify";
 import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
 import Select, { components } from "react-select";
 import "./CentralMinister.css";
+import { Dropdown, Menu } from "antd";
+import 'antd/dist/antd.css';
 const CentralMinister = () => {
   const [location, setLocation] = useState({
     state: "",
@@ -387,6 +389,30 @@ const CentralMinister = () => {
       setFilter(filterArr);
     }
   }
+  const menus = (details) => {
+    return(
+      <Menu>
+      <Menu.Item>
+        <a>Remove</a>
+      </Menu.Item>
+      <Menu.Item>
+      <a
+        onClick={() => {
+          setSelected(details);
+          handleClick2();
+        }}>Update</a>
+      </Menu.Item> <Menu.Item>
+        <a
+        onClick={() => {
+          setSelected(details);
+          handleClick();
+        }}
+        >History</a>
+      </Menu.Item>
+    </Menu>
+    )
+  }
+
   return (
     <div className={menu.style3}>
       {sideBar1 && (
@@ -1182,46 +1208,33 @@ const CentralMinister = () => {
                               <td className="py-1">
                                 <CRow>
                                   <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                    <i
-                                      //  onClick={() => deleteConfirm(item._id)}
-                                      id={"locationLibraryDelete"}
-                                      style={{
-                                        marginLeft: "5px",
-                                        color: "black",
-                                        cursor: "pointer",
-                                      }}
-                                      className="fa fa-remove"
-                                    ></i>
-
-                                    <i
-                                      //  onClick={() => deleteConfirm(item._id)}
-                                      id={"locationLibraryDelete"}
-                                      style={{
-                                        marginLeft: "5px",
-                                        marginLeft: "10px",
-                                        color: "rgb(55, 224, 39)",
-                                        cursor: "pointer",
-                                      }}
-                                      className="fa fa-refresh"
-                                      onClick={handleClick2}
-                                    ></i>
-                                    <i
-                                      style={{
-                                        marginRight: "5px",
-                                        marginLeft: "18px",
-                                        color: "#3480e2",
-                                        cursor: "pointer",
-                                        position: "absolute",
-                                      }}
-                                      id={"memberregisterediticon"}
-                                      className="fa fa-history"
-                                      onClick={handleClick}
-                                    ></i>
+                                  
+                                    <Dropdown
+                                      className={"ant-dropdown-cutomize-by-me"}
+                                      overlay={() => menus(item)}
+                                    >
+                                      <a
+                                        className="ant-dropdown-link"
+                                        onClick={(e) => e.preventDefault()}
+                                      >
+                                        <i
+                                          style={{
+                                            marginLeft: "5px",
+                                            color: "black",
+                                          }}
+                                          className="fa fa-ellipsis-v"
+                                          bsStyle="overlay"
+                                          onClick={menus}
+                                        />
+                                      </a>
+                                    </Dropdown>
                                   </CCol>
                                 </CRow>
                               </td>
                             );
+     
                           },
+
                           details: (item, index) => {},
                         }}
                       />
@@ -1339,46 +1352,33 @@ const CentralMinister = () => {
                               <td className="py-1">
                                 <CRow>
                                   <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                    <i
-                                      //  onClick={() => deleteConfirm(item._id)}
-                                      id={"locationLibraryDelete"}
-                                      style={{
-                                        marginLeft: "5px",
-                                        color: "black",
-                                        cursor: "pointer",
-                                      }}
-                                      className="fa fa-remove"
-                                    ></i>
-
-                                    <i
-                                      //  onClick={() => deleteConfirm(item._id)}
-                                      id={"locationLibraryDelete"}
-                                      style={{
-                                        marginLeft: "5px",
-                                        marginLeft: "10px",
-                                        color: "rgb(55, 224, 39)",
-                                        cursor: "pointer",
-                                      }}
-                                      className="fa fa-refresh"
-                                      onClick={handleClick2}
-                                    ></i>
-                                    <i
-                                      style={{
-                                        marginRight: "5px",
-                                        marginLeft: "18px",
-                                        color: "#3480e2",
-                                        cursor: "pointer",
-                                        position: "absolute",
-                                      }}
-                                      id={"memberregisterediticon"}
-                                      className="fa fa-history"
-                                      onClick={handleClick}
-                                    ></i>
+                                  
+                                    <Dropdown
+                                      className={"ant-dropdown-cutomize-by-me"}
+                                      overlay={() => menus(item)}
+                                    >
+                                      <a
+                                        className="ant-dropdown-link"
+                                        onClick={(e) => e.preventDefault()}
+                                      >
+                                        <i
+                                          style={{
+                                            marginLeft: "5px",
+                                            color: "black",
+                                          }}
+                                          className="fa fa-ellipsis-v"
+                                          bsStyle="overlay"
+                                          onClick={menus}
+                                        />
+                                      </a>
+                                    </Dropdown>
                                   </CCol>
                                 </CRow>
                               </td>
                             );
+     
                           },
+
                           details: (item, index) => {},
                         }}
                       />
@@ -1473,46 +1473,33 @@ const CentralMinister = () => {
                               <td className="py-1">
                                 <CRow>
                                   <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                    <i
-                                      //  onClick={() => deleteConfirm(item._id)}
-                                      id={"locationLibraryDelete"}
-                                      style={{
-                                        marginLeft: "5px",
-                                        color: "black",
-                                        cursor: "pointer",
-                                      }}
-                                      className="fa fa-remove"
-                                    ></i>
-
-                                    <i
-                                      //  onClick={() => deleteConfirm(item._id)}
-                                      id={"locationLibraryDelete"}
-                                      style={{
-                                        marginLeft: "5px",
-                                        marginLeft: "10px",
-                                        color: "rgb(55, 224, 39)",
-                                        cursor: "pointer",
-                                      }}
-                                      className="fa fa-refresh"
-                                      onClick={handleClick2}
-                                    ></i>
-                                    <i
-                                      style={{
-                                        marginRight: "5px",
-                                        marginLeft: "18px",
-                                        color: "#3480e2",
-                                        cursor: "pointer",
-                                        position: "absolute",
-                                      }}
-                                      id={"memberregisterediticon"}
-                                      className="fa fa-history"
-                                      onClick={handleClick}
-                                    ></i>
+                                  
+                                    <Dropdown
+                                      className={"ant-dropdown-cutomize-by-me"}
+                                      overlay={() => menus(item)}
+                                    >
+                                      <a
+                                        className="ant-dropdown-link"
+                                        onClick={(e) => e.preventDefault()}
+                                      >
+                                        <i
+                                          style={{
+                                            marginLeft: "5px",
+                                            color: "black",
+                                          }}
+                                          className="fa fa-ellipsis-v"
+                                          bsStyle="overlay"
+                                          onClick={menus}
+                                        />
+                                      </a>
+                                    </Dropdown>
                                   </CCol>
                                 </CRow>
                               </td>
                             );
+     
                           },
+
                           details: (item, index) => {},
                         }}
                       />
