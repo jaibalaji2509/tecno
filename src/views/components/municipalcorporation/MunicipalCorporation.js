@@ -71,6 +71,27 @@ const MunicipalCorporation = () => {
       EnteredBy: "Sathishkumar",
       Enteredon: "11/06/2021",
     },
+    {
+      SNo: "3",
+      ward: "0018",
+      street: "Nandanam",
+      EnteredBy: "Sathishkumar",
+      Enteredon: "11/06/2021",
+    },
+    {
+      SNo: "4",
+      ward: "0018",
+      street: "Nandanam",
+      EnteredBy: "Sathishkumar",
+      Enteredon: "11/06/2021",
+    },
+    {
+      SNo: "5",
+      ward: "0018",
+      street: "Nandanam",
+      EnteredBy: "Sathishkumar",
+      Enteredon: "11/06/2021",
+    },
   ];
   const [checked, setChecked] = useState(false);
   const handleChange = (event) => {
@@ -101,13 +122,13 @@ const MunicipalCorporation = () => {
   ];
 
   const fields = [
-    {
-      key: "show_details1",
-      label: "Select",
-      _style: { width: "3%" },
-      sorter: false,
-      filter: false,
-    },
+    // {
+    //   key: "show_details1",
+    //   label: "Select",
+    //   _style: { width: "3%" },
+    //   sorter: false,
+    //   filter: false,
+    // },
 
     {
       key: "SNo",
@@ -379,7 +400,7 @@ const MunicipalCorporation = () => {
                   </CRow>
                 </div>
 
-                <CRow style={{ padding: "4%", marginTop: "-1.5%" ,marginLeft:"-40px"}}>
+                <CRow style={{ padding: "4%", marginTop: "-2.5%" ,marginLeft:"-40px"}}>
                   <CDataTable
                     items={userData}
                     fields={fields}

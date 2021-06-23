@@ -62,6 +62,20 @@ const Municipality = () => {
       EnteredBy:"sathishKumar",
       EnteredOn:"11/06/2021"
     },
+    {
+      SNo: "4",
+      Street: " Stpachayapas College sreet",
+      Ward:"0098",
+      EnteredBy:"sathishKumar",
+      EnteredOn:"11/06/2021"
+    },
+    {
+      SNo: "5",
+      Street: " Stpachayapas College sreet",
+      Ward:"0098",
+      EnteredBy:"sathishKumar",
+      EnteredOn:"11/06/2021"
+    },
   ];
   const fields = [
     // {
@@ -198,17 +212,13 @@ const Municipality = () => {
                  <CCol >
                    <CCol
                      md="5"
-                     style={{
-                       marginLeft: "5px",
-                       float: "right",
-                       marginTop:"-20px"
-                     }}
+                    
                    >
         
                      <CButton
                        style={{
-                         float: "right",
-                         marginRight: "1100px",
+                      
+                         marginLeft: "35px",
                        }}
                        id={"saveAbbreviationConfigureCode"}
                        className={"saveBtn"}
@@ -298,7 +308,7 @@ const Municipality = () => {
                 
                </div>
               
-               <CRow style={{ padding: "4%", marginTop: "-1.5%" ,marginLeft:"-40px"}}>
+               <CRow style={{ padding: "4%", marginTop: "-2.5%" ,marginLeft:"-40px"}}>
                  <CDataTable
                    items={userData}
                    fields={fields}

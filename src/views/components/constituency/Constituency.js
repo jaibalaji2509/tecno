@@ -104,6 +104,34 @@ function Constituency() {
       Legislative: "Anna Nagar",
       Village: "Egmore",
     },
+    {
+      SNo: "2.",
+      Street: "Belly Nagar",
+      Parliamentary: "Chennai-Central",
+      Legislative: "Anna Nagar",
+      Village: "Egmore",
+    },
+    {
+      SNo: "3.",
+      Street: "Belly Nagar",
+      Parliamentary: "Chennai-Central",
+      Legislative: "Anna Nagar",
+      Village: "Egmore",
+    },
+    {
+      SNo: "4.",
+      Street: "Belly Nagar",
+      Parliamentary: "Chennai-Central",
+      Legislative: "Anna Nagar",
+      Village: "Egmore",
+    },
+    {
+      SNo: "5.",
+      Street: "Belly Nagar",
+      Parliamentary: "Chennai-Central",
+      Legislative: "Anna Nagar",
+      Village: "Egmore",
+    },
 
 
   ];
@@ -168,23 +196,19 @@ function Constituency() {
                     <CCol >
                       <CCol
                         md="5"
-                        style={{
-                          marginLeft: "5px",
-                          float: "right",
-                          marginTop: "-20px",
-                        }}
+                       
                       >
                         <CButton
                           style={{
-                            float: "right",
-                            marginRight: "1065px",
+                            
+                            marginLeft: "45px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
                           onClick={viewcreate}
                         >
                            Add Constituency
-                        </CButton>{" "}
+                          </CButton>{" "}               
                       </CCol>
                     </CCol>
                   </CRow>
@@ -252,7 +276,7 @@ function Constituency() {
               </CCol>
             </CRow>
 
-            <CRow style={{ padding: "4%", marginTop: "1.5%",marginLeft:'2px' }}>
+            <CRow style={{ padding: "4%", marginTop: "-2.5%",marginLeft:'2px' }}>
               <CDataTable
                 items={userDataview}
                 fields={fieldsview}

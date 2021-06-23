@@ -51,6 +51,24 @@ const TownPanchayat = () => {
   by:"JAI BALAJI",
   on:"10/06/2021",
 },
+{SNo:"3",
+  Street:"Marriamman Kovil Street",
+  Ward:"018",
+  by:"JAI BALAJI",
+  on:"10/06/2021",
+},
+{SNo:"4",
+  Street:"Marriamman Kovil Street",
+  Ward:"018",
+  by:"JAI BALAJI",
+  on:"10/06/2021",
+},
+{SNo:"5",
+  Street:"Marriamman Kovil Street",
+  Ward:"018",
+  by:"JAI BALAJI",
+  on:"10/06/2021",
+},
      ];
      const [select, selectedRows] =useState({checked:true})
     const handleRowSelection = (row) => {
@@ -224,16 +242,12 @@ const canceltownchange = () => {
                       <CCol md="10" >
                         <CCol
                           md="5"
-                          style={{
-                            marginLeft: "5px",
-                            float: "right",
-                            marginTop: "-20px",
-                          }}
+                         
                         >
                           <CButton
                             style={{
-                              float: "right",
-                              marginRight: "835px",
+                            
+                              marginLeft: "45px",
                             }}
                             id={"saveAbbreviationConfigureCode"}
                             className={"saveBtn"}
@@ -325,7 +339,7 @@ const canceltownchange = () => {
                     </CRow>
                   </div>
 
-                  <CRow style={{ padding: "4%", marginTop: "-1.5%" ,marginLeft:"-30px"}}>
+                  <CRow style={{ padding: "4%", marginTop: "-2.5%" ,marginLeft:"-30px"}}>
                     <CDataTable
                       items={userData}
                       fields={fields}

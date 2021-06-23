@@ -846,7 +846,7 @@ const addStreet = async()=>{
                       </CRow>
                     </React.Fragment>
                   )}
-                  <CRow style={{ marginLeft:"1200px",position:"absolute" ,marginTop:"30px"}}>
+                  <CRow style={{ marginLeft:"1300px",position:"absolute" ,marginTop:"20px"}}>
                     <CCol sm="6" lg="3" style={{ marginLeft: "10px" }}>
                       <CWidgetDropdown
                         style={{
@@ -1035,7 +1035,7 @@ const addStreet = async()=>{
                       </CRow>
                     </React.Fragment>
                   )}
-                    <CRow style={{marginTop:"50px", marginLeft:"1200px",position:"absolute" }}>
+                    <CRow style={{marginTop:"50px", marginLeft:"1300px",position:"absolute" }}>
                     <CCol sm="3" lg="3" style={{ marginLeft: "10px" }}>
                       <CWidgetDropdown
                         style={{
@@ -1257,7 +1257,7 @@ const addStreet = async()=>{
                       </CRow>
                     </React.Fragment>
                   )}
-                  <CRow style={{marginTop:"70px", marginLeft:"1200px",position:"absolute" }}>
+                  <CRow style={{marginTop:"80px", marginLeft:"1300px",position:"absolute" }}>
                     <CCol sm="3" lg="3" style={{ marginLeft: "10px" }}>
                       <CWidgetDropdown
                         style={{
@@ -1445,7 +1445,7 @@ const addStreet = async()=>{
                       </CRow>
                     </React.Fragment>
                   )}
-                   <CRow style={{marginTop:"90px", marginLeft:"1200px",position:"absolute" }}>
+                   <CRow style={{marginTop:"110px", marginLeft:"1300px",position:"absolute" }}>
                     <CCol sm="3" lg="3" style={{ marginLeft: "10px" }}>
                       <CWidgetDropdown
                         style={{

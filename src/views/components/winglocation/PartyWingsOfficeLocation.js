@@ -14,7 +14,8 @@ import Select  from "react-select";
 import "./PartyWingsOfficeLocation.css";
 import { Dropdown, Menu } from "antd";
 import 'antd/dist/antd.css';
-
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 function PartyWingsOfficeLocation() {
   const [addPartyOffice, setAddPartyOffice] = useState(true);
   const [createPartyOffice, setCreatepartyOffice] = useState(false);
@@ -211,7 +212,37 @@ function PartyWingsOfficeLocation() {
     </Menu>
     )
   }
+  const people = [
+    { name: "Keanu Reeves", profession: "Actor" },
+    { name: "Lionel Messi", profession: "Football Player" },
+    { name: "Cristiano Ronaldo", profession: "Football Player" },
+    { name: "Jack Nicklaus", profession: "Golf Player" },
+  ]
+  const exportPDF = () => {
+    const unit = "pt";
+    const size = "A4"; // Use A1, A2, A3 or A4
+    const orientation = "portrait"; // portrait or landscape
 
+    const marginLeft = 40;
+    const doc = new jsPDF(orientation, unit, size);
+
+    doc.setFontSize(15);
+
+    const title = "Party Wings Office Location";
+    const headers = [["SNo", "Name of Party Wings Office","Type of Party Wings Office ","Hierarchy Reporting Office","Address 1","Entered By", "Entered On"]];
+ 
+    const data = userData.map(elt=> [elt.SNo, elt.NAMEOFWINGOFFICE,elt.WingOffice, elt.ReportingTo,elt.address, elt.area,elt.by,elt.on]);
+
+    let content = {
+      startY: 50,
+      head: headers,
+      body: data
+    };
+
+    doc.text(title, marginLeft, 40);
+    doc.autoTable(content);
+    doc.save("report.pdf")
+  }
   return (
      <div className={menu.style3}>
       {sideBar1 && (
@@ -219,6 +250,7 @@ function PartyWingsOfficeLocation() {
           <div className={"main-headerlabel"} style={{ marginTop: "-40px" }}>
             <span className={"header-label"}> Adding Type of Party Wings Office</span>
           </div>
+          
           {locationHide.corporation && (
             <div>
               {hidePartyOffice && (
@@ -346,6 +378,7 @@ function PartyWingsOfficeLocation() {
                       marginBottom: "20px",
                       color: "black",
                     }}
+                    onClick={() => exportPDF()}
                     className="fa fa-print"
                   ></i>
                 </CCol>
@@ -434,7 +467,9 @@ function PartyWingsOfficeLocation() {
             <div className={"main-headerlabel"}>
               <span className={"header-label"}>party Wings Office Location</span>
             </div>
-
+            <div>
+        
+      </div>
             <CRow style={{ marginTop: "130px" }}>
               <CCol >
                 <CCol
@@ -542,7 +577,7 @@ function PartyWingsOfficeLocation() {
                       </CWidgetDropdown>
                     </CCol>
                   </CRow>
-                  <CRow style={{marginLeft:"14px"}}>
+                  <CRow style={{marginLeft:"250px",marginBottom:"-20px"}}>
                   <CCol
                 style={{ fontSize: "1.55rem", top: "100px" }}
                 md={12}
@@ -560,7 +595,7 @@ function PartyWingsOfficeLocation() {
                     width: "40px",
 
                     marginLeft: "955px",
-                    marginBottom: "20px",
+                    marginBottom: "55px",
                   }}
                 />
               </CCol>
@@ -569,11 +604,12 @@ function PartyWingsOfficeLocation() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "50px",
+                    top: "10px",
                     marginLeft: "795px",
                     marginBottom: "20px",
                     color: "black",
                   }}
+               onClick={() => exportPDF()}
                   className="fa fa-print"
                 ></i>
               </CCol>
@@ -582,7 +618,7 @@ function PartyWingsOfficeLocation() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "50px",
+                    top: "10px",
                     marginLeft: "870px",
                     marginBottom: "910px",
                     color: "black",

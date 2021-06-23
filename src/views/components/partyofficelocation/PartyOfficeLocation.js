@@ -314,7 +314,7 @@ function PartyOfficeLocation() {
                 </div>
               )}
 
-              <CRow style={{marginLeft:"14px"}}>
+              <CRow style={{marginLeft:"250px"}}>
                 <CCol
                   style={{ fontSize: "1.55rem", top: "70px" }}
                   md={12}
@@ -393,7 +393,7 @@ function PartyOfficeLocation() {
                                 >
                                   <i
                                     style={{
-                                      marginLeft: "35px",
+                                      marginLeft: "5px",
                                       color: "black",
                                     }}
                                     className="fa fa-ellipsis-v"
@@ -580,7 +580,7 @@ function PartyOfficeLocation() {
                 </CWidgetDropdown>
               </CCol>
             </CRow>
-            <CRow style={{marginLeft:"14px"}}>
+            <CRow style={{marginLeft:"250px"}}>
               <CCol
                 style={{ fontSize: "1.55rem", top: "100px" }}
                 md={12}
@@ -658,7 +658,7 @@ function PartyOfficeLocation() {
                               >
                                 <i
                                   style={{
-                                    marginLeft: "35px",
+                                    marginLeft: "5px",
                                     color: "black",
                                   }}
                                   className="fa fa-ellipsis-v"

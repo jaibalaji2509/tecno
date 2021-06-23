@@ -895,16 +895,12 @@ import {
                       <CCol >
                         <CCol
                           md="5"
-                          style={{
-                            marginLeft: "5px",
-                            float: "right",
-                            marginTop: "-20px",
-                          }}
+                         
                         >
                           <CButton
                             style={{
-                              float: "right",
-                              marginRight: "1135px",
+                              
+                              marginLeft: "35px",
                             }}
                             id={"saveAbbreviationConfigureCode"}
                             className={"saveBtn"}
@@ -931,7 +927,7 @@ import {
                           options={stateselect}
                         />
                       </CCol>
-                      <CLabel className={"label-name-1"} style={{ marginLeft: "560px", marginTop:"30px",position:"absolute"}} >
+                      <CLabel className={"label-name-1"} style={{ marginLeft: "675px", marginTop:"30px",position:"absolute"}} >
                           Type of Role
                           <span className={"text-danger"}>*</span>
                         </CLabel>
