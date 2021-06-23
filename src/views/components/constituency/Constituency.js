@@ -208,7 +208,7 @@ function Constituency() {
                           onClick={viewcreate}
                         >
                            Add Constituency
-                        </CButton>{" "}
+                          </CButton>{" "}               
                       </CCol>
                     </CCol>
                   </CRow>
