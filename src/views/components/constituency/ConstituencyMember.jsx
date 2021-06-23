@@ -1013,7 +1013,7 @@ const ConstituencyMember = () => {
                                   >
                                     <i
                                       style={{
-                                        marginLeft: "5px",
+                                        marginLeft: "35px",
                                         color: "black",
                                       }}
                                       className="fa fa-ellipsis-v"

@@ -1487,8 +1487,8 @@ const addStreet = async()=>{
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "50px",
-                    marginLeft: "795px",
+                    top: "40px",
+                    marginLeft: "350px",
                     marginBottom: "20px",
                     color: "black",
                   }}
@@ -1500,8 +1500,8 @@ const addStreet = async()=>{
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "50px",
-                    marginLeft: "870px",
+                    top: "40px",
+                    marginLeft: "500px",
                     marginBottom: "910px",
                     color: "black",
                   }}
@@ -1537,7 +1537,7 @@ const addStreet = async()=>{
                               >
                                 <i
                                   style={{
-                                    marginLeft: "5px",
+                                    marginLeft: "35px",
                                     color: "black",
                                   }}
                                   className="fa fa-ellipsis-v"
@@ -1549,7 +1549,7 @@ const addStreet = async()=>{
                           </CCol>
                         </CRow>
                       </td>
- );
+                     );
                   },
                   details: (item, index) => {},
                 }}
