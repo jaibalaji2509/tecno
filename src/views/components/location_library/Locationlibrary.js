@@ -42,8 +42,10 @@ function LocationLibrary(props) {
   const [countrySchema, setCountry] = useState([]);
   const [AreaCreate, setAreaCreate] = useState(false);
   const [StreetCreate, setStreetCreate] = useState(false);
+  const [DoorCreate, setDoorCreate] = useState(false);
   const [AreaList, setAreaList] = useState(true);
   const [StreetList,setStreetList ] = useState(true);
+  const [DoorList,setDoorList ] = useState(true);
   const [CountryCreate, setCountryCreate] = useState(false);
   const [, setCountryList] = useState(true);
   const [CityCreate, setCityCreate] = useState(false);
@@ -56,6 +58,7 @@ function LocationLibrary(props) {
   const [stateName, setStateName] = useState("");
   const [cityName, setCityName] = useState("");
   const [streetName, setStreetName] = useState("");
+  const [doorName, setDoorName] = useState("");
   const [areaName, setAreaName] = useState("");
   const [, setDeleteId] = useState({ id: "", show: false });
   const [countrys, ] = useState({
@@ -527,6 +530,10 @@ const addStreet = async()=>{
   await setStreetList(false);
     await setStreetCreate(true);
 }
+const addDoor = async()=>{
+  await setDoorList(false);
+    await setDoorCreate(true);
+}
   const EditCountry = async (data) => {
     await setAddHide(false);
     await setSaveHide(true);
@@ -566,7 +573,9 @@ const addStreet = async()=>{
   const selectCity = [{value:"Chennai", label:"Chennai"}]
   
   const selectStreet = [{value:"Pondy Baza", label:"Pondy Baza"}]
-  
+
+  const selectDoor = [{value:"Pondy Baza", label:"1/117"}]
+
   const selectVillage = [{value:"TNagar", label:"TNagar"}]
 
   const userData =[{sNo:"1",stateName:"TamlNadu",cityName:"Chennai",areaName:"Alwarpet", pincode:"600018",Street:"St Marys Road"},
@@ -1445,6 +1454,8 @@ const addStreet = async()=>{
                       </CRow>
                     </React.Fragment>
                   )}
+
+                  
                    <CRow style={{marginTop:"110px", marginLeft:"1300px",position:"absolute" }}>
                     <CCol sm="3" lg="3" style={{ marginLeft: "10px" }}>
                       <CWidgetDropdown
@@ -1477,6 +1488,124 @@ const addStreet = async()=>{
               </CCol>
             </CRow>
 
+<CRow className={"row-alignment"}>
+                  {DoorList && (
+                    <React.Fragment>
+                      <CCol className={"column-align"} md={4} lg={4} style={{marginLeft:"40px"}}>
+                        <CLabel className={"label-name-1"}>
+                          Door No.
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <Select
+                          placeholder="Select the Door No."
+                          id={"locationLibraryArea"}
+                          onChange={(e) => {
+                            if (doorName.label) {
+                              setDoorName({ ...e, edit: doorName.edit });
+                            } else {
+                              setDoorName({ ...e, edit: true });
+                            }
+                          }}
+                          value={doorName.value ? doorName : null}
+                          options={selectDoor}
+                          isDisabled={
+                            CountryCreate || StateCreate || CityCreate
+                          }
+                        />
+                      </CCol>
+
+                      {doorName.edit && (
+                        <React.Fragment>
+                          <CCol className={"column-align"} md={1} lg={1}>
+                            <CButton
+                              id={"locationLibraryAreaAdd"}
+                              shape={"pill"}
+                              style={{ marginTop: "30px" }}
+                              className={"saveBtn"}
+                              onClick={addDoor}
+                              disabled={
+                                CountryCreate || StateCreate || CityCreate
+                              }
+                            >
+                              ADD
+                            </CButton>
+                          </CCol>
+                        </React.Fragment>
+                      )}
+                      {doorName.edit && (
+                        <React.Fragment>
+                          <CCol md={3} lg={3} className={"column-align"} style={{marginLeft:"-20px"}}> 
+                            <CButton
+                              id={"locationLibraryAreaEdit"}
+                              style={{ marginTop: "30px" }}
+                              className={"btn btn-success"}
+                              onClick={editArea}
+                              disabled={
+                                CountryCreate || StateCreate || CityCreate
+                              }
+                            >
+                              EDIT
+                            </CButton>
+                          </CCol>
+                        </React.Fragment>
+                      )}
+                      {saveHide && (
+                        <React.Fragment>
+                           
+                        </React.Fragment>
+                      )}
+                    </React.Fragment>
+                    
+                  )}
+                  {DoorCreate && (
+                    <React.Fragment>
+                      <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                        <CCol md="3">
+                          <CLabel className={"label-name-3"}>
+                            Door No.
+                            <span className={"text-danger"}> *</span>
+                          </CLabel>
+                          <CInput
+                            onKeyPress={(e) =>
+                              FormValidation.value_Only_Number(e)
+                            }
+                            id={"locationLibraryAreaName"}
+                            name={"StreetName"}
+                            value={formik.values.streetName}
+                            onChange={formik.handleChange}
+                            placeholder=" Door No."
+                            maxlength="10"
+                            size="10"
+                            style={{width:"300px"}}
+                          />
+                          
+                        </CCol>
+                       
+                        <CCol md="2">
+                          <CButton
+                            style={{ marginTop: "30px" ,marginLeft:"150px"}}
+                            className={"saveBtn"}
+                            onClick={Area}
+                            id={"locationLibraryAreaSave"}
+                          >
+                            SAVE
+                          </CButton>
+                          <CButton
+                            style={{ marginTop: "-55px", marginLeft: "230px" }}
+                            className={"cancelBtn"}
+                            onClick={CancelArea}
+                            id={"locationLibraryAreaCancel"}
+                          >
+                            CANCEL
+                          </CButton>
+                          {error !== "" ? <p>{error}</p> : null}
+                        </CCol>
+                      </CRow>
+                    </React.Fragment>
+
+                    
+                  )}
+    </CRow>
             <CRow
               style={{ padding: "1%", marginTop: "4.5%", marginLeft: "27px" }}
             >
