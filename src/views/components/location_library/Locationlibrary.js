@@ -93,6 +93,7 @@ function LocationLibrary(props) {
       CountryName: "",
       CityName: "",
       AreaName: "",
+      DoorNo:"",
       Abbreviation1: "",
       Code1: "",
       Abbreviation2: "",
@@ -160,6 +161,13 @@ function LocationLibrary(props) {
     await setCityList(true);
     await setCityCreate(false);
   };
+
+  const Canceldoor = async () => {
+    formik.values.DoorNo = "";
+    setPassing("");
+    await setDoorList(true);
+    await setDoorCreate(false);
+  }
 
   const CancelState = async () => {
     setStated({ ...stated, StateName: "", Code2: "", Abbreviation2: "" });
@@ -534,7 +542,8 @@ const addDoor = async()=>{
   await setDoorList(false);
     await setDoorCreate(true);
 }
-  const EditCountry = async (data) => {
+
+const EditCountry = async (data) => {
     await setAddHide(false);
     await setSaveHide(true);
     setCountryName({
@@ -1520,7 +1529,7 @@ const addDoor = async()=>{
                             <CButton
                               id={"locationLibraryAreaAdd"}
                               shape={"pill"}
-                              style={{ marginTop: "30px" }}
+                              style={{ marginTop: "30px",marginLeft:"20px" }}
                               className={"saveBtn"}
                               onClick={addDoor}
                               disabled={
@@ -1537,7 +1546,7 @@ const addDoor = async()=>{
                           <CCol md={3} lg={3} className={"column-align"} style={{marginLeft:"-20px"}}> 
                             <CButton
                               id={"locationLibraryAreaEdit"}
-                              style={{ marginTop: "30px" }}
+                              style={{ marginTop: "30px",marginLeft:"25px" }}
                               className={"btn btn-success"}
                               onClick={editArea}
                               disabled={
@@ -1593,7 +1602,7 @@ const addDoor = async()=>{
                           <CButton
                             style={{ marginTop: "-55px", marginLeft: "230px" }}
                             className={"cancelBtn"}
-                            onClick={CancelArea}
+                            onClick={Canceldoor}
                             id={"locationLibraryAreaCancel"}
                           >
                             CANCEL
