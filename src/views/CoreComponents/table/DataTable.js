@@ -6,7 +6,7 @@ import CElementCover from "../element-cover/CElementCover";
 import style from "./CDataTable.module.css";
 import CIcon from "@coreui/icons-react";
 import { cilArrowTop, cilBan, cilFilterX } from "@coreui/icons";
-import { CLabel } from "@coreui/react";
+import { CInput, CLabel } from "@coreui/react";
 
 //component - CoreUI / CTable
 const CDataTable = (props) => {
@@ -44,6 +44,9 @@ const CDataTable = (props) => {
     size,
     dark,
     striped,
+    selectAll,
+    onSelectAll,
+    checkedAll,
     hover,
     border,
     outlined,
@@ -521,9 +524,7 @@ const CDataTable = (props) => {
             </div>
           )}
           {itemsPerPageSelect && (
-            <div
-              className="itemPerPageAlign col-sm-4 form-inline p-1"
-            >
+            <div className="itemPerPageAlign col-sm-4 form-inline p-1">
               <label className="mr-2">{paginationSelect.label}</label>
               <select
                 className="form-control"
@@ -558,28 +559,47 @@ const CDataTable = (props) => {
                 {rawColumnNames.map((colName, index) => {
                   return (
                     <th className={classNames(headerClass(index))} key={index}>
-                      {columnFilterSlot[`${rawColumnNames[index]}`] ||
-                        ((!fields || fields[index].filter !== false) && (
-                          <input
-                            className="form-control form-control-sm"
-                            onInput={(e) => {
-                              columnFilterEvent(
-                                colName,
-                                e.target.value,
-                                "input"
-                              );
+                    {/* <p>{colName}</p> */}
+                      {colName === "show_details" && selectAll === true ? (
+                        <>
+                          <CInput
+                            type={"checkbox"}
+                            style={{
+                              width: "13px",
+                              height: "13px",
+                              marginLeft: "25px",
+                              marginBottom: "10px",
                             }}
-                            onChange={(e) => {
-                              columnFilterEvent(
-                                colName,
-                                e.target.value,
-                                "change"
-                              );
-                            }}
-                            value={columnFilterState[colName] || ""}
-                            aria-label={`column name: '${colName}' filter input`}
+                            checked={checkedAll}
+                            onClick={()=> onSelectAll(items)}
                           />
-                        ))}
+                        </>
+                      ) : (
+                        <>
+                          {columnFilterSlot[`${rawColumnNames[index]}`] ||
+                            ((!fields || fields[index].filter !== false) && (
+                              <input
+                                className="form-control form-control-sm"
+                                onInput={(e) => {
+                                  columnFilterEvent(
+                                    colName,
+                                    e.target.value,
+                                    "input"
+                                  );
+                                }}
+                                onChange={(e) => {
+                                  columnFilterEvent(
+                                    colName,
+                                    e.target.value,
+                                    "change"
+                                  );
+                                }}
+                                value={columnFilterState[colName] || ""}
+                                aria-label={`column name: '${colName}' filter input`}
+                              />
+                            ))}
+                        </>
+                      )}
                     </th>
                   );
                 })}
