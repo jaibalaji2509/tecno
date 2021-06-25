@@ -28,13 +28,13 @@
 
 .active1 {
   position: absolute;
-  
+  width: 60%;
   left: 775px;
   z-index: 10;
  
   
   transition: all  2.5s ease; 
-  min-height: 780px;
+  min-height: 750px;
   max-height: 980px;
  transform: translateY(100%,0);
   border: 2px solid grey;

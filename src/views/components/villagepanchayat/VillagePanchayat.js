@@ -48,7 +48,7 @@ const VillagePanchayat = () => {
     view4: false,
   });
   const select = [
-    { value: "tamil", label: "Tamilnadu" },
+    { value: "tamil", label: "Tamilnadu", },
     { value: "Chengalpattu", label: "Chengalpattu" },
     { value: "Chunampedu", label: "Chunampedu" },
     { value: "Vanniyallur", label: "Vanniyallur" },
@@ -58,40 +58,67 @@ const VillagePanchayat = () => {
     { value: "5", label: "019" },
   ];
   const userData = [
+    // {
+    //   SNo: "1.",
+    //   Street: "Agaram kuturoad",
+    //   Ward: "0019",
+    //   by: "Jai Balaji",
+    //   on: "10/06/2021",
+    // },
+    // {
+    //   SNo: "2.",
+    //   Street: "Achari street",
+    //   Ward: "0019",
+    //   by: "Jai Balaji",
+    //   on: "10/06/2021",
+    // },
+    // {
+    //   SNo: "3.",
+    //   Street: "Sathya Sai Nagar",
+    //   Ward: "0019",
+    //   by: "Jai Balaji",
+    //   on: "10/06/2021",
+    // },
+    // {
+    //   SNo: "4.",
+    //   Street: "Agathiyar Avenue",
+    //   Ward: "0019",
+    //   by: "Jai Balaji",
+    //   on: "10/06/2021",
+    // },
+    // {
+    //   SNo: "5.",
+    //   Street: "Santhosapuram street",
+    //   Ward: "0019",
+    //   by: "Jai Balaji",
+    //   on: "10/06/2021",
+    // },
+  ];
+  const userData1 = [
     {
       SNo: "1.",
-      Street: "Agaram kuturoad",
-      Ward: "018",
-      by: "Jai Balaji",
-      on: "10/06/2021",
+      DistrictPanchayat: "Chennai",
+    
     },
     {
       SNo: "2.",
-      Street: "Achari street",
-      Ward: "019",
-      by: "Jai Balaji",
-      on: "10/06/2021",
+      DistrictPanchayat: "Salem",
+     
     },
     {
       SNo: "3.",
-      Street: "Sathya Sai Nagar",
-      Ward: "024",
-      by: "Jai Balaji",
-      on: "10/06/2021",
+      DistrictPanchayat: "Madurai",
+      
     },
     {
       SNo: "4.",
-      Street: "Agathiyar Avenue",
-      Ward: "029",
-      by: "Jai Balaji",
-      on: "10/06/2021",
+      DistrictPanchayat: "Trichy",
+     
     },
     {
       SNo: "5.",
-      Street: "Santhosapuram street",
-      Ward: "042",
-      by: "Jai Balaji",
-      on: "10/06/2021",
+      DistrictPanchayat: "Thiruvarur",
+     
     },
   ];
   const fields = [
@@ -119,6 +146,23 @@ const VillagePanchayat = () => {
     { key: "SNo", label: "S.NO", _style: { width: "5%" } },
 
     { key: "Street", label: "Street Name", _style: { width: "10%" } },
+  ];
+
+  
+  const fields2 = [
+  
+    { key: "SNo", label: "S.NO", _style: { width: "1%" } , sorter: false,
+    filter: false,},
+
+    { key: "DistrictPanchayat", label: "Ward Number", _style: { width: "1%" } },
+    {
+      key: "show_details3",
+      label: "Action",
+      _style: { width: "1%" },
+     
+      sorter: false,
+      filter: false,
+    },
   ];
 
   const [passing, setPassing] = useState("");
@@ -243,23 +287,28 @@ const menus = (details) => {
 }
 const [menu, setMenu] = useState({
   style: "menu2",
+  style1: "menu1",
   menuStatus: "open",
+ 
   style3: "menu2",
 });
 const SelectMenuButton = (props) => {
   return (
       <components.MenuList  {...props} >
           {props.children}
-          <CRow md="12"  >
-          <CCol md="6">     <CLink className={"saveBtn"} onClick={handleClick} style={{paddingLeft:"210px"}}>Add </CLink></CCol>
-          <CCol md="6" > 
-          <CLink className={"saveBtn"} onClick={handleClick} style={{marginLeft:"100px"}}>Bulk Upload </CLink> 
-          </CCol>
-          </CRow>
+       
+        
+          <div  style={{marginTop:"-300px",minHeight:"300px"}} > 
+        
+          <CLink className={"saveBtn"} onClick={handleClick} style={{marginLeft:"320px"}}>Add </CLink>
+          <CLink className={"saveBtn"} onClick={bulkhandleClick} style={{marginLeft:"50px"}}>Bulk Upload </CLink> 
+          </div>
+        
+         
           
       </components.MenuList >
   ) }
-
+const [sideBar2, setSideBar2] =useState(false)
   const handleClick = () => {
     
     switch (menu.menuStatus) {
@@ -271,9 +320,9 @@ const SelectMenuButton = (props) => {
           
         });
       
-        setTimeout(() => {
+      
           setSideBar1(true);
-        }, 1000);
+       
         break;
       case "close":
         setMenu({
@@ -284,6 +333,37 @@ const SelectMenuButton = (props) => {
         });
         setTimeout(() => {
           setSideBar1(false);
+        
+        }, 1000);
+        break;
+    }
+  };
+  const bulkhandleClick = () => {
+    
+    switch (menu.menuStatus) {
+      case "open":
+        setMenu({
+          menuStatus: "close",
+          // style3: "menu2",
+        
+          style1: "menu active1",
+          
+        });
+        setSideBar2(true);
+      
+         
+       
+        break;
+      case "close":
+        setMenu({
+          menuStatus: "open",
+          // style3: "menu2",
+          style1: "menu active2",
+          
+        });
+        setTimeout(() => {
+         
+          setSideBar2(false);
         }, 1000);
         break;
     }
@@ -313,13 +393,10 @@ const SelectMenuButton = (props) => {
     e.preventDefault()
     setInputList([...inputList, { panchayatname: "", panchayatabbreviation: "" ,panchayatcode:""}]);
   }
-  const [manual, setManual] =useState(false)
-  const menuToggle = (e) =>{
-    e.stopPropagation();
-    setManual({
-      isOpen: !manual.isOpen
-    });
-  }
+  
+  const selectWard = [{value:"0019",label:"0019"},{value:"0018",label:"0018"},{value:"0024",label:"0024"},{value:"0020",label:"0020"},
+  {value:"0019",label:"0019"},{value:"0022",label:"0022"},{value:"0023",label:"0023"},{value:"0025",label:"0025"},]
+ 
   return (
     <div className={menu.style3}>
        {sideBar1 && (
@@ -354,14 +431,14 @@ const SelectMenuButton = (props) => {
                                 >
                                   <CCol md="2">
                                     <CLabel className={"label-name-1"}>
-                                      District panchayat
+                                     Ward Number
                                       <span className={"text-danger"}> *</span>
                                     </CLabel>
         
                                     <CInput
                                       id={"MunicipalName"}
                                       name={"municipalname"}
-                                      placeholder="Enter District Panchayat Name"
+                                      placeholder="Enter Ward Number"
                                       maxlength="60"
                                       size="60"
                                       value={x.panchayatname}
@@ -451,7 +528,7 @@ const SelectMenuButton = (props) => {
          
        
          
-      <CRow style={{marginLeft:"580px"}}>
+      <CRow style={{marginLeft:"325px"}}>
         
       <CCol md="3">
                           <CButton
@@ -467,7 +544,7 @@ const SelectMenuButton = (props) => {
                             <CButton
                               shape={"pill"}
                               id={"municipalcancel"}
-                              style={{ marginTop: "30px", marginLeft: "20px" }}
+                              style={{ marginTop: "-60px", marginLeft: "130px" }}
                               className={"cancelBtn"}
                               onClick={handleClick}
                             >
@@ -483,12 +560,152 @@ const SelectMenuButton = (props) => {
             style={{ position: "absolute", top: "15px", right: "15px" }}
             className={"cancelBtn"}
             onClick={() => {
-              handleClick();
+              bulkhandleClick();
               // handleClick2();
             }}
           >
             Back
           </CButton>
+        </div>
+      )}
+       {sideBar2 && (
+        <div className={menu.style1}>
+        
+          <CRow className={""}>
+            <CCol md="12" lg="12" sm="12">
+              <div>
+                <span
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: "700",
+                    marginLeft: "20px",
+                  }}
+                >
+                ADDING VILLAGE PANCHAYAT{" "}
+                </span>
+              </div>
+            </CCol>
+          </CRow>
+   
+         
+    
+    
+         
+       
+         
+      <CRow style={{marginLeft:"-25px"}}>
+        
+      <CCol md="3">
+                          <CButton
+                          type="file"
+                  style={{
+                    marginLeft: "30px",
+                    marginTop:"35px",
+                  
+                  }}
+                  onClick={enableCreate}
+                 className={"saveBtn"}
+                
+                > Upload</CButton>
+                   <CSVLink data={state} ><CButton
+                              shape={"pill"}
+                              id={"municipalcancel"}
+                              style={{ marginTop: "30px", marginLeft: "20px" }}
+                              className={"cancelBtn"}
+                             
+                            >
+                              Download
+                            </CButton></CSVLink>
+                            
+                          
+                            <CButton
+            className={"menu"}
+            style={{ position: "absolute", top: "-42px", right: "-750px",  marginLeft: "30px",backgroundColor:"green", border:"1px solid green" }}
+            className={"cancelBtn"}
+            onClick={() => {
+              bulkhandleClick();
+              // handleClick2();
+            }}
+          >
+            Back
+          </CButton>
+                          </CCol>
+      </CRow>
+
+         
+      <CRow
+                  style={{
+                    padding: "4%",
+                    marginTop: "1.5%",
+                    marginLeft: "-45px",
+                   
+                  }}
+                >
+                  <CDataTable
+                    items={userData1}
+                    fields={fields2}
+                    columnFilter
+                    tableFilter
+                    tableLabel={"List of Streets"}
+                    itemsPerPageSelect
+                    itemsPerPage={5}
+                    hover
+                    sorter
+                    style={{ width:"100%"}}
+                    pagination
+                    scopedSlots={{
+                      show_details3: (item, index) => {
+                        return (
+                          <td className="py-1">
+                            <CRow>
+                              <CCol style={{ fontSize: "1rem" }} md="16">
+                              
+                              <i
+                                      style={{
+                                        marginLeft: "35px",
+                                        color: "red",
+                                      }}
+                                      className="fa fa-trash"
+                                      bsStyle="overlay"
+                                      onClick={menus}
+                                    />
+                              </CCol>
+                            </CRow>
+                          </td>
+                        );
+                      },
+                      details: (item, index) => {},
+                    }}
+                  />
+                </CRow>
+                <CRow style={{paddingLeft:"180px"}}>
+        
+        <CCol md="3">
+                            <CButton
+                            type="file"
+                    style={{
+                      marginLeft: "450px",
+                      marginTop:"35px",
+                    
+                    }}
+                    onClick={enableCreate}
+                   className={"saveBtn"}
+                  
+                  > Save</CButton>
+                     <CSVLink data={state} ><CButton
+                                shape={"pill"}
+                                id={"municipalcancel"}
+                                style={{ marginTop: "-60px", marginLeft: "550px" }}
+                                className={"cancelBtn"}
+                               
+                              >
+                                Cancel
+                              </CButton></CSVLink>
+                              
+                            
+                             
+                            </CCol>
+        </CRow>
         </div>
       )}
       {hideMappingVillage && (
@@ -603,7 +820,7 @@ const SelectMenuButton = (props) => {
                         id={"municipalwardno"}
                         name={"city"}
                         placeholder={"Select Ward No"}
-                        options={select}
+                        options={selectWard}
                       />
                     </CCol>
                   </CRow>
@@ -1145,7 +1362,8 @@ const SelectMenuButton = (props) => {
                             placeholder="Select the Ward Number"
                             id={"municipalcorporation"}
                             type={"text"}
-                            options={select}
+                            components={{ MenuList: SelectMenuButton }}
+                            options={selectWard}
                           />
                         </CCol>
                         {/* <CCol className={"column-align"} md={1} lg={1}>
