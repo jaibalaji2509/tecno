@@ -21,9 +21,9 @@ const VillagePanchayat = () => {
     street: "",
     pincode: "",
   });
-  const [selected, setSelected] = useState([]);
   const [municipalList, setMunicipalList] = useState(true);
   const [MunicipalCreate, setmunicipalCreate] = useState(false);
+  const [selected, setSelected] = useState([]);
   const [municipalCorporation] = useState({});
   const [sideBar1, setSideBar1] = useState(false);
   const [municipalName] = useState("");
@@ -96,26 +96,31 @@ const VillagePanchayat = () => {
   ];
   const userData1 = [
     {
+      _id: "00001",
       SNo: "1.",
       DistrictPanchayat: "Chennai",
     
     },
     {
+      _id: "00002",
       SNo: "2.",
       DistrictPanchayat: "Salem",
      
     },
     {
+      _id:"00003",
       SNo: "3.",
       DistrictPanchayat: "Madurai",
       
     },
     {
+      _id:"00004",
       SNo: "4.",
       DistrictPanchayat: "Trichy",
      
     },
     {
+      _id:"00005",
       SNo: "5.",
       DistrictPanchayat: "Thiruvarur",
      
@@ -1535,21 +1540,8 @@ const [sideBar2, setSideBar2] =useState(false)
                     </CCol>
                   </CCol>
                 </CRow>
-                {/* <CRow>
-                  <CInput
-                    type={"checkbox"}
-                    style={{
-                      width: "15px",
-                      height: "15px",
-                      marginLeft: "78px",
-                      marginBottom: "10px",
-                      marginTop: "180px",
-                    }}
-                  />
-                  <CCol style={{ fontSize: "1.15rem" }} md="12"></CCol>
-                </CRow> */}
 
-                <CRow style={{ padding: "4%", marginTop: "-4.5%" }}>
+                <CRow style={{ padding: "4%" }}>
                   <CDataTable
                     items={userData}
                     fields={fields1}
@@ -1558,6 +1550,20 @@ const [sideBar2, setSideBar2] =useState(false)
                     tableLabel={"List of Streets"}
                     itemsPerPageSelect
                     itemsPerPage={5}
+                    selectAll={true}
+                    checkedAll={userData.length === selected.length}
+                    onSelectAll={(val) => {
+                      console.log(val, userData);
+                      if (userData.length === selected.length) {
+                        setSelected([]);
+                      } else {
+                        let ids = [];
+                        val.map((x) => {
+                          ids.push(`${x._id}`);
+                        });
+                        setSelected(ids);
+                      }
+                    }}
                     hover
                     sorter
                     pagination
@@ -1574,11 +1580,18 @@ const [sideBar2, setSideBar2] =useState(false)
                                   marginLeft: "30px",
                                   marginBottom: "10px",
                                 }}
+                                onClick={() => {
+                                  if (selected.includes(`${item._id}`)) {
+                                    let values = selected.filter(x => {
+                                      return `${x}` !== `${item._id}`;
+                                    });
+                                    setSelected(values);
+                                  } else {
+                                    setSelected([...selected, `${item._id}`]);
+                                  }
+                                }}
+                                checked={selected.includes(`${item._id}`)}
                               />
-                              <CCol
-                                style={{ fontSize: "1.15rem" }}
-                                md="12"
-                              ></CCol>
                             </CRow>
                           </td>
                         );
