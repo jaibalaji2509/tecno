@@ -581,14 +581,14 @@ const EditCountry = async (data) => {
   
   const selectCity = [{value:"Chennai", label:"Chennai"}]
   
-  const selectStreet = [{value:"Pondy Baza", label:"Pondy Baza"}]
+  const selectStreet = [{value:"Pondy Baza", label:"Pondy Bazar"}]
 
-  const selectDoor = [{value:"Pondy Baza", label:"1/117"}]
+  const selectDoor = [{value:"Pondy Baza", label:"1/117"},{value:"Pondy Baza", label:"117"}]
 
   const selectVillage = [{value:"TNagar", label:"TNagar"}]
 
-  const userData =[{sNo:"1",stateName:"TamlNadu",cityName:"Chennai",areaName:"Alwarpet", pincode:"600018",Street:"St Marys Road"},
-  {sNo:"2",stateName:"TamlNadu",cityName:"Chennai",areaName:"TNagar", pincode:"600017",Street:"Pondy Bazar"}
+  const userData =[{sNo:"1",stateName:"TamlNadu",cityName:"Chennai",areaName:"Alwarpet", pincode:"600018",Street:"St Marys Road",door:"3/90"},
+  {sNo:"2",stateName:"TamlNadu",cityName:"Chennai",areaName:"TNagar", pincode:"600017",Street:"Pondy Bazar",door:"117"}
 
 ]
   const fields = [
@@ -603,6 +603,7 @@ const EditCountry = async (data) => {
     },
     { key: "pincode", label: "Pincode", _style: { width: "10%" } },
     { key: "Street", label: "Street ", _style: { width: "20%" } },
+    { key: "door", label: "Door No", _style: { width: "20%" } },
 
     {
       label: "Action",
@@ -637,6 +638,15 @@ const EditCountry = async (data) => {
     setPassing(stateName._id);
      };
 
+     const editDoor = async () => {
+      await setDoorList(false);
+    await setDoorCreate(true);
+      formik.values.StateName = stateName.stateName;
+      formik.values.Abbreviation2 = stateName.abbreviation;
+      formik.values.Code2 = stateName.code;
+      setPassing(stateName._id);
+       };
+  
   const editCity = async () => {
     await setCityList(false);
     await setCityCreate(true);
@@ -1104,7 +1114,7 @@ const EditCountry = async (data) => {
                           value={areaName.value ? areaName : null}
                           options={selectVillage}
                           isDisabled={
-                            CountryCreate || StateCreate || CityCreate
+                            CountryCreate || StateCreate || CityCreate || StreetCreate
                           }
                         />
                       </CCol>
@@ -1119,7 +1129,7 @@ const EditCountry = async (data) => {
                               className={"saveBtn"}
                               onClick={areaCreate}
                               disabled={
-                                CountryCreate || StateCreate || CityCreate
+                                CountryCreate || StateCreate || CityCreate || StreetCreate
                               }
                             >
                               ADD
@@ -1136,7 +1146,7 @@ const EditCountry = async (data) => {
                               className={"btn btn-success"}
                               onClick={editArea}
                               disabled={
-                                CountryCreate || StateCreate || CityCreate
+                                CountryCreate || StateCreate || CityCreate || StreetCreate
                               }
                             >
                               EDIT
@@ -1319,7 +1329,7 @@ const EditCountry = async (data) => {
                           id={"locationLibraryArea"}
                           onChange={(e) => {
                             if (streetName.label) {
-                              setStreetName({ ...e, edit: streetName.edit });
+                              setStreetName({ ...e, edit: areaName.edit });
                             } else {
                               setStreetName({ ...e, edit: true });
                             }
@@ -1327,7 +1337,7 @@ const EditCountry = async (data) => {
                           value={streetName.value ? streetName : null}
                           options={selectStreet}
                           isDisabled={
-                            CountryCreate || StateCreate || CityCreate
+                            CountryCreate || StateCreate || CityCreate || AreaCreate
                           }
                         />
                       </CCol>
@@ -1336,13 +1346,13 @@ const EditCountry = async (data) => {
                         <React.Fragment>
                           <CCol className={"column-align"} md={1} lg={1}>
                             <CButton
-                              id={"locationLibraryAreaAdd"}
+                              id={"locationLibrarystreetAdd"}
                               shape={"pill"}
                               style={{ marginTop: "30px" }}
                               className={"saveBtn"}
                               onClick={addStreet}
                               disabled={
-                                CountryCreate || StateCreate || CityCreate
+                                CountryCreate || StateCreate || CityCreate || AreaCreate
                               }
                             >
                               ADD
@@ -1357,9 +1367,9 @@ const EditCountry = async (data) => {
                               id={"locationLibraryAreaEdit"}
                               style={{ marginTop: "30px" }}
                               className={"btn btn-success"}
-                              onClick={editArea}
+                              onClick={addStreet}
                               disabled={
-                                CountryCreate || StateCreate || CityCreate
+                                CountryCreate || StateCreate || CityCreate || AreaCreate
                               }
                             >
                               EDIT
@@ -1510,7 +1520,7 @@ const EditCountry = async (data) => {
                           id={"locationLibraryArea"}
                           onChange={(e) => {
                             if (doorName.label) {
-                              setDoorName({ ...e, edit: doorName.edit });
+                              setDoorName({ ...e, edit: streetName.edit });
                             } else {
                               setDoorName({ ...e, edit: true });
                             }
@@ -1529,7 +1539,7 @@ const EditCountry = async (data) => {
                             <CButton
                               id={"locationLibraryAreaAdd"}
                               shape={"pill"}
-                              style={{ marginTop: "30px",marginLeft:"20px" }}
+                              style={{ marginTop: "30px",marginLeft:"22px" }}
                               className={"saveBtn"}
                               onClick={addDoor}
                               disabled={
@@ -1543,14 +1553,16 @@ const EditCountry = async (data) => {
                       )}
                       {doorName.edit && (
                         <React.Fragment>
-                          <CCol md={3} lg={3} className={"column-align"} style={{marginLeft:"-20px"}}> 
-                            <CButton
-                              id={"locationLibraryAreaEdit"}
-                              style={{ marginTop: "30px",marginLeft:"25px" }}
+                          <CCol md={3} lg={3} className={"column-align"} style={{marginLeft:"10px"}}> 
+                          <CButton
+                              style={{
+                                marginTop: "30px",
+                              }}
+                              id={"locationLibraryStateEdit"}
                               className={"btn btn-success"}
-                              onClick={editArea}
+                              onClick={editDoor}
                               disabled={
-                                CountryCreate || StateCreate || CityCreate
+                                CountryCreate || CityCreate || AreaCreate
                               }
                             >
                               EDIT
@@ -1591,16 +1603,17 @@ const EditCountry = async (data) => {
                         </CCol>
                        
                         <CCol md="2">
-                          <CButton
-                            style={{ marginTop: "30px" ,marginLeft:"150px"}}
+                        <CButton
+                            shape={"pill"}
+                            id={"locationLibraryStateSave"}
+                            style={{ marginTop: "32px",marginLeft:"155px" ,marginBottom:"-2px"}}
                             className={"saveBtn"}
-                            onClick={Area}
-                            id={"locationLibraryAreaSave"}
+                            onClick={State}
                           >
-                            SAVE
+                            {passing !== "" ? "UPDATE" : "SAVE"}
                           </CButton>
                           <CButton
-                            style={{ marginTop: "-55px", marginLeft: "230px" }}
+                            style={{ marginTop: "-55px", marginLeft: "250px" }}
                             className={"cancelBtn"}
                             onClick={Canceldoor}
                             id={"locationLibraryAreaCancel"}
