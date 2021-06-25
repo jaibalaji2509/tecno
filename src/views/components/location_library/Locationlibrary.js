@@ -7,7 +7,8 @@ import {
   CButton,
   CLabel,
   CWidgetDropdown,
-  CInput
+  CInput,
+  CLink,
 } from "@coreui/react";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -29,9 +30,13 @@ import {
 } from "../../../services/ApiService";
 import { toast } from "react-toastify";
 import FormValidation from "../../../Tools/FormValidation/FormValidation";
-import Select from "react-select";
+import Select,{components} from "react-select";
 import { Dropdown, Menu } from "antd";
 import 'antd/dist/antd.css';
+import {CSVLink, CSVDownload} from 'react-csv';
+import ReactFileReader from 'react-file-reader';
+import MultiSelect from "react-multi-select-component";
+
 function LocationLibrary(props) {
   const [error, setError] = useState("");
   const [passing, setPassing] = useState("");
@@ -169,6 +174,226 @@ function LocationLibrary(props) {
     await setDoorCreate(false);
   }
 
+  const SelectMenuButtonstate = (props) => {
+    return (
+        <components.MenuList  {...props} >
+            {props.children}
+            <CRow md="12"  >
+            <CCol md="6">
+              <CLink className={"saveBtn"} onClick={handleClick1} style={{paddingLeft:"20px"}}>Add</CLink>
+              </CCol>
+            <CCol md="6" >
+            <CLink className={"saveBtn"} onClick={handleClick1} style={{marginLeft:"100px"}}>Bulk Upload </CLink> 
+            </CCol>
+            </CRow>
+            
+        </components.MenuList >
+    ) }
+    const SelectMenuButtoncity = (props) => {
+      return (
+          <components.MenuList  {...props} >
+              {props.children}
+              <CRow md="12"  >
+              <CCol md="6">     <CLink className={"saveBtn"} onClick={handleClick2} style={{paddingLeft:"20px"}}>Add </CLink></CCol>
+              <CCol md="6" > 
+              <CLink className={"saveBtn"} onClick={handleClick2} style={{marginLeft:"100px"}}>Bulk Upload </CLink> 
+              </CCol>
+              </CRow>
+              
+          </components.MenuList >
+      ) }
+      const SelectMenuButtonarea = (props) => {
+        return (
+            <components.MenuList  {...props} >
+                {props.children}
+                <CRow md="12"  >
+                <CCol md="6">     <CLink className={"saveBtn"} onClick={handleClick3} style={{paddingLeft:"20px"}}>Add </CLink></CCol>
+                <CCol md="6" > 
+                <CLink className={"saveBtn"} onClick={handleClick3} style={{marginLeft:"100px"}}>Bulk Upload </CLink> 
+                </CCol>
+                </CRow>
+                
+            </components.MenuList >
+        ) }
+        const SelectMenuButtonstreet = (props) => {
+          return (
+              <components.MenuList  {...props} >
+                  {props.children}
+                  <CRow md="12"  >
+                  <CCol md="6">     <CLink className={"saveBtn"} onClick={handleClick4} style={{paddingLeft:"20px"}}>Add </CLink></CCol>
+                  <CCol md="6" > 
+                  <CLink className={"saveBtn"} onClick={handleClick4} style={{marginLeft:"100px"}}>Bulk Upload </CLink> 
+                  </CCol>
+                  </CRow>
+                  
+              </components.MenuList >
+          ) }
+          const SelectMenuButtondoor = (props) => {
+            return (
+                <components.MenuList  {...props} >
+                    {props.children}
+                    <CRow md="12"  >
+                    <CCol md="6">     <CLink className={"saveBtn"} onClick={handleClick5} style={{paddingLeft:"20px"}}>Add </CLink></CCol>
+                    <CCol md="6" > 
+                    <CLink className={"saveBtn"} onClick={handleClick5} style={{marginLeft:"100px"}}>Bulk Upload </CLink> 
+                    </CCol>
+                    </CRow>
+                    
+                </components.MenuList >
+            ) }
+                    
+    const [menu, setMenu] = useState({
+      style: "menu2",
+      menuStatus: "open",
+      style3: "menu2",
+    });
+    const [sideBar1, setSideBar1] = useState(false);
+    const [sideBar2, setSideBar2] = useState(false);
+    const [sideBar3, setSideBar3] = useState(false);
+    const [sideBar4, setSideBar4] = useState(false);
+    const [sideBar5, setSideBar5] = useState(false);
+
+    const handleClick1 = () => {
+    
+      switch (menu.menuStatus) {
+        case "open":
+          setMenu({
+            menuStatus: "close",
+            // style3: "menu2",
+            style: "menu active1",
+            
+          });
+        
+          setTimeout(() => {
+            setSideBar1(true);
+          }, 1000);
+          break;
+        case "close":
+          setMenu({
+            menuStatus: "open",
+            // style3: "menu2",
+            style: "menu active2",
+            
+          });
+          setTimeout(() => {
+            setSideBar1(false);
+          }, 1000);
+          break;
+      }
+    };
+    const handleClick2 = () => {
+    
+      switch (menu.menuStatus) {
+        case "open":
+          setMenu({
+            menuStatus: "close",
+            // style3: "menu2",
+            style: "menu active1",
+            
+          });
+        
+          setTimeout(() => {
+            setSideBar2(true);
+          }, 1000);
+          break;
+        case "close":
+          setMenu({
+            menuStatus: "open",
+            // style3: "menu2",
+            style: "menu active2",
+            
+          });
+          setTimeout(() => {
+            setSideBar2(false);
+          }, 1000);
+          break;
+      }
+    };
+    const handleClick3 = () => {
+    
+      switch (menu.menuStatus) {
+        case "open":
+          setMenu({
+            menuStatus: "close",
+            // style3: "menu2",
+            style: "menu active1",
+            
+          });
+        
+          setTimeout(() => {
+            setSideBar3(true);
+          }, 1000);
+          break;
+        case "close":
+          setMenu({
+            menuStatus: "open",
+            // style3: "menu2",
+            style: "menu active2",
+            
+          });
+          setTimeout(() => {
+            setSideBar3(false);
+          }, 1000);
+          break;
+      }
+    };
+    const handleClick4 = () => {
+    
+      switch (menu.menuStatus) {
+        case "open":
+          setMenu({
+            menuStatus: "close",
+            // style3: "menu2",
+            style: "menu active1",
+            
+          });
+        
+          setTimeout(() => {
+            setSideBar4(true);
+          }, 1000);
+          break;
+        case "close":
+          setMenu({
+            menuStatus: "open",
+            // style3: "menu2",
+            style: "menu active2",
+            
+          });
+          setTimeout(() => {
+            setSideBar4(false);
+          }, 1000);
+          break;
+      }
+    };
+    const handleClick5 = () => {
+    
+      switch (menu.menuStatus) {
+        case "open":
+          setMenu({
+            menuStatus: "close",
+            // style3: "menu2",
+            style: "menu active1",
+            
+          });
+        
+          setTimeout(() => {
+            setSideBar5(true);
+          }, 1000);
+          break;
+        case "close":
+          setMenu({
+            menuStatus: "open",
+            // style3: "menu2",
+            style: "menu active2",
+            
+          });
+          setTimeout(() => {
+            setSideBar5(false);
+          }, 1000);
+          break;
+      }
+    };
+  
   const CancelState = async () => {
     setStated({ ...stated, StateName: "", Code2: "", Abbreviation2: "" });
     formik.values.Abbreviation2 = "";
@@ -583,7 +808,7 @@ const EditCountry = async (data) => {
   
   const selectStreet = [{value:"Pondy Baza", label:"Pondy Bazar"}]
 
-  const selectDoor = [{value:"Pondy Baza", label:"1/117"},{value:"Pondy Baza", label:"117"}]
+  const selectDoor = [{value:"Pondy Baza", label:"117"}]
 
   const selectVillage = [{value:"TNagar", label:"TNagar"}]
 
@@ -693,8 +918,877 @@ const EditCountry = async (data) => {
     )
   }
 
+  const [inputList, setInputList] = useState([{ name: "", abbreviation: "",code: "" }]);
+
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    list[index][name] = value;
+    setInputList(list);
+  };
+  const handleRemoveClick = (index)=>{
+    const list =[...inputList];
+    list.splice(index,1)
+    setInputList(list);
+  }
+ 
+ 
+  // handle click event of the Add button
+  const handleAddClick = (e) => {
+    e.preventDefault()
+    setInputList([...inputList, { name: "", abbreviation: "" ,code:""}]);
+  }
+  const [manual, setManual] =useState(false)
+  const menuToggle = (e) =>{
+    e.stopPropagation();
+    setManual({
+      isOpen: !manual.isOpen
+    });
+  }
+
   return (
-    <div>
+    <div className={menu.style3}>
+       {sideBar1 && (
+        <div className={menu.style} style={{marginLeft:"-400px"}}>
+        
+          <CRow className={""}>
+            <CCol md="12" lg="12" sm="12">
+              <div>
+                <span
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: "700",
+                    marginLeft: "20px",
+                  }}
+                >
+                ADDING LOCATION LIBRARY{" "}
+                </span>
+              </div>
+            </CCol>
+          </CRow>
+   
+         
+     {inputList.map ((x,i) =>{
+       return(
+      
+        <CRow
+                                  className={"row-alignment"}
+                                  style={{ marginLeft: "5px", marginTop: "20px" }}
+                                  sm={12}
+                                  md={12}
+                                  lg={12}
+                                >
+                                  <CCol md="2">
+                                    <CLabel className={"label-name-1"}>
+                                      State 
+                                      <span className={"text-danger"}> *</span>
+                                    </CLabel>
+        
+                                    <CInput
+                                      id={"MunicipalName"}
+                                      name={"municipalname"}
+                                      placeholder="Enter State Name"
+                                      maxlength="60"
+                                      size="60"
+                                      value={x.panchayatname}
+                                      onChange={e => handleInputChange(e, i)}
+                                    />
+                                  </CCol>
+        
+                                  <CCol md="2">
+                                    <CLabel className={"label-name-1"}>
+                                      Abbreviation
+                                      <span className={"text-danger"}> *</span>
+                                    </CLabel>
+                                    <CInput
+                                      id={"municipalabrreviation"}
+                                      name={"abbreviation"}
+                                      placeholder="Enter Abbreviation"
+                                      maxlength="5"
+                                      size="5"
+                                      value={x.panchayatabbreviation}
+                                      onChange={e => handleInputChange(e, i)}
+                                    />
+                                  </CCol>
+                                  <CCol md="2">
+                                    <CLabel className={"label-name-1"}>
+                                      Code
+                                      <span className={"text-danger"}> *</span>
+                                    </CLabel>
+                                    <CInput
+                                      id={"municipalcode"}
+                                      name={"code"}
+                                      placeholder="Enter Code"
+                                      maxlength="5"
+                                      size="5"
+                                      value={x.panchayatcode}
+                                      onChange={e => handleInputChange(e, i)}
+                                    />
+                                  </CCol>
+
+<CRow>
+<CCol md="3">
+                                  {inputList.length - 1 === i &&
+                                  <i
+                          style={{
+                            marginLeft: "0px",
+                            marginTop:"35px",
+                          
+                            fontSize: "1.25rem",
+                            color: "#3273e9",
+                          }}
+                          onClick={handleAddClick}
+                          class={"fa fa-plus"}
+                        
+                        />}
+                         
+                         
+                                     
+                                    
+                                  </CCol>
+                                  <CCol md="3">
+                                  {inputList.length !== 1 &&
+                                  <i
+                          style={{
+                            marginLeft: "0px",
+                            marginTop:"35px",
+                           
+                            fontSize: "1.25rem",
+                            color: "black",
+                          }}
+                          onClick={()=>handleRemoveClick(i)}
+                          class={"fa fa-remove"}
+                        
+                        />}
+                         
+                         
+                                     
+                                    
+                                  </CCol>
+        
+</CRow>
+                                 
+                                 
+                                </CRow>
+
+       
+       ) })}
+    
+         
+       
+         
+      <CRow style={{marginLeft:"580px"}}>
+        
+      <CCol md="3">
+                          <CButton
+                  style={{
+                    marginLeft: "30px",
+                    marginTop:"35px",
+                  
+                  }}
+                  onClick={enableCreate}
+                 className={"saveBtn"}
+                
+                > Save</CButton>
+                            <CButton
+                              shape={"pill"}
+                              id={"municipalcancel"}
+                              style={{ marginTop: "30px", marginLeft: "20px" }}
+                              className={"cancelBtn"}
+                              onClick={handleClick1}
+                            >
+                              CANCEL
+                            </CButton>
+                            {error !== "" ? <p>{error}</p> : null}
+                          </CCol>
+      </CRow>
+
+         
+          <CButton
+            className={"menu"}
+            style={{ position: "absolute", top: "15px", right: "15px" }}
+            className={"cancelBtn"}
+            onClick={() => {
+              handleClick1();
+              // handleClick2();
+            }}
+          >
+            Back
+          </CButton>
+        </div>
+
+)}
+
+<div className={menu.style3}>
+       {sideBar2 && (
+        <div className={menu.style} style={{marginLeft:"-400px"}}>
+        
+          <CRow className={""}>
+            <CCol md="12" lg="12" sm="12">
+              <div>
+                <span
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: "700",
+                    marginLeft: "20px",
+                  }}
+                >
+                ADDING LOCATION LIBRARY{" "}
+                </span>
+              </div>
+            </CCol>
+          </CRow>
+   
+         
+     {inputList.map ((x,i) =>{
+       return(
+      
+        <CRow
+                                  className={"row-alignment"}
+                                  style={{ marginLeft: "5px", marginTop: "20px" }}
+                                  sm={12}
+                                  md={12}
+                                  lg={12}
+                                >
+                                  <CCol md="2">
+                                    <CLabel className={"label-name-1"}>
+                                     City 
+                                      <span className={"text-danger"}> *</span>
+                                    </CLabel>
+        
+                                    <CInput
+                                      id={"MunicipalName"}
+                                      name={"municipalname"}
+                                      placeholder="Enter City Name"
+                                      maxlength="60"
+                                      size="60"
+                                      value={x.panchayatname}
+                                      onChange={e => handleInputChange(e, i)}
+                                    />
+                                  </CCol>
+        
+                                  <CCol md="2">
+                                    <CLabel className={"label-name-1"}>
+                                      Abbreviation
+                                      <span className={"text-danger"}> *</span>
+                                    </CLabel>
+                                    <CInput
+                                      id={"municipalabrreviation"}
+                                      name={"abbreviation"}
+                                      placeholder="Enter Abbreviation"
+                                      maxlength="5"
+                                      size="5"
+                                      value={x.panchayatabbreviation}
+                                      onChange={e => handleInputChange(e, i)}
+                                    />
+                                  </CCol>
+                                  <CCol md="2">
+                                    <CLabel className={"label-name-1"}>
+                                      Code
+                                      <span className={"text-danger"}> *</span>
+                                    </CLabel>
+                                    <CInput
+                                      id={"municipalcode"}
+                                      name={"code"}
+                                      placeholder="Enter Code"
+                                      maxlength="5"
+                                      size="5"
+                                      value={x.panchayatcode}
+                                      onChange={e => handleInputChange(e, i)}
+                                    />
+                                  </CCol>
+
+<CRow>
+<CCol md="3">
+                                  {inputList.length - 1 === i &&
+                                  <i
+                          style={{
+                            marginLeft: "0px",
+                            marginTop:"35px",
+                          
+                            fontSize: "1.25rem",
+                            color: "#3273e9",
+                          }}
+                          onClick={handleAddClick}
+                          class={"fa fa-plus"}
+                        
+                        />}
+                         
+                         
+                                     
+                                    
+                                  </CCol>
+                                  <CCol md="3">
+                                  {inputList.length !== 1 &&
+                                  <i
+                          style={{
+                            marginLeft: "0px",
+                            marginTop:"35px",
+                           
+                            fontSize: "1.25rem",
+                            color: "black",
+                          }}
+                          onClick={()=>handleRemoveClick(i)}
+                          class={"fa fa-remove"}
+                        
+                        />}
+                         
+                         
+                                     
+                                    
+                                  </CCol>
+        
+</CRow>
+                                 
+                                 
+                                </CRow>
+
+       
+       ) })}
+    
+         
+       
+         
+      <CRow style={{marginLeft:"580px"}}>
+        
+      <CCol md="3">
+                          <CButton
+                  style={{
+                    marginLeft: "30px",
+                    marginTop:"35px",
+                  
+                  }}
+                  onClick={enableCreate}
+                 className={"saveBtn"}
+                
+                > Save</CButton>
+                            <CButton
+                              shape={"pill"}
+                              id={"municipalcancel"}
+                              style={{ marginTop: "30px", marginLeft: "20px" }}
+                              className={"cancelBtn"}
+                              onClick={handleClick2}
+                            >
+                              CANCEL
+                            </CButton>
+                            {error !== "" ? <p>{error}</p> : null}
+                          </CCol>
+      </CRow>
+
+         
+          <CButton
+            className={"menu"}
+            style={{ position: "absolute", top: "15px", right: "15px" }}
+            className={"cancelBtn"}
+            onClick={() => {
+              handleClick2();
+              // handleClick2();
+            }}
+          >
+            Back
+          </CButton>
+        </div>
+
+)}
+    <div className={menu.style3}>
+       {sideBar3 && (
+        <div className={menu.style} style={{marginLeft:"-400px"}}>
+        
+          <CRow className={""}>
+            <CCol md="12" lg="12" sm="12">
+              <div>
+                <span
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: "700",
+                    marginLeft: "20px",
+                  }}
+                >
+                ADDING LOCATION LIBRARY{" "}
+                </span>
+              </div>
+            </CCol>
+          </CRow>
+   
+         
+     {inputList.map ((x,i) =>{
+       return(
+      
+        <CRow
+                                  className={"row-alignment"}
+                                  style={{ marginLeft: "5px", marginTop: "20px" }}
+                                  sm={12}
+                                  md={12}
+                                  lg={12}
+                                >
+                                  <CCol md="2">
+                                    <CLabel className={"label-name-1"}>
+                                      Area 
+                                      <span className={"text-danger"}> *</span>
+                                    </CLabel>
+        
+                                    <CInput
+                                      id={"MunicipalName"}
+                                      name={"municipalname"}
+                                      placeholder="Enter Area Name"
+                                      maxlength="60"
+                                      size="60"
+                                      value={x.panchayatname}
+                                      onChange={e => handleInputChange(e, i)}
+                                    />
+                                  </CCol>
+        
+                                  <CCol md="2">
+                                    <CLabel className={"label-name-1"}>
+                                      Abbreviation
+                                      <span className={"text-danger"}> *</span>
+                                    </CLabel>
+                                    <CInput
+                                      id={"municipalabrreviation"}
+                                      name={"abbreviation"}
+                                      placeholder="Enter Abbreviation"
+                                      maxlength="5"
+                                      size="5"
+                                      value={x.panchayatabbreviation}
+                                      onChange={e => handleInputChange(e, i)}
+                                    />
+                                  </CCol>
+                                  <CCol md="2">
+                                    <CLabel className={"label-name-1"}>
+                                      Code
+                                      <span className={"text-danger"}> *</span>
+                                    </CLabel>
+                                    <CInput
+                                      id={"municipalcode"}
+                                      name={"code"}
+                                      placeholder="Enter Code"
+                                      maxlength="5"
+                                      size="5"
+                                      value={x.panchayatcode}
+                                      onChange={e => handleInputChange(e, i)}
+                                    />
+                                  </CCol>
+                                  <CCol md="2">
+                                    <CLabel className={"label-name-1"}>
+                                      Pincode
+                                      <span className={"text-danger"}> *</span>
+                                    </CLabel>
+                                    <CInput
+                                      id={"municipalabrreviation"}
+                                      name={"abbreviation"}
+                                      placeholder="Enter Pincode"
+                                      maxlength="7"
+                                      size="7"
+                                      value={x.panchayatabbreviation}
+                                      onChange={e => handleInputChange(e, i)}
+                                    />
+                                  </CCol>
+                                 
+<CRow>
+<CCol md="3">
+                                  {inputList.length - 1 === i &&
+                                  <i
+                          style={{
+                            marginLeft: "0px",
+                            marginTop:"35px",
+                          
+                            fontSize: "1.25rem",
+                            color: "#3273e9",
+                          }}
+                          onClick={handleAddClick}
+                          class={"fa fa-plus"}
+                        
+                        />}
+                         
+                         
+                                     
+                                    
+                                  </CCol>
+                                  <CCol md="3">
+                                  {inputList.length !== 1 &&
+                                  <i
+                          style={{
+                            marginLeft: "0px",
+                            marginTop:"35px",
+                           
+                            fontSize: "1.25rem",
+                            color: "black",
+                          }}
+                          onClick={()=>handleRemoveClick(i)}
+                          class={"fa fa-remove"}
+                        
+                        />}
+                         
+                         
+                                     
+                                    
+                                  </CCol>
+        
+</CRow>
+                                 
+                                 
+                                </CRow>
+
+       
+       ) })}
+    
+         
+       
+         
+      <CRow style={{marginLeft:"580px"}}>
+        
+      <CCol md="3">
+                          <CButton
+                  style={{
+                    marginLeft: "30px",
+                    marginTop:"35px",
+                  
+                  }}
+                  onClick={enableCreate}
+                 className={"saveBtn"}
+                
+                > Save</CButton>
+                            <CButton
+                              shape={"pill"}
+                              id={"municipalcancel"}
+                              style={{ marginTop: "30px", marginLeft: "20px" }}
+                              className={"cancelBtn"}
+                              onClick={handleClick3}
+                            >
+                              CANCEL
+                            </CButton>
+                            {error !== "" ? <p>{error}</p> : null}
+                          </CCol>
+      </CRow>
+
+         
+          <CButton
+            className={"menu"}
+            style={{ position: "absolute", top: "15px", right: "15px" }}
+            className={"cancelBtn"}
+            onClick={() => {
+              handleClick3();
+              // handleClick2();
+            }}
+          >
+            Back
+          </CButton>
+        </div>
+
+)}
+    <div className={menu.style3}>
+       {sideBar4 && (
+        <div className={menu.style} style={{marginLeft:"-400px"}}>
+        
+          <CRow className={""}>
+            <CCol md="12" lg="12" sm="12">
+              <div>
+                <span
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: "700",
+                    marginLeft: "20px",
+                  }}
+                >
+                ADDING LOCATION LIBRARY{" "}
+                </span>
+              </div>
+            </CCol>
+          </CRow>
+   
+         
+     {inputList.map ((x,i) =>{
+       return(
+      
+        <CRow
+                                  className={"row-alignment"}
+                                  style={{ marginLeft: "5px", marginTop: "20px" }}
+                                  sm={12}
+                                  md={12}
+                                  lg={12}
+                                >
+                                  <CCol md="2">
+                                    <CLabel className={"label-name-1"}>
+                                      Street
+                                      <span className={"text-danger"}> *</span>
+                                    </CLabel>
+        
+                                    <CInput
+                                      id={"MunicipalName"}
+                                      name={"municipalname"}
+                                      placeholder="Enter Street Name"
+                                      maxlength="60"
+                                      size="60"
+                                      value={x.panchayatname}
+                                      onChange={e => handleInputChange(e, i)}
+                                    />
+                                  </CCol>
+        
+                                  <CCol md="2">
+                                    <CLabel className={"label-name-1"}>
+                                      Abbreviation
+                                      <span className={"text-danger"}> *</span>
+                                    </CLabel>
+                                    <CInput
+                                      id={"municipalabrreviation"}
+                                      name={"abbreviation"}
+                                      placeholder="Enter Abbreviation"
+                                      maxlength="5"
+                                      size="5"
+                                      value={x.panchayatabbreviation}
+                                      onChange={e => handleInputChange(e, i)}
+                                    />
+                                  </CCol>
+                                  <CCol md="2">
+                                    <CLabel className={"label-name-1"}>
+                                      Code
+                                      <span className={"text-danger"}> *</span>
+                                    </CLabel>
+                                    <CInput
+                                      id={"municipalcode"}
+                                      name={"code"}
+                                      placeholder="Enter Code"
+                                      maxlength="5"
+                                      size="5"
+                                      value={x.panchayatcode}
+                                      onChange={e => handleInputChange(e, i)}
+                                    />
+                                  </CCol>
+
+<CRow>
+<CCol md="3">
+                                  {inputList.length - 1 === i &&
+                                  <i
+                          style={{
+                            marginLeft: "0px",
+                            marginTop:"35px",
+                          
+                            fontSize: "1.25rem",
+                            color: "#3273e9",
+                          }}
+                          onClick={handleAddClick}
+                          class={"fa fa-plus"}
+                        
+                        />}
+                         
+                         
+                                     
+                                    
+                                  </CCol>
+                                  <CCol md="3">
+                                  {inputList.length !== 1 &&
+                                  <i
+                          style={{
+                            marginLeft: "0px",
+                            marginTop:"35px",
+                           
+                            fontSize: "1.25rem",
+                            color: "black",
+                          }}
+                          onClick={()=>handleRemoveClick(i)}
+                          class={"fa fa-remove"}
+                        
+                        />}
+                         
+                         
+                                     
+                                    
+                                  </CCol>
+        
+</CRow>
+                                 
+                                 
+                                </CRow>
+
+       
+       ) })}
+    
+         
+       
+         
+      <CRow style={{marginLeft:"580px"}}>
+        
+      <CCol md="3">
+                          <CButton
+                  style={{
+                    marginLeft: "30px",
+                    marginTop:"35px",
+                  
+                  }}
+                  onClick={enableCreate}
+                 className={"saveBtn"}
+                
+                > Save</CButton>
+                            <CButton
+                              shape={"pill"}
+                              id={"municipalcancel"}
+                              style={{ marginTop: "30px", marginLeft: "20px" }}
+                              className={"cancelBtn"}
+                              onClick={handleClick4}
+                            >
+                              CANCEL
+                            </CButton>
+                            {error !== "" ? <p>{error}</p> : null}
+                          </CCol>
+      </CRow>
+
+         
+          <CButton
+            className={"menu"}
+            style={{ position: "absolute", top: "15px", right: "15px" }}
+            className={"cancelBtn"}
+            onClick={() => {
+              handleClick4();
+              // handleClick2();
+            }}
+          >
+            Back
+          </CButton>
+        </div>
+
+)}
+    <div className={menu.style3}>
+       {sideBar5 && (
+        <div className={menu.style} style={{marginLeft:"-400px"}}>
+        
+          <CRow className={""}>
+            <CCol md="12" lg="12" sm="12">
+              <div>
+                <span
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: "700",
+                    marginLeft: "20px",
+                  }}
+                >
+                ADDING LOCATION LIBRARY{" "}
+                </span>
+              </div>
+            </CCol>
+          </CRow>
+   
+         
+     {inputList.map ((x,i) =>{
+       return(
+      
+        <CRow
+                                  className={"row-alignment"}
+                                  style={{ marginLeft: "5px", marginTop: "20px" }}
+                                  sm={12}
+                                  md={12}
+                                  lg={12}
+                                >
+                                  <CCol md="2">
+                                    <CLabel className={"label-name-1"}>
+                                      Door no.
+                                      <span className={"text-danger"}> *</span>
+                                    </CLabel>
+        
+                                    <CInput
+                                      id={"MunicipalName"}
+                                      name={"municipalname"}
+                                      placeholder="Enter District Panchayat Name"
+                                      maxlength="60"
+                                      size="60"
+                                      value={x.panchayatname}
+                                      onChange={e => handleInputChange(e, i)}
+                                    />
+                                  </CCol>
+        
+<CRow>
+<CCol md="3">
+                                  {inputList.length - 1 === i &&
+                                  <i
+                          style={{
+                            marginLeft: "0px",
+                            marginTop:"35px",
+                          
+                            fontSize: "1.25rem",
+                            color: "#3273e9",
+                          }}
+                          onClick={handleAddClick}
+                          class={"fa fa-plus"}
+                        
+                        />}
+                         
+                         
+                                     
+                                    
+                                  </CCol>
+                                  <CCol md="3">
+                                  {inputList.length !== 1 &&
+                                  <i
+                          style={{
+                            marginLeft: "0px",
+                            marginTop:"35px",
+                           
+                            fontSize: "1.25rem",
+                            color: "black",
+                          }}
+                          onClick={()=>handleRemoveClick(i)}
+                          class={"fa fa-remove"}
+                        
+                        />}
+                         
+                         
+                                     
+                                    
+                                  </CCol>
+        
+</CRow>
+                                 
+                                 
+                                </CRow>
+
+       
+       ) })}
+    
+         
+       
+         
+      <CRow style={{marginLeft:"580px"}}>
+        
+      <CCol md="3">
+                          <CButton
+                  style={{
+                    marginLeft: "30px",
+                    marginTop:"35px",
+                  
+                  }}
+                  onClick={enableCreate}
+                 className={"saveBtn"}
+                
+                > Save</CButton>
+                            <CButton
+                              shape={"pill"}
+                              id={"municipalcancel"}
+                              style={{ marginTop: "30px", marginLeft: "20px" }}
+                              className={"cancelBtn"}
+                              onClick={handleClick5}
+                            >
+                              CANCEL
+                            </CButton>
+                            {error !== "" ? <p>{error}</p> : null}
+                          </CCol>
+      </CRow>
+
+         
+          <CButton
+            className={"menu"}
+            style={{ position: "absolute", top: "15px", right: "15px" }}
+            className={"cancelBtn"}
+            onClick={() => {
+              handleClick5();
+              // handleClick2();
+            }}
+          >
+            Back
+          </CButton>
+        </div>
+
+)}
+
+<div>
       <div>
         <CCard className={"cardSave"}>
           <div>
@@ -722,19 +1816,20 @@ const EditCountry = async (data) => {
                           placeholder="Select the State Name"
                           id={"locationLibraryState"}
                           type={"text"}
-                          onChange={(e) => {
-                            if (stateName.label) {
-                              setStateName({ ...e, edit: countryName.edit });
-                            } else {
-                              setStateName({ ...e, edit: true });
-                            }
-                          }}
-                          value={stateName}
+                          // onChange={(e) => {
+                          //   if (stateName.label) {
+                          //     setStateName({ ...e, edit: countryName.edit });
+                          //   } else {
+                          //     setStateName({ ...e, edit: true });
+                          //   }
+                          // }}
+                          // value={stateName}
                           options={selectState}
-                          isDisabled={CountryCreate || CityCreate || AreaCreate}
+                          components={{ MenuList: SelectMenuButtonstate }}
+                          // isDisabled={CountryCreate || CityCreate || AreaCreate}
                         />
                       </CCol>
-                      <CCol className={"column-align"} md={1} lg={1}>
+                      {/* <CCol className={"column-align"} md={1} lg={1}>
                         <CButton
                           shape={"pill"}
                           id={"locationLibraryStateAdd"}
@@ -746,7 +1841,7 @@ const EditCountry = async (data) => {
                           ADD
                         </CButton>
                       </CCol>
-                      {countryName.edit && <React.Fragment></React.Fragment>}
+                      {countryName.edit && <React.Fragment></React.Fragment>} */}
 
                       {stateName.edit === true ? (
                         <React.Fragment>
@@ -874,7 +1969,7 @@ const EditCountry = async (data) => {
                       </CRow>
                     </React.Fragment>
                   )}
-                  <CRow style={{ marginLeft:"1300px",position:"absolute" ,marginTop:"20px"}}>
+                  <CRow style={{ marginLeft:"1300px",position:"absolute" ,marginTop:"10px"}}>
                     <CCol sm="6" lg="3" style={{ marginLeft: "10px" }}>
                       <CWidgetDropdown
                         style={{
@@ -882,7 +1977,8 @@ const EditCountry = async (data) => {
                           textAlign: "center",
                           fontSize: "30px",
                           float: "right",
-                          height:"100px"
+                          height:"100px",
+                          marginRight:"85px"
                         }}
                         color="gradient-primary"
                         header=""
@@ -915,22 +2011,22 @@ const EditCountry = async (data) => {
                           placeholder="Select the City Name"
                           id={"locationLibraryCity"}
                           type={"text"}
-                          onChange={(e) => {
-                            if (cityName.label) {
-                              setCityName({ ...e, edit: stateName.edit });
-                            } else {
-                              setCityName({ ...e, edit: true });
-                            }
-                          }}
-                          value={cityName}
+                          // onChange={(e) => {
+                          //   if (cityName.label) {
+                          //     setCityName({ ...e, edit: stateName.edit });
+                          //   } else {
+                          //     setCityName({ ...e, edit: true });
+                          //   }
+                          // }}
+                          // value={cityName}
                           options={selectCity}
-                          isDisabled={
-                            CountryCreate || StateCreate || AreaCreate
-                          }
+                          // 
+                          components={{ MenuList: SelectMenuButtoncity }}
+
                         />
                       </CCol>
 
-                      {stateName.edit && (
+                      {/* {stateName.edit && (
                         <React.Fragment>
                           <CCol className={"column-align"} md={1} lg={1}>
                             <CButton
@@ -947,7 +2043,7 @@ const EditCountry = async (data) => {
                             </CButton>
                           </CCol>
                         </React.Fragment>
-                      )}
+                      )} */}
 
                       {cityName.edit === true && (
                         <React.Fragment>
@@ -1063,7 +2159,7 @@ const EditCountry = async (data) => {
                       </CRow>
                     </React.Fragment>
                   )}
-                    <CRow style={{marginTop:"50px", marginLeft:"1300px",position:"absolute" }}>
+                    <CRow style={{marginTop:"40px", marginLeft:"1300px",position:"absolute" }}>
                     <CCol sm="3" lg="3" style={{ marginLeft: "10px" }}>
                       <CWidgetDropdown
                         style={{
@@ -1071,7 +2167,8 @@ const EditCountry = async (data) => {
                           textAlign: "center",
                           fontSize: "30px",
                           float: "right",
-                          height:"100px"
+                          height:"100px",
+                          marginRight:"85px"
                         }}
                         color="gradient-info"
                         header=""
@@ -1104,22 +2201,14 @@ const EditCountry = async (data) => {
                         <Select
                           placeholder="Select the Area Name"
                           id={"locationLibraryArea"}
-                          onChange={(e) => {
-                            if (areaName.label) {
-                              setAreaName({ ...e, edit: cityName.edit });
-                            } else {
-                              setAreaName({ ...e, edit: true });
-                            }
-                          }}
-                          value={areaName.value ? areaName : null}
+                         
                           options={selectVillage}
-                          isDisabled={
-                            CountryCreate || StateCreate || CityCreate || StreetCreate
-                          }
+                          components={{ MenuList: SelectMenuButtonarea }}
+
                         />
                       </CCol>
 
-                      {cityName.edit && (
+                      {/* {cityName.edit && (
                         <React.Fragment>
                           <CCol className={"column-align"} md={1} lg={1}>
                             <CButton
@@ -1136,7 +2225,7 @@ const EditCountry = async (data) => {
                             </CButton>
                           </CCol>
                         </React.Fragment>
-                      )}
+                      )} */}
                       {areaName.edit && (
                         <React.Fragment>
                            <CCol md={3} lg={3} className={"column-align"} style={{marginLeft:"-20px"}}> 
@@ -1285,7 +2374,7 @@ const EditCountry = async (data) => {
                       </CRow>
                     </React.Fragment>
                   )}
-                  <CRow style={{marginTop:"80px", marginLeft:"1300px",position:"absolute" }}>
+                  <CRow style={{marginTop:"70px", marginLeft:"1300px",position:"absolute" }}>
                     <CCol sm="3" lg="3" style={{ marginLeft: "10px" }}>
                       <CWidgetDropdown
                         style={{
@@ -1293,7 +2382,8 @@ const EditCountry = async (data) => {
                           textAlign: "center",
                           fontSize: "30px",
                           float: "right",
-                          height:"100px"
+                          height:"100px",
+                          marginRight:"85px"
                         }}
                         color="gradient-warning"  
                         header=""
@@ -1327,22 +2417,23 @@ const EditCountry = async (data) => {
                         <Select
                           placeholder="Select the Street Name"
                           id={"locationLibraryArea"}
-                          onChange={(e) => {
-                            if (streetName.label) {
-                              setStreetName({ ...e, edit: areaName.edit });
-                            } else {
-                              setStreetName({ ...e, edit: true });
-                            }
-                          }}
-                          value={streetName.value ? streetName : null}
+                          // onChange={(e) => {
+                          //   if (streetName.label) {
+                          //     setStreetName({ ...e, edit: areaName.edit });
+                          //   } else {
+                          //     setStreetName({ ...e, edit: true });
+                          //   }
+                          // }}
+                          // value={streetName.value ? streetName : null}
+                          components={{ MenuList: SelectMenuButtonstreet }}
                           options={selectStreet}
-                          isDisabled={
-                            CountryCreate || StateCreate || CityCreate || AreaCreate
-                          }
+                          // isDisabled={
+                          //   CountryCreate || StateCreate || CityCreate || AreaCreate
+                          // }
                         />
                       </CCol>
 
-                      {streetName.edit && (
+                      {/* {streetName.edit && (
                         <React.Fragment>
                           <CCol className={"column-align"} md={1} lg={1}>
                             <CButton
@@ -1359,7 +2450,7 @@ const EditCountry = async (data) => {
                             </CButton>
                           </CCol>
                         </React.Fragment>
-                      )}
+                      )} */}
                       {streetName.edit && (
                         <React.Fragment>
                           <CCol md={3} lg={3} className={"column-align"} style={{marginLeft:"-20px"}}> 
@@ -1475,7 +2566,7 @@ const EditCountry = async (data) => {
                   )}
 
                   
-                   <CRow style={{marginTop:"110px", marginLeft:"1300px",position:"absolute" }}>
+                   <CRow style={{marginTop:"100px", marginLeft:"1300px",position:"absolute" }}>
                     <CCol sm="3" lg="3" style={{ marginLeft: "10px" }}>
                       <CWidgetDropdown
                         style={{
@@ -1483,7 +2574,8 @@ const EditCountry = async (data) => {
                           textAlign: "center",
                           fontSize: "30px",
                           float: "right",
-                          height:"100px"
+                          height:"100px",
+                          marginRight:"85px"
                         }}
                         color="gradient-danger"
                         header=""
@@ -1518,18 +2610,19 @@ const EditCountry = async (data) => {
                         <Select
                           placeholder="Select the Door No."
                           id={"locationLibraryArea"}
-                          onChange={(e) => {
-                            if (doorName.label) {
-                              setDoorName({ ...e, edit: streetName.edit });
-                            } else {
-                              setDoorName({ ...e, edit: true });
-                            }
-                          }}
-                          value={doorName.value ? doorName : null}
+                          // onChange={(e) => {
+                          //   if (doorName.label) {
+                          //     setDoorName({ ...e, edit: streetName.edit });
+                          //   } else {
+                          //     setDoorName({ ...e, edit: true });
+                          //   }
+                          // }}
+                          // value={doorName.value ? doorName : null}
+                          components={{ MenuList: SelectMenuButtondoor }}
                           options={selectDoor}
-                          isDisabled={
-                            CountryCreate || StateCreate || CityCreate
-                          }
+                          // isDisabled={
+                          //   CountryCreate || StateCreate || CityCreate
+                          // }
                         />
                       </CCol>
 
@@ -1708,6 +2801,11 @@ const EditCountry = async (data) => {
             </CRow>
           </div>
         </CCard>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
       </div>
     </div>
   );
