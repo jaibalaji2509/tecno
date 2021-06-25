@@ -14,7 +14,8 @@ import Select from "react-select";
 import "./PartyOfficeLocation.css";
 import { Dropdown, Menu } from "antd";
 import 'antd/dist/antd.css';
-
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 function PartyOfficeLocation() {
   const [addPartyOffice, setAddPartyOffice] = useState(true);
@@ -144,8 +145,8 @@ function PartyOfficeLocation() {
       _style: { width: "15%" },
     },
     { key: "address", label: "Address ", _style: { width: "20%" } },
-    { key: "city", label: "Entered By", _style: { width: "10%" } },
-    { key: "pinccode", label: "Entered On", _style: { width: "10%" } },
+    { key: "by", label: "Entered By", _style: { width: "10%" } },
+    { key: "on", label: "Entered On", _style: { width: "10%" } },
 
     {
       label: "Action",
@@ -210,6 +211,37 @@ function PartyOfficeLocation() {
       </Menu.Item>
     </Menu>
     )
+  }
+  const people = [
+    { name: "Keanu Reeves", profession: "Actor" },
+    { name: "Lionel Messi", profession: "Football Player" },
+    { name: "Cristiano Ronaldo", profession: "Football Player" },
+    { name: "Jack Nicklaus", profession: "Golf Player" },
+  ]
+  const exportPDF = () => {
+    const unit = "pt";
+    const size = "A4"; // Use A1, A2, A3 or A4
+    const orientation = "portrait"; // portrait or landscape
+
+    const marginLeft = 40;
+    const doc = new jsPDF(orientation, unit, size);
+
+    doc.setFontSize(15);
+
+    const title = "Party  Office Location";
+    const headers = [["SNo", "Name of Party  Office","Type of Party  Office ","Hierarchy Reporting Office","Address 1","Entered By", "Entered On"]];
+ 
+    const data = userData.map(elt=> [elt.SNo, elt.NAMEOFWINGOFFICE,elt.WingOffice, elt.ReportingTo,elt.address, elt.area,elt.by,elt.on]);
+
+    let content = {
+      startY: 50,
+      head: headers,
+      body: data
+    };
+
+    doc.text(title, marginLeft, 40);
+    doc.autoTable(content);
+    doc.save("report.pdf")
   }
 
   return (
@@ -342,10 +374,11 @@ function PartyOfficeLocation() {
                     style={{
                       position: "absolute",
                       top: "20px",
-                      marginLeft: "735px",
+                      marginLeft: "535px",
                       marginBottom: "20px",
                       color: "black",
                     }}
+                    onClick={() => exportPDF()}
                     className="fa fa-print"
                   ></i>
                 </CCol>
@@ -582,7 +615,7 @@ function PartyOfficeLocation() {
             </CRow>
             <CRow style={{marginLeft:"250px"}}>
               <CCol
-                style={{ fontSize: "1.55rem", top: "100px" }}
+                style={{ fontSize: "1.55rem", top: "81px" }}
                 md={12}
                 sm={12}
                 lg={12}
@@ -597,7 +630,7 @@ function PartyOfficeLocation() {
                     height: "40px",
                     width: "40px",
 
-                    marginLeft: "955px",
+                    marginLeft: "800px",
                     marginBottom: "20px",
                   }}
                 />
@@ -607,11 +640,13 @@ function PartyOfficeLocation() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "50px",
-                    marginLeft: "795px",
+                    top: "30px",
+                    marginLeft: "595px",
                     marginBottom: "20px",
                     color: "black",
+                    cursor:'pointer'
                   }}
+                  onClick={() => exportPDF()}
                   className="fa fa-print"
                 ></i>
               </CCol>
@@ -620,8 +655,8 @@ function PartyOfficeLocation() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "50px",
-                    marginLeft: "870px",
+                    top: "30px",
+                    marginLeft: "710px",
                     marginBottom: "910px",
                     color: "black",
                   }}
@@ -656,6 +691,7 @@ function PartyOfficeLocation() {
                                 className="ant-dropdown-link"
                                 onClick={(e) => e.preventDefault()}
                               >
+                                
                                 <i
                                   style={{
                                     marginLeft: "5px",

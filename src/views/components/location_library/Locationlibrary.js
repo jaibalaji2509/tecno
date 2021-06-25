@@ -42,8 +42,10 @@ function LocationLibrary(props) {
   const [countrySchema, setCountry] = useState([]);
   const [AreaCreate, setAreaCreate] = useState(false);
   const [StreetCreate, setStreetCreate] = useState(false);
+  const [DoorCreate, setDoorCreate] = useState(false);
   const [AreaList, setAreaList] = useState(true);
   const [StreetList,setStreetList ] = useState(true);
+  const [DoorList,setDoorList ] = useState(true);
   const [CountryCreate, setCountryCreate] = useState(false);
   const [, setCountryList] = useState(true);
   const [CityCreate, setCityCreate] = useState(false);
@@ -56,6 +58,7 @@ function LocationLibrary(props) {
   const [stateName, setStateName] = useState("");
   const [cityName, setCityName] = useState("");
   const [streetName, setStreetName] = useState("");
+  const [doorName, setDoorName] = useState("");
   const [areaName, setAreaName] = useState("");
   const [, setDeleteId] = useState({ id: "", show: false });
   const [countrys, ] = useState({
@@ -90,6 +93,7 @@ function LocationLibrary(props) {
       CountryName: "",
       CityName: "",
       AreaName: "",
+      DoorNo:"",
       Abbreviation1: "",
       Code1: "",
       Abbreviation2: "",
@@ -157,6 +161,13 @@ function LocationLibrary(props) {
     await setCityList(true);
     await setCityCreate(false);
   };
+
+  const Canceldoor = async () => {
+    formik.values.DoorNo = "";
+    setPassing("");
+    await setDoorList(true);
+    await setDoorCreate(false);
+  }
 
   const CancelState = async () => {
     setStated({ ...stated, StateName: "", Code2: "", Abbreviation2: "" });
@@ -527,7 +538,12 @@ const addStreet = async()=>{
   await setStreetList(false);
     await setStreetCreate(true);
 }
-  const EditCountry = async (data) => {
+const addDoor = async()=>{
+  await setDoorList(false);
+    await setDoorCreate(true);
+}
+
+const EditCountry = async (data) => {
     await setAddHide(false);
     await setSaveHide(true);
     setCountryName({
@@ -565,12 +581,14 @@ const addStreet = async()=>{
   
   const selectCity = [{value:"Chennai", label:"Chennai"}]
   
-  const selectStreet = [{value:"Pondy Baza", label:"Pondy Baza"}]
-  
+  const selectStreet = [{value:"Pondy Baza", label:"Pondy Bazar"}]
+
+  const selectDoor = [{value:"Pondy Baza", label:"1/117"},{value:"Pondy Baza", label:"117"}]
+
   const selectVillage = [{value:"TNagar", label:"TNagar"}]
 
-  const userData =[{sNo:"1",stateName:"TamlNadu",cityName:"Chennai",areaName:"Alwarpet", pincode:"600018",Street:"St Marys Road"},
-  {sNo:"2",stateName:"TamlNadu",cityName:"Chennai",areaName:"TNagar", pincode:"600017",Street:"Pondy Bazar"}
+  const userData =[{sNo:"1",stateName:"TamlNadu",cityName:"Chennai",areaName:"Alwarpet", pincode:"600018",Street:"St Marys Road",door:"3/90"},
+  {sNo:"2",stateName:"TamlNadu",cityName:"Chennai",areaName:"TNagar", pincode:"600017",Street:"Pondy Bazar",door:"117"}
 
 ]
   const fields = [
@@ -585,6 +603,7 @@ const addStreet = async()=>{
     },
     { key: "pincode", label: "Pincode", _style: { width: "10%" } },
     { key: "Street", label: "Street ", _style: { width: "20%" } },
+    { key: "door", label: "Door No", _style: { width: "20%" } },
 
     {
       label: "Action",
@@ -619,6 +638,15 @@ const addStreet = async()=>{
     setPassing(stateName._id);
      };
 
+     const editDoor = async () => {
+      await setDoorList(false);
+    await setDoorCreate(true);
+      formik.values.StateName = stateName.stateName;
+      formik.values.Abbreviation2 = stateName.abbreviation;
+      formik.values.Code2 = stateName.code;
+      setPassing(stateName._id);
+       };
+  
   const editCity = async () => {
     await setCityList(false);
     await setCityCreate(true);
@@ -1086,7 +1114,7 @@ const addStreet = async()=>{
                           value={areaName.value ? areaName : null}
                           options={selectVillage}
                           isDisabled={
-                            CountryCreate || StateCreate || CityCreate
+                            CountryCreate || StateCreate || CityCreate || StreetCreate
                           }
                         />
                       </CCol>
@@ -1101,7 +1129,7 @@ const addStreet = async()=>{
                               className={"saveBtn"}
                               onClick={areaCreate}
                               disabled={
-                                CountryCreate || StateCreate || CityCreate
+                                CountryCreate || StateCreate || CityCreate || StreetCreate
                               }
                             >
                               ADD
@@ -1118,7 +1146,7 @@ const addStreet = async()=>{
                               className={"btn btn-success"}
                               onClick={editArea}
                               disabled={
-                                CountryCreate || StateCreate || CityCreate
+                                CountryCreate || StateCreate || CityCreate || StreetCreate
                               }
                             >
                               EDIT
@@ -1301,7 +1329,7 @@ const addStreet = async()=>{
                           id={"locationLibraryArea"}
                           onChange={(e) => {
                             if (streetName.label) {
-                              setStreetName({ ...e, edit: streetName.edit });
+                              setStreetName({ ...e, edit: areaName.edit });
                             } else {
                               setStreetName({ ...e, edit: true });
                             }
@@ -1309,7 +1337,7 @@ const addStreet = async()=>{
                           value={streetName.value ? streetName : null}
                           options={selectStreet}
                           isDisabled={
-                            CountryCreate || StateCreate || CityCreate
+                            CountryCreate || StateCreate || CityCreate || AreaCreate
                           }
                         />
                       </CCol>
@@ -1318,13 +1346,13 @@ const addStreet = async()=>{
                         <React.Fragment>
                           <CCol className={"column-align"} md={1} lg={1}>
                             <CButton
-                              id={"locationLibraryAreaAdd"}
+                              id={"locationLibrarystreetAdd"}
                               shape={"pill"}
                               style={{ marginTop: "30px" }}
                               className={"saveBtn"}
                               onClick={addStreet}
                               disabled={
-                                CountryCreate || StateCreate || CityCreate
+                                CountryCreate || StateCreate || CityCreate || AreaCreate
                               }
                             >
                               ADD
@@ -1339,9 +1367,9 @@ const addStreet = async()=>{
                               id={"locationLibraryAreaEdit"}
                               style={{ marginTop: "30px" }}
                               className={"btn btn-success"}
-                              onClick={editArea}
+                              onClick={addStreet}
                               disabled={
-                                CountryCreate || StateCreate || CityCreate
+                                CountryCreate || StateCreate || CityCreate || AreaCreate
                               }
                             >
                               EDIT
@@ -1445,6 +1473,8 @@ const addStreet = async()=>{
                       </CRow>
                     </React.Fragment>
                   )}
+
+                  
                    <CRow style={{marginTop:"110px", marginLeft:"1300px",position:"absolute" }}>
                     <CCol sm="3" lg="3" style={{ marginLeft: "10px" }}>
                       <CWidgetDropdown
@@ -1477,6 +1507,127 @@ const addStreet = async()=>{
               </CCol>
             </CRow>
 
+<CRow className={"row-alignment"}>
+                  {DoorList && (
+                    <React.Fragment>
+                      <CCol className={"column-align"} md={4} lg={4} style={{marginLeft:"40px"}}>
+                        <CLabel className={"label-name-1"}>
+                          Door No.
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <Select
+                          placeholder="Select the Door No."
+                          id={"locationLibraryArea"}
+                          onChange={(e) => {
+                            if (doorName.label) {
+                              setDoorName({ ...e, edit: streetName.edit });
+                            } else {
+                              setDoorName({ ...e, edit: true });
+                            }
+                          }}
+                          value={doorName.value ? doorName : null}
+                          options={selectDoor}
+                          isDisabled={
+                            CountryCreate || StateCreate || CityCreate
+                          }
+                        />
+                      </CCol>
+
+                      {doorName.edit && (
+                        <React.Fragment>
+                          <CCol className={"column-align"} md={1} lg={1}>
+                            <CButton
+                              id={"locationLibraryAreaAdd"}
+                              shape={"pill"}
+                              style={{ marginTop: "30px",marginLeft:"22px" }}
+                              className={"saveBtn"}
+                              onClick={addDoor}
+                              disabled={
+                                CountryCreate || StateCreate || CityCreate
+                              }
+                            >
+                              ADD
+                            </CButton>
+                          </CCol>
+                        </React.Fragment>
+                      )}
+                      {doorName.edit && (
+                        <React.Fragment>
+                          <CCol md={3} lg={3} className={"column-align"} style={{marginLeft:"10px"}}> 
+                          <CButton
+                              style={{
+                                marginTop: "30px",
+                              }}
+                              id={"locationLibraryStateEdit"}
+                              className={"btn btn-success"}
+                              onClick={editDoor}
+                              disabled={
+                                CountryCreate || CityCreate || AreaCreate
+                              }
+                            >
+                              EDIT
+                            </CButton>
+                          </CCol>
+                        </React.Fragment>
+                      )}
+                      {saveHide && (
+                        <React.Fragment>
+                           
+                        </React.Fragment>
+                      )}
+                    </React.Fragment>
+                    
+                  )}
+                  {DoorCreate && (
+                    <React.Fragment>
+                      <CRow className={"column-align3"} sm={12} md={12} lg={12}>
+                        <CCol md="3">
+                          <CLabel className={"label-name-3"}>
+                            Door No.
+                            <span className={"text-danger"}> *</span>
+                          </CLabel>
+                          <CInput
+                            onKeyPress={(e) =>
+                              FormValidation.value_Only_Number(e)
+                            }
+                            id={"locationLibraryAreaName"}
+                            name={"StreetName"}
+                            value={formik.values.streetName}
+                            onChange={formik.handleChange}
+                            placeholder=" Door No."
+                            maxlength="10"
+                            size="10"
+                            style={{width:"300px"}}
+                          />
+                          
+                        </CCol>
+                       
+                        <CCol md="2">
+                        <CButton
+                            shape={"pill"}
+                            id={"locationLibraryStateSave"}
+                            style={{ marginTop: "32px",marginLeft:"155px" ,marginBottom:"-2px"}}
+                            className={"saveBtn"}
+                            onClick={State}
+                          >
+                            {passing !== "" ? "UPDATE" : "SAVE"}
+                          </CButton>
+                          <CButton
+                            style={{ marginTop: "-55px", marginLeft: "250px" }}
+                            className={"cancelBtn"}
+                            onClick={Canceldoor}
+                            id={"locationLibraryAreaCancel"}
+                          >
+                            CANCEL
+                          </CButton>
+                          {error !== "" ? <p>{error}</p> : null}
+                        </CCol>
+                      </CRow>
+                    </React.Fragment>
+
+                    
+                  )}
+    </CRow>
             <CRow
               style={{ padding: "1%", marginTop: "4.5%", marginLeft: "27px" }}
             >

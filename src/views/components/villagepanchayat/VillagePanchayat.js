@@ -5,6 +5,8 @@ import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
 import { Dropdown, Menu } from "antd";
+import 'antd/dist/antd.css';
+import "./VillagePanchayat.css"
 import {CSVLink, CSVDownload} from 'react-csv';
 import ReactFileReader from 'react-file-reader';
 import MultiSelect from "react-multi-select-component";
@@ -72,22 +74,22 @@ const VillagePanchayat = () => {
     },
     {
       SNo: "3.",
-      Street: "Achari street",
-      Ward: "019",
+      Street: "Sathya Sai Nagar",
+      Ward: "024",
       by: "Jai Balaji",
       on: "10/06/2021",
     },
     {
       SNo: "4.",
-      Street: "Achari street",
-      Ward: "019",
+      Street: "Agathiyar Avenue",
+      Ward: "029",
       by: "Jai Balaji",
       on: "10/06/2021",
     },
     {
       SNo: "5.",
-      Street: "Achari street",
-      Ward: "019",
+      Street: "Santhosapuram street",
+      Ward: "042",
       by: "Jai Balaji",
       on: "10/06/2021",
     },
