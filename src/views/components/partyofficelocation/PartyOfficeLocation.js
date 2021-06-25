@@ -12,6 +12,11 @@ import {
 import {} from "../../../services/ApiService";
 import Select from "react-select";
 import "./PartyOfficeLocation.css";
+import { Dropdown, Menu } from "antd";
+import 'antd/dist/antd.css';
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+
 function PartyOfficeLocation() {
   const [addPartyOffice, setAddPartyOffice] = useState(true);
   const [createPartyOffice, setCreatepartyOffice] = useState(false);
@@ -140,12 +145,12 @@ function PartyOfficeLocation() {
       _style: { width: "15%" },
     },
     { key: "address", label: "Address ", _style: { width: "20%" } },
-    { key: "city", label: "Entered By", _style: { width: "10%" } },
-    { key: "pinccode", label: "Entered On", _style: { width: "10%" } },
+    { key: "by", label: "Entered By", _style: { width: "10%" } },
+    { key: "on", label: "Entered On", _style: { width: "10%" } },
 
     {
       label: "Action",
-      key: "show_details1",
+      key: "show_details",
 
       _style: { width: "1%" },
       sorter: false,
@@ -195,6 +200,50 @@ function PartyOfficeLocation() {
     setHidePartyOffice(false);
     setBackButt(true);
   };
+  const menus = (details) => {
+    return(
+      <Menu>
+      <Menu.Item>
+        <a>Edit</a>
+      </Menu.Item>
+      <Menu.Item>
+        <a>Delete</a>
+      </Menu.Item>
+    </Menu>
+    )
+  }
+  const people = [
+    { name: "Keanu Reeves", profession: "Actor" },
+    { name: "Lionel Messi", profession: "Football Player" },
+    { name: "Cristiano Ronaldo", profession: "Football Player" },
+    { name: "Jack Nicklaus", profession: "Golf Player" },
+  ]
+  const exportPDF = () => {
+    const unit = "pt";
+    const size = "A4"; // Use A1, A2, A3 or A4
+    const orientation = "portrait"; // portrait or landscape
+
+    const marginLeft = 40;
+    const doc = new jsPDF(orientation, unit, size);
+
+    doc.setFontSize(15);
+
+    const title = "Party  Office Location";
+    const headers = [["SNo", "Name of Party  Office","Type of Party  Office ","Hierarchy Reporting Office","Address 1","Entered By", "Entered On"]];
+ 
+    const data = userData.map(elt=> [elt.SNo, elt.NAMEOFWINGOFFICE,elt.WingOffice, elt.ReportingTo,elt.address, elt.area,elt.by,elt.on]);
+
+    let content = {
+      startY: 50,
+      head: headers,
+      body: data
+    };
+
+    doc.text(title, marginLeft, 40);
+    doc.autoTable(content);
+    doc.save("report.pdf")
+  }
+
   return (
     <div className={menu.style3}>
       {sideBar1 && (
@@ -297,7 +346,7 @@ function PartyOfficeLocation() {
                 </div>
               )}
 
-              <CRow style={{marginLeft:"14px"}}>
+              <CRow style={{marginLeft:"250px"}}>
                 <CCol
                   style={{ fontSize: "1.55rem", top: "70px" }}
                   md={12}
@@ -325,10 +374,11 @@ function PartyOfficeLocation() {
                     style={{
                       position: "absolute",
                       top: "20px",
-                      marginLeft: "735px",
+                      marginLeft: "535px",
                       marginBottom: "20px",
                       color: "black",
                     }}
+                    onClick={() => exportPDF()}
                     className="fa fa-print"
                   ></i>
                 </CCol>
@@ -362,28 +412,29 @@ function PartyOfficeLocation() {
                   scopedSlots={{
                     show_details: (item, index) => {
                       return (
-                        <td className="py-2">
+                        <td className="py-1">
                           <CRow>
-                            <CCol style={{ fontSize: "1.15rem" }} md="12">
-                              <i onClick={() => {}}></i>
-                              <i
-                                style={{
-                                  marginRight: "5px",
-                                  color: "#3480e2",
-                                  cursor: "pointer",
-                                }}
-                                id={"locationLibraryEdit"}
-                                className="fas fa-edit"
-                              ></i>
-                              <i
-                                id={"locationLibraryDelete"}
-                                style={{
-                                  marginLeft: "5px",
-                                  color: "#e85654",
-                                  cursor: "pointer",
-                                }}
-                                className="fa fa-trash"
-                              ></i>
+                            <CCol style={{ fontSize: "1.15rem" }} md="16">
+                            
+                              <Dropdown
+                                className={"ant-dropdown-cutomize-by-me"}
+                                overlay={() => menus(item)}
+                              >
+                                <a
+                                  className="ant-dropdown-link"
+                                  onClick={(e) => e.preventDefault()}
+                                >
+                                  <i
+                                    style={{
+                                      marginLeft: "5px",
+                                      color: "black",
+                                    }}
+                                    className="fa fa-ellipsis-v"
+                                    bsStyle="overlay"
+                                    onClick={menus}
+                                  />
+                                </a>
+                              </Dropdown>
                             </CCol>
                           </CRow>
                         </td>
@@ -562,9 +613,9 @@ function PartyOfficeLocation() {
                 </CWidgetDropdown>
               </CCol>
             </CRow>
-            <CRow style={{marginLeft:"14px"}}>
+            <CRow style={{marginLeft:"250px"}}>
               <CCol
-                style={{ fontSize: "1.55rem", top: "100px" }}
+                style={{ fontSize: "1.55rem", top: "81px" }}
                 md={12}
                 sm={12}
                 lg={12}
@@ -579,7 +630,7 @@ function PartyOfficeLocation() {
                     height: "40px",
                     width: "40px",
 
-                    marginLeft: "955px",
+                    marginLeft: "800px",
                     marginBottom: "20px",
                   }}
                 />
@@ -589,11 +640,13 @@ function PartyOfficeLocation() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "50px",
-                    marginLeft: "795px",
+                    top: "30px",
+                    marginLeft: "595px",
                     marginBottom: "20px",
                     color: "black",
+                    cursor:'pointer'
                   }}
+                  onClick={() => exportPDF()}
                   className="fa fa-print"
                 ></i>
               </CCol>
@@ -602,8 +655,8 @@ function PartyOfficeLocation() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "50px",
-                    marginLeft: "870px",
+                    top: "30px",
+                    marginLeft: "710px",
                     marginBottom: "910px",
                     color: "black",
                   }}
@@ -626,52 +679,35 @@ function PartyOfficeLocation() {
                 scopedSlots={{
                   show_details: (item, index) => {
                     return (
-                      <td className="py-2">
-                        <CInput
-                          type={"checkbox"}
-                          style={{
-                            width: "15px",
-                            height: "15px",
-                            marginLeft: "30px",
-                            marginBottom: "10px",
-                          }}
-                        />
+                      <td className="py-1">
                         <CRow>
-                          <CCol style={{ fontSize: "1.15rem" }} md="12"></CCol>
-                        </CRow>
-                      </td>
-                    );
-                  },
-                  show_details1: (item, index) => {
-                    return (
-                      <td className="py-2">
-                        <CRow>
-                          <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i onClick={() => {}}></i>
-                            <i
-                              style={{
-                                marginRight: "5px",
-                                color: "#3480e2",
-                                cursor: "pointer",
-                              }}
-                              id={"constituencyEditicon"}
-                              className="fas fa-edit"
-                            ></i>
-                            <i
-                              id={"constituencyDelete"}
-                              style={{
-                                marginLeft: "5px",
-                                color: "#e85654",
-                                cursor: "pointer",
-                              }}
-                              className="fa fa-trash"
-                            ></i>
+                          <CCol style={{ fontSize: "1.15rem" }} md="16">
+                          
+                            <Dropdown
+                              className={"ant-dropdown-cutomize-by-me"}
+                              overlay={() => menus(item)}
+                            >
+                              <a
+                                className="ant-dropdown-link"
+                                onClick={(e) => e.preventDefault()}
+                              >
+                                
+                                <i
+                                  style={{
+                                    marginLeft: "5px",
+                                    color: "black",
+                                  }}
+                                  className="fa fa-ellipsis-v"
+                                  bsStyle="overlay"
+                                  onClick={menus}
+                                />
+                              </a>
+                            </Dropdown>
                           </CCol>
                         </CRow>
                       </td>
                     );
                   },
-
                   details: (item, index) => {},
                 }}
               />

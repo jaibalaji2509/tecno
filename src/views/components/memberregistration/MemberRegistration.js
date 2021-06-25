@@ -16,7 +16,8 @@ import "./MemberRegistration.css"
 import Select from "react-select";
 import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
 import { toast } from "react-toastify";
-
+import { Dropdown, Menu } from "antd";
+import 'antd/dist/antd.css';
 
 function MemberRegistration() {
   const [, setSelected] = useState({});
@@ -155,7 +156,7 @@ function MemberRegistration() {
     { key: "occupation", label: "Occupation", _style: { width: "10%" } },
     {
       label: "Action",
-      key: "show_details1",
+      key: "show_details",
 
       _style: { width: "10%" },
       sorter: false,
@@ -177,6 +178,29 @@ function MemberRegistration() {
     view3: false,
     view4: false
   });
+  const menus = (details) => {
+    return (
+      <Menu>
+        <Menu.Item>
+          <a>Edit</a>
+        </Menu.Item>
+        <Menu.Item>
+          <a>Delete</a>
+        </Menu.Item>
+        <Menu.Item>
+          <a>View</a>
+        </Menu.Item>
+        <Menu.Item>
+          <a
+            onClick={() => {
+              setSelected(details);
+              handleClickhis();
+            }}
+          >History</a>
+        </Menu.Item>
+      </Menu>
+    )
+  }
 
   return (
     <div className={menu.style3}>
@@ -372,7 +396,7 @@ function MemberRegistration() {
               Add Member
             </CButton>
 
-            <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-16px", marginTop:"30px" }}>
+            <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-16px", marginTop: "30px" }}>
               <CCol className={"column-align"} md="5">
                 <CLabel className={"label-name"}>
                   State
@@ -447,75 +471,34 @@ function MemberRegistration() {
                 scopedSlots={{
                   show_details: (item, index) => {
                     return (
-                      <td className="py-2">
-                        <CInput
-                          type={"checkbox"}
-                          value={"select"}
-                          style={{
-                            width: "15px",
-                            height: "15px",
-                            marginLeft: "30px",
-                            marginBottom: "10px",
-                          }}
-                        />
+                      <td className="py-1">
                         <CRow>
-                          <CCol style={{ fontSize: "1.15rem" }} md="12">
+                          <CCol style={{ fontSize: "1.15rem" }} md="16">
+
+                            <Dropdown
+                              className={"ant-dropdown-cutomize-by-me"}
+                              overlay={() => menus(item)}
+                            >
+                              <a
+                                className="ant-dropdown-link"
+                                onClick={(e) => e.preventDefault()}
+                              >
+                                <i
+                                  style={{
+                                    marginLeft: "35px",
+                                    color: "black",
+                                  }}
+                                  className="fa fa-ellipsis-v"
+                                  bsStyle="overlay"
+                                  onClick={menus}
+                                />
+                              </a>
+                            </Dropdown>
                           </CCol>
                         </CRow>
                       </td>
                     );
-                  },
-                  show_details1: (item, index) => {
-                    return (
-                      <td className="py-2">
-                        <CRow>
 
-                          <CCol style={{ fontSize: "1.15rem" }} md="12">
-                            <i
-                              style={{
-                                marginRight: "5px",
-                                color: "#3480e2",
-                                cursor: "pointer",
-                              }}
-                              id={"memberregisterediticon"}
-                              className="fas fa-edit"
-                            ></i>
-                            <i
-                              id={"memberregisterdelete"}
-                              style={{
-                                marginLeft: "5px",
-                                color: "#e85654",
-                                cursor: "pointer",
-                              }}
-                              className="fa fa-trash"
-                            ></i>
-                            <i
-                              style={{
-                                marginRight: "5px",
-                                marginLeft: "13px",
-                                color: "red",
-                                cursor: "pointer",
-
-                              }}
-                              id={"memberregisterediticon"}
-                              className="fa fa-eye"
-                            ></i>
-                            <i
-                              style={{
-                                marginRight: "5px",
-                                marginLeft: "10px",
-                                color: "#3480e2",
-                                cursor: "pointer",
-
-                              }}
-                              id={"memberregisterediticon"}
-                              className="fa fa-history"
-                              onClick={handleClickhis}>
-                            </i>
-                          </CCol>
-                        </CRow>
-                      </td>
-                    );
                   },
 
                   details: (item, index) => { },
@@ -764,18 +747,18 @@ function MemberRegistration() {
                       >
                         <CButton
                           style={{
-                          float: "right",
+                            float: "right",
                           }}
                           id={"cancelabbreviationconfigurecode"}
                           className={"cancelBtn"}
                           onClick={cancelCreate}
-                          >
+                        >
                           CANCEL
                         </CButton>
                         <CButton
                           style={{
-                          float: "right",
-                          marginRight: "15px",
+                            float: "right",
+                            marginRight: "15px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
@@ -790,7 +773,7 @@ function MemberRegistration() {
                     <CCol sm="6" lg="3" style={{ marginLeft: "10px" }}>
                       <CCol md="3">
                         <div
-                            style={{
+                          style={{
                             display: "flex",
                             flexDirection: "column",
                             paddingLeft: "0%",
@@ -807,19 +790,18 @@ function MemberRegistration() {
                               accept="image/*"
                               style={{ display: "none" }}
                               onChange={(e) => {
-                              handleSave(e.target.files[0], "profileImage");
+                                handleSave(e.target.files[0], "profileImage");
                               }}
                             />
                           </CCol>
-                          {/* <p>{JSON.stringify(state.profileImage)}</p> */}
                           <div
                             id={"addEmployeehandleClick"}
                             style={{
-                            height: "100px",
-                            width: "100px",
-                            border: "1px dashed black",
-                            marginLeft: "-300px",
-                            marginTop: "-1191px"
+                              height: "100px",
+                              width: "100px",
+                              border: "1px dashed black",
+                              marginLeft: "-300px",
+                              marginTop: "-1191px"
                             }}
                             onClick={() => handleClick()}
                           >
@@ -827,15 +809,15 @@ function MemberRegistration() {
                               alt=""
                               src={files !== "" ? files : DEFAULT_IMAGE}
                               style={{
-                              width: "100%",
-                              height: "100%",
-                              position: "acsolute",
+                                width: "100%",
+                                height: "100%",
+                                position: "acsolute",
                               }}
                             />
                           </div>
 
                           <CLabel style={{ marginLeft: "-300px" }}>
-                          Click to Upload Image
+                            Click to Upload Image
                             <span className={"text-danger"}> *</span>
                           </CLabel>
                         </div>
@@ -859,19 +841,36 @@ function MemberRegistration() {
                       scopedSlots={{
                         show_details: (item, index) => {
                           return (
-                            <td className="py-2">
+                            <td className="py-1">
                               <CRow>
-                                <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                  <i
-                                    onClick={() => {
-                                    }}
-                                  ></i>
+                                <CCol style={{ fontSize: "1.15rem" }} md="16">
 
+                                  <Dropdown
+                                    className={"ant-dropdown-cutomize-by-me"}
+                                    overlay={() => menus(item)}
+                                  >
+                                    <a
+                                      className="ant-dropdown-link"
+                                      onClick={(e) => e.preventDefault()}
+                                    >
+                                      <i
+                                        style={{
+                                          marginLeft: "35px",
+                                          color: "black",
+                                        }}
+                                        className="fa fa-ellipsis-v"
+                                        bsStyle="overlay"
+                                        onClick={menus}
+                                      />
+                                    </a>
+                                  </Dropdown>
                                 </CCol>
                               </CRow>
                             </td>
                           );
+
                         },
+
                         details: (item, index) => { },
                       }}
                     />

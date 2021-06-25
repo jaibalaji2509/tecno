@@ -4,6 +4,10 @@ import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
 import Select from "react-select";
+import { Dropdown, Menu } from "antd";
+import 'antd/dist/antd.css';
+import {CSVLink, CSVDownload} from 'react-csv';
+import ReactFileReader from 'react-file-reader';
 
 const MunicipalCorporation = () => {
   const [location, setLocation] = useState({
@@ -57,15 +61,36 @@ const MunicipalCorporation = () => {
     // },
     {
       SNo: "1",
-      ward: "0018",
+      ward: "0005",
       street: "Alwarpet",
       EnteredBy: "Sathishkumar",
       Enteredon: "11/06/2021",
     },
     {
       SNo: "2",
-      ward: "0018",
+      ward: "0007",
       street: "Nandanam",
+      EnteredBy: "Sathishkumar",
+      Enteredon: "11/06/2021",
+    },
+    {
+      SNo: "3",
+      ward: "0012",
+      street: "Mylapore",
+      EnteredBy: "Sathishkumar",
+      Enteredon: "11/06/2021",
+    },
+    {
+      SNo: "4",
+      ward: "0018",
+      street: "Velacherry",
+      EnteredBy: "Sathishkumar",
+      Enteredon: "11/06/2021",
+    },
+    {
+      SNo: "5",
+      ward: "0019",
+      street: "Navalur",
       EnteredBy: "Sathishkumar",
       Enteredon: "11/06/2021",
     },
@@ -99,13 +124,13 @@ const MunicipalCorporation = () => {
   ];
 
   const fields = [
-    {
-      key: "show_details1",
-      label: "Select",
-      _style: { width: "3%" },
-      sorter: false,
-      filter: false,
-    },
+    // {
+    //   key: "show_details1",
+    //   label: "Select",
+    //   _style: { width: "3%" },
+    //   sorter: false,
+    //   filter: false,
+    // },
 
     {
       key: "SNo",
@@ -258,6 +283,32 @@ const MunicipalCorporation = () => {
     { value: "0017", label: "0017" },
     { value: "0018", label: "0018" },
   ];
+  const [state, setState] =useState([])
+
+  const handleFiles = files => {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        // Use reader.result
+        setState(reader.result);
+      console.log(reader.result);
+    }
+    reader.readAsText(files[0]);
+}
+  const menus = (details) => {
+    return(
+      <Menu>
+      <Menu.Item>
+        <a>Edit</a>
+      </Menu.Item>
+      <Menu.Item>
+        <a>Delete</a>
+      </Menu.Item>
+    </Menu>
+    )
+  }
+
+
+
   return (
     <div>
       {hideMappingMunicipal && (
@@ -270,19 +321,15 @@ const MunicipalCorporation = () => {
               <div>
                 <div style={{ marginLeft: "-26px" }}>
                   <CRow style={{ marginTop: "45px" }}>
-                    <CCol >
+                    <CCol>
                       <CCol
-                        md="5" lg="5" sm="5"
-                        style={{
-                          marginLeft: "5px",
-                          float: "right",
-                          marginTop: "-20px",
-                        }}
+                        md="5" 
+                      
                       >
                         <CButton
                           style={{
-                            float: "right",
-                            marginRight: "1035px",
+                         
+                            marginLeft: "35px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
@@ -366,7 +413,7 @@ const MunicipalCorporation = () => {
                   </CRow>
                 </div>
 
-                <CRow style={{ padding: "4%", marginTop: "-1.5%" ,marginLeft:"-40px"}}>
+                <CRow style={{ padding: "4%", marginTop: "-2.5%" ,marginLeft:"-40px"}}>
                   <CDataTable
                     items={userData}
                     fields={fields}
@@ -381,30 +428,29 @@ const MunicipalCorporation = () => {
                     scopedSlots={{
                       show_details: (item, index) => {
                         return (
-                          <td className="py-2">
+                          <td className="py-1">
                             <CRow>
-                              <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                <i
-                                  id={"locationLibraryDelete"}
-                                  style={{
-                                    marginLeft: "5px",
-                                    color: "blue",
-                                    cursor: "pointer",
-                                  }}
-                                  onClick={() => editMunicipalCorporation(item)}
-                                  className="fa fa-edit"
-                                ></i>
-
-                                <i
-                                  id={"locationLibraryDelete"}
-                                  style={{
-                                    marginLeft: "5px",
-                                    marginLeft: "10px",
-                                    color: "red",
-                                    cursor: "pointer",
-                                  }}
-                                  className="fa fa-trash"
-                                ></i>
+                              <CCol style={{ fontSize: "1.15rem" }} md="16">
+                              
+                                <Dropdown
+                                  className={"ant-dropdown-cutomize-by-me"}
+                                  overlay={() => menus(item)}
+                                >
+                                  <a
+                                    className="ant-dropdown-link"
+                                    onClick={(e) => e.preventDefault()}
+                                  >
+                                    <i
+                                      style={{
+                                        marginLeft: "35px",
+                                        color: "black",
+                                      }}
+                                      className="fa fa-ellipsis-v"
+                                      bsStyle="overlay"
+                                      onClick={menus}
+                                    />
+                                  </a>
+                                </Dropdown>
                               </CCol>
                             </CRow>
                           </td>
@@ -463,7 +509,7 @@ const MunicipalCorporation = () => {
                             options={selectMunicipalcorporation}
                           />
                         </CCol>
-                        <CCol className={"column-align"} md={1} lg={1}>
+                        {/* <CCol className={"column-align"} md={1} lg={1}>
                           <CButton
                             shape={"pill"}
                             id={"addmunicipalcorporation"}
@@ -473,7 +519,44 @@ const MunicipalCorporation = () => {
                           >
                             ADD
                           </CButton>
-                        </CCol>
+                        </CCol> */}
+ <CCol md={1} lg={1}>
+                <CButton
+                  style={{
+                    marginLeft: "0px",
+                    marginTop:"51px",
+                    backgroundColor: "#3273e9",
+                    borderLine: "5px !important",
+                    borderColor: "white",
+                    fontSize: "1.25rem",
+                    color: "#ffff",
+                  }}
+                  onClick={enableCreate}
+                  class={"fa fa-plus"}
+                
+                ></CButton>
+              </CCol>
+              <CCol md={1} lg={1}>
+                <i
+                  style={{
+                    marginLeft: "-77px",
+                    marginTop: "53px",
+
+                    fontSize: "1.45rem",
+                    color: "#3cd3ad",
+                  }}
+                  class={"fa fa-eye"}
+                 
+                ></i>
+              </CCol>
+                        <CCol md={1} lg={1} style={{marginTop:"50px",marginLeft:"-163px"}}>
+                    <ReactFileReader handleFiles={handleFiles} fileTypes={'.CSV'}>
+                    <i className="fa fa-upload" style={{fontSize:"1.45rem"}} />
+                    <CSVLink data={state} ><i className="fa fa-download" style={{fontSize:"1.45rem",marginLeft:"25px",color:"#ea384d"}}/></CSVLink>
+                    </ReactFileReader>
+                    
+                    </CCol>
+                  
 
                         {municipalName.edit === true ? (
                           <React.Fragment>
@@ -600,7 +683,7 @@ const MunicipalCorporation = () => {
                             options={selectWard}
                           />
                         </CCol>
-                        <CCol className={"column-align"} md={1} lg={1}>
+                        {/* <CCol className={"column-align"} md={1} lg={1}>
                           <CButton
                             shape={"pill"}
                             id={"addmunicipalcorporation"}
@@ -610,7 +693,45 @@ const MunicipalCorporation = () => {
                           >
                             ADD
                           </CButton>
-                        </CCol>
+                        </CCol> */}
+                         <CCol md={1} lg={1}>
+                <CButton
+                  style={{
+                    marginLeft: "0px",
+                    marginTop:"51px",
+                    backgroundColor: "#3273e9",
+                    borderLine: "5px !important",
+                    borderColor: "white",
+                    fontSize: "1.25rem",
+                    color: "#ffff",
+                  }}
+                  onClick={enableCreateadd}
+                  class={"fa fa-plus"}
+                
+                ></CButton>
+              </CCol>
+              <CCol md={1} lg={1}>
+                <i
+                  style={{
+                    marginLeft: "-77px",
+                    marginTop: "53px",
+
+                    fontSize: "1.45rem",
+                    color: "#3cd3ad",
+                  }}
+                  class={"fa fa-eye"}
+                 
+                ></i>
+              </CCol>
+                        <CCol md={1} lg={1} style={{marginTop:"50px",marginLeft:"-163px"}}>
+                    <ReactFileReader handleFiles={handleFiles} fileTypes={'.CSV'}>
+                    <i className="fa fa-upload" style={{fontSize:"1.45rem"}} />
+                    <CSVLink data={state} ><i className="fa fa-download" style={{fontSize:"1.45rem",marginLeft:"25px",color:"#ea384d"}}/></CSVLink>
+                    </ReactFileReader>
+                    
+                    </CCol>
+                  
+
                         {municipalName.edit === true ? (
                           <React.Fragment>
                             <CCol md={3} lg={3}>

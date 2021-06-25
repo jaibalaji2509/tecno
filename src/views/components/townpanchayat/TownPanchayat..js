@@ -11,6 +11,8 @@ import {
 import React, { useState } from "react";
 import Select  from "react-select";
 import CDataTable from "../../CoreComponents/table/CDataTable";
+import { Dropdown, Menu } from "antd";
+import 'antd/dist/antd.css';
 
 const TownPanchayat = () => {
   const [locations, setLocations] = useState({
@@ -44,8 +46,26 @@ const TownPanchayat = () => {
     on:"10/06/2021",
   },
   {SNo:"2",
-  Street:"Marriamman Kovil Street",
-  Ward:"018",
+  Street:"Mariamman Kovil Street",
+  Ward:"019",
+  by:"JAI BALAJI",
+  on:"10/06/2021",
+},
+{SNo:"3",
+  Street:"Kothari Nagar",
+  Ward:"020",
+  by:"JAI BALAJI",
+  on:"10/06/2021",
+},
+{SNo:"4",
+  Street:"Kalyani Ponappan Avenue",
+  Ward:"021",
+  by:"JAI BALAJI",
+  on:"10/06/2021",
+},
+{SNo:"5",
+  Street:"Anjugam Street",
+  Ward:"023",
   by:"JAI BALAJI",
   on:"10/06/2021",
 },
@@ -61,15 +81,15 @@ const TownPanchayat = () => {
   })
 }
   const fields = [
-    {
-      key: "show_details",
-      label: "Select",
-      _style: { width: "3%" },
-      select: <div>Email <input type={"checkbox"} onClick={handleRowSelection}/></div>,
-      sorter: false,
-      filter: false,
-      selectedRows,
-    },
+    // {
+    //   key: "show_details",
+    //   label: "Select",
+    //   _style: { width: "3%" },
+    //   select: <div>Email <input type={"checkbox"} onClick={handleRowSelection}/></div>,
+    //   sorter: false,
+    //   filter: false,
+    //   selectedRows,
+    // },
     {
       key: "SNo",
       label: "S.NO",
@@ -83,7 +103,7 @@ const TownPanchayat = () => {
   
     {
       key: "by",
-      label: "Enteerd",
+      label: "Entered",
       _style: { width: "10%" },
       sorter: false,
       filter: false,
@@ -96,7 +116,7 @@ const TownPanchayat = () => {
       filter: false,
     },
     {
-      key: "show_details1",
+      key: "show_details",
       label: "Action",
       _style: { width: "10%" },
       sorter: false,
@@ -194,6 +214,18 @@ const canceltownchange = () => {
       await setWardNumberCreate(false);
     };
 
+    const menus = (details) => {
+      return(
+        <Menu>
+        <Menu.Item>
+          <a>Edit</a>
+        </Menu.Item>
+        <Menu.Item>
+          <a>Delete</a>
+        </Menu.Item>
+      </Menu>
+      )
+    }
     return (
       <div>
         {hideMappingTown && (
@@ -207,19 +239,15 @@ const canceltownchange = () => {
                   <div style={{ marginLeft: "-26px" }}>
                    
                     <CRow style={{ marginTop: "45px" }}>
-                      <CCol >
+                      <CCol md="10" >
                         <CCol
                           md="5"
-                          style={{
-                            marginLeft: "5px",
-                            float: "right",
-                            marginTop: "-20px",
-                          }}
+                         
                         >
                           <CButton
                             style={{
-                              float: "right",
-                              marginRight: "1065px",
+                            
+                              marginLeft: "45px",
                             }}
                             id={"saveAbbreviationConfigureCode"}
                             className={"saveBtn"}
@@ -311,7 +339,7 @@ const canceltownchange = () => {
                     </CRow>
                   </div>
 
-                  <CRow style={{ padding: "4%", marginTop: "-1.5%" ,marginLeft:"-30px"}}>
+                  <CRow style={{ padding: "4%", marginTop: "-2.5%" ,marginLeft:"-30px"}}>
                     <CDataTable
                       items={userData}
                       fields={fields}
@@ -329,56 +357,35 @@ const canceltownchange = () => {
                         
                         show_details: (item, index) => {
                           return (
-                            
-               
-
-                            <td className="py-2">
+                            <td className="py-1">
                               <CRow>
-                                <CInput
-                                  type={"checkbox"}
-                                  style={{
-                                    width: "15px",
-                                    height: "15px",
-                                    marginLeft: "30px",
-                                    marginBottom: "10px",
-                                  }}
-                                  onClick={handleRowSelection}
-                                />
+                                <CCol style={{ fontSize: "1.15rem" }} md="16">
                                 
-                              </CRow>
-                            </td>
-                          );
-                        },
-                        show_details1: (item, index) => {
-                          return (
-                            <td className="py-2">
-                              <CRow>
-                          
-                                <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                  <i
-                                      style={{
-                                        marginRight: "5px",
-                                        color: "#3480e2",
-                                        cursor: "pointer",
-                                      }}
-                                      id={"locationLibraryEdit"}
-                                      className="fas fa-edit"
-                                    ></i>
-                                    <i
-                                      id={"locationLibraryDelete"}
-                                      style={{
-                                        marginLeft: "5px",
-                                        color: "#e85654",
-                                        cursor: "pointer",
-                                      }}
-                                      className="fa fa-trash"
-                                    ></i>
+                                  <Dropdown
+                                    className={"ant-dropdown-cutomize-by-me"}
+                                    overlay={() => menus(item)}
+                                  >
+                                    <a
+                                      className="ant-dropdown-link"
+                                      onClick={(e) => e.preventDefault()}
+                                    >
+                                      <i
+                                        style={{
+                                          marginLeft: "35px",
+                                          color: "black",
+                                        }}
+                                        className="fa fa-ellipsis-v"
+                                        bsStyle="overlay"
+                                        onClick={menus}
+                                      />
+                                    </a>
+                                  </Dropdown>
                                 </CCol>
                               </CRow>
                             </td>
                           );
                         },
-                        details: (item, index) => {},
+                         details: (item, index) => {},
                       }}
                     />
                   </CRow>

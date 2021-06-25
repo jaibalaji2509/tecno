@@ -1,9 +1,16 @@
-import { CButton, CCard, CCol, CInput, CLabel, CRow } from "@coreui/react";
-import React, { useState } from "react";
-import Select from "react-select";
+import { CButton, CCard, CCol, CInput,CLink, CLabel, CRow } from "@coreui/react";
+import React, { useState,useCounter } from "react";
+import Select,{components} from "react-select";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
+import { Dropdown, Menu } from "antd";
+import 'antd/dist/antd.css';
+import "./VillagePanchayat.css"
+import {CSVLink, CSVDownload} from 'react-csv';
+import ReactFileReader from 'react-file-reader';
+import MultiSelect from "react-multi-select-component";
+import "./VillagePanchayat.css"
 const VillagePanchayat = () => {
   const [locations, setLocations] = useState({
     state: "",
@@ -16,8 +23,10 @@ const VillagePanchayat = () => {
   });
   const [municipalList, setMunicipalList] = useState(true);
   const [MunicipalCreate, setmunicipalCreate] = useState(false);
-  const [municipalName] = useState("");
   const [selected, setSelected] = useState([]);
+  const [municipalCorporation] = useState({});
+  const [sideBar1, setSideBar1] = useState(false);
+  const [municipalName] = useState("");
   const [villageList, setvillageList] = useState(true);
   const [villageCreate, setVillageCreate] = useState(false);
   const [panchayatList, setPanchayatlist] = useState(true);
@@ -31,6 +40,12 @@ const VillagePanchayat = () => {
     townPanchayat: false,
     villagePanchayat: false,
     cityLocation: false,
+  });
+  const [gridShow, setGridShow] = useState({
+    view1: false,
+    view2: false,
+    view3: false,
+    view4: false,
   });
   const select = [
     { value: "tamil", label: "Tamilnadu" },
@@ -56,6 +71,30 @@ const VillagePanchayat = () => {
       SNo: "2.",
       Street: "Achari street",
       Ward: "019",
+      by: "Jai Balaji",
+      on: "10/06/2021",
+    },
+    {
+      _id:"00003",
+      SNo: "3.",
+      Street: "Sathya Sai Nagar",
+      Ward: "024",
+      by: "Jai Balaji",
+      on: "10/06/2021",
+    },
+    {
+      _id:"00004",
+      SNo: "4.",
+      Street: "Agathiyar Avenue",
+      Ward: "029",
+      by: "Jai Balaji",
+      on: "10/06/2021",
+    },
+    {
+      _id:"00005",
+      SNo: "5.",
+      Street: "Santhosapuram street",
+      Ward: "042",
       by: "Jai Balaji",
       on: "10/06/2021",
     },
@@ -173,8 +212,290 @@ const VillagePanchayat = () => {
     setHideMappingVillage(true);
     setHideVillagePanchayat(false);
   };
+  const [state, setState] =useState([])
+  const  onChangeFile = (event) => {
+    
+    //   var file = event.target.files[0];
+    //   console.log(file);
+    // setState(file); /// if you want to upload latter
+  }
+  const csvData =[
+    ['firstname', 'lastname', 'email'] ,
+    ['John', 'Doe' , 'john.doe@xyz.com'] ,
+    ['Jane', 'Doe' , 'jane.doe@xyz.com']
+  ];
+
+  const handleFiles = files => {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        // Use reader.result
+        setState(reader.result);
+      console.log(reader.result);
+    }
+    reader.readAsText(files[0]);
+}
+const menus = (details) => {
+  return(
+    <Menu>
+    <Menu.Item>
+      <a>Edit</a>
+    </Menu.Item>
+    <Menu.Item>
+      <a>Delete</a>
+    </Menu.Item>
+  </Menu>
+  )
+}
+const [menu, setMenu] = useState({
+  style: "menu2",
+  menuStatus: "open",
+  style3: "menu2",
+});
+const SelectMenuButton = (props) => {
   return (
-    <div>
+      <components.MenuList  {...props} >
+          {props.children}
+          <CRow md="12"  >
+          <CCol md="6">     <CLink className={"saveBtn"} onClick={handleClick} style={{paddingLeft:"210px"}}>Add </CLink></CCol>
+          <CCol md="6" > 
+          <CLink className={"saveBtn"} onClick={handleClick} style={{marginLeft:"100px"}}>Bulk Upload </CLink> 
+          </CCol>
+          </CRow>
+          
+      </components.MenuList >
+  ) }
+
+  const handleClick = () => {
+    
+    switch (menu.menuStatus) {
+      case "open":
+        setMenu({
+          menuStatus: "close",
+          // style3: "menu2",
+          style: "menu active1",
+          
+        });
+      
+        setTimeout(() => {
+          setSideBar1(true);
+        }, 1000);
+        break;
+      case "close":
+        setMenu({
+          menuStatus: "open",
+          // style3: "menu2",
+          style: "menu active2",
+          
+        });
+        setTimeout(() => {
+          setSideBar1(false);
+        }, 1000);
+        break;
+    }
+  };
+  const [counter,setCount] = useState(0);
+  const onChangeValue =()=>{
+    setCount(counter+1)
+  }
+  const [inputList, setInputList] = useState([{ panchayatname: "", panchayatabbreviation: "",panchayatcode: "" }]);
+  
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    list[index][name] = value;
+    setInputList(list);
+  };
+ 
+  const handleRemoveClick = (index)=>{
+    const list =[...inputList];
+    list.splice(index,1)
+    setInputList(list);
+  }
+ 
+ 
+  // handle click event of the Add button
+  const handleAddClick = (e) => {
+    e.preventDefault()
+    setInputList([...inputList, { panchayatname: "", panchayatabbreviation: "" ,panchayatcode:""}]);
+  }
+  const [manual, setManual] =useState(false)
+  const menuToggle = (e) =>{
+    e.stopPropagation();
+    setManual({
+      isOpen: !manual.isOpen
+    });
+  }
+  return (
+    <div className={menu.style3}>
+       {sideBar1 && (
+        <div className={menu.style}>
+        
+          <CRow className={""}>
+            <CCol md="12" lg="12" sm="12">
+              <div>
+                <span
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: "700",
+                    marginLeft: "20px",
+                  }}
+                >
+                ADDING VILLAGE PANCHAYAT{" "}
+                </span>
+              </div>
+            </CCol>
+          </CRow>
+   
+         
+     {inputList.map ((x,i) =>{
+       return(
+      
+        <CRow
+                                  className={"row-alignment"}
+                                  style={{ marginLeft: "5px", marginTop: "20px" }}
+                                  sm={12}
+                                  md={12}
+                                  lg={12}
+                                >
+                                  <CCol md="2">
+                                    <CLabel className={"label-name-1"}>
+                                      District panchayat
+                                      <span className={"text-danger"}> *</span>
+                                    </CLabel>
+        
+                                    <CInput
+                                      id={"MunicipalName"}
+                                      name={"municipalname"}
+                                      placeholder="Enter District Panchayat Name"
+                                      maxlength="60"
+                                      size="60"
+                                      value={x.panchayatname}
+                                      onChange={e => handleInputChange(e, i)}
+                                    />
+                                  </CCol>
+        
+                                  <CCol md="2">
+                                    <CLabel className={"label-name-1"}>
+                                      Abbreviation
+                                      <span className={"text-danger"}> *</span>
+                                    </CLabel>
+                                    <CInput
+                                      id={"municipalabrreviation"}
+                                      name={"abbreviation"}
+                                      placeholder="Enter Abbreviation"
+                                      maxlength="5"
+                                      size="5"
+                                      value={x.panchayatabbreviation}
+                                      onChange={e => handleInputChange(e, i)}
+                                    />
+                                  </CCol>
+                                  <CCol md="2">
+                                    <CLabel className={"label-name-1"}>
+                                      Code
+                                      <span className={"text-danger"}> *</span>
+                                    </CLabel>
+                                    <CInput
+                                      id={"municipalcode"}
+                                      name={"code"}
+                                      placeholder="Enter Code"
+                                      maxlength="5"
+                                      size="5"
+                                      value={x.panchayatcode}
+                                      onChange={e => handleInputChange(e, i)}
+                                    />
+                                  </CCol>
+
+<CRow>
+<CCol md="3">
+                                  {inputList.length - 1 === i &&
+                                  <i
+                          style={{
+                            marginLeft: "0px",
+                            marginTop:"35px",
+                          
+                            fontSize: "1.25rem",
+                            color: "#3273e9",
+                          }}
+                          onClick={handleAddClick}
+                          class={"fa fa-plus"}
+                        
+                        />}
+                         
+                         
+                                     
+                                    
+                                  </CCol>
+                                  <CCol md="3">
+                                  {inputList.length !== 1 &&
+                                  <i
+                          style={{
+                            marginLeft: "0px",
+                            marginTop:"35px",
+                           
+                            fontSize: "1.25rem",
+                            color: "black",
+                          }}
+                          onClick={()=>handleRemoveClick(i)}
+                          class={"fa fa-remove"}
+                        
+                        />}
+                         
+                         
+                                     
+                                    
+                                  </CCol>
+        
+</CRow>
+                                 
+                                 
+                                </CRow>
+
+       
+       ) })}
+    
+         
+       
+         
+      <CRow style={{marginLeft:"580px"}}>
+        
+      <CCol md="3">
+                          <CButton
+                  style={{
+                    marginLeft: "30px",
+                    marginTop:"35px",
+                  
+                  }}
+                  onClick={enableCreate}
+                 className={"saveBtn"}
+                
+                > Save</CButton>
+                            <CButton
+                              shape={"pill"}
+                              id={"municipalcancel"}
+                              style={{ marginTop: "30px", marginLeft: "20px" }}
+                              className={"cancelBtn"}
+                              onClick={handleClick}
+                            >
+                              CANCEL
+                            </CButton>
+                            {error !== "" ? <p>{error}</p> : null}
+                          </CCol>
+      </CRow>
+
+         
+          <CButton
+            className={"menu"}
+            style={{ position: "absolute", top: "15px", right: "15px" }}
+            className={"cancelBtn"}
+            onClick={() => {
+              handleClick();
+              // handleClick2();
+            }}
+          >
+            Back
+          </CButton>
+        </div>
+      )}
       {hideMappingVillage && (
         <div>
           <CCard className={"cardSave"}>
@@ -185,19 +506,11 @@ const VillagePanchayat = () => {
               <div>
                 <div style={{ marginLeft: "-26px" }}>
                   <CRow style={{ marginTop: "45px" }}>
-                    <CCol>
-                      <CCol
-                        md="5"
-                        style={{
-                          marginLeft: "5px",
-                          float: "right",
-                          marginTop: "-20px",
-                        }}
-                      >
+                    <CCol md="10">
+                      <CCol md="5">
                         <CButton
                           style={{
-                            float: "right",
-                            marginRight: "1055px",
+                            marginLeft: "45px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
@@ -208,6 +521,7 @@ const VillagePanchayat = () => {
                       </CCol>
                     </CCol>
                   </CRow>
+                  
                   <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                     <CCol className={"column-align"} md="3">
                       <CLabel className={"label-name"}>
@@ -224,12 +538,14 @@ const VillagePanchayat = () => {
                         options={select}
                       />
                     </CCol>
+                  
                     <CCol className={"column-align"} md="3">
                       <CLabel className={"label-name"}>
                         District panchayat
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
+                      
                         className={"input-align"}
                         id={"municipaldistrict"}
                         name={"city"}
@@ -237,6 +553,7 @@ const VillagePanchayat = () => {
                         options={select}
                       />
                     </CCol>
+
                     <CCol className={"column-align"} md="3">
                       <CLabel className={"label-name"}>
                         Village Panchayat
@@ -300,7 +617,7 @@ const VillagePanchayat = () => {
                 <CRow
                   style={{
                     padding: "4%",
-                    marginTop: "-1.5%",
+                    marginTop: "-2.5%",
                     marginLeft: "-30px",
                   }}
                 >
@@ -318,28 +635,29 @@ const VillagePanchayat = () => {
                     scopedSlots={{
                       show_details1: (item, index) => {
                         return (
-                          <td className="py-2">
+                          <td className="py-1">
                             <CRow>
-                              <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                <i onClick={() => {}}></i>
-                                <i
-                                  style={{
-                                    marginRight: "5px",
-                                    color: "#3480e2",
-                                    cursor: "pointer",
-                                  }}
-                                  id={"locationLibraryEdit"}
-                                  className="fas fa-edit"
-                                ></i>
-                                <i
-                                  id={"locationLibraryDelete"}
-                                  style={{
-                                    marginLeft: "5px",
-                                    color: "#e85654",
-                                    cursor: "pointer",
-                                  }}
-                                  className="fa fa-trash"
-                                ></i>
+                              <CCol style={{ fontSize: "1.15rem" }} md="16">
+                              
+                                <Dropdown
+                                  className={"ant-dropdown-cutomize-by-me"}
+                                  overlay={() => menus(item)}
+                                >
+                                  <a
+                                    className="ant-dropdown-link"
+                                    onClick={(e) => e.preventDefault()}
+                                  >
+                                    <i
+                                      style={{
+                                        marginLeft: "35px",
+                                        color: "black",
+                                      }}
+                                      className="fa fa-ellipsis-v"
+                                      bsStyle="overlay"
+                                      onClick={menus}
+                                    />
+                                  </a>
+                                </Dropdown>
                               </CCol>
                             </CRow>
                           </td>
@@ -391,15 +709,23 @@ const VillagePanchayat = () => {
                             District Panchayat
                             <span className={"text-danger"}> *</span>
                           </CLabel>
+                    
                           <Select
+                        
+                          //  isMulti
+                          //  isChecked
+                          //  closeMenuOnSelect={false}
                             placeholder="Select District Panchayat"
                             id={"municipalcorporation"}
                             type={"text"}
-                            // value={municipalCorporation}
+                            // value={selected}
+                            // onChange={(e) => setSelected(e)}
+                            components={{ MenuList: SelectMenuButton }}
                             options={select}
+                            // labelledBy={"Select"}
                           />
                         </CCol>
-                        <CCol className={"column-align"} md={1} lg={1}>
+                        {/* <CCol className={"column-align"} md={1} lg={1}>
                           <CButton
                             shape={"pill"}
                             id={"addmunicipalcorporation"}
@@ -409,7 +735,44 @@ const VillagePanchayat = () => {
                           >
                             ADD
                           </CButton>
-                        </CCol>
+                        </CCol> */}
+                          {/* <CCol md={1} lg={1}>
+                <CButton
+                  style={{
+                    marginLeft: "0px",
+                    marginTop:"51px",
+                    backgroundColor: "#3273e9",
+                    borderLine: "5px !important",
+                    borderColor: "white",
+                    fontSize: "1.25rem",
+                    color: "#ffff",
+                  }}
+                  onClick={enableCreate}
+                  class={"fa fa-plus"}
+                
+                ></CButton>
+              </CCol>
+              <CCol md={1} lg={1}>
+                <i
+                  style={{
+                    marginLeft: "-77px",
+                    marginTop: "53px",
+
+                    fontSize: "1.45rem",
+                    color: "#3cd3ad",
+                  }}
+                  class={"fa fa-eye"}
+                 
+                ></i>
+              </CCol>
+                        <CCol md={1} lg={1} style={{marginTop:"50px",marginLeft:"-163px"}}>
+                    <ReactFileReader handleFiles={handleFiles} fileTypes={'.CSV'}>
+                    <i className="fa fa-upload" style={{fontSize:"1.45rem"}} />
+                    <CSVLink data={state} ><i className="fa fa-download" style={{fontSize:"1.45rem",marginLeft:"25px",color:"#ea384d"}}/></CSVLink>
+                    </ReactFileReader>
+                    
+                    </CCol> */}
+                  
 
                         {municipalName.edit === true ? (
                           <React.Fragment>
@@ -537,7 +900,7 @@ const VillagePanchayat = () => {
                             options={select}
                           />
                         </CCol>
-                        <CCol className={"column-align"} md={1} lg={1}>
+                        {/* <CCol className={"column-align"} md={1} lg={1}>
                           <CButton
                             shape={"pill"}
                             id={"addmunicipalcorporation"}
@@ -547,8 +910,8 @@ const VillagePanchayat = () => {
                           >
                             ADD
                           </CButton>
-                        </CCol>
-
+                        </CCol> */}
+  
                         {municipalName.edit === true ? (
                           <React.Fragment>
                             <CCol md={3} lg={3}>
@@ -663,7 +1026,7 @@ const VillagePanchayat = () => {
                             options={select}
                           />
                         </CCol>
-                        <CCol className={"column-align"} md={1} lg={1}>
+                        {/* <CCol className={"column-align"} md={1} lg={1}>
                           <CButton
                             shape={"pill"}
                             id={"addmunicipalcorporation"}
@@ -673,7 +1036,7 @@ const VillagePanchayat = () => {
                           >
                             ADD
                           </CButton>
-                        </CCol>
+                        </CCol> */}
 
                         {municipalName.edit === true ? (
                           <React.Fragment>
@@ -790,7 +1153,7 @@ const VillagePanchayat = () => {
                             options={select}
                           />
                         </CCol>
-                        <CCol className={"column-align"} md={1} lg={1}>
+                        {/* <CCol className={"column-align"} md={1} lg={1}>
                           <CButton
                             shape={"pill"}
                             id={"addmunicipalcorporation"}
@@ -800,7 +1163,8 @@ const VillagePanchayat = () => {
                           >
                             ADD
                           </CButton>
-                        </CCol>
+                        </CCol> */}
+                       
 
                         {municipalName.edit === true ? (
                           <React.Fragment>

@@ -12,6 +12,9 @@ import Select  from "react-select";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
+import { Dropdown, Menu } from "antd";
+import 'antd/dist/antd.css';
+
 const Municipality = () => {
   const [locations, setLocations] = useState({
     state: "",
@@ -54,6 +57,20 @@ const Municipality = () => {
     },
     {
       SNo: "3",
+      Street: " Stpachayapas College sreet",
+      Ward:"0098",
+      EnteredBy:"sathishKumar",
+      EnteredOn:"11/06/2021"
+    },
+    {
+      SNo: "4",
+      Street: " Stpachayapas College sreet",
+      Ward:"0098",
+      EnteredBy:"sathishKumar",
+      EnteredOn:"11/06/2021"
+    },
+    {
+      SNo: "5",
       Street: " Stpachayapas College sreet",
       Ward:"0098",
       EnteredBy:"sathishKumar",
@@ -165,6 +182,20 @@ const Municipality = () => {
     { value: "Thammanur ", label: "Thammanur " },
   ];
   const selectWard = [{ value: "0097", label: "0097" },{ value: "0098", label: "0098" }];
+
+  const menus = (details) => {
+    return(
+      <Menu>
+      <Menu.Item>
+        <a>Edit</a>
+      </Menu.Item>
+      <Menu.Item>
+        <a>Delete</a>
+      </Menu.Item>
+    </Menu>
+    )
+  }
+
   return (
     <div>
         {hideMappingMunicipality && (
@@ -181,17 +212,13 @@ const Municipality = () => {
                  <CCol >
                    <CCol
                      md="5"
-                     style={{
-                       marginLeft: "5px",
-                       float: "right",
-                       marginTop:"-20px"
-                     }}
+                    
                    >
         
                      <CButton
                        style={{
-                         float: "right",
-                         marginRight: "1110px",
+                      
+                         marginLeft: "35px",
                        }}
                        id={"saveAbbreviationConfigureCode"}
                        className={"saveBtn"}
@@ -281,7 +308,7 @@ const Municipality = () => {
                 
                </div>
               
-               <CRow style={{ padding: "4%", marginTop: "-1.5%" ,marginLeft:"-40px"}}>
+               <CRow style={{ padding: "4%", marginTop: "-2.5%" ,marginLeft:"-40px"}}>
                  <CDataTable
                    items={userData}
                    fields={fields}
@@ -296,35 +323,35 @@ const Municipality = () => {
                    pagination
                    scopedSlots={{
                      show_details: (item, index) => {
-                       return (
-                         <td className="py-2">
-                           <CRow>
-                             <CCol style={{ fontSize: "1.15rem" }} md="12">
-                             <i
-                                  id={"locationLibraryDelete"}
-                                  style={{
-                                    marginLeft: "5px",
-                                    color: "blue",
-                                    cursor: "pointer",
-                                  }}
-                                  className="fa fa-edit"
-                                ></i>
-
-                                <i
-                                  id={"locationLibraryDelete"}
-                                  style={{
-                                    marginLeft: "5px",
-                                    marginLeft: "10px",
-                                    color: "red",
-                                    cursor: "pointer",
-                                  }}
-                                  className="fa fa-trash"
-                                ></i>
-                             </CCol>
-                           </CRow>
-                         </td>
-                       );
-                     },
+                      return (
+                        <td className="py-1">
+                          <CRow>
+                            <CCol style={{ fontSize: "1.15rem" }} md="16">
+                            
+                              <Dropdown
+                                className={"ant-dropdown-cutomize-by-me"}
+                                overlay={() => menus(item)}
+                              >
+                                <a
+                                  className="ant-dropdown-link"
+                                  onClick={(e) => e.preventDefault()}
+                                >
+                                  <i
+                                    style={{
+                                      marginLeft: "35px",
+                                      color: "black",
+                                    }}
+                                    className="fa fa-ellipsis-v"
+                                    bsStyle="overlay"
+                                    onClick={menus}
+                                  />
+                                </a>
+                              </Dropdown>
+                            </CCol>
+                          </CRow>
+                        </td>
+                      );
+                    },
                      show_details1: (item, index) => {
                       return (
                         <td className="py-2">

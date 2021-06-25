@@ -1091,9 +1091,9 @@ svg.c-icon.login-icon-v {
 }
 
 .ant-dropdown {
-  left: 1573px !important;
+  left: 1490px !important;
 }
-.ant-dropdown-menu-item  {
+/* .ant-dropdown-menu-item  {
   display: block;
   margin: -5px -12px;
   padding: 5px 12px;
@@ -1108,7 +1108,7 @@ svg.c-icon.login-icon-v {
   color: rgba(0, 0, 0, 0.85);
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-}
+} */
 .card.cardSave {
   background: #ffffff;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
@@ -1131,7 +1131,7 @@ svg.c-icon.login-icon-v {
   margin-left: 1px;
 }
 .column-align {
-  margin-top: 30px;
+  margin-top: 16px;
   margin-left: 50px;
 }
 .input-align {

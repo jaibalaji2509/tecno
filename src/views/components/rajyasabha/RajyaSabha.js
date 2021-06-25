@@ -444,7 +444,21 @@ const RajyaSabha = () => {
         <a>Delete</a>
       </Menu.Item>
       <Menu.Item>
-        <a>Renewal</a>
+        <a>Remove</a>
+      </Menu.Item>
+      <Menu.Item>
+      <a
+        onClick={() => {
+          setSelected(details);
+          handleClick2();
+        }}>Update</a>
+      </Menu.Item> <Menu.Item>
+        <a
+        onClick={() => {
+          setSelected(details);
+          handleClick();
+        }}
+        >History</a>
       </Menu.Item>
     </Menu>
     )
@@ -949,16 +963,12 @@ const RajyaSabha = () => {
                     <CCol >
                       <CCol
                         md="5"
-                        style={{
-                          marginLeft: "5px",
-                          float: "right",
-                          marginTop: "-20px",
-                        }}
+                       
                       >
                         <CButton
                           style={{
-                            float: "right",
-                            marginRight: "1095px",
+                            
+                            marginLeft: "35px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
                           className={"saveBtn"}
@@ -1034,7 +1044,7 @@ const RajyaSabha = () => {
                                   >
                                     <i
                                       style={{
-                                        marginLeft: "5px",
+                                        marginLeft: "35px",
                                         color: "black",
                                       }}
                                       className="fa fa-ellipsis-v"
