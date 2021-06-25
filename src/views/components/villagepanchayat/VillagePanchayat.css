@@ -28,63 +28,24 @@
     
     z-index: 8;
   }
+
+
+.active1 {
+  position: absolute;
+  width: 60%;
+  left: 775px;
+  z-index: 10;
+ 
   
-  .active1 {
-    position: absolute;
-    
-    left: 775px;
-    z-index: 10;
-   
-    
-    transition: all  2.5s ease; 
-    min-height: 780px;
-    max-height: 980px;
-   transform: translateY(100%,0);
-    border: 2px solid grey;
-  }
-  .active2 {
-    position: absolute;
-    
-    z-index: 15;
-   
-    transition: all 2.5s ease; 
-    transform: translate3d(100%, 0, 0);
-    min-height: 780px;
-    max-height: 980px;
-    border: 5px solid white;
-  }
-  /* .menu2 {
-    
-    z-index: 5;
-    background: #00000000;
-    min-height: 300px;
-    height: auto;
-    width: 100%;
-    position: relative;
-    transition: all 1.5s ease;
-    left: -5px;
-    transform: translate(0);
-  
-  
-    margin-left: 2px;
-  } */
-  .sidebar-css {
-    position: absolute;
-      left: 906px;
-      top: 0px;
-      bottom: 0px;
-      margin-top: 275px;
-      float: left;
-       overflow: hidden auto; 
-      width: 300px;
-      height:300px;
-      background: rgb(0, 150, 136);
-      color: rgb(255, 255, 255);
-      transition: left 2.25s ease-in 0.5s;
-      z-index: 10;  
-     
-  }
-  
+  transition: all  2.5s ease; 
+  min-height: 750px;
+  max-height: 980px;
+ transform: translateY(100%,0);
+  border: 2px solid grey;
+}
+.active2 {
+  position: absolute;
+}  
   .menu1 {
     transform: translate(0);
     z-index: 1;
