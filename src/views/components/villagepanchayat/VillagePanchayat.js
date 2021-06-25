@@ -5,6 +5,7 @@ import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
 import { Dropdown, Menu } from "antd";
+import 'antd/dist/antd.css';
 import "./VillagePanchayat.css"
 import {CSVLink, CSVDownload} from 'react-csv';
 import ReactFileReader from 'react-file-reader';
