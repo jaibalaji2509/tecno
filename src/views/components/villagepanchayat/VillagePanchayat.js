@@ -305,8 +305,8 @@ const SelectMenuButton = (props) => {
         
           <div  style={{marginTop:"-300px",minHeight:"300px"}} > 
         
-          <CLink className={"saveBtn"} onClick={handleClick} style={{marginLeft:"320px"}}>Add </CLink>
-          <CLink className={"saveBtn"} onClick={bulkhandleClick} style={{marginLeft:"50px"}}>Bulk Upload </CLink> 
+          <CLink className={"saveBtn"} onClick={handleClick} style={{marginLeft:"280px"}}>Add </CLink>
+          <CLink className={"saveBtn"} onClick={bulkhandleClick} style={{marginLeft:"10px"}}>Bulk Upload </CLink> 
           </div>
         
          
@@ -399,9 +399,9 @@ const [sideBar2, setSideBar2] =useState(false)
     setInputList([...inputList, { panchayatname: "", panchayatabbreviation: "" ,panchayatcode:""}]);
   }
   
-  const selectWard = [{value:"0019",label:"0019"},{value:"0018",label:"0018"},{value:"0024",label:"0024"},{value:"0020",label:"0020"},
-  {value:"0019",label:"0019"},{value:"0022",label:"0022"},{value:"0023",label:"0023"},{value:"0025",label:"0025"},]
- 
+  const selectWard = [{value:"0018",label:"0018"},{value:"0019",label:"0019"},{value:"0020",label:"0020"},
+  {value:"0021",label:"0021"},{value:"0022",label:"0022"},{value:"0023",label:"0023"},{value:"0024",label:"0024"},{value:"0025",label:"0025"},]
+   
   return (
     <div className={menu.style3}>
        {sideBar1 && (

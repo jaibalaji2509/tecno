@@ -67,7 +67,7 @@ import {
     const [chairtwo, setchairTwo] = useState(true);
     const [vice, setvice] = useState(false);
     const [partypost, setpartypost] = useState(false);
-    const [gridone, setGridOne] = useState(true);
+    const [gridone, setGridOne] = useState(false);
     const [gridtwo, setGridTwo] = useState(false);
     const [gridthree, setGridThree] = useState(false);
     const [gridfour, setGridFour] = useState(false);

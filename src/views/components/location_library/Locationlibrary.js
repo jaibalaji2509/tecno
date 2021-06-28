@@ -172,74 +172,57 @@ function LocationLibrary(props) {
     setPassing("");
     await setDoorList(true);
     await setDoorCreate(false);
-  }
+  } 
 
   const SelectMenuButtonstate = (props) => {
     return (
-        <components.MenuList  {...props} >
+        <components.MenuList  {...props}>
             {props.children}
-            <CRow md="12"  >
-            <CCol md="6">
-              <CLink className={"saveBtn"} onClick={handleClick1} style={{paddingLeft:"20px"}}>Add</CLink>
-              </CCol>
-            <CCol md="6" >
-            <CLink className={"saveBtn"} onClick={handleClick1} style={{marginLeft:"100px"}}>Bulk Upload </CLink> 
-            </CCol>
-            </CRow>
-            
-        </components.MenuList >
+            <div  style={{marginTop:"-30px",minHeight:"30px"}} > 
+              <CLink className={"saveBtn"} onClick={handleClick1} style={{marginLeft:"300px"}}>Add</CLink>           
+            <CLink className={"saveBtn"} onClick={bulkhandleClick} style={{marginLeft:"10px"}}>Bulk Upload </CLink> 
+      </div>      
+        </components.MenuList>
     ) }
     const SelectMenuButtoncity = (props) => {
       return (
-          <components.MenuList  {...props} >
+          <components.MenuList  {...props}>
               {props.children}
-              <CRow md="12"  >
-              <CCol md="6">     <CLink className={"saveBtn"} onClick={handleClick2} style={{paddingLeft:"20px"}}>Add </CLink></CCol>
-              <CCol md="6" > 
-              <CLink className={"saveBtn"} onClick={handleClick2} style={{marginLeft:"100px"}}>Bulk Upload </CLink> 
-              </CCol>
-              </CRow>
-              
-          </components.MenuList >
+              <div  style={{marginTop:"-30px",minHeight:"30px"}} > 
+              <CLink className={"saveBtn"} onClick={handleClick2} style={{marginLeft:"300px"}}>Add</CLink>           
+            <CLink className={"saveBtn"} onClick={bulkhandleClick} style={{marginLeft:"10px"}}>Bulk Upload </CLink> 
+      </div>  
+          </components.MenuList>
       ) }
       const SelectMenuButtonarea = (props) => {
         return (
-            <components.MenuList  {...props} >
+            <components.MenuList  {...props}>
                 {props.children}
-                <CRow md="12"  >
-                <CCol md="6">     <CLink className={"saveBtn"} onClick={handleClick3} style={{paddingLeft:"20px"}}>Add </CLink></CCol>
-                <CCol md="6" > 
-                <CLink className={"saveBtn"} onClick={handleClick3} style={{marginLeft:"100px"}}>Bulk Upload </CLink> 
-                </CCol>
-                </CRow>
-                
-            </components.MenuList >
+                <div  style={{marginTop:"-30px",minHeight:"30px"}} > 
+              <CLink className={"saveBtn"} onClick={handleClick3} style={{marginLeft:"300px"}}>Add</CLink>           
+            <CLink className={"saveBtn"} onClick={bulkhandleClick} style={{marginLeft:"10px"}}>Bulk Upload </CLink> 
+      </div>    
+            </components.MenuList>
         ) }
         const SelectMenuButtonstreet = (props) => {
           return (
-              <components.MenuList  {...props} >
+              <components.MenuList  {...props}>
                   {props.children}
-                  <CRow md="12"  >
-                  <CCol md="6">     <CLink className={"saveBtn"} onClick={handleClick4} style={{paddingLeft:"20px"}}>Add </CLink></CCol>
-                  <CCol md="6" > 
-                  <CLink className={"saveBtn"} onClick={handleClick4} style={{marginLeft:"100px"}}>Bulk Upload </CLink> 
-                  </CCol>
-                  </CRow>
-                  
-              </components.MenuList >
+                  <div  style={{marginTop:"-30px",minHeight:"30px"}} > 
+              <CLink className={"saveBtn"} onClick={handleClick4} style={{marginLeft:"300px"}}>Add</CLink>           
+            <CLink className={"saveBtn"} onClick={bulkhandleClick} style={{marginLeft:"10px"}}>Bulk Upload </CLink> 
+      </div>      
+              </components.MenuList>
           ) }
           const SelectMenuButtondoor = (props) => {
             return (
-                <components.MenuList  {...props} >
+                <components.MenuList  {...props}>
                     {props.children}
-                    <CRow md="12"  >
-                    <CCol md="6">     <CLink className={"saveBtn"} onClick={handleClick5} style={{paddingLeft:"20px"}}>Add </CLink></CCol>
-                    <CCol md="6" > 
-                    <CLink className={"saveBtn"} onClick={handleClick5} style={{marginLeft:"100px"}}>Bulk Upload </CLink> 
-                    </CCol>
-                    </CRow>
-                    
-                </components.MenuList >
+                    <div  style={{marginTop:"-30px",minHeight:"30px"}} > 
+              <CLink className={"saveBtn"} onClick={handleClick5} style={{marginLeft:"300px"}}>Add</CLink>           
+            <CLink className={"saveBtn"} onClick={bulkhandleClick} style={{marginLeft:"10px"}}>Bulk Upload </CLink> 
+      </div>        
+                </components.MenuList>
             ) }
                     
     const [menu, setMenu] = useState({
@@ -247,6 +230,7 @@ function LocationLibrary(props) {
       menuStatus: "open",
       style3: "menu2",
     });
+    
     const [sideBar1, setSideBar1] = useState(false);
     const [sideBar2, setSideBar2] = useState(false);
     const [sideBar3, setSideBar3] = useState(false);
@@ -389,6 +373,38 @@ function LocationLibrary(props) {
           });
           setTimeout(() => {
             setSideBar5(false);
+          }, 1000);
+          break;
+      }
+    };
+    const [sideBarup, setSideBarup] =useState(false)
+
+    const bulkhandleClick = () => {
+    
+      switch (menu.menuStatus) {
+        case "open":
+          setMenu({
+            menuStatus: "close",
+            // style3: "menu2",
+          
+            style1: "menu active1",
+            
+          });
+          setSideBarup(true);
+        
+           
+         
+          break;
+        case "close":
+          setMenu({
+            menuStatus: "open",
+            // style3: "menu2",
+            style1: "menu active2",
+            
+          });
+          setTimeout(() => {
+           
+            setSideBarup(false);
           }, 1000);
           break;
       }
@@ -632,7 +648,7 @@ function LocationLibrary(props) {
       }
     }
   };
-
+const state=[]
   const getAllCountry = async () => {
     var response;
     try {
@@ -806,15 +822,33 @@ const EditCountry = async (data) => {
   
   const selectCity = [{value:"Chennai", label:"Chennai"}]
   
-  const selectStreet = [{value:"Pondy Baza", label:"Pondy Bazar"}]
+  const selectStreet = [{value:"Pondy Baza", label:"Saligramam"}]
 
-  const selectDoor = [{value:"Pondy Baza", label:"117"}]
+  const selectDoor = [{value:"Pondy Baza", label:"119"}]
 
-  const selectVillage = [{value:"TNagar", label:"TNagar"}]
+  const selectVillage = [{value:"TNagar", label:"Vadapalani"}]
 
-  const userData =[{sNo:"1",stateName:"TamlNadu",cityName:"Chennai",areaName:"Alwarpet", pincode:"600018",Street:"St Marys Road",door:"3/90"},
-  {sNo:"2",stateName:"TamlNadu",cityName:"Chennai",areaName:"TNagar", pincode:"600017",Street:"Pondy Bazar",door:"117"}
+  const userData =[
+  {sNo:"1",stateName:"TamlNadu",cityName:"Chennai",areaName:"TNagar", pincode:"600017",Street:"Pondy Bazar",door:"117"},
+  {sNo:"2",stateName:"TamlNadu",cityName:"Chennai",areaName:"Vadapalani", pincode:"600026",Street:"Saligramam",door:"119"}
 
+]
+const userData1 =[{sNo:"1",door:"110"},{sNo:"2",door:"111"},{sNo:"3",door:"112"},{sNo:"4",door:"113"},{sNo:"5",door:"114"},{sNo:"6",door:"115"},{sNo:"7",door:"116"},
+{sNo:"8"},{sNo:"9"},{sNo:"10"},{sNo:"11"},{sNo:"12"},
+{sNo:"13"},{sNo:"14"},{sNo:"15"},{sNo:"16"},{sNo:"17"},{sNo:"18"},
+{sNo:"19"},{sNo:"20"},{sNo:"21"},{sNo:"22"},{sNo:"23"},{sNo:"24"},{sNo:"25"},]
+const fields1 = [
+  { key: "sNo", _style: { width: "10%" },    sorter: false,
+  filter: false, },
+  { key: "door", label: "Door No ", _style: { width: "20%" } },
+  {
+    label: "Action",
+    key: "show_details",
+
+    _style: { width: "1%" },
+    sorter: false,
+    filter: false,
+  },
 ]
   const fields = [
     { key: "sNo", _style: { width: "10%" },    sorter: false,
@@ -949,7 +983,7 @@ const EditCountry = async (data) => {
   return (
     <div className={menu.style3}>
        {sideBar1 && (
-        <div className={menu.style} style={{marginLeft:"-400px"}}>
+        <div className={menu.style} style={{marginLeft:"-125px"}}>
         
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
@@ -1121,7 +1155,7 @@ const EditCountry = async (data) => {
 
 <div className={menu.style3}>
        {sideBar2 && (
-        <div className={menu.style} style={{marginLeft:"-400px"}}>
+        <div className={menu.style} style={{marginLeft:"-125px"}}>
         
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
@@ -1231,24 +1265,12 @@ const EditCountry = async (data) => {
                           onClick={()=>handleRemoveClick(i)}
                           class={"fa fa-remove"}
                         
-                        />}
-                         
-                         
-                                     
-                                    
-                                  </CCol>
-        
-</CRow>
-                                 
-                                 
-                                </CRow>
+                        />}                                                                                          
+                                  </CCol>        
+</CRow>                                                                  
+                                </CRow>       
+       ) })}    
 
-       
-       ) })}
-    
-         
-       
-         
       <CRow style={{marginLeft:"580px"}}>
         
       <CCol md="3">
@@ -1292,7 +1314,7 @@ const EditCountry = async (data) => {
 )}
     <div className={menu.style3}>
        {sideBar3 && (
-        <div className={menu.style} style={{marginLeft:"-400px"}}>
+        <div className={menu.style} style={{marginLeft:"-125px"}}>
         
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
@@ -1478,7 +1500,7 @@ const EditCountry = async (data) => {
 )}
     <div className={menu.style3}>
        {sideBar4 && (
-        <div className={menu.style} style={{marginLeft:"-400px"}}>
+        <div className={menu.style} style={{marginLeft:"-125px"}}>
         
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
@@ -1649,7 +1671,7 @@ const EditCountry = async (data) => {
 )}
     <div className={menu.style3}>
        {sideBar5 && (
-        <div className={menu.style} style={{marginLeft:"-400px"}}>
+        <div className={menu.style} style={{marginLeft:"-125px"}}>
         
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
@@ -1787,6 +1809,136 @@ const EditCountry = async (data) => {
         </div>
 
 )}
+       {sideBarup && (
+        <div className={menu.style1} style={{marginLeft:"-125px"}} >
+        
+          <CRow className={""}>
+            <CCol md="12" lg="12" sm="12">
+              <div>
+                <span
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: "700",
+                    marginLeft: "20px",
+                  }}
+                >
+                ADDING LOCATION LIBRARY{" "}
+                </span>
+              </div>
+            </CCol>
+          </CRow>
+         
+      <CRow style={{marginLeft:"-25px"}}>
+        
+      <CCol md="3">
+                          <CButton
+                          type="file"
+                  style={{
+                    marginLeft: "30px",
+                    marginTop:"35px",
+                  
+                  }}
+                  onClick={enableCreate}
+                 className={"saveBtn"}
+                
+                > Upload</CButton>
+                   <CSVLink data={state} ><CButton
+                              shape={"pill"}
+                              id={"municipalcancel"}
+                              style={{ marginTop: "-60px", marginLeft: "150px" }}
+                              className={"cancelBtn"}
+                             
+                            >
+                              Download
+                            </CButton></CSVLink>
+                            
+                          
+                            <CButton
+            className={"menu"}
+            style={{ position: "absolute", top: "-42px", right: "-670px",  marginLeft: "30px",backgroundColor:"green", border:"1px solid green" }}
+            className={"cancelBtn"}
+            onClick={() => {
+              bulkhandleClick();
+              // handleClick2();
+            }}
+          >
+            Back
+          </CButton>
+                          </CCol>
+      </CRow>
+      <CRow style={{ padding: "4%" }}>
+      <CDataTable
+                items={userData1}
+                fields={fields1}
+                columnFilter
+                tableFilter
+                tableLabel={"List of Locations"}
+                itemsPerPageSelect
+                itemsPerPage={5}
+                hover
+                sorter
+                pagination
+                scopedSlots={{
+                  show_details: (item, index) => {
+                    return (
+                      <td className="py-1">
+                        <CRow>
+                          <CCol style={{ fontSize: "1.15rem" }} md="16">
+                          
+                                <i
+                                  style={{
+                                    marginLeft: "35px",
+                                    color: "red",
+                                  }}
+                                  className="fa fa-trash"
+                                  bsStyle="overlay"
+                                  onClick={menus}
+                                />
+                              
+                           
+                          </CCol>
+                        </CRow>
+                      </td>
+                     );
+                  },
+                  details: (item, index) => {},
+                }}
+              />
+            </CRow>
+            <CCol md="10" style={{top:"-20px"}}>
+                    <CCol
+                      md="5"
+                      style={{
+                        marginLeft: "500px",
+                        float: "right",
+                        marginTop: "30px",
+                        position: "absolute",
+                      }}
+                    >
+                      <CButton
+                        style={{
+                          float: "right",
+                        }}
+                        id={"cancelAbbreviationConfigureCode"}
+                        className={"cancelBtn"}
+                      >
+                        CANCEL
+                      </CButton>
+                      <CButton
+                        style={{
+                          float: "right",
+                          marginRight: "15px",
+                        }}
+                        id={"saveAbbreviationConfigureCode"}
+                        className={"saveBtn"}
+                      >
+                        Save
+                      </CButton>{" "}
+                    </CCol>
+                  </CCol>
+
+      </div>
+       )}
 
 <div>
       <div>
@@ -1984,11 +2136,11 @@ const EditCountry = async (data) => {
                         header=""
                         text=""
                       >
-                        <span style={{ marginLeft: "10px", fontSize: "24px",fontWeight:"700" }}>
+                        <span style={{ marginLeft: "-30px", fontSize: "24px",fontWeight:"700" }}>
                           State
                         </span>
                         <span
-                          style={{ marginLeft: "-129px", marginTop: "30px" ,fontSize: "24px",fontWeight:"700" }}
+                          style={{ marginLeft: "-155px", marginTop: "30px" ,fontSize: "24px",fontWeight:"700" }}
                         >
                           2
                         </span>
@@ -2174,11 +2326,11 @@ const EditCountry = async (data) => {
                         header=""
                         text=""
                       >
-                        <span style={{ marginLeft: "-40px", fontSize: "24px",fontWeight:"700" }}>
+                        <span style={{ marginLeft: "-70px", fontSize: "24px",fontWeight:"700" }}>
                           District / City
                         </span>
                         <span
-                          style={{ marginLeft: "-159px", marginTop: "30px" ,fontSize: "24px",fontWeight:"700" }}
+                          style={{ marginLeft: "-185px", marginTop: "30px" ,fontSize: "24px",fontWeight:"700" }}
                         >
                           2
                         </span>
@@ -2389,11 +2541,11 @@ const EditCountry = async (data) => {
                         header=""
                         text=""
                       >
-                        <span style={{ marginLeft: "-40px", fontSize: "24px",fontWeight:"700" }}>
+                        <span style={{ marginLeft: "-70px", fontSize: "24px",fontWeight:"700" }}>
                           Village / Area
                         </span>
                         <span
-                          style={{ marginLeft: "-169px", marginTop: "30px" ,fontSize: "24px",fontWeight:"700" }}
+                          style={{ marginLeft: "-190px", marginTop: "30px" ,fontSize: "24px",fontWeight:"700" }}
                         >
                           2
                         </span>
@@ -2403,8 +2555,7 @@ const EditCountry = async (data) => {
                       </CWidgetDropdown>
                     </CCol>
                   </CRow>
-                </CRow>
-             
+                </CRow>             
 
                 <CRow className={"row-alignment"}>
                   {StreetList && (
@@ -2581,11 +2732,11 @@ const EditCountry = async (data) => {
                         header=""
                         text=""
                       >
-                        <span style={{ marginLeft: "-10px", fontSize: "24px",fontWeight:"700" }}>
+                        <span style={{ marginLeft: "-40px", fontSize: "24px",fontWeight:"700" }}>
                           Street
                         </span>
                         <span
-                          style={{ marginLeft: "-129px", marginTop: "30px" ,fontSize: "24px",fontWeight:"700" }}
+                          style={{ marginLeft: "-157px", marginTop: "30px" ,fontSize: "24px",fontWeight:"700" }}
                         >
                           2
                         </span>
@@ -2732,7 +2883,7 @@ const EditCountry = async (data) => {
                   style={{
                     position: "absolute",
                     top: "40px",
-                    marginLeft: "350px",
+                    marginLeft: "450px",
                     marginBottom: "20px",
                     color: "black",
                   }}
@@ -2745,7 +2896,7 @@ const EditCountry = async (data) => {
                   style={{
                     position: "absolute",
                     top: "40px",
-                    marginLeft: "500px",
+                    marginLeft: "550px",
                     marginBottom: "910px",
                     color: "black",
                   }}
@@ -2806,8 +2957,9 @@ const EditCountry = async (data) => {
         </div>
         </div>
         </div>
+        </div>
       </div>
-    </div>
+    
   );
 }
 

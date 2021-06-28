@@ -244,6 +244,7 @@ function PartyWingsOfficeLocation() {
     doc.save("report.pdf")
   }
   return (
+    <React.Fragment>
      <div className={menu.style3}>
       {sideBar1 && (
         <div className={menu.style}>
@@ -714,7 +715,7 @@ function PartyWingsOfficeLocation() {
                 <CButton
                   style={{
                     marginLeft: "26px",
-                    marginTop: "65px",
+                    marginTop: "63px",
                     backgroundColor: "#f9d423",
                     borderLine: "5px !important",
                     borderColor: "white",
@@ -729,8 +730,7 @@ function PartyWingsOfficeLocation() {
                 <i
                   style={{
                     marginLeft: "-25px",
-                    marginTop: "68px",
-
+                    marginTop: "65px",
                     fontSize: "1.50rem",
                     color: "red",
                   }}
@@ -746,7 +746,7 @@ function PartyWingsOfficeLocation() {
                   <i
                     style={{
                       marginLeft: "-80px",
-                      marginTop: "68px",
+                      marginTop: "65px",
                       fontSize: "1.25rem",
                       color: "#3480e2",
                       cursor: "pointer",
@@ -941,6 +941,7 @@ function PartyWingsOfficeLocation() {
         </div>
       )}
     </div>
+    </React.Fragment>
   );
 }
 
