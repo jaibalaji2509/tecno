@@ -1,5 +1,5 @@
 import { CButton, CCard, CCol, CInput,CLink, CLabel, CRow } from "@coreui/react";
-import React, { useState,useCounter } from "react";
+import React, { useState,useEffect } from "react";
 import Select,{components} from "react-select";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
@@ -9,8 +9,12 @@ import 'antd/dist/antd.css';
 import "./VillagePanchayat.css"
 import {CSVLink, CSVDownload} from 'react-csv';
 import ReactFileReader from 'react-file-reader';
+// import readXlsxFile from "read-excel-file";
+import * as XLSX from "xlsx";
 import MultiSelect from "react-multi-select-component";
 import "./VillagePanchayat.css"
+import SheetJSFT from "../../../Tools/excelupload/SheetJSFT"
+import{ make_cols} from"../../../Tools/excelupload/MakeColumn"
 const VillagePanchayat = () => {
   const [locations, setLocations] = useState({
     state: "",
@@ -21,6 +25,8 @@ const VillagePanchayat = () => {
     street: "",
     pincode: "",
   });
+  const [excelupload,setExcelUpload] = React.useState({file: {}, data: [], cols: []});
+ 
   const [municipalList, setMunicipalList] = useState(true);
   const [MunicipalCreate, setmunicipalCreate] = useState(false);
   const [selected, setSelected] = useState([]);
@@ -156,10 +162,10 @@ const VillagePanchayat = () => {
   
   const fields2 = [
   
-    { key: "SNo", label: "S.NO", _style: { width: "1%" } , sorter: false,
+    { key: "SNO", label: "S.NO", _style: { width: "1%" } , sorter: false,
     filter: false,},
 
-    { key: "DistrictPanchayat", label: "Ward Number", _style: { width: "1%" } },
+    { key: "MENU1", label: "Ward Number", _style: { width: "1%" } },
     {
       key: "show_details3",
       label: "Action",
@@ -210,18 +216,7 @@ const VillagePanchayat = () => {
     await setmunicipalCreate(true);
   };
 
-  const addPanchayat = async () => {
-    await setPanchayatlist(false);
-    await setpanchayatCreate(true);
-  };
-  const addVillage = async () => {
-    await setvillageList(false);
-    await setVillageCreate(true);
-  };
-  const addWard = async () => {
-    await setWardList(false);
-    await setWardCreate(true);
-  };
+  
   const editState = async () => {
     await setMunicipalList(false);
     await setmunicipalCreate(true);
@@ -256,28 +251,18 @@ const VillagePanchayat = () => {
     setHideMappingVillage(true);
     setHideVillagePanchayat(false);
   };
-  const [state, setState] =useState([])
-  const  onChangeFile = (event) => {
-    
-    //   var file = event.target.files[0];
-    //   console.log(file);
-    // setState(file); /// if you want to upload latter
-  }
+
   const csvData =[
     ['firstname', 'lastname', 'email'] ,
     ['John', 'Doe' , 'john.doe@xyz.com'] ,
     ['Jane', 'Doe' , 'jane.doe@xyz.com']
   ];
+const [variable, setVariable] =useState([])
+ 
 
-  const handleFiles = files => {
-    var reader = new FileReader();
-    reader.onload = function(e) {
-        // Use reader.result
-        setState(reader.result);
-      console.log(reader.result);
-    }
-    reader.readAsText(files[0]);
-}
+
+
+
 const menus = (details) => {
   return(
     <Menu>
@@ -301,16 +286,10 @@ const SelectMenuButton = (props) => {
   return (
       <components.MenuList  {...props} >
           {props.children}
-       
-        
           <div  style={{marginTop:"-300px",minHeight:"300px"}} > 
-        
-          <CLink className={"saveBtn"} onClick={handleClick} style={{marginLeft:"320px"}}>Add </CLink>
+          <CLink className={"saveBtn"} onClick={handleClick} style={{marginLeft:"200px"}}>Add </CLink>
           <CLink className={"saveBtn"} onClick={bulkhandleClick} style={{marginLeft:"50px"}}>Bulk Upload </CLink> 
           </div>
-        
-         
-          
       </components.MenuList >
   ) }
 const [sideBar2, setSideBar2] =useState(false)
@@ -367,11 +346,15 @@ const [sideBar2, setSideBar2] =useState(false)
           
         });
         setTimeout(() => {
-         
+         setIsValue(false)
           setSideBar2(false);
         }, 1000);
         break;
+
+        
+      
     }
+    setExcelUpload("")
   };
   const [counter,setCount] = useState(0);
   const onChangeValue =()=>{
@@ -392,7 +375,19 @@ const [sideBar2, setSideBar2] =useState(false)
     setInputList(list);
   }
  
- 
+ const menus1 = (item)=>{
+return(
+ variable.map((x,i)=>{
+   <tr key={i}>
+     <td>{x.SNO}</td>
+     <td>{x.MENU1}</td>
+     <td>{x.NUMBER1}</td>
+     <td>{x.MENU2}</td>
+     <td>{x.NUMBER2}</td>
+   </tr>
+ })
+)
+ }
   // handle click event of the Add button
   const handleAddClick = (e) => {
     e.preventDefault()
@@ -402,6 +397,47 @@ const [sideBar2, setSideBar2] =useState(false)
   const selectWard = [{value:"0019",label:"0019"},{value:"0018",label:"0018"},{value:"0024",label:"0024"},{value:"0020",label:"0020"},
   {value:"0019",label:"0019"},{value:"0022",label:"0022"},{value:"0023",label:"0023"},{value:"0025",label:"0025"},]
  
+
+  
+  
+  const handleChange = (e) => {
+    const files = e.target.files;
+    if (files && files[0]) setExcelUpload({ file: files[0] });
+    
+  };
+
+ 
+
+  
+ 
+  const handleFile = () => {
+    /* Boilerplate to set up FileReader */
+    const reader = new FileReader();
+    const rABS = !!reader.readAsBinaryString;
+ 
+    reader.onload = (e) => {
+      /* Parse data */
+      const bstr = e.target.result;
+      const wb = XLSX.read(bstr, { type: rABS ? 'binary' : 'array', bookVBA : true });
+      /* Get first worksheet */
+      const wsname = wb.SheetNames[0];
+      const ws = wb.Sheets[wsname];
+      /* Convert array of arrays */
+      const data = XLSX.utils.sheet_to_json(ws);
+      /* Update state */
+      setExcelUpload({ data: data, cols: make_cols(ws['!ref']) });
+      setIsValue(true)
+      console.log(JSON.stringify(data, null, 2));
+      console.log(data,"data")
+    };
+
+    if (rABS) {
+      reader.readAsBinaryString(excelupload.file);
+    } else {
+      reader.readAsArrayBuffer(excelupload.file);
+    };
+  }
+  const [isValue, setIsValue] =useState(false)
   return (
     <div className={menu.style3}>
        {sideBar1 && (
@@ -435,15 +471,15 @@ const [sideBar2, setSideBar2] =useState(false)
                                   lg={12}
                                 >
                                   <CCol md="2">
-                                    <CLabel className={"label-name-1"}>
-                                     Ward Number
+                                    <CLabel className={"label-name-1"} style={{fontSize:"block"}}>
+                                Ward Number
                                       <span className={"text-danger"}> *</span>
                                     </CLabel>
         
                                     <CInput
                                       id={"MunicipalName"}
                                       name={"municipalname"}
-                                      placeholder="Enter Ward Number"
+                                      placeholder="Enter District Panchayat"
                                       maxlength="60"
                                       size="60"
                                       value={x.panchayatname}
@@ -533,7 +569,7 @@ const [sideBar2, setSideBar2] =useState(false)
          
        
          
-      <CRow style={{marginLeft:"325px"}}>
+      <CRow style={{marginLeft:"215px"}}>
         
       <CCol md="3">
                           <CButton
@@ -551,21 +587,33 @@ const [sideBar2, setSideBar2] =useState(false)
                               id={"municipalcancel"}
                               style={{ marginTop: "-60px", marginLeft: "130px" }}
                               className={"cancelBtn"}
-                              onClick={handleClick}
+                              onClick={""}
                             >
                               CANCEL
                             </CButton>
                             {error !== "" ? <p>{error}</p> : null}
+                            
+                            <CButton
+            className={"menu"}
+            style={{ position: "absolute", top: "-130px", right: "-370px",  marginLeft: "30px",backgroundColor:"green", border:"1px solid green" }}
+            className={"cancelBtn"}
+            onClick={() => {
+              handleClick();
+              // handleClick2();
+            }}
+          >
+            Back
+          </CButton>
                           </CCol>
       </CRow>
 
          
           <CButton
             className={"menu"}
-            style={{ position: "absolute", top: "15px", right: "15px" }}
+            style={{ position: "absolute", top: "15px", right: "15px" , backgroundColor:"green", border:"1px solid green"}}
             className={"cancelBtn"}
             onClick={() => {
-              bulkhandleClick();
+              handleClick();
               // handleClick2();
             }}
           >
@@ -601,21 +649,29 @@ const [sideBar2, setSideBar2] =useState(false)
       <CRow style={{marginLeft:"-25px"}}>
         
       <CCol md="3">
-                          <CButton
-                          type="file"
-                  style={{
-                    marginLeft: "30px",
-                    marginTop:"35px",
-                  
-                  }}
-                  onClick={enableCreate}
-                 className={"saveBtn"}
                 
-                > Upload</CButton>
-                   <CSVLink data={state} ><CButton
+      <CInput type="file" style={{marginLeft:"35px",  marginTop:"15px"}} id="file" accept={SheetJSFT} onChange={handleChange} /> 
+                    
+      <CButton
+                         
+                         style={{
+                           marginLeft: "40px",
+                           marginTop:"35px",
+                           
+                         
+                         }}
+                         onClick={handleFile}
+                        className={"saveBtn"}
+                       
+                       > Confirm</CButton>
+                 
+     
+
+
+                   <CSVLink data={csvData} ><CButton
                               shape={"pill"}
                               id={"municipalcancel"}
-                              style={{ marginTop: "30px", marginLeft: "20px" }}
+                              style={{ marginTop: "-60px", marginLeft: "160px" }}
                               className={"cancelBtn"}
                              
                             >
@@ -625,7 +681,7 @@ const [sideBar2, setSideBar2] =useState(false)
                           
                             <CButton
             className={"menu"}
-            style={{ position: "absolute", top: "-42px", right: "-750px",  marginLeft: "30px",backgroundColor:"green", border:"1px solid green" }}
+            style={{ position: "absolute", top: "-42px", right: "-550px",  marginLeft: "30px",backgroundColor:"green", border:"1px solid green" }}
             className={"cancelBtn"}
             onClick={() => {
               bulkhandleClick();
@@ -637,8 +693,9 @@ const [sideBar2, setSideBar2] =useState(false)
                           </CCol>
       </CRow>
 
-         
-      <CRow
+         {isValue && excelupload.data !== 0 ?  (
+<div>
+<CRow
                   style={{
                     padding: "4%",
                     marginTop: "1.5%",
@@ -647,7 +704,7 @@ const [sideBar2, setSideBar2] =useState(false)
                   }}
                 >
                   <CDataTable
-                    items={userData1}
+                    items={excelupload.data}
                     fields={fields2}
                     columnFilter
                     tableFilter
@@ -656,7 +713,7 @@ const [sideBar2, setSideBar2] =useState(false)
                     itemsPerPage={5}
                     hover
                     sorter
-                    style={{ width:"100%"}}
+                   
                     pagination
                     scopedSlots={{
                       show_details3: (item, index) => {
@@ -672,7 +729,7 @@ const [sideBar2, setSideBar2] =useState(false)
                                       }}
                                       className="fa fa-trash"
                                       bsStyle="overlay"
-                                      onClick={menus}
+                                      onClick={()=>menus1(item)}
                                     />
                               </CCol>
                             </CRow>
@@ -697,20 +754,23 @@ const [sideBar2, setSideBar2] =useState(false)
                    className={"saveBtn"}
                   
                   > Save</CButton>
-                     <CSVLink data={state} ><CButton
+                   <CButton
                                 shape={"pill"}
                                 id={"municipalcancel"}
                                 style={{ marginTop: "-60px", marginLeft: "550px" }}
                                 className={"cancelBtn"}
-                               
+                               onClick={bulkhandleClick}
                               >
                                 Cancel
-                              </CButton></CSVLink>
+                              </CButton>
                               
                             
                              
                             </CCol>
         </CRow>
+</div>
+         ): null }
+     
         </div>
       )}
       {hideMappingVillage && (
