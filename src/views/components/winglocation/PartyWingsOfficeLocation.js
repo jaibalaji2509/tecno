@@ -176,7 +176,10 @@ function PartyWingsOfficeLocation() {
           style1: "menu1",
         });
         setSideBar1(true);
+        setHidePartyOffice(true);
+        setBackButt(false);
         break;
+        
       case "close":
         setMenu({
           menuStatus: "open",
@@ -187,7 +190,7 @@ function PartyWingsOfficeLocation() {
         setTimeout(() => {
           setSideBar1(false);
         }, 1000);
-        break;
+        break;        
     }
   };
   const [hidePartyOffice, setHidePartyOffice] = useState(true);
@@ -349,7 +352,7 @@ function PartyWingsOfficeLocation() {
 
               <CRow>
                 <CCol
-                  style={{ fontSize: "1.55rem", top: "60px" }}
+                  style={{ fontSize: "1.55rem", top: "45px" }}
                   md={12}
                   sm={12}
                   lg={12}
@@ -364,7 +367,7 @@ function PartyWingsOfficeLocation() {
                       height: "40px",
                       width: "40px",
 
-                      marginLeft: "865px",
+                      marginLeft: "950px",
                       marginBottom: "20px",
                     }}
                   />
@@ -374,8 +377,8 @@ function PartyWingsOfficeLocation() {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "10px",
-                      marginLeft: "735px",
+                      top: "-5px",
+                      marginLeft: "750px",
                       marginBottom: "20px",
                       color: "black",
                     }}
@@ -388,8 +391,8 @@ function PartyWingsOfficeLocation() {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "10px",
-                      marginLeft: "800px",
+                      top: "-5px",
+                      marginLeft: "850px",
                       marginBottom: "910px",
                       color: "black",
                     }}
@@ -498,6 +501,8 @@ function PartyWingsOfficeLocation() {
                 </CCol>
               </CCol>
             </CRow>
+
+
             <CRow style={{marginTop:"75px", marginLeft:"240px",position:"absolute" }}>
                     <CCol sm="3" lg="3" style={{ marginLeft: "-160px" }}>
                       <CWidgetDropdown
@@ -580,7 +585,7 @@ function PartyWingsOfficeLocation() {
                   </CRow>
                   <CRow style={{marginLeft:"250px",marginBottom:"-20px"}}>
                   <CCol
-                style={{ fontSize: "1.55rem", top: "100px" }}
+                style={{ fontSize: "1.55rem", top: "98px" }}
                 md={12}
                 sm={12}
                 lg={12}
@@ -595,7 +600,7 @@ function PartyWingsOfficeLocation() {
                     height: "40px",
                     width: "40px",
 
-                    marginLeft: "955px",
+                    marginLeft: "810px",
                     marginBottom: "55px",
                   }}
                 />
@@ -606,7 +611,7 @@ function PartyWingsOfficeLocation() {
                   style={{
                     position: "absolute",
                     top: "10px",
-                    marginLeft: "795px",
+                    marginLeft: "610px",
                     marginBottom: "20px",
                     color: "black",
                   }}
@@ -620,7 +625,7 @@ function PartyWingsOfficeLocation() {
                   style={{
                     position: "absolute",
                     top: "10px",
-                    marginLeft: "870px",
+                    marginLeft: "710px",
                     marginBottom: "910px",
                     color: "black",
                   }}

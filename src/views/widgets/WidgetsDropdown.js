@@ -32,7 +32,6 @@ const WidgetsDropdown = () => {
               labels="months"
             />
           }
-          
         >
             <span style={{fontSize:"26px", fontWeight:"700",marginTop:"-5px"}}>Total</span>
            <span style={{fontSize:"20px", fontWeight:"600",textAlign:"center",marginTop:"30px",marginLeft:"-130px"}}>10</span>

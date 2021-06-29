@@ -1114,24 +1114,14 @@ const CentralMinister = () => {
                         options={stateselect}
                       />
                     </CCol>
-                    <CLabel
-                      className={"label-name-1"}
-                      style={{
-                        marginLeft: "680px",
-                        marginTop: "30px",
-                        position: "absolute",
-                      }}
-                    >
-                      Type of Role
-                      <span className={"text-danger"}>*</span>
-                    </CLabel>
-                    <CCol
-                      md="6"
-                      className={"column-align"}
-                      style={{ marginLeft: "50px", marginTop: "70px" }}
-                    >
-                      <CFormGroup variant="custom-radio" inline>
-                        <CInputRadio
+                    <CCol className={"column-align"} md="4">
+                      <CLabel className={"label-name-1"}>
+                        Type of Role
+                        <span className={"text-danger"}>*</span>
+                      </CLabel>
+                      <CCol md="12" style={{ marginLeft: "-10px" }}>
+                        <CFormGroup variant="custom-radio" inline>
+                       <CInputRadio
                           custom
                           id="inline-radio1"
                           onClick={changeChiefMinister}
@@ -1175,6 +1165,7 @@ const CentralMinister = () => {
                           Ministry
                         </CLabel>
                       </CFormGroup>
+                    </CCol>
                     </CCol>
                   </CRow>
                 </div>

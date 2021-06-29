@@ -180,6 +180,8 @@ function PartyOfficeLocation() {
           style1: "menu1",
         });
         setSideBar1(true);
+        setHidePartyOffice(true);
+        setBackButt(false);
         break;
       case "close":
         setMenu({
@@ -348,7 +350,7 @@ function PartyOfficeLocation() {
 
               <CRow style={{marginLeft:"250px"}}>
                 <CCol
-                  style={{ fontSize: "1.55rem", top: "70px" }}
+                  style={{ fontSize: "1.55rem", top: "45px" }}
                   md={12}
                   sm={12}
                   lg={12}
@@ -363,20 +365,21 @@ function PartyOfficeLocation() {
                       height: "40px",
                       width: "40px",
 
-                      marginLeft: "865px",
+                      marginLeft: "700px",
                       marginBottom: "20px",
                     }}
                   />
                 </CCol>
-                <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
+                <CCol style={{ fontSize: "1.55rem", }} md={12} sm={12} lg={12}>
                   <i
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "20px",
-                      marginLeft: "535px",
+                      top: "-5px",
+                      marginLeft: "500px",
                       marginBottom: "20px",
                       color: "black",
+                    
                     }}
                     onClick={() => exportPDF()}
                     className="fa fa-print"
@@ -387,8 +390,8 @@ function PartyOfficeLocation() {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "20px",
-                      marginLeft: "800px",
+                      top: "-5px",
+                      marginLeft: "600px",
                       marginBottom: "910px",
                       color: "black",
                     }}
