@@ -489,3 +489,6 @@ body {
   z-index: 1;
   transition: all 1.5s ease-out;
 }
+.ant-dropdown {
+  left: 1290px !important;
+}

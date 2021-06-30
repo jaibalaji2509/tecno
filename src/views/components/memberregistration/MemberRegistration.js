@@ -319,7 +319,6 @@ function MemberRegistration() {
       <CCard className={"cardSave"}>
         {memberhide && (
           <div>
-
             <div className={"main-headerlabel"}>
               <span className={"header-label"}>Member Registration</span>
             </div>
@@ -331,8 +330,8 @@ function MemberRegistration() {
                   header=""
                   text=""
                 >
-                  <span style={{ marginLeft: "-50px", fontSize: "30px", }}>Male</span>
-                  <span style={{ marginLeft: "-162px", marginTop: "30px" }}>2</span>
+                  <span style={{ marginLeft: "-50px", fontSize: "24px", fontWeight:"700" }}>Male</span>
+                  <span style={{ marginLeft: "-162px", marginTop: "30px",fontSize: "24px", fontWeight:"700" }}>2</span>
                   <br /><br />
                 </CWidgetDropdown>
               </CCol>
@@ -345,8 +344,8 @@ function MemberRegistration() {
                   header=""
                   text=""
                 >
-                  <span style={{ marginLeft: "-30px", fontSize: "30px", }}>Female</span>
-                  <span style={{ marginLeft: "-165px", marginTop: "30px" }}>2</span>
+                  <span style={{ marginLeft: "-30px",fontSize: "24px",fontWeight:"700" }}>Female</span>
+                  <span style={{ marginLeft: "-165px", marginTop: "30px",fontSize: "24px",fontWeight:"700" }}>2</span>
                   <br /><br />
                 </CWidgetDropdown>
               </CCol>
@@ -359,8 +358,8 @@ function MemberRegistration() {
                   header=""
                   text=""
                 >
-                  <span style={{ marginLeft: "-75px", fontSize: "30px", }}>TransGender</span>
-                  <span style={{ marginLeft: "-200px", marginTop: "30px" }}>1</span>
+                  <span style={{ marginLeft: "-75px", fontSize: "24px",fontWeight:"700" }}>TransGender</span>
+                  <span style={{ marginLeft: "-200px", marginTop: "30px",fontSize: "24px",fontWeight:"700" }}>1</span>
                   <br /><br />
                 </CWidgetDropdown>
               </CCol>
@@ -373,8 +372,8 @@ function MemberRegistration() {
                   header=""
                   text=""
                 >
-                  <span style={{ marginLeft: "-73px", fontSize: "30px", }}>Total Count</span>
-                  <span style={{ marginLeft: "-204px", marginTop: "30px" }}>5</span>
+                  <span style={{ marginLeft: "-73px",fontSize: "24px",fontWeight:"700" }}>Total Count</span>
+                  <span style={{ marginLeft: "-204px", marginTop: "30px",fontSize: "24px",fontWeight:"700" }}>5</span>
                   <br /><br />
                 </CWidgetDropdown>
               </CCol>
@@ -388,7 +387,7 @@ function MemberRegistration() {
                 marginLeft: "4.5%",
                 width: "120px",
                 cursor: "pointer",
-                marginTop: "40px",
+                marginTop: "10px",
                 marginBottom: "-50px"
               }}
             >
@@ -734,8 +733,8 @@ function MemberRegistration() {
                         />
                       </CCol>
                     </CRow>
-
                   </div>
+                  
                   <CRow>
                     <CCol md="10">
                       <CCol

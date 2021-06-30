@@ -81,10 +81,7 @@ function Constituency() {
     { key: "female", label: "Female", _style: { width: "10%" } },
     { key: "Transgender", label: "Transgender", _style: { width: "10%" } },
 
-    {
-      key: "show_details1", label: "Action", _style: { width: "10%" }, sorter: false,
-      filter: false,
-    },
+   
   ];
   const select = [
     { value: "tamil", label: "Tamilnadu" },

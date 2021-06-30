@@ -9,6 +9,7 @@ import {
   CInput,
   CWidgetDropdown,
 } from "@coreui/react";
+import ReactTooltip from "react-tooltip";
 import {} from "../../../services/ApiService";
 import Select from "react-select";
 import "./PartyOfficeLocation.css";
@@ -180,8 +181,8 @@ function PartyOfficeLocation() {
           style1: "menu1",
         });
         setSideBar1(true);
-
         setHidePartyOffice(true);
+        setBackButt(false);
         break;
       case "close":
         setMenu({
@@ -369,7 +370,7 @@ function PartyOfficeLocation() {
 
               <CRow style={{ marginLeft: "250px" }}>
                 <CCol
-                  style={{ fontSize: "1.55rem", top: "70px" }}
+                  style={{ fontSize: "1.55rem", top: "45px" }}
                   md={12}
                   sm={12}
                   lg={12}
@@ -384,37 +385,44 @@ function PartyOfficeLocation() {
                       height: "40px",
                       width: "40px",
 
-                      marginLeft: "865px",
+                      marginLeft: "700px",
                       marginBottom: "20px",
                     }}
                   />
                 </CCol>
-                <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
+                <CCol style={{ fontSize: "1.55rem", }} md={12} sm={12} lg={12}>
+                <p data-tip="print">
                   <i
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "20px",
-                      marginLeft: "535px",
+                      top: "-5px",
+                      marginLeft: "500px",
                       marginBottom: "20px",
                       color: "black",
+                    
                     }}
                     onClick={() => exportPDF()}
                     className="fa fa-print"
                   ></i>
+                  </p>
+                  <ReactTooltip/>
                 </CCol>
                 <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
+                <p data-tip="share">
                   <i
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "20px",
-                      marginLeft: "800px",
+                      top: "-5px",
+                      marginLeft: "600px",
                       marginBottom: "910px",
                       color: "black",
                     }}
                     className="fa fa-share-alt"
                   ></i>
+                  </p>
+                  <ReactTooltip/>
                 </CCol>
               </CRow>
 
@@ -631,7 +639,7 @@ function PartyOfficeLocation() {
             </div>
             <CRow style={{ marginLeft: "150px" }}>
               <CCol
-                style={{ fontSize: "1.55rem", top: "210px" }}
+                style={{ fontSize: "1.55rem", top: "105px" }}
                 md={12}
                 sm={12}
                 lg={12}
@@ -651,12 +659,13 @@ function PartyOfficeLocation() {
                   }}
                 />
               </CCol>
-              <CCol style={{ fontSize: "1.55rem",top: "130px"  }} md={12} sm={12} lg={12}>
+              <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
+              <p data-tip="print">
                 <i
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "30px",
+                    top: "55px",
                     marginLeft: "595px",
                     marginBottom: "20px",
                     color: "black",
@@ -665,8 +674,11 @@ function PartyOfficeLocation() {
                   onClick={() => exportPDF()}
                   className="fa fa-print"
                 ></i>
+                </p>
+                <ReactTooltip/>
               </CCol>
-              <CCol style={{ fontSize: "1.55rem",top: "130px" }} md={12} sm={12} lg={12}>
+              <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
+              <p data-tip="share">
                 <i
                   id={"locationLibraryDelete"}
                   style={{
@@ -678,6 +690,8 @@ function PartyOfficeLocation() {
                   }}
                   className="fa fa-share-alt"
                 ></i>
+                </p>
+                <ReactTooltip/>
               </CCol>
             </CRow>
             <CRow style={{marginTop:"20px"}}>

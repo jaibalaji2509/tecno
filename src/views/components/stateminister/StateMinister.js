@@ -67,7 +67,7 @@ import {
     const [chairtwo, setchairTwo] = useState(true);
     const [vice, setvice] = useState(false);
     const [partypost, setpartypost] = useState(false);
-    const [gridone, setGridOne] = useState(true);
+    const [gridone, setGridOne] = useState(false);
     const [gridtwo, setGridTwo] = useState(false);
     const [gridthree, setGridThree] = useState(false);
     const [gridfour, setGridFour] = useState(false);
@@ -927,14 +927,14 @@ import {
                           options={stateselect}
                         />
                       </CCol>
-                      <CLabel className={"label-name-1"} style={{ marginLeft: "675px", marginTop:"30px",position:"absolute"}} >
-                          Type of Role
-                          <span className={"text-danger"}>*</span>
-                        </CLabel>
-                      <CCol md="6" className={"column-align"} style={{ marginLeft: "50px" , marginTop:"70px"}}>
-                     
-                          <CFormGroup variant="custom-radio" inline>
-                            <CInputRadio
+                      <CCol className={"column-align"} md="4">
+                      <CLabel className={"label-name-1"}>
+                        Type of Role
+                        <span className={"text-danger"}>*</span>
+                      </CLabel>
+                      <CCol md="12" style={{ marginLeft: "-10px" }}>
+                        <CFormGroup variant="custom-radio" inline>
+                          <CInputRadio
                               custom
                               id="inline-radio1"
                               onClick={changeChiefMinister}
@@ -979,6 +979,7 @@ import {
                             </CLabel>
                           </CFormGroup>
                         </CCol>
+                   </CCol>
                     </CRow>
                   
                   </div>
@@ -1362,7 +1363,7 @@ import {
                               variant="custom-checkbox"
                               htmlFor="inline-radio2"
                             >
-                              Deputy  Chief Minister
+                              Deputy Chief Minister
                             </CLabel>
                           </CFormGroup>
                           <CFormGroup variant="custom-radio" inline>

@@ -339,6 +339,11 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
     setHideMappingmunicipal(false);
     setHideCorporation(true);
   };
+  const cancelMunicipalCorporation = () => {
+    setHideMappingmunicipal(true);
+    setHideCorporation(false);
+  };
+
   const handleSave = async (file, folder) => {
     if (file === undefined) {
       let e = "cancelled";
@@ -662,12 +667,14 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                       <CButton
                         style={{
                           float: "right",
+                          cursor:"pointer"
                         }}
                         id={"cancelAbbreviationConfigureCode"}
                         className={"cancelBtn"}
+                        onClick={cancelMunicipalCorporation}
                       >
                         CANCEL
-                      </CButton>
+                      </CButton>{" "}
                       <CButton
                         style={{
                           float: "right",

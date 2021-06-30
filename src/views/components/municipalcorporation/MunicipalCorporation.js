@@ -122,6 +122,29 @@ const MunicipalCorporation = () => {
       Enteredon: "11/06/2021",
     },
   ];
+  const fields1 = [
+
+    {
+      key: "SNo",
+      label: "S.NO",
+      _style: { width: "3%" },
+      sorter: false,
+      filter: false,
+    },
+
+    { key: "ward", label: "Ward Name", _style: { width: "10%" } },
+    { key: "street", label: "Street Name", _style: { width: "10%" } },
+    {
+      key: "EnteredBy",
+      label: "Entered By",
+      _style: { width: "10%" },
+    },
+    {
+      key: "Enteredon",
+      label: "Entered On",
+      _style: { width: "10%" },
+    },
+  ];
 
   const fields = [
     // {
@@ -897,7 +920,7 @@ const MunicipalCorporation = () => {
                 <CRow style={{ padding: "4%", marginTop: "-3.5%" }}>
                   <CDataTable
                     items={userData1}
-                    fields={fields}
+                    fields={fields1}
                     columnFilter
                     tableFilter
                     tableLabel={"List of Streets"}
@@ -915,7 +938,7 @@ const MunicipalCorporation = () => {
                       show_details: (item, index) => {
                         return (
                           <td className="py-2">
-                            <CRow>
+                            {/* <CRow>
                               <CCol style={{ fontSize: "1.15rem" }} md="12">
                                 <i
                                   id={"locationLibraryDelete"}
@@ -928,7 +951,7 @@ const MunicipalCorporation = () => {
                                   className="fa fa-remove"
                                 ></i>
                               </CCol>
-                            </CRow>
+                            </CRow> */}
                           </td>
                         );
                       },
