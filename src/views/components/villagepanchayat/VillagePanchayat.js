@@ -22,7 +22,6 @@ import "./VillagePanchayat.css";
 import SheetJSFT from "../../../Tools/excelupload/SheetJSFT";
 import { make_cols } from "../../../Tools/excelupload/MakeColumn";
 
-
 const VillagePanchayat = () => {
   const [locations, setLocations] = useState({
     state: "",
@@ -59,13 +58,28 @@ const VillagePanchayat = () => {
     villagePanchayat: false,
     cityLocation: false,
   });
-  const [gridShow, setGridShow] = useState({
-    view1: false,
-    view2: false,
-    view3: false,
-    view4: false,
-  });
+
   const select = [
+    {
+      span: (
+        <CLink
+          className={"saveBtn"}
+          onClick={handleClick}
+          style={{ marginLeft: "200px" }}
+        >
+          Add{" "}
+        </CLink>
+      ),
+      span: (
+        <CLink
+          className={"saveBtn"}
+          onClick={handleClick}
+          style={{ marginLeft: "200px" }}
+        >
+          Add{" "}
+        </CLink>
+      ),
+    },
     { value: "tamil", label: "Tamilnadu" },
     { value: "Chengalpattu", label: "Chengalpattu" },
     { value: "Chunampedu", label: "Chunampedu" },
@@ -217,7 +231,6 @@ const VillagePanchayat = () => {
     }
   };
 
-
   const enableCreate = async () => {
     await setMunicipalList(false);
     await setmunicipalCreate(true);
@@ -288,7 +301,13 @@ const VillagePanchayat = () => {
     return (
       <components.MenuList {...props}>
         {props.children}
-        <div style={{ marginTop: "-300px", minHeight: "300px" }}>
+        <div
+          style={{
+            marginTop: "-323px",
+            marginBottom: "-50px",
+            minHeight: "300px",
+          }}
+        >
           <CLink
             className={"saveBtn"}
             onClick={handleClick}
@@ -356,10 +375,10 @@ const VillagePanchayat = () => {
         }, 1000);
         break;
     }
-    setExcelUpload("");
+    
   };
   const [counter, setCount] = useState(0);
- 
+
   const [inputList, setInputList] = useState([
     { panchayatname: "", panchayatabbreviation: "", panchayatcode: "" },
   ]);
@@ -601,7 +620,6 @@ const VillagePanchayat = () => {
                 }}
                 onClick={() => {
                   handleClick();
-                  // handleClick2();
                 }}
               >
                 Back
@@ -658,7 +676,10 @@ const VillagePanchayat = () => {
                 accept={SheetJSFT}
               />
             </CCol>
-            <CCol md="3">
+         
+          </CRow>
+<CRow>
+<CCol md="3">
               <CButton
                 style={{
                   marginLeft: "0px",
@@ -701,8 +722,7 @@ const VillagePanchayat = () => {
                 Back
               </CButton>
             </CCol>
-          </CRow>
-
+</CRow>
           {isValue && excelupload.data !== 0 ? (
             <div>
               <CRow
@@ -1019,34 +1039,28 @@ const VillagePanchayat = () => {
                               }}
                             >
                               <i
-                              className={"editIcon"}
-                              style={style}
-                              
-                            
+                                className={"editIcon"}
+                                style={style}
                                 id={"officeLocationEdit"}
                                 class="fas fa-edit"
                               />
-                                <div
-                              style={{
-                                width: 300,
-                                marginLeft: "26px",
-                                marginTop: "-25px",
-                                padding: 10,
-                                color:"red"
-                              }}
-                            
-                            >
-                              <i
-                              className={"editIcon"}
-                              style={style}                              
-                            
-                                id={"officeLocationEdit"}
-                                class="fas fa-trash"
-                              />
-                              
+                              <div
+                                style={{
+                                  width: 300,
+                                  marginLeft: "26px",
+                                  marginTop: "-25px",
+                                  padding: 10,
+                                  color: "red",
+                                }}
+                              >
+                                <i
+                                  className={"editIcon"}
+                                  style={style}
+                                  id={"officeLocationEdit"}
+                                  class="fas fa-trash"
+                                />
+                              </div>
                             </div>
-                            </div>
-                            
                           ) : null}
                         </CCol>
 
