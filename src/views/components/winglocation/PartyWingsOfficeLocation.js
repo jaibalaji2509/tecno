@@ -650,7 +650,7 @@ function PartyWingsOfficeLocation() {
               </CRow>
               <CRow style={{ marginLeft: "250px", marginBottom: "-20px" }}>
                 <CCol
-                  style={{ fontSize: "1.55rem", top: "122px" }}
+                  style={{ fontSize: "1.55rem", top: "112px" }}
                   md={12}
                   sm={12}
                   lg={12}
@@ -665,7 +665,7 @@ function PartyWingsOfficeLocation() {
                       height: "40px",
                       width: "40px",
 
-                      marginLeft: "810px",
+                      marginLeft: "650px",
                       marginBottom: "55px",
                     }}
                   />
@@ -676,8 +676,8 @@ function PartyWingsOfficeLocation() {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "35px",
-                      marginLeft: "610px",
+                      top: "25px",
+                      marginLeft: "450px",
                       marginBottom: "20px",
                       color: "black",
                     }}
@@ -693,8 +693,8 @@ function PartyWingsOfficeLocation() {
                     id={"locationLibraryDelete"}
                     style={{
                       position: "absolute",
-                      top: "10px",
-                      marginLeft: "710px",
+                      top: "0px",
+                      marginLeft: "550px",
                       marginBottom: "910px",
                       color: "black",
                     }}
@@ -704,7 +704,7 @@ function PartyWingsOfficeLocation() {
                <ReactTooltip/>
                 </CCol>
               </CRow>
-              <CRow style={{ padding: "4%", marginTop: "-3.5%" }}>
+              <CRow style={{ padding: "4%", marginTop: "-7.5%" }}>
                 <CDataTable
                   items={userData}
                   fields={fields}

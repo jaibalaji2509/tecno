@@ -1380,7 +1380,8 @@ function LocationLibrary(props) {
                         onClick={handleAddClick}
                         class={"fa fa-plus"}
 
-                      />}
+                      />
+                    }
 
 
 
@@ -2303,7 +2304,7 @@ function LocationLibrary(props) {
                   ) : null}
                 </div>
               )}
-              {sideBarup2 && (
+                {sideBarup2 && (
                 <div className={menu.style1} style={{ marginLeft: "-125px" }}>
 
                   <CRow className={""}>
@@ -2316,11 +2317,12 @@ function LocationLibrary(props) {
                             marginLeft: "20px",
                           }}
                         >
-                          ADDING CITY NAME{" "}
+                          ADDING City NAME{" "}
                         </span>
                       </div>
                     </CCol>
                   </CRow>
+
 
                   <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
                     onClick={() => {
@@ -2344,8 +2346,6 @@ function LocationLibrary(props) {
                         type={"file"}
                         onChange={handleChange}
                         accept={SheetJSFT}
-
-
                       />
 
 
@@ -2362,6 +2362,7 @@ function LocationLibrary(props) {
                         {" "}
                         Confirm
                       </CButton>
+
 
                       <CSVLink data={csvData} ><CButton
                         shape={"pill"}
@@ -2388,82 +2389,78 @@ function LocationLibrary(props) {
                     </CCol>
                   </CRow>
 
-                  {/* {isValue && excelupload.data !== 0 ? ( */}
-                  <div>
-                    <CRow
-                      style={{
-                        padding: "4%",
-                        marginTop: "1.5%",
-                        marginLeft: "-45px",
+                  {isValue && excelupload.data !== 0 ? (
+                    <div>
+                      <CRow
+                        style={{
+                          padding: "4%",
+                          marginTop: "1.5%",
+                          marginLeft: "-45px",
 
-                      }}
-                    >
-                      <CDataTable
-                        items={excelupload.data}
-                        fields={fields2}
-                        columnFilter
-                        tableFilter
-                        tableLabel={"List of City"}
-                        itemsPerPageSelect
-                        itemsPerPage={5}
-                        hover
-                        sorter
-
-                        pagination
-                        scopedSlots={{
-                          show_details3: (item, index) => {
-                            return (
-                              <td className="py-1">
-                                <CRow>
-                                  <CCol style={{ fontSize: "1rem" }} md="16">
-
-                                    <i
-                                      style={{
-                                        marginLeft: "35px",
-
-                                      }}
-                                      className="fa fa-remove"
-                                      bsStyle="overlay"
-                                      onClick={() => menus1(item)}
-                                    />
-                                  </CCol>
-                                </CRow>
-                              </td>
-                            );
-                          },
-                          details: (item, index) => { },
                         }}
-                      />
-                    </CRow>
-                    <CRow style={{ paddingLeft: "180px" }}>
+                      >
+                        <CDataTable
+                          items={excelupload.data}
+                          fields={fields3}
+                          columnFilter
+                          tableFilter
+                          tableLabel={"List of City"}
+                          itemsPerPageSelect
+                          itemsPerPage={5}
+                          hover
+                          sorter
+                          pagination
+                          scopedSlots={{
+                            show_details3: (item, index) => {
+                              return (
+                                <td className="py-1">
+                                  <CRow>
+                                    <CCol style={{ fontSize: "1rem" }} md="16">
 
-                      <CCol md="3">
-                        <CButton
-                          type="file"
-                          style={{
-                            marginLeft: "450px",
-                            marginTop: "35px",
+                                      <i
+                                        style={{
+                                          marginLeft: "35px",
 
+                                        }}
+                                        className="fa fa-remove"
+                                        bsStyle="overlay"
+                                        onClick={() => menus1(item)}
+                                      />
+                                    </CCol>
+                                  </CRow>
+                                </td>
+                              );
+                            },
+                            details: (item, index) => { },
                           }}
-                          onClick={enableCreate}
-                          className={"saveBtn"}
+                        />
+                      </CRow>
+                      <CRow style={{ paddingLeft: "180px" }}>
 
-                        > Save</CButton>
-                        <CButton
-                          shape={"pill"}
-                          id={"municipalcancel"}
-                          style={{ marginTop: "-60px", marginLeft: "550px" }}
-                          className={"cancelBtn"}
-                          onClick={bulkhandleClick}
-                        >
-                          Cancel
-                        </CButton>
+                        <CCol md="3">
+                          <CButton
+                            type="file"
+                            style={{
+                              marginLeft: "450px",
+                              marginTop: "35px",
 
+                            }}
+                            onClick={enableCreate}
+                            className={"saveBtn"}
 
-
-                      </CCol>
-                    </CRow>
-                  </div>
+                          > Save</CButton>
+                          <CButton
+                            shape={"pill"}
+                            id={"municipalcancel"}
+                            style={{ marginTop: "-60px", marginLeft: "550px" }}
+                            className={"cancelBtn"}
+                            onClick={bulkhandleClick}
+                          >
+                            Cancel
+                          </CButton>
+                        </CCol>
+                      </CRow>
+                    </div>
 
                   ) : null}
                 </div>
@@ -2819,7 +2816,7 @@ function LocationLibrary(props) {
                       </div>
                     </CCol>
                   </CRow>
-<CRow
+                  <CRow
                     className={"row-alignment"}
                     style={{ marginLeft: "5px", marginTop: "20px" }}
                     sm={12}
@@ -2830,7 +2827,7 @@ function LocationLibrary(props) {
                     <CCard style={{ marginLeft: "5px", fontSize: "15px", fontWeight: "700" }}>Chennai</CCard>{"   "}
                     <CCard style={{ marginLeft: "5px", fontSize: "15px", fontWeight: "700" }}>Vadapalani</CCard>
                     <CCard style={{ marginLeft: "5px", fontSize: "15px", fontWeight: "700" }}>KAMARAJ NAGAR </CCard>
-</CRow>
+                  </CRow>
 
                   <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
                     onClick={() => {
@@ -2838,7 +2835,7 @@ function LocationLibrary(props) {
                       document.getElementById("uploadRoleTemplate").click();
                     }}>
                     <CCol md="12">
-                      <span style={{ fontSize: "20px", cursor: "pointer", color:"blue" }}>
+                      <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
                         <i className="fas fa-upload"></i>&nbsp;
                       </span>
 
@@ -2861,7 +2858,7 @@ function LocationLibrary(props) {
 
                     </CCol>
                     {/* <CCol md="3"> */}
-                      {/* <CButton
+                    {/* <CButton
                         style={{
                           marginLeft: "0px",
                           marginTop: "25px",
@@ -2872,8 +2869,8 @@ function LocationLibrary(props) {
                         {" "}
                         Confirm
                       </CButton> */}
-                      <CCol md="12">
-                      <span style={{ fontSize: "20px", cursor: "pointer", color:"green" }}>
+                    <CCol md="12">
+                      <span style={{ fontSize: "20px", cursor: "pointer", color: "green" }}>
                         <i className="fas fa-check" onClick={handleFile}></i>&nbsp;
                       </span>
 
@@ -2888,14 +2885,14 @@ function LocationLibrary(props) {
                       >
                         Download
                       </CButton> */}
-                      <span style={{ fontSize: "20px", marginLeft:"30px", cursor: "pointer",color:"tomato" }}>
-                        <i className="fas fa-download"></i>&nbsp;
-                      </span>
+                        <span style={{ fontSize: "20px", marginLeft: "30px", cursor: "pointer", color: "tomato" }}>
+                          <i className="fas fa-download"></i>&nbsp;
+                        </span>
                       </CSVLink>
 
                       <CButton
                         className={"menu"}
-                        style={{ position: "absolute", marginLeft: "660px", top: "-130px",  backgroundColor: "green", border: "1px solid green" }}
+                        style={{ position: "absolute", marginLeft: "660px", top: "-130px", backgroundColor: "green", border: "1px solid green" }}
                         className={"cancelBtn"}
                         onClick={() => {
                           bulkhandleClick();
@@ -3170,7 +3167,7 @@ function LocationLibrary(props) {
                               </React.Fragment>
                             )}
                             <CRow style={{ marginLeft: "1300px", position: "absolute", marginTop: "10px" }}>
-                              <CCol sm="6" lg="3" style={{ marginLeft: "10px" }}>
+                              <CCol sm="6" lg="3" style={{ marginLeft: "-30px" }}>
                                 <CWidgetDropdown
                                   style={{
                                     width: "280px",
@@ -3194,7 +3191,7 @@ function LocationLibrary(props) {
                                   </span>
                                   <br />
                                   <br />
-                            </CWidgetDropdown>
+                                </CWidgetDropdown>
                               </CCol>
                             </CRow>
                           </CRow>
@@ -3359,7 +3356,7 @@ function LocationLibrary(props) {
                               </React.Fragment>
                             )}
                             <CRow style={{ marginTop: "40px", marginLeft: "1300px", position: "absolute" }}>
-                              <CCol sm="3" lg="3" style={{ marginLeft: "10px" }}>
+                              <CCol sm="3" lg="3" style={{ marginLeft: "-30px" }}>
                                 <CWidgetDropdown
                                   style={{
                                     width: "280px",
@@ -3383,7 +3380,7 @@ function LocationLibrary(props) {
                                   </span>
                                   <br />
                                   <br />
-                         </CWidgetDropdown>
+                                </CWidgetDropdown>
                               </CCol>
                             </CRow>
 
@@ -3573,7 +3570,7 @@ function LocationLibrary(props) {
                               </React.Fragment>
                             )}
                             <CRow style={{ marginTop: "70px", marginLeft: "1300px", position: "absolute" }}>
-                              <CCol sm="3" lg="3" style={{ marginLeft: "10px" }}>
+                              <CCol sm="3" lg="3" style={{ marginLeft: "-30px" }}>
                                 <CWidgetDropdown
                                   style={{
                                     width: "280px",
@@ -3597,7 +3594,7 @@ function LocationLibrary(props) {
                                   </span>
                                   <br />
                                   <br />
-                            </CWidgetDropdown>
+                                </CWidgetDropdown>
                               </CCol>
                             </CRow>
                           </CRow>
@@ -3763,32 +3760,32 @@ function LocationLibrary(props) {
 
 
                             <CRow style={{ marginTop: "100px", marginLeft: "1300px", position: "absolute" }}>
-                              <CCol sm="3" lg="3" style={{ marginLeft: "10px" }}>
-                               
-                                  <CWidgetDropdown
-                                    style={{
-                                      width: "280px",
-                                      textAlign: "center",
-                                      fontSize: "30px",
-                                      float: "right",
-                                      height: "100px",
-                                      marginRight: "85px"
-                                    }}
+                              <CCol sm="3" lg="3" style={{ marginLeft: "-30px" }}>
 
-                                    header=""
-                                    text=""
+                                <CWidgetDropdown
+                                  style={{
+                                    width: "280px",
+                                    textAlign: "center",
+                                    fontSize: "30px",
+                                    float: "right",
+                                    height: "100px",
+                                    marginRight: "85px"
+                                  }}
+
+                                  header=""
+                                  text=""
+                                >
+                                  <span style={{ marginLeft: "-40px", color: "red", fontSize: "24px", fontWeight: "700" }}>
+                                    Street
+                                  </span>
+                                  <span
+                                    style={{ marginLeft: "-157px", color: "red", marginTop: "30px", fontSize: "24px", fontWeight: "700" }}
                                   >
-                                    <span style={{ marginLeft: "-40px", color: "red", fontSize: "24px", fontWeight: "700" }}>
-                                      Street
-                                    </span>
-                                    <span
-                                      style={{ marginLeft: "-157px", color: "red", marginTop: "30px", fontSize: "24px", fontWeight: "700" }}
-                                    >
-                                      2
-                                    </span>
-                                    <br />
-                                    <br />
-                           </CWidgetDropdown>
+                                    2
+                                  </span>
+                                  <br />
+                                  <br />
+                                </CWidgetDropdown>
                               </CCol>
                             </CRow>
                           </CRow>
@@ -3798,7 +3795,7 @@ function LocationLibrary(props) {
                       <CRow className={"row-alignment"}>
                         {DoorList && (
                           <React.Fragment>
-                            <CCol className={"column-align"} md={4} lg={4} style={{ marginLeft: "40px" }}>
+                            <CCol className={"column-align"} sm={4} md={4} lg={4}  style={{ marginLeft: "40px",}}>
                               <CLabel className={"label-name-1"}>
                                 Door No.
                                 <span className={"text-danger"}> *</span>
@@ -3916,47 +3913,48 @@ function LocationLibrary(props) {
 
 
                         )}
+                        
                       </CRow>
                       <CRow
-                        style={{ padding: "1%", marginTop: "4.5%", marginLeft: "27px" }}
+                        style={{ padding: "1%", marginTop: "-1.5%", marginLeft: "27px" }}
                       >
                         <CRow style={{ marginLeft: "350px" }}>
                           <div >
                             <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
                               {/* <Tippy content="Print"> */}
                               <p data-tip="print">
-                              <i
-                                id="registerTip"
-                                style={{
-                                  position: "absolute",
-                                  top: "40px",
-                                  marginLeft: "450px",
-                                  marginBottom: "20px",
-                                  color: "black",
-                                }}
-                                className="fa fa-print"
-                              >
-                              </i>
+                                <i
+                                  id="registerTip"
+                                  style={{
+                                    position: "absolute",
+                                    top: "40px",
+                                    marginLeft: "450px",
+                                    marginBottom: "20px",
+                                    color: "black",
+                                  }}
+                                  className="fa fa-print"
+                                >
+                                </i>
                               </p>
-                              <ReactTooltip/>
+                              <ReactTooltip />
                               {/* </Tippy> */}
                             </CCol>
                           </div>
                           <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
                             <p data-tip="share">
-                <i
-                  id={"locationLibraryDelete"}
-                  style={{
-                    position: "absolute",
-                    top: "40px",
-                    marginLeft: "500px",
-                    marginBottom: "910px",
-                    color: "black",
-                  }}
-                  className="fa fa-share-alt"
-                ></i>
-                </p>
-                <ReactTooltip/>
+                              <i
+                                id={"locationLibraryDelete"}
+                                style={{
+                                  position: "absolute",
+                                  top: "40px",
+                                  marginLeft: "500px",
+                                  marginBottom: "910px",
+                                  color: "black",
+                                }}
+                                className="fa fa-share-alt"
+                              ></i>
+                            </p>
+                            <ReactTooltip />
                           </CCol>
                         </CRow>
                         <CDataTable
