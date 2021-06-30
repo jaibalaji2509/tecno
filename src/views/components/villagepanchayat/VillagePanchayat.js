@@ -16,15 +16,12 @@ import { Dropdown, Menu } from "antd";
 import "antd/dist/antd.css";
 import "./VillagePanchayat.css";
 import { CSVLink, CSVDownload } from "react-csv";
-import ReactFileReader from "react-file-reader";
-// import readXlsxFile from "read-excel-file";
+
 import * as XLSX from "xlsx";
-import MultiSelect from "react-multi-select-component";
 import "./VillagePanchayat.css";
 import SheetJSFT from "../../../Tools/excelupload/SheetJSFT";
 import { make_cols } from "../../../Tools/excelupload/MakeColumn";
-import { cilFace } from "@coreui/icons";
-import ReactTooltip from "react-tooltip";
+
 
 const VillagePanchayat = () => {
   const [locations, setLocations] = useState({
@@ -45,7 +42,7 @@ const VillagePanchayat = () => {
   const [municipalList, setMunicipalList] = useState(true);
   const [MunicipalCreate, setmunicipalCreate] = useState(false);
   const [selected, setSelected] = useState([]);
-  const [municipalCorporation] = useState({});
+
   const [sideBar1, setSideBar1] = useState(false);
   const [municipalName] = useState("");
   const [villageList, setvillageList] = useState(true);
@@ -188,7 +185,7 @@ const VillagePanchayat = () => {
       filter: false,
     },
   ];
-  const [edit, setEdit] = useState(false);
+
   const [passing, setPassing] = useState("");
   const [error] = useState("");
   const saveCorporation = async () => {
@@ -220,9 +217,6 @@ const VillagePanchayat = () => {
     }
   };
 
-  const changeHandler = (e) => {
-    setLocations({ ...locations, [e.target.name]: e.target.value });
-  };
 
   const enableCreate = async () => {
     await setMunicipalList(false);
@@ -365,9 +359,7 @@ const VillagePanchayat = () => {
     setExcelUpload("");
   };
   const [counter, setCount] = useState(0);
-  const onChangeValue = () => {
-    setCount(counter + 1);
-  };
+ 
   const [inputList, setInputList] = useState([
     { panchayatname: "", panchayatabbreviation: "", panchayatcode: "" },
   ]);

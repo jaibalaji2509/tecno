@@ -639,7 +639,7 @@ function PartyOfficeLocation() {
             </div>
             <CRow style={{ marginLeft: "150px" }}>
               <CCol
-                style={{ fontSize: "1.55rem", top: "105px" }}
+                style={{ fontSize: "1.55rem", top: "255px" }}
                 md={12}
                 sm={12}
                 lg={12}
@@ -665,8 +665,8 @@ function PartyOfficeLocation() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "55px",
-                    marginLeft: "595px",
+                    top: "205px",
+                    marginLeft: "625px",
                     marginBottom: "20px",
                     color: "black",
                     cursor: "pointer",
@@ -683,7 +683,7 @@ function PartyOfficeLocation() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "30px",
+                    top: "180px",
                     marginLeft: "710px",
                     marginBottom: "910px",
                     color: "black",
@@ -694,14 +694,14 @@ function PartyOfficeLocation() {
                 <ReactTooltip/>
               </CCol>
             </CRow>
-            <CRow style={{marginTop:"20px"}}>
+            <CRow style={{marginTop:"-10px"}}>
               <CCol md="10" lg="10" sm="10">
                 <CCol
                   md="5"
                   style={{
                     marginLeft: "5px",
                     float: "right",
-                    marginTop: "1px",
+                   Top: "100px",
                     top: "73px",
                     position: "absolute",
                   }}

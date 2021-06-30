@@ -2465,7 +2465,7 @@ function LocationLibrary(props) {
                     </CRow>
                   </div>
 
-                  ) : null}
+                 
                 </div>
               )}
               {sideBarup3 && (
@@ -3798,30 +3798,22 @@ function LocationLibrary(props) {
                       <CRow className={"row-alignment"}>
                         {DoorList && (
                           <React.Fragment>
-                            <CCol className={"column-align"} md={4} lg={4} style={{ marginLeft: "40px" }}>
-                              <CLabel className={"label-name-1"}>
-                                Door No.
-                                <span className={"text-danger"}> *</span>
-                              </CLabel>
-                              <Select
-                                placeholder="Select the Door No."
-                                id={"locationLibraryArea"}
-                                // onChange={(e) => {
-                                //   if (doorName.label) {
-                                //     setDoorName({ ...e, edit: streetName.edit });
-                                //   } else {
-                                //     setDoorName({ ...e, edit: true });
-                                //   }
-                                // }}
-                                // value={doorName.value ? doorName : null}
-                                components={{ MenuList: SelectMenuButtondoor }}
-                                options={selectDoor}
-                              // isDisabled={
-                              //   CountryCreate || StateCreate || CityCreate
-                              // }
-                              />
-                            </CCol>
-
+                      
+                            <CCol className={"column-align"} md={4} lg={4} style={{marginLeft:"52px", marginRight:"-9px"}}>
+                                  <CLabel className={"label-name-1"}>
+                                    Door No
+                                    <span className={"text-danger"}> *</span>
+                                  </CLabel>
+                                  <Select
+                                  style={{ marginRight:"-9px",marginLeft:"-12px"}}
+                                    placeholder="Select the Street Name"
+                                    id={"locationLibraryArea"}
+                                   
+                                    components={{ MenuList: SelectMenuButtonstreet }}
+                                    options={selectDoor}
+                                  
+                                  />
+                                </CCol>
                             {doorName.edit && (
                               <React.Fragment>
                                 <CCol className={"column-align"} md={1} lg={1}>
