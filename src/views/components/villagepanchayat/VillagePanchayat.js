@@ -16,14 +16,12 @@ import { Dropdown, Menu } from "antd";
 import "antd/dist/antd.css";
 import "./VillagePanchayat.css";
 import { CSVLink, CSVDownload } from "react-csv";
-import ReactFileReader from "react-file-reader";
-// import readXlsxFile from "read-excel-file";
+
 import * as XLSX from "xlsx";
-import MultiSelect from "react-multi-select-component";
 import "./VillagePanchayat.css";
 import SheetJSFT from "../../../Tools/excelupload/SheetJSFT";
 import { make_cols } from "../../../Tools/excelupload/MakeColumn";
-import { cilFace } from "@coreui/icons";
+
 const VillagePanchayat = () => {
   const [locations, setLocations] = useState({
     state: "",
@@ -43,7 +41,7 @@ const VillagePanchayat = () => {
   const [municipalList, setMunicipalList] = useState(true);
   const [MunicipalCreate, setmunicipalCreate] = useState(false);
   const [selected, setSelected] = useState([]);
-  const [municipalCorporation] = useState({});
+
   const [sideBar1, setSideBar1] = useState(false);
   const [municipalName] = useState("");
   const [villageList, setvillageList] = useState(true);
@@ -60,13 +58,28 @@ const VillagePanchayat = () => {
     villagePanchayat: false,
     cityLocation: false,
   });
-  const [gridShow, setGridShow] = useState({
-    view1: false,
-    view2: false,
-    view3: false,
-    view4: false,
-  });
+
   const select = [
+    {
+      span: (
+        <CLink
+          className={"saveBtn"}
+          onClick={handleClick}
+          style={{ marginLeft: "200px" }}
+        >
+          Add{" "}
+        </CLink>
+      ),
+      span: (
+        <CLink
+          className={"saveBtn"}
+          onClick={handleClick}
+          style={{ marginLeft: "200px" }}
+        >
+          Add{" "}
+        </CLink>
+      ),
+    },
     { value: "tamil", label: "Tamilnadu" },
     { value: "Chengalpattu", label: "Chengalpattu" },
     { value: "Chunampedu", label: "Chunampedu" },
@@ -218,10 +231,6 @@ const VillagePanchayat = () => {
     }
   };
 
-  const changeHandler = (e) => {
-    setLocations({ ...locations, [e.target.name]: e.target.value });
-  };
-
   const enableCreate = async () => {
     await setMunicipalList(false);
     await setmunicipalCreate(true);
@@ -292,7 +301,13 @@ const VillagePanchayat = () => {
     return (
       <components.MenuList {...props}>
         {props.children}
-        <div style={{ marginTop: "-300px", minHeight: "300px" }}>
+        <div
+          style={{
+            marginTop: "-323px",
+            marginBottom: "-50px",
+            minHeight: "300px",
+          }}
+        >
           <CLink
             className={"saveBtn"}
             onClick={handleClick}
@@ -360,12 +375,10 @@ const VillagePanchayat = () => {
         }, 1000);
         break;
     }
-    setExcelUpload("");
+    
   };
   const [counter, setCount] = useState(0);
-  const onChangeValue = () => {
-    setCount(counter + 1);
-  };
+
   const [inputList, setInputList] = useState([
     { panchayatname: "", panchayatabbreviation: "", panchayatcode: "" },
   ]);
@@ -415,10 +428,8 @@ const VillagePanchayat = () => {
   ];
 
   const handleChange = (e) => {
-  
     const files = e.target.files;
     if (files && files[0]) setExcelUpload({ file: files[0] });
-   
   };
 
   const handleFile = () => {
@@ -452,8 +463,7 @@ const VillagePanchayat = () => {
     }
   };
   const [isValue, setIsValue] = useState(false);
-
-
+  const [style, setStyle] = useState({ display: "none" });
   return (
     <div className={menu.style3}>
       {sideBar1 && (
@@ -593,15 +603,12 @@ const VillagePanchayat = () => {
                 CANCEL
               </CButton>
               {error !== "" ? <p>{error}</p> : null}
-
-             
             </CCol>
           </CRow>
 
-         <CRow>
-           <CCol md="6">
-           <CButton
-              
+          <CRow>
+            <CCol md="6">
+              <CButton
                 style={{
                   position: "absolute",
                   top: "-220px",
@@ -609,18 +616,16 @@ const VillagePanchayat = () => {
                   marginLeft: "330px",
                   backgroundColor: "green",
                   border: "1px solid green",
-                  color:"white"
+                  color: "white",
                 }}
-                
                 onClick={() => {
                   handleClick();
-                  // handleClick2();
                 }}
               >
                 Back
               </CButton>
-           </CCol>
-         </CRow>
+            </CCol>
+          </CRow>
         </div>
       )}
       {sideBar2 && (
@@ -640,37 +645,42 @@ const VillagePanchayat = () => {
               </div>
             </CCol>
           </CRow>
-         
-          <CRow style={{ marginLeft: "10px",marginTop: "15px" }}   id={"createRoleUploadTemplate"}
-              onClick={() => {
-             
-                document.getElementById("uploadRoleTemplate").click();
-              }}>
+
+          <CRow
+            style={{ marginLeft: "10px", marginTop: "15px" }}
+            id={"createRoleUploadTemplate"}
+            onClick={() => {
+              document.getElementById("uploadRoleTemplate").click();
+            }}
+          >
             <CCol md="12">
-            <span style={{ fontSize: "20px", cursor: "pointer" }}>
-                <i  className="fas fa-upload"></i>&nbsp;
+              <span style={{ fontSize: "20px", cursor: "pointer" }}>
+                <i className="fas fa-upload"></i>&nbsp;
               </span>
 
               <CLabel
-                style={{ position: "relative",  marginLeft:"20px",cursor: "pointer" }}
+                style={{
+                  position: "relative",
+                  marginLeft: "20px",
+                  cursor: "pointer",
+                }}
                 className={"form-labels-6"}
               >
                 Upload Village Panchayat
               </CLabel>
               <CInput
-                 id={"uploadRoleTemplate"}
-                 style={{ display: "none" }}
-                 type={"file"}
-                 onChange={handleChange}
+                id={"uploadRoleTemplate"}
+                style={{ display: "none" }}
+                type={"file"}
+                onChange={handleChange}
                 accept={SheetJSFT}
-              
-             
               />
-
-            
             </CCol>
-            <CCol md="3">
-            <CButton
+         
+          </CRow>
+<CRow>
+<CCol md="3">
+              <CButton
                 style={{
                   marginLeft: "0px",
                   marginTop: "25px",
@@ -712,8 +722,7 @@ const VillagePanchayat = () => {
                 Back
               </CButton>
             </CCol>
-          </CRow>
-
+</CRow>
           {isValue && excelupload.data !== 0 ? (
             <div>
               <CRow
@@ -1006,13 +1015,55 @@ const VillagePanchayat = () => {
                             placeholder="Select District Panchayat"
                             id={"municipalcorporation"}
                             type={"text"}
-                            // value={selected}
-                            // onChange={(e) => setSelected(e)}
+                            value={selected}
+                            onChange={(e) => setSelected(e)}
                             components={{ MenuList: SelectMenuButton }}
                             options={select}
                             // labelledBy={"Select"}
                           />
+
+                          {/* <p data-tip="hello world">Tooltip</p> */}
+                          {selected.length !== 0 ? (
+                            <div
+                              style={{
+                                width: 300,
+                                marginLeft: "426px",
+                                marginTop: "-35px",
+                                padding: 10,
+                              }}
+                              onMouseEnter={(e) => {
+                                setStyle({ display: "block" });
+                              }}
+                              onMouseLeave={(e) => {
+                                setStyle({ display: "none" });
+                              }}
+                            >
+                              <i
+                                className={"editIcon"}
+                                style={style}
+                                id={"officeLocationEdit"}
+                                class="fas fa-edit"
+                              />
+                              <div
+                                style={{
+                                  width: 300,
+                                  marginLeft: "26px",
+                                  marginTop: "-25px",
+                                  padding: 10,
+                                  color: "red",
+                                }}
+                              >
+                                <i
+                                  className={"editIcon"}
+                                  style={style}
+                                  id={"officeLocationEdit"}
+                                  class="fas fa-trash"
+                                />
+                              </div>
+                            </div>
+                          ) : null}
                         </CCol>
+
                         {/* <CCol className={"column-align"} md={1} lg={1}>
                           <CButton
                             shape={"pill"}

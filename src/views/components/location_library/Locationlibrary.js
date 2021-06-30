@@ -4072,7 +4072,7 @@ function LocationLibrary(props) {
                       <CRow
                         style={{ padding: "1%", marginTop: "-1.5%", marginLeft: "27px" }}
                       >
-                        <CRow style={{ marginLeft: "350px" }}>
+                        <CRow style={{ marginLeft: "450px" }}>
                           <div >
                             <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
                               {/* <Tippy content="Print"> */}

@@ -497,37 +497,10 @@ function PartyOfficeLocation() {
               </span>
             </div>
 
-            <CRow style={{ marginTop: "130px" }}>
-              <CCol md="10" lg="10" sm="10">
-                <CCol
-                  md="5"
-                  style={{
-                    marginLeft: "5px",
-                    float: "right",
-                    marginTop: "1px",
-                    top: "3px",
-                    position: "absolute",
-                  }}
-                >
-                  <CButton
-                    style={{
-                      float: "right",
-                      marginRight: "762px",
-                      position: "absolute",
-                      marginLeft: "18px",
-                    }}
-                    id={"saveAbbreviationConfigureCode"}
-                    className={"saveBtn"}
-                    onClick={changePartyOffice}
-                  >
-                    Add Party Office Location
-                  </CButton>{" "}
-                </CCol>
-              </CCol>
-            </CRow>
+           <div style={{marginTop:"-30px"}}>
             <CRow
               style={{
-                marginTop: "75px",
+                marginTop: "65px",
                 marginLeft: "240px",
                 position: "absolute",
               }}
@@ -565,7 +538,7 @@ function PartyOfficeLocation() {
                       padding: "100px",
                       fontSize: "24px",
                       fontWeight: "500",
-                      color:"lightgrey"
+                      color:"grey"
                     }}
                   >
                   2
@@ -610,7 +583,7 @@ function PartyOfficeLocation() {
                       marginTop: "28px",
                       fontSize: "24px",
                       fontWeight: "500",
-                      color:"lightgrey"
+                      color:"grey"
                     }}
                   >
                     2
@@ -621,7 +594,7 @@ function PartyOfficeLocation() {
                   <br />
                 {/* </CWidgetDropdown> */}
               </CCol>
-              <CCol sm="3" lg="3"  style={{ marginLeft: "450px" ,position:"relative",display:"flex"}}>
+              <CCol sm="3" lg="3"  style={{ marginLeft: "440px" ,position:"relative",display:"flex"}}>
                 {/* <CWidgetDropdown
                   style={{
                     width: "280px",
@@ -652,7 +625,7 @@ function PartyOfficeLocation() {
                       marginTop: "-201px",
                       fontSize: "24px",
                       fontWeight: "500",
-                      color:"lightgrey"
+                      color:"grey"
                     }}
                   >
                     1
@@ -663,9 +636,10 @@ function PartyOfficeLocation() {
                 {/* </CWidgetDropdown> */}
               </CCol>
             </CRow>
+            </div>
             <CRow style={{ marginLeft: "150px" }}>
               <CCol
-                style={{ fontSize: "1.55rem", top: "105px" }}
+                style={{ fontSize: "1.55rem", top: "255px" }}
                 md={12}
                 sm={12}
                 lg={12}
@@ -691,8 +665,8 @@ function PartyOfficeLocation() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "55px",
-                    marginLeft: "595px",
+                    top: "205px",
+                    marginLeft: "625px",
                     marginBottom: "20px",
                     color: "black",
                     cursor: "pointer",
@@ -709,7 +683,7 @@ function PartyOfficeLocation() {
                   id={"locationLibraryDelete"}
                   style={{
                     position: "absolute",
-                    top: "30px",
+                    top: "180px",
                     marginLeft: "710px",
                     marginBottom: "910px",
                     color: "black",
@@ -720,7 +694,35 @@ function PartyOfficeLocation() {
                 <ReactTooltip/>
               </CCol>
             </CRow>
-            <CRow style={{ padding: "4%", marginTop: "-4.5%" }}>
+            <CRow style={{marginTop:"-10px"}}>
+              <CCol md="10" lg="10" sm="10">
+                <CCol
+                  md="5"
+                  style={{
+                    marginLeft: "5px",
+                    float: "right",
+                   Top: "100px",
+                    top: "73px",
+                    position: "absolute",
+                  }}
+                >
+                  <CButton
+                    style={{
+                      float: "right",
+                      marginRight: "762px",
+                      position: "absolute",
+                      marginLeft: "18px",
+                    }}
+                    id={"saveAbbreviationConfigureCode"}
+                    className={"saveBtn"}
+                    onClick={changePartyOffice}
+                  >
+                    Add Party Office Location
+                  </CButton>{" "}
+                </CCol>
+              </CCol>
+            </CRow>
+            <CRow style={{ padding: "4%", marginTop: "5.5%" }}>
               <CDataTable
                 items={userData}
                 fields={fields}
