@@ -429,11 +429,28 @@ option{
   z-index: 1;
   transition: all 1.5s ease-out;
 }
-.tooltip{
-  font-family: sans-serif;
-  text-align: center;
 
-  margin-top: 100px;
-  height: 200px;
-}
-
+.divider {
+    position: absolute;
+      left: 180px;
+      top: 0px;
+      height: 60px;
+      bottom: 40%;
+      border-left: 1px solid lightgray;
+  }
+  .divider1{
+    position: absolute;
+    left: 30px;
+    top: 0px;
+    height: 60px;
+    bottom: 40%;
+    border-left: 1px solid lightgray; 
+  }
+  .divider2{
+    position: absolute;
+    left: 290px;
+    top: -235px;
+    height: 60px;
+    bottom: 40%;
+    border-left: 1px solid lightgray; 
+  }

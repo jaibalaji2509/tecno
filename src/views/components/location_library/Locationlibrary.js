@@ -15,6 +15,8 @@ import {
 import { DocsLink } from 'src/reusable'
 import { useFormik } from "formik";
 import * as yup from "yup";
+// import Tippy from 'tippy.js';
+// import 'tippy.js/dist/tippy.css';
 import "./LocationLibrary.css";
 import ReactTooltip from "react-tooltip";
 import {
@@ -418,6 +420,7 @@ function LocationLibrary(props) {
         break;
     }
   };
+  const [sideBarup, setSideBarup] = useState(false)
   const [sideBarup1, setSideBarup1] = useState(false)
   const [sideBarup2, setSideBarup2] = useState(false)
   const [sideBarup3, setSideBarup3] = useState(false)
@@ -582,7 +585,7 @@ function LocationLibrary(props) {
           style1: "menu active1",
 
         });
-        setSideBarup5(true);
+        setSideBarup(true);
 
 
 
@@ -596,7 +599,7 @@ function LocationLibrary(props) {
         });
         setTimeout(() => {
 
-          setSideBarup5(false);
+          setSideBarup(false);
         }, 1000);
         break;
     }
@@ -2156,28 +2159,46 @@ function LocationLibrary(props) {
                     </CCol>
                   </CRow>
 
-                  <CRow style={{ marginLeft: "-25px" }}>
+                  <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+                    onClick={() => {
 
+                      document.getElementById("uploadRoleTemplate").click();
+                    }}>
+                    <CCol md="12">
+                      <span style={{ fontSize: "20px", cursor: "pointer" }}>
+                        <i className="fas fa-upload"></i>&nbsp;
+                      </span>
+
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "20px", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        Upload State Name
+                      </CLabel>
+                      <CInput
+                        id={"uploadRoleTemplate"}
+                        style={{ display: "none" }}
+                        type={"file"}
+                        onChange={handleChange}
+                        accept={SheetJSFT}
+
+
+                      />
+
+
+                    </CCol>
                     <CCol md="3">
-
-                      <CInput type="file" style={{ marginLeft: "35px", marginTop: "15px" }} id="file" accept={SheetJSFT} onChange={handleChange} />
-
                       <CButton
-
                         style={{
-                          marginLeft: "40px",
-                          marginTop: "35px",
-
-
+                          marginLeft: "0px",
+                          marginTop: "25px",
                         }}
                         onClick={handleFile}
                         className={"saveBtn"}
-
-                      > Confirm</CButton>
-
-
-
-
+                      >
+                        {" "}
+                        Confirm
+                      </CButton>
                       <CSVLink data={csvData} ><CButton
                         shape={"pill"}
                         id={"municipalcancel"}
@@ -2301,33 +2322,46 @@ function LocationLibrary(props) {
                     </CCol>
                   </CRow>
 
+                  <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+                    onClick={() => {
+
+                      document.getElementById("uploadRoleTemplate").click();
+                    }}>
+                    <CCol md="12">
+                      <span style={{ fontSize: "20px", cursor: "pointer" }}>
+                        <i className="fas fa-upload"></i>&nbsp;
+                      </span>
+
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "20px", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        Upload City Name
+                      </CLabel>
+                      <CInput
+                        id={"uploadRoleTemplate"}
+                        style={{ display: "none" }}
+                        type={"file"}
+                        onChange={handleChange}
+                        accept={SheetJSFT}
 
 
+                      />
 
 
-
-
-                  <CRow style={{ marginLeft: "-25px" }}>
-
+                    </CCol>
                     <CCol md="3">
-
-                      <CInput type="file" style={{ marginLeft: "35px", marginTop: "15px" }} id="file" accept={SheetJSFT} onChange={handleChange} />
-
                       <CButton
-
                         style={{
-                          marginLeft: "40px",
-                          marginTop: "35px",
-
-
+                          marginLeft: "0px",
+                          marginTop: "25px",
                         }}
                         onClick={handleFile}
                         className={"saveBtn"}
-
-                      > Confirm</CButton>
-
-
-
+                      >
+                        {" "}
+                        Confirm
+                      </CButton>
 
                       <CSVLink data={csvData} ><CButton
                         shape={"pill"}
@@ -2454,31 +2488,46 @@ function LocationLibrary(props) {
                   </CRow>
 
 
+                  <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+                    onClick={() => {
+
+                      document.getElementById("uploadRoleTemplate").click();
+                    }}>
+                    <CCol md="12">
+                      <span style={{ fontSize: "20px", cursor: "pointer" }}>
+                        <i className="fas fa-upload"></i>&nbsp;
+                      </span>
+
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "20px", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        Upload Area Name
+                      </CLabel>
+                      <CInput
+                        id={"uploadRoleTemplate"}
+                        style={{ display: "none" }}
+                        type={"file"}
+                        onChange={handleChange}
+                        accept={SheetJSFT}
 
 
+                      />
 
 
-
-                  <CRow style={{ marginLeft: "-25px" }}>
-
+                    </CCol>
                     <CCol md="3">
-
-                      <CInput type="file" style={{ marginLeft: "35px", marginTop: "15px" }} id="file" accept={SheetJSFT} onChange={handleChange} />
-
                       <CButton
-
                         style={{
-                          marginLeft: "40px",
-                          marginTop: "35px",
-
-
+                          marginLeft: "0px",
+                          marginTop: "25px",
                         }}
                         onClick={handleFile}
                         className={"saveBtn"}
-
-                      > Confirm</CButton>
-
-
+                      >
+                        {" "}
+                        Confirm
+                      </CButton>
 
 
                       <CSVLink data={csvData} ><CButton
@@ -2605,32 +2654,46 @@ function LocationLibrary(props) {
                     </CCol>
                   </CRow>
 
+                  <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+                    onClick={() => {
+
+                      document.getElementById("uploadRoleTemplate").click();
+                    }}>
+                    <CCol md="12">
+                      <span style={{ fontSize: "20px", cursor: "pointer" }}>
+                        <i className="fas fa-upload"></i>&nbsp;
+                      </span>
+
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "20px", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        Upload Street Name
+                      </CLabel>
+                      <CInput
+                        id={"uploadRoleTemplate"}
+                        style={{ display: "none" }}
+                        type={"file"}
+                        onChange={handleChange}
+                        accept={SheetJSFT}
 
 
+                      />
 
 
-
-
-                  <CRow style={{ marginLeft: "-25px" }}>
-
+                    </CCol>
                     <CCol md="3">
-
-                      <CInput type="file" style={{ marginLeft: "35px", marginTop: "15px" }} id="file" accept={SheetJSFT} onChange={handleChange} />
-
                       <CButton
-
                         style={{
-                          marginLeft: "40px",
-                          marginTop: "35px",
-
-
+                          marginLeft: "0px",
+                          marginTop: "25px",
                         }}
                         onClick={handleFile}
                         className={"saveBtn"}
-
-                      > Confirm</CButton>
-
-
+                      >
+                        {" "}
+                        Confirm
+                      </CButton>
 
 
                       <CSVLink data={csvData} ><CButton
@@ -2646,7 +2709,7 @@ function LocationLibrary(props) {
 
                       <CButton
                         className={"menu"}
-                        style={{ position: "absolute", top: "-42px", right: "-550px", marginLeft: "30px", backgroundColor: "green", border: "1px solid green" }}
+                        style={{ position: "absolute", top: "-42px", right: "-550px", marginLeft: "10px", backgroundColor: "green", border: "1px solid green" }}
                         className={"cancelBtn"}
                         onClick={() => {
                           bulkhandleClick();
@@ -2756,36 +2819,67 @@ function LocationLibrary(props) {
                       </div>
                     </CCol>
                   </CRow>
+<CRow
+                    className={"row-alignment"}
+                    style={{ marginLeft: "5px", marginTop: "20px" }}
+                    sm={12}
+                    md={12}
+                    lg={12}
+                  >
+                    <CCard style={{ marginLeft: "5px", fontSize: "15px", fontWeight: "700" }}>Tamilnadu</CCard>{"   "}
+                    <CCard style={{ marginLeft: "5px", fontSize: "15px", fontWeight: "700" }}>Chennai</CCard>{"   "}
+                    <CCard style={{ marginLeft: "5px", fontSize: "15px", fontWeight: "700" }}>Vadapalani</CCard>
+                    <CCard style={{ marginLeft: "5px", fontSize: "15px", fontWeight: "700" }}>KAMARAJ NAGAR </CCard>
+</CRow>
+
+                  <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+                    onClick={() => {
+
+                      document.getElementById("uploadRoleTemplate").click();
+                    }}>
+                    <CCol md="12">
+                      <span style={{ fontSize: "20px", cursor: "pointer", color:"blue" }}>
+                        <i className="fas fa-upload"></i>&nbsp;
+                      </span>
+
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "20px", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        Upload Door No.
+                      </CLabel>
+                      <CInput
+                        id={"uploadRoleTemplate"}
+                        style={{ display: "none" }}
+                        type={"file"}
+                        onChange={handleChange}
+                        accept={SheetJSFT}
 
 
+                      />
 
 
-
-
-
-                  <CRow style={{ marginLeft: "-25px" }}>
-
-                    <CCol md="3">
-
-                      <CInput type="file" style={{ marginLeft: "35px", marginTop: "15px" }} id="file" accept={SheetJSFT} onChange={handleChange} />
-
-                      <CButton
-
+                    </CCol>
+                    {/* <CCol md="3"> */}
+                      {/* <CButton
                         style={{
-                          marginLeft: "40px",
-                          marginTop: "35px",
-
-
+                          marginLeft: "0px",
+                          marginTop: "25px",
                         }}
                         onClick={handleFile}
                         className={"saveBtn"}
+                      >
+                        {" "}
+                        Confirm
+                      </CButton> */}
+                      <CCol md="12">
+                      <span style={{ fontSize: "20px", cursor: "pointer", color:"green" }}>
+                        <i className="fas fa-check" onClick={handleFile}></i>&nbsp;
+                      </span>
 
-                      > Confirm</CButton>
 
-
-
-
-                      <CSVLink data={csvData} ><CButton
+                      <CSVLink data={csvData} >
+                        {/* <CButton
                         shape={"pill"}
                         id={"municipalcancel"}
                         style={{ marginTop: "-60px", marginLeft: "160px" }}
@@ -2793,12 +2887,15 @@ function LocationLibrary(props) {
 
                       >
                         Download
-                      </CButton></CSVLink>
-
+                      </CButton> */}
+                      <span style={{ fontSize: "20px", marginLeft:"30px", cursor: "pointer",color:"tomato" }}>
+                        <i className="fas fa-download"></i>&nbsp;
+                      </span>
+                      </CSVLink>
 
                       <CButton
                         className={"menu"}
-                        style={{ position: "absolute", top: "-42px", right: "-550px", marginLeft: "30px", backgroundColor: "green", border: "1px solid green" }}
+                        style={{ position: "absolute", marginLeft: "660px", top: "-130px",  backgroundColor: "green", border: "1px solid green" }}
                         className={"cancelBtn"}
                         onClick={() => {
                           bulkhandleClick();
@@ -3097,8 +3194,7 @@ function LocationLibrary(props) {
                                   </span>
                                   <br />
                                   <br />
-
-                                </CWidgetDropdown>
+                            </CWidgetDropdown>
                               </CCol>
                             </CRow>
                           </CRow>
@@ -3287,8 +3383,7 @@ function LocationLibrary(props) {
                                   </span>
                                   <br />
                                   <br />
-
-                                </CWidgetDropdown>
+                         </CWidgetDropdown>
                               </CCol>
                             </CRow>
 
@@ -3502,8 +3597,7 @@ function LocationLibrary(props) {
                                   </span>
                                   <br />
                                   <br />
-
-                                </CWidgetDropdown>
+                            </CWidgetDropdown>
                               </CCol>
                             </CRow>
                           </CRow>
@@ -3670,7 +3764,7 @@ function LocationLibrary(props) {
 
                             <CRow style={{ marginTop: "100px", marginLeft: "1300px", position: "absolute" }}>
                               <CCol sm="3" lg="3" style={{ marginLeft: "10px" }}>
-                                <CTooltip content="Street">
+                               
                                   <CWidgetDropdown
                                     style={{
                                       width: "280px",
@@ -3694,9 +3788,7 @@ function LocationLibrary(props) {
                                     </span>
                                     <br />
                                     <br />
-
-                                  </CWidgetDropdown>
-                                </CTooltip>
+                           </CWidgetDropdown>
                               </CCol>
                             </CRow>
                           </CRow>
@@ -3829,13 +3921,10 @@ function LocationLibrary(props) {
                         style={{ padding: "1%", marginTop: "4.5%", marginLeft: "27px" }}
                       >
                         <CRow style={{ marginLeft: "350px" }}>
-
-
-
-
-
                           <div >
                             <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
+                              {/* <Tippy content="Print"> */}
+                              <p data-tip="print">
                               <i
                                 id="registerTip"
                                 style={{
@@ -3847,26 +3936,27 @@ function LocationLibrary(props) {
                                 }}
                                 className="fa fa-print"
                               >
-                                <ReactTooltip id="registerTip" place="top" effect="solid">
-                                  Tooltip for the register button
-                                </ReactTooltip>
                               </i>
+                              </p>
+                              <ReactTooltip/>
+                              {/* </Tippy> */}
                             </CCol>
                           </div>
                           <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
-                            <CTooltip content="Share Icon">
-                              <i
-                                id={"locationLibraryDelete"}
-                                style={{
-                                  position: "absolute",
-                                  top: "40px",
-                                  marginLeft: "550px",
-                                  marginBottom: "910px",
-                                  color: "black",
-                                }}
-                                className="fa fa-share-alt"
-                              ></i>
-                            </CTooltip>
+                            <p data-tip="share">
+                <i
+                  id={"locationLibraryDelete"}
+                  style={{
+                    position: "absolute",
+                    top: "40px",
+                    marginLeft: "500px",
+                    marginBottom: "910px",
+                    color: "black",
+                  }}
+                  className="fa fa-share-alt"
+                ></i>
+                </p>
+                <ReactTooltip/>
                           </CCol>
                         </CRow>
                         <CDataTable

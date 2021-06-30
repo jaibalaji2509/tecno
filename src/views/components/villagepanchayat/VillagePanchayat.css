@@ -33,11 +33,11 @@
 .active1 {
   position: absolute;
   width: 60%;
-  left: 775px;
+  left: 755px;
   z-index: 10;
   transition: all  2.5s ease; 
   min-height: 620px;
-  max-height: 980px;
+  max-height: auto;
   transition: transform 100s;
   transform: translateY(-100%,0);
   border: 2px solid grey;
