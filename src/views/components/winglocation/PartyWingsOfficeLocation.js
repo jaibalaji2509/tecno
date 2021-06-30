@@ -577,7 +577,7 @@ function PartyWingsOfficeLocation() {
                       </CWidgetDropdown>
                     </CCol>
                   </CRow>
-                  <CRow style={{marginLeft:"250px",marginBottom:"-20px"}}>
+                  <CRow style={{marginLeft:"-40px",marginBottom:"-20px"}}>
                   <CCol
                 style={{ fontSize: "1.55rem", top: "100px" }}
                 md={12}
@@ -627,7 +627,7 @@ function PartyWingsOfficeLocation() {
                 ></i>
               </CCol>
             </CRow>
-            <CRow style={{ padding: "4%", marginTop: "-3.5%" }}>
+            <CRow style={{ padding: "4%", marginTop: "-4%" }}>
              <CDataTable
                 items={userData}
                 fields={fields}
