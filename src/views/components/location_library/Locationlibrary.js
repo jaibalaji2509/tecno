@@ -3927,8 +3927,8 @@ function LocationLibrary(props) {
                                   id="registerTip"
                                   style={{
                                     position: "absolute",
-                                    top: "40px",
-                                    marginLeft: "450px",
+                                    top: "50px",
+                                    marginLeft: "400px",
                                     marginBottom: "20px",
                                     color: "black",
                                   }}
@@ -3946,8 +3946,8 @@ function LocationLibrary(props) {
                                 id={"locationLibraryDelete"}
                                 style={{
                                   position: "absolute",
-                                  top: "40px",
-                                  marginLeft: "500px",
+                                  top: "50px",
+                                  marginLeft: "550px",
                                   marginBottom: "910px",
                                   color: "black",
                                 }}
