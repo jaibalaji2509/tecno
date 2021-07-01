@@ -41,7 +41,8 @@ const VillagePanchayat = () => {
   const [municipalList, setMunicipalList] = useState(true);
   const [MunicipalCreate, setmunicipalCreate] = useState(false);
   const [selected, setSelected] = useState([]);
-
+  const [selected1, setSelected1] = useState([]);
+  const [villageHide, setVillageHide] =useState({districtpanchayat:true,panchayatunion:false})
   const [sideBar1, setSideBar1] = useState(false);
   const [municipalName] = useState("");
   const [villageList, setvillageList] = useState(true);
@@ -60,29 +61,29 @@ const VillagePanchayat = () => {
   });
 
   const select = [
-    {
-      span: (
-        <CLink
-          className={"saveBtn"}
-          onClick={handleClick}
-          style={{ marginLeft: "200px" }}
-        >
-          Add{" "}
-        </CLink>
-      ),
-      span: (
-        <CLink
-          className={"saveBtn"}
-          onClick={handleClick}
-          style={{ marginLeft: "200px" }}
-        >
-          Add{" "}
-        </CLink>
-      ),
-    },
-    { value: "tamil", label: "Tamilnadu" },
-    { value: "Chengalpattu", label: "Chengalpattu" },
-    { value: "Chunampedu", label: "Chunampedu" },
+    // {
+    //   span: (
+    //     <CLink
+    //       className={"saveBtn"}
+    //       onClick={handleClick}
+    //       style={{ marginLeft: "200px" }}
+    //     >
+    //       Add{" "}
+    //     </CLink>
+    //   ),
+    //   span: (
+    //     <CLink
+    //       className={"saveBtn"}
+    //       onClick={handleClick}
+    //       style={{ marginLeft: "200px" }}
+    //     >
+    //       Add{" "}
+    //     </CLink>
+    //   ),
+    // },
+    { value: "tamil", label: "Tamilnadu",id:"1" },
+    { value: "Chengalpattu", label: "Chengalpattu" ,id:"2"},
+    { value: "Chunampedu", label: "Chunampedu",id:"3" },
     { value: "Vanniyallur", label: "Vanniyallur" },
     { value: "Agaem", label: "Agaram kuturoad" },
     { value: "porpanthel", label: "porpanthal" },
@@ -303,7 +304,7 @@ const VillagePanchayat = () => {
         {props.children}
         <div
           style={{
-            marginTop: "-323px",
+            marginTop: "-310px",
             marginBottom: "-50px",
             minHeight: "300px",
           }}
@@ -464,6 +465,27 @@ const VillagePanchayat = () => {
   };
   const [isValue, setIsValue] = useState(false);
   const [style, setStyle] = useState({ display: "none" });
+
+  const selectPanchayat = [{value:"chennai",label:"chennai",id:"1"},{value:"salem",label:"salem",id:"2"},{value:"madurai",label:"madurai",id:"3"}]
+
+  const [mobilenumber, setMobileNumber]=useState("")
+  const [validerror, setValidError] =useState("")
+  switch (mobilenumber) {
+    case (mobilenumber.length > 10):
+      return console.log("more than 5 digit number","track");
+      break;
+     
+    default:
+      console.log("more than 10 digit number","track  ")
+  }
+  // if(mobilenumber.length > 10){
+  //   setValidError("this is longer","track")
+  // }
+
+  const changePanchayatUnion = (e)=>{
+    setSelected1(e)
+    setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:true})
+  }
   return (
     <div className={menu.style3}>
       {sideBar1 && (
@@ -483,7 +505,7 @@ const VillagePanchayat = () => {
               </div>
             </CCol>
           </CRow>
-
+         
           {inputList.map((x, i) => {
             return (
               <CRow
@@ -493,7 +515,8 @@ const VillagePanchayat = () => {
                 md={12}
                 lg={12}
               >
-                <CCol md="2">
+               
+                <CCol md="2" style={{minHeight:"10px"}}>
                   <CLabel
                     className={"label-name-1"}
                     style={{ fontSize: "block" }}
@@ -511,6 +534,7 @@ const VillagePanchayat = () => {
                     value={x.panchayatname}
                     onChange={(e) => handleInputChange(e, i)}
                   />
+                
                 </CCol>
 
                 <CCol md="2">
@@ -728,7 +752,7 @@ const VillagePanchayat = () => {
               <CRow
                 style={{
                   padding: "4%",
-                  marginTop: "1.5%",
+                  marginTop: "4.5%",
                   marginLeft: "-45px",
                 }}
               >
@@ -802,6 +826,16 @@ const VillagePanchayat = () => {
             <div className={"main-headerlabel"}>
               <span className={"header-label"}>Village panchayat</span>
             </div>
+            <CRow>
+                  <CCol md="5">
+                    <CInput
+                    type="number"
+                    value={mobilenumber}
+                    onChange={(e)=>setMobileNumber(e.target.value)}
+                    />
+                      <span className="text-danger">{validerror}</span>
+                  </CCol>
+                </CRow>
             {locationHide.corporation && (
               <div>
                 <div style={{ marginLeft: "-26px" }}>
@@ -916,7 +950,7 @@ const VillagePanchayat = () => {
                 <CRow
                   style={{
                     padding: "4%",
-                    marginTop: "-2.5%",
+                    marginTop: "-3.5%",
                     marginLeft: "-30px",
                   }}
                 >
@@ -1022,25 +1056,20 @@ const VillagePanchayat = () => {
                             // labelledBy={"Select"}
                           />
 
-                          {/* <p data-tip="hello world">Tooltip</p> */}
-                          {selected.length !== 0 ? (
+
+                          {villageHide.districtpanchayat && selected.length !== 0 ? (
                             <div
                               style={{
                                 width: 300,
                                 marginLeft: "426px",
-                                marginTop: "-35px",
+                                marginTop: "-40px",
                                 padding: 10,
                               }}
-                              onMouseEnter={(e) => {
-                                setStyle({ display: "block" });
-                              }}
-                              onMouseLeave={(e) => {
-                                setStyle({ display: "none" });
-                              }}
+                            
                             >
                               <i
                                 className={"editIcon"}
-                                style={style}
+                              
                                 id={"officeLocationEdit"}
                                 class="fas fa-edit"
                               />
@@ -1048,14 +1077,14 @@ const VillagePanchayat = () => {
                                 style={{
                                   width: 300,
                                   marginLeft: "26px",
-                                  marginTop: "-25px",
+                                  marginTop: "-30px",
                                   padding: 10,
                                   color: "red",
                                 }}
                               >
                                 <i
                                   className={"editIcon"}
-                                  style={style}
+                                 
                                   id={"officeLocationEdit"}
                                   class="fas fa-trash"
                                 />
@@ -1220,9 +1249,12 @@ const VillagePanchayat = () => {
                         className={"input-align"}
                         id={"municipaldistrict"}
                         name={"city"}
+                        value={selected1}
+                        onChange={(e)=>setSelected1(e)}
                         placeholder={"Select City Name"}
                         options={select}
                       />
+                     
                     </CCol>
                     {panchayatList && (
                       <React.Fragment>
@@ -1231,12 +1263,49 @@ const VillagePanchayat = () => {
                             Panchayat Union
                             <span className={"text-danger"}> *</span>
                           </CLabel>
+                          
                           <Select
                             placeholder="Select Panchayat Union"
                             id={"municipalcorporation"}
                             type={"text"}
-                            options={select}
+                            value={selected1}
+                            onChange={changePanchayatUnion}
+                            options={selectPanchayat}
                           />
+                            {villageHide.panchayatunion &&  selected1.length !== 0 ? (
+                            <div
+                              style={{
+                                width: 300,
+                                marginLeft: "426px",
+                                marginTop: "-40px",
+                                padding: 10,
+                              }}
+                            
+                            >
+                              <i
+                                className={"editIcon"}
+                              
+                                id={"officeLocationEdit"}
+                                class="fas fa-edit"
+                              />
+                              <div
+                                style={{
+                                  width: 300,
+                                  marginLeft: "26px",
+                                  marginTop: "-30px",
+                                  padding: 10,
+                                  color: "red",
+                                }}
+                              >
+                                <i
+                                  className={"editIcon"}
+                                 
+                                  id={"officeLocationEdit"}
+                                  class="fas fa-trash"
+                                />
+                              </div>
+                            </div>
+                          ) : null}
                         </CCol>
                         {/* <CCol className={"column-align"} md={1} lg={1}>
                           <CButton
