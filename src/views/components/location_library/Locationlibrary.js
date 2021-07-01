@@ -11,12 +11,9 @@ import {
   CLink,
   CTooltip,
 } from "@coreui/react";
-// import ReactTooltip from "react-tooltip";
 import { DocsLink } from 'src/reusable'
 import { useFormik } from "formik";
 import * as yup from "yup";
-// import Tippy from 'tippy.js';
-// import 'tippy.js/dist/tippy.css';
 import "./LocationLibrary.css";
 import ReactTooltip from "react-tooltip";
 import {
@@ -52,6 +49,12 @@ function LocationLibrary(props) {
   const [passing, setPassing] = useState("");
   const [area, setArea] = useState([]);
   const [areasSchema, setAreas] = useState([]);
+  const [selected, setSelected] = useState([]);
+  const [selected1, setSelected1] = useState([]);
+  const [selected2, setSelected2] = useState([]);
+  const [selected3, setSelected3] = useState([]);
+  const [selected4, setSelected4] = useState([]);
+  const [villageHide, setVillageHide] =useState({districtpanchayat:true,panchayatunion:false,area:false})
   const [citySchema, setCity] = useState([]);
   const [stateSchema, setState] = useState([]);
   const [countrySchema, setCountry] = useState([]);
@@ -216,7 +219,7 @@ function LocationLibrary(props) {
     return (
       <components.MenuList  {...props}>
         {props.children}
-        <div style={{ marginTop: "-30px", minHeight: "30px" }} >
+        <div style={{ marginTop: "-57px", minHeight: "80px"  }} >
           <CLink className={"saveBtn"} onClick={handleClick1} style={{ marginLeft: "300px" }}>Add</CLink>
           <CLink className={"saveBtn"} onClick={bulkhandleClick1} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
         </div>
@@ -227,7 +230,7 @@ function LocationLibrary(props) {
     return (
       <components.MenuList  {...props}>
         {props.children}
-        <div style={{ marginTop: "-30px", minHeight: "30px" }} >
+        <div style={{ marginTop: "-57px", minHeight: "80px"  }} >
           <CLink className={"saveBtn"} onClick={handleClick2} style={{ marginLeft: "300px" }}>Add</CLink>
           <CLink className={"saveBtn"} onClick={bulkhandleClick2} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
         </div>
@@ -238,7 +241,7 @@ function LocationLibrary(props) {
     return (
       <components.MenuList  {...props}>
         {props.children}
-        <div style={{ marginTop: "-30px", minHeight: "30px" }} >
+        <div style={{ marginTop: "-57px", minHeight: "80px"  }} >
           <CLink className={"saveBtn"} onClick={handleClick3} style={{ marginLeft: "300px" }}>Add</CLink>
           <CLink className={"saveBtn"} onClick={bulkhandleClick3} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
         </div>
@@ -249,7 +252,7 @@ function LocationLibrary(props) {
     return (
       <components.MenuList  {...props}>
         {props.children}
-        <div style={{ marginTop: "-30px", minHeight: "30px" }} >
+        <div style={{ marginTop: "-57px", minHeight: "80px" }} >
           <CLink className={"saveBtn"} onClick={handleClick4} style={{ marginLeft: "300px" }}>Add</CLink>
           <CLink className={"saveBtn"} onClick={bulkhandleClick4} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
         </div>
@@ -260,7 +263,7 @@ function LocationLibrary(props) {
     return (
       <components.MenuList  {...props}>
         {props.children}
-        <div style={{ marginTop: "-30px", minHeight: "30px" }} >
+        <div style={{ marginTop: "-57px", minHeight: "80px" }} >
           <CLink className={"saveBtn"} onClick={handleClick5} style={{ marginLeft: "300px" }}>Add</CLink>
           <CLink className={"saveBtn"} onClick={bulkhandleClick5} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
         </div>
@@ -469,6 +472,7 @@ function LocationLibrary(props) {
 
         });
         setSideBarup2(true);
+        setSideBarup1(false)
         setSideBarup5(false)
 
 
@@ -498,6 +502,7 @@ function LocationLibrary(props) {
 
         });
         setSideBarup3(true);
+        setSideBarup2(false)
         setSideBarup5(false)
 
 
@@ -527,6 +532,7 @@ function LocationLibrary(props) {
 
         });
         setSideBarup4(true);
+        setSideBarup3(false)
         setSideBarup5(false)
 
 
@@ -556,7 +562,7 @@ function LocationLibrary(props) {
 
         });
         setSideBarup5(true);
-
+        setSideBarup4(false)
 
 
         break;
@@ -1012,15 +1018,120 @@ function LocationLibrary(props) {
     formik.values.Code4 = val4.toUpperCase();
   }, [formik.values]);
 
-  const selectState = [{ value: "TamilNadu", label: "TamilNadu" }]
+  const selectState = [
+    {
+      span: (
+        <CLink
+          className={"saveBtn"}
+          onClick={handleClick1}
+          style={{ marginLeft: "200px" }}
+        >
+          Add{" "}
+        </CLink>
+      ),
+      span: (
+        <CLink
+          className={"saveBtn"}
+          onClick={handleClick1}
+          style={{ marginLeft: "200px" }}
+        >
+          Add{" "}
+        </CLink>
+      ),
+    },
+    { value: "TamilNadu", label: "TamilNadu" }]
 
-  const selectCity = [{ value: "Chennai", label: "Chennai" }]
+  const selectCity = [
+    {
+      span: (
+        <CLink
+          className={"saveBtn"}
+          onClick={handleClick1}
+          style={{ marginLeft: "200px" }}
+        >
+          Add{" "}
+        </CLink>
+      ),
+      span: (
+        <CLink
+          className={"saveBtn"}
+          onClick={handleClick1}
+          style={{ marginLeft: "200px" }}
+        >
+          Add{" "}
+        </CLink>
+      ),
+    },
+    { value: "Chennai", label: "Chennai" }]
 
-  const selectStreet = [{ value: "Pondy Baza", label: "Kuttu Road" }]
+  const selectStreet = [
+    {
+      span: (
+        <CLink
+          className={"saveBtn"}
+          onClick={handleClick1}
+          style={{ marginLeft: "200px" }}
+        >
+          Add{" "}
+        </CLink>
+      ),
+      span: (
+        <CLink
+          className={"saveBtn"}
+          onClick={handleClick1}
+          style={{ marginLeft: "200px" }}
+        >
+          Add{" "}
+        </CLink>
+      ),
+    },
+    { value: "Pondy Baza", label: "Kuttu Road" }]
 
-  const selectDoor = [{ value: "Pondy Baza", label: "119" }]
+  const selectDoor = [
+    {
+      span: (
+        <CLink
+          className={"saveBtn"}
+          onClick={handleClick1}
+          style={{ marginLeft: "200px" }}
+        >
+          Add{" "}
+        </CLink>
+      ),
+      span: (
+        <CLink
+          className={"saveBtn"}
+          onClick={handleClick1}
+          style={{ marginLeft: "200px" }}
+        >
+          Add{" "}
+        </CLink>
+      ),
+    },
+    { value: "Pondy Baza", label: "119" }]
 
-  const selectVillage = [{ value: "TNagar", label: "Vadapalani" }]
+  const selectVillage = [
+    {
+      span: (
+        <CLink
+          className={"saveBtn"}
+          onClick={handleClick1}
+          style={{ marginLeft: "200px" }}
+        >
+          Add{" "}
+        </CLink>
+      ),
+      span: (
+        <CLink
+          className={"saveBtn"}
+          onClick={handleClick1}
+          style={{ marginLeft: "200px" }}
+        >
+          Add{" "}
+        </CLink>
+      ),
+    },
+    { value: "TNagar", label: "Vadapalani" }]
 
   const userData = [
     { sNo: "1", stateName: "TamlNadu", cityName: "Chennai", areaName: "Velachery", pincode: "600042", Street: "Yamuna Street", door: "302" },
@@ -1276,10 +1387,26 @@ function LocationLibrary(props) {
   }
   const [isValue, setIsValue] = useState(false)
 
+  const changePanchayatUnion = (e)=>{
+    setSelected1(e)
+    setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:true,area:false})
+  }
+  const changeArea = (e)=>{
+    setSelected2(e)
+    setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:false,area:true})
+  }
+  const changeStreet = (e)=>{
+    setSelected3(e)
+    setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:false,area:false,street:true})
+  }
+  const changeDoor = (e)=>{
+    setSelected4(e)
+    setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:false,area:false,street:false,door:true})
+  }
   return (
     <div className={menu.style3}>
       {sideBar1 && (
-        <div className={menu.style} style={{ marginLeft: "-125px" }}>
+        <div className={menu.style} style={{ marginLeft: "-108px" }}>
 
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
@@ -1453,7 +1580,7 @@ function LocationLibrary(props) {
 
       <div className={menu.style3}>
         {sideBar2 && (
-          <div className={menu.style} style={{ marginLeft: "-125px" }}>
+          <div className={menu.style} style={{ marginLeft: "-108px" }}>
 
             <CRow className={""}>
               <CCol md="12" lg="12" sm="12">
@@ -1470,7 +1597,23 @@ function LocationLibrary(props) {
                 </div>
               </CCol>
             </CRow>
-
+            <CRow
+                    className={"row-alignment"}
+                    style={{ marginLeft: "5px", marginTop: "20px" }}
+                    sm={12}
+                    md={12}
+                    lg={12}
+                  >
+                    <CCol>
+                    <CLabel
+                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
+                      className={"form-labels-6"}
+                    >
+                      State:
+                    </CLabel>
+                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>TamilNadu</span>
+                    </CCol>
+                    </CRow>
 
             {inputList.map((x, i) => {
               return (
@@ -1613,7 +1756,7 @@ function LocationLibrary(props) {
         )}
         <div className={menu.style3}>
           {sideBar3 && (
-            <div className={menu.style} style={{ marginLeft: "-125px" }}>
+            <div className={menu.style} style={{ marginLeft: "-108px" }}>
 
               <CRow className={""}>
                 <CCol md="12" lg="12" sm="12">
@@ -1630,7 +1773,33 @@ function LocationLibrary(props) {
                   </div>
                 </CCol>
               </CRow>
-
+              <CRow
+                    className={"row-alignment"}
+                    style={{ marginLeft: "5px", marginTop: "20px" }}
+                    sm={12}
+                    md={12}
+                    lg={12}
+                  >
+                    <CCol>
+                    <CLabel
+                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
+                      className={"form-labels-6"}
+                    >
+                      State:
+                    </CLabel>
+                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>TamilNadu</span>
+                    </CCol>
+                    <CCol>
+                    <CLabel
+                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
+                      className={"form-labels-6"}
+                    >
+                      District / City:
+                    </CLabel>
+                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>Chennai</span>
+                    </CCol>
+                  </CRow>
+                 
 
               {inputList.map((x, i) => {
                 return (
@@ -1798,7 +1967,7 @@ function LocationLibrary(props) {
 
           <div className={menu.style3}>
             {sideBar4 && (
-              <div className={menu.style} style={{ marginLeft: "-125px" }}>
+              <div className={menu.style} style={{ marginLeft: "-108px" }}>
 
                 <CRow className={""}>
                   <CCol md="12" lg="12" sm="12">
@@ -1816,16 +1985,49 @@ function LocationLibrary(props) {
                   </CCol>
                 </CRow>
                 <CRow
-                  className={"row-alignment"}
-                  style={{ marginLeft: "5px", marginTop: "20px" }}
-                  sm={12}
-                  md={12}
-                  lg={12}
-                >
-                  <CCard style={{ marginLeft: "5px", fontSize: "15px", fontWeight: "700" }}>Tamilnadu</CCard>{"   "}
-                  <CCard style={{ marginLeft: "5px", fontSize: "15px", fontWeight: "700" }}>Chennai</CCard>{"   "}
-                  <CCard style={{ marginLeft: "5px", fontSize: "15px", fontWeight: "700" }}>Vadapalani</CCard>
-                </CRow>
+                    className={"row-alignment"}
+                    style={{ marginLeft: "5px", marginTop: "20px" }}
+                    sm={12}
+                    md={12}
+                    lg={12}
+                  >
+                    <CCol>
+                    <CLabel
+                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
+                      className={"form-labels-6"}
+                    >
+                      State:
+                    </CLabel>
+                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>TamilNadu</span>
+                    </CCol>
+                    <CCol>
+                    <CLabel
+                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
+                      className={"form-labels-6"}
+                    >
+                      Village / Area / Locality:
+                    </CLabel>
+                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>Vadapalani</span>
+                    </CCol>
+                  </CRow>
+                  <CRow
+                    className={"row-alignment"}
+                    style={{ marginLeft: "5px", marginTop: "5px" }}
+                    sm={12}
+                    md={12}
+                    lg={12}
+                  >
+                    <CCol>
+                    <CLabel
+                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
+                      className={"form-labels-6"}
+                    >
+                      District / City:
+                    </CLabel>
+                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>Chennai</span>
+                    </CCol>
+                    </CRow>
+
                 {inputList.map((x, i) => {
                   return (
 
@@ -1980,7 +2182,7 @@ function LocationLibrary(props) {
             )}
             <div className={menu.style3}>
               {sideBar5 && (
-                <div className={menu.style} style={{ marginLeft: "-125px" }}>
+                <div className={menu.style} style={{ marginLeft: "-108px" }}>
 
                   <CRow className={""}>
                     <CCol md="12" lg="12" sm="12">
@@ -2050,6 +2252,7 @@ function LocationLibrary(props) {
                     <span style={{ marginTop:"13px", marginLeft:"5px", }}>Kamaraj Nagar</span>
                     </CCol>
                   </CRow>
+
                   {inputList.map((x, i) => {
                     return (
 
@@ -2171,7 +2374,7 @@ function LocationLibrary(props) {
 
               )}
               {sideBarup1 && (
-                <div className={menu.style1} style={{ marginLeft: "-125px" }}>
+                <div className={menu.style1} style={{ marginLeft: "-108px" }}>
 
                   <CRow className={""}>
                     <CCol md="12" lg="12" sm="12">
@@ -2195,15 +2398,15 @@ function LocationLibrary(props) {
                       document.getElementById("uploadRoleTemplate").click();
                     }}>
                     <CCol md="12">
-                      <span style={{ fontSize: "20px", cursor: "pointer" }}>
+                      <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
                         <i className="fas fa-upload"></i>&nbsp;
                       </span>
 
                       <CLabel
-                        style={{ position: "relative", marginLeft: "20px", cursor: "pointer" }}
+                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
                         className={"form-labels-6"}
                       >
-                        Upload State Name
+                        Upload
                       </CLabel>
                       <CInput
                         id={"uploadRoleTemplate"}
@@ -2217,19 +2420,12 @@ function LocationLibrary(props) {
 
 
                     </CCol>
-                    <CCol md="3">
-                      <CButton
-                        style={{
-                          marginLeft: "0px",
-                          marginTop: "25px",
-                        }}
-                        onClick={handleFile}
-                        className={"saveBtn"}
-                      >
-                        {" "}
-                        Confirm
-                      </CButton>
-                      <CSVLink data={csvData} ><CButton
+                    </CRow>
+
+                    <CRow>
+                    <CCol md="12" style={{ top: "-38px" }}>
+                      <CSVLink data={csvData} >
+                        {/* <CButton
                         shape={"pill"}
                         id={"municipalcancel"}
                         style={{ marginTop: "-60px", marginLeft: "160px" }}
@@ -2237,7 +2433,29 @@ function LocationLibrary(props) {
 
                       >
                         Download
-                      </CButton></CSVLink>
+                      </CButton> */}
+                        <span style={{ fontSize: "20px", marginLeft: "110px", cursor: "pointer", color: "tomato" }}>
+                          <i className="fas fa-download"></i>&nbsp;
+                        </span>
+                      </CSVLink>
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        Download
+                      </CLabel>
+                      <CCol md="3">
+                        <CButton
+                          style={{
+                            marginLeft: "-15px",
+                            marginTop: "20px",
+                          }}
+                          onClick={handleFile}
+                          className={"saveBtn"}
+                        >
+                          {" "}
+                          Confirm
+                        </CButton>
 
 
                       <CButton
@@ -2251,6 +2469,7 @@ function LocationLibrary(props) {
                       >
                         Back
                       </CButton>
+                    </CCol>
                     </CCol>
                   </CRow>
 
@@ -2334,7 +2553,7 @@ function LocationLibrary(props) {
                 </div>
               )}
               {sideBarup2 && (
-                <div className={menu.style1} style={{ marginLeft: "-125px" }}>
+                <div className={menu.style1} style={{ marginLeft: "-108px" }}>
 
                   <CRow className={""}>
                     <CCol md="12" lg="12" sm="12">
@@ -2351,6 +2570,7 @@ function LocationLibrary(props) {
                       </div>
                     </CCol>
                   </CRow>
+                  
                   <CRow
                     className={"row-alignment"}
                     style={{ marginLeft: "5px", marginTop: "20px" }}
@@ -2369,21 +2589,21 @@ function LocationLibrary(props) {
                     </CCol>
                     </CRow>
 
-                  <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+                    <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
                     onClick={() => {
 
                       document.getElementById("uploadRoleTemplate").click();
                     }}>
                     <CCol md="12">
-                      <span style={{ fontSize: "20px", cursor: "pointer" }}>
+                      <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
                         <i className="fas fa-upload"></i>&nbsp;
                       </span>
 
                       <CLabel
-                        style={{ position: "relative", marginLeft: "20px", cursor: "pointer" }}
+                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
                         className={"form-labels-6"}
                       >
-                        Upload 
+                        Upload
                       </CLabel>
                       <CInput
                         id={"uploadRoleTemplate"}
@@ -2391,25 +2611,18 @@ function LocationLibrary(props) {
                         type={"file"}
                         onChange={handleChange}
                         accept={SheetJSFT}
+
+
                       />
 
 
                     </CCol>
-                    <CCol md="3">
-                      <CButton
-                        style={{
-                          marginLeft: "0px",
-                          marginTop: "25px",
-                        }}
-                        onClick={handleFile}
-                        className={"saveBtn"}
-                      >
-                        {" "}
-                        Confirm
-                      </CButton>
+                    </CRow>
 
-
-                      <CSVLink data={csvData} ><CButton
+                    <CRow>
+                    <CCol md="12" style={{ top: "-38px" }}>
+                      <CSVLink data={csvData} >
+                        {/* <CButton
                         shape={"pill"}
                         id={"municipalcancel"}
                         style={{ marginTop: "-60px", marginLeft: "160px" }}
@@ -2417,7 +2630,29 @@ function LocationLibrary(props) {
 
                       >
                         Download
-                      </CButton></CSVLink>
+                      </CButton> */}
+                        <span style={{ fontSize: "20px", marginLeft: "110px", cursor: "pointer", color: "tomato" }}>
+                          <i className="fas fa-download"></i>&nbsp;
+                        </span>
+                      </CSVLink>
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        Download
+                      </CLabel>
+                      <CCol md="3">
+                        <CButton
+                          style={{
+                            marginLeft: "-15px",
+                            marginTop: "20px",
+                          }}
+                          onClick={handleFile}
+                          className={"saveBtn"}
+                        >
+                          {" "}
+                          Confirm
+                        </CButton>
 
 
                       <CButton
@@ -2431,6 +2666,7 @@ function LocationLibrary(props) {
                       >
                         Back
                       </CButton>
+                    </CCol>
                     </CCol>
                   </CRow>
 
@@ -2511,7 +2747,7 @@ function LocationLibrary(props) {
                 </div>
               )}
               {sideBarup3 && (
-                <div className={menu.style1} style={{ marginLeft: "-125px" }}>
+                <div className={menu.style1} style={{ marginLeft: "-108px" }}>
 
                   <CRow className={""}>
                     <CCol md="12" lg="12" sm="12">
@@ -2555,21 +2791,21 @@ function LocationLibrary(props) {
                     </CCol>
                     </CRow>
 
-                  <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+                    <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
                     onClick={() => {
 
                       document.getElementById("uploadRoleTemplate").click();
                     }}>
                     <CCol md="12">
-                      <span style={{ fontSize: "20px", cursor: "pointer" }}>
+                      <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
                         <i className="fas fa-upload"></i>&nbsp;
                       </span>
 
                       <CLabel
-                        style={{ position: "relative", marginLeft: "20px", cursor: "pointer" }}
+                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
                         className={"form-labels-6"}
                       >
-                        Upload Area Name
+                        Upload
                       </CLabel>
                       <CInput
                         id={"uploadRoleTemplate"}
@@ -2583,21 +2819,12 @@ function LocationLibrary(props) {
 
 
                     </CCol>
-                    <CCol md="3">
-                      <CButton
-                        style={{
-                          marginLeft: "0px",
-                          marginTop: "25px",
-                        }}
-                        onClick={handleFile}
-                        className={"saveBtn"}
-                      >
-                        {" "}
-                        Confirm
-                      </CButton>
+                    </CRow>
 
-
-                      <CSVLink data={csvData} ><CButton
+                    <CRow>
+                    <CCol md="12" style={{ top: "-38px" }}>
+                      <CSVLink data={csvData} >
+                        {/* <CButton
                         shape={"pill"}
                         id={"municipalcancel"}
                         style={{ marginTop: "-60px", marginLeft: "160px" }}
@@ -2605,7 +2832,29 @@ function LocationLibrary(props) {
 
                       >
                         Download
-                      </CButton></CSVLink>
+                      </CButton> */}
+                        <span style={{ fontSize: "20px", marginLeft: "110px", cursor: "pointer", color: "tomato" }}>
+                          <i className="fas fa-download"></i>&nbsp;
+                        </span>
+                      </CSVLink>
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        Download
+                      </CLabel>
+                      <CCol md="3">
+                        <CButton
+                          style={{
+                            marginLeft: "-15px",
+                            marginTop: "20px",
+                          }}
+                          onClick={handleFile}
+                          className={"saveBtn"}
+                        >
+                          {" "}
+                          Confirm
+                        </CButton>
 
 
                       <CButton
@@ -2619,6 +2868,7 @@ function LocationLibrary(props) {
                       >
                         Back
                       </CButton>
+                    </CCol>
                     </CCol>
                   </CRow>
 
@@ -2703,7 +2953,7 @@ function LocationLibrary(props) {
                 </div>
               )}
               {sideBarup4 && (
-                <div className={menu.style1} style={{ marginLeft: "-125px" }}>
+                <div className={menu.style1} style={{ marginLeft: "-108px" }}>
 
                   <CRow className={""}>
                     <CCol md="12" lg="12" sm="12">
@@ -2765,21 +3015,21 @@ function LocationLibrary(props) {
                     <CCol>
                       </CCol>
                       </CRow>
-                  <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+                      <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
                     onClick={() => {
 
                       document.getElementById("uploadRoleTemplate").click();
                     }}>
                     <CCol md="12">
-                      <span style={{ fontSize: "20px", cursor: "pointer" }}>
+                      <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
                         <i className="fas fa-upload"></i>&nbsp;
                       </span>
 
                       <CLabel
-                        style={{ position: "relative", marginLeft: "20px", cursor: "pointer" }}
+                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
                         className={"form-labels-6"}
                       >
-                        Upload Street Name
+                        Upload
                       </CLabel>
                       <CInput
                         id={"uploadRoleTemplate"}
@@ -2793,21 +3043,12 @@ function LocationLibrary(props) {
 
 
                     </CCol>
-                    <CCol md="3">
-                      <CButton
-                        style={{
-                          marginLeft: "0px",
-                          marginTop: "25px",
-                        }}
-                        onClick={handleFile}
-                        className={"saveBtn"}
-                      >
-                        {" "}
-                        Confirm
-                      </CButton>
+                    </CRow>
 
-
-                      <CSVLink data={csvData} ><CButton
+                    <CRow>
+                    <CCol md="12" style={{ top: "-38px" }}>
+                      <CSVLink data={csvData} >
+                        {/* <CButton
                         shape={"pill"}
                         id={"municipalcancel"}
                         style={{ marginTop: "-60px", marginLeft: "160px" }}
@@ -2815,7 +3056,29 @@ function LocationLibrary(props) {
 
                       >
                         Download
-                      </CButton></CSVLink>
+                      </CButton> */}
+                        <span style={{ fontSize: "20px", marginLeft: "110px", cursor: "pointer", color: "tomato" }}>
+                          <i className="fas fa-download"></i>&nbsp;
+                        </span>
+                      </CSVLink>
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        Download
+                      </CLabel>
+                      <CCol md="3">
+                        <CButton
+                          style={{
+                            marginLeft: "-15px",
+                            marginTop: "20px",
+                          }}
+                          onClick={handleFile}
+                          className={"saveBtn"}
+                        >
+                          {" "}
+                          Confirm
+                        </CButton>
 
 
                       <CButton
@@ -2828,6 +3091,7 @@ function LocationLibrary(props) {
                       >
                         Back
                       </CButton>
+                    </CCol>
                     </CCol>
                   </CRow>
 
@@ -2912,7 +3176,7 @@ function LocationLibrary(props) {
                 </div>
               )}
               {sideBarup5 && (
-                <div className={menu.style1} style={{ marginLeft: "-125px" }}>
+                <div className={menu.style1} style={{ marginLeft: "-108px" }}>
 
                   <CRow className={""}>
                     <CCol md="12" lg="12" sm="12">
@@ -3010,7 +3274,9 @@ function LocationLibrary(props) {
 
 
                     </CCol>
+                    </CRow>
 
+                    <CRow>
                     <CCol md="12" style={{ top: "-38px" }}>
                       <CSVLink data={csvData} >
                         {/* <CButton
@@ -3022,7 +3288,7 @@ function LocationLibrary(props) {
                       >
                         Download
                       </CButton> */}
-                        <span style={{ fontSize: "20px", marginLeft: "100px", cursor: "pointer", color: "tomato" }}>
+                        <span style={{ fontSize: "20px", marginLeft: "110px", cursor: "pointer", color: "tomato" }}>
                           <i className="fas fa-download"></i>&nbsp;
                         </span>
                       </CSVLink>
@@ -3177,11 +3443,48 @@ function LocationLibrary(props) {
                                     //   }
                                     // }}
                                     // value={stateName}
+                                    onChange={(e) => setSelected(e)}
                                     options={selectState}
                                     components={{ MenuList: SelectMenuButtonstate }}
                                   // isDisabled={CountryCreate || CityCreate || AreaCreate}
                                   />
-                                </CCol>
+
+{villageHide.districtpanchayat && selected.length !== 0 ? (
+                            <div
+                              style={{
+                                width: 300,
+                                marginLeft: "446px",
+                                marginTop: "-40px",
+                                padding: 10,
+                              }}
+                            
+                            >
+                              <i
+                                className={"editIcon"}
+                              
+                                id={"officeLocationEdit"}
+                                class="fas fa-edit"
+                              />
+                              <div
+                                style={{
+                                  width: 300,
+                                  marginLeft: "26px",
+                                  marginTop: "-30px",
+                                  padding: 10,
+                                  color: "red",
+                                }}
+                              >
+                                <i
+                                  className={"editIcon"}
+                                 
+                                  id={"officeLocationEdit"}
+                                  class="fas fa-trash"
+                                />
+                              </div>
+                            </div>
+                          ) : null}
+                        </CCol>
+
                                 {/* <CCol className={"column-align"} md={1} lg={1}>
                         <CButton
                           shape={"pill"}
@@ -3363,20 +3666,48 @@ function LocationLibrary(props) {
                                     placeholder="Select the City Name"
                                     id={"locationLibraryCity"}
                                     type={"text"}
-                                    // onChange={(e) => {
-                                    //   if (cityName.label) {
-                                    //     setCityName({ ...e, edit: stateName.edit });
-                                    //   } else {
-                                    //     setCityName({ ...e, edit: true });
-                                    //   }
-                                    // }}
-                                    // value={cityName}
+                                    onChange={changePanchayatUnion}
                                     options={selectCity}
                                     // 
                                     components={{ MenuList: SelectMenuButtoncity }}
 
                                   />
-                                </CCol>
+
+                                 {villageHide.panchayatunion &&  selected1.length !== 0 ? (
+                            <div
+                              style={{
+                                width: 300,
+                                marginLeft: "446px",
+                                marginTop: "-40px",
+                                padding: 10,
+                              }}
+                            
+                            >
+                              <i
+                                className={"editIcon"}
+                              
+                                id={"officeLocationEdit"}
+                                class="fas fa-edit"
+                              />
+                              <div
+                                style={{
+                                  width: 300,
+                                  marginLeft: "26px",
+                                  marginTop: "-30px",
+                                  padding: 10,
+                                  color: "red",
+                                }}
+                              >
+                                <i
+                                  className={"editIcon"}
+                                 
+                                  id={"officeLocationEdit"}
+                                  class="fas fa-trash"
+                                />
+                              </div>
+                            </div>
+                          ) : null}
+                        </CCol>
 
                                 {/* {stateName.edit && (
                         <React.Fragment>
@@ -3552,12 +3883,46 @@ function LocationLibrary(props) {
                                   <Select
                                     placeholder="Select the Area Name"
                                     id={"locationLibraryArea"}
-
+                                    onChange={changeArea}
                                     options={selectVillage}
                                     components={{ MenuList: SelectMenuButtonarea }}
 
                                   />
-                                </CCol>
+                                 {villageHide.area &&  selected2.length !== 0 ? (
+                            <div
+                              style={{
+                                width: 300,
+                                marginLeft: "446px",
+                                marginTop: "-40px",
+                                padding: 10,
+                              }}
+                            
+                            >
+                              <i
+                                className={"editIcon"}
+                              
+                                id={"officeLocationEdit"}
+                                class="fas fa-edit"
+                              />
+                              <div
+                                style={{
+                                  width: 300,
+                                  marginLeft: "26px",
+                                  marginTop: "-30px",
+                                  padding: 10,
+                                  color: "red",
+                                }}
+                              >
+                                <i
+                                  className={"editIcon"}
+                                 
+                                  id={"officeLocationEdit"}
+                                  class="fas fa-trash"
+                                />
+                              </div>
+                            </div>
+                          ) : null}
+                        </CCol>
 
                                 {/* {cityName.edit && (
                         <React.Fragment>
@@ -3774,12 +4139,47 @@ function LocationLibrary(props) {
                                     //   }
                                     // }}
                                     // value={streetName.value ? streetName : null}
+                                    onChange={changeStreet}
                                     components={{ MenuList: SelectMenuButtonstreet }}
                                     options={selectStreet}
                                   // isDisabled={
                                   //   CountryCreate || StateCreate || CityCreate || AreaCreate
                                   // }
                                   />
+                                    {villageHide.street &&  selected3.length !== 0 ? (
+                            <div
+                              style={{
+                                width: 300,
+                                marginLeft: "446px",
+                                marginTop: "-40px",
+                                padding: 10,
+                              }}
+                            
+                            >
+                              <i
+                                className={"editIcon"}
+                              
+                                id={"officeLocationEdit"}
+                                class="fas fa-edit"
+                              />
+                              <div
+                                style={{
+                                  width: 300,
+                                  marginLeft: "26px",
+                                  marginTop: "-30px",
+                                  padding: 10,
+                                  color: "red",
+                                }}
+                              >
+                                <i
+                                  className={"editIcon"}
+                                 
+                                  id={"officeLocationEdit"}
+                                  class="fas fa-trash"
+                                />
+                              </div>
+                            </div>
+                          ) : null}
                                 </CCol>
 
                                 {/* {streetName.edit && (
@@ -3958,13 +4358,47 @@ function LocationLibrary(props) {
                                   <Select
                                     placeholder="Select the Door No."
                                     id={"locationLibraryArea"}
-
+                                    onChange={changeDoor}
                                     components={{ MenuList: SelectMenuButtondoor }}
                                     options={selectDoor}
                                   // isDisabled={
                                   //   CountryCreate || StateCreate || CityCreate
                                   // }
                                   />
+                                   {villageHide.door &&  selected4.length !== 0 ? (
+                            <div
+                              style={{
+                                width: 300,
+                                marginLeft: "446px",
+                                marginTop: "-40px",
+                                padding: 10,
+                              }}
+                            
+                            >
+                              <i
+                                className={"editIcon"}
+                              
+                                id={"officeLocationEdit"}
+                                class="fas fa-edit"
+                              />
+                              <div
+                                style={{
+                                  width: 300,
+                                  marginLeft: "26px",
+                                  marginTop: "-30px",
+                                  padding: 10,
+                                  color: "red",
+                                }}
+                              >
+                                <i
+                                  className={"editIcon"}
+                                 
+                                  id={"officeLocationEdit"}
+                                  class="fas fa-trash"
+                                />
+                              </div>
+                            </div>
+                          ) : null}
                                 </CCol>
 
                                 {doorName.edit && (

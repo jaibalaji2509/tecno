@@ -1,0 +1,134 @@
+.ant-dropdown {
+    left: 100px !important;
+  }
+  
+
+
+
+
+.menu {
+  background: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 20px !important;
+  color: black;
+  width: 100%;
+  min-height: 570px;
+  max-height: 570px;
+  margin-left: 2px;
+  padding: 30px 60px;
+ 
+ 
+  border-radius: 20px solid red !important;
+
+  
+  transition: all 1.5s ease-in-out;
+ 
+  left: 575px;
+  
+  z-index: 8;
+}
+
+.active1 {
+  position: absolute;
+  width: 60%;
+  left: 755px;
+  z-index: 10;
+  min-height: 620px;
+  max-height: auto;
+  
+  animation: slide-in 2.5s forwards;
+  -webkit-animation: slide-in 2.5s forwards;
+  border: 2px solid grey;
+}
+.active2 {
+  position: absolute;
+  z-index: 15;
+  animation: slide-out 2.5s forwards;
+  -webkit-animation: slide-out 2.5s forwards;
+  min-height: 680px;
+  max-height: 980px;
+  border: 5px solid white;
+}
+
+
+@keyframes slide-in {
+  0% {
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+  }
+}
+
+@-webkit-keyframes slide-in {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@-webkit-keyframes slide-out {
+  0% {
+    -webkit-transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+  }
+}
+/* .menu2 {
+  
+  z-index: 5;
+  background: #00000000;
+  min-height: 300px;
+  height: auto;
+  width: 100%;
+  position: relative;
+  transition: all 1.5s ease;
+  left: -5px;
+  transform: translate(0);
+
+
+  margin-left: 2px;
+} */
+.sidebar-css {
+  position: absolute;
+    left: 906px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: 275px;
+    float: left;
+     overflow: hidden auto; 
+    width: 300px;
+    height:300px;
+    background: rgb(0, 150, 136);
+    color: rgb(255, 255, 255);
+    transition: left 2.25s ease-in 0.5s;
+    z-index: 10;  
+   
+}
+
+.menu1 {
+  transform: translate(0);
+  z-index: 1;
+  transition: all 1.5s ease-out;
+}
+
+
+   .fa-edit{
+     color:#3480e2 ;
+     cursor: "pointer";
+     margin: bottom 120px;
+   }                              
+ 
+ 
