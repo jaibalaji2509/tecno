@@ -73,41 +73,65 @@ const Municipality = () => {
   ];
 
   const userData = [
+    // {
+    //   SNo: "1",
+    //   Street: "Rangaswamykulam Street",
+    //   Ward:"0098",
+    //   EnteredBy:"sathishKumar",
+    //   EnteredOn:"11/06/2021"
+    // },
     {
       SNo: "1",
-      Street: "Rangaswamykulam Street",
-      Ward:"0098",
-      EnteredBy:"sathishKumar",
-      EnteredOn:"11/06/2021"
-    },
-    {
-      SNo: "2",
       Street: "Kamarajar Street",
       Ward:"0098",
       EnteredBy:"sathishKumar",
       EnteredOn:"11/06/2021"
     },
     {
+      SNo: "2",
+      Street: " Stpachayapas College sreet",
+      Ward:"0099",
+      EnteredBy:"sathishKumar",
+      EnteredOn:"11/06/2021"
+    },
+   
+  ];
+  const userData1 = [
+    {
+      SNo: "1",
+      Street: "Rangaswamykulam Street",
+     
+    },
+    {
+      SNo: "2",
+      Street: "Kamarajar Street",
+     
+    },
+    {
       SNo: "3",
       Street: " Stpachayapas College sreet",
-      Ward:"0098",
-      EnteredBy:"sathishKumar",
-      EnteredOn:"11/06/2021"
+     
+    },
+   
+  ];
+  const fields3 = [
+    {
+      key: "show_details1",
+      label: "Select",
+      _style: { width: "3%" },
+      sorter: false,
+      filter: false,
     },
     {
-      SNo: "4",
-      Street: " Stpachayapas College sreet",
-      Ward:"0098",
-      EnteredBy:"sathishKumar",
-      EnteredOn:"11/06/2021"
+      key: "SNo",
+      label: "S.NO",
+      _style: { width: "5%" },
+      sorter: false,
+      filter: false,
     },
-    {
-      SNo: "5",
-      Street: " Stpachayapas College sreet",
-      Ward:"0098",
-      EnteredBy:"sathishKumar",
-      EnteredOn:"11/06/2021"
-    },
+    
+    { key: "Street", label: "Street Name", _style: { width: "10%" } },
+  
   ];
   const fields = [
     // {
@@ -133,9 +157,9 @@ const Municipality = () => {
   const fields2 = [
   
     { key: "SNo", label: "S.NO", _style: { width: "5%" },    sorter: false,
-    filter: false, },
+      filter: false, },
     { key: "Ward", label: "Ward Number", _style: { width: "10%" } },
-    { key: "show_details", label: "Action", _style: { width: "10%" },    sorter: false,
+    { key: "show_details3", label: "Action", _style: { width: "10%" },    sorter: false,
     filter: false, },
   ];
   const fields1 = [
@@ -143,7 +167,7 @@ const Municipality = () => {
     { key: "SNo", label: "S.NO", _style: { width: "5%" },    sorter: false,
     filter: false, }, 
     { key: "munci", label: "Municipality", _style: { width: "10%" } },
-    { key: "show_details", label: "Action", _style: { width: "10%" },    sorter: false,
+    { key: "show_details3", label: "Action", _style: { width: "10%" },    sorter: false,
     filter: false, },
   ];
   
@@ -223,6 +247,26 @@ const Municipality = () => {
   const selectState = [{ value: "TamilNadu", label: "TamilNadu" }];
   const selectDistrict = [{ value: "Kacnhipuram", label: "Kacnhipuram" }];
   const selectMunicipalcorporation = [
+    {
+      span: (
+        <CLink
+          className={"saveBtn"}
+          onClick={handleClick1}
+          style={{ marginLeft: "200px" }}
+        >
+          Add{" "}
+        </CLink>
+      ),
+      span: (
+        <CLink
+          className={"saveBtn"}
+          onClick={handleClick1}
+          style={{ marginLeft: "200px" }}
+        >
+          Add{" "}
+        </CLink>
+      ),
+    },
     { value: "Wallajabhad", label: "Wallajabhad" },
     { value: "NazharathPet", label: "NazharathPet" },
   ];
@@ -230,30 +274,87 @@ const Municipality = () => {
     { value: "Kavanthandalam", label: "Kavanthandalam" },
     { value: "Thammanur ", label: "Thammanur " },
   ];
-  const selectWard = [{ value: "0097", label: "0099" },{ value: "0098", label: "0098" }];
+  const selectWard = [
+    {
+      span: (
+        <CLink
+          className={"saveBtn"}
+          onClick={handleClick1}
+          style={{ marginLeft: "200px" }}
+        >
+          Add{" "}
+        </CLink>
+      ),
+      span: (
+        <CLink
+          className={"saveBtn"}
+          onClick={handleClick1}
+          style={{ marginLeft: "200px" }}
+        >
+          Add{" "}
+        </CLink>
+      ),
+    },
+    { value: "0097", label: "0097" },{ value: "0098", label: "0098" }];
  
   const SelectMenuButtonmunici = (props) => {
     return (
-      <components.MenuList  {...props}>
-        {props.children}
-        <div style={{ marginTop: "-30px", minHeight: "30px" }} >
-          <CLink className={"saveBtn"} onClick={handleClick1} style={{ marginLeft: "300px" }}>Add</CLink>
-          <CLink className={"saveBtn"} onClick={bulkhandleClick1} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
-        </div>
-      </components.MenuList>
-    )
-  }
+      <components.MenuList {...props}>
+      {props.children}
+      <div
+        style={{
+          marginTop: "-95px",
+          marginBottom: "-50px",
+          minHeight: "150px",
+        }}
+      >
+        <CLink
+          className={"saveBtn"}
+          onClick={handleClick1}
+          style={{ marginLeft: "200px" }}
+        >
+          Add{" "}
+        </CLink>
+        <CLink
+          className={"saveBtn"}
+          onClick={bulkhandleClick1}
+          style={{ marginLeft: "50px" }}
+        >
+          Bulk Upload{" "}
+        </CLink>
+      </div>
+    </components.MenuList>
+  );
+};
   const SelectMenuButtonward = (props) => {
     return (
-      <components.MenuList  {...props}>
-        {props.children}
-        <div style={{ marginTop: "-30px", minHeight: "30px" }} >
-          <CLink className={"saveBtn"} onClick={handleClick2} style={{ marginLeft: "300px" }}>Add</CLink>
-          <CLink className={"saveBtn"} onClick={bulkhandleClick2} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
-        </div>
-      </components.MenuList>
-    )
-  }
+      <components.MenuList {...props}>
+      {props.children}
+      <div
+        style={{
+          marginTop: "-95px",
+          marginBottom: "-50px",
+          minHeight: "150px",
+        }}
+      >
+        <CLink
+          className={"saveBtn"}
+          onClick={handleClick2}
+          style={{ marginLeft: "200px" }}
+        >
+          Add{" "}
+        </CLink>
+        <CLink
+          className={"saveBtn"}
+          onClick={bulkhandleClick2}
+          style={{ marginLeft: "50px" }}
+        >
+          Bulk Upload{" "}
+        </CLink>
+      </div>
+    </components.MenuList>
+  );
+};
 
   const menus = (details) => {
     return(
@@ -618,7 +719,7 @@ const Municipality = () => {
 
 
 
-        <CRow style={{ marginLeft: "580px" }}>
+        <CRow style={{ marginLeft: "330px" }}>
 
           <CCol md="3">
             <CButton
@@ -778,7 +879,7 @@ const Municipality = () => {
               )
             })}
 
-            <CRow style={{ marginLeft: "580px" }}>
+            <CRow style={{ marginLeft: "235px" }}>
 
               <CCol md="3">
                 <CButton
@@ -925,27 +1026,46 @@ const Municipality = () => {
                           sorter
                           pagination
                           scopedSlots={{
-                            show_details3: (item, index) => {
+                            show_details: (item, index) => {
                               return (
-                                <td className="py-1">
+                                <td className="py-2">
                                   <CRow>
-                                    <CCol style={{ fontSize: "1rem" }} md="16">
-
-                                      <i
-                                        style={{
-                                          marginLeft: "35px",
-                                          color: "black",
-                                        }}
-                                        className="fa fa-remove"
-                                        bsStyle="overlay"
-                                        onClick={() => menus1(item)}  
-                                      />
+                                    {/* <CInput
+                                      type={"checkbox"}
+                                      style={{
+                                        width: "15px",
+                                        height: "15px",
+                                        marginLeft: "30px",
+                                        marginBottom: "10px",
+                                      }}
+                                    /> */}
+                                    {/* <CCol style={{ fontSize: "1.15rem" }} md="12">
+                                    </CCol> */}
+                                  </CRow>
+                                </td>
+                              );
+                            },
+                            show_details1: (item, index) => {
+                              return (
+                                <td className="py-2">
+                                  <CRow>
+                              
+                                    <CCol style={{ fontSize: "1.15rem" }} md="12">
+                                    <i
+                                      id={"constimemDelete"}
+                                      style={{
+                                        marginLeft: "5px",
+                                        color: "black",
+                                        cursor: "pointer",
+                                      }}
+                                      className="fa fa-remove"
+                                    ></i>
                                     </CCol>
                                   </CRow>
                                 </td>
                               );
                             },
-                            details: (item, index) => { },
+                            details: (item, index) => {},
                           }}
                         />
                       </CRow>
@@ -983,7 +1103,7 @@ const Municipality = () => {
                 </div>
               )}
               {sideBarup2 && (
-                <div className={menu.style1} style={{ marginLeft: "-108px" }}>
+                <div className={menu.style1} style={{ marginLeft: "-108px", minHeight:"900px" }}>
 
                   <CRow className={""}>
                     <CCol md="12" lg="12" sm="12">
@@ -1018,21 +1138,21 @@ const Municipality = () => {
                     </CCol>
                     </CRow>
 
-                  <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+                    <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
                     onClick={() => {
 
                       document.getElementById("uploadRoleTemplate").click();
                     }}>
                     <CCol md="12">
-                      <span style={{ fontSize: "20px", cursor: "pointer" }}>
+                      <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
                         <i className="fas fa-upload"></i>&nbsp;
                       </span>
 
                       <CLabel
-                        style={{ position: "relative", marginLeft: "20px", cursor: "pointer" }}
+                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
                         className={"form-labels-6"}
                       >
-                        Upload 
+                        Upload
                       </CLabel>
                       <CInput
                         id={"uploadRoleTemplate"}
@@ -1040,25 +1160,16 @@ const Municipality = () => {
                         type={"file"}
                         onChange={handleChange}
                         accept={SheetJSFT}
+
+
                       />
 
 
                     </CCol>
-                    <CCol md="3">
-                      <CButton
-                        style={{
-                          marginLeft: "0px",
-                          marginTop: "25px",
-                        }}
-                        onClick={handleFile}
-                        className={"saveBtn"}
-                      >
-                        {" "}
-                        Confirm
-                      </CButton>
 
-
-                      <CSVLink data={csvData} ><CButton
+                    <CCol md="12" style={{ top: "-38px" }}>
+                      <CSVLink data={csvData} >
+                        {/* <CButton
                         shape={"pill"}
                         id={"municipalcancel"}
                         style={{ marginTop: "-60px", marginLeft: "160px" }}
@@ -1066,20 +1177,42 @@ const Municipality = () => {
 
                       >
                         Download
-                      </CButton></CSVLink>
-
-
-                      <CButton
-                        className={"menu"}
-                        style={{ position: "absolute", top: "-140px", right: "-550px", marginLeft: "30px", backgroundColor: "green", border: "1px solid green" }}
-                        className={"cancelBtn"}
-                        onClick={() => {
-                          bulkhandleClick();
-                          // handleClick2();
-                        }}
+                      </CButton> */}
+                        <span style={{ fontSize: "20px", marginLeft: "100px", cursor: "pointer", color: "tomato" }}>
+                          <i className="fas fa-download"></i>&nbsp;
+                        </span>
+                      </CSVLink>
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
+                        className={"form-labels-6"}
                       >
-                        Back
-                      </CButton>
+                        Download
+                      </CLabel>
+                      <CCol md="3">
+                        <CButton
+                          style={{
+                            marginLeft: "-15px",
+                            marginTop: "20px",
+                          }}
+                          onClick={handleFile}
+                          className={"saveBtn"}
+                        >
+                          {" "}
+                          Confirm
+                        </CButton>
+
+                        <CButton
+                          className={"menu"}
+                          style={{ position: "absolute", marginLeft: "660px", top: "-150px", backgroundColor: "green", border: "1px solid green" }}
+                          className={"cancelBtn"}
+                          onClick={() => {
+                            bulkhandleClick();
+                            // handleClick2();
+                          }}
+                        >
+                          Back
+                        </CButton>
+                      </CCol>
                     </CCol>
                   </CRow>
 
@@ -1088,7 +1221,7 @@ const Municipality = () => {
                       <CRow
                         style={{
                           padding: "4%",
-                          marginTop: "1.5%",
+                          marginTop: "-1.5%",
                           marginLeft: "-45px",
 
                         }}
@@ -1136,7 +1269,7 @@ const Municipality = () => {
                             type="file"
                             style={{
                               marginLeft: "450px",
-                              marginTop: "35px",
+                              marginTop: "5px",
 
                             }}
                             onClick={enableCreate}
@@ -1347,8 +1480,20 @@ const Municipality = () => {
         {locationHide.corporation && (
           <div>
             <div style={{ marginLeft: "-26px" }}>
-             
-              <CRow className={"row-alignment"} style={{ marginLeft: "5px" }}>
+            <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                <CCol className={"column-align"} md="4">
+                  <CLabel className={"label-name"}>
+                    State
+                    <span className={"text-danger"}>*</span>
+                  </CLabel>
+                  <Select
+                    className={"input-align"}
+                    id={"municipalstatename"}
+                    name={"state"}
+                    placeholder={"Select State"}
+                   options={selectState}
+                  />
+                </CCol>
                 {municipalList && (
                   <React.Fragment>
                     <CCol className={"column-align"} md={4} lg={4}>
@@ -1383,8 +1528,21 @@ const Municipality = () => {
                     ) : null}
                   </React.Fragment>
                 )}
-                
-
+                </CRow>
+                <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                <CCol className={"column-align"} md="4">
+                  <CLabel className={"label-name"}>
+                    District / City
+                    <span className={"text-danger"}>*</span>
+                  </CLabel>
+                  <Select
+                    className={"input-align"}
+                    id={"municipaldistrict"}
+                    name={"city"}
+                    placeholder={" Corporation Name"}
+                   options={selectDistrict}
+                  />
+                </CCol>
                 {municipalListadd && (
                   <React.Fragment>
                     <CCol className={"column-align"} md={4} lg={4}>
@@ -1420,73 +1578,7 @@ const Municipality = () => {
                     ) : null}
                   </React.Fragment>
                 )}
-                {MunicipalCreateadd && (
-                  <React.Fragment>
-                    <CRow className={"row-alignment"} style={{marginLeft:"45px", marginTop:"20px"}} sm={12} md={12} lg={12}>
-                      <CCol md="3">
-                        <CLabel className={"label-name-1"}>
-                          Ward Number
-                          <span className={"text-danger"}> *</span>
-                        </CLabel>
-
-                        <CInput
-                          id={"wardname"}
-                          name={"municipalname"}
-                          placeholder="State Name"
-                          maxlength="60"
-                          size="60"
-                        />
-                      </CCol>
-
-                      <CCol md="3">
-                        <CLabel className={"label-name-1"}>
-                          Abbreviation
-                          <span className={"text-danger"}> *</span>
-                        </CLabel>
-                        <CInput
-                          id={"wardabbreviation"}
-                          name={"abbreviation"}
-                          placeholder="Enter Abbreviation"
-                          maxlength="5"
-                          size="5"
-                        />
-                      </CCol>
-                      <CCol md="3">
-                        <CLabel className={"label-name-1"}>
-                          Code
-                          <span className={"text-danger"}> *</span>
-                        </CLabel>
-                        <CInput
-                          id={"wardcode"}
-                          name={"wardcode"}
-                          placeholder="Enter Code"
-                          maxlength="5"
-                          size="5"
-                        />
-                      </CCol>
-                      <CCol md="3">
-                        <CButton
-                          shape={"pill"}
-                          id={"wardsave"}
-                          style={{ marginTop: "30px" }}
-                          className={"saveBtn"}
-                        >
-                          {passing !== "" ? "UPDATE" : "SAVE"}
-                        </CButton>
-                        <CButton
-                          shape={"pill"}
-                          id={"wardcancel"}
-                          style={{ marginTop: "30px", marginLeft: "20px" }}
-                          className={"cancelBtn"}
-                          onClick={CancelStateadd}
-                        >
-                          CANCEL
-                        </CButton>
-                        {error !== "" ? <p>{error}</p> : null}
-                      </CCol>
-                    </CRow>
-                  </React.Fragment>
-                )}
+             
               </CRow>
               <CCol>
                 <CLabel
@@ -1498,37 +1590,11 @@ const Municipality = () => {
                     marginTop: "20px",
                   }}
                 >
-                  Selection Area
+                  Select Street
                 </CLabel>
               </CCol>
-              <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                <CCol className={"column-align"} md="4">
-                  <CLabel className={"label-name"}>
-                    State
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <Select
-                    className={"input-align"}
-                    id={"municipalstatename"}
-                    name={"state"}
-                    placeholder={"Select State"}
-                   options={selectState}
-                  />
-                </CCol>
-                <CCol className={"column-align"} md="4">
-                  <CLabel className={"label-name"}>
-                    District / City
-                    <span className={"text-danger"}>*</span>
-                  </CLabel>
-                  <Select
-                    className={"input-align"}
-                    id={"municipaldistrict"}
-                    name={"city"}
-                    placeholder={" Corporation Name"}
-                   options={selectDistrict}
-                  />
-                </CCol>
-              </CRow>
+
+               
               <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                 <CCol className={"column-align"} md="4">
                   <CLabel className={"label-name"}>
@@ -1581,10 +1647,23 @@ const Municipality = () => {
                 </CCol>
               </CCol>
             </CRow>
-            <CRow style={{ padding: "4%", marginTop: "-3.5%" }}>
+            <CRow style={{ marginLeft: "33px",marginTop:"131px" }}>
+                          <CInput
+                            type={"checkbox"}
+                            style={{
+                              width: "15px",
+                              height: "15px",
+                              marginLeft: "30px",
+                              marginBottom: "10px",
+                            }}
+                          />
+                          <CCol style={{ fontSize: "1.15rem" }} md="12">
+                          </CCol>
+                        </CRow>
+            <CRow style={{ padding: "4%", marginTop: "-17%" }}>
               <CDataTable
-                items={userData}
-                fields={fields}
+                items={userData1}
+                fields={fields3}
                 columnFilter
                 tableFilter
                 tableLabel={"List of Streets"}
