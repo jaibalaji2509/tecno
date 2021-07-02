@@ -297,10 +297,6 @@ function LocationLibrary(props) {
         setTimeout(() => {
           setSideBar1(true);
         }, 1000);
-setSideBar2(false);
-setSideBar3(false);
-setSideBar4(false);
-setSideBar5(false);
 setSideBarup1(false)
 setSideBarup2(false)
 setSideBarup3(false)
@@ -335,9 +331,6 @@ setSideBarup5(false)
           setSideBar2(true);
         }, 1000);
         setSideBar1(false);
-setSideBar3(false);
-setSideBar4(false);
-setSideBar5(false);
 setSideBarup1(false)
 setSideBarup2(false)
 setSideBarup3(false)
@@ -373,9 +366,6 @@ setSideBarup5(false)
           setSideBar3(true);
         }, 1000);
         setSideBar2(false);
-setSideBar1(false);
-setSideBar4(false);
-setSideBar5(false);
 setSideBarup1(false)
 setSideBarup2(false)
 setSideBarup3(false)
@@ -410,10 +400,7 @@ setSideBarup5(false)
         setTimeout(() => {
           setSideBar4(true);
         }, 1000);
-        setSideBar2(false);
 setSideBar3(false);
-setSideBar1(false);
-setSideBar5(false);
 setSideBarup1(false)
 setSideBarup2(false)
 setSideBarup3(false)
@@ -448,10 +435,7 @@ setSideBarup5(false)
         setTimeout(() => {
           setSideBar5(true);
         }, 1000);
-        setSideBar2(false);
-setSideBar3(false);
 setSideBar4(false);
-setSideBar1(false);
 setSideBarup1(false)
 setSideBarup2(false)
 setSideBarup3(false)
@@ -492,7 +476,11 @@ setSideBarup5(false)
         });
         setSideBarup1(true);
         setSideBarup5(false)
-
+        setSideBar1(false)
+        setSideBar2(false)
+        setSideBar3(false)
+        setSideBar4(false)
+        setSideBar5(false)
 
         break;
       case "close":
@@ -523,7 +511,11 @@ setSideBarup5(false)
         setSideBarup2(true);
         setSideBarup1(false)
         setSideBarup5(false)
-
+        setSideBar1(false)
+        setSideBar2(false)
+        setSideBar3(false)
+        setSideBar4(false)
+        setSideBar5(false)
 
         break;
       case "close":
@@ -553,7 +545,11 @@ setSideBarup5(false)
         setSideBarup3(true);
         setSideBarup2(false)
         setSideBarup5(false)
-
+        setSideBar1(false)
+        setSideBar2(false)
+        setSideBar3(false)
+        setSideBar4(false)
+        setSideBar5(false)
 
         break;
       case "close":
@@ -583,7 +579,11 @@ setSideBarup5(false)
         setSideBarup4(true);
         setSideBarup3(false)
         setSideBarup5(false)
-
+        setSideBar1(false)
+        setSideBar2(false)
+        setSideBar3(false)
+        setSideBar4(false)
+        setSideBar5(false)
 
         break;
       case "close":
@@ -612,7 +612,11 @@ setSideBarup5(false)
         });
         setSideBarup5(true);
         setSideBarup4(false)
-
+        setSideBar1(false)
+        setSideBar2(false)
+        setSideBar3(false)
+        setSideBar4(false)
+        setSideBar5(false)
 
         break;
       case "close":
@@ -1585,7 +1589,7 @@ setSideBarup5(false)
 
 
 
-          <CRow style={{ marginLeft: "580px" }}>
+          <CRow style={{ marginLeft: "250px" }}>
 
             <CCol md="3">
               <CButton
@@ -1614,7 +1618,7 @@ setSideBarup5(false)
 
           <CButton
             className={"menu"}
-            style={{ position: "absolute", top: "15px", right: "15px" }}
+            style={{ position: "absolute", top: "15px",backgroundColor: "green", border: "1px solid green", right: "15px" }}
             className={"cancelBtn"}
             onClick={() => {
               handleClickstate();
@@ -1762,7 +1766,7 @@ setSideBarup5(false)
               )
             })}
 
-            <CRow style={{ marginLeft: "580px" }}>
+            <CRow style={{ marginLeft: "250px" }}>
 
               <CCol md="3">
                 <CButton
@@ -1791,7 +1795,7 @@ setSideBarup5(false)
 
             <CButton
               className={"menu"}
-              style={{ position: "absolute", top: "15px", right: "15px" }}
+              style={{ position: "absolute", top: "15px", right: "15px", backgroundColor: "green", border: "1px solid green" }}
               className={"cancelBtn"}
               onClick={() => {
                 handleClickcity();
@@ -1972,7 +1976,7 @@ setSideBarup5(false)
                 )
               })}
 
-              <CRow style={{ marginLeft: "580px" }}>
+              <CRow style={{ marginLeft: "250px" }}>
 
                 <CCol md="3">
                   <CButton
@@ -2001,7 +2005,7 @@ setSideBarup5(false)
 
               <CButton
                 className={"menu"}
-                style={{ position: "absolute", top: "15px", right: "15px" }}
+                style={{ position: "absolute", top: "15px", right: "15px", backgroundColor: "green", border: "1px solid green" }}
                 className={"cancelBtn"}
                 onClick={() => {
                   handleClickarea();
@@ -2188,7 +2192,7 @@ setSideBarup5(false)
 
 
 
-                <CRow style={{ marginLeft: "580px" }}>
+                <CRow style={{ marginLeft: "250px" }}>
 
                   <CCol md="3">
                     <CButton
@@ -2217,7 +2221,7 @@ setSideBarup5(false)
 
                 <CButton
                   className={"menu"}
-                  style={{ position: "absolute", top: "15px", right: "15px" }}
+                  style={{ position: "absolute", top: "15px", right: "15px", backgroundColor: "green", border: "1px solid green" }}
                   className={"cancelBtn"}
                   onClick={() => {
                     handleClickstreet();
@@ -2381,7 +2385,7 @@ setSideBarup5(false)
 
 
 
-                  <CRow style={{ marginLeft: "580px" }}>
+                  <CRow style={{ marginLeft: "250px" }}>
 
                     <CCol md="3">
                       <CButton
@@ -2441,75 +2445,78 @@ setSideBarup5(false)
                     </CCol>
                   </CRow>
 
-                  <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"locationlibraryUploadTemplate"}
-                    onClick={() => {
+                  <CRow md="12"
+            style={{ marginLeft: "10px", marginTop: "15px" }}
+         
+          >
+            <CCol md="6"    id={"createRoleUploadTemplate"}
+            onClick={() => {
+              document.getElementById("uploadRoleTemplate").click();
+            }}>
+              <span style={{ fontSize: "20px", cursor: "pointer",color:"blue" }}>
+                <i className="fas fa-upload"></i>&nbsp;
+              </span>
 
-                      document.getElementById("uploadRoleTemplate").click();
-                    }}>
-                    <CCol md="12">
-                      <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
-                        <i className="fas fa-upload"></i>&nbsp;
-                      </span>
-
-                      <CLabel
-                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
-                        className={"form-labels-6"}
-                      >
-                        Upload
-                      </CLabel>
-                      <CInput
-                        id={"stateuploadRoleTemplate"}
-                        style={{ display: "none" }}
-                        type={"file"}
-                        onChange={handleChange}
-                        accept={SheetJSFT}
-
-
-                      />
-
-
-                    </CCol>
-                    </CRow>
-
-                    <CRow>
-                    <CCol md="12" style={{ top: "-38px" }}>
-                      <CSVLink data={csvData} >
-                        {/* <CButton
-                        shape={"pill"}
-                        id={"statecancel"}
-                        style={{ marginTop: "-60px", marginLeft: "160px" }}
-                        className={"cancelBtn"}
-
-                      >
-                        Download
-                      </CButton> */}
-                        <span style={{ fontSize: "20px", marginLeft: "110px", cursor: "pointer", color: "tomato" }}>
-                          <i className="fas fa-download"></i>&nbsp;
-                        </span>
-                      </CSVLink>
-                      <CLabel
-                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
-                        className={"form-labels-6"}
-                      >
-                        Download
-                      </CLabel>
-                      <CCol md="3">
-                        <CButton
-                          style={{
-                            marginLeft: "-15px",
-                            marginTop: "20px",
-                          }}
-                          onClick={handleFile}
-                          className={"saveBtn"}
-                        >
-                          {" "}
-                          Confirm
-                        </CButton>
+              <CLabel
+                style={{
+                  position: "relative",
+                  marginLeft: "20px",
+                  cursor: "pointer",
+                }}
+                className={"form-labels-6"}
+              >
+                Upload 
+              </CLabel>
+              <CInput
+                id={"uploadRoleTemplate"}
+                style={{ display: "none" }}
+                type={"file"}
+                onChange={handleChange}
+                accept={SheetJSFT}
+              />
+            </CCol>
+            <CCol md="6" style={{marginLeft:"150px",marginTop:"-38px"}}> 
+            <CSVLink data={csvData}>
+            <span style={{ fontSize: "20px", cursor: "pointer", color:"red" }}>
+                <i className="fas fa-download">
+                </i>&nbsp;
+             
+             </span>
+           
+              <CLabel
+                style={{
+                  position: "relative",
+                  marginLeft: "20px",
+                  cursor: "pointer",
+                  color:"black"
+                
+                }}
+                className={"form-labels-6"}
+              >
+                Download 
+              </CLabel>
+              </CSVLink>
+              
+            </CCol>
+          </CRow>
+<CRow>
+<CCol md="3">
+              <CButton
+                style={{
+                  marginLeft: "30px",
+                  marginTop: "25px",
+                }}
+                onClick={handleFile}
+                className={"saveBtn"}
+              >
+                {" "}
+                Confirm
+              </CButton>
 
 
                       <CButton
                         className={"menu"}
-                        style={{ position: "absolute", top: "-42px", right: "-550px", marginLeft: "30px", backgroundColor: "green", border: "1px solid green" }}
+                        style={{ position: "absolute", top: "-95px", right: "-660px", marginLeft: "30px", backgroundColor: "green", border: "1px solid green" }}
                         className={"cancelBtn"}
                         onClick={() => {
                           bulkhandleClick();
@@ -2519,8 +2526,9 @@ setSideBarup5(false)
                         Back
                       </CButton>
                     </CCol>
-                    </CCol>
-                  </CRow>
+                    </CRow>
+                  
+               
 
                   {isValue && excelupload.data !== 0 ? (
                     <div>
@@ -2638,75 +2646,78 @@ setSideBarup5(false)
                     </CCol>
                     </CRow>
 
-                    <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"locationlibrarycreateRoleUploadTemplate"}
-                    onClick={() => {
+                    <CRow md="12"
+            style={{ marginLeft: "10px", marginTop: "15px" }}
+         
+          >
+            <CCol md="6"    id={"createRoleUploadTemplate"}
+            onClick={() => {
+              document.getElementById("uploadRoleTemplate").click();
+            }}>
+              <span style={{ fontSize: "20px", cursor: "pointer",color:"blue" }}>
+                <i className="fas fa-upload"></i>&nbsp;
+              </span>
 
-                      document.getElementById("uploadRoleTemplate").click();
-                    }}>
-                    <CCol md="12">
-                      <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
-                        <i className="fas fa-upload"></i>&nbsp;
-                      </span>
-
-                      <CLabel
-                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
-                        className={"form-labels-6"}
-                      >
-                        Upload
-                      </CLabel>
-                      <CInput
-                        id={"cityuploadRoleTemplate"}
-                        style={{ display: "none" }}
-                        type={"file"}
-                        onChange={handleChange}
-                        accept={SheetJSFT}
-
-
-                      />
-
-
-                    </CCol>
-                    </CRow>
-
-                    <CRow>
-                    <CCol md="12" style={{ top: "-38px" }}>
-                      <CSVLink data={csvData} >
-                        {/* <CButton
-                        shape={"pill"}
-                        id={"statecancel"}
-                        style={{ marginTop: "-60px", marginLeft: "160px" }}
-                        className={"cancelBtn"}
-
-                      >
-                        Download
-                      </CButton> */}
-                        <span style={{ fontSize: "20px", marginLeft: "110px", cursor: "pointer", color: "tomato" }}>
-                          <i className="fas fa-download"></i>&nbsp;
-                        </span>
-                      </CSVLink>
-                      <CLabel
-                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
-                        className={"form-labels-6"}
-                      >
-                        Download
-                      </CLabel>
-                      <CCol md="3">
-                        <CButton
-                          style={{
-                            marginLeft: "-15px",
-                            marginTop: "20px",
-                          }}
-                          onClick={handleFile}
-                          className={"saveBtn"}
-                        >
-                          {" "}
-                          Confirm
-                        </CButton>
+              <CLabel
+                style={{
+                  position: "relative",
+                  marginLeft: "20px",
+                  cursor: "pointer",
+                }}
+                className={"form-labels-6"}
+              >
+                Upload 
+              </CLabel>
+              <CInput
+                id={"uploadRoleTemplate"}
+                style={{ display: "none" }}
+                type={"file"}
+                onChange={handleChange}
+                accept={SheetJSFT}
+              />
+            </CCol>
+            <CCol md="6" style={{marginLeft:"150px",marginTop:"-38px"}}> 
+            <CSVLink data={csvData}>
+            <span style={{ fontSize: "20px", cursor: "pointer", color:"red" }}>
+                <i className="fas fa-download">
+                </i>&nbsp;
+             
+             </span>
+           
+              <CLabel
+                style={{
+                  position: "relative",
+                  marginLeft: "20px",
+                  cursor: "pointer",
+                  color:"black"
+                
+                }}
+                className={"form-labels-6"}
+              >
+                Download 
+              </CLabel>
+              </CSVLink>
+              
+            </CCol>
+          </CRow>
+<CRow>
+<CCol md="3">
+              <CButton
+                style={{
+                  marginLeft: "30px",
+                  marginTop: "25px",
+                }}
+                onClick={handleFile}
+                className={"saveBtn"}
+              >
+                {" "}
+                Confirm
+              </CButton>
 
 
                       <CButton
                         className={"menu"}
-                        style={{ position: "absolute", top: "-140px", right: "-550px", marginLeft: "30px", backgroundColor: "green", border: "1px solid green" }}
+                        style={{ position: "absolute", top: "-160px", right: "-660px", marginLeft: "30px", backgroundColor: "green", border: "1px solid green" }}
                         className={"cancelBtn"}
                         onClick={() => {
                           bulkhandleClick();
@@ -2715,8 +2726,7 @@ setSideBarup5(false)
                       >
                         Back
                       </CButton>
-                    </CCol>
-                    </CCol>
+                    </CCol>                   
                   </CRow>
 
                   {isValue && excelupload.data !== 0 ? (
@@ -2840,75 +2850,78 @@ setSideBarup5(false)
                     </CCol>
                     </CRow>
 
-                    <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"areacreateRoleUploadTemplate"}
-                    onClick={() => {
+                    <CRow md="12"
+            style={{ marginLeft: "10px", marginTop: "15px" }}
+         
+          >
+            <CCol md="6"    id={"createRoleUploadTemplate"}
+            onClick={() => {
+              document.getElementById("uploadRoleTemplate").click();
+            }}>
+              <span style={{ fontSize: "20px", cursor: "pointer",color:"blue" }}>
+                <i className="fas fa-upload"></i>&nbsp;
+              </span>
 
-                      document.getElementById("uploadRoleTemplate").click();
-                    }}>
-                    <CCol md="12">
-                      <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
-                        <i className="fas fa-upload"></i>&nbsp;
-                      </span>
-
-                      <CLabel
-                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
-                        className={"form-labels-6"}
-                      >
-                        Upload
-                      </CLabel>
-                      <CInput
-                        id={"areauploadRoleTemplate"}
-                        style={{ display: "none" }}
-                        type={"file"}
-                        onChange={handleChange}
-                        accept={SheetJSFT}
-
-
-                      />
-
-
-                    </CCol>
-                    </CRow>
-
-                    <CRow>
-                    <CCol md="12" style={{ top: "-38px" }}>
-                      <CSVLink data={csvData} >
-                        {/* <CButton
-                        shape={"pill"}
-                        id={"statecancel"}
-                        style={{ marginTop: "-60px", marginLeft: "160px" }}
-                        className={"cancelBtn"}
-
-                      >
-                        Download
-                      </CButton> */}
-                        <span style={{ fontSize: "20px", marginLeft: "110px", cursor: "pointer", color: "tomato" }}>
-                          <i className="fas fa-download"></i>&nbsp;
-                        </span>
-                      </CSVLink>
-                      <CLabel
-                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
-                        className={"form-labels-6"}
-                      >
-                        Download
-                      </CLabel>
-                      <CCol md="3">
-                        <CButton
-                          style={{
-                            marginLeft: "-15px",
-                            marginTop: "20px",
-                          }}
-                          onClick={handleFile}
-                          className={"saveBtn"}
-                        >
-                          {" "}
-                          Confirm
-                        </CButton>
+              <CLabel
+                style={{
+                  position: "relative",
+                  marginLeft: "20px",
+                  cursor: "pointer",
+                }}
+                className={"form-labels-6"}
+              >
+                Upload 
+              </CLabel>
+              <CInput
+                id={"uploadRoleTemplate"}
+                style={{ display: "none" }}
+                type={"file"}
+                onChange={handleChange}
+                accept={SheetJSFT}
+              />
+            </CCol>
+            <CCol md="6" style={{marginLeft:"150px",marginTop:"-38px"}}> 
+            <CSVLink data={csvData}>
+            <span style={{ fontSize: "20px", cursor: "pointer", color:"red" }}>
+                <i className="fas fa-download">
+                </i>&nbsp;
+             
+             </span>
+           
+              <CLabel
+                style={{
+                  position: "relative",
+                  marginLeft: "20px",
+                  cursor: "pointer",
+                  color:"black"
+                
+                }}
+                className={"form-labels-6"}
+              >
+                Download 
+              </CLabel>
+              </CSVLink>
+              
+            </CCol>
+          </CRow>
+<CRow>
+<CCol md="3">
+              <CButton
+                style={{
+                  marginLeft: "30px",
+                  marginTop: "25px",
+                }}
+                onClick={handleFile}
+                className={"saveBtn"}
+              >
+                {" "}
+                Confirm
+              </CButton>
 
 
                       <CButton
                         className={"menu"}
-                        style={{ position: "absolute", top: "-150px", right: "-550px", marginLeft: "30px", backgroundColor: "green", border: "1px solid green" }}
+                        style={{ position: "absolute", top: "-160px", right: "-660px", marginLeft: "30px", backgroundColor: "green", border: "1px solid green" }}
                         className={"cancelBtn"}
                         onClick={() => {
                           bulkhandleClick();
@@ -2917,8 +2930,7 @@ setSideBarup5(false)
                       >
                         Back
                       </CButton>
-                    </CCol>
-                    </CCol>
+                    </CCol>                   
                   </CRow>
 
                   {isValue && excelupload.data !== 0 ? (
@@ -3064,75 +3076,78 @@ setSideBarup5(false)
                     <CCol>
                       </CCol>
                       </CRow>
-                      <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"streetcreateRoleUploadTemplate"}
-                    onClick={() => {
+                      <CRow md="12"
+            style={{ marginLeft: "10px", marginTop: "15px" }}
+         
+          >
+            <CCol md="6"    id={"createRoleUploadTemplate"}
+            onClick={() => {
+              document.getElementById("uploadRoleTemplate").click();
+            }}>
+              <span style={{ fontSize: "20px", cursor: "pointer",color:"blue" }}>
+                <i className="fas fa-upload"></i>&nbsp;
+              </span>
 
-                      document.getElementById("uploadRoleTemplate").click();
-                    }}>
-                    <CCol md="12">
-                      <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
-                        <i className="fas fa-upload"></i>&nbsp;
-                      </span>
-
-                      <CLabel
-                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
-                        className={"form-labels-6"}
-                      >
-                        Upload
-                      </CLabel>
-                      <CInput
-                        id={"streetuploadRoleTemplate"}
-                        style={{ display: "none" }}
-                        type={"file"}
-                        onChange={handleChange}
-                        accept={SheetJSFT}
-
-
-                      />
-
-
-                    </CCol>
-                    </CRow>
-
-                    <CRow>
-                    <CCol md="12" style={{ top: "-38px" }}>
-                      <CSVLink data={csvData} >
-                        {/* <CButton
-                        shape={"pill"}
-                        id={"statecancel"}
-                        style={{ marginTop: "-60px", marginLeft: "160px" }}
-                        className={"cancelBtn"}
-
-                      >
-                        Download
-                      </CButton> */}
-                        <span style={{ fontSize: "20px", marginLeft: "110px", cursor: "pointer", color: "tomato" }}>
-                          <i className="fas fa-download"></i>&nbsp;
-                        </span>
-                      </CSVLink>
-                      <CLabel
-                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
-                        className={"form-labels-6"}
-                      >
-                        Download
-                      </CLabel>
-                      <CCol md="3">
-                        <CButton
-                          style={{
-                            marginLeft: "-15px",
-                            marginTop: "20px",
-                          }}
-                          onClick={handleFile}
-                          className={"saveBtn"}
-                        >
-                          {" "}
-                          Confirm
-                        </CButton>
+              <CLabel
+                style={{
+                  position: "relative",
+                  marginLeft: "20px",
+                  cursor: "pointer",
+                }}
+                className={"form-labels-6"}
+              >
+                Upload 
+              </CLabel>
+              <CInput
+                id={"uploadRoleTemplate"}
+                style={{ display: "none" }}
+                type={"file"}
+                onChange={handleChange}
+                accept={SheetJSFT}
+              />
+            </CCol>
+            <CCol md="6" style={{marginLeft:"150px",marginTop:"-38px"}}> 
+            <CSVLink data={csvData}>
+            <span style={{ fontSize: "20px", cursor: "pointer", color:"red" }}>
+                <i className="fas fa-download">
+                </i>&nbsp;
+             
+             </span>
+           
+              <CLabel
+                style={{
+                  position: "relative",
+                  marginLeft: "20px",
+                  cursor: "pointer",
+                  color:"black"
+                
+                }}
+                className={"form-labels-6"}
+              >
+                Download 
+              </CLabel>
+              </CSVLink>
+              
+            </CCol>
+          </CRow>
+<CRow>
+<CCol md="3">
+              <CButton
+                style={{
+                  marginLeft: "30px",
+                  marginTop: "25px",
+                }}
+                onClick={handleFile}
+                className={"saveBtn"}
+              >
+                {" "}
+                Confirm
+              </CButton>
 
 
                       <CButton
                         className={"menu"}
-                        style={{ position: "absolute", top: "-200px", right: "-550px", marginLeft: "10px", backgroundColor: "green", border: "1px solid green" }}
+                        style={{ position: "absolute", top: "-210px", right: "-660px", marginLeft: "10px", backgroundColor: "green", border: "1px solid green" }}
                         className={"cancelBtn"}
                         onClick={() => {
                           bulkhandleClick();
@@ -3140,8 +3155,7 @@ setSideBarup5(false)
                       >
                         Back
                       </CButton>
-                    </CCol>
-                    </CCol>
+                    </CCol>                    
                   </CRow>
 
                   {isValue && excelupload.data !== 0 ? (
@@ -3295,74 +3309,77 @@ setSideBarup5(false)
                     </CCol>
                   </CRow>
 
-                  <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"doorcreateRoleUploadTemplate"}
-                    onClick={() => {
+                  <CRow md="12"
+            style={{ marginLeft: "10px", marginTop: "15px" }}
+         
+          >
+            <CCol md="6"    id={"createRoleUploadTemplate"}
+            onClick={() => {
+              document.getElementById("uploadRoleTemplate").click();
+            }}>
+              <span style={{ fontSize: "20px", cursor: "pointer",color:"blue" }}>
+                <i className="fas fa-upload"></i>&nbsp;
+              </span>
 
-                      document.getElementById("uploadRoleTemplate").click();
-                    }}>
-                    <CCol md="12">
-                      <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
-                        <i className="fas fa-upload"></i>&nbsp;
-                      </span>
-
-                      <CLabel
-                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
-                        className={"form-labels-6"}
-                      >
-                        Upload
-                      </CLabel>
-                      <CInput
-                        id={"dooruploadRoleTemplate"}
-                        style={{ display: "none" }}
-                        type={"file"}
-                        onChange={handleChange}
-                        accept={SheetJSFT}
-
-
-                      />
-
-
-                    </CCol>
-                    </CRow>
-
-                    <CRow>
-                    <CCol md="12" style={{ top: "-38px" }}>
-                      <CSVLink data={csvData} >
-                        {/* <CButton
-                        shape={"pill"}
-                        id={"statecancel"}
-                        style={{ marginTop: "-60px", marginLeft: "160px" }}
-                        className={"cancelBtn"}
-
-                      >
-                        Download
-                      </CButton> */}
-                        <span style={{ fontSize: "20px", marginLeft: "110px", cursor: "pointer", color: "tomato" }}>
-                          <i className="fas fa-download"></i>&nbsp;
-                        </span>
-                      </CSVLink>
-                      <CLabel
-                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
-                        className={"form-labels-6"}
-                      >
-                        Download
-                      </CLabel>
-                      <CCol md="3">
-                        <CButton
-                          style={{
-                            marginLeft: "-15px",
-                            marginTop: "20px",
-                          }}
-                          onClick={handleFile}
-                          className={"saveBtn"}
-                        >
-                          {" "}
-                          Confirm
-                        </CButton>
+              <CLabel
+                style={{
+                  position: "relative",
+                  marginLeft: "20px",
+                  cursor: "pointer",
+                }}
+                className={"form-labels-6"}
+              >
+                Upload 
+              </CLabel>
+              <CInput
+                id={"uploadRoleTemplate"}
+                style={{ display: "none" }}
+                type={"file"}
+                onChange={handleChange}
+                accept={SheetJSFT}
+              />
+            </CCol>
+            <CCol md="6" style={{marginLeft:"150px",marginTop:"-38px"}}> 
+            <CSVLink data={csvData}>
+            <span style={{ fontSize: "20px", cursor: "pointer", color:"red" }}>
+                <i className="fas fa-download">
+                </i>&nbsp;
+             
+             </span>
+           
+              <CLabel
+                style={{
+                  position: "relative",
+                  marginLeft: "20px",
+                  cursor: "pointer",
+                  color:"black"
+                
+                }}
+                className={"form-labels-6"}
+              >
+                Download 
+              </CLabel>
+              </CSVLink>
+              
+            </CCol>
+          </CRow>
+<CRow>
+<CCol md="3">
+              <CButton
+                style={{
+                  marginLeft: "30px",
+                  marginTop: "25px",
+                }}
+                onClick={handleFile}
+                className={"saveBtn"}
+              >
+                {" "}
+                Confirm
+              </CButton>
 
                         <CButton
                           className={"menu"}
-                          style={{ position: "absolute", marginLeft: "660px", top: "-210px", backgroundColor: "green", border: "1px solid green" }}
+                          style={{ position: "absolute", marginLeft: "725px", top: "-210px", backgroundColor: "green", border: "1px solid green" }}
                           className={"cancelBtn"}
                           onClick={() => {
                             bulkhandleClick();
@@ -3372,7 +3389,6 @@ setSideBarup5(false)
                           Back
                         </CButton>
                       </CCol>
-                    </CCol>
                   </CRow>
 
                   {isValue && excelupload.data !== 0 ? (
