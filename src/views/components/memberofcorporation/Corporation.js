@@ -145,7 +145,7 @@ const Corporation = () => {
       filter: false,
     },
   ];
-  const userData1 = [];
+  const userDataMayorCorporation = [];
   const fields1 = [
     {
       key: "SNo",
@@ -924,7 +924,7 @@ const Corporation = () => {
               </CLabel>
               <Select
                 // className={"input-align"}
-                id={"rajyasabhaState"}
+                id={"corporationstatus"}
                 name={"state"}
                 placeholder={"Select Status"}
                 value={locations.district}
@@ -938,7 +938,7 @@ const Corporation = () => {
               </CLabel>
               <Select
                 style={{ width: "50px", height: "50px" }}
-                id={"rajyasabhaStatus"}
+                id={"corporationnote"}
                 name={"Status"}
                 placeholder={" Select Status "}
                 value={locations.city}
@@ -1008,7 +1008,7 @@ const Corporation = () => {
                            
                             marginLeft: "35px",
                           }}
-                          id={"saveAbbreviationConfigureCode"}
+                          id={"corporationaddmember"}
                           className={"saveBtn"}
                           onClick={changeMunicipalCorporation}
                         >
@@ -1025,7 +1025,7 @@ const Corporation = () => {
                       </CLabel>
                       <Select
                         // className={"input-align"}
-                        id={"memtownState"}
+                        id={"corporationState"}
                         name={"state"}
                         placeholder={"Select State"}
                         // value={locations.district}
@@ -1039,7 +1039,7 @@ const Corporation = () => {
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        id={"memtownCity"}
+                        id={"corporationCity"}
                         name={"Status"}
                         placeholder={" Select Status "}
                         // value={locations.city}
@@ -1057,7 +1057,7 @@ const Corporation = () => {
                       </CLabel>
                       <Select
                         // className={"input-align"}
-                        id={"memtowntown"}
+                        id={"corporation"}
                         name={"state"}
                         placeholder={"Select Corporation"}
                         // value={locations.district}
@@ -1130,7 +1130,7 @@ const Corporation = () => {
                       }}
                     >
                       <CDataTable
-                        items={userData1}
+                        items={userDataMayorCorporation}
                         fields={fields}
                         columnFilter
                         tableFilter
@@ -1455,7 +1455,7 @@ const Corporation = () => {
                       </CLabel>
                       <Select
                         // className={"input-align"}
-                        id={"memtownState"}
+                        id={"corporationState"}
                         name={"state"}
                         placeholder={"Select State"}
                         options={stateselect}
@@ -1467,7 +1467,7 @@ const Corporation = () => {
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        id={"memtownCity"}
+                        id={"corporationCity"}
                         name={"Status"}
                         placeholder={" Select District / City "}
                         // value={locations.city}
@@ -1484,7 +1484,7 @@ const Corporation = () => {
                       </CLabel>
                       <Select
                         // className={"input-align"}
-                        id={"memtowntown"}
+                        id={"corporationtown"}
                         name={"state"}
                         placeholder={" Select Corporation"}
                         // value={locations.district}
@@ -1551,7 +1551,7 @@ const Corporation = () => {
                       </CLabel>
                       <Select
                         // className={"input-align"}
-                        id={"memtownward"}
+                        id={"corporationward"}
                         name={"state"}
                         placeholder={"Select Ward No"}
                         options={noward}
@@ -1572,7 +1572,7 @@ const Corporation = () => {
                       </CLabel>
                       <Select
                         // className={"input-align"}
-                        id={"municipalstatename"}
+                        id={"corporationsearchmember"}
                         // name={"municipalTypeofOffice"}
                         placeholder={"Select Party member"}
                         value={typeofOfficess}
@@ -1661,11 +1661,11 @@ const Corporation = () => {
                   >
                     <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name-1"}>From Date </CLabel>
-                      <CInput type="date" id={"rajyasabhadatefrom"} />
+                      <CInput type="date" id={"corporationdatefrom"} />
                     </CCol>
                     <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name-1"}>To Date </CLabel>
-                      <CInput type="date" id={"rajyasabhadatefrom"} />
+                      <CInput type="date" id={"corporationdatefrom"} />
                     </CCol>
                   </CRow>
 

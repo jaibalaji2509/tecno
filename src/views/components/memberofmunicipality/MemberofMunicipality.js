@@ -147,37 +147,10 @@ const MemberofMunicipality = () => {
             filter: false,
         },
     ];
-    const userData1 = [
+    const userDataChairmanofMunicipality = [
        
     ];
-    const fields1 = [
-        {
-            key: "SNo",
-            label: "S.NO",
-            _style: { width: "3%" },
-            sorter: false,
-            filter: false,
-        },
-        { key: "Type", label: "Type of Office", _style: { width: "10%" } },
-        { key: "Name", label: "Name of Office", _style: { width: "10%" } },
-        { key: "Department", label: "Department", _style: { width: "10%" } },
-        { key: "Designation", label: "Designation", _style: { width: "10%" } },
-        { key: "Role", label: "Role", _style: { width: "10%" } },
 
-        { key: "Member", label: "Name of the Member", _style: { width: "10%" } },
-
-        { key: "EnteredBy", label: "Assigned By", _style: { width: "10%" } },
-        { key: "EnteredOn", label: "Assigned On", _style: { width: "10%" } },
-        // { key: "male", label: "Male", _style: { width: "10%" } },
-        // { key: "female", label: "Female", _style: { width: "10%" } },
-        {
-            key: "show_details",
-            label: "Action",
-            _style: { width: "10%" },
-            sorter: false,
-            filter: false,
-        },
-    ];
     const [passing, setPassing] = useState("");
     const [error, setError] = useState("");
     const saveCorporation = async () => {
@@ -357,12 +330,7 @@ const noward=[
     const editStateadd = async () => {
         await setMunicipalListadd(false);
         await setmunicipalCreateadd(true);
-        // formik.values.StateName = stateName.stateName;
-        // formik.values.Abbreviation2 = stateName.abbreviation;
-        // formik.values.Code2 = stateName.code;
-        // setPassing(stateName._id);
-        // getState();
-        // getAllAreas();
+      
     };
     const CancelStateadd = async () => {
         setPassing("");
@@ -394,9 +362,7 @@ const noward=[
         }
     };
 
-    //     const handleClick = () => {
-    //      setSideBar1(false)
-    //    };
+    
 
     const handleClick = () => {
         switch (menu.menuStatus) {
@@ -569,7 +535,7 @@ const noward=[
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"memberregisterediticon"}
+            id={"membermunicieyegrid"}
             className="fa fa-eye"
             onClick={chairshow}
           >
@@ -586,7 +552,7 @@ const noward=[
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"memberregisterediticon"}
+            id={"membermunicieyegrid"}
             className="fa fa-eye"
             onClick={gridshow}
             >
@@ -604,7 +570,7 @@ const noward=[
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"memberregisterediticon"}
+            id={"membermunicieyegrid"}
             className="fa fa-eye"
             onClick={partshow}
           >
@@ -621,7 +587,7 @@ const noward=[
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"memberregisterediticon"}
+            id={"membermunicieyegrid"}
             className="fa fa-eye"
             onClick={centralgrid}
           >
@@ -941,7 +907,7 @@ const noward=[
                             </CLabel>
                             <Select
                                 // className={"input-align"}
-                                id={"memmunicipalState"}
+                                id={"memmunicipalStatus"}
                                 name={"state"}
                                 placeholder={"Select Status"}
                                 value={locations.district}
@@ -1026,7 +992,7 @@ const noward=[
                                                        
                                                         marginLeft: "35px",
                                                     }}
-                                                    id={"saveAbbreviationConfigureCode"}
+                                                    id={"membermuniciaddmember"}
                                                     className={"saveBtn"}
                                                     onClick={changeMunicipalCorporation}
                                                 >
@@ -1115,7 +1081,7 @@ const noward=[
                                     }}
                                 >
                                     <CDataTable
-                                        items={userData1}
+                                        items={userDataChairmanofMunicipality}
                                         fields={fields}
                                         columnFilter
                                         tableFilter
@@ -1398,7 +1364,7 @@ const noward=[
                                             </CLabel>
                                             <Select
                                                 // className={"input-align"}
-                                                id={"memmunicipaltown"}
+                                                id={"memmunicipalmunicipality"}
                                                 name={"state"}
                                                 placeholder={"Select Town Panchayat"}
                                                 // value={locations.district}
@@ -1456,7 +1422,7 @@ const noward=[
                                             </CLabel>
                                             <Select
                                                 // className={"input-align"}
-                                                id={"memmunicipalstatename"}
+                                                id={"memmunicipalsearchname"}
                                                 // name={"municipalTypeofOffice"}
                                                 placeholder={"Select Party member"}
                                                 value={typeofOfficess}

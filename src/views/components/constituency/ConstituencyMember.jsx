@@ -122,7 +122,7 @@ const ConstituencyMember = () => {
       _style: { width: "20%" },
     },
   ];
-  const userData1 = [
+  const userData1memberconstituency = [
     {
       sNo: "1",
       typeconstituency: "Legistative Assembly",
@@ -434,7 +434,7 @@ const ConstituencyMember = () => {
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"memberregisterediticon"}
+            id={"constihistorygridparty"}
             className="fa fa-eye"
             onClick={chairshow}
           >
@@ -451,7 +451,7 @@ const ConstituencyMember = () => {
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"memberregisterediticon"}
+            id={"constihistorygridpublic"}
             className="fa fa-eye"
             onClick={gridshow}
             >
@@ -469,7 +469,7 @@ const ConstituencyMember = () => {
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"memberregisterediticon"}
+            id={"constihistorygridstate"}
             className="fa fa-eye"
             onClick={partshow}
           >
@@ -486,7 +486,7 @@ const ConstituencyMember = () => {
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"memberregisterediticon"}
+            id={"constihistorygridcentral"}
             className="fa fa-eye"
             onClick={centralgrid}
           >
@@ -982,7 +982,7 @@ const ConstituencyMember = () => {
                
                 <CRow style={{ padding: "4%", marginTop: "-1.5%" ,marginLeft:"-40px"}}>
                   <CDataTable
-                    items={userData1}
+                    items={userData1memberconstituency}
                     fields={fields}
                     columnFilter
                     tableFilter

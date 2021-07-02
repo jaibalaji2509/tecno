@@ -178,7 +178,7 @@ function LocationLibrary(props) {
   });
   const [variable, setVariable] = useState([])
 
-  const menus1 = (item) => {
+  const menusgrid = (item) => {
     return (
       variable.map((x, i) => {
         <tr key={i}>
@@ -220,8 +220,8 @@ function LocationLibrary(props) {
       <components.MenuList  {...props}>
         {props.children}
         <div style={{ marginTop: "-57px", minHeight: "80px"  }} >
-          <CLink className={"saveBtn"} onClick={handleClick1} style={{ marginLeft: "300px" }}>Add</CLink>
-          <CLink className={"saveBtn"} onClick={bulkhandleClick1} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
+          <CLink className={"saveBtn"} onClick={handleClickstate} style={{ marginLeft: "300px" }}>Add</CLink>
+          <CLink className={"saveBtn"} onClick={bulkhandleClickstate} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
         </div>
       </components.MenuList>
     )
@@ -231,8 +231,8 @@ function LocationLibrary(props) {
       <components.MenuList  {...props}>
         {props.children}
         <div style={{ marginTop: "-57px", minHeight: "80px"  }} >
-          <CLink className={"saveBtn"} onClick={handleClick2} style={{ marginLeft: "300px" }}>Add</CLink>
-          <CLink className={"saveBtn"} onClick={bulkhandleClick2} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
+          <CLink className={"saveBtn"} onClick={handleClickcity} style={{ marginLeft: "300px" }}>Add</CLink>
+          <CLink className={"saveBtn"} onClick={bulkhandleClickcity} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
         </div>
       </components.MenuList>
     )
@@ -242,8 +242,8 @@ function LocationLibrary(props) {
       <components.MenuList  {...props}>
         {props.children}
         <div style={{ marginTop: "-57px", minHeight: "80px"  }} >
-          <CLink className={"saveBtn"} onClick={handleClick3} style={{ marginLeft: "300px" }}>Add</CLink>
-          <CLink className={"saveBtn"} onClick={bulkhandleClick3} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
+          <CLink className={"saveBtn"} onClick={handleClickarea} style={{ marginLeft: "300px" }}>Add</CLink>
+          <CLink className={"saveBtn"} onClick={bulkhandleClickarea} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
         </div>
       </components.MenuList>
     )
@@ -253,8 +253,8 @@ function LocationLibrary(props) {
       <components.MenuList  {...props}>
         {props.children}
         <div style={{ marginTop: "-57px", minHeight: "80px" }} >
-          <CLink className={"saveBtn"} onClick={handleClick4} style={{ marginLeft: "300px" }}>Add</CLink>
-          <CLink className={"saveBtn"} onClick={bulkhandleClick4} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
+          <CLink className={"saveBtn"} onClick={handleClickstreet} style={{ marginLeft: "300px" }}>Add</CLink>
+          <CLink className={"saveBtn"} onClick={bulkhandleClickstreet} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
         </div>
       </components.MenuList>
     )
@@ -264,8 +264,8 @@ function LocationLibrary(props) {
       <components.MenuList  {...props}>
         {props.children}
         <div style={{ marginTop: "-57px", minHeight: "80px" }} >
-          <CLink className={"saveBtn"} onClick={handleClick5} style={{ marginLeft: "300px" }}>Add</CLink>
-          <CLink className={"saveBtn"} onClick={bulkhandleClick5} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
+          <CLink className={"saveBtn"} onClick={handleClickdoor} style={{ marginLeft: "300px" }}>Add</CLink>
+          <CLink className={"saveBtn"} onClick={bulkhandleClickdoor} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
         </div>
       </components.MenuList>
     )
@@ -283,7 +283,7 @@ function LocationLibrary(props) {
   const [sideBar4, setSideBar4] = useState(false);
   const [sideBar5, setSideBar5] = useState(false);
 
-  const handleClick1 = () => {
+  const handleClickstate = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -297,6 +297,15 @@ function LocationLibrary(props) {
         setTimeout(() => {
           setSideBar1(true);
         }, 1000);
+setSideBar2(false);
+setSideBar3(false);
+setSideBar4(false);
+setSideBar5(false);
+setSideBarup1(false)
+setSideBarup2(false)
+setSideBarup3(false)
+setSideBarup4(false)
+setSideBarup5(false)
         break;
       case "close":
         setMenu({
@@ -311,7 +320,7 @@ function LocationLibrary(props) {
         break;
     }
   };
-  const handleClick2 = () => {
+  const handleClickcity = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -325,6 +334,16 @@ function LocationLibrary(props) {
         setTimeout(() => {
           setSideBar2(true);
         }, 1000);
+        setSideBar1(false);
+setSideBar3(false);
+setSideBar4(false);
+setSideBar5(false);
+setSideBarup1(false)
+setSideBarup2(false)
+setSideBarup3(false)
+setSideBarup4(false)
+setSideBarup5(false)
+
         break;
       case "close":
         setMenu({
@@ -339,7 +358,7 @@ function LocationLibrary(props) {
         break;
     }
   };
-  const handleClick3 = () => {
+  const handleClickarea = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -353,6 +372,16 @@ function LocationLibrary(props) {
         setTimeout(() => {
           setSideBar3(true);
         }, 1000);
+        setSideBar2(false);
+setSideBar1(false);
+setSideBar4(false);
+setSideBar5(false);
+setSideBarup1(false)
+setSideBarup2(false)
+setSideBarup3(false)
+setSideBarup4(false)
+setSideBarup5(false)
+
         break;
       case "close":
         setMenu({
@@ -367,7 +396,7 @@ function LocationLibrary(props) {
         break;
     }
   };
-  const handleClick4 = () => {
+  const handleClickstreet = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -381,6 +410,16 @@ function LocationLibrary(props) {
         setTimeout(() => {
           setSideBar4(true);
         }, 1000);
+        setSideBar2(false);
+setSideBar3(false);
+setSideBar1(false);
+setSideBar5(false);
+setSideBarup1(false)
+setSideBarup2(false)
+setSideBarup3(false)
+setSideBarup4(false)
+setSideBarup5(false)
+
         break;
       case "close":
         setMenu({
@@ -395,7 +434,7 @@ function LocationLibrary(props) {
         break;
     }
   };
-  const handleClick5 = () => {
+  const handleClickdoor = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -409,6 +448,16 @@ function LocationLibrary(props) {
         setTimeout(() => {
           setSideBar5(true);
         }, 1000);
+        setSideBar2(false);
+setSideBar3(false);
+setSideBar4(false);
+setSideBar1(false);
+setSideBarup1(false)
+setSideBarup2(false)
+setSideBarup3(false)
+setSideBarup4(false)
+setSideBarup5(false)
+
         break;
       case "close":
         setMenu({
@@ -430,7 +479,7 @@ function LocationLibrary(props) {
   const [sideBarup4, setSideBarup4] = useState(false)
   const [sideBarup5, setSideBarup5] = useState(false)
 
-  const bulkhandleClick1 = () => {
+  const bulkhandleClickstate = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -460,7 +509,7 @@ function LocationLibrary(props) {
         break;
     }
   };
-  const bulkhandleClick2 = () => {
+  const bulkhandleClickcity = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -490,7 +539,7 @@ function LocationLibrary(props) {
         }, 1000);
         break;
     }
-  }; const bulkhandleClick3 = () => {
+  }; const bulkhandleClickarea = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -520,7 +569,7 @@ function LocationLibrary(props) {
         }, 1000);
         break;
     }
-  }; const bulkhandleClick4 = () => {
+  }; const bulkhandleClickstreet = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -550,7 +599,7 @@ function LocationLibrary(props) {
         }, 1000);
         break;
     }
-  }; const bulkhandleClick5 = () => {
+  }; const bulkhandleClickdoor = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -1023,7 +1072,7 @@ function LocationLibrary(props) {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickstate}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -1032,7 +1081,7 @@ function LocationLibrary(props) {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickstate}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -1046,7 +1095,7 @@ function LocationLibrary(props) {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickcity}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -1055,7 +1104,7 @@ function LocationLibrary(props) {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickcity}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -1069,7 +1118,7 @@ function LocationLibrary(props) {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickstreet}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -1078,7 +1127,7 @@ function LocationLibrary(props) {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickstreet}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -1092,7 +1141,7 @@ function LocationLibrary(props) {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickdoor}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -1101,7 +1150,7 @@ function LocationLibrary(props) {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickdoor}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -1115,7 +1164,7 @@ function LocationLibrary(props) {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickarea}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -1124,7 +1173,7 @@ function LocationLibrary(props) {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickarea}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -1442,8 +1491,8 @@ function LocationLibrary(props) {
                   </CLabel>
 
                   <CInput
-                    id={"MunicipalName"}
-                    name={"municipalname"}
+                    id={"stateName"}
+                    name={"statename"}
                     placeholder="Enter State Name"
                     maxlength="60"
                     size="60"
@@ -1458,7 +1507,7 @@ function LocationLibrary(props) {
                     <span className={"text-danger"}> *</span>
                   </CLabel>
                   <CInput
-                    id={"municipalabrreviation"}
+                    id={"stateabrreviation"}
                     name={"abbreviation"}
                     placeholder="Enter Abbreviation"
                     maxlength="5"
@@ -1473,7 +1522,7 @@ function LocationLibrary(props) {
                     <span className={"text-danger"}> *</span>
                   </CLabel>
                   <CInput
-                    id={"municipalcode"}
+                    id={"statecode"}
                     name={"code"}
                     placeholder="Enter Code"
                     maxlength="5"
@@ -1551,10 +1600,10 @@ function LocationLibrary(props) {
               > Save</CButton>
               <CButton
                 shape={"pill"}
-                id={"municipalcancel"}
+                id={"statecancel"}
                 style={{ marginTop: "-59px", marginLeft: "90px" }}
                 className={"cancelBtn"}
-                onClick={handleClick1}
+                onClick={handleClickstate}
               >
                 CANCEL
               </CButton>
@@ -1568,7 +1617,7 @@ function LocationLibrary(props) {
             style={{ position: "absolute", top: "15px", right: "15px" }}
             className={"cancelBtn"}
             onClick={() => {
-              handleClick1();
+              handleClickstate();
               // handleClick2();
             }}
           >
@@ -1632,8 +1681,8 @@ function LocationLibrary(props) {
                     </CLabel>
 
                     <CInput
-                      id={"MunicipalName"}
-                      name={"municipalname"}
+                      id={"cityName"}
+                      name={"statename"}
                       placeholder="Enter City Name"
                       maxlength="60"
                       size="60"
@@ -1648,7 +1697,7 @@ function LocationLibrary(props) {
                       <span className={"text-danger"}> *</span>
                     </CLabel>
                     <CInput
-                      id={"municipalabrreviation"}
+                      id={"cityabrreviation"}
                       name={"abbreviation"}
                       placeholder="Enter Abbreviation"
                       maxlength="5"
@@ -1663,7 +1712,7 @@ function LocationLibrary(props) {
                       <span className={"text-danger"}> *</span>
                     </CLabel>
                     <CInput
-                      id={"municipalcode"}
+                      id={"citycode"}
                       name={"code"}
                       placeholder="Enter Code"
                       maxlength="5"
@@ -1728,10 +1777,10 @@ function LocationLibrary(props) {
                 > Save</CButton>
                 <CButton
                   shape={"pill"}
-                  id={"municipalcancel"}
+                  id={"citycancel"}
                   style={{ marginTop: "-59px", marginLeft: "90px" }}
                   className={"cancelBtn"}
-                  onClick={handleClick2}
+                  onClick={handleClickcity}
                 >
                   CANCEL
                 </CButton>
@@ -1745,7 +1794,7 @@ function LocationLibrary(props) {
               style={{ position: "absolute", top: "15px", right: "15px" }}
               className={"cancelBtn"}
               onClick={() => {
-                handleClick2();
+                handleClickcity();
                 // handleClick2();
               }}
             >
@@ -1818,8 +1867,8 @@ function LocationLibrary(props) {
                       </CLabel>
 
                       <CInput
-                        id={"MunicipalName"}
-                        name={"municipalname"}
+                        id={"areaName"}
+                        name={"areaname"}
                         placeholder="Enter Area Name"
                         maxlength="60"
                         size="60"
@@ -1834,7 +1883,7 @@ function LocationLibrary(props) {
                         <span className={"text-danger"}> *</span>
                       </CLabel>
                       <CInput
-                        id={"municipalabrreviation"}
+                        id={"areaabrreviation"}
                         name={"abbreviation"}
                         placeholder="Enter Abbreviation"
                         maxlength="5"
@@ -1849,7 +1898,7 @@ function LocationLibrary(props) {
                         <span className={"text-danger"}> *</span>
                       </CLabel>
                       <CInput
-                        id={"municipalcode"}
+                        id={"areacode"}
                         name={"code"}
                         placeholder="Enter Code"
                         maxlength="5"
@@ -1864,7 +1913,7 @@ function LocationLibrary(props) {
                         <span className={"text-danger"}> *</span>
                       </CLabel>
                       <CInput
-                        id={"municipalabrreviation"}
+                        id={"areaabrreviation"}
                         name={"abbreviation"}
                         placeholder="Enter Pincode"
                         maxlength="7"
@@ -1938,10 +1987,10 @@ function LocationLibrary(props) {
                   > Save</CButton>
                   <CButton
                     shape={"pill"}
-                    id={"municipalcancel"}
+                    id={"areacancel"}
                     style={{ marginTop: "-59px", marginLeft: "90px" }}
                     className={"cancelBtn"}
-                    onClick={handleClick3}
+                    onClick={handleClickarea}
                   >
                     CANCEL
                   </CButton>
@@ -1955,7 +2004,7 @@ function LocationLibrary(props) {
                 style={{ position: "absolute", top: "15px", right: "15px" }}
                 className={"cancelBtn"}
                 onClick={() => {
-                  handleClick3();
+                  handleClickarea();
                   // handleClick2();
                 }}
               >
@@ -2046,8 +2095,8 @@ function LocationLibrary(props) {
                         </CLabel>
 
                         <CInput
-                          id={"MunicipalName"}
-                          name={"municipalname"}
+                          id={"streetName"}
+                          name={"streetname"}
                           placeholder="Enter Street Name"
                           maxlength="60"
                           size="60"
@@ -2062,7 +2111,7 @@ function LocationLibrary(props) {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                          id={"municipalabrreviation"}
+                          id={"stateabrreviation"}
                           name={"abbreviation"}
                           placeholder="Enter Abbreviation"
                           maxlength="5"
@@ -2077,7 +2126,7 @@ function LocationLibrary(props) {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                          id={"municipalcode"}
+                          id={"streetcode"}
                           name={"code"}
                           placeholder="Enter Code"
                           maxlength="5"
@@ -2154,10 +2203,10 @@ function LocationLibrary(props) {
                     > Save</CButton>
                     <CButton
                       shape={"pill"}
-                      id={"municipalcancel"}
+                      id={"streetcancel"}
                       style={{ marginTop: "-59px", marginLeft: "90px" }}
                       className={"cancelBtn"}
-                      onClick={handleClick4}
+                      onClick={handleClickstreet}
                     >
                       CANCEL
                     </CButton>
@@ -2171,7 +2220,7 @@ function LocationLibrary(props) {
                   style={{ position: "absolute", top: "15px", right: "15px" }}
                   className={"cancelBtn"}
                   onClick={() => {
-                    handleClick4();
+                    handleClickstreet();
                     // handleClick2();
                   }}
                 >
@@ -2270,8 +2319,8 @@ function LocationLibrary(props) {
                           </CLabel>
 
                           <CInput
-                            id={"MunicipalName"}
-                            name={"municipalname"}
+                            id={"doorName"}
+                            name={"doorname"}
                             placeholder="Enter Door no."
                             maxlength="60"
                             size="60"
@@ -2347,10 +2396,10 @@ function LocationLibrary(props) {
                       > Save</CButton>
                       <CButton
                         shape={"pill"}
-                        id={"municipalcancel"}
+                        id={"doorcancel"}
                         style={{ marginTop: "-59px", marginLeft: "90px" }}
                         className={"cancelBtn"}
-                        onClick={handleClick5}
+                        onClick={handleClickdoor}
                       >
                         CANCEL
                       </CButton>
@@ -2364,7 +2413,7 @@ function LocationLibrary(props) {
                     style={{ position: "absolute", top: "15px", right: "15px" }}
                     className={"cancelBtn"}
                     onClick={() => {
-                      handleClick5();
+                      handleClickdoor();
                       // handleClick2();
                     }}
                   >
@@ -2392,7 +2441,7 @@ function LocationLibrary(props) {
                     </CCol>
                   </CRow>
 
-                  <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+                  <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"locationlibraryUploadTemplate"}
                     onClick={() => {
 
                       document.getElementById("uploadRoleTemplate").click();
@@ -2409,7 +2458,7 @@ function LocationLibrary(props) {
                         Upload
                       </CLabel>
                       <CInput
-                        id={"uploadRoleTemplate"}
+                        id={"stateuploadRoleTemplate"}
                         style={{ display: "none" }}
                         type={"file"}
                         onChange={handleChange}
@@ -2427,7 +2476,7 @@ function LocationLibrary(props) {
                       <CSVLink data={csvData} >
                         {/* <CButton
                         shape={"pill"}
-                        id={"municipalcancel"}
+                        id={"statecancel"}
                         style={{ marginTop: "-60px", marginLeft: "160px" }}
                         className={"cancelBtn"}
 
@@ -2508,7 +2557,7 @@ function LocationLibrary(props) {
                                         }}
                                         className="fa fa-remove"
                                         bsStyle="overlay"
-                                        onClick={() => menus1(item)}
+                                        onClick={() => menusgrid(item)}
                                       />
                                     </CCol>
                                   </CRow>
@@ -2535,7 +2584,7 @@ function LocationLibrary(props) {
                           > Save</CButton>
                           <CButton
                             shape={"pill"}
-                            id={"municipalcancel"}
+                            id={"bulkstatecancel"}
                             style={{ marginTop: "-60px", marginLeft: "550px" }}
                             className={"cancelBtn"}
                             onClick={bulkhandleClick}
@@ -2589,7 +2638,7 @@ function LocationLibrary(props) {
                     </CCol>
                     </CRow>
 
-                    <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+                    <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"locationlibrarycreateRoleUploadTemplate"}
                     onClick={() => {
 
                       document.getElementById("uploadRoleTemplate").click();
@@ -2606,7 +2655,7 @@ function LocationLibrary(props) {
                         Upload
                       </CLabel>
                       <CInput
-                        id={"uploadRoleTemplate"}
+                        id={"cityuploadRoleTemplate"}
                         style={{ display: "none" }}
                         type={"file"}
                         onChange={handleChange}
@@ -2624,7 +2673,7 @@ function LocationLibrary(props) {
                       <CSVLink data={csvData} >
                         {/* <CButton
                         shape={"pill"}
-                        id={"municipalcancel"}
+                        id={"statecancel"}
                         style={{ marginTop: "-60px", marginLeft: "160px" }}
                         className={"cancelBtn"}
 
@@ -2705,7 +2754,7 @@ function LocationLibrary(props) {
                                         }}
                                         className="fa fa-remove"
                                         bsStyle="overlay"
-                                        onClick={() => menus1(item)}
+                                        onClick={() => menusgrid(item)}
                                       />
                                     </CCol>
                                   </CRow>
@@ -2732,7 +2781,7 @@ function LocationLibrary(props) {
                           > Save</CButton>
                           <CButton
                             shape={"pill"}
-                            id={"municipalcancel"}
+                            id={"citycancel"}
                             style={{ marginTop: "-60px", marginLeft: "550px" }}
                             className={"cancelBtn"}
                             onClick={bulkhandleClick}
@@ -2791,7 +2840,7 @@ function LocationLibrary(props) {
                     </CCol>
                     </CRow>
 
-                    <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+                    <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"areacreateRoleUploadTemplate"}
                     onClick={() => {
 
                       document.getElementById("uploadRoleTemplate").click();
@@ -2808,7 +2857,7 @@ function LocationLibrary(props) {
                         Upload
                       </CLabel>
                       <CInput
-                        id={"uploadRoleTemplate"}
+                        id={"areauploadRoleTemplate"}
                         style={{ display: "none" }}
                         type={"file"}
                         onChange={handleChange}
@@ -2826,7 +2875,7 @@ function LocationLibrary(props) {
                       <CSVLink data={csvData} >
                         {/* <CButton
                         shape={"pill"}
-                        id={"municipalcancel"}
+                        id={"statecancel"}
                         style={{ marginTop: "-60px", marginLeft: "160px" }}
                         className={"cancelBtn"}
 
@@ -2908,7 +2957,7 @@ function LocationLibrary(props) {
                                         }}
                                         className="fa fa-remove"
                                         bsStyle="overlay"
-                                        onClick={() => menus1(item)}
+                                        onClick={() => menusgrid(item)}
                                       />
                                     </CCol>
                                   </CRow>
@@ -2935,7 +2984,7 @@ function LocationLibrary(props) {
                           > Save</CButton>
                           <CButton
                             shape={"pill"}
-                            id={"municipalcancel"}
+                            id={"areacancel"}
                             style={{ marginTop: "-60px", marginLeft: "550px" }}
                             className={"cancelBtn"}
                             onClick={bulkhandleClick}
@@ -3015,7 +3064,7 @@ function LocationLibrary(props) {
                     <CCol>
                       </CCol>
                       </CRow>
-                      <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+                      <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"streetcreateRoleUploadTemplate"}
                     onClick={() => {
 
                       document.getElementById("uploadRoleTemplate").click();
@@ -3032,7 +3081,7 @@ function LocationLibrary(props) {
                         Upload
                       </CLabel>
                       <CInput
-                        id={"uploadRoleTemplate"}
+                        id={"streetuploadRoleTemplate"}
                         style={{ display: "none" }}
                         type={"file"}
                         onChange={handleChange}
@@ -3050,7 +3099,7 @@ function LocationLibrary(props) {
                       <CSVLink data={csvData} >
                         {/* <CButton
                         shape={"pill"}
-                        id={"municipalcancel"}
+                        id={"statecancel"}
                         style={{ marginTop: "-60px", marginLeft: "160px" }}
                         className={"cancelBtn"}
 
@@ -3131,7 +3180,7 @@ function LocationLibrary(props) {
                                         }}
                                         className="fa fa-remove"
                                         bsStyle="overlay"
-                                        onClick={() => menus1(item)}
+                                        onClick={() => menusgrid(item)}
                                       />
                                     </CCol>
                                   </CRow>
@@ -3158,7 +3207,7 @@ function LocationLibrary(props) {
                           > Save</CButton>
                           <CButton
                             shape={"pill"}
-                            id={"municipalcancel"}
+                            id={"streetcancel"}
                             style={{ marginTop: "-60px", marginLeft: "550px" }}
                             className={"cancelBtn"}
                             onClick={bulkhandleClick}
@@ -3246,7 +3295,7 @@ function LocationLibrary(props) {
                     </CCol>
                   </CRow>
 
-                  <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+                  <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"doorcreateRoleUploadTemplate"}
                     onClick={() => {
 
                       document.getElementById("uploadRoleTemplate").click();
@@ -3263,7 +3312,7 @@ function LocationLibrary(props) {
                         Upload
                       </CLabel>
                       <CInput
-                        id={"uploadRoleTemplate"}
+                        id={"dooruploadRoleTemplate"}
                         style={{ display: "none" }}
                         type={"file"}
                         onChange={handleChange}
@@ -3281,7 +3330,7 @@ function LocationLibrary(props) {
                       <CSVLink data={csvData} >
                         {/* <CButton
                         shape={"pill"}
-                        id={"municipalcancel"}
+                        id={"statecancel"}
                         style={{ marginTop: "-60px", marginLeft: "160px" }}
                         className={"cancelBtn"}
 
@@ -3362,7 +3411,7 @@ function LocationLibrary(props) {
                                         }}
                                         className="fa fa-remove"
                                         bsStyle="overlay"
-                                        onClick={() => menus1(item)}
+                                        onClick={() => menusgrid(item)}
                                       />
                                     </CCol>
                                   </CRow>
@@ -3389,7 +3438,7 @@ function LocationLibrary(props) {
                           > Save</CButton>
                           <CButton
                             shape={"pill"}
-                            id={"municipalcancel"}
+                            id={"doorcancel"}
                             style={{ marginTop: "-60px", marginLeft: "550px" }}
                             className={"cancelBtn"}
                             onClick={bulkhandleClick}
@@ -3462,7 +3511,7 @@ function LocationLibrary(props) {
                               <i
                                 className={"editIcon"}
                               
-                                id={"officeLocationEdit"}
+                                id={"locationlibrary"}
                                 class="fas fa-edit"
                               />
                               <div
@@ -3686,7 +3735,7 @@ function LocationLibrary(props) {
                               <i
                                 className={"editIcon"}
                               
-                                id={"officeLocationEdit"}
+                                id={"locationlibrarycityedit"}
                                 class="fas fa-edit"
                               />
                               <div
@@ -3701,7 +3750,7 @@ function LocationLibrary(props) {
                                 <i
                                   className={"editIcon"}
                                  
-                                  id={"officeLocationEdit"}
+                                  id={"locationlibrarycitydelete"}
                                   class="fas fa-trash"
                                 />
                               </div>
@@ -3901,7 +3950,7 @@ function LocationLibrary(props) {
                               <i
                                 className={"editIcon"}
                               
-                                id={"officeLocationEdit"}
+                                id={"locationLibraryAreaEdit"}
                                 class="fas fa-edit"
                               />
                               <div
@@ -3916,7 +3965,7 @@ function LocationLibrary(props) {
                                 <i
                                   className={"editIcon"}
                                  
-                                  id={"officeLocationEdit"}
+                                  id={"locationLibraryAreadelete"}
                                   class="fas fa-trash"
                                 />
                               </div>
@@ -4130,7 +4179,7 @@ function LocationLibrary(props) {
                                   </CLabel>
                                   <Select
                                     placeholder="Select the Street Name"
-                                    id={"locationLibraryArea"}
+                                    id={"locationLibraryStreet"}
                                     // onChange={(e) => {
                                     //   if (streetName.label) {
                                     //     setStreetName({ ...e, edit: areaName.edit });
@@ -4159,7 +4208,7 @@ function LocationLibrary(props) {
                               <i
                                 className={"editIcon"}
                               
-                                id={"officeLocationEdit"}
+                                id={"locationLibraryStreetedit"}
                                 class="fas fa-edit"
                               />
                               <div
@@ -4174,7 +4223,7 @@ function LocationLibrary(props) {
                                 <i
                                   className={"editIcon"}
                                  
-                                  id={"officeLocationEdit"}
+                                  id={"locationLibraryStreetdelete"}
                                   class="fas fa-trash"
                                 />
                               </div>
@@ -4204,7 +4253,7 @@ function LocationLibrary(props) {
                                   <React.Fragment>
                                     <CCol md={3} lg={3} className={"column-align"} style={{ marginLeft: "-20px" }}>
                                       <CButton
-                                        id={"locationLibraryAreaEdit"}
+                                        id={"locationLibraryStreetEdit"}
                                         style={{ marginTop: "30px" }}
                                         className={"btn btn-success"}
                                         onClick={addStreet}
@@ -4237,7 +4286,7 @@ function LocationLibrary(props) {
                                       onKeyPress={(e) =>
                                         FormValidation.value_Without_Number_Symbols(e)
                                       }
-                                      id={"locationLibraryAreaName"}
+                                      id={"llocationLibraryStreetName"}
                                       name={"StreetName"}
                                       value={formik.values.streetName}
                                       onChange={formik.handleChange}
@@ -4259,7 +4308,7 @@ function LocationLibrary(props) {
                                           e
                                         )
                                       }
-                                      id={"locationLibraryAreaAbbreviation"}
+                                      id={"locationLibraryStreetAbbreviation"}
                                       name={"Abbreviation4"}
                                       value={formik.values.Abbreviation4}
                                       onChange={formik.handleChange}
@@ -4280,7 +4329,7 @@ function LocationLibrary(props) {
                                           e
                                         )
                                       }
-                                      id={"locationLibraryAreaCode"}
+                                      id={"locationLibraryStreetCode"}
                                       name={"Code4"}
                                       value={formik.values.Code4}
                                       onChange={formik.handleChange}
@@ -4296,7 +4345,7 @@ function LocationLibrary(props) {
                                       style={{ marginTop: "30px" }}
                                       className={"saveBtn"}
                                       onClick={Area}
-                                      id={"locationLibraryAreaSave"}
+                                      id={"locationLibraryStreetSave"}
                                     >
                                       SAVE
                                     </CButton>
@@ -4357,7 +4406,7 @@ function LocationLibrary(props) {
                                   </CLabel>
                                   <Select
                                     placeholder="Select the Door No."
-                                    id={"locationLibraryArea"}
+                                    id={"locationLibrarydoor"}
                                     onChange={changeDoor}
                                     components={{ MenuList: SelectMenuButtondoor }}
                                     options={selectDoor}
@@ -4378,7 +4427,7 @@ function LocationLibrary(props) {
                               <i
                                 className={"editIcon"}
                               
-                                id={"officeLocationEdit"}
+                                id={"locationLibrarydooredit"}
                                 class="fas fa-edit"
                               />
                               <div
@@ -4393,7 +4442,7 @@ function LocationLibrary(props) {
                                 <i
                                   className={"editIcon"}
                                  
-                                  id={"officeLocationEdit"}
+                                  id={"locationLibrarydoordelete"}
                                   class="fas fa-trash"
                                 />
                               </div>
@@ -4405,7 +4454,7 @@ function LocationLibrary(props) {
                                   <React.Fragment>
                                     <CCol className={"column-align"} md={1} lg={1}>
                                       <CButton
-                                        id={"locationLibraryAreaAdd"}
+                                        id={"locationLibrarydoorAdd"}
                                         shape={"pill"}
                                         style={{ marginTop: "30px", marginLeft: "22px" }}
                                         className={"saveBtn"}
@@ -4426,7 +4475,7 @@ function LocationLibrary(props) {
                                         style={{
                                           marginTop: "30px",
                                         }}
-                                        id={"locationLibraryStateEdit"}
+                                        id={"locationLibrarydoorEdit"}
                                         className={"btn btn-success"}
                                         onClick={editDoor}
                                         disabled={
@@ -4458,7 +4507,7 @@ function LocationLibrary(props) {
                                       onKeyPress={(e) =>
                                         FormValidation.value_Only_Number(e)
                                       }
-                                      id={"locationLibraryAreaName"}
+                                      id={"locationLibrarydoorName"}
                                       name={"StreetName"}
                                       value={formik.values.streetName}
                                       onChange={formik.handleChange}
@@ -4473,7 +4522,7 @@ function LocationLibrary(props) {
                                   <CCol md="2">
                                     <CButton
                                       shape={"pill"}
-                                      id={"locationLibraryStateSave"}
+                                      id={"locationLibrarydoorSave"}
                                       style={{ marginTop: "32px", marginLeft: "155px", marginBottom: "-2px" }}
                                       className={"saveBtn"}
                                       onClick={State}
@@ -4484,7 +4533,7 @@ function LocationLibrary(props) {
                                       style={{ marginTop: "-55px", marginLeft: "250px" }}
                                       className={"cancelBtn"}
                                       onClick={Canceldoor}
-                                      id={"locationLibraryAreaCancel"}
+                                      id={"locationLibrarydoorCancel"}
                                     >
                                       CANCEL
                                     </CButton>
@@ -4512,7 +4561,7 @@ function LocationLibrary(props) {
                               {/* <Tippy content="Print"> */}
                               <p data-tip="print">
                                 <i
-                                  id="registerTip"
+                                  id="locationLibrarypirnt"
                                   style={{
                                     position: "absolute",
                                     top: "50px",
@@ -4531,7 +4580,7 @@ function LocationLibrary(props) {
                           <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
                             <p data-tip="share">
                               <i
-                                id={"locationLibraryDelete"}
+                                id={"locationLibraryshare"}
                                 style={{
                                   position: "absolute",
                                   top: "50px",

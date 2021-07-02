@@ -100,7 +100,7 @@ function Constituency() {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickParliamentary}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -109,7 +109,7 @@ function Constituency() {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickParliamentary}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -249,7 +249,7 @@ function Constituency() {
   });
   const [sideBar1, setSideBar1] = useState(false);
   const [sideBar2, setSideBar2] = useState(false);
-  const handleClick1 = () => {
+  const handleClickParliamentary = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -263,6 +263,9 @@ function Constituency() {
         setTimeout(() => {
           setSideBar1(true);
         }, 1000);
+        setSideBar2(false)
+        setSideBarup1(false)
+        setSideBarup2(false)
         break;
       case "close":
         setMenu({
@@ -277,7 +280,7 @@ function Constituency() {
         break;
     }
   };
-  const handleClick2 = () => {
+  const handleClickLegislative = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -291,6 +294,9 @@ function Constituency() {
         setTimeout(() => {
           setSideBar2(true);
         }, 1000);
+        setSideBar1(false)
+        setSideBarup1(false)
+        setSideBarup2(false)
         break;
       case "close":
         setMenu({
@@ -308,7 +314,7 @@ function Constituency() {
   const [sideBarup, setSideBarup] = useState(false)
   const [sideBarup1, setSideBarup1] = useState(false)
   const [sideBarup2, setSideBarup2] = useState(false)
-  const bulkhandleClick1 = () => {
+  const bulkhandleClickParliamentary = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -320,7 +326,7 @@ function Constituency() {
 
         });
         setSideBarup1(true);
-
+        setSideBarup2(false);
 
 
         break;
@@ -338,7 +344,7 @@ function Constituency() {
         break;
     }
   };
-  const bulkhandleClick2 = () => {
+  const bulkhandleClickLegislative = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -397,7 +403,7 @@ function Constituency() {
     }
   };
 
-  const SelectMenuButtonTown = (props) => {
+  const SelectMenuButtonParliamentary = (props) => {
     return (
       <components.MenuList {...props}>
         {props.children}
@@ -410,14 +416,14 @@ function Constituency() {
         >
           <CLink
             className={"saveBtn"}
-            onClick={handleClick1}
+            onClick={handleClickParliamentary}
             style={{ marginLeft: "200px" }}
           >
             Add{" "}
           </CLink>
           <CLink
             className={"saveBtn"}
-            onClick={bulkhandleClick1}
+            onClick={bulkhandleClickParliamentary}
             style={{ marginLeft: "50px" }}
           >
             Bulk Upload{" "}
@@ -426,7 +432,7 @@ function Constituency() {
       </components.MenuList>
     );
   };
-  const SelectMenuButtonward = (props) => {
+  const SelectMenuButtonLegislative = (props) => {
     return (
       <components.MenuList {...props}>
         {props.children}
@@ -439,14 +445,14 @@ function Constituency() {
         >
           <CLink
             className={"saveBtn"}
-            onClick={handleClick2}
+            onClick={handleClickLegislative}
             style={{ marginLeft: "200px" }}
           >
             Add{" "}
           </CLink>
           <CLink
             className={"saveBtn"}
-            onClick={bulkhandleClick2}
+            onClick={bulkhandleClickLegislative}
             style={{ marginLeft: "50px" }}
           >
             Bulk Upload{" "}
@@ -518,7 +524,7 @@ function Constituency() {
   const [excelupload, setExcelUpload] = React.useState({ file: {}, data: [], cols: [] });
   const [variable, setVariable] = useState([])
 
-  const menus1 = (item) => {
+  const menusremoveicon = (item) => {
     return (
       variable.map((x, i) => {
         <tr key={i}>
@@ -581,8 +587,8 @@ function Constituency() {
                 </CLabel>
 
                 <CInput
-                  id={"MunicipalName"}
-                  name={"municipalname"}
+                  id={"Parliamentary"}
+                  name={"Parliamentaryname"}
                   placeholder="Enter Parliamentary Constituency"
                   maxlength="60"
                   size="60"
@@ -597,7 +603,7 @@ function Constituency() {
                   <span className={"text-danger"}> *</span>
                 </CLabel>
                 <CInput
-                  id={"municipalabrreviation"}
+                  id={"Parliamentaryabrreviation"}
                   name={"abbreviation"}
                   placeholder="Enter Abbreviation"
                   maxlength="5"
@@ -612,7 +618,7 @@ function Constituency() {
                   <span className={"text-danger"}> *</span>
                 </CLabel>
                 <CInput
-                  id={"municipalcode"}
+                  id={"Parliamentarycode"}
                   name={"code"}
                   placeholder="Enter Code"
                   maxlength="5"
@@ -690,10 +696,10 @@ function Constituency() {
             > Save</CButton>
             <CButton
               shape={"pill"}
-              id={"municipalcancel"}
+              id={"Parliamentarycancel"}
               style={{ marginTop: "-59px", marginLeft: "90px" }}
               className={"cancelBtn"}
-              onClick={handleClick1}
+              onClick={handleClickParliamentary}
             >
               CANCEL
             </CButton>
@@ -707,8 +713,8 @@ function Constituency() {
           style={{ position: "absolute", top: "15px", right: "15px" }}
           className={"cancelBtn"}
           onClick={() => {
-            handleClick1();
-            // handleClick2();
+            handleClickParliamentary();
+            // handleClickLegislative();
           }}
         >
           Back
@@ -735,7 +741,23 @@ function Constituency() {
               </div>
             </CCol>
           </CRow>
-
+          <CRow
+            className={"row-alignment"}
+            style={{ marginLeft: "5px", marginTop: "20px" }}
+            sm={12}
+            md={12}
+            lg={12}
+          >
+            <CCol>
+              <CLabel
+                style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                className={"form-labels-6"}
+              >
+                Parliamentary Constituency:
+              </CLabel>
+              <span style={{ marginTop: "13px", marginLeft: "5px", }}>TamilNadu</span>
+            </CCol>
+          </CRow>
 
           {inputList.map((x, i) => {
             return (
@@ -754,8 +776,8 @@ function Constituency() {
                   </CLabel>
 
                   <CInput
-                    id={"MunicipalName"}
-                    name={"municipalname"}
+                    id={"LegislativeName"}
+                    name={"Legislativename"}
                     placeholder="Enter Ward Number"
                     maxlength="60"
                     size="60"
@@ -770,7 +792,7 @@ function Constituency() {
                     <span className={"text-danger"}> *</span>
                   </CLabel>
                   <CInput
-                    id={"municipalabrreviation"}
+                    id={"Legislativeabrreviation"}
                     name={"abbreviation"}
                     placeholder="Enter Abbreviation"
                     maxlength="5"
@@ -785,7 +807,7 @@ function Constituency() {
                     <span className={"text-danger"}> *</span>
                   </CLabel>
                   <CInput
-                    id={"municipalcode"}
+                    id={"Legislativecode"}
                     name={"code"}
                     placeholder="Enter Code"
                     maxlength="5"
@@ -850,10 +872,10 @@ function Constituency() {
               > Save</CButton>
               <CButton
                 shape={"pill"}
-                id={"municipalcancel"}
+                id={"Legislativecancel"}
                 style={{ marginTop: "-59px", marginLeft: "90px" }}
                 className={"cancelBtn"}
-                onClick={handleClick2}
+                onClick={handleClickLegislative}
               >
                 CANCEL
               </CButton>
@@ -867,8 +889,8 @@ function Constituency() {
             style={{ position: "absolute", top: "15px", right: "15px" }}
             className={"cancelBtn"}
             onClick={() => {
-              handleClick2();
-              // handleClick2();
+              handleClickLegislative();
+              // handleClickLegislative();
             }}
           >
             Back
@@ -895,7 +917,7 @@ function Constituency() {
             </CCol>
           </CRow>
 
-          <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+          <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"ParliamentarycreateRoleUploadTemplate"}
             onClick={() => {
 
               document.getElementById("uploadRoleTemplate").click();
@@ -912,7 +934,7 @@ function Constituency() {
                 Upload
               </CLabel>
               <CInput
-                id={"uploadRoleTemplate"}
+                id={"ParliamentaryuploadRoleTemplate"}
                 style={{ display: "none" }}
                 type={"file"}
                 onChange={handleChange}
@@ -967,7 +989,7 @@ function Constituency() {
                   className={"cancelBtn"}
                   onClick={() => {
                     bulkhandleClick();
-                    // handleClick2();
+                    // handleClickLegislative();
                   }}
                 >
                   Back
@@ -1057,7 +1079,7 @@ function Constituency() {
                   > Save</CButton>
                   <CButton
                     shape={"pill"}
-                    id={"municipalcancel"}
+                    id={"Parliamentarycancel"}
                     style={{ marginTop: "-60px", marginLeft: "550px" }}
                     className={"cancelBtn"}
                     onClick={bulkhandleClick}
@@ -1106,11 +1128,11 @@ function Constituency() {
               >
                 Parliamentary Constituency:
               </CLabel>
-              <span style={{ marginTop: "13px", marginLeft: "5px", }}></span>
+              <span style={{ marginTop: "13px", marginLeft: "5px", }}>TamilNadu</span>
             </CCol>
           </CRow>
 
-          <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+          <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"LegislativecreateRoleUploadTemplate"}
             onClick={() => {
 
               document.getElementById("uploadRoleTemplate").click();
@@ -1127,7 +1149,7 @@ function Constituency() {
                 Upload
               </CLabel>
               <CInput
-                id={"uploadRoleTemplate"}
+                id={"uploadRoleTemplateLegislative"}
                 style={{ display: "none" }}
                 type={"file"}
                 onChange={handleChange}
@@ -1181,7 +1203,7 @@ function Constituency() {
                   className={"cancelBtn"}
                   onClick={() => {
                     bulkhandleClick();
-                    // handleClick2();
+                    // handleClickLegislative();
                   }}
                 >
                   Back
@@ -1225,7 +1247,7 @@ function Constituency() {
                                 }}
                                 className="fa fa-remove"
                                 bsStyle="overlay"
-                                onClick={() => menus1(item)}
+                                onClick={() => menusremoveicon(item)}
                               />
                             </CCol>
                           </CRow>
@@ -1252,7 +1274,7 @@ function Constituency() {
                   > Save</CButton>
                   <CButton
                     shape={"pill"}
-                    id={"municipalcancel"}
+                    id={"Legislativecancel"}
                     style={{ marginTop: "-60px", marginLeft: "550px" }}
                     className={"cancelBtn"}
                     onClick={bulkhandleClick}
@@ -1284,7 +1306,7 @@ function Constituency() {
                             
                             marginLeft: "45px",
                           }}
-                          id={"saveAbbreviationConfigureCode"}
+                          id={"LegislativesaveAbbreviationConfigureCode"}
                           className={"saveBtn"}
                           onClick={viewcreate}
                         >
@@ -1304,7 +1326,7 @@ function Constituency() {
                 <Select
                   styles={{ marginLeft: "50px" }}
                   type={"text"}
-                  id={"constituency"}
+                  id={"constituencyState"}
                   className={"input-align"}
                   placeholder="Select the State"
                   options={select}
@@ -1436,7 +1458,7 @@ function Constituency() {
                       <Select
                         styles={{ marginLeft: "50px" }}
                         type={"text"}
-                        id={"constituency"}
+                        id={"constituencyState"}
                         options={select}
                         className={"input-align"}
                         placeholder="Select the State"
@@ -1455,7 +1477,7 @@ function Constituency() {
                             type={"text"}
                             value={collected}
                             onChange={(e) => setCollected(e)}
-                            components={{ MenuList: SelectMenuButtonTown }}
+                            components={{ MenuList: SelectMenuButtonParliamentary }}
                             options={select}
                           />
                           {villageHide.districtpanchayat && collected.length !== 0 ? (
@@ -1470,7 +1492,7 @@ function Constituency() {
                                   <i
                                     className={"editIcon"}
 
-                                    id={"officeLocationEdit"}
+                                    id={"oParliamentaryEdit"}
                                     class="fas fa-edit"
                                   />
                                   <div
@@ -1485,7 +1507,7 @@ function Constituency() {
                                     <i
                                       className={"editIcon"}
 
-                                      id={"officeLocationEdit"}
+                                      id={"Parliamentarytrash"}
                                       class="fas fa-trash"
                                     />
                                   </div>
@@ -1611,7 +1633,7 @@ function Constituency() {
                             type={"text"}
                             value={selected1}
                               onChange={changePanchayatUnion}
-                              components={{ MenuList: SelectMenuButtonward }}
+                              components={{ MenuList: SelectMenuButtonLegislative }}
                             options={select}
                           />
                         {villageHide.panchayatunion && selected1.length !== 0 ? (
@@ -1626,7 +1648,7 @@ function Constituency() {
                                   <i
                                     className={"editIcon"}
 
-                                    id={"officeLocationEdit"}
+                                    id={"legislativeEdit"}
                                     class="fas fa-edit"
                                   />
                                   <div
@@ -1641,7 +1663,7 @@ function Constituency() {
                                     <i
                                       className={"editIcon"}
 
-                                      id={"officeLocationEdit"}
+                                      id={"legislativetrash"}
                                       class="fas fa-trash"
                                     />
                                   </div>
@@ -1721,7 +1743,7 @@ function Constituency() {
                             </CButton>
                             <CButton
                               shape={"pill"}
-                              id={"wardcancel"}
+                              id={"Legislativecancel"}
                               style={{ marginTop: "30px", marginLeft: "20px" }}
                               className={"cancelBtn"}
                               onClick={CancelStateadd}

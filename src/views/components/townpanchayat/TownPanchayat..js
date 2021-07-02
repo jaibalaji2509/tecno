@@ -34,15 +34,15 @@ const TownPanchayat = () => {
   const [selected1, setSelected1] = useState([]);
   const [collected, setCollected] = useState([]);
   const [villageHide, setVillageHide] =useState({districtpanchayat:true,panchayatunion:false})
-  const [municipalList, setMunicipalList] = useState(true);
-  const [MunicipalCreate, setmunicipalCreate] = useState(false);
-  const [municipalCorporation] = useState({});
-  const [municipalName ] = useState("");
+  const [TownList, setTownList] = useState(true);
+  const [TownCreate, setTownCreate] = useState(false);
+  const [TownCorporation] = useState({});
+  const [TownName ] = useState("");
   const [wardnumberList, seatWardNumberList] = useState(true);
   const [wardNumberCreate, setWardNumberCreate] = useState(false);
   const [locationHide] = useState({
     corporation: true,
-    municipalLocation: false,
+    TownLocation: false,
     districtPanchayat: false,
     townPanchayat: false,
     villagePanchayat: false,
@@ -208,7 +208,7 @@ const TownPanchayat = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClicktown}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -217,7 +217,7 @@ const TownPanchayat = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClicktown}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -234,7 +234,7 @@ const TownPanchayat = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClicktown}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -243,7 +243,7 @@ const TownPanchayat = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClicktown}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -260,19 +260,19 @@ const TownPanchayat = () => {
     setLocations({ ...locations, [e.target.name]: e.target.value });
   };
   const enableCreate = async () => {
-    await setMunicipalList(false);
-    await setmunicipalCreate(true);
+    await setTownList(false);
+    await setTownCreate(true);
   };
 
   const editState = async () => {
-    await setMunicipalList(false);
-    await setmunicipalCreate(true);
+    await setTownList(false);
+    await setTownCreate(true);
     
   };
   const CancelState = async () => {
     setPassing("");
-    await setMunicipalList(true);
-    await setmunicipalCreate(false);
+    await setTownList(true);
+    await setTownCreate(false);
   };
   const [hideMappingTown, setHideMappingTown] = useState(true);
   const [hideTownPanchayat, setHideTownPanchayat] = useState(false);
@@ -306,7 +306,7 @@ const canceltownchange = () => {
     });
     const [sideBar1, setSideBar1] = useState(false);
     const [sideBar2, setSideBar2] = useState(false);
-    const handleClick1 = () => {
+    const handleClicktown = () => {
   
       switch (menu.menuStatus) {
         case "open":
@@ -320,6 +320,9 @@ const canceltownchange = () => {
           setTimeout(() => {
             setSideBar1(true);
           }, 1000);
+          setSideBar2(false)
+          setSideBarup1(false)
+          setSideBarup2(false)
           break;
         case "close":
           setMenu({
@@ -334,7 +337,7 @@ const canceltownchange = () => {
           break;
       }
     };
-    const handleClick2 = () => {
+    const handleClickward = () => {
   
       switch (menu.menuStatus) {
         case "open":
@@ -348,6 +351,9 @@ const canceltownchange = () => {
           setTimeout(() => {
             setSideBar2(true);
           }, 1000);
+          setSideBar1(false)
+          setSideBarup1(false)
+          setSideBarup2(false)
           break;
         case "close":
           setMenu({
@@ -365,7 +371,7 @@ const canceltownchange = () => {
     const [sideBarup, setSideBarup] = useState(false)
     const [sideBarup1, setSideBarup1] = useState(false)
     const [sideBarup2, setSideBarup2] = useState(false)
-    const bulkhandleClick1 = () => {
+    const bulkhandleClicktown = () => {
   
       switch (menu.menuStatus) {
         case "open":
@@ -376,9 +382,8 @@ const canceltownchange = () => {
             style1: "menu active1",
   
           });
-          setSideBarup1(true);
-  
-  
+          setSideBarup1(true);  
+          setSideBarup2(false);
   
           break;
         case "close":
@@ -395,7 +400,7 @@ const canceltownchange = () => {
           break;
       }
     };
-    const bulkhandleClick2 = () => {
+    const bulkhandleClickward = () => {
   
       switch (menu.menuStatus) {
         case "open":
@@ -467,14 +472,14 @@ const canceltownchange = () => {
           >
             <CLink
               className={"saveBtn"}
-              onClick={handleClick1}
+              onClick={handleClicktown}
               style={{ marginLeft: "200px" }}
             >
               Add{" "}
             </CLink>
             <CLink
               className={"saveBtn"}
-              onClick={bulkhandleClick1}
+              onClick={bulkhandleClicktown}
               style={{ marginLeft: "50px" }}
             >
               Bulk Upload{" "}
@@ -496,14 +501,14 @@ const canceltownchange = () => {
           >
             <CLink
               className={"saveBtn"}
-              onClick={handleClick2}
+              onClick={handleClickward}
               style={{ marginLeft: "200px" }}
             >
               Add{" "}
             </CLink>
             <CLink
               className={"saveBtn"}
-              onClick={bulkhandleClick2}
+              onClick={bulkhandleClickward}
               style={{ marginLeft: "50px" }}
             >
               Bulk Upload{" "}
@@ -575,7 +580,7 @@ const canceltownchange = () => {
     const [excelupload, setExcelUpload] = React.useState({ file: {}, data: [], cols: [] });
     const [variable, setVariable] = useState([])
 
-    const menus1 = (item) => {
+    const menusremoveicon = (item) => {
       return (
         variable.map((x, i) => {
           <tr key={i}>
@@ -626,7 +631,7 @@ const canceltownchange = () => {
                     marginLeft: "20px",
                   }}
                 >
-                  ADDING Municipality{" "}
+                  ADDING Town Panchayat{" "}
                 </span>
               </div>
             </CCol>
@@ -644,19 +649,22 @@ const canceltownchange = () => {
                 lg={12}
               >
                 <CCol md="2">
-                  <CLabel className={"label-name-1"}>
-                    Municipality
+                  <CLabel className={"label-name-1"} 
+                  style={{marginLeft:"-10px"}}
+                  >
+                    Town Panchayat
                     <span className={"text-danger"}> *</span>
                   </CLabel>
 
                   <CInput
-                    id={"MunicipalName"}
-                    name={"municipalname"}
-                    placeholder="Enter Municipality Name"
+                    id={"TownName"}
+                    name={"Townname"}
+                    placeholder="Enter Town Panchayat"
                     maxlength="60"
                     size="60"
                     value={x.panchayatname}
                     onChange={e => handleInputChange(e, i)}
+                  style={{marginLeft:"-10px", width:"120px"}}
                   />
                 </CCol>
 
@@ -666,7 +674,7 @@ const canceltownchange = () => {
                     <span className={"text-danger"}> *</span>
                   </CLabel>
                   <CInput
-                    id={"municipalabrreviation"}
+                    id={"Townabrreviation"}
                     name={"abbreviation"}
                     placeholder="Enter Abbreviation"
                     maxlength="5"
@@ -681,7 +689,7 @@ const canceltownchange = () => {
                     <span className={"text-danger"}> *</span>
                   </CLabel>
                   <CInput
-                    id={"municipalcode"}
+                    id={"Towncode"}
                     name={"code"}
                     placeholder="Enter Code"
                     maxlength="5"
@@ -759,10 +767,10 @@ const canceltownchange = () => {
               > Save</CButton>
               <CButton
                 shape={"pill"}
-                id={"municipalcancel"}
+                id={"Towncancel"}
                 style={{ marginTop: "-59px", marginLeft: "90px" }}
                 className={"cancelBtn"}
-                onClick={handleClick1}
+                onClick={handleClicktown}
               >
                 CANCEL
               </CButton>
@@ -776,8 +784,8 @@ const canceltownchange = () => {
             style={{ position: "absolute", top: "15px", right: "15px" }}
             className={"cancelBtn"}
             onClick={() => {
-              handleClick1();
-              // handleClick2();
+              handleClicktown();
+              // handleClickward();
             }}
           >
             Back
@@ -804,7 +812,23 @@ const canceltownchange = () => {
                 </div>
               </CCol>
             </CRow>
-
+            <CRow
+              className={"row-alignment"}
+              style={{ marginLeft: "5px", marginTop: "20px" }}
+              sm={12}
+              md={12}
+              lg={12}
+            >
+              <CCol>
+                <CLabel
+                  style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                  className={"form-labels-6"}
+                >
+                  Town Panchayat:
+                </CLabel>
+                <span style={{ marginTop: "13px", marginLeft: "5px", }}>Puthirankottai</span>
+              </CCol>
+            </CRow>
 
             {inputList.map((x, i) => {
               return (
@@ -823,8 +847,8 @@ const canceltownchange = () => {
                     </CLabel>
 
                     <CInput
-                      id={"MunicipalName"}
-                      name={"municipalname"}
+                      id={"wardName"}
+                      name={"wardname"}
                       placeholder="Enter Ward Number"
                       maxlength="60"
                       size="60"
@@ -839,7 +863,7 @@ const canceltownchange = () => {
                       <span className={"text-danger"}> *</span>
                     </CLabel>
                     <CInput
-                      id={"municipalabrreviation"}
+                      id={"wardabrreviation"}
                       name={"abbreviation"}
                       placeholder="Enter Abbreviation"
                       maxlength="5"
@@ -854,7 +878,7 @@ const canceltownchange = () => {
                       <span className={"text-danger"}> *</span>
                     </CLabel>
                     <CInput
-                      id={"municipalcode"}
+                      id={"wardcode"}
                       name={"code"}
                       placeholder="Enter Code"
                       maxlength="5"
@@ -919,10 +943,10 @@ const canceltownchange = () => {
                 > Save</CButton>
                 <CButton
                   shape={"pill"}
-                  id={"municipalcancel"}
+                  id={"wardcancel"}
                   style={{ marginTop: "-59px", marginLeft: "90px" }}
                   className={"cancelBtn"}
-                  onClick={handleClick2}
+                  onClick={handleClickward}
                 >
                   CANCEL
                 </CButton>
@@ -936,8 +960,8 @@ const canceltownchange = () => {
               style={{ position: "absolute", top: "15px", right: "15px" }}
               className={"cancelBtn"}
               onClick={() => {
-                handleClick2();
-                // handleClick2();
+                handleClickward();
+                // handleClickward();
               }}
             >
               Back
@@ -958,13 +982,13 @@ const canceltownchange = () => {
                       marginLeft: "20px",
                     }}
                   >
-                    ADDING Municipality{" "}
+                    ADDING Town panchayat{" "}
                   </span>
                 </div>
               </CCol>
             </CRow>
 
-            <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+            <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"TowncreateRoleUploadTemplate"}
               onClick={() => {
 
                 document.getElementById("uploadRoleTemplate").click();
@@ -981,7 +1005,7 @@ const canceltownchange = () => {
                   Upload
                 </CLabel>
                 <CInput
-                  id={"uploadRoleTemplate"}
+                  id={"TownuploadRoleTemplate"}
                   style={{ display: "none" }}
                   type={"file"}
                   onChange={handleChange}
@@ -999,7 +1023,7 @@ const canceltownchange = () => {
                 <CSVLink data={csvData} >
                   {/* <CButton
                         shape={"pill"}
-                        id={"municipalcancel"}
+                        id={"Towncancel"}
                         style={{ marginTop: "-60px", marginLeft: "160px" }}
                         className={"cancelBtn"}
 
@@ -1036,7 +1060,7 @@ const canceltownchange = () => {
                     className={"cancelBtn"}
                     onClick={() => {
                       bulkhandleClick();
-                      // handleClick2();
+                      // handleClickward();
                     }}
                   >
                     Back
@@ -1060,7 +1084,7 @@ const canceltownchange = () => {
                     fields={fieldss1}
                     columnFilter
                     tableFilter
-                    tableLabel={"List of Municipality"}
+                    tableLabel={"List of Town Panchayat"}
                     itemsPerPageSelect
                     itemsPerPage={5}
                     hover
@@ -1093,7 +1117,7 @@ const canceltownchange = () => {
 
                               <CCol style={{ fontSize: "1.15rem" }} md="12">
                                 <i
-                                  id={"constimemDelete"}
+                                  id={"TownconstimemDelete"}
                                   style={{
                                     marginLeft: "5px",
                                     color: "black",
@@ -1126,7 +1150,7 @@ const canceltownchange = () => {
                     > Save</CButton>
                     <CButton
                       shape={"pill"}
-                      id={"municipalcancel"}
+                      id={"Towncancel"}
                       style={{ marginTop: "-60px", marginLeft: "550px" }}
                       className={"cancelBtn"}
                       onClick={bulkhandleClick}
@@ -1173,13 +1197,13 @@ const canceltownchange = () => {
                   style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
                   className={"form-labels-6"}
                 >
-                  Municipality:
+                  Town Panchayat:
                 </CLabel>
-                <span style={{ marginTop: "13px", marginLeft: "5px", }}>Wallajabhad</span>
+                <span style={{ marginTop: "13px", marginLeft: "5px", }}>Puthirankottai</span>
               </CCol>
             </CRow>
 
-            <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+            <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"wardcreateRoleUploadTemplate"}
               onClick={() => {
 
                 document.getElementById("uploadRoleTemplate").click();
@@ -1196,7 +1220,7 @@ const canceltownchange = () => {
                   Upload
                 </CLabel>
                 <CInput
-                  id={"uploadRoleTemplate"}
+                  id={"warduploadRoleTemplate"}
                   style={{ display: "none" }}
                   type={"file"}
                   onChange={handleChange}
@@ -1214,7 +1238,7 @@ const canceltownchange = () => {
                 <CSVLink data={csvData} >
                   {/* <CButton
                         shape={"pill"}
-                        id={"municipalcancel"}
+                        id={"Towncancel"}
                         style={{ marginTop: "-60px", marginLeft: "160px" }}
                         className={"cancelBtn"}
 
@@ -1250,7 +1274,7 @@ const canceltownchange = () => {
                     className={"cancelBtn"}
                     onClick={() => {
                       bulkhandleClick();
-                      // handleClick2();
+                      // handleClickward();
                     }}
                   >
                     Back
@@ -1294,7 +1318,7 @@ const canceltownchange = () => {
                                   }}
                                   className="fa fa-remove"
                                   bsStyle="overlay"
-                                  onClick={() => menus1(item)}
+                                  onClick={() => menusremoveicon(item)}
                                 />
                               </CCol>
                             </CRow>
@@ -1321,7 +1345,7 @@ const canceltownchange = () => {
                     > Save</CButton>
                     <CButton
                       shape={"pill"}
-                      id={"municipalcancel"}
+                      id={"Towncancel"}
                       style={{ marginTop: "-60px", marginLeft: "550px" }}
                       className={"cancelBtn"}
                       onClick={bulkhandleClick}
@@ -1357,7 +1381,7 @@ const canceltownchange = () => {
                             
                               marginLeft: "45px",
                             }}
-                            id={"saveAbbreviationConfigureCode"}
+                            id={"Townadd"}
                             className={"saveBtn"}
                             onClick={changeTownPanchayat}
                           >
@@ -1374,7 +1398,7 @@ const canceltownchange = () => {
                         </CLabel>
                         <Select
                           className={"input-align"}
-                          id={"municipalstatename"}
+                          id={"Townstatename"}
                           name={"state"}
                           placeholder={"Select State"}
                           // value={locations.district}
@@ -1389,7 +1413,7 @@ const canceltownchange = () => {
                         </CLabel>
                         <Select
                           className={"input-align"}
-                          id={"municipaldistrict"}
+                          id={"Towndistrict"}
                           name={"city"}
                           placeholder={" Corporation Name"}
                           // value={locations.city}
@@ -1404,7 +1428,7 @@ const canceltownchange = () => {
                         </CLabel>
                         <Select
                           className={"input-align"}
-                          id={"municipaldistrict"}
+                          id={"Townpanchayat"}
                           name={"city"}
                           placeholder={" Corporation Name"}
                           // 
@@ -1421,7 +1445,7 @@ const canceltownchange = () => {
                         </CLabel>
                         <Select
                           className={"input-align"}
-                          id={"municipaldistrict"}
+                          id={"Townarea"}
                           name={"Area"}
                           placeholder={" Select Area"}
                           // value={locations.city}
@@ -1436,7 +1460,7 @@ const canceltownchange = () => {
                         </CLabel>
                         <Select
                           className={"input-align"}
-                          id={"municipalstatename"}
+                          id={"Townstatename"}
                           name={"Ward"}
                           placeholder={"Select Ward"}
                           // value={locations.district}
@@ -1528,14 +1552,14 @@ const canceltownchange = () => {
                         </CLabel>
                         <Select
                           className={"input-align"}
-                          id={"municipalstatename"}
+                          id={"Townstatename"}
                           name={"state"}
                           placeholder={"Select State"}
                           options={stateselect}
                         />
                       </CCol>
 
-                      {municipalList && (
+                      {TownList && (
                         <React.Fragment>
                           <CCol className={"column-align"} md={4} lg={4}>
                             <CLabel className={"label-name-1"}>
@@ -1544,7 +1568,7 @@ const canceltownchange = () => {
                             </CLabel>
                             <Select
                               placeholder="Select Town Panchayat"
-                              id={"municipalcorporation"}
+                              id={"Towncorporation"}
                               type={"text"}
                               value={collected}
                               onChange={(e) => setCollected(e)}
@@ -1563,7 +1587,7 @@ const canceltownchange = () => {
                                   <i
                                     className={"editIcon"}
 
-                                    id={"officeLocationEdit"}
+                                    id={"Townedit"}
                                     class="fas fa-edit"
                                   />
                                   <div
@@ -1578,7 +1602,7 @@ const canceltownchange = () => {
                                     <i
                                       className={"editIcon"}
 
-                                      id={"officeLocationEdit"}
+                                      id={"Towndelete"}
                                       class="fas fa-trash"
                                     />
                                   </div>
@@ -1587,14 +1611,14 @@ const canceltownchange = () => {
                           </CCol>
                           
 
-                          {municipalName.edit === true ? (
+                          {TownName.edit === true ? (
                             <React.Fragment>
                               <CCol md={3} lg={3}>
                                 <CButton
                                   style={{
                                     marginTop: "30px",
                                   }}
-                                  id={"locationLibraryStateEdit"}
+                                  id={"Townedit"}
                                   className={"btn btn-success"}
                                   onClick={editState}
                                 >
@@ -1605,7 +1629,7 @@ const canceltownchange = () => {
                           ) : null}
                         </React.Fragment>
                       )}
-                      {MunicipalCreate && (
+                      {TownCreate && (
                         <React.Fragment>
                           <CRow
                            className={"row-alignment"} style={{marginLeft:"45px", marginTop:"20px"}}
@@ -1620,8 +1644,8 @@ const canceltownchange = () => {
                               </CLabel>
 
                               <CInput
-                                id={"MunicipalName"}
-                                name={"municipalname"}
+                                id={"TownName"}
+                                name={"Townname"}
                                 placeholder="Enter Town Panchayat Name"
                                 maxlength="60"
                                 size="60"
@@ -1634,7 +1658,7 @@ const canceltownchange = () => {
                                 <span className={"text-danger"}> *</span>
                               </CLabel>
                               <CInput
-                                id={"municipalabrreviation"}
+                                id={"Townabrreviation"}
                                 name={"abbreviation"}
                                 placeholder="Enter Abbreviation"
                                 maxlength="5"
@@ -1647,7 +1671,7 @@ const canceltownchange = () => {
                                 <span className={"text-danger"}> *</span>
                               </CLabel>
                               <CInput
-                                id={"municipalcode"}
+                                id={"Towncode"}
                                 name={"code"}
                                 placeholder="Enter Code"
                                 maxlength="5"
@@ -1657,7 +1681,7 @@ const canceltownchange = () => {
                             <CCol md="3">
                               <CButton
                                 shape={"pill"}
-                                id={"municipalsave"}
+                                id={"Townsave"}
                                 style={{ marginTop: "30px" }}
                                 className={"saveBtn"}
                               >
@@ -1665,7 +1689,7 @@ const canceltownchange = () => {
                               </CButton>
                               <CButton
                                 shape={"pill"}
-                                id={"municipalcancel"}
+                                id={"Towncancel"}
                                 style={{
                                   marginTop: "30px",
                                   marginLeft: "20px",
@@ -1690,7 +1714,7 @@ const canceltownchange = () => {
                         </CLabel>
                         <Select
                           className={"input-align"}
-                          id={"municipaldistrict"}
+                          id={"Towndistrict"}
                           name={"city"}
                           placeholder={" City Name"}
                           options={cityselect}
@@ -1706,7 +1730,7 @@ const canceltownchange = () => {
                             </CLabel>
                             <Select
                               placeholder="Select the Ward Number"
-                              id={"municipalcorporation"}
+                              id={"ward"}
                               type={"text"}
                               value={selected1}
                               onChange={changePanchayatUnion}
@@ -1725,7 +1749,7 @@ const canceltownchange = () => {
                                   <i
                                     className={"editIcon"}
 
-                                    id={"officeLocationEdit"}
+                                    id={"wardedit"}
                                     class="fas fa-edit"
                                   />
                                   <div
@@ -1740,7 +1764,7 @@ const canceltownchange = () => {
                                     <i
                                       className={"editIcon"}
 
-                                      id={"officeLocationEdit"}
+                                      id={"warddelete"}
                                       class="fas fa-trash"
                                     />
                                   </div>
@@ -1749,14 +1773,14 @@ const canceltownchange = () => {
                           </CCol>
                          
 
-                          {municipalName.edit === true ? (
+                          {TownName.edit === true ? (
                             <React.Fragment>
                               <CCol md={3} lg={3}>
                                 <CButton
                                   style={{
                                     marginTop: "30px",
                                   }}
-                                  id={"locationLibraryStateEdit"}
+                                  id={"Townedit"}
                                   className={"btn btn-success"}
                                   onClick={editStateadd}
                                 >
@@ -1784,7 +1808,7 @@ const canceltownchange = () => {
 
                               <CInput
                                 id={"wardname"}
-                                name={"municipalname"}
+                                name={"Townname"}
                                 placeholder="Enter Ward Number"
                                 maxlength="60"
                                 size="60"
@@ -1867,7 +1891,7 @@ const canceltownchange = () => {
                         </CLabel>
                         <Select
                           className={"input-align"}
-                          id={"municipaldistrict"}
+                          id={"Townarea"}
                           name={"Area"}
                           placeholder={" Select Area"}
                          
@@ -1893,7 +1917,7 @@ const canceltownchange = () => {
                           style={{
                             float: "right",
                           }}
-                          id={"cancelAbbreviationConfigureCode"}
+                          id={"TowncancelAbbreviationConfigureCode"}
                           className={"cancelBtn"}
                           onClick={canceltownchange}
                         >
@@ -1904,7 +1928,7 @@ const canceltownchange = () => {
                             float: "right",
                             marginRight: "15px",
                           }}
-                          id={"saveAbbreviationConfigureCode"}
+                          id={"TownsaveAbbreviationConfigureCode"}
                           className={"saveBtn"}
                           
                         >
@@ -1967,7 +1991,7 @@ const canceltownchange = () => {
                           
                                 <CCol style={{ fontSize: "1.15rem" }} md="12">
                                 <i
-                                  id={"constimemDelete"}
+                                  id={"TownconstimemDelete"}
                                   style={{
                                     marginLeft: "5px",
                                     color: "black",

@@ -103,7 +103,7 @@ const AssignPartyPosting = () => {
       filter: false,
     },
   ];
-  const userData1 = [
+  const userDatamemberposting = [
     {
         SNo: "1",
         Name: "Volunteer Team",
@@ -129,7 +129,7 @@ const AssignPartyPosting = () => {
         EnteredOn:"01/06/2021"
       }
   ];
-  const fields1 = [
+  const fields1memberposting = [
     {
       key: "SNo",
       label: "S.NO",
@@ -386,16 +386,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
             </div>
             {locationHide.corporation && (
               <div>
-                <div style={{ marginLeft: "-26px" }}>
-                  {/* <div className={"row-headerlabel"}>
-                    <span
-                      style={{ marginLeft: "70px" }}
-                      className={"header-label"}
-                    >
-                      {" "}
-                      Assign Party Posting{" "}
-                    </span>
-                  </div> */}
+                <div style={{ marginLeft: "-26px" }}>                
                   <CRow style={{ marginTop: "45px" }}>
                     <CCol >
                       <CCol
@@ -407,7 +398,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                          
                             marginLeft: "35px",
                           }}
-                          id={"saveAbbreviationConfigureCode"}
+                          id={"assinpartypostingadding"}
                           className={"saveBtn"}
                           onClick={changeMunicipalCorporation}
                         >
@@ -423,8 +414,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        // className={"input-align"}
-                        id={"municipalstatename"}
+                        id={"assinpartypostingtypeofoffice"}
                         name={"state"}
                         placeholder={"Select Type of Office"}
                         value={locations.district}
@@ -438,7 +428,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                       </CLabel>
                       <Select
                         className={"input-align"}
-                        id={"municipaldistrict"}
+                        id={"assinpartypostingwings"}
                         name={"city"}
                         placeholder={" Select Type of Party "}
                         value={locations.city}
@@ -454,8 +444,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        // className={"input-align"}
-                        id={"municipaldistrict"}
+                        id={"assinpartypostingofficelocation"}
                         name={"city"}
                         placeholder={" Select Office Location"}
                         value={locations.city}
@@ -467,8 +456,8 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
 
                 <CRow style={{ padding: "4%", marginTop: "-1.5%" ,marginLeft:"-40px"}}>
                   <CDataTable
-                    items={userData1}
-                    fields={fields1}
+                    items={userDatamemberposting}
+                    fields={fields1memberposting}
                     columnFilter
                     tableFilter
                     tableLabel={"List of Member with Posting"}
@@ -551,7 +540,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                       </CLabel>
                       <Select
                         // className={"input-align"}
-                        id={"municipalstatename"}
+                        id={"assignpartypostingtypeofoffice"}
                         // name={"municipalTypeofOffice"}
                         placeholder={"Select Type of Office"}
                         value={typeofOfficess}
@@ -567,7 +556,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                       </CLabel>
                       <Select
                         // className={"input-align"}
-                        // id={"municipalstatename"}
+                        id={"assignpartypostingdepartment"}
                         name={"municipalDepartment"}
                         placeholder={"Select Department"}
                         value={locations.district}
@@ -590,7 +579,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                       </CLabel>
                       <Select
                         // className={"input-align"}
-                        id={"municipalarea"}
+                        id={"assignpartypostingdepartmentwings"}
                         name={"partyPostingTypeofWings"}
                         placeholder={" Select Office Location"}
                         value={locations.city}
@@ -607,7 +596,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                       <Select
                         //   className={"input-align"}
                         placeholder="Select Designation "
-                        id={"partypostingDesignation"}
+                        id={"assignpartypostingdesignation"}
                         type={"text"}
                         value={locations.city}
                         onChange={(e) => setLocations(e)}
@@ -627,7 +616,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                       </CLabel>
                       <Select
                         // className={"input-align"}
-                        id={"municipalstatename"}
+                        id={"assignpartypostingnamelocationoffice"}
                         name={"partyPostingOfficeLocation"}
                         placeholder={"Select Office Location"}
                         value={locations.district}
@@ -644,7 +633,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                       <Select
                         // className={"input-align"}
                         placeholder="Select Role Name"
-                        id={"municipalcorporation"}
+                        id={"assignpartypostingrolename"}
                         name={"partyPostingrole   "}
                         type={"text"}
                         value={locations.district}
@@ -669,7 +658,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                           float: "right",
                           cursor:"pointer"
                         }}
-                        id={"cancelAbbreviationConfigureCode"}
+                        id={"assignpartypostingcancel"}
                         className={"cancelBtn"}
                         onClick={cancelMunicipalCorporation}
                       >
@@ -680,7 +669,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                           float: "right",
                           marginRight: "15px",
                         }}
-                        id={"saveAbbreviationConfigureCode"}
+                        id={"assignpartypostingsave"}
                         className={"saveBtn"}
                         onClick={saveCorporation}
                       >
@@ -709,7 +698,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                       </CLabel>
                       <Select
                         className={"input-align"}
-                        id={"municipalstatename"}
+                        id={"nameofmemberassignpartyposting"}
                         name={"state"}
                         placeholder={"Select Type of Office"}
                         value={locations.district}

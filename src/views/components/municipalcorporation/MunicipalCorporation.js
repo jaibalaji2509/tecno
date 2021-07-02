@@ -280,8 +280,8 @@ const MunicipalCorporation = () => {
       <components.MenuList  {...props}>
         {props.children}
         <div style={{ marginTop: "-56px", minHeight: "80px"  }} >
-          <CLink className={"saveBtn"} onClick={handleClick1} style={{ marginLeft: "250px" }}>Add</CLink>
-          <CLink className={"saveBtn"} onClick={bulkhandleClick1} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
+          <CLink className={"saveBtn"} onClick={handleClickmunici} style={{ marginLeft: "250px" }}>Add</CLink>
+          <CLink className={"saveBtn"} onClick={bulkhandleClickmunici} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
         </div>
       </components.MenuList>
     )
@@ -291,8 +291,8 @@ const MunicipalCorporation = () => {
       <components.MenuList  {...props}>
         {props.children}
         <div style={{ marginTop: "-95px", minHeight: "90px"  }} >
-          <CLink className={"saveBtn"} onClick={handleClick2} style={{ marginLeft: "250px" }}>Add</CLink>
-          <CLink className={"saveBtn"} onClick={bulkhandleClick2} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
+          <CLink className={"saveBtn"} onClick={handleClickward} style={{ marginLeft: "250px" }}>Add</CLink>
+          <CLink className={"saveBtn"} onClick={bulkhandleClickward} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
         </div>
       </components.MenuList>
     )
@@ -367,7 +367,7 @@ const MunicipalCorporation = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickmunici}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -376,7 +376,7 @@ const MunicipalCorporation = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickmunici}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -394,7 +394,7 @@ const MunicipalCorporation = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickward}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -403,7 +403,7 @@ const MunicipalCorporation = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickward}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -426,7 +426,7 @@ const MunicipalCorporation = () => {
   const [sideBar1, setSideBar1] = useState(false);
   const [sideBar2, setSideBar2] = useState(false);
 
-  const handleClick1 = () => {
+  const handleClickmunici = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -440,7 +440,9 @@ const MunicipalCorporation = () => {
         setTimeout(() => {
           setSideBar1(true);        
         }, 1000);
+        setSideBar2(false)
         setSideBarup1(false)
+        setSideBarup2(false)
         break;
       case "close":
         setMenu({
@@ -455,7 +457,7 @@ const MunicipalCorporation = () => {
         break;
     }
   };
-  const handleClick2 = () => {
+  const handleClickward = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -469,6 +471,8 @@ const MunicipalCorporation = () => {
         setTimeout(() => {
           setSideBar2(true);
         }, 1000);
+        setSideBar1(false)
+        setSideBarup1(false)
         setSideBarup2(false)
         break;
       case "close":
@@ -518,7 +522,7 @@ const MunicipalCorporation = () => {
         break;
     }
   };
-  const bulkhandleClick1 = () => {
+  const bulkhandleClickmunici = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -547,7 +551,7 @@ const MunicipalCorporation = () => {
         break;
     }
   };
-  const bulkhandleClick2 = () => {
+  const bulkhandleClickward = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -617,7 +621,7 @@ const handleFile = () => {
 const [isValue, setIsValue] = useState(false)
 const [variable, setVariable] = useState([])
 
-const menus1 = (item) => {
+const menusremoveicon = (item) => {
   return (
     variable.map((x, i) => {
       <tr key={i}>
@@ -705,18 +709,19 @@ const csvData = [
               lg={12}
             >
               <CCol md="2">
-                <CLabel className={"label-name-1"}>
-                Municipal 
+                <CLabel className={"label-name-1"} style={{marginLeft:"-50px"}}>
+                Municipal Corporation 
                   <span className={"text-danger"}> *</span>
                 </CLabel>
 
                 <CInput
                   id={"MunicipalName"}
                   name={"municipalname"}
-                  placeholder="Enter Municipal Corporation Name"
+                  placeholder="Enter Municipal Corporation"
                   maxlength="60"
                   size="60"
                   value={x.panchayatname}
+                  style={{marginLeft:"-50px", width:"155px"}}
                   onChange={e => handleInputChange(e, i)}
                 />
               </CCol>
@@ -823,7 +828,7 @@ const csvData = [
               id={"municipalcancel"}
               style={{ marginTop: "-59px", marginLeft: "90px" }}
               className={"cancelBtn"}
-              onClick={handleClick1}
+              onClick={handleClickmunici}
             >
               CANCEL
             </CButton>
@@ -837,7 +842,7 @@ const csvData = [
           style={{ position: "absolute", top: "15px", right: "40px" }}
           className={"cancelBtn"}
           onClick={() => {
-            handleClick1();
+            handleClickmunici();
             // handleClick2();
           }}
         >
@@ -866,7 +871,23 @@ const csvData = [
               </div>
             </CCol>
           </CRow>
-
+          <CRow
+                    className={"row-alignment"}
+                    style={{ marginLeft: "5px", marginTop: "20px" }}
+                    sm={12}
+                    md={12}
+                    lg={12}
+                  >
+                    <CCol>
+                    <CLabel
+                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
+                      className={"form-labels-6"}
+                    >
+                      Municipal Corporation:
+                    </CLabel>
+                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>South Chennai</span>
+                    </CCol>
+                    </CRow>
 
           {inputList.map((x, i) => {
             return (
@@ -885,8 +906,8 @@ const csvData = [
                   </CLabel>
 
                   <CInput
-                    id={"MunicipalName"}
-                    name={"municipalname"}
+                    id={"WardName"}
+                    name={"Wardname"}
                     placeholder="Enter Ward Number"
                     maxlength="60"
                     size="60"
@@ -901,7 +922,7 @@ const csvData = [
                     <span className={"text-danger"}> *</span>
                   </CLabel>
                   <CInput
-                    id={"municipalabrreviation"}
+                    id={"Wardabrreviation"}
                     name={"abbreviation"}
                     placeholder="Enter Abbreviation"
                     maxlength="5"
@@ -916,7 +937,7 @@ const csvData = [
                     <span className={"text-danger"}> *</span>
                   </CLabel>
                   <CInput
-                    id={"municipalcode"}
+                    id={"Wardcode"}
                     name={"code"}
                     placeholder="Enter Code"
                     maxlength="5"
@@ -981,10 +1002,10 @@ const csvData = [
               > Save</CButton>
               <CButton
                 shape={"pill"}
-                id={"municipalcancel"}
+                id={"Wardcancel"}
                 style={{ marginTop: "-59px", marginLeft: "90px" }}
                 className={"cancelBtn"}
-                onClick={handleClick2}
+                onClick={handleClickward}
               >
                 CANCEL
               </CButton>
@@ -998,7 +1019,7 @@ const csvData = [
             style={{ position: "absolute", top: "15px", right: "40px" }}
             className={"cancelBtn"}
             onClick={() => {
-              handleClick2();
+              handleClickward();
               // handleClick2();
             }}
           >
@@ -1026,13 +1047,14 @@ const csvData = [
                     </CCol>
                   </CRow>
 
-                  <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+                  <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"municicreateRoleUploadTemplate"}
                     onClick={() => {
 
                       document.getElementById("uploadRoleTemplate").click();
                     }}>
                     <CCol md="12">
                       <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
+             
                         <i className="fas fa-upload"></i>&nbsp;
                       </span>
 
@@ -1043,7 +1065,7 @@ const csvData = [
                         Upload
                       </CLabel>
                       <CInput
-                        id={"uploadRoleTemplate"}
+                        id={"municiuploadRoleTemplate"}
                         style={{ display: "none" }}
                         type={"file"}
                         onChange={handleChange}
@@ -1141,7 +1163,7 @@ const csvData = [
                                         }}
                                         className="fa fa-remove"
                                         bsStyle="overlay"
-                                        onClick={() => menus1(item)}
+                                        onClick={() => menusremoveicon(item)}
                                       />
                                     </CCol>
                                   </CRow>
@@ -1168,7 +1190,7 @@ const csvData = [
                           > Save</CButton>
                           <CButton
                             shape={"pill"}
-                            id={"municipalcancel"}
+                            id={"municipalsidecancel"}
                             style={{ marginTop: "-60px", marginLeft: "550px" }}
                             className={"cancelBtn"}
                             onClick={bulkhandleClick}
@@ -1221,7 +1243,7 @@ const csvData = [
                     </CCol>
                     </CRow>
 
-                    <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+                    <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"WardcreateRoleUploadTemplate"}
                     onClick={() => {
 
                       document.getElementById("uploadRoleTemplate").click();
@@ -1238,7 +1260,7 @@ const csvData = [
                         Upload
                       </CLabel>
                       <CInput
-                        id={"uploadRoleTemplate"}
+                        id={"WarduploadRoleTemplate"}
                         style={{ display: "none" }}
                         type={"file"}
                         onChange={handleChange}
@@ -1323,7 +1345,7 @@ const csvData = [
                                         }}
                                         className="fa fa-remove"
                                         bsStyle="overlay"
-                                        onClick={() => menus1(item)}
+                                        onClick={() => menusremoveicon(item)}
                                       />
                                     </CCol>
                                   </CRow>
@@ -1350,7 +1372,7 @@ const csvData = [
                           > Save</CButton>
                           <CButton
                             shape={"pill"}
-                            id={"municipalcancel"}
+                            id={"Wardsudecancel"}
                             style={{ marginTop: "-60px", marginLeft: "550px" }}
                             className={"cancelBtn"}
                             onClick={bulkhandleClick}
@@ -1385,7 +1407,7 @@ const csvData = [
                          
                             marginLeft: "35px",
                           }}
-                          id={"saveAbbreviationConfigureCode"}
+                          id={"addmunici"}
                           className={"saveBtn"}
                           onClick={changeMunicipalCorporation}
                         >
@@ -1431,7 +1453,7 @@ const csvData = [
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        id={"municipaldistrict"}
+                        id={"municipalcorporation"}
                         name={"city"}
                         placeholder={" Corporation Name"}
                         options={selectMunicipalcorporation}
@@ -1446,7 +1468,7 @@ const csvData = [
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        id={"municipalstatename"}
+                        id={"municipalareaname"}
                         name={"Area"}
                         placeholder={"Select Area"}
                         options={selectArea}
@@ -1458,7 +1480,7 @@ const csvData = [
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        id={"municipalstatename"}
+                        id={"municipalwardename"}
                         name={"Ward"}
                         placeholder={"Select Ward"}
                         options={selectWard}
@@ -1577,7 +1599,7 @@ const csvData = [
                               <i
                                 className={"editIcon"}
                               
-                                id={"officeLocationEdit"}
+                                id={"municiedit"}
                                 class="fas fa-edit"
                               />
                               <div
@@ -1592,7 +1614,7 @@ const csvData = [
                                 <i
                                   className={"editIcon"}
                                  
-                                  id={"officeLocationEdit"}
+                                  id={"municidelete"}
                                   class="fas fa-trash"
                                 />
                               </div>
@@ -1617,7 +1639,7 @@ const csvData = [
                                 style={{
                                   marginTop: "30px",
                                 }}
-                                id={"locationLibraryStateEdit"}
+                                id={"municiEdit"}
                                 className={"btn btn-success"}
                                 onClick={editMunicipalCorporation}
                               >
@@ -1751,7 +1773,7 @@ const csvData = [
                               <i
                                 className={"editIcon"}
                               
-                                id={"officeLocationEdit"}
+                                id={"Wardedit"}
                                 class="fas fa-edit"
                               />
                               <div
@@ -1766,7 +1788,7 @@ const csvData = [
                                 <i
                                   className={"editIcon"}
                                  
-                                  id={"officeLocationEdit"}
+                                  id={"Warddelete"}
                                   class="fas fa-trash"
                                 />
                               </div>
@@ -1793,7 +1815,7 @@ const csvData = [
                                 style={{
                                   marginTop: "30px",
                                 }}
-                                id={"locationLibraryStateEdit"}
+                                id={"wardedit"}
                                 className={"btn btn-success"}
                                 onClick={editMunicipalCorporationadd}
                               >
@@ -2099,7 +2121,7 @@ const csvData = [
                       <CInput
                         type={"text"}
                         className={"input-align"}
-                        id={"municipalStreet"}
+                        id={"municipalarea"}
                         placeholder={"Enter Area"}
                         value={location.pincode}
                         onChange={(e) => setLocation(e.target.value)}
@@ -2370,7 +2392,7 @@ const csvData = [
                       </CLabel>
                       <CInput
                         className={"input-align"}
-                        id={"PoliticalStreet"}
+                        id={"Politicalward"}
                         placeholder={" Street Name"}
                         value={location.street}
                         onChange={(e) => setLocation(e.target.value)}
@@ -2384,7 +2406,7 @@ const csvData = [
                       <CInput
                         type={"text"}
                         className={"input-align"}
-                        id={"PoliticalPincode"}
+                        id={"Politicalstreet"}
                         placeholder={"Enter Pincode"}
                         value={location.pincode}
                         onChange={(e) => setLocation(e.target.value)}
@@ -2583,7 +2605,7 @@ const csvData = [
                 <CRow>
                   <CCol style={{ fontSize: "1.15rem" }} md="12">
                     <i
-                      id={"locationLibraryDelete"}
+                      id={"municicorpDelete"}
                       style={{
                         marginLeft: "5px",
                         color: "#e85654",

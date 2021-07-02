@@ -67,7 +67,7 @@ const VillagePanchayat = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickdistrict}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -76,7 +76,7 @@ const VillagePanchayat = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickdistrict}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -357,7 +357,7 @@ const VillagePanchayat = () => {
 
     style3: "menu2",
   });
-  const SelectMenuButton1 = (props) => {
+  const SelectMenuButtondistrict = (props) => {
     return (
       <components.MenuList {...props}>
         {props.children}
@@ -370,14 +370,14 @@ const VillagePanchayat = () => {
         >
           <CLink
             className={"saveBtn"}
-            onClick={handleClick1}
+            onClick={handleClickdistrict}
             style={{ marginLeft: "200px" }}
           >
             Add{" "}
           </CLink>
           <CLink
             className={"saveBtn"}
-            onClick={bulkhandleClick1}
+            onClick={bulkhandleClickdistrict}
             style={{ marginLeft: "50px" }}
           >
             Bulk Upload{" "}
@@ -386,7 +386,7 @@ const VillagePanchayat = () => {
       </components.MenuList>
     );
   };
-  const SelectMenuButton2 = (props) => {
+  const SelectMenuButtonpanchayat = (props) => {
     return (
       <components.MenuList {...props}>
         {props.children}
@@ -399,14 +399,14 @@ const VillagePanchayat = () => {
         >
           <CLink
             className={"saveBtn"}
-            onClick={handleClick2}
+            onClick={handleClickpanchayat}
             style={{ marginLeft: "200px" }}
           >
             Add{" "}
           </CLink>
           <CLink
             className={"saveBtn"}
-            onClick={bulkhandleClick2}
+            onClick={bulkhandleClickpanchayat}
             style={{ marginLeft: "50px" }}
           >
             Bulk Upload{" "}
@@ -415,7 +415,7 @@ const VillagePanchayat = () => {
       </components.MenuList>
     );
   };
-  const SelectMenuButton3 = (props) => {
+  const SelectMenuButtonvillage = (props) => {
     return (
       <components.MenuList {...props}>
         {props.children}
@@ -428,14 +428,14 @@ const VillagePanchayat = () => {
         >
           <CLink
             className={"saveBtn"}
-            onClick={handleClick3}
+            onClick={handleClickvillage}
             style={{ marginLeft: "200px" }}
           >
             Add{" "}
           </CLink>
           <CLink
             className={"saveBtn"}
-            onClick={bulkhandleClick3}
+            onClick={bulkhandleClickvillage}
             style={{ marginLeft: "50px" }}
           >
             Bulk Upload{" "}
@@ -444,7 +444,7 @@ const VillagePanchayat = () => {
       </components.MenuList>
     );
   };
-  const SelectMenuButton4 = (props) => {
+  const SelectMenuButtonward = (props) => {
     return (
       <components.MenuList {...props}>
         {props.children}
@@ -457,14 +457,14 @@ const VillagePanchayat = () => {
         >
           <CLink
             className={"saveBtn"}
-            onClick={handleClick4}
+            onClick={handleClickward}
             style={{ marginLeft: "200px" }}
           >
             Add{" "}
           </CLink>
           <CLink
             className={"saveBtn"}
-            onClick={bulkhandleClick4}
+            onClick={bulkhandleClickward}
             style={{ marginLeft: "50px" }}
           >
             Bulk Upload{" "}
@@ -477,23 +477,34 @@ const VillagePanchayat = () => {
   const [sideBar2, setSideBar2] = useState(false);
   const [sideBar3, setSideBar3] = useState(false);
   const [sideBar4, setSideBar4] = useState(false);
-  const handleClick1 = () => {
+  const handleClickdistrict = () => {
+
     switch (menu.menuStatus) {
       case "open":
         setMenu({
           menuStatus: "close",
           // style3: "menu2",
           style: "menu active1",
+
         });
 
-        setSideBar1(true);
-
+        setTimeout(() => {
+          setSideBar1(true);
+        }, 1000);
+setSideBar2(false);
+setSideBar3(false);
+setSideBar4(false);
+setSideBarup1(false)
+setSideBarup2(false)
+setSideBarup3(false)
+setSideBarup4(false)
         break;
       case "close":
         setMenu({
           menuStatus: "open",
           // style3: "menu2",
           style: "menu active2",
+
         });
         setTimeout(() => {
           setSideBar1(false);
@@ -501,23 +512,33 @@ const VillagePanchayat = () => {
         break;
     }
   };
-  const handleClick2 = () => {
+  const handleClickpanchayat = () => {
     switch (menu.menuStatus) {
       case "open":
         setMenu({
           menuStatus: "close",
           // style3: "menu2",
           style: "menu active1",
+
         });
 
-        setSideBar2(true);
-
+        setTimeout(() => {
+          setSideBar2(true);
+        }, 1000);
+setSideBar1(false);
+setSideBar3(false);
+setSideBar4(false);
+setSideBarup1(false)
+setSideBarup2(false)
+setSideBarup3(false)
+setSideBarup4(false)
         break;
       case "close":
         setMenu({
           menuStatus: "open",
           // style3: "menu2",
           style: "menu active2",
+
         });
         setTimeout(() => {
           setSideBar2(false);
@@ -525,23 +546,33 @@ const VillagePanchayat = () => {
         break;
     }
   };
-  const handleClick3 = () => {
+  const handleClickvillage = () => {
     switch (menu.menuStatus) {
       case "open":
         setMenu({
           menuStatus: "close",
           // style3: "menu2",
           style: "menu active1",
+
         });
 
-        setSideBar3(true);
-
+        setTimeout(() => {
+          setSideBar3(true);
+        }, 1000);
+setSideBar2(false);
+setSideBar1(false);
+setSideBar4(false);
+setSideBarup1(false)
+setSideBarup2(false)
+setSideBarup3(false)
+setSideBarup4(false)
         break;
       case "close":
         setMenu({
           menuStatus: "open",
           // style3: "menu2",
           style: "menu active2",
+
         });
         setTimeout(() => {
           setSideBar3(false);
@@ -549,23 +580,33 @@ const VillagePanchayat = () => {
         break;
     }
   };
-  const handleClick4 = () => {
+  const handleClickward = () => {
     switch (menu.menuStatus) {
       case "open":
         setMenu({
           menuStatus: "close",
           // style3: "menu2",
           style: "menu active1",
+
         });
 
-        setSideBar4(true);
-
+        setTimeout(() => {
+          setSideBar4(true);
+        }, 1000);
+setSideBar2(false);
+setSideBar3(false);
+setSideBar1(false);
+setSideBarup1(false)
+setSideBarup2(false)
+setSideBarup3(false)
+setSideBarup4(false)
         break;
       case "close":
         setMenu({
           menuStatus: "open",
           // style3: "menu2",
           style: "menu active2",
+
         });
         setTimeout(() => {
           setSideBar4(false);
@@ -582,7 +623,9 @@ const VillagePanchayat = () => {
           style: "menu active1",
         });
 
-        setSideBar4(true);
+        setTimeout(() => {
+          setSideBar4(true);
+        }, 1000);
 
         break;
       case "close":
@@ -602,7 +645,7 @@ const VillagePanchayat = () => {
   const [sideBarup2, setSideBarup2] = useState(false)
   const [sideBarup3, setSideBarup3] = useState(false)
   const [sideBarup4, setSideBarup4] = useState(false)
-  const bulkhandleClick1 = () => {
+  const bulkhandleClickdistrict = () => {
     switch (menu.menuStatus) {
       case "open":
         setMenu({
@@ -612,7 +655,9 @@ const VillagePanchayat = () => {
           style1: "menu active1",
         });
         setSideBarup1(true);
-
+        setSideBarup2(false)
+        setSideBarup3(false)
+        setSideBarup4(false)
         break;
       case "close":
         setMenu({
@@ -628,7 +673,7 @@ const VillagePanchayat = () => {
     }
     
   };
-  const bulkhandleClick2 = () => {
+  const bulkhandleClickpanchayat = () => {
     switch (menu.menuStatus) {
       case "open":
         setMenu({
@@ -638,7 +683,9 @@ const VillagePanchayat = () => {
           style1: "menu active1",
         });
         setSideBarup2(true);
-
+        setSideBarup1(false)
+        setSideBarup3(false)
+        setSideBarup4(false)
         break;
       case "close":
         setMenu({
@@ -654,7 +701,7 @@ const VillagePanchayat = () => {
     }
     
   };
-  const bulkhandleClick3 = () => {
+  const bulkhandleClickvillage = () => {
     switch (menu.menuStatus) {
       case "open":
         setMenu({
@@ -664,7 +711,9 @@ const VillagePanchayat = () => {
           style1: "menu active1",
         });
         setSideBarup3(true);
-
+        setSideBarup2(false)
+        setSideBarup1(false)
+        setSideBarup4(false)
         break;
       case "close":
         setMenu({
@@ -680,7 +729,7 @@ const VillagePanchayat = () => {
     }
     
   };
-  const bulkhandleClick4 = () => {
+  const bulkhandleClickward = () => {
     switch (menu.menuStatus) {
       case "open":
         setMenu({
@@ -690,7 +739,9 @@ const VillagePanchayat = () => {
           style1: "menu active1",
         });
         setSideBarup4(true);
-
+        setSideBarup2(false)
+        setSideBarup3(false)
+        setSideBarup1(false)
         break;
       case "close":
         setMenu({
@@ -751,7 +802,7 @@ const VillagePanchayat = () => {
     setInputList(list);
   };
 
-  const menus1 = (item) => {
+  const menusremoveicon = (item) => {
     return variable.map((x, i) => {
       <tr key={i}>
         <td>{x.SNO}</td>
@@ -776,7 +827,7 @@ const VillagePanchayat = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickward}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -785,7 +836,7 @@ const VillagePanchayat = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickward}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -845,7 +896,7 @@ const VillagePanchayat = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickpanchayat}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -854,7 +905,7 @@ const VillagePanchayat = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickpanchayat}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -922,18 +973,19 @@ const VillagePanchayat = () => {
                 <CCol md="2" style={{minHeight:"10px"}}>
                   <CLabel
                     className={"label-name-1"}
-                    style={{ fontSize: "block" }}
+                    style={{ fontSize: "block",marginLeft:"-20px" }}
                   >
-                    District 
+                    District Panchayat
                     <span className={"text-danger"}> *</span>
                   </CLabel>
 
                   <CInput
-                    id={"MunicipalName"}
-                    name={"municipalname"}
+                    id={"DistrictName"}
+                    name={"Districtname"}
                     placeholder="Enter District Panchayat"
                     maxlength="60"
                     size="60"
+                    style={{marginLeft:"-20px", width:"120px"}}
                     value={x.panchayatname}
                     onChange={(e) => handleInputChange(e, i)}
                   />
@@ -946,7 +998,7 @@ const VillagePanchayat = () => {
                     <span className={"text-danger"}> *</span>
                   </CLabel>
                   <CInput
-                    id={"municipalabrreviation"}
+                    id={"Districtabrreviation"}
                     name={"abbreviation"}
                     placeholder="Enter Abbreviation"
                     maxlength="5"
@@ -961,7 +1013,7 @@ const VillagePanchayat = () => {
                     <span className={"text-danger"}> *</span>
                   </CLabel>
                   <CInput
-                    id={"municipalcode"}
+                    id={"Districtcode"}
                     name={"code"}
                     placeholder="Enter Code"
                     maxlength="5"
@@ -1022,7 +1074,7 @@ const VillagePanchayat = () => {
               </CButton>
               <CButton
                 shape={"pill"}
-                id={"municipalcancel"}
+                id={"Districtcancel"}
                 style={{ marginTop: "-60px", marginLeft: "130px" }}
                 className={"cancelBtn"}
                 onClick={""}
@@ -1103,17 +1155,18 @@ const VillagePanchayat = () => {
                   lg={12}
                 >
                   <CCol md="2">
-                    <CLabel className={"label-name-1"}>
-                    Panchayat 
+                    <CLabel className={"label-name-1"} style={{marginLeft:"-20px"}}>
+                    Panchayat Union
                       <span className={"text-danger"}> *</span>
                     </CLabel>
 
                     <CInput
-                      id={"MunicipalName"}
-                      name={"municipalname"}
+                      id={"PanchayatName"}
+                      name={"Panchayatname"}
                       placeholder="Enter Panchayat Union Name"
                       maxlength="60"
                       size="60"
+                      style={{marginLeft:"-20px", width:"120px"}}
                       value={x.panchayatname}
                       onChange={e => handleInputChange(e, i)}
                     />
@@ -1125,7 +1178,7 @@ const VillagePanchayat = () => {
                       <span className={"text-danger"}> *</span>
                     </CLabel>
                     <CInput
-                      id={"municipalabrreviation"}
+                      id={"muPanchayatabrreviation"}
                       name={"abbreviation"}
                       placeholder="Enter Abbreviation"
                       maxlength="5"
@@ -1140,7 +1193,7 @@ const VillagePanchayat = () => {
                       <span className={"text-danger"}> *</span>
                     </CLabel>
                     <CInput
-                      id={"municipalcode"}
+                      id={"Panchayatcode"}
                       name={"code"}
                       placeholder="Enter Code"
                       maxlength="5"
@@ -1205,10 +1258,10 @@ const VillagePanchayat = () => {
                 > Save</CButton>
                 <CButton
                   shape={"pill"}
-                  id={"municipalcancel"}
+                  id={"Panchayatalcancel"}
                   style={{ marginTop: "-59px", marginLeft: "90px" }}
                   className={"cancelBtn"}
-                  onClick={handleClick2}
+                  onClick={handleClickpanchayat}
                 >
                   CANCEL
                 </CButton>
@@ -1222,8 +1275,8 @@ const VillagePanchayat = () => {
               style={{ position: "absolute", top: "15px", right: "15px" }}
               className={"cancelBtn"}
               onClick={() => {
-                handleClick2();
-                // handleClick2();
+                handleClickpanchayat();
+                // handleClickpanchayat();
               }}
             >
               Back
@@ -1289,17 +1342,18 @@ const VillagePanchayat = () => {
                     lg={12}
                   >
                     <CCol md="2">
-                      <CLabel className={"label-name-1"}>
-                      Village 
+                      <CLabel className={"label-name-1"} style={{marginLeft:"-20px"}}>
+                      Village Panchayat
                         <span className={"text-danger"}> *</span>
                       </CLabel>
 
                       <CInput
-                        id={"MunicipalName"}
-                        name={"municipalname"}
+                        id={"VillageName"}
+                        name={"Villagename"}
                         placeholder="Enter Village Panchayat Name"
                         maxlength="60"
                         size="60"
+                        style={{marginLeft:"-20px", width:"120px"}}
                         value={x.panchayatname}
                         onChange={e => handleInputChange(e, i)}
                       />
@@ -1311,7 +1365,7 @@ const VillagePanchayat = () => {
                         <span className={"text-danger"}> *</span>
                       </CLabel>
                       <CInput
-                        id={"municipalabrreviation"}
+                        id={"Villagebrreviation"}
                         name={"abbreviation"}
                         placeholder="Enter Abbreviation"
                         maxlength="5"
@@ -1326,7 +1380,7 @@ const VillagePanchayat = () => {
                         <span className={"text-danger"}> *</span>
                       </CLabel>
                       <CInput
-                        id={"municipalcode"}
+                        id={"Villagelcode"}
                         name={"code"}
                         placeholder="Enter Code"
                         maxlength="5"
@@ -1400,10 +1454,10 @@ const VillagePanchayat = () => {
                   > Save</CButton>
                   <CButton
                     shape={"pill"}
-                    id={"municipalcancel"}
+                    id={"Villageancel"}
                     style={{ marginTop: "-59px", marginLeft: "90px" }}
                     className={"cancelBtn"}
-                    onClick={handleClick3}
+                    onClick={handleClickvillage}
                   >
                     CANCEL
                   </CButton>
@@ -1417,8 +1471,8 @@ const VillagePanchayat = () => {
                 style={{ position: "absolute", top: "15px", right: "15px" }}
                 className={"cancelBtn"}
                 onClick={() => {
-                  handleClick3();
-                  // handleClick2();
+                  handleClickvillage();
+                  // handleClickpanchayat();
                 }}
               >
                 Back
@@ -1508,7 +1562,7 @@ const VillagePanchayat = () => {
                         </CLabel>
 
                         <CInput
-                          id={"MunicipalName"}
+                          id={"WardName"}
                           name={"municipalname"}
                           placeholder="Enter Ward Number Name"
                           maxlength="60"
@@ -1524,7 +1578,7 @@ const VillagePanchayat = () => {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                          id={"municipalabrreviation"}
+                          id={"Wardabrreviation"}
                           name={"abbreviation"}
                           placeholder="Enter Abbreviation"
                           maxlength="5"
@@ -1539,7 +1593,7 @@ const VillagePanchayat = () => {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                          id={"municipalcode"}
+                          id={"Wardcode"}
                           name={"code"}
                           placeholder="Enter Code"
                           maxlength="5"
@@ -1616,10 +1670,10 @@ const VillagePanchayat = () => {
                     > Save</CButton>
                     <CButton
                       shape={"pill"}
-                      id={"municipalcancel"}
+                      id={"Wardcancel"}
                       style={{ marginTop: "-59px", marginLeft: "90px" }}
                       className={"cancelBtn"}
-                      onClick={handleClick4}
+                      onClick={handleClickward}
                     >
                       CANCEL
                     </CButton>
@@ -1633,8 +1687,8 @@ const VillagePanchayat = () => {
                   style={{ position: "absolute", top: "15px", right: "15px" }}
                   className={"cancelBtn"}
                   onClick={() => {
-                    handleClick4();
-                    // handleClick2();
+                    handleClickward();
+                    // handleClickpanchayat();
                   }}
                 >
                   Back
@@ -1661,7 +1715,7 @@ const VillagePanchayat = () => {
                     </CCol>
                   </CRow>
 
-                  <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+                  <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"DistrictcreateRoleUploadTemplate"}
                     onClick={() => {
 
                       document.getElementById("uploadRoleTemplate").click();
@@ -1678,7 +1732,7 @@ const VillagePanchayat = () => {
                         Upload
                       </CLabel>
                       <CInput
-                        id={"uploadRoleTemplate"}
+                        id={"DistrictuploadRoleTemplate"}
                         style={{ display: "none" }}
                         type={"file"}
                         onChange={handleChange}
@@ -1733,7 +1787,7 @@ const VillagePanchayat = () => {
                         className={"cancelBtn"}
                         onClick={() => {
                           bulkhandleClick();
-                          // handleClick2();
+                          // handleClickpanchayat();
                         }}
                       >
                         Back
@@ -1777,7 +1831,7 @@ const VillagePanchayat = () => {
                                         }}
                                         className="fa fa-remove"
                                         bsStyle="overlay"
-                                        onClick={() => menus1(item)}
+                                        onClick={() => menusremoveicon(item)}
                                       />
                                     </CCol>
                                   </CRow>
@@ -1804,7 +1858,7 @@ const VillagePanchayat = () => {
                           > Save</CButton>
                           <CButton
                             shape={"pill"}
-                            id={"municipalcancel"}
+                            id={"Districtcancel"}
                             style={{ marginTop: "-60px", marginLeft: "550px" }}
                             className={"cancelBtn"}
                             onClick={bulkhandleClick}
@@ -1858,7 +1912,7 @@ const VillagePanchayat = () => {
                     </CCol>
                     </CRow>
 
-                    <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+                    <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"PanchayatcreateRoleUploadTemplate"}
                     onClick={() => {
 
                       document.getElementById("uploadRoleTemplate").click();
@@ -1875,7 +1929,7 @@ const VillagePanchayat = () => {
                         Upload
                       </CLabel>
                       <CInput
-                        id={"uploadRoleTemplate"}
+                        id={"PanchayatuploadRoleTemplate"}
                         style={{ display: "none" }}
                         type={"file"}
                         onChange={handleChange}
@@ -1930,7 +1984,7 @@ const VillagePanchayat = () => {
                         className={"cancelBtn"}
                         onClick={() => {
                           bulkhandleClick();
-                          // handleClick2();
+                          // handleClickpanchayat();
                         }}
                       >
                         Back
@@ -1974,7 +2028,7 @@ const VillagePanchayat = () => {
                                         }}
                                         className="fa fa-remove"
                                         bsStyle="overlay"
-                                        onClick={() => menus1(item)}
+                                        onClick={() => menusremoveicon(item)}
                                       />
                                     </CCol>
                                   </CRow>
@@ -2001,7 +2055,7 @@ const VillagePanchayat = () => {
                           > Save</CButton>
                           <CButton
                             shape={"pill"}
-                            id={"municipalcancel"}
+                            id={"Panchayatcancel"}
                             style={{ marginTop: "-60px", marginLeft: "550px" }}
                             className={"cancelBtn"}
                             onClick={bulkhandleClick}
@@ -2060,7 +2114,7 @@ const VillagePanchayat = () => {
                     </CCol>
                     </CRow>
 
-                    <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+                    <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"VillagecreateRoleUploadTemplate"}
                     onClick={() => {
 
                       document.getElementById("uploadRoleTemplate").click();
@@ -2077,7 +2131,7 @@ const VillagePanchayat = () => {
                         Upload
                       </CLabel>
                       <CInput
-                        id={"uploadRoleTemplate"}
+                        id={"VillageuploadRoleTemplate"}
                         style={{ display: "none" }}
                         type={"file"}
                         onChange={handleChange}
@@ -2132,7 +2186,7 @@ const VillagePanchayat = () => {
                         className={"cancelBtn"}
                         onClick={() => {
                           bulkhandleClick();
-                          // handleClick2();
+                          // handleClickpanchayat();
                         }}
                       >
                         Back
@@ -2177,7 +2231,7 @@ const VillagePanchayat = () => {
                                         }}
                                         className="fa fa-remove"
                                         bsStyle="overlay"
-                                        onClick={() => menus1(item)}
+                                        onClick={() => menusremoveicon(item)}
                                       />
                                     </CCol>
                                   </CRow>
@@ -2204,7 +2258,7 @@ const VillagePanchayat = () => {
                           > Save</CButton>
                           <CButton
                             shape={"pill"}
-                            id={"municipalcancel"}
+                            id={"Villagecancel"}
                             style={{ marginTop: "-60px", marginLeft: "550px" }}
                             className={"cancelBtn"}
                             onClick={bulkhandleClick}
@@ -2284,7 +2338,7 @@ const VillagePanchayat = () => {
                     <CCol>
                       </CCol>
                       </CRow>
-                      <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+                      <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"WardcreateRoleUploadTemplate"}
                     onClick={() => {
 
                       document.getElementById("uploadRoleTemplate").click();
@@ -2301,7 +2355,7 @@ const VillagePanchayat = () => {
                         Upload
                       </CLabel>
                       <CInput
-                        id={"uploadRoleTemplate"}
+                        id={"WarduploadRoleTemplate"}
                         style={{ display: "none" }}
                         type={"file"}
                         onChange={handleChange}
@@ -2400,7 +2454,7 @@ const VillagePanchayat = () => {
                                         }}
                                         className="fa fa-remove"
                                         bsStyle="overlay"
-                                        onClick={() => menus1(item)}
+                                        onClick={() => menusremoveicon(item)}
                                       />
                                     </CCol>
                                   </CRow>
@@ -2427,7 +2481,7 @@ const VillagePanchayat = () => {
                           > Save</CButton>
                           <CButton
                             shape={"pill"}
-                            id={"municipalcancel"}
+                            id={"Wardcancel"}
                             style={{ marginTop: "-60px", marginLeft: "550px" }}
                             className={"cancelBtn"}
                             onClick={bulkhandleClick}
@@ -2461,7 +2515,7 @@ const VillagePanchayat = () => {
                           style={{
                             marginLeft: "45px",
                           }}
-                          id={"saveAbbreviationConfigureCode"}
+                          id={"Villageadd"}
                           className={"saveBtn"}
                           onClick={changeVillagePanchayat}
                         >
@@ -2479,7 +2533,7 @@ const VillagePanchayat = () => {
                       </CLabel>
                       <Select
                         className={"input-align"}
-                        id={"municipalstatename"}
+                        id={"Villagestatename"}
                         name={"state"}
                         placeholder={"Select State"}
                         // value={locations.district}
@@ -2495,7 +2549,7 @@ const VillagePanchayat = () => {
                       </CLabel>
                       <Select
                         className={"input-align"}
-                        id={"municipaldistrict"}
+                        id={"Villagedistrict"}
                         name={"city"}
                         placeholder={"Select District panchayat"}
                         options={select}
@@ -2510,7 +2564,7 @@ const VillagePanchayat = () => {
                       -{" "}
                       <Select
                         className={"input-align"}
-                        id={"municipaldistrict"}
+                        id={"Village"}
                         name={"city"}
                         placeholder={"Select Village panchayat"}
                         options={select}
@@ -2526,7 +2580,7 @@ const VillagePanchayat = () => {
                       </CLabel>
                       <Select
                         className={"input-align"}
-                        id={"municipalpanchayatunion"}
+                        id={"Villagecity"}
                         name={"state"}
                         placeholder={"Select City Name"}
                         options={select}
@@ -2539,7 +2593,7 @@ const VillagePanchayat = () => {
                       </CLabel>
                       <Select
                         className={"input-align"}
-                        id={"municipalvillagepanchayat"}
+                        id={"villagepanchyatunion"}
                         name={"city"}
                         placeholder={"Select Panchayat Union"}
                         options={select}
@@ -2553,7 +2607,7 @@ const VillagePanchayat = () => {
                       -{" "}
                       <Select
                         className={"input-align"}
-                        id={"municipalwardno"}
+                        id={"Villageward"}
                         name={"city"}
                         placeholder={"Select Ward No"}
                         options={selectWard}
@@ -2643,7 +2697,7 @@ const VillagePanchayat = () => {
                       </CLabel>
                       <Select
                         className={"input-align"}
-                        id={"municipalstatename"}
+                        id={"Villagestate"}
                         name={"state"}
                         placeholder={"Select State"}
                         options={select}
@@ -2662,11 +2716,11 @@ const VillagePanchayat = () => {
                             //  isChecked
                             //  closeMenuOnSelect={false}
                             placeholder="Select District Panchayat"
-                            id={"municipalcorporation"}
+                            id={"Villagedistrict"}
                             type={"text"}
                             value={selected}
                             onChange={(e) => setSelected(e)}
-                            components={{ MenuList: SelectMenuButton1 }}
+                            components={{ MenuList: SelectMenuButtondistrict }}
                             options={select}
                             // labelledBy={"Select"}
                           />
@@ -2685,7 +2739,7 @@ const VillagePanchayat = () => {
                               <i
                                 className={"editIcon"}
                               
-                                id={"officeLocationEdit"}
+                                id={"Districtedit"}
                                 class="fas fa-edit"
                               />
                               <div
@@ -2700,7 +2754,7 @@ const VillagePanchayat = () => {
                                 <i
                                   className={"editIcon"}
                                  
-                                  id={"officeLocationEdit"}
+                                  id={"Districtdelete"}
                                   class="fas fa-trash"
                                 />
                               </div>
@@ -2763,7 +2817,7 @@ const VillagePanchayat = () => {
                                 style={{
                                   marginTop: "30px",
                                 }}
-                                id={"locationLibraryStateEdit"}
+                                id={"Districtedit"}
                                 className={"btn btn-success"}
                                 onClick={editState}
                               >
@@ -2879,10 +2933,10 @@ const VillagePanchayat = () => {
                           
                           <Select
                             placeholder="Select Panchayat Union"
-                            id={"municipalcorporation"}
+                            id={"Panchayat"}
                             type={"text"}
                             value={selected1}
-                            components={{ MenuList: SelectMenuButton2 }}
+                            components={{ MenuList: SelectMenuButtonpanchayat }}
                             onChange={changePanchayatUnion}
                             options={selectPanchayat}
                           />
@@ -2899,7 +2953,7 @@ const VillagePanchayat = () => {
                               <i
                                 className={"editIcon"}
                               
-                                id={"officeLocationEdit"}
+                                id={"Panchayatedit"}
                                 class="fas fa-edit"
                               />
                               <div
@@ -2914,7 +2968,7 @@ const VillagePanchayat = () => {
                                 <i
                                   className={"editIcon"}
                                  
-                                  id={"officeLocationEdit"}
+                                  id={"Panchayatdelete"}
                                   class="fas fa-trash"
                                 />
                               </div>
@@ -2940,7 +2994,7 @@ const VillagePanchayat = () => {
                                 style={{
                                   marginTop: "30px",
                                 }}
-                                id={"locationLibraryStateEdit"}
+                                id={"PanchayatEdit"}
                                 className={"btn btn-success"}
                                 onClick={editState}
                               >
@@ -2967,7 +3021,7 @@ const VillagePanchayat = () => {
                             </CLabel>
 
                             <CInput
-                              id={"MunicipalName"}
+                              id={"Panchayat"}
                               name={"municipalname"}
                               placeholder="Enter panchayat Union Name"
                               maxlength="60"
@@ -2981,7 +3035,7 @@ const VillagePanchayat = () => {
                               <span className={"text-danger"}> *</span>
                             </CLabel>
                             <CInput
-                              id={"municipalabrreviation"}
+                              id={"Panchayatabbreviation"}
                               name={"abbreviation"}
                               placeholder="Enter Abbreviation"
                               maxlength="5"
@@ -2994,7 +3048,7 @@ const VillagePanchayat = () => {
                               <span className={"text-danger"}> *</span>
                             </CLabel>
                             <CInput
-                              id={"municipalcode"}
+                              id={"abbreviationcode"}
                               name={"code"}
                               placeholder="Enter Code"
                               maxlength="5"
@@ -3012,7 +3066,7 @@ const VillagePanchayat = () => {
                             </CButton>
                             <CButton
                               shape={"pill"}
-                              id={"municipalcancel"}
+                              id={"abbreviationcancel"}
                               style={{ marginTop: "30px", marginLeft: "20px" }}
                               className={"cancelBtn"}
                               onClick={cancelPanchayat}
@@ -3042,9 +3096,9 @@ const VillagePanchayat = () => {
                           </CLabel>
                           <Select
                             placeholder="Select Village Panchayat"
-                            id={"municipalcorporation"}
+                            id={"VillageSelect"}
                             type={"text"}
-                            components={{ MenuList: SelectMenuButton3 }}
+                            components={{ MenuList: SelectMenuButtonvillage }}
                             onChange={changeVillage}
                             options={select}
                           />
@@ -3061,7 +3115,7 @@ const VillagePanchayat = () => {
                               <i
                                 className={"editIcon"}
                               
-                                id={"officeLocationEdit"}
+                                id={"Villageedit"}
                                 class="fas fa-edit"
                               />
                               <div
@@ -3076,7 +3130,7 @@ const VillagePanchayat = () => {
                                 <i
                                   className={"editIcon"}
                                  
-                                  id={"officeLocationEdit"}
+                                  id={"villagedelete"}
                                   class="fas fa-trash"
                                 />
                               </div>
@@ -3102,7 +3156,7 @@ const VillagePanchayat = () => {
                                 style={{
                                   marginTop: "30px",
                                 }}
-                                id={"locationLibraryStateEdit"}
+                                id={"VillageEdit"}
                                 className={"btn btn-success"}
                                 onClick={editState}
                               >
@@ -3129,8 +3183,8 @@ const VillagePanchayat = () => {
                             </CLabel>
 
                             <CInput
-                              id={"MunicipalName"}
-                              name={"municipalname"}
+                              id={"VillageName"}
+                              name={"Villagename"}
                               placeholder="Enter Village Panchayat Name"
                               maxlength="60"
                               size="60"
@@ -3143,7 +3197,7 @@ const VillagePanchayat = () => {
                               <span className={"text-danger"}> *</span>
                             </CLabel>
                             <CInput
-                              id={"municipalabrreviation"}
+                              id={"Villageabrreviation"}
                               name={"abbreviation"}
                               placeholder="Enter Abbreviation"
                               maxlength="5"
@@ -3156,7 +3210,7 @@ const VillagePanchayat = () => {
                               <span className={"text-danger"}> *</span>
                             </CLabel>
                             <CInput
-                              id={"municipalcode"}
+                              id={"Villagecode"}
                               name={"code"}
                               placeholder="Enter Code"
                               maxlength="5"
@@ -3174,7 +3228,7 @@ const VillagePanchayat = () => {
                             </CButton>
                             <CButton
                               shape={"pill"}
-                              id={"municipalcancel"}
+                              id={"Villagecancel"}
                               style={{ marginTop: "30px", marginLeft: "20px" }}
                               className={"cancelBtn"}
                               onClick={cancelVillage}
@@ -3205,9 +3259,9 @@ const VillagePanchayat = () => {
                           </CLabel>
                           <Select
                             placeholder="Select the Ward Number"
-                            id={"municipalcorporation"}
+                            id={"Ward"}
                             type={"text"}
-                            components={{ MenuList: SelectMenuButton4 }}
+                            components={{ MenuList: SelectMenuButtonward }}
                             onChange={changeWard}
                             options={selectWard}
                           />
@@ -3224,7 +3278,7 @@ const VillagePanchayat = () => {
                               <i
                                 className={"editIcon"}
                               
-                                id={"officeLocationEdit"}
+                                id={"WardEdit"}
                                 class="fas fa-edit"
                               />
                               <div
@@ -3239,7 +3293,7 @@ const VillagePanchayat = () => {
                                 <i
                                   className={"editIcon"}
                                  
-                                  id={"officeLocationEdit"}
+                                  id={"Warddelete"}
                                   class="fas fa-trash"
                                 />
                               </div>
@@ -3265,7 +3319,7 @@ const VillagePanchayat = () => {
                                 style={{
                                   marginTop: "30px",
                                 }}
-                                id={"locationLibraryStateEdit"}
+                                id={"WardeEdit"}
                                 className={"btn btn-success"}
                                 onClick={editState}
                               >
@@ -3293,7 +3347,7 @@ const VillagePanchayat = () => {
 
                             <CInput
                               id={"wardname"}
-                              name={"municipalname"}
+                              name={"Wardname"}
                               placeholder="Enter Ward Number"
                               maxlength="60"
                               size="60"
@@ -3371,7 +3425,7 @@ const VillagePanchayat = () => {
                       </CLabel>
                       <Select
                         className={"input-align"}
-                        id={"municipalarea"}
+                        id={"Villagearea"}
                         name={"area"}
                         placeholder={"Select Area Name"}
                         options={select}
@@ -3394,7 +3448,7 @@ const VillagePanchayat = () => {
                         style={{
                           float: "right",
                         }}
-                        id={"cancelAbbreviationConfigureCode"}
+                        id={"villagecancelAbbreviationConfigureCode"}
                         className={"cancelBtn"}
                         onClick={cancelchange}
                       >

@@ -6,6 +6,7 @@ import {
   CLabel,
   CRow,
   CSelect,
+  CLink,
 } from "@coreui/react";
 import React, { useState } from "react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
@@ -14,7 +15,18 @@ import Select, { components } from "react-select";
 import { toast } from "react-toastify";
 import { Dropdown, Menu } from "antd";
 import 'antd/dist/antd.css';
+import { CSVLink, CSVDownload } from 'react-csv';
+import ReactFileReader from 'react-file-reader';
+import * as XLSX from "xlsx";
+import MultiSelect from "react-multi-select-component";
+import SheetJSFT from "../../../Tools/excelupload/SheetJSFT"
+import { make_cols } from "../../../Tools/excelupload/MakeColumn"
+
 const PartyPosting = () => {
+  const [selected1, setSelected1] = useState([]);
+  const [selected2, setSelected2] = useState([]);
+  const [collected, setCollected] = useState([]);
+  const [villageHide, setVillageHide] =useState({districtpanchayat:true,panchayatunion:false})
   const [location, setLocation] = useState({
     state: "",
     district: "",
@@ -63,7 +75,7 @@ const PartyPosting = () => {
   const selectRole  = [{value:"General",label:"General"},{value:"General",label:"General"}]
   const selectAdministartive =[{value:"Head Quaters Chennai Physician Under Secretary General ",label:"Head Quaters Chennai Physician Under Secretary General"},]
   const selectFunctional =[{value:"Head Quaters Chennai Physician  Secretary General ",label:"Head Quaters Chennai Physician  Secretary General"},]
-  const userData2 = [
+  const userDataAdministrating = [
     {
         SNo: "1",
         Name: "Volunteer Team",
@@ -118,7 +130,7 @@ const PartyPosting = () => {
         EnteredOn:"01/06/2021"
       },
   ];
-  const userData3 = [
+  const userDataFunctional = [
     {
         SNo: "1",
         Name: "Layers Team",
@@ -169,7 +181,7 @@ const PartyPosting = () => {
       filter: false,
     },
   ];
-  const fields1 = [
+  const fieldsPostings = [
     {
         key: "SNo",
       label: "S.NO",
@@ -195,7 +207,7 @@ const PartyPosting = () => {
       filter: false,
     },
   ];
-  const userData1 = [
+  const userDataPostings = [
     {
       SNo: "1",
       Name: "Volunteer Team",
@@ -374,7 +386,344 @@ const PartyPosting = () => {
     </Menu>
     )
   }
+  // const handleClick = () => {
+  
+  //   switch (menu.menuStatus) {
+  //     case "open":
+  //       setMenu({
+  //         menuStatus: "close",
+  //         // style3: "menu2",
+  //         style: "menu active1",
 
+  //       });
+
+  //       setTimeout(() => {
+  //         setSideBaradd(true);
+  //       }, 1000);
+  //       setSideBarbulk(false)
+  //       break;
+  //     case "close":
+  //       setMenu({
+  //         menuStatus: "open",
+  //         // style3: "menu2",
+  //         style: "menu active2",
+
+  //       });
+  //       setTimeout(() => {
+  //         setSideBaradd(false);
+  //       }, 1000);
+  //       break;
+  //   }
+  // };
+  // const bulkhandleClick = () => {
+  
+  //   switch (menu.menuStatus) {
+  //     case "open":
+  //       setMenu({
+  //         menuStatus: "close",
+  //         // style3: "menu2",
+
+  //         style1: "menu active1",
+
+  //       });
+  //       setSideBarbulk(true);  
+  //       setSideBarbulk(false);
+
+  //       break;
+  //     case "close":
+  //       setMenu({
+  //         menuStatus: "open",
+  //         // style3: "menu2",
+  //         style1: "menu active2",
+
+  //       });
+  //       setTimeout(() => {
+
+  //         setSideBarbulk(false);
+  //       }, 1000);
+  //       break;
+  //   }
+  // };
+  // const SelectMenuButtondepartment = (props) => {
+  //   return (
+  //     <components.MenuList {...props}>
+  //       {props.children}
+  //       <div
+  //         style={{
+  //           marginTop: "-75px",
+  //           marginBottom: "-50px",
+  //           minHeight: "150px",
+  //         }}
+  //       >
+  //         <CLink
+  //           className={"saveBtn"}
+  //           onClick={handleClickdepartment}
+  //           style={{ marginLeft: "200px" }}
+  //         >
+  //           Add{" "}
+  //         </CLink>
+  //         <CLink
+  //           className={"saveBtn"}
+  //           onClick={bulkhandleClickdepartment}
+  //           style={{ marginLeft: "50px" }}
+  //         >
+  //           Bulk Upload{" "}
+  //         </CLink>
+  //       </div>
+  //     </components.MenuList>
+  //   );
+  // };
+  // const handleClickdepartment = () => {
+  
+  //   switch (menu.menuStatus) {
+  //     case "open":
+  //       setMenu({
+  //         menuStatus: "close",
+  //         // style3: "menu2",
+  //         style: "menu active1",
+
+  //       });
+
+  //       setTimeout(() => {
+  //         setSideBaradddep(true);
+  //       }, 1000);
+  //       setSideBarbulkdep(false)
+  //       break;
+  //     case "close":
+  //       setMenu({
+  //         menuStatus: "open",
+  //         // style3: "menu2",
+  //         style: "menu active2",
+
+  //       });
+  //       setTimeout(() => {
+  //         setSideBaradddep(false);
+  //       }, 1000);
+  //       break;
+  //   }
+  // };
+  // const bulkhandleClickdepartment = () => {
+  
+  //   switch (menu.menuStatus) {
+  //     case "open":
+  //       setMenu({
+  //         menuStatus: "close",
+  //         // style3: "menu2",
+
+  //         style1: "menu active1",
+
+  //       });
+  //       setSideBarbulkdep(true);  
+  //       setSideBarbulkdes(false);
+
+  //       break;
+  //     case "close":
+  //       setMenu({
+  //         menuStatus: "open",
+  //         // style3: "menu2",
+  //         style1: "menu active2",
+
+  //       });
+  //       setTimeout(() => {
+
+  //         setSideBarbulkdep(false);
+  //       }, 1000);
+  //       break;
+  //   }
+  // };
+  // const SelectMenuButtondesignation = (props) => {
+  //   return (
+  //     <components.MenuList {...props}>
+  //       {props.children}
+  //       <div
+  //         style={{
+  //           marginTop: "-58px",
+  //           marginBottom: "-50px",
+  //           minHeight: "150px",
+  //         }}
+  //       >
+  //         <CLink
+  //           className={"saveBtn"}
+  //           onClick={handleClickdesignation}
+  //           style={{ marginLeft: "200px" }}
+  //         >
+  //           Add{" "}
+  //         </CLink>
+  //         <CLink
+  //           className={"saveBtn"}
+  //           onClick={bulkhandleClickdesignation}
+  //           style={{ marginLeft: "50px" }}
+  //         >
+  //           Bulk Upload{" "}
+  //         </CLink>
+  //       </div>
+  //     </components.MenuList>
+  //   );
+  // };
+  // const handleClickdesignation = () => {
+  
+  //   switch (menu.menuStatus) {
+  //     case "open":
+  //       setMenu({
+  //         menuStatus: "close",
+  //         // style3: "menu2",
+  //         style: "menu active1",
+
+  //       });
+
+  //       setTimeout(() => {
+  //         setSideBaradddes(true);
+  //       }, 1000);
+  //       setSideBarbulkdes(false)
+  //       break;
+  //     case "close":
+  //       setMenu({
+  //         menuStatus: "open",
+  //         // style3: "menu2",
+  //         style: "menu active2",
+
+  //       });
+  //       setTimeout(() => {
+  //         setSideBaradddes(false);
+  //       }, 1000);
+  //       break;
+  //   }
+  // };
+  // const bulkhandleClickdesignation = () => {
+  
+  //   switch (menu.menuStatus) {
+  //     case "open":
+  //       setMenu({
+  //         menuStatus: "close",
+  //         // style3: "menu2",
+
+  //         style1: "menu active1",
+
+  //       });
+  //       setSideBarbulkdes(true);  
+  //       setSideBarbulkdep(false);
+
+  //       break;
+  //     case "close":
+  //       setMenu({
+  //         menuStatus: "open",
+  //         // style3: "menu2",
+  //         style1: "menu active2",
+
+  //       });
+  //       setTimeout(() => {
+
+  //         setSideBarbulkdes(false);
+  //       }, 1000);
+  //       break;
+  //   }
+  // };
+  // const SelectMenuButtonrole = (props) => {
+  //   return (
+  //     <components.MenuList {...props}>
+  //       {props.children}
+  //       <div
+  //         style={{
+  //           marginTop: "-58px",
+  //           marginBottom: "-50px",
+  //           minHeight: "150px",
+  //         }}
+  //       >
+  //         <CLink
+  //           className={"saveBtn"}
+  //           onClick={handleClickrole}
+  //           style={{ marginLeft: "200px" }}
+  //         >
+  //           Add{" "}
+  //         </CLink>
+  //         <CLink
+  //           className={"saveBtn"}
+  //           onClick={bulkhandleClickrole}
+  //           style={{ marginLeft: "50px" }}
+  //         >
+  //           Bulk Upload{" "}
+  //         </CLink>
+  //       </div>
+  //     </components.MenuList>
+  //   );
+  // };
+  // const handleClickrole = () => {
+  
+  //   switch (menu.menuStatus) {
+  //     case "open":
+  //       setMenu({
+  //         menuStatus: "close",
+  //         // style3: "menu2",
+  //         style: "menu active1",
+
+  //       });
+
+  //       setTimeout(() => {
+  //         setSideBaraddrole(true);
+  //       }, 1000);
+  //       setSideBarbulkrole(false)
+  //       break;
+  //     case "close":
+  //       setMenu({
+  //         menuStatus: "open",
+  //         // style3: "menu2",
+  //         style: "menu active2",
+
+  //       });
+  //       setTimeout(() => {
+  //         setSideBaraddrole(false);
+  //       }, 1000);
+  //       break;
+  //   }
+  // };
+  // const bulkhandleClickrole = () => {
+  
+  //   switch (menu.menuStatus) {
+  //     case "open":
+  //       setMenu({
+  //         menuStatus: "close",
+  //         // style3: "menu2",
+
+  //         style1: "menu active1",
+
+  //       });
+  //       setSideBarbulkrole(true);  
+  //       setSideBarbulkdes(false);
+
+  //       break;
+  //     case "close":
+  //       setMenu({
+  //         menuStatus: "open",
+  //         // style3: "menu2",
+  //         style1: "menu active2",
+
+  //       });
+  //       setTimeout(() => {
+
+  //         setSideBarbulkrole(false);
+  //       }, 1000);
+  //       break;
+  //   }
+  // };
+  // const [sideBaradd, setSideBaradd] = useState(false)
+  // const [sideBaradddep, setSideBaradddep] = useState(false)
+  // const [sideBaradddes, setSideBaradddes] = useState(false)
+  // const [sideBaraddrole, setSideBaraddrole] = useState(false)
+
+
+  // const [sideBarbulk, setSideBarbulk] = useState(false)
+  // const [sideBarbulkdep, setSideBarbulkdep] = useState(false)
+  // const [sideBarbulkdes, setSideBarbulkdes] = useState(false)
+  // const [sideBarbulkrole, setSideBarbulkrole] = useState(false)
+
+  // const changePanchayatUnion = (e)=>{
+  //   setSelected1(e)
+  //   setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:true})
+  // }
+  // const changeRoleName = (e)=>{
+  //   setSelected2(e)
+  //   setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:false,role:true})
+  // }
   return (
     <div>
       {hideMappingMunicipal && (
@@ -397,7 +746,7 @@ const PartyPosting = () => {
                          
                             marginLeft: "35px",
                           }}
-                          id={"saveAbbreviationConfigureCode"}
+                          id={"PartyPosting"}
                           className={"saveBtn"}
                           onClick={changeMunicipalCorporation}
                         >
@@ -414,7 +763,7 @@ const PartyPosting = () => {
                       </CLabel>
                       <Select
                       
-                        id={"municipalstatename"}
+                        id={"PartyPostingtype"}
                         name={"state"}
                         placeholder={"Select Type of Office"}
                         value={locations.district}
@@ -428,7 +777,7 @@ const PartyPosting = () => {
                       </CLabel>
                       <Select
                       
-                        id={"municipaldistrict"}
+                        id={"PartyPostingwingsoffice"}
                         name={"city"}
                         placeholder={" Select Type of Party "}
                         value={locations.city}
@@ -445,7 +794,7 @@ const PartyPosting = () => {
                       </CLabel>
                       <Select
                       
-                        id={"municipaldistrict"}
+                        id={"PartyPostinglocation"}
                         name={"city"}
                         placeholder={" Select Office Location"}
                         value={locations.city}
@@ -458,8 +807,8 @@ const PartyPosting = () => {
                
                 <CRow style={{ padding: "4%", marginTop: "-1.5%" ,marginLeft:"-40px"}}>
                   <CDataTable
-                    items={userData1}
-                    fields={fields1}
+                    items={userDataPostings}
+                    fields={fieldsPostings}
                     columnFilter
                     tableFilter
                     tableLabel={"List of Postings"}
@@ -528,7 +877,7 @@ const PartyPosting = () => {
                       </CLabel>
                       <Select
                         
-                        id={"municipalstatename"}
+                        id={"PartyPostingtypeofoffice"}
                         
                         placeholder={"Select Type of Office"}
                         value={typeofOfficess}
@@ -549,21 +898,47 @@ const PartyPosting = () => {
                         placeholder={"Select Department"}
                         value={locations.district}
                         onChange={(e)=>setLocations(e)}
+                        value={collected}
+                        onChange={(e) => setCollected(e)}
+                        // components={{ MenuList: SelectMenuButtondepartment }}
                         options={selectDepartment}
                       />
+                       {villageHide.districtpanchayat && collected.length !== 0 ? (
+                                <div
+                                  style={{
+                                    width: 300,
+                                    marginLeft: "446px",
+                                    marginTop: "-40px",
+                                    padding: 10,
+                                  }}
+                                >
+                                  <i
+                                    className={"editIcon"}
+
+                                    id={"Townedit"}
+                                    class="fas fa-edit"
+                                  />
+                                  <div
+                                    style={{
+                                      width: 300,
+                                      marginLeft: "26px",
+                                      marginTop: "-30px",
+                                      padding: 10,
+                                      color: "red",
+                                    }}
+                                  >
+                                    <i
+                                      className={"editIcon"}
+
+                                      id={"Towndelete"}
+                                      class="fas fa-trash"
+                                    />
+                                  </div>
+                                </div>
+                              ) : null}
                       </CCol>
-                      <CCol className={"column-align"} md={1} lg={1}>
-                        <CButton
-                          shape={"pill"}
-                          id={"addmunicipalcorporation"}
-                          style={{ marginTop: "30px" }}
-                          className={"saveBtn"}
-                          onClick={addDepartment}
-                          
-                        >
-                          ADD
-                        </CButton>
-                      </CCol>
+
+                      
                      
 
                       {municipalName.edit === true ? (
@@ -573,7 +948,7 @@ const PartyPosting = () => {
                               style={{
                                 marginTop: "30px",
                               }}
-                              id={"locationLibraryStateEdit"}
+                              id={"PartyPostingedit"}
                               className={"btn btn-success"}
                               onClick={editState}
                             
@@ -598,7 +973,7 @@ const PartyPosting = () => {
 
                         <CInput
                           
-                          id={"MunicipalName"}
+                          id={"Department"}
                           name={"municipalname"}
                           
                           placeholder=" Department Name"
@@ -615,7 +990,7 @@ const PartyPosting = () => {
                         </CLabel>
                         <CInput
                          
-                          id={"municipalabrreviation"}
+                          id={"Departmentabrreviation"}
                           name={"abbreviation"}
                          
                           placeholder="Enter Abbreviation"
@@ -630,7 +1005,7 @@ const PartyPosting = () => {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                          id={"municipalcode"}
+                          id={"Departmentlcode"}
                          
                           name={"code"}
                           
@@ -644,7 +1019,7 @@ const PartyPosting = () => {
                       <CCol  md="3">
                         <CButton
                           shape={"pill"}
-                          id={"municipalsave"}
+                          id={"Departmentsave"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
                          
@@ -653,7 +1028,7 @@ const PartyPosting = () => {
                         </CButton>
                         <CButton
                           shape={"pill"}
-                          id={"municipalcancel"}
+                          id={"Departmentcancel"}
                           style={{ marginTop: "30px", marginLeft: "20px" }}
                           className={"cancelBtn"}
                           onClick={CancelState}
@@ -676,7 +1051,7 @@ const PartyPosting = () => {
                       <Select
                      
                        
-                        id={"municipalarea"}
+                        id={"partyPostingTypeofWings"}
                         name={"partyPostingTypeofWings"}
                         placeholder={" Select Office Location"}
                         value={locations.city}
@@ -695,17 +1070,50 @@ const PartyPosting = () => {
                      
                           placeholder="Select Designation "
                           id={"partypostingDesignation"}
-                          type={"text"}
-                          value={locations.city}
-                          onChange={(e)=>setLocations(e)}
-                          options={selectDesignation}
-                         
+                          type={"text"}                          
+                          value={selected1}
+                          // onChange={changePanchayatUnion}
+                          // components={{ MenuList: SelectMenuButtondesignation }}                          
+                          options={selectDesignation}                         
                         />
+                         {villageHide.panchayatunion && selected1.length !== 0 ? (
+                                <div
+                                  style={{
+                                    width: 300,
+                                    marginLeft: "446px",
+                                    marginTop: "-40px",
+                                    padding: 10,
+                                  }}
+                                >
+                                  <i
+                                    className={"editIcon"}
+
+                                    id={"wardedit"}
+                                    class="fas fa-edit"
+                                  />
+                                  <div
+                                    style={{
+                                      width: 300,
+                                      marginLeft: "26px",
+                                      marginTop: "-30px",
+                                      padding: 10,
+                                      color: "red",
+                                    }}
+                                  >
+                                    <i
+                                      className={"editIcon"}
+
+                                      id={"warddelete"}
+                                      class="fas fa-trash"
+                                    />
+                                  </div>
+                                </div>
+                              ) : null}
                       </CCol>
                       <CCol className={"column-align"} md={1} lg={1}>
                         <CButton
                           shape={"pill"}
-                          id={"addmunicipalcorporation"}
+                          id={"addpartyPostingcorporation"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
                           onClick={addDesignation}
@@ -723,7 +1131,7 @@ const PartyPosting = () => {
                               style={{
                                 marginTop: "30px",
                               }}
-                              id={"locationLibraryStateEdit"}
+                              id={"partyPostingedit"}
                               className={"btn btn-success"}
                               onClick={editState}
                             
@@ -748,8 +1156,8 @@ const PartyPosting = () => {
 
                         <CInput
                          
-                          id={"MunicipalName"}
-                          name={"municipalname"}
+                          id={"DesignationlName"}
+                          name={"Designationname"}
                          
                           placeholder=" Department Name"
                           maxlength="60"
@@ -765,7 +1173,7 @@ const PartyPosting = () => {
                         </CLabel>
                         <CInput
                          
-                          id={"municipalabrreviation"}
+                          id={"Designationabrreviation"}
                           name={"abbreviation"}
                          
                           placeholder="Enter Abbreviation"
@@ -780,7 +1188,7 @@ const PartyPosting = () => {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                          id={"municipalcode"}
+                          id={"Designationcode"}
                          
                           name={"code"}
                          
@@ -794,7 +1202,7 @@ const PartyPosting = () => {
                       <CCol  md="3">
                         <CButton
                           shape={"pill"}
-                          id={"municipalsave"}
+                          id={"Designationsave"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
                          
@@ -803,7 +1211,7 @@ const PartyPosting = () => {
                         </CButton>
                         <CButton
                           shape={"pill"}
-                          id={"municipalcancel"}
+                          id={"Designationcancel"}
                           style={{ marginTop: "30px", marginLeft: "20px" }}
                           className={"cancelBtn"}
                           onClick={CancelState}
@@ -824,7 +1232,7 @@ const PartyPosting = () => {
                       </CLabel>
                       <Select
                         
-                        id={"municipalstatename"}
+                        id={"Designationstatename"}
                         name={"partyPostingOfficeLocation"}
                         placeholder={"Select Office Location"}
                         value={locations.district}
@@ -840,20 +1248,53 @@ const PartyPosting = () => {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <Select
-                       
+                       value={selected2}
+                      //  onChange={changeRoleName}
+                      //  components={{ MenuList: SelectMenuButtonrole }}
                           placeholder="Select Role Name"
-                          id={"municipalcorporation"}
+                          id={"Rolecorporation"}
                           name={"partyPostingrole   "}
                           type={"text"}
-                          value={locations.district}
-                          onChange={(e)=>setLocations(e)}
                           options={selectRole}
                         />
+                         {villageHide.role && selected2.length !== 0 ? (
+                                <div
+                                  style={{
+                                    width: 300,
+                                    marginLeft: "446px",
+                                    marginTop: "-40px",
+                                    padding: 10,
+                                  }}
+                                >
+                                  <i
+                                    className={"editIcon"}
+
+                                    id={"wardedit"}
+                                    class="fas fa-edit"
+                                  />
+                                  <div
+                                    style={{
+                                      width: 300,
+                                      marginLeft: "26px",
+                                      marginTop: "-30px",
+                                      padding: 10,
+                                      color: "red",
+                                    }}
+                                  >
+                                    <i
+                                      className={"editIcon"}
+
+                                      id={"warddelete"}
+                                      class="fas fa-trash"
+                                    />
+                                  </div>
+                                </div>
+                              ) : null}
                       </CCol>
                       <CCol className={"column-align"} md={1} lg={1}>
                         <CButton
                           shape={"pill"}
-                          id={"addmunicipalcorporation"}
+                          id={"addRolecorporation"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
                           onClick={addRole}
@@ -871,7 +1312,7 @@ const PartyPosting = () => {
                               style={{
                                 marginTop: "30px",
                               }}
-                              id={"locationLibraryStateEdit"}
+                              id={"RoleEdit"}
                               className={"btn btn-success"}
                               onClick={editState}
                              
@@ -896,8 +1337,8 @@ const PartyPosting = () => {
 
                         <CInput
                           
-                          id={"MunicipalName"}
-                          name={"municipalname"}
+                          id={"Role"}
+                          name={"Rolename"}
                           
                           placeholder="Role Name"
                           maxlength="60"
@@ -913,7 +1354,7 @@ const PartyPosting = () => {
                         </CLabel>
                         <CInput
                           
-                          id={"municipalabrreviation"}
+                          id={"Roleabrreviation"}
                           name={"abbreviation"}
                          
                           placeholder="Enter Abbreviation"
@@ -928,7 +1369,7 @@ const PartyPosting = () => {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                          id={"municipalcode"}
+                          id={"Rolecode"}
                          
                           name={"code"}
                           
@@ -942,7 +1383,7 @@ const PartyPosting = () => {
                       <CCol  md="3">
                         <CButton
                           shape={"pill"}
-                          id={"municipalsave"}
+                          id={"Rolesave"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
                           
@@ -951,7 +1392,7 @@ const PartyPosting = () => {
                         </CButton>
                         <CButton
                           shape={"pill"}
-                          id={"municipalcancel"}
+                          id={"Rolecancel"}
                           style={{ marginTop: "30px", marginLeft: "20px" }}
                           className={"cancelBtn"}
                           onClick={CancelState}
@@ -984,7 +1425,7 @@ const PartyPosting = () => {
                         style={{
                           float: "right",
                         }}
-                        id={"cancelAbbreviationConfigureCode"}
+                        id={"RolecancelAbbreviationConfigureCode"}
                         className={"cancelBtn"}
                         onClick={cancelchange}
                       >
@@ -995,7 +1436,7 @@ const PartyPosting = () => {
                           float: "right",
                           marginRight: "15px",
                         }}
-                        id={"saveAbbreviationConfigureCode"}
+                        id={"RolesaveAbbreviationConfigureCode"}
                         className={"saveBtn"}
                         onClick={saveCorporation}
                       >
@@ -1025,7 +1466,7 @@ const PartyPosting = () => {
                       </CLabel>
                       <Select
                         className={"input-align"}
-                        id={"municipalstatename"}
+                        id={"Administrationreportingtoname"}
                         name={"state"}
                         placeholder={"Select Hierarchy Report to"}
                         value={locations.district}
@@ -1049,7 +1490,7 @@ const PartyPosting = () => {
                           float: "right",
                           marginRight: "15px",
                         }}
-                        id={"saveAbbreviationConfigureCode"}
+                        id={"AdministrationsaveAbbreviationConfigureCode"}
                         className={"saveBtn"}
                         onClick={saveCorporation}
                       >
@@ -1061,7 +1502,7 @@ const PartyPosting = () => {
              
                 <CRow style={{ padding: "4%", marginTop: "-2.5%",marginLeft:"-10px" }}>
                   <CDataTable
-                    items={userData2}
+                    items={userDataAdministrating}
                     fields={fields}
                     columnFilter
                     tableFilter
@@ -1084,7 +1525,7 @@ const PartyPosting = () => {
                                 ></i>
                                
                               <i
-                                id={"locationLibraryDelete"}
+                                id={"AdministrationDelete"}
                                 style={{
                                   marginLeft: "5px",
                                   color: "#e85654",
@@ -1123,7 +1564,7 @@ const PartyPosting = () => {
                       </CLabel>
                       <Select
                         className={"input-align"}
-                        id={"municipalstatename"}
+                        id={"Administrationstatename"}
                         name={"state"}
                         placeholder={"Select Hierarchy Report"}
                         value={locations.district}
@@ -1147,7 +1588,7 @@ const PartyPosting = () => {
                           float: "right",
                           marginRight: "15px",
                         }}
-                        id={"saveAbbreviationConfigureCode"}
+                        id={"partypostingaddtolist"}
                         className={"saveBtn"}
                         onClick={saveCorporation}
                       >
@@ -1159,7 +1600,7 @@ const PartyPosting = () => {
              
                 <CRow style={{ padding: "4%", marginTop: "-3.5%",marginLeft:"-10px" }}>
                   <CDataTable
-                    items={userData3}
+                    items={userDataFunctional}
                     fields={fields}
                     columnFilter
                     tableFilter
@@ -1176,7 +1617,7 @@ const PartyPosting = () => {
                             <CRow>
                               <CCol style={{ fontSize: "1.15rem" }} md="12">
                               <i
-                                id={"locationLibraryDelete"}
+                                id={"partypostingDelete"}
                                 style={{
                                   marginLeft: "5px",
                                   color: "#e85654",

@@ -139,7 +139,7 @@ import {
         filter: false,
       },
     ];
-    const userData1 = [];
+    const userData1chiefministegrid = [];
     const fields1 = [
       {
         key: "SNo",
@@ -479,7 +479,7 @@ import {
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"corporationmembericon"}
+            id={"stateministereyegridicon"}
             className="fa fa-eye"
             onClick={chiefministerShow}
           >
@@ -496,7 +496,7 @@ import {
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"corporationmembericon"}
+            id={"stateministereyegridicon"}
             className="fa fa-eye"
             onClick={deputychiefministerShow}
                 >
@@ -514,7 +514,7 @@ import {
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"corporationmembericon"}
+            id={"stateministereyegridicon"}
             className="fa fa-eye"
             onClick={ministryShow}
           >
@@ -818,8 +818,8 @@ import {
                 </CLabel>
                 <Select
                   // className={"input-align"}
-                  id={"rajyasabhaState"}
-                  name={"state"}
+                  id={"stateministerstatus"}
+                  name={"status"}
                   placeholder={"Select Status"}
                   value={locations.district}
                   onChange={changeHandler}
@@ -832,8 +832,8 @@ import {
                 </CLabel>
                 <Select
                   style={{ width: "50px", height: "50px" }}
-                  id={"rajyasabhaStatus"}
-                  name={"Status"}
+                  id={"stateministernote"}
+                  name={"note"}
                   placeholder={" Select Status "}
                   value={locations.city}
                   onChange={changeHandler}
@@ -993,7 +993,7 @@ import {
                         }}
                       >
                         <CDataTable
-                          items={userData1}
+                          items={userData1chiefministegrid}
                           fields={fields}
                           columnFilter
                           tableFilter
@@ -1402,7 +1402,7 @@ import {
                       <CCol  md={1} lg={1}>
                         <CButton
                           shape={"pill"}
-                          id={"addmunicipalcorporation"}
+                          id={"addstateminister"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
                           onClick={enableCreate}
@@ -1418,7 +1418,7 @@ import {
                               style={{
                                 marginTop: "30px",
                               }}
-                              id={"locationLibraryStateEdit"}
+                              id={"stateministerEdit"}
                               className={"btn btn-success"}
                               onClick={""}
                             >
@@ -1441,7 +1441,7 @@ import {
                         </CLabel>
 
                         <CInput
-                          id={"MunicipalName"}
+                          id={"stateministerMinistryName"}
                           name={"stateministerMinistryName"}
                           placeholder="Enter Ministry"
                           maxlength="60"
@@ -1456,7 +1456,7 @@ import {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                          id={"municipalabrreviation"}
+                          id={"stateministerabbreviation"}
                           name={"abbreviation"}
                           placeholder="Enter Abbreviation"
                           maxlength="5"
@@ -1470,7 +1470,7 @@ import {
                           <span className={"text-danger"}> *</span>
                         </CLabel>
                         <CInput
-                          id={"municipalcode"}
+                          id={"stateministercode"}
                           name={"code"}
                           style={{ textTransform: "uppercase" }}
                           placeholder="Enter Code"
@@ -1482,7 +1482,7 @@ import {
                       <CCol  md="3">
                         <CButton
                           shape={"pill"}
-                          id={"municipalsave"}
+                          id={"stateministersave"}
                           style={{ marginTop: "30px" }}
                           className={"saveBtn"}
                         >
@@ -1490,7 +1490,7 @@ import {
                         </CButton>
                         <CButton
                           shape={"pill"}
-                          id={"municipalcancel"}
+                          id={"stateministercancel"}
                           style={{ marginTop: "30px", marginLeft: "20px" }}
                           className={"cancelBtn"}
                           onClick={CancelState}
@@ -1517,7 +1517,7 @@ import {
                         </CLabel>
                         <Select
                           // className={"input-align"}
-                          id={"municipalstatename"}
+                          id={"stateministersearchmember"}
                           // name={"municipalTypeofOffice"}
                           placeholder={"Select Party member"}
                           value={typeofOfficess}
@@ -1606,11 +1606,11 @@ import {
                     >
                       <CCol className={"column-align"} md="4">
                         <CLabel className={"label-name-1"}>From Date </CLabel>
-                        <CInput type="date" id={"rajyasabhadatefrom"} />
+                        <CInput type="date" id={"stateministerdatefrom"} />
                       </CCol>
                       <CCol className={"column-align"} md="4">
                         <CLabel className={"label-name-1"}>To Date </CLabel>
-                        <CInput type="date" id={"rajyasabhadatefrom"} />
+                        <CInput type="date" id={"stateministerdatefrom"} />
                       </CCol>
                     </CRow>
   

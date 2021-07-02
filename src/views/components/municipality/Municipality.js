@@ -55,7 +55,7 @@ const Municipality = () => {
 
   const [variable, setVariable] = useState([])
 
-  const menus1 = (item) => {
+  const menusremoveicon = (item) => {
     return (
       variable.map((x, i) => {
         <tr key={i}>
@@ -266,7 +266,7 @@ const Municipality = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickmunici}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -275,7 +275,7 @@ const Municipality = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickmunici}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -294,7 +294,7 @@ const Municipality = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickward}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -303,7 +303,7 @@ const Municipality = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClick1}
+          onClick={handleClickward}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -325,14 +325,14 @@ const Municipality = () => {
         >
           <CLink
             className={"saveBtn"}
-            onClick={handleClick1}
+            onClick={handleClickmunici}
             style={{ marginLeft: "200px" }}
           >
             Add{" "}
           </CLink>
           <CLink
             className={"saveBtn"}
-            onClick={bulkhandleClick1}
+            onClick={bulkhandleClickmunici}
             style={{ marginLeft: "50px" }}
           >
             Bulk Upload{" "}
@@ -354,14 +354,14 @@ const Municipality = () => {
         >
           <CLink
             className={"saveBtn"}
-            onClick={handleClick2}
+            onClick={handleClickward}
             style={{ marginLeft: "200px" }}
           >
             Add{" "}
           </CLink>
           <CLink
             className={"saveBtn"}
-            onClick={bulkhandleClick2}
+            onClick={bulkhandleClickward}
             style={{ marginLeft: "50px" }}
           >
             Bulk Upload{" "}
@@ -418,7 +418,7 @@ const Municipality = () => {
   });
   const [sideBar1, setSideBar1] = useState(false);
   const [sideBar2, setSideBar2] = useState(false);
-  const handleClick1 = () => {
+  const handleClickmunici = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -430,8 +430,12 @@ const Municipality = () => {
         });
 
         setTimeout(() => {
-          setSideBar1(true);
+          setSideBar1(true);        
         }, 1000);
+setSideBar2(false)
+setSideBarup1(false)
+setSideBarup2(false)
+        
         break;
       case "close":
         setMenu({
@@ -446,7 +450,7 @@ const Municipality = () => {
         break;
     }
   };
-  const handleClick2 = () => {
+  const handleClickward = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -460,6 +464,8 @@ const Municipality = () => {
         setTimeout(() => {
           setSideBar2(true);
         }, 1000);
+        setSideBarup1(false)
+        setSideBarup2(false)
         break;
       case "close":
         setMenu({
@@ -477,7 +483,7 @@ const Municipality = () => {
   const [sideBarup, setSideBarup] = useState(false)
   const [sideBarup1, setSideBarup1] = useState(false)
   const [sideBarup2, setSideBarup2] = useState(false)
-  const bulkhandleClick1 = () => {
+  const bulkhandleClickmunici = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -489,6 +495,7 @@ const Municipality = () => {
 
         });
         setSideBarup1(true);
+        setSideBarup2(false);
 
 
 
@@ -507,7 +514,7 @@ const Municipality = () => {
         break;
     }
   };
-  const bulkhandleClick2 = () => {
+  const bulkhandleClickward = () => {
 
     switch (menu.menuStatus) {
       case "open":
@@ -754,7 +761,7 @@ const Municipality = () => {
                 id={"municipalcancel"}
                 style={{ marginTop: "-59px", marginLeft: "90px" }}
                 className={"cancelBtn"}
-                onClick={handleClick1}
+                onClick={handleClickmunici}
               >
                 CANCEL
               </CButton>
@@ -768,8 +775,8 @@ const Municipality = () => {
             style={{ position: "absolute", top: "15px", right: "15px" }}
             className={"cancelBtn"}
             onClick={() => {
-              handleClick1();
-              // handleClick2();
+              handleClickmunici();
+              // handleClickward();
             }}
           >
             Back
@@ -796,7 +803,23 @@ const Municipality = () => {
                 </div>
               </CCol>
             </CRow>
-
+            <CRow
+              className={"row-alignment"}
+              style={{ marginLeft: "5px", marginTop: "20px" }}
+              sm={12}
+              md={12}
+              lg={12}
+            >
+              <CCol>
+                <CLabel
+                  style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                  className={"form-labels-6"}
+                >
+                  Municipality:
+                </CLabel>
+                <span style={{ marginTop: "13px", marginLeft: "5px", }}>Wallajabhad</span>
+              </CCol>
+            </CRow>
 
             {inputList.map((x, i) => {
               return (
@@ -815,7 +838,7 @@ const Municipality = () => {
                     </CLabel>
 
                     <CInput
-                      id={"MunicipalName"}
+                      id={"wardName"}
                       name={"municipalname"}
                       placeholder="Enter Ward Number"
                       maxlength="60"
@@ -831,7 +854,7 @@ const Municipality = () => {
                       <span className={"text-danger"}> *</span>
                     </CLabel>
                     <CInput
-                      id={"municipalabrreviation"}
+                      id={"wardabrreviation"}
                       name={"abbreviation"}
                       placeholder="Enter Abbreviation"
                       maxlength="5"
@@ -846,7 +869,7 @@ const Municipality = () => {
                       <span className={"text-danger"}> *</span>
                     </CLabel>
                     <CInput
-                      id={"municipalcode"}
+                      id={"wardcode"}
                       name={"code"}
                       placeholder="Enter Code"
                       maxlength="5"
@@ -911,10 +934,10 @@ const Municipality = () => {
                 > Save</CButton>
                 <CButton
                   shape={"pill"}
-                  id={"municipalcancel"}
+                  id={"wardcancel"}
                   style={{ marginTop: "-59px", marginLeft: "90px" }}
                   className={"cancelBtn"}
-                  onClick={handleClick2}
+                  onClick={handleClickward}
                 >
                   CANCEL
                 </CButton>
@@ -928,8 +951,8 @@ const Municipality = () => {
               style={{ position: "absolute", top: "15px", right: "15px" }}
               className={"cancelBtn"}
               onClick={() => {
-                handleClick2();
-                // handleClick2();
+                handleClickward();
+                // handleClickward();
               }}
             >
               Back
@@ -956,7 +979,7 @@ const Municipality = () => {
               </CCol>
             </CRow>
 
-            <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+            <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"municicreateRoleUploadTemplate"}
               onClick={() => {
 
                 document.getElementById("uploadRoleTemplate").click();
@@ -973,7 +996,7 @@ const Municipality = () => {
                   Upload
                 </CLabel>
                 <CInput
-                  id={"uploadRoleTemplate"}
+                  id={"municiuploadRoleTemplate"}
                   style={{ display: "none" }}
                   type={"file"}
                   onChange={handleChange}
@@ -1028,7 +1051,7 @@ const Municipality = () => {
                     className={"cancelBtn"}
                     onClick={() => {
                       bulkhandleClick();
-                      // handleClick2();
+                      // handleClickward();
                     }}
                   >
                     Back
@@ -1171,7 +1194,7 @@ const Municipality = () => {
               </CCol>
             </CRow>
 
-            <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"createRoleUploadTemplate"}
+            <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"wardcreateRoleUploadTemplate"}
               onClick={() => {
 
                 document.getElementById("uploadRoleTemplate").click();
@@ -1188,7 +1211,7 @@ const Municipality = () => {
                   Upload
                 </CLabel>
                 <CInput
-                  id={"uploadRoleTemplate"}
+                  id={"warduploadRoleTemplate"}
                   style={{ display: "none" }}
                   type={"file"}
                   onChange={handleChange}
@@ -1242,7 +1265,7 @@ const Municipality = () => {
                     className={"cancelBtn"}
                     onClick={() => {
                       bulkhandleClick();
-                      // handleClick2();
+                      // handleClickward();
                     }}
                   >
                     Back
@@ -1286,7 +1309,7 @@ const Municipality = () => {
                                   }}
                                   className="fa fa-remove"
                                   bsStyle="overlay"
-                                  onClick={() => menus1(item)}
+                                  onClick={() => menusremoveicon(item)}
                                 />
                               </CCol>
                             </CRow>
@@ -1313,7 +1336,7 @@ const Municipality = () => {
                     > Save</CButton>
                     <CButton
                       shape={"pill"}
-                      id={"municipalcancel"}
+                      id={"wardcancel"}
                       style={{ marginTop: "-60px", marginLeft: "550px" }}
                       className={"cancelBtn"}
                       onClick={bulkhandleClick}
@@ -1350,7 +1373,7 @@ const Municipality = () => {
 
                                 marginLeft: "35px",
                               }}
-                              id={"saveAbbreviationConfigureCode"}
+                              id={"wardsaveAbbreviationConfigureCode"}
                               className={"saveBtn"}
                               onClick={changeMunicipality}
                             >
@@ -1557,7 +1580,7 @@ const Municipality = () => {
                                   <i
                                     className={"editIcon"}
 
-                                    id={"officeLocationEdit"}
+                                    id={"municiedit"}
                                     class="fas fa-edit"
                                   />
                                   <div
@@ -1572,7 +1595,7 @@ const Municipality = () => {
                                     <i
                                       className={"editIcon"}
 
-                                      id={"officeLocationEdit"}
+                                      id={"municidelete"}
                                       class="fas fa-trash"
                                     />
                                   </div>
@@ -1587,7 +1610,7 @@ const Municipality = () => {
                                     style={{
                                       marginTop: "30px",
                                     }}
-                                    id={"locationLibraryStateEdit"}
+                                    id={"municiedit"}
                                     className={"btn btn-success"}
                                     onClick={editState}
                                   >
@@ -1622,7 +1645,7 @@ const Municipality = () => {
                               </CLabel>
                               <Select
                                 placeholder="Select Ward Number"
-                                id={"municipalcorporation"}
+                                id={"municipalcorporationward"}
                                 type={"text"}
                                 value={selected1}
                                 onChange={changePanchayatUnion}
@@ -1641,7 +1664,7 @@ const Municipality = () => {
                                   <i
                                     className={"editIcon"}
 
-                                    id={"officeLocationEdit"}
+                                    id={"wardedit"}
                                     class="fas fa-edit"
                                   />
                                   <div
@@ -1656,7 +1679,7 @@ const Municipality = () => {
                                     <i
                                       className={"editIcon"}
 
-                                      id={"officeLocationEdit"}
+                                      id={"warddelete"}
                                       class="fas fa-trash"
                                     />
                                   </div>
@@ -1672,7 +1695,7 @@ const Municipality = () => {
                                     style={{
                                       marginTop: "30px",
                                     }}
-                                    id={"locationLibraryStateEdit"}
+                                    id={"municiedit"}
                                     className={"btn btn-success"}
                                     onClick={editStateadd}
                                   >
@@ -1810,11 +1833,11 @@ const Municipality = () => {
                                         color: "#3480e2",
                                         cursor: "pointer",
                                       }}
-                                      id={"locationLibraryEdit"}
+                                      id={"municiedit"}
                                       className="fas fa-edit"
                                     ></i>
                                     <i
-                                      id={"locationLibraryDelete"}
+                                      id={"municidelete"}
                                       style={{
                                         marginLeft: "5px",
                                         color: "#e85654",

@@ -92,7 +92,7 @@ const RajyaSabha = () => {
       filter: false,
     },
   ];
-  const userData1 = [
+  const userDatarajyasabha = [
     {
       SNo: "1",
       Name: "Jai Balaji",
@@ -130,7 +130,7 @@ const RajyaSabha = () => {
       EnteredOn: "24/05/2028",
     },
   ];
-  const fields1 = [
+  const fieldsuse = [
     {
       key: "SNo",
       label: "S.NO",
@@ -545,7 +545,7 @@ const RajyaSabha = () => {
               cursor: "pointer",
               marginBottom: "15px",
             }}
-            id={"memberregisterediticon"}
+            id={"partypostinggridrajyasabha"}
             className="fa fa-eye"
             onClick={() =>
               setGridShow({
@@ -570,7 +570,7 @@ const RajyaSabha = () => {
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"memberregisterediticon"}
+            id={"RepresentativePostingrajyasabha"}
             className="fa fa-eye"
             onClick={() =>
               setGridShow({
@@ -595,7 +595,7 @@ const RajyaSabha = () => {
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"memberregisterediticon"}
+            id={"rajyasabhaStateMinistersPortofolio"}
             className="fa fa-eye"
             onClick={() =>
               setGridShow({
@@ -620,7 +620,7 @@ const RajyaSabha = () => {
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"memberregisterediticon"}
+            id={"centralMinistersPortofoliorajyasabha"}
             className="fa fa-eye"
             onClick={() =>
               setGridShow({
@@ -886,8 +886,8 @@ const RajyaSabha = () => {
                 <span className={"text-danger"}>*</span>
               </CLabel>
               <Select
-                id={"rajyasabhaState"}
-                name={"state"}
+                id={"rajyasabhaStatus"}
+                name={"Status"}
                 placeholder={"Select Status"}
                 value={locations.district}
                 onChange={changeHandler}
@@ -900,8 +900,8 @@ const RajyaSabha = () => {
               </CLabel>
               <CTextarea
                 style={{ height: "80px" }}
-                id={"rajyasabhaStatus"}
-                name={"Status"}
+                id={"rajyasabhaNote"}
+                name={"Note"}
                 placeholder={" Enter Text "}
                 value={locations.city}
                 onChange={changeHandler}
@@ -921,7 +921,7 @@ const RajyaSabha = () => {
                   style={{
                     float: "right",
                   }}
-                  id={"cancelAbbreviationConfigureCode"}
+                  id={"rajyasabhacancel"}
                   className={"cancelBtn"}
                 >
                   CANCEL
@@ -931,7 +931,7 @@ const RajyaSabha = () => {
                     float: "right",
                     marginRight: "15px",
                   }}
-                  id={"saveAbbreviationConfigureCode"}
+                  id={"rajyasabhaupdate"}
                   className={"saveBtn"}
                   onClick={saveCorporation}
                 >
@@ -970,7 +970,7 @@ const RajyaSabha = () => {
                             
                             marginLeft: "35px",
                           }}
-                          id={"saveAbbreviationConfigureCode"}
+                          id={"addmemberrajyasabha"}
                           className={"saveBtn"}
                           onClick={changeMunicipalCorporation}
                         >
@@ -1017,7 +1017,7 @@ const RajyaSabha = () => {
                   }}
                 >
                   <CDataTable
-                    items={userData1}
+                    items={userDatarajyasabha}
                     fields={fields}
                     columnFilter
                     tableFilter
@@ -1093,7 +1093,7 @@ const RajyaSabha = () => {
                       </CLabel>
                       <Select
                         // className={"input-align"}
-                        id={"municipalstatename"}
+                        id={"rajyasabhaSearch"}
                         // name={"municipalTypeofOffice"}
                         placeholder={"Select Party member"}
                         value={typeofOfficess}
@@ -1184,13 +1184,13 @@ const RajyaSabha = () => {
                       <CLabel className={"label-name-1"}>
                         Date of Appointment{" "}
                       </CLabel>
-                      <CInput type="date" id={"rajyasabhadatefrom"} />
+                      <CInput type="date" id={"rajyasabhadateappointment"} />
                     </CCol>
                     <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name-1"}>
                         Date of Retirmment{" "}
                       </CLabel>
-                      <CInput type="date" id={"rajyasabhadatefrom"} />
+                      <CInput type="date" id={"rajyasabhadateretirement"} />
                     </CCol>
                   </CRow>
                   <CCol md="10">
@@ -1207,7 +1207,7 @@ const RajyaSabha = () => {
                         style={{
                           float: "right",
                         }}
-                        id={"cancelAbbreviationConfigureCode"}
+                        id={"rajyasabhacancel"}
                         className={"cancelBtn"}
                         onClick={cancelchangeMunicipalCorporation}
                       >
@@ -1218,13 +1218,13 @@ const RajyaSabha = () => {
                           float: "right",
                           marginRight: "15px",
                         }}
-                        id={"saveAbbreviationConfigureCode"}
+                        id={"rajyasabhasave"}
                         className={"saveBtn"}
                         onClick={saveCorporation}
                       >
                         Map Member
                       </CButton>{" "}
-                    </CCol>
+                </CCol>
                   </CCol>
                 </div>
               </div>
