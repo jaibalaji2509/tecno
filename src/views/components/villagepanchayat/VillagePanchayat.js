@@ -44,7 +44,7 @@ const VillagePanchayat = () => {
   const [selected1, setSelected1] = useState([]);
   const [selected2, setSelected2] = useState([]);
   const [selected3, setSelected3] = useState([]);
-  const [villageHide, setVillageHide] =useState({districtpanchayat:true,panchayatunion:false})
+  const [villageHide, setVillageHide] = useState({ districtpanchayat: true, panchayatunion: false })
   const [municipalName] = useState("");
   const [villageList, setvillageList] = useState(true);
   const [villageCreate, setVillageCreate] = useState(false);
@@ -62,7 +62,7 @@ const VillagePanchayat = () => {
   });
 
   const select = [
- 
+
     {
       span: (
         <CLink
@@ -83,9 +83,9 @@ const VillagePanchayat = () => {
         </CLink>
       ),
     },
-    { value: "tamil", label: "Tamilnadu",id:"1" },
-    { value: "Chengalpattu", label: "Chengalpattu" ,id:"2"},
-    { value: "Chunampedu", label: "Chunampedu",id:"3" },
+    { value: "tamil", label: "Tamilnadu", id: "1" },
+    { value: "Chengalpattu", label: "Chengalpattu", id: "2" },
+    { value: "Chunampedu", label: "Chunampedu", id: "3" },
     { value: "Vanniyallur", label: "Vanniyallur" },
     { value: "Agaem", label: "Agaram kuturoad" },
     { value: "porpanthel", label: "porpanthal" },
@@ -491,13 +491,10 @@ const VillagePanchayat = () => {
         setTimeout(() => {
           setSideBar1(true);
         }, 1000);
-setSideBar2(false);
-setSideBar3(false);
-setSideBar4(false);
-setSideBarup1(false)
-setSideBarup2(false)
-setSideBarup3(false)
-setSideBarup4(false)
+        setSideBarup1(false)
+        setSideBarup2(false)
+        setSideBarup3(false)
+        setSideBarup4(false)
         break;
       case "close":
         setMenu({
@@ -525,13 +522,10 @@ setSideBarup4(false)
         setTimeout(() => {
           setSideBar2(true);
         }, 1000);
-setSideBar1(false);
-setSideBar3(false);
-setSideBar4(false);
-setSideBarup1(false)
-setSideBarup2(false)
-setSideBarup3(false)
-setSideBarup4(false)
+        setSideBarup1(false)
+        setSideBarup2(false)
+        setSideBarup3(false)
+        setSideBarup4(false)
         break;
       case "close":
         setMenu({
@@ -559,13 +553,10 @@ setSideBarup4(false)
         setTimeout(() => {
           setSideBar3(true);
         }, 1000);
-setSideBar2(false);
-setSideBar1(false);
-setSideBar4(false);
-setSideBarup1(false)
-setSideBarup2(false)
-setSideBarup3(false)
-setSideBarup4(false)
+        setSideBarup1(false)
+        setSideBarup2(false)
+        setSideBarup3(false)
+        setSideBarup4(false)
         break;
       case "close":
         setMenu({
@@ -593,13 +584,10 @@ setSideBarup4(false)
         setTimeout(() => {
           setSideBar4(true);
         }, 1000);
-setSideBar2(false);
-setSideBar3(false);
-setSideBar1(false);
-setSideBarup1(false)
-setSideBarup2(false)
-setSideBarup3(false)
-setSideBarup4(false)
+        setSideBarup1(false)
+        setSideBarup2(false)
+        setSideBarup3(false)
+        setSideBarup4(false)
         break;
       case "close":
         setMenu({
@@ -655,6 +643,10 @@ setSideBarup4(false)
           style1: "menu active1",
         });
         setSideBarup1(true);
+        setSideBar1(false)
+        setSideBar2(false)
+        setSideBar3(false)
+        setSideBar4(false)
         setSideBarup2(false)
         setSideBarup3(false)
         setSideBarup4(false)
@@ -671,7 +663,7 @@ setSideBarup4(false)
         }, 1000);
         break;
     }
-    
+
   };
   const bulkhandleClickpanchayat = () => {
     switch (menu.menuStatus) {
@@ -683,6 +675,10 @@ setSideBarup4(false)
           style1: "menu active1",
         });
         setSideBarup2(true);
+        setSideBar1(false)
+        setSideBar2(false)
+        setSideBar3(false)
+        setSideBar4(false)
         setSideBarup1(false)
         setSideBarup3(false)
         setSideBarup4(false)
@@ -699,7 +695,7 @@ setSideBarup4(false)
         }, 1000);
         break;
     }
-    
+
   };
   const bulkhandleClickvillage = () => {
     switch (menu.menuStatus) {
@@ -711,6 +707,10 @@ setSideBarup4(false)
           style1: "menu active1",
         });
         setSideBarup3(true);
+        setSideBar1(false)
+        setSideBar2(false)
+        setSideBar3(false)
+        setSideBar4(false)
         setSideBarup2(false)
         setSideBarup1(false)
         setSideBarup4(false)
@@ -727,7 +727,7 @@ setSideBarup4(false)
         }, 1000);
         break;
     }
-    
+
   };
   const bulkhandleClickward = () => {
     switch (menu.menuStatus) {
@@ -739,6 +739,10 @@ setSideBarup4(false)
           style1: "menu active1",
         });
         setSideBarup4(true);
+        setSideBar1(false)
+        setSideBar2(false)
+        setSideBar3(false)
+        setSideBar4(false)
         setSideBarup2(false)
         setSideBarup3(false)
         setSideBarup1(false)
@@ -755,7 +759,7 @@ setSideBarup4(false)
         }, 1000);
         break;
     }
-    
+
   };
   const bulkhandleClick = () => {
     switch (menu.menuStatus) {
@@ -781,7 +785,7 @@ setSideBarup4(false)
         }, 1000);
         break;
     }
-    
+
   };
   const [counter, setCount] = useState(0);
 
@@ -912,33 +916,33 @@ setSideBarup4(false)
         </CLink>
       ),
     },
-    {value:"chennai",label:"chennai"},{value:"salem",label:"salem"},{value:"madurai",label:"madurai"}]
+    { value: "chennai", label: "chennai" }, { value: "salem", label: "salem" }, { value: "madurai", label: "madurai" }]
 
-  const [mobilenumber, setMobileNumber]=useState("")
-  const [validerror, setValidError] =useState("")
+  const [mobilenumber, setMobileNumber] = useState("")
+  const [validerror, setValidError] = useState("")
   switch (mobilenumber) {
     case (mobilenumber.length > 10):
-      return console.log("more than 5 digit number","track");
+      return console.log("more than 5 digit number", "track");
       break;
-     
+
     default:
-      console.log("more than 10 digit number","track  ")
+      console.log("more than 10 digit number", "track  ")
   }
   // if(mobilenumber.length > 10){
   //   setValidError("this is longer","track")
   // }
 
-  const changePanchayatUnion = (e)=>{
+  const changePanchayatUnion = (e) => {
     setSelected1(e)
-    setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:true})
+    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: true })
   }
-  const changeVillage = (e)=>{
+  const changeVillage = (e) => {
     setSelected2(e)
-    setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:false,village:true})
+    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: false, village: true })
   }
-  const changeWard = (e)=>{
+  const changeWard = (e) => {
     setSelected3(e)
-    setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:false,village:false,ward:true})
+    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: false, village: false, ward: true })
   }
   return (
     <div className={menu.style3}>
@@ -959,7 +963,7 @@ setSideBarup4(false)
               </div>
             </CCol>
           </CRow>
-         
+
           {inputList.map((x, i) => {
             return (
               <CRow
@@ -969,11 +973,11 @@ setSideBarup4(false)
                 md={12}
                 lg={12}
               >
-               
-                <CCol md="2" style={{minHeight:"10px"}}>
+
+                <CCol md="2" style={{ minHeight: "10px" }}>
                   <CLabel
                     className={"label-name-1"}
-                    style={{ fontSize: "block",marginLeft:"-20px" }}
+                    style={{ fontSize: "block", marginLeft: "-20px" }}
                   >
                     District Panchayat
                     <span className={"text-danger"}> *</span>
@@ -985,11 +989,11 @@ setSideBarup4(false)
                     placeholder="Enter District Panchayat"
                     maxlength="60"
                     size="60"
-                    style={{marginLeft:"-20px", width:"120px"}}
+                    style={{ marginLeft: "-20px", width: "120px" }}
                     value={x.panchayatname}
                     onChange={(e) => handleInputChange(e, i)}
                   />
-                
+
                 </CCol>
 
                 <CCol md="2">
@@ -1107,7 +1111,7 @@ setSideBarup4(false)
           </CRow>
         </div>
       )}
-       <div className={menu.style3}>
+      <div className={menu.style3}>
         {sideBar2 && (
           <div className={menu.style} style={{ marginLeft: "-108px" }}>
 
@@ -1127,22 +1131,22 @@ setSideBarup4(false)
               </CCol>
             </CRow>
             <CRow
-                    className={"row-alignment"}
-                    style={{ marginLeft: "5px", marginTop: "20px" }}
-                    sm={12}
-                    md={12}
-                    lg={12}
-                  >
-                    <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      District Panchayat:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}></span>
-                    </CCol>
-                    </CRow>
+              className={"row-alignment"}
+              style={{ marginLeft: "5px", marginTop: "20px" }}
+              sm={12}
+              md={12}
+              lg={12}
+            >
+              <CCol>
+                <CLabel
+                  style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                  className={"form-labels-6"}
+                >
+                  District Panchayat:
+                </CLabel>
+                <span style={{ marginTop: "13px", marginLeft: "5px", }}></span>
+              </CCol>
+            </CRow>
 
             {inputList.map((x, i) => {
               return (
@@ -1155,8 +1159,8 @@ setSideBarup4(false)
                   lg={12}
                 >
                   <CCol md="2">
-                    <CLabel className={"label-name-1"} style={{marginLeft:"-20px"}}>
-                    Panchayat Union
+                    <CLabel className={"label-name-1"} style={{ marginLeft: "-20px" }}>
+                      Panchayat Union
                       <span className={"text-danger"}> *</span>
                     </CLabel>
 
@@ -1166,7 +1170,7 @@ setSideBarup4(false)
                       placeholder="Enter Panchayat Union Name"
                       maxlength="60"
                       size="60"
-                      style={{marginLeft:"-20px", width:"120px"}}
+                      style={{ marginLeft: "-20px", width: "120px" }}
                       value={x.panchayatname}
                       onChange={e => handleInputChange(e, i)}
                     />
@@ -1304,32 +1308,32 @@ setSideBarup4(false)
                 </CCol>
               </CRow>
               <CRow
-                    className={"row-alignment"}
-                    style={{ marginLeft: "5px", marginTop: "20px" }}
-                    sm={12}
-                    md={12}
-                    lg={12}
+                className={"row-alignment"}
+                style={{ marginLeft: "5px", marginTop: "20px" }}
+                sm={12}
+                md={12}
+                lg={12}
+              >
+                <CCol>
+                  <CLabel
+                    style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                    className={"form-labels-6"}
                   >
-                    <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      District Panchayat:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}></span>
-                    </CCol>
-                    <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                       Panchayat Union:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}></span>
-                    </CCol>
-                  </CRow>
-                 
+                    District Panchayat:
+                  </CLabel>
+                  <span style={{ marginTop: "13px", marginLeft: "5px", }}></span>
+                </CCol>
+                <CCol>
+                  <CLabel
+                    style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                    className={"form-labels-6"}
+                  >
+                    Panchayat Union:
+                  </CLabel>
+                  <span style={{ marginTop: "13px", marginLeft: "5px", }}></span>
+                </CCol>
+              </CRow>
+
 
               {inputList.map((x, i) => {
                 return (
@@ -1342,8 +1346,8 @@ setSideBarup4(false)
                     lg={12}
                   >
                     <CCol md="2">
-                      <CLabel className={"label-name-1"} style={{marginLeft:"-20px"}}>
-                      Village Panchayat
+                      <CLabel className={"label-name-1"} style={{ marginLeft: "-20px" }}>
+                        Village Panchayat
                         <span className={"text-danger"}> *</span>
                       </CLabel>
 
@@ -1353,7 +1357,7 @@ setSideBarup4(false)
                         placeholder="Enter Village Panchayat Name"
                         maxlength="60"
                         size="60"
-                        style={{marginLeft:"-20px", width:"120px"}}
+                        style={{ marginLeft: "-20px", width: "120px" }}
                         value={x.panchayatname}
                         onChange={e => handleInputChange(e, i)}
                       />
@@ -1389,7 +1393,7 @@ setSideBarup4(false)
                         onChange={e => handleInputChange(e, i)}
                       />
                     </CCol>
-                    
+
                     <CRow>
                       <CCol md="3">
                         {inputList.length - 1 === i &&
@@ -1501,48 +1505,48 @@ setSideBarup4(false)
                   </CCol>
                 </CRow>
                 <CRow
-                    className={"row-alignment"}
-                    style={{ marginLeft: "5px", marginTop: "20px" }}
-                    sm={12}
-                    md={12}
-                    lg={12}
-                  >
-                    <CCol>
+                  className={"row-alignment"}
+                  style={{ marginLeft: "5px", marginTop: "20px" }}
+                  sm={12}
+                  md={12}
+                  lg={12}
+                >
+                  <CCol>
                     <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
+                      style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
                       className={"form-labels-6"}
                     >
                       District Panchayat:
                     </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}></span>
-                    </CCol>
-                    <CCol>
+                    <span style={{ marginTop: "13px", marginLeft: "5px", }}></span>
+                  </CCol>
+                  <CCol>
                     <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
+                      style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
                       className={"form-labels-6"}
                     >
                       Village Panchayat:
                     </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}></span>
-                    </CCol>
-                  </CRow>
-                  <CRow
-                    className={"row-alignment"}
-                    style={{ marginLeft: "5px", marginTop: "5px" }}
-                    sm={12}
-                    md={12}
-                    lg={12}
-                  >
-                    <CCol>
+                    <span style={{ marginTop: "13px", marginLeft: "5px", }}></span>
+                  </CCol>
+                </CRow>
+                <CRow
+                  className={"row-alignment"}
+                  style={{ marginLeft: "5px", marginTop: "5px" }}
+                  sm={12}
+                  md={12}
+                  lg={12}
+                >
+                  <CCol>
                     <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
+                      style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
                       className={"form-labels-6"}
                     >
-                     Panchayat Union:
+                      Panchayat Union:
                     </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}></span>
-                    </CCol>
-                    </CRow>
+                    <span style={{ marginTop: "13px", marginLeft: "5px", }}></span>
+                  </CCol>
+                </CRow>
 
                 {inputList.map((x, i) => {
                   return (
@@ -1557,7 +1561,7 @@ setSideBarup4(false)
 
                       <CCol md="2">
                         <CLabel className={"label-name-1"}>
-                        Ward Number
+                          Ward Number
                           <span className={"text-danger"}> *</span>
                         </CLabel>
 
@@ -1696,1073 +1700,1116 @@ setSideBarup4(false)
               </div>
 
             )}
-    {sideBarup1 && (
-                <div className={menu.style1} style={{ marginLeft: "-108px" }}>
 
-                  <CRow className={""}>
-                    <CCol md="12" lg="12" sm="12">
-                      <div>
-                        <span
-                          style={{
-                            fontSize: "18px",
-                            fontWeight: "700",
-                            marginLeft: "20px",
-                          }}
-                        >
-                          ADDING District Panchayat{" "}
-                        </span>
-                      </div>
-                    </CCol>
-                  </CRow>
+            {sideBarup1 && (
+              <div className={menu.style1} style={{ marginLeft: "-108px" }}>
 
-                  <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"DistrictcreateRoleUploadTemplate"}
-                    onClick={() => {
+                <CRow className={""}>
 
-                      document.getElementById("uploadRoleTemplate").click();
-                    }}>
-                    <CCol md="12">
-                      <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
-                        <i className="fas fa-upload"></i>&nbsp;
-                      </span>
-
-                      <CLabel
-                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
-                        className={"form-labels-6"}
-                      >
-                        Upload
-                      </CLabel>
-                      <CInput
-                        id={"DistrictuploadRoleTemplate"}
-                        style={{ display: "none" }}
-                        type={"file"}
-                        onChange={handleChange}
-                        accept={SheetJSFT}
-
-
-                      />
-
-
-                    </CCol>
-                    </CRow>
-
-                    <CRow>
-                    <CCol md="12" style={{ top: "-38px" }}>
-                      <CSVLink data={csvData} >
-                        {/* <CButton
-                        shape={"pill"}
-                        id={"municipalcancel"}
-                        style={{ marginTop: "-60px", marginLeft: "160px" }}
-                        className={"cancelBtn"}
-
-                      >
-                        Download
-                      </CButton> */}
-                        <span style={{ fontSize: "20px", marginLeft: "110px", cursor: "pointer", color: "tomato" }}>
-                          <i className="fas fa-download"></i>&nbsp;
-                        </span>
-                      </CSVLink>
-                      <CLabel
-                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
-                        className={"form-labels-6"}
-                      >
-                        Download
-                      </CLabel>
-                      <CCol md="3">
-                        <CButton
-                          style={{
-                            marginLeft: "-15px",
-                            marginTop: "20px",
-                          }}
-                          onClick={handleFile}
-                          className={"saveBtn"}
-                        >
-                          {" "}
-                          Confirm
-                        </CButton>
-
-
-                      <CButton
-                        className={"menu"}
-                        style={{ position: "absolute", top: "-42px", right: "-550px", marginLeft: "30px", backgroundColor: "green", border: "1px solid green" }}
-                        className={"cancelBtn"}
-                        onClick={() => {
-                          bulkhandleClick();
-                          // handleClickpanchayat();
-                        }}
-                      >
-                        Back
-                      </CButton>
-                    </CCol>
-                    </CCol>
-                  </CRow>
-
-                  {isValue && excelupload.data !== 0 ? (
+                  <CCol md="12" lg="12" sm="12">
                     <div>
-                      <CRow
+                      <span
                         style={{
-                          padding: "4%",
-                          marginTop: "1.5%",
-                          marginLeft: "-45px",
-
+                          fontSize: "18px",
+                          fontWeight: "700",
+                          marginLeft: "20px",
                         }}
                       >
-                        <CDataTable
-                          items={excelupload.data}
-                          fields={fieldss1}
-                          columnFilter
-                          tableFilter
-                          tableLabel={"List of District Panchayat"}
-                          itemsPerPageSelect
-                          itemsPerPage={5}
-                          hover
-                          sorter
-                          pagination
-                          scopedSlots={{
-                            show_details3: (item, index) => {
-                              return (
-                                <td className="py-1">
-                                  <CRow>
-                                    <CCol style={{ fontSize: "1rem" }} md="16">
-
-                                      <i
-                                        style={{
-                                          marginLeft: "35px",
-                                          color: "black",
-                                        }}
-                                        className="fa fa-remove"
-                                        bsStyle="overlay"
-                                        onClick={() => menusremoveicon(item)}
-                                      />
-                                    </CCol>
-                                  </CRow>
-                                </td>
-                              );
-                            },
-                            details: (item, index) => { },
-                          }}
-                        />
-                      </CRow>
-                      <CRow style={{ paddingLeft: "180px" }}>
-
-                        <CCol md="3">
-                          <CButton
-                            type="file"
-                            style={{
-                              marginLeft: "450px",
-                              marginTop: "35px",
-
-                            }}
-                            onClick={enableCreate}
-                            className={"saveBtn"}
-
-                          > Save</CButton>
-                          <CButton
-                            shape={"pill"}
-                            id={"Districtcancel"}
-                            style={{ marginTop: "-60px", marginLeft: "550px" }}
-                            className={"cancelBtn"}
-                            onClick={bulkhandleClick}
-                          >
-                            Cancel
-                          </CButton>
-
-
-
-                        </CCol>
-                      </CRow>
-                    </div>
-
-                  ) : null}
-                </div>
-              )}
-              {sideBarup2 && (
-                <div className={menu.style1} style={{ marginLeft: "-108px" }}>
-
-                  <CRow className={""}>
-                    <CCol md="12" lg="12" sm="12">
-                      <div>
-                        <span
-                          style={{
-                            fontSize: "18px",
-                            fontWeight: "700",
-                            marginLeft: "20px",
-                          }}
-                        >
-                          ADDING Panchayat Union{" "}
-                        </span>
-                      </div>
-                    </CCol>
-                  </CRow>
-                  
-                  <CRow
-                    className={"row-alignment"}
-                    style={{ marginLeft: "5px", marginTop: "20px" }}
-                    sm={12}
-                    md={12}
-                    lg={12}
-                  >
-                    <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      District Panchayat:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}></span>
-                    </CCol>
-                    </CRow>
-
-                    <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"PanchayatcreateRoleUploadTemplate"}
-                    onClick={() => {
-
-                      document.getElementById("uploadRoleTemplate").click();
-                    }}>
-                    <CCol md="12">
-                      <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
-                        <i className="fas fa-upload"></i>&nbsp;
+                        ADDING District Panchayat{" "}
                       </span>
-
-                      <CLabel
-                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
-                        className={"form-labels-6"}
-                      >
-                        Upload
-                      </CLabel>
-                      <CInput
-                        id={"PanchayatuploadRoleTemplate"}
-                        style={{ display: "none" }}
-                        type={"file"}
-                        onChange={handleChange}
-                        accept={SheetJSFT}
-
-
-                      />
-
-
-                    </CCol>
-                    </CRow>
-
-                    <CRow>
-                    <CCol md="12" style={{ top: "-38px" }}>
-                      <CSVLink data={csvData} >
-                        {/* <CButton
-                        shape={"pill"}
-                        id={"municipalcancel"}
-                        style={{ marginTop: "-60px", marginLeft: "160px" }}
-                        className={"cancelBtn"}
-
-                      >
-                        Download
-                      </CButton> */}
-                        <span style={{ fontSize: "20px", marginLeft: "110px", cursor: "pointer", color: "tomato" }}>
-                          <i className="fas fa-download"></i>&nbsp;
-                        </span>
-                      </CSVLink>
-                      <CLabel
-                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
-                        className={"form-labels-6"}
-                      >
-                        Download
-                      </CLabel>
-                      <CCol md="3">
-                        <CButton
-                          style={{
-                            marginLeft: "-15px",
-                            marginTop: "20px",
-                          }}
-                          onClick={handleFile}
-                          className={"saveBtn"}
-                        >
-                          {" "}
-                          Confirm
-                        </CButton>
-
-
-                      <CButton
-                        className={"menu"}
-                        style={{ position: "absolute", top: "-140px", right: "-550px", marginLeft: "30px", backgroundColor: "green", border: "1px solid green" }}
-                        className={"cancelBtn"}
-                        onClick={() => {
-                          bulkhandleClick();
-                          // handleClickpanchayat();
-                        }}
-                      >
-                        Back
-                      </CButton>
-                    </CCol>
-                    </CCol>
-                  </CRow>
-
-                  {isValue && excelupload.data !== 0 ? (
-                    <div>
-                      <CRow
-                        style={{
-                          padding: "4%",
-                          marginTop: "1.5%",
-                          marginLeft: "-45px",
-
-                        }}
-                      >
-                        <CDataTable
-                          items={excelupload.data}
-                          fields={fields2}
-                          columnFilter
-                          tableFilter
-                          tableLabel={"List of Panchayat Union"}
-                          itemsPerPageSelect
-                          itemsPerPage={5}
-                          hover
-                          sorter
-                          pagination
-                          scopedSlots={{
-                            show_details3: (item, index) => {
-                              return (
-                                <td className="py-1">
-                                  <CRow>
-                                    <CCol style={{ fontSize: "1rem" }} md="16">
-
-                                      <i
-                                        style={{
-                                          marginLeft: "35px",
-
-                                        }}
-                                        className="fa fa-remove"
-                                        bsStyle="overlay"
-                                        onClick={() => menusremoveicon(item)}
-                                      />
-                                    </CCol>
-                                  </CRow>
-                                </td>
-                              );
-                            },
-                            details: (item, index) => { },
-                          }}
-                        />
-                      </CRow>
-                      <CRow style={{ paddingLeft: "180px" }}>
-
-                        <CCol md="3">
-                          <CButton
-                            type="file"
-                            style={{
-                              marginLeft: "450px",
-                              marginTop: "35px",
-
-                            }}
-                            onClick={enableCreate}
-                            className={"saveBtn"}
-
-                          > Save</CButton>
-                          <CButton
-                            shape={"pill"}
-                            id={"Panchayatcancel"}
-                            style={{ marginTop: "-60px", marginLeft: "550px" }}
-                            className={"cancelBtn"}
-                            onClick={bulkhandleClick}
-                          >
-                            Cancel
-                          </CButton>
-                        </CCol>
-                      </CRow>
                     </div>
+                  </CCol>
+                </CRow>
 
-                  ) : null}
-                </div>
-              )}
-              {sideBarup3 && (
-                <div className={menu.style1} style={{ marginLeft: "-108px" }}>
+                <CRow md="12"
+            style={{ marginLeft: "10px", marginTop: "15px" }}
+         
+          >
+            <CCol md="6"    id={"createRoleUploadTemplate"}
+            onClick={() => {
+              document.getElementById("uploadRoleTemplate").click();
+            }}>
+              <span style={{ fontSize: "20px", cursor: "pointer",color:"blue" }}>
+                <i className="fas fa-upload"></i>&nbsp;
+              </span>
 
-                  <CRow className={""}>
-                    <CCol md="12" lg="12" sm="12">
-                      <div>
-                        <span
-                          style={{
-                            fontSize: "18px",
-                            fontWeight: "700",
-                            marginLeft: "20px",
-                          }}
-                        >
-                          ADDING Village Panchayat{" "}
-                        </span>
-                      </div>
-                    </CCol>
-                  </CRow>
-                  <CRow
-                    className={"row-alignment"}
-                    style={{ marginLeft: "5px", marginTop: "20px" }}
-                    sm={12}
-                    md={12}
-                    lg={12}
-                  >
-                    <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
+              <CLabel
+                style={{
+                  position: "relative",
+                  marginLeft: "20px",
+                  cursor: "pointer",
+                }}
+                className={"form-labels-6"}
+              >
+                Upload 
+              </CLabel>
+              <CInput
+                id={"uploadRoleTemplate"}
+                style={{ display: "none" }}
+                type={"file"}
+                onChange={handleChange}
+                accept={SheetJSFT}
+              />
+            </CCol>
+            <CCol md="6" style={{marginLeft:"150px",marginTop:"-38px"}}> 
+            <CSVLink data={csvData}>
+            <span style={{ fontSize: "20px", cursor: "pointer", color:"red" }}>
+                <i className="fas fa-download">
+                </i>&nbsp;
+             
+             </span>
+           
+              <CLabel
+                style={{
+                  position: "relative",
+                  marginLeft: "20px",
+                  cursor: "pointer",
+                  color:"black"
+                
+                }}
+                className={"form-labels-6"}
+              >
+                Download 
+              </CLabel>
+              </CSVLink>
+              
+            </CCol>
+          </CRow>
+<CRow>
+<CCol md="3">
+              <CButton
+                style={{
+                  marginLeft: "30px",
+                  marginTop: "25px",
+                }}
+                onClick={handleFile}
+                className={"saveBtn"}
+              >
+                {" "}
+                Confirm
+              </CButton>
+
+           
+
+              <CButton
+                className={"menu"}
+                style={{
+                  position: "absolute",
+                  top: "-82px",
+                  right: "-550px",
+                  marginLeft: "30px",
+                  backgroundColor: "green",
+                  border: "1px solid green",
+                }}
+                className={"cancelBtn"}
+                onClick={() => {
+                  bulkhandleClick();
+                  // handleClick2();
+                }}
+              >
+                Back
+              </CButton>
+            </CCol>
+</CRow>
+
+                {isValue && excelupload.data !== 0 ? (
+                  <div>
+                    <CRow
+                      style={{
+                        padding: "4%",
+                        marginTop: "1.5%",
+                        marginLeft: "-45px",
+
+                      }}
                     >
-                      District Panchayat:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}></span>
-                    </CCol>
-                    <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      Panchayat Union:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}></span>
-                    </CCol>
-                    </CRow>
+                      <CDataTable
+                        items={excelupload.data}
+                        fields={fieldss1}
+                        columnFilter
+                        tableFilter
+                        tableLabel={"List of District Panchayat"}
+                        itemsPerPageSelect
+                        itemsPerPage={5}
+                        hover
+                        sorter
+                        pagination
+                        scopedSlots={{
+                          show_details3: (item, index) => {
+                            return (
+                              <td className="py-1">
+                                <CRow>
+                                  <CCol style={{ fontSize: "1rem" }} md="16">
 
-                    <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"VillagecreateRoleUploadTemplate"}
-                    onClick={() => {
-
-                      document.getElementById("uploadRoleTemplate").click();
-                    }}>
-                    <CCol md="12">
-                      <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
-                        <i className="fas fa-upload"></i>&nbsp;
-                      </span>
-
-                      <CLabel
-                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
-                        className={"form-labels-6"}
-                      >
-                        Upload
-                      </CLabel>
-                      <CInput
-                        id={"VillageuploadRoleTemplate"}
-                        style={{ display: "none" }}
-                        type={"file"}
-                        onChange={handleChange}
-                        accept={SheetJSFT}
-
-
-                      />
-
-
-                    </CCol>
-                    </CRow>
-
-                    <CRow>
-                    <CCol md="12" style={{ top: "-38px" }}>
-                      <CSVLink data={csvData} >
-                        {/* <CButton
-                        shape={"pill"}
-                        id={"municipalcancel"}
-                        style={{ marginTop: "-60px", marginLeft: "160px" }}
-                        className={"cancelBtn"}
-
-                      >
-                        Download
-                      </CButton> */}
-                        <span style={{ fontSize: "20px", marginLeft: "110px", cursor: "pointer", color: "tomato" }}>
-                          <i className="fas fa-download"></i>&nbsp;
-                        </span>
-                      </CSVLink>
-                      <CLabel
-                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
-                        className={"form-labels-6"}
-                      >
-                        Download
-                      </CLabel>
-                      <CCol md="3">
-                        <CButton
-                          style={{
-                            marginLeft: "-15px",
-                            marginTop: "20px",
-                          }}
-                          onClick={handleFile}
-                          className={"saveBtn"}
-                        >
-                          {" "}
-                          Confirm
-                        </CButton>
-
-
-                      <CButton
-                        className={"menu"}
-                        style={{ position: "absolute", top: "-150px", right: "-550px", marginLeft: "30px", backgroundColor: "green", border: "1px solid green" }}
-                        className={"cancelBtn"}
-                        onClick={() => {
-                          bulkhandleClick();
-                          // handleClickpanchayat();
-                        }}
-                      >
-                        Back
-                      </CButton>
-                    </CCol>
-                    </CCol>
-                  </CRow>
-
-                  {isValue && excelupload.data !== 0 ? (
-                    <div>
-                      <CRow
-                        style={{
-                          padding: "4%",
-                          marginTop: "1.5%",
-                          marginLeft: "-45px",
-
-                        }}
-                      >
-                        <CDataTable
-                          items={excelupload.data}
-                          fields={fields3}
-                          columnFilter
-                          tableFilter
-                          tableLabel={"List of Village Panchayat"}
-                          itemsPerPageSelect
-                          itemsPerPage={5}
-                          hover
-                          sorter
-
-                          pagination
-                          scopedSlots={{
-                            show_details3: (item, index) => {
-                              return (
-                                <td className="py-1">
-                                  <CRow>
-                                    <CCol style={{ fontSize: "1rem" }} md="16">
-
-                                      <i
-                                        style={{
-                                          marginLeft: "35px",
-
-                                        }}
-                                        className="fa fa-remove"
-                                        bsStyle="overlay"
-                                        onClick={() => menusremoveicon(item)}
-                                      />
-                                    </CCol>
-                                  </CRow>
-                                </td>
-                              );
-                            },
-                            details: (item, index) => { },
-                          }}
-                        />
-                      </CRow>
-                      <CRow style={{ paddingLeft: "180px" }}>
-
-                        <CCol md="3">
-                          <CButton
-                            type="file"
-                            style={{
-                              marginLeft: "450px",
-                              marginTop: "35px",
-
-                            }}
-                            onClick={enableCreate}
-                            className={"saveBtn"}
-
-                          > Save</CButton>
-                          <CButton
-                            shape={"pill"}
-                            id={"Villagecancel"}
-                            style={{ marginTop: "-60px", marginLeft: "550px" }}
-                            className={"cancelBtn"}
-                            onClick={bulkhandleClick}
-                          >
-                            Cancel
-                          </CButton>
-
-
-
-                        </CCol>
-                      </CRow>
-                    </div>
-
-                  ) : null}
-                </div>
-              )}
-              {sideBarup4 && (
-                <div className={menu.style1} style={{ marginLeft: "-108px" }}>
-
-                  <CRow className={""}>
-                    <CCol md="12" lg="12" sm="12">
-                      <div>
-                        <span
-                          style={{
-                            fontSize: "18px",
-                            fontWeight: "700",
-                            marginLeft: "20px",
-                          }}
-                        >
-                          ADDING Ward Number{" "}
-                        </span>
-                      </div>
-                    </CCol>
-                  </CRow>
-                  <CRow
-                    className={"row-alignment"}
-                    style={{ marginLeft: "5px", marginTop: "20px" }}
-                    sm={12}
-                    md={12}
-                    lg={12}
-                  >
-                    <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      District Panchayat:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}></span>
-                    </CCol>
-                    <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                     Village Panchayat:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}></span>
-                    </CCol>
-                  </CRow>
-                  <CRow
-                    className={"row-alignment"}
-                    style={{ marginLeft: "5px", marginTop: "5px" }}
-                    sm={12}
-                    md={12}
-                    lg={12}
-                  >
-                    <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                     Panchayat Union:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}></span>
-                    </CCol>
-                    <CCol>
-                      </CCol>
-                      </CRow>
-                      <CRow style={{ marginLeft: "10px", marginTop: "15px" }} id={"WardcreateRoleUploadTemplate"}
-                    onClick={() => {
-
-                      document.getElementById("uploadRoleTemplate").click();
-                    }}>
-                    <CCol md="12">
-                      <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
-                        <i className="fas fa-upload"></i>&nbsp;
-                      </span>
-
-                      <CLabel
-                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
-                        className={"form-labels-6"}
-                      >
-                        Upload
-                      </CLabel>
-                      <CInput
-                        id={"WarduploadRoleTemplate"}
-                        style={{ display: "none" }}
-                        type={"file"}
-                        onChange={handleChange}
-                        accept={SheetJSFT}
-
-
-                      />
-
-
-                    </CCol>
-                    </CRow>
-
-                    <CRow>
-                    <CCol md="12" style={{ top: "-38px" }}>
-                      <CSVLink data={csvData} >
-                        {/* <CButton
-                        shape={"pill"}
-                        id={"municipalcancel"}
-                        style={{ marginTop: "-60px", marginLeft: "160px" }}
-                        className={"cancelBtn"}
-
-                      >
-                        Download
-                      </CButton> */}
-                        <span style={{ fontSize: "20px", marginLeft: "110px", cursor: "pointer", color: "tomato" }}>
-                          <i className="fas fa-download"></i>&nbsp;
-                        </span>
-                      </CSVLink>
-                      <CLabel
-                        style={{ position: "relative", marginLeft: "5px", cursor: "pointer" }}
-                        className={"form-labels-6"}
-                      >
-                        Download
-                      </CLabel>
-                      <CCol md="3">
-                        <CButton
-                          style={{
-                            marginLeft: "-15px",
-                            marginTop: "20px",
-                          }}
-                          onClick={handleFile}
-                          className={"saveBtn"}
-                        >
-                          {" "}
-                          Confirm
-                        </CButton>
-
-
-                      <CButton
-                        className={"menu"}
-                        style={{ position: "absolute", top: "-200px", right: "-550px", marginLeft: "10px", backgroundColor: "green", border: "1px solid green" }}
-                        className={"cancelBtn"}
-                        onClick={() => {
-                          bulkhandleClick();
-                        }}
-                      >
-                        Back
-                      </CButton>
-                    </CCol>
-                    </CCol>
-                  </CRow>
-
-                  {isValue && excelupload.data !== 0 ? (
-                    <div>
-                      <CRow
-                        style={{
-                          padding: "4%",
-                          marginTop: "1.5%",
-                          marginLeft: "-45px",
-
-                        }}
-                      >
-                        <CDataTable
-                          items={excelupload.data}
-                          fields={fields4}
-                          columnFilter
-                          tableFilter
-                          tableLabel={"List of Ward Number"}
-                          itemsPerPageSelect
-                          itemsPerPage={5}
-                          hover
-                          sorter
-
-                          pagination
-                          scopedSlots={{
-                            show_details3: (item, index) => {
-                              return (
-                                <td className="py-1">
-                                  <CRow>
-                                    <CCol style={{ fontSize: "1rem" }} md="16">
-
-                                      <i
-                                        style={{
-                                          marginLeft: "35px",
-
-                                        }}
-                                        className="fa fa-remove"
-                                        bsStyle="overlay"
-                                        onClick={() => menusremoveicon(item)}
-                                      />
-                                    </CCol>
-                                  </CRow>
-                                </td>
-                              );
-                            },
-                            details: (item, index) => { },
-                          }}
-                        />
-                      </CRow>
-                      <CRow style={{ paddingLeft: "180px" }}>
-
-                        <CCol md="3">
-                          <CButton
-                            type="file"
-                            style={{
-                              marginLeft: "450px",
-                              marginTop: "35px",
-
-                            }}
-                            onClick={enableCreate}
-                            className={"saveBtn"}
-
-                          > Save</CButton>
-                          <CButton
-                            shape={"pill"}
-                            id={"Wardcancel"}
-                            style={{ marginTop: "-60px", marginLeft: "550px" }}
-                            className={"cancelBtn"}
-                            onClick={bulkhandleClick}
-                          >
-                            Cancel
-                          </CButton>
-
-
-
-                        </CCol>
-                      </CRow>
-                    </div>
-
-                  ) : null}
-                </div>
-              )}
-      {hideMappingVillage && (
-        <div>
-          <CCard className={"cardSave"}>
-            <div className={"main-headerlabel"}>
-              <span className={"header-label"}>Village panchayat</span>
-            </div>
-          
-            {locationHide.corporation && (
-              <div>
-                <div style={{ marginLeft: "-26px" }}>
-                  <CRow style={{ marginTop: "45px" }}>
-                    <CCol md="10">
-                      <CCol md="5">
-                        <CButton
-                          style={{
-                            marginLeft: "45px",
-                          }}
-                          id={"Villageadd"}
-                          className={"saveBtn"}
-                          onClick={changeVillagePanchayat}
-                        >
-                          Add Village panchayat
-                        </CButton>{" "}
-                      </CCol>
-                    </CCol>
-                  </CRow>
-
-                  <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                    <CCol className={"column-align"} md="3">
-                      <CLabel className={"label-name"}>
-                        State
-                        <span className={"text-danger"}>*</span>
-                      </CLabel>
-                      <Select
-                        className={"input-align"}
-                        id={"Villagestatename"}
-                        name={"state"}
-                        placeholder={"Select State"}
-                        // value={locations.district}
-                        // onChange={changeHandler}
-                        options={select}
-                      />
-                    </CCol>
-
-                    <CCol className={"column-align"} md="3">
-                      <CLabel className={"label-name"}>
-                        District panchayat
-                        <span className={"text-danger"}>*</span>
-                      </CLabel>
-                      <Select
-                        className={"input-align"}
-                        id={"Villagedistrict"}
-                        name={"city"}
-                        placeholder={"Select District panchayat"}
-                        options={select}
-                      />
-                    </CCol>
-
-                    <CCol className={"column-align"} md="3">
-                      <CLabel className={"label-name"}>
-                        Village Panchayat
-                        <span className={"text-danger"}>*</span>
-                      </CLabel>
-                      -{" "}
-                      <Select
-                        className={"input-align"}
-                        id={"Village"}
-                        name={"city"}
-                        placeholder={"Select Village panchayat"}
-                        options={select}
-                      />
-                    </CCol>
-                  </CRow>
-
-                  <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                    <CCol className={"column-align"} md="3">
-                      <CLabel className={"label-name"}>
-                        District / City
-                        <span className={"text-danger"}>*</span>
-                      </CLabel>
-                      <Select
-                        className={"input-align"}
-                        id={"Villagecity"}
-                        name={"state"}
-                        placeholder={"Select City Name"}
-                        options={select}
-                      />
-                    </CCol>
-                    <CCol className={"column-align"} md="3">
-                      <CLabel className={"label-name"}>
-                        Panchayat Union
-                        <span className={"text-danger"}>*</span>
-                      </CLabel>
-                      <Select
-                        className={"input-align"}
-                        id={"villagepanchyatunion"}
-                        name={"city"}
-                        placeholder={"Select Panchayat Union"}
-                        options={select}
-                      />
-                    </CCol>
-                    <CCol className={"column-align"} md="3">
-                      <CLabel className={"label-name"}>
-                        Ward No
-                        <span className={"text-danger"}>*</span>
-                      </CLabel>
-                      -{" "}
-                      <Select
-                        className={"input-align"}
-                        id={"Villageward"}
-                        name={"city"}
-                        placeholder={"Select Ward No"}
-                        options={selectWard}
-                      />
-                    </CCol>
-                  </CRow>
-                </div>
-
-                <CRow
-                  style={{
-                    padding: "4%",
-                    marginTop: "-3.5%",
-                    marginLeft: "-30px",
-                  }}
-                >
-                  <CDataTable
-                    items={userData}
-                    fields={fields}
-                    columnFilter
-                    tableFilter
-                    tableLabel={"List of Streets"}
-                    itemsPerPageSelect
-                    itemsPerPage={5}
-                    hover
-                    sorter
-                    pagination
-                    scopedSlots={{
-                      show_details1: (item, index) => {
-                        return (
-                          <td className="py-1">
-                            <CRow>
-                              <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                <Dropdown
-                                  className={"ant-dropdown-cutomize-by-me"}
-                                  overlay={() => menus(item)}
-                                >
-                                  <a
-                                    className="ant-dropdown-link"
-                                    onClick={(e) => e.preventDefault()}
-                                  >
                                     <i
                                       style={{
                                         marginLeft: "35px",
                                         color: "black",
                                       }}
-                                      className="fa fa-ellipsis-v"
+                                      className="fa fa-remove"
                                       bsStyle="overlay"
-                                      onClick={menus}
+                                      onClick={() => menusremoveicon(item)}
                                     />
-                                  </a>
-                                </Dropdown>
-                              </CCol>
-                            </CRow>
-                          </td>
-                        );
-                      },
-                      details: (item, index) => {},
-                    }}
-                  />
-                </CRow>
+                                  </CCol>
+                                </CRow>
+                              </td>
+                            );
+                          },
+                          details: (item, index) => { },
+                        }}
+                      />
+                    </CRow>
+                    <CRow style={{ paddingLeft: "180px" }}>
+
+                      <CCol md="3">
+                        <CButton
+                          type="file"
+                          style={{
+                            marginLeft: "450px",
+                            marginTop: "35px",
+
+                          }}
+                          onClick={enableCreate}
+                          className={"saveBtn"}
+
+                        > Save</CButton>
+                        <CButton
+                          shape={"pill"}
+                          id={"Districtcancel"}
+                          style={{ marginTop: "-60px", marginLeft: "550px" }}
+                          className={"cancelBtn"}
+                          onClick={bulkhandleClick}
+                        >
+                          Cancel
+                        </CButton>
+
+
+
+                      </CCol>
+                    </CRow>
+                  </div>
+
+                ) : null}
               </div>
             )}
-          </CCard>
-        </div>
-      )}
+            {sideBarup2 && (
+              <div className={menu.style1} style={{ marginLeft: "-108px" }}>
 
-      {hideVillagePanchayat && (
-        <div>
-          <CCard className={"cardSave"}>
-            <div className={"main-headerlabel"}>
-              <span className={"header-label"}>Adding Village Panchayat</span>
-            </div>
-            {locationHide.corporation && (
-              <div>
-                <div style={{ marginLeft: "-26px" }}>
-                  <CRow
-                    className={"row-alignment"}
-                    md="12"
-                    sm="12"
-                    lg="12"
-                    style={{ marginLeft: "-5px" }}
-                  >
-                    <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
-                        State
-                        <span className={"text-danger"}>*</span>
-                      </CLabel>
-                      <Select
-                        className={"input-align"}
-                        id={"Villagestate"}
-                        name={"state"}
-                        placeholder={"Select State"}
-                        options={select}
+                <CRow className={""}>
+                  <CCol md="12" lg="12" sm="12">
+                    <div>
+                      <span
+                        style={{
+                          fontSize: "18px",
+                          fontWeight: "700",
+                          marginLeft: "20px",
+                        }}
+                      >
+                        ADDING Panchayat Union{" "}
+                      </span>
+                    </div>
+                  </CCol>
+                </CRow>
+
+                <CRow
+                  className={"row-alignment"}
+                  style={{ marginLeft: "5px", marginTop: "20px" }}
+                  sm={12}
+                  md={12}
+                  lg={12}
+                >
+                  <CCol>
+                    <CLabel
+                      style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                      className={"form-labels-6"}
+                    >
+                      District Panchayat:
+                    </CLabel>
+                    <span style={{ marginTop: "13px", marginLeft: "5px", }}></span>
+                  </CCol>
+                </CRow>
+
+                <CRow md="12"
+            style={{ marginLeft: "10px", marginTop: "15px" }}
+         
+          >
+            <CCol md="6"    id={"createRoleUploadTemplate"}
+            onClick={() => {
+              document.getElementById("uploadRoleTemplate").click();
+            }}>
+              <span style={{ fontSize: "20px", cursor: "pointer",color:"blue" }}>
+                <i className="fas fa-upload"></i>&nbsp;
+              </span>
+
+              <CLabel
+                style={{
+                  position: "relative",
+                  marginLeft: "20px",
+                  cursor: "pointer",
+                }}
+                className={"form-labels-6"}
+              >
+                Upload 
+              </CLabel>
+              <CInput
+                id={"uploadRoleTemplate"}
+                style={{ display: "none" }}
+                type={"file"}
+                onChange={handleChange}
+                accept={SheetJSFT}
+              />
+            </CCol>
+            <CCol md="6" style={{marginLeft:"150px",marginTop:"-38px"}}> 
+            <CSVLink data={csvData}>
+            <span style={{ fontSize: "20px", cursor: "pointer", color:"red" }}>
+                <i className="fas fa-download">
+                </i>&nbsp;
+             
+             </span>
+           
+              <CLabel
+                style={{
+                  position: "relative",
+                  marginLeft: "20px",
+                  cursor: "pointer",
+                  color:"black"
+                
+                }}
+                className={"form-labels-6"}
+              >
+                Download 
+              </CLabel>
+              </CSVLink>
+              
+            </CCol>
+          </CRow>
+<CRow>
+<CCol md="3">
+              <CButton
+                style={{
+                  marginLeft: "30px",
+                  marginTop: "25px",
+                }}
+                onClick={handleFile}
+                className={"saveBtn"}
+              >
+                {" "}
+                Confirm
+              </CButton>
+
+           
+
+              <CButton
+                className={"menu"}
+                style={{
+                  position: "absolute",
+                  top: "-82px",
+                  right: "-550px",
+                  marginLeft: "30px",
+                  backgroundColor: "green",
+                  border: "1px solid green",
+                }}
+                className={"cancelBtn"}
+                onClick={() => {
+                  bulkhandleClick();
+                  // handleClick2();
+                }}
+              >
+                Back
+              </CButton>
+            </CCol>
+</CRow>
+
+                {isValue && excelupload.data !== 0 ? (
+                  <div>
+                    <CRow
+                      style={{
+                        padding: "4%",
+                        marginTop: "1.5%",
+                        marginLeft: "-45px",
+
+                      }}
+                    >
+                      <CDataTable
+                        items={excelupload.data}
+                        fields={fields2}
+                        columnFilter
+                        tableFilter
+                        tableLabel={"List of Panchayat Union"}
+                        itemsPerPageSelect
+                        itemsPerPage={5}
+                        hover
+                        sorter
+                        pagination
+                        scopedSlots={{
+                          show_details3: (item, index) => {
+                            return (
+                              <td className="py-1">
+                                <CRow>
+                                  <CCol style={{ fontSize: "1rem" }} md="16">
+
+                                    <i
+                                      style={{
+                                        marginLeft: "35px",
+
+                                      }}
+                                      className="fa fa-remove"
+                                      bsStyle="overlay"
+                                      onClick={() => menusremoveicon(item)}
+                                    />
+                                  </CCol>
+                                </CRow>
+                              </td>
+                            );
+                          },
+                          details: (item, index) => { },
+                        }}
                       />
-                    </CCol>
-                    {municipalList && (
-                      <React.Fragment>
-                        <CCol className={"column-align"} md={4} lg={4}>
-                          <CLabel className={"label-name-1"}>
-                            District Panchayat
-                            <span className={"text-danger"}> *</span>
-                          </CLabel>
+                    </CRow>
+                    <CRow style={{ paddingLeft: "180px" }}>
 
-                          <Select
-                            //  isMulti
-                            //  isChecked
-                            //  closeMenuOnSelect={false}
-                            placeholder="Select District Panchayat"
-                            id={"Villagedistrict"}
-                            type={"text"}
-                            value={selected}
-                            onChange={(e) => setSelected(e)}
-                            components={{ MenuList: SelectMenuButtondistrict }}
-                            options={select}
-                            // labelledBy={"Select"}
-                          />
+                      <CCol md="3">
+                        <CButton
+                          type="file"
+                          style={{
+                            marginLeft: "450px",
+                            marginTop: "35px",
+
+                          }}
+                          onClick={enableCreate}
+                          className={"saveBtn"}
+
+                        > Save</CButton>
+                        <CButton
+                          shape={"pill"}
+                          id={"Panchayatcancel"}
+                          style={{ marginTop: "-60px", marginLeft: "550px" }}
+                          className={"cancelBtn"}
+                          onClick={bulkhandleClick}
+                        >
+                          Cancel
+                        </CButton>
+                      </CCol>
+                    </CRow>
+                  </div>
+
+                ) : null}
+              </div>
+            )}
+            {sideBarup3 && (
+              <div className={menu.style1} style={{ marginLeft: "-108px" }}>
+
+                <CRow className={""}>
+                  <CCol md="12" lg="12" sm="12">
+                    <div>
+                      <span
+                        style={{
+                          fontSize: "18px",
+                          fontWeight: "700",
+                          marginLeft: "20px",
+                        }}
+                      >
+                        ADDING Village Panchayat{" "}
+                      </span>
+                    </div>
+                  </CCol>
+                </CRow>
+                <CRow
+                  className={"row-alignment"}
+                  style={{ marginLeft: "5px", marginTop: "20px" }}
+                  sm={12}
+                  md={12}
+                  lg={12}
+                >
+                  <CCol>
+                    <CLabel
+                      style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                      className={"form-labels-6"}
+                    >
+                      District Panchayat:
+                    </CLabel>
+                    <span style={{ marginTop: "13px", marginLeft: "5px", }}></span>
+                  </CCol>
+                  <CCol>
+                    <CLabel
+                      style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                      className={"form-labels-6"}
+                    >
+                      Panchayat Union:
+                    </CLabel>
+                    <span style={{ marginTop: "13px", marginLeft: "5px", }}></span>
+                  </CCol>
+                </CRow>
+
+                <CRow md="12"
+            style={{ marginLeft: "10px", marginTop: "15px" }}
+         
+          >
+            <CCol md="6"    id={"createRoleUploadTemplate"}
+            onClick={() => {
+              document.getElementById("uploadRoleTemplate").click();
+            }}>
+              <span style={{ fontSize: "20px", cursor: "pointer",color:"blue" }}>
+                <i className="fas fa-upload"></i>&nbsp;
+              </span>
+
+              <CLabel
+                style={{
+                  position: "relative",
+                  marginLeft: "20px",
+                  cursor: "pointer",
+                }}
+                className={"form-labels-6"}
+              >
+                Upload 
+              </CLabel>
+              <CInput
+                id={"uploadRoleTemplate"}
+                style={{ display: "none" }}
+                type={"file"}
+                onChange={handleChange}
+                accept={SheetJSFT}
+              />
+            </CCol>
+            <CCol md="6" style={{marginLeft:"150px",marginTop:"-38px"}}> 
+            <CSVLink data={csvData}>
+            <span style={{ fontSize: "20px", cursor: "pointer", color:"red" }}>
+                <i className="fas fa-download">
+                </i>&nbsp;
+             
+             </span>
+           
+              <CLabel
+                style={{
+                  position: "relative",
+                  marginLeft: "20px",
+                  cursor: "pointer",
+                  color:"black"
+                
+                }}
+                className={"form-labels-6"}
+              >
+                Download 
+              </CLabel>
+              </CSVLink>
+              
+            </CCol>
+          </CRow>
+<CRow>
+<CCol md="3">
+              <CButton
+                style={{
+                  marginLeft: "30px",
+                  marginTop: "25px",
+                }}
+                onClick={handleFile}
+                className={"saveBtn"}
+              >
+                {" "}
+                Confirm
+              </CButton>
+
+           
+
+              <CButton
+                className={"menu"}
+                style={{
+                  position: "absolute",
+                  top: "-82px",
+                  right: "-550px",
+                  marginLeft: "30px",
+                  backgroundColor: "green",
+                  border: "1px solid green",
+                }}
+                className={"cancelBtn"}
+                onClick={() => {
+                  bulkhandleClick();
+                  // handleClick2();
+                }}
+              >
+                Back
+              </CButton>
+            </CCol>
+</CRow>
+
+                {isValue && excelupload.data !== 0 ? (
+                  <div>
+                    <CRow
+                      style={{
+                        padding: "4%",
+                        marginTop: "1.5%",
+                        marginLeft: "-45px",
+
+                      }}
+                    >
+                      <CDataTable
+                        items={excelupload.data}
+                        fields={fields3}
+                        columnFilter
+                        tableFilter
+                        tableLabel={"List of Village Panchayat"}
+                        itemsPerPageSelect
+                        itemsPerPage={5}
+                        hover
+                        sorter
+
+                        pagination
+                        scopedSlots={{
+                          show_details3: (item, index) => {
+                            return (
+                              <td className="py-1">
+                                <CRow>
+                                  <CCol style={{ fontSize: "1rem" }} md="16">
+
+                                    <i
+                                      style={{
+                                        marginLeft: "35px",
+
+                                      }}
+                                      className="fa fa-remove"
+                                      bsStyle="overlay"
+                                      onClick={() => menusremoveicon(item)}
+                                    />
+                                  </CCol>
+                                </CRow>
+                              </td>
+                            );
+                          },
+                          details: (item, index) => { },
+                        }}
+                      />
+                    </CRow>
+                    <CRow style={{ paddingLeft: "180px" }}>
+
+                      <CCol md="3">
+                        <CButton
+                          type="file"
+                          style={{
+                            marginLeft: "450px",
+                            marginTop: "35px",
+
+                          }}
+                          onClick={enableCreate}
+                          className={"saveBtn"}
+
+                        > Save</CButton>
+                        <CButton
+                          shape={"pill"}
+                          id={"Villagecancel"}
+                          style={{ marginTop: "-60px", marginLeft: "550px" }}
+                          className={"cancelBtn"}
+                          onClick={bulkhandleClick}
+                        >
+                          Cancel
+                        </CButton>
 
 
-                          {villageHide.districtpanchayat && selected.length !== 0 ? (
-                            <div
-                              style={{
-                                width: 300,
-                                marginLeft: "426px",
-                                marginTop: "-40px",
-                                padding: 10,
-                              }}
-                            
-                            >
-                              <i
-                                className={"editIcon"}
-                              
-                                id={"Districtedit"}
-                                class="fas fa-edit"
-                              />
-                              <div
+
+                      </CCol>
+                    </CRow>
+                  </div>
+
+                ) : null}
+              </div>
+            )}
+            {sideBarup4 && (
+              <div className={menu.style1} style={{ marginLeft: "-108px" }}>
+
+                <CRow className={""}>
+                  <CCol md="12" lg="12" sm="12">
+                    <div>
+                      <span
+                        style={{
+                          fontSize: "18px",
+                          fontWeight: "700",
+                          marginLeft: "20px",
+                        }}
+                      >
+                        ADDING Ward Number{" "}
+                      </span>
+                    </div>
+                  </CCol>
+                </CRow>
+                <CRow
+                  className={"row-alignment"}
+                  style={{ marginLeft: "5px", marginTop: "20px" }}
+                  sm={12}
+                  md={12}
+                  lg={12}
+                >
+                  <CCol>
+                    <CLabel
+                      style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                      className={"form-labels-6"}
+                    >
+                      District Panchayat:
+                    </CLabel>
+                    <span style={{ marginTop: "13px", marginLeft: "5px", }}></span>
+                  </CCol>
+                  <CCol>
+                    <CLabel
+                      style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                      className={"form-labels-6"}
+                    >
+                      Village Panchayat:
+                    </CLabel>
+                    <span style={{ marginTop: "13px", marginLeft: "5px", }}></span>
+                  </CCol>
+                </CRow>
+                <CRow
+                  className={"row-alignment"}
+                  style={{ marginLeft: "5px", marginTop: "5px" }}
+                  sm={12}
+                  md={12}
+                  lg={12}
+                >
+                  <CCol>
+                    <CLabel
+                      style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                      className={"form-labels-6"}
+                    >
+                      Panchayat Union:
+                    </CLabel>
+                    <span style={{ marginTop: "13px", marginLeft: "5px", }}></span>
+                  </CCol>
+                  <CCol>
+                  </CCol>
+                </CRow>
+                <CRow md="12"
+            style={{ marginLeft: "10px", marginTop: "15px" }}
+         
+          >
+            <CCol md="6"    id={"createRoleUploadTemplate"}
+            onClick={() => {
+              document.getElementById("uploadRoleTemplate").click();
+            }}>
+              <span style={{ fontSize: "20px", cursor: "pointer",color:"blue" }}>
+                <i className="fas fa-upload"></i>&nbsp;
+              </span>
+
+              <CLabel
+                style={{
+                  position: "relative",
+                  marginLeft: "20px",
+                  cursor: "pointer",
+                }}
+                className={"form-labels-6"}
+              >
+                Upload 
+              </CLabel>
+              <CInput
+                id={"uploadRoleTemplate"}
+                style={{ display: "none" }}
+                type={"file"}
+                onChange={handleChange}
+                accept={SheetJSFT}
+              />
+            </CCol>
+            <CCol md="6" style={{marginLeft:"150px",marginTop:"-38px"}}> 
+            <CSVLink data={csvData}>
+            <span style={{ fontSize: "20px", cursor: "pointer", color:"red" }}>
+                <i className="fas fa-download">
+                </i>&nbsp;
+             
+             </span>
+           
+              <CLabel
+                style={{
+                  position: "relative",
+                  marginLeft: "20px",
+                  cursor: "pointer",
+                  color:"black"
+                
+                }}
+                className={"form-labels-6"}
+              >
+                Download 
+              </CLabel>
+              </CSVLink>
+              
+            </CCol>
+          </CRow>
+<CRow>
+<CCol md="3">
+              <CButton
+                style={{
+                  marginLeft: "30px",
+                  marginTop: "25px",
+                }}
+                onClick={handleFile}
+                className={"saveBtn"}
+              >
+                {" "}
+                Confirm
+              </CButton>
+
+           
+
+              <CButton
+                className={"menu"}
+                style={{
+                  position: "absolute",
+                  top: "-82px",
+                  right: "-550px",
+                  marginLeft: "30px",
+                  backgroundColor: "green",
+                  border: "1px solid green",
+                }}
+                className={"cancelBtn"}
+                onClick={() => {
+                  bulkhandleClick();
+                  // handleClick2();
+                }}
+              >
+                Back
+              </CButton>
+            </CCol>
+</CRow>
+
+                {isValue && excelupload.data !== 0 ? (
+                  <div>
+                    <CRow
+                      style={{
+                        padding: "4%",
+                        marginTop: "1.5%",
+                        marginLeft: "-45px",
+
+                      }}
+                    >
+                      <CDataTable
+                        items={excelupload.data}
+                        fields={fields4}
+                        columnFilter
+                        tableFilter
+                        tableLabel={"List of Ward Number"}
+                        itemsPerPageSelect
+                        itemsPerPage={5}
+                        hover
+                        sorter
+
+                        pagination
+                        scopedSlots={{
+                          show_details3: (item, index) => {
+                            return (
+                              <td className="py-1">
+                                <CRow>
+                                  <CCol style={{ fontSize: "1rem" }} md="16">
+
+                                    <i
+                                      style={{
+                                        marginLeft: "35px",
+
+                                      }}
+                                      className="fa fa-remove"
+                                      bsStyle="overlay"
+                                      onClick={() => menusremoveicon(item)}
+                                    />
+                                  </CCol>
+                                </CRow>
+                              </td>
+                            );
+                          },
+                          details: (item, index) => { },
+                        }}
+                      />
+                    </CRow>
+                    <CRow style={{ paddingLeft: "180px" }}>
+
+                      <CCol md="3">
+                        <CButton
+                          type="file"
+                          style={{
+                            marginLeft: "450px",
+                            marginTop: "35px",
+
+                          }}
+                          onClick={enableCreate}
+                          className={"saveBtn"}
+
+                        > Save</CButton>
+                        <CButton
+                          shape={"pill"}
+                          id={"Wardcancel"}
+                          style={{ marginTop: "-60px", marginLeft: "550px" }}
+                          className={"cancelBtn"}
+                          onClick={bulkhandleClick}
+                        >
+                          Cancel
+                        </CButton>
+
+
+
+                      </CCol>
+                    </CRow>
+                  </div>
+
+                ) : null}
+              </div>
+            )}
+            {hideMappingVillage && (
+              <div>
+                <CCard className={"cardSave"}>
+                  <div className={"main-headerlabel"}>
+                    <span className={"header-label"}>Village panchayat</span>
+                  </div>
+
+                  {locationHide.corporation && (
+                    <div>
+                      <div style={{ marginLeft: "-26px" }}>
+                        <CRow style={{ marginTop: "45px" }}>
+                          <CCol md="10">
+                            <CCol md="5">
+                              <CButton
                                 style={{
-                                  width: 300,
-                                  marginLeft: "26px",
-                                  marginTop: "-30px",
-                                  padding: 10,
-                                  color: "red",
+                                  marginLeft: "45px",
                                 }}
+                                id={"Villageadd"}
+                                className={"saveBtn"}
+                                onClick={changeVillagePanchayat}
                               >
-                                <i
-                                  className={"editIcon"}
-                                 
-                                  id={"Districtdelete"}
-                                  class="fas fa-trash"
-                                />
-                              </div>
-                            </div>
-                          ) : null}
-                        </CCol>
+                                Add Village panchayat
+                              </CButton>{" "}
+                            </CCol>
+                          </CCol>
+                        </CRow>
 
-                        {/* <CCol className={"column-align"} md={1} lg={1}>
+                        <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                          <CCol className={"column-align"} md="3">
+                            <CLabel className={"label-name"}>
+                              State
+                              <span className={"text-danger"}>*</span>
+                            </CLabel>
+                            <Select
+                              className={"input-align"}
+                              id={"Villagestatename"}
+                              name={"state"}
+                              placeholder={"Select State"}
+                              // value={locations.district}
+                              // onChange={changeHandler}
+                              options={select}
+                            />
+                          </CCol>
+
+                          <CCol className={"column-align"} md="3">
+                            <CLabel className={"label-name"}>
+                              District panchayat
+                              <span className={"text-danger"}>*</span>
+                            </CLabel>
+                            <Select
+                              className={"input-align"}
+                              id={"Villagedistrict"}
+                              name={"city"}
+                              placeholder={"Select District panchayat"}
+                              options={select}
+                            />
+                          </CCol>
+
+                          <CCol className={"column-align"} md="3">
+                            <CLabel className={"label-name"}>
+                              Village Panchayat
+                              <span className={"text-danger"}>*</span>
+                            </CLabel>
+                            -{" "}
+                            <Select
+                              className={"input-align"}
+                              id={"Village"}
+                              name={"city"}
+                              placeholder={"Select Village panchayat"}
+                              options={select}
+                            />
+                          </CCol>
+                        </CRow>
+
+                        <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                          <CCol className={"column-align"} md="3">
+                            <CLabel className={"label-name"}>
+                              District / City
+                              <span className={"text-danger"}>*</span>
+                            </CLabel>
+                            <Select
+                              className={"input-align"}
+                              id={"Villagecity"}
+                              name={"state"}
+                              placeholder={"Select City Name"}
+                              options={select}
+                            />
+                          </CCol>
+                          <CCol className={"column-align"} md="3">
+                            <CLabel className={"label-name"}>
+                              Panchayat Union
+                              <span className={"text-danger"}>*</span>
+                            </CLabel>
+                            <Select
+                              className={"input-align"}
+                              id={"villagepanchyatunion"}
+                              name={"city"}
+                              placeholder={"Select Panchayat Union"}
+                              options={select}
+                            />
+                          </CCol>
+                          <CCol className={"column-align"} md="3">
+                            <CLabel className={"label-name"}>
+                              Ward No
+                              <span className={"text-danger"}>*</span>
+                            </CLabel>
+                            -{" "}
+                            <Select
+                              className={"input-align"}
+                              id={"Villageward"}
+                              name={"city"}
+                              placeholder={"Select Ward No"}
+                              options={selectWard}
+                            />
+                          </CCol>
+                        </CRow>
+                      </div>
+
+                      <CRow
+                        style={{
+                          padding: "4%",
+                          marginTop: "-3.5%",
+                          marginLeft: "-30px",
+                        }}
+                      >
+                        <CDataTable
+                          items={userData}
+                          fields={fields}
+                          columnFilter
+                          tableFilter
+                          tableLabel={"List of Streets"}
+                          itemsPerPageSelect
+                          itemsPerPage={5}
+                          hover
+                          sorter
+                          pagination
+                          scopedSlots={{
+                            show_details1: (item, index) => {
+                              return (
+                                <td className="py-1">
+                                  <CRow>
+                                    <CCol style={{ fontSize: "1.15rem" }} md="16">
+                                      <Dropdown
+                                        className={"ant-dropdown-cutomize-by-me"}
+                                        overlay={() => menus(item)}
+                                      >
+                                        <a
+                                          className="ant-dropdown-link"
+                                          onClick={(e) => e.preventDefault()}
+                                        >
+                                          <i
+                                            style={{
+                                              marginLeft: "35px",
+                                              color: "black",
+                                            }}
+                                            className="fa fa-ellipsis-v"
+                                            bsStyle="overlay"
+                                            onClick={menus}
+                                          />
+                                        </a>
+                                      </Dropdown>
+                                    </CCol>
+                                  </CRow>
+                                </td>
+                              );
+                            },
+                            details: (item, index) => { },
+                          }}
+                        />
+                      </CRow>
+                    </div>
+                  )}
+                </CCard>
+              </div>
+            )}
+
+            {hideVillagePanchayat && (
+              <div>
+                <CCard className={"cardSave"}>
+                  <div className={"main-headerlabel"}>
+                    <span className={"header-label"}>Adding Village Panchayat</span>
+                  </div>
+                  {locationHide.corporation && (
+                    <div>
+                      <div style={{ marginLeft: "-26px" }}>
+                        <CRow
+                          className={"row-alignment"}
+                          md="12"
+                          sm="12"
+                          lg="12"
+                          style={{ marginLeft: "-5px" }}
+                        >
+                          <CCol className={"column-align"} md="4">
+                            <CLabel className={"label-name"}>
+                              State
+                              <span className={"text-danger"}>*</span>
+                            </CLabel>
+                            <Select
+                              className={"input-align"}
+                              id={"Villagestate"}
+                              name={"state"}
+                              placeholder={"Select State"}
+                              options={select}
+                            />
+                          </CCol>
+                          {municipalList && (
+                            <React.Fragment>
+                              <CCol className={"column-align"} md={4} lg={4}>
+                                <CLabel className={"label-name-1"}>
+                                  District Panchayat
+                                  <span className={"text-danger"}> *</span>
+                                </CLabel>
+
+                                <Select
+                                  //  isMulti
+                                  //  isChecked
+                                  //  closeMenuOnSelect={false}
+                                  placeholder="Select District Panchayat"
+                                  id={"Villagedistrict"}
+                                  type={"text"}
+                                  value={selected}
+                                  onChange={(e) => setSelected(e)}
+                                  components={{ MenuList: SelectMenuButtondistrict }}
+                                  options={select}
+                                // labelledBy={"Select"}
+                                />
+
+
+                                {villageHide.districtpanchayat && selected.length !== 0 ? (
+                                  <div
+                                    style={{
+                                      width: 300,
+                                      marginLeft: "426px",
+                                      marginTop: "-40px",
+                                      padding: 10,
+                                    }}
+
+                                  >
+                                    <i
+                                      className={"editIcon"}
+
+                                      id={"Districtedit"}
+                                      class="fas fa-edit"
+                                    />
+                                    <div
+                                      style={{
+                                        width: 300,
+                                        marginLeft: "26px",
+                                        marginTop: "-30px",
+                                        padding: 10,
+                                        color: "red",
+                                      }}
+                                    >
+                                      <i
+                                        className={"editIcon"}
+
+                                        id={"Districtdelete"}
+                                        class="fas fa-trash"
+                                      />
+                                    </div>
+                                  </div>
+                                ) : null}
+                              </CCol>
+
+                              {/* <CCol className={"column-align"} md={1} lg={1}>
                           <CButton
                             shape={"pill"}
                             id={"addmunicipalcorporation"}
@@ -2773,7 +2820,7 @@ setSideBarup4(false)
                             ADD
                           </CButton>
                         </CCol> */}
-                        {/* <CCol md={1} lg={1}>
+                              {/* <CCol md={1} lg={1}>
                 <CButton
                   style={{
                     marginLeft: "0px",
@@ -2810,172 +2857,172 @@ setSideBarup4(false)
                     
                     </CCol> */}
 
-                        {municipalName.edit === true ? (
-                          <React.Fragment>
-                            <CCol md={3} lg={3}>
-                              <CButton
-                                style={{
-                                  marginTop: "30px",
-                                }}
-                                id={"Districtedit"}
-                                className={"btn btn-success"}
-                                onClick={editState}
+                              {municipalName.edit === true ? (
+                                <React.Fragment>
+                                  <CCol md={3} lg={3}>
+                                    <CButton
+                                      style={{
+                                        marginTop: "30px",
+                                      }}
+                                      id={"Districtedit"}
+                                      className={"btn btn-success"}
+                                      onClick={editState}
+                                    >
+                                      EDIT
+                                    </CButton>
+                                  </CCol>
+                                </React.Fragment>
+                              ) : null}
+                            </React.Fragment>
+                          )}
+                          {MunicipalCreate && (
+                            <React.Fragment>
+                              <CRow
+                                className={"row-alignment"}
+                                style={{ marginLeft: "45px", marginTop: "20px" }}
+                                sm={12}
+                                md={12}
+                                lg={12}
                               >
-                                EDIT
-                              </CButton>
-                            </CCol>
-                          </React.Fragment>
-                        ) : null}
-                      </React.Fragment>
-                    )}
-                    {MunicipalCreate && (
-                      <React.Fragment>
+                                <CCol md="3">
+                                  <CLabel className={"label-name-1"}>
+                                    District panchayat
+                                    <span className={"text-danger"}> *</span>
+                                  </CLabel>
+
+                                  <CInput
+                                    id={"MunicipalName"}
+                                    name={"municipalname"}
+                                    placeholder="Enter District Panchayat Name"
+                                    maxlength="60"
+                                    size="60"
+                                  />
+                                </CCol>
+
+                                <CCol md="3">
+                                  <CLabel className={"label-name-1"}>
+                                    Abbreviation
+                                    <span className={"text-danger"}> *</span>
+                                  </CLabel>
+                                  <CInput
+                                    id={"municipalabrreviation"}
+                                    name={"abbreviation"}
+                                    placeholder="Enter Abbreviation"
+                                    maxlength="5"
+                                    size="5"
+                                  />
+                                </CCol>
+                                <CCol md="3">
+                                  <CLabel className={"label-name-1"}>
+                                    Code
+                                    <span className={"text-danger"}> *</span>
+                                  </CLabel>
+                                  <CInput
+                                    id={"municipalcode"}
+                                    name={"code"}
+                                    placeholder="Enter Code"
+                                    maxlength="5"
+                                    size="5"
+                                  />
+                                </CCol>
+                                <CCol md="3">
+                                  <CButton
+                                    shape={"pill"}
+                                    id={"municipalsave"}
+                                    style={{ marginTop: "30px" }}
+                                    className={"saveBtn"}
+                                  >
+                                    {passing !== "" ? "UPDATE" : "SAVE"}
+                                  </CButton>
+                                  <CButton
+                                    shape={"pill"}
+                                    id={"municipalcancel"}
+                                    style={{ marginTop: "30px", marginLeft: "20px" }}
+                                    className={"cancelBtn"}
+                                    onClick={CancelState}
+                                  >
+                                    CANCEL
+                                  </CButton>
+                                  {error !== "" ? <p>{error}</p> : null}
+                                </CCol>
+                              </CRow>
+                            </React.Fragment>
+                          )}
+                        </CRow>
                         <CRow
                           className={"row-alignment"}
-                          style={{ marginLeft: "45px", marginTop: "20px" }}
-                          sm={12}
-                          md={12}
-                          lg={12}
+                          md="12"
+                          sm="12"
+                          lg="12"
+                          style={{ marginLeft: "-5px" }}
                         >
-                          <CCol md="3">
-                            <CLabel className={"label-name-1"}>
-                              District panchayat
-                              <span className={"text-danger"}> *</span>
+                          <CCol className={"column-align"} md="4">
+                            <CLabel className={"label-name"}>
+                              District / City
+                              <span className={"text-danger"}>*</span>
                             </CLabel>
+                            <Select
+                              className={"input-align"}
+                              id={"municipaldistrict"}
+                              name={"city"}
+                              placeholder={"Select City Name"}
+                              options={select}
+                            />
 
-                            <CInput
-                              id={"MunicipalName"}
-                              name={"municipalname"}
-                              placeholder="Enter District Panchayat Name"
-                              maxlength="60"
-                              size="60"
-                            />
                           </CCol>
+                          {panchayatList && (
+                            <React.Fragment>
+                              <CCol className={"column-align"} md={4} lg={4}>
+                                <CLabel className={"label-name-1"}>
+                                  Panchayat Union
+                                  <span className={"text-danger"}> *</span>
+                                </CLabel>
 
-                          <CCol md="3">
-                            <CLabel className={"label-name-1"}>
-                              Abbreviation
-                              <span className={"text-danger"}> *</span>
-                            </CLabel>
-                            <CInput
-                              id={"municipalabrreviation"}
-                              name={"abbreviation"}
-                              placeholder="Enter Abbreviation"
-                              maxlength="5"
-                              size="5"
-                            />
-                          </CCol>
-                          <CCol md="3">
-                            <CLabel className={"label-name-1"}>
-                              Code
-                              <span className={"text-danger"}> *</span>
-                            </CLabel>
-                            <CInput
-                              id={"municipalcode"}
-                              name={"code"}
-                              placeholder="Enter Code"
-                              maxlength="5"
-                              size="5"
-                            />
-                          </CCol>
-                          <CCol md="3">
-                            <CButton
-                              shape={"pill"}
-                              id={"municipalsave"}
-                              style={{ marginTop: "30px" }}
-                              className={"saveBtn"}
-                            >
-                              {passing !== "" ? "UPDATE" : "SAVE"}
-                            </CButton>
-                            <CButton
-                              shape={"pill"}
-                              id={"municipalcancel"}
-                              style={{ marginTop: "30px", marginLeft: "20px" }}
-                              className={"cancelBtn"}
-                              onClick={CancelState}
-                            >
-                              CANCEL
-                            </CButton>
-                            {error !== "" ? <p>{error}</p> : null}
-                          </CCol>
-                        </CRow>
-                      </React.Fragment>
-                    )}
-                  </CRow>
-                  <CRow
-                    className={"row-alignment"}
-                    md="12"
-                    sm="12"
-                    lg="12"
-                    style={{ marginLeft: "-5px" }}
-                  >
-                    <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
-                        District / City
-                        <span className={"text-danger"}>*</span>
-                      </CLabel>
-                      <Select
-                        className={"input-align"}
-                        id={"municipaldistrict"}
-                        name={"city"}                       
-                        placeholder={"Select City Name"}
-                        options={select}
-                      />
-                     
-                    </CCol>
-                    {panchayatList && (
-                      <React.Fragment>
-                        <CCol className={"column-align"} md={4} lg={4}>
-                          <CLabel className={"label-name-1"}>
-                            Panchayat Union
-                            <span className={"text-danger"}> *</span>
-                          </CLabel>
-                          
-                          <Select
-                            placeholder="Select Panchayat Union"
-                            id={"Panchayat"}
-                            type={"text"}
-                            value={selected1}
-                            components={{ MenuList: SelectMenuButtonpanchayat }}
-                            onChange={changePanchayatUnion}
-                            options={selectPanchayat}
-                          />
-                            {villageHide.panchayatunion &&  selected1.length !== 0 ? (
-                            <div
-                              style={{
-                                width: 300,
-                                marginLeft: "426px",
-                                marginTop: "-40px",
-                                padding: 10,
-                              }}
-                            
-                            >
-                              <i
-                                className={"editIcon"}
-                              
-                                id={"Panchayatedit"}
-                                class="fas fa-edit"
-                              />
-                              <div
-                                style={{
-                                  width: 300,
-                                  marginLeft: "26px",
-                                  marginTop: "-30px",
-                                  padding: 10,
-                                  color: "red",
-                                }}
-                              >
-                                <i
-                                  className={"editIcon"}
-                                 
-                                  id={"Panchayatdelete"}
-                                  class="fas fa-trash"
+                                <Select
+                                  placeholder="Select Panchayat Union"
+                                  id={"Panchayat"}
+                                  type={"text"}
+                                  value={selected1}
+                                  components={{ MenuList: SelectMenuButtonpanchayat }}
+                                  onChange={changePanchayatUnion}
+                                  options={selectPanchayat}
                                 />
-                              </div>
-                            </div>
-                          ) : null}
-                        </CCol>
-                        {/* <CCol className={"column-align"} md={1} lg={1}>
+                                {villageHide.panchayatunion && selected1.length !== 0 ? (
+                                  <div
+                                    style={{
+                                      width: 300,
+                                      marginLeft: "426px",
+                                      marginTop: "-40px",
+                                      padding: 10,
+                                    }}
+
+                                  >
+                                    <i
+                                      className={"editIcon"}
+
+                                      id={"Panchayatedit"}
+                                      class="fas fa-edit"
+                                    />
+                                    <div
+                                      style={{
+                                        width: 300,
+                                        marginLeft: "26px",
+                                        marginTop: "-30px",
+                                        padding: 10,
+                                        color: "red",
+                                      }}
+                                    >
+                                      <i
+                                        className={"editIcon"}
+
+                                        id={"Panchayatdelete"}
+                                        class="fas fa-trash"
+                                      />
+                                    </div>
+                                  </div>
+                                ) : null}
+                              </CCol>
+                              {/* <CCol className={"column-align"} md={1} lg={1}>
                           <CButton
                             shape={"pill"}
                             id={"addmunicipalcorporation"}
@@ -2987,157 +3034,157 @@ setSideBarup4(false)
                           </CButton>
                         </CCol> */}
 
-                        {municipalName.edit === true ? (
-                          <React.Fragment>
-                            <CCol md={3} lg={3}>
-                              <CButton
-                                style={{
-                                  marginTop: "30px",
-                                }}
-                                id={"PanchayatEdit"}
-                                className={"btn btn-success"}
-                                onClick={editState}
+                              {municipalName.edit === true ? (
+                                <React.Fragment>
+                                  <CCol md={3} lg={3}>
+                                    <CButton
+                                      style={{
+                                        marginTop: "30px",
+                                      }}
+                                      id={"PanchayatEdit"}
+                                      className={"btn btn-success"}
+                                      onClick={editState}
+                                    >
+                                      EDIT
+                                    </CButton>
+                                  </CCol>
+                                </React.Fragment>
+                              ) : null}
+                            </React.Fragment>
+                          )}
+                          {panchayatCreate && (
+                            <React.Fragment>
+                              <CRow
+                                className={"row-alignment"}
+                                style={{ marginLeft: "45px", marginTop: "20px" }}
+                                sm={12}
+                                md={12}
+                                lg={12}
                               >
-                                EDIT
-                              </CButton>
-                            </CCol>
-                          </React.Fragment>
-                        ) : null}
-                      </React.Fragment>
-                    )}
-                    {panchayatCreate && (
-                      <React.Fragment>
+                                <CCol md="3">
+                                  <CLabel className={"label-name-1"}>
+                                    Panchayat Union
+                                    <span className={"text-danger"}> *</span>
+                                  </CLabel>
+
+                                  <CInput
+                                    id={"Panchayat"}
+                                    name={"municipalname"}
+                                    placeholder="Enter panchayat Union Name"
+                                    maxlength="60"
+                                    size="60"
+                                  />
+                                </CCol>
+
+                                <CCol md="3">
+                                  <CLabel className={"label-name-1"}>
+                                    Abbreviation
+                                    <span className={"text-danger"}> *</span>
+                                  </CLabel>
+                                  <CInput
+                                    id={"Panchayatabbreviation"}
+                                    name={"abbreviation"}
+                                    placeholder="Enter Abbreviation"
+                                    maxlength="5"
+                                    size="5"
+                                  />
+                                </CCol>
+                                <CCol md="3">
+                                  <CLabel className={"label-name-1"}>
+                                    Code
+                                    <span className={"text-danger"}> *</span>
+                                  </CLabel>
+                                  <CInput
+                                    id={"abbreviationcode"}
+                                    name={"code"}
+                                    placeholder="Enter Code"
+                                    maxlength="5"
+                                    size="5"
+                                  />
+                                </CCol>
+                                <CCol md="3">
+                                  <CButton
+                                    shape={"pill"}
+                                    id={"municipalsave"}
+                                    style={{ marginTop: "30px" }}
+                                    className={"saveBtn"}
+                                  >
+                                    {passing !== "" ? "UPDATE" : "SAVE"}
+                                  </CButton>
+                                  <CButton
+                                    shape={"pill"}
+                                    id={"abbreviationcancel"}
+                                    style={{ marginTop: "30px", marginLeft: "20px" }}
+                                    className={"cancelBtn"}
+                                    onClick={cancelPanchayat}
+                                  >
+                                    CANCEL
+                                  </CButton>
+                                  {error !== "" ? <p>{error}</p> : null}
+                                </CCol>
+                              </CRow>
+                            </React.Fragment>
+                          )}
+                        </CRow>
                         <CRow
                           className={"row-alignment"}
-                          style={{ marginLeft: "45px", marginTop: "20px" }}
-                          sm={12}
-                          md={12}
-                          lg={12}
+                          md="12"
+                          sm="12"
+                          lg="12"
+                          style={{ marginLeft: "-5px" }}
                         >
-                          <CCol md="3">
-                            <CLabel className={"label-name-1"}>
-                              Panchayat Union
-                              <span className={"text-danger"}> *</span>
-                            </CLabel>
-
-                            <CInput
-                              id={"Panchayat"}
-                              name={"municipalname"}
-                              placeholder="Enter panchayat Union Name"
-                              maxlength="60"
-                              size="60"
-                            />
-                          </CCol>
-
-                          <CCol md="3">
-                            <CLabel className={"label-name-1"}>
-                              Abbreviation
-                              <span className={"text-danger"}> *</span>
-                            </CLabel>
-                            <CInput
-                              id={"Panchayatabbreviation"}
-                              name={"abbreviation"}
-                              placeholder="Enter Abbreviation"
-                              maxlength="5"
-                              size="5"
-                            />
-                          </CCol>
-                          <CCol md="3">
-                            <CLabel className={"label-name-1"}>
-                              Code
-                              <span className={"text-danger"}> *</span>
-                            </CLabel>
-                            <CInput
-                              id={"abbreviationcode"}
-                              name={"code"}
-                              placeholder="Enter Code"
-                              maxlength="5"
-                              size="5"
-                            />
-                          </CCol>
-                          <CCol md="3">
-                            <CButton
-                              shape={"pill"}
-                              id={"municipalsave"}
-                              style={{ marginTop: "30px" }}
-                              className={"saveBtn"}
-                            >
-                              {passing !== "" ? "UPDATE" : "SAVE"}
-                            </CButton>
-                            <CButton
-                              shape={"pill"}
-                              id={"abbreviationcancel"}
-                              style={{ marginTop: "30px", marginLeft: "20px" }}
-                              className={"cancelBtn"}
-                              onClick={cancelPanchayat}
-                            >
-                              CANCEL
-                            </CButton>
-                            {error !== "" ? <p>{error}</p> : null}
-                          </CCol>
-                        </CRow>
-                      </React.Fragment>
-                    )}
-                  </CRow>
-                  <CRow
-                    className={"row-alignment"}
-                    md="12"
-                    sm="12"
-                    lg="12"
-                    style={{ marginLeft: "-5px" }}
-                  >
-                    <CCol className={"column-align"} md="4"></CCol>
-                    {villageList && (
-                      <React.Fragment>
-                        <CCol className={"column-align"} md={4} lg={4}>
-                          <CLabel className={"label-name-1"}>
-                            Village Panchayat
-                            <span className={"text-danger"}> *</span>
-                          </CLabel>
-                          <Select
-                            placeholder="Select Village Panchayat"
-                            id={"VillageSelect"}
-                            type={"text"}
-                            components={{ MenuList: SelectMenuButtonvillage }}
-                            onChange={changeVillage}
-                            options={select}
-                          />
-                           {villageHide.village &&  selected2.length !== 0 ? (
-                            <div
-                              style={{
-                                width: 300,
-                                marginLeft: "426px",
-                                marginTop: "-40px",
-                                padding: 10,
-                              }}
-                            
-                            >
-                              <i
-                                className={"editIcon"}
-                              
-                                id={"Villageedit"}
-                                class="fas fa-edit"
-                              />
-                              <div
-                                style={{
-                                  width: 300,
-                                  marginLeft: "26px",
-                                  marginTop: "-30px",
-                                  padding: 10,
-                                  color: "red",
-                                }}
-                              >
-                                <i
-                                  className={"editIcon"}
-                                 
-                                  id={"villagedelete"}
-                                  class="fas fa-trash"
+                          <CCol className={"column-align"} md="4"></CCol>
+                          {villageList && (
+                            <React.Fragment>
+                              <CCol className={"column-align"} md={4} lg={4}>
+                                <CLabel className={"label-name-1"}>
+                                  Village Panchayat
+                                  <span className={"text-danger"}> *</span>
+                                </CLabel>
+                                <Select
+                                  placeholder="Select Village Panchayat"
+                                  id={"VillageSelect"}
+                                  type={"text"}
+                                  components={{ MenuList: SelectMenuButtonvillage }}
+                                  onChange={changeVillage}
+                                  options={select}
                                 />
-                              </div>
-                            </div>
-                          ) : null}
-                        </CCol>
-                        {/* <CCol className={"column-align"} md={1} lg={1}>
+                                {villageHide.village && selected2.length !== 0 ? (
+                                  <div
+                                    style={{
+                                      width: 300,
+                                      marginLeft: "426px",
+                                      marginTop: "-40px",
+                                      padding: 10,
+                                    }}
+
+                                  >
+                                    <i
+                                      className={"editIcon"}
+
+                                      id={"Villageedit"}
+                                      class="fas fa-edit"
+                                    />
+                                    <div
+                                      style={{
+                                        width: 300,
+                                        marginLeft: "26px",
+                                        marginTop: "-30px",
+                                        padding: 10,
+                                        color: "red",
+                                      }}
+                                    >
+                                      <i
+                                        className={"editIcon"}
+
+                                        id={"villagedelete"}
+                                        class="fas fa-trash"
+                                      />
+                                    </div>
+                                  </div>
+                                ) : null}
+                              </CCol>
+                              {/* <CCol className={"column-align"} md={1} lg={1}>
                           <CButton
                             shape={"pill"}
                             id={"addmunicipalcorporation"}
@@ -3149,158 +3196,158 @@ setSideBarup4(false)
                           </CButton>
                         </CCol> */}
 
-                        {municipalName.edit === true ? (
-                          <React.Fragment>
-                            <CCol md={3} lg={3}>
-                              <CButton
-                                style={{
-                                  marginTop: "30px",
-                                }}
-                                id={"VillageEdit"}
-                                className={"btn btn-success"}
-                                onClick={editState}
+                              {municipalName.edit === true ? (
+                                <React.Fragment>
+                                  <CCol md={3} lg={3}>
+                                    <CButton
+                                      style={{
+                                        marginTop: "30px",
+                                      }}
+                                      id={"VillageEdit"}
+                                      className={"btn btn-success"}
+                                      onClick={editState}
+                                    >
+                                      EDIT
+                                    </CButton>
+                                  </CCol>
+                                </React.Fragment>
+                              ) : null}
+                            </React.Fragment>
+                          )}
+                          {villageCreate && (
+                            <React.Fragment>
+                              <CRow
+                                className={"row-alignment"}
+                                style={{ marginLeft: "45px", marginTop: "20px" }}
+                                sm={12}
+                                md={12}
+                                lg={12}
                               >
-                                EDIT
-                              </CButton>
-                            </CCol>
-                          </React.Fragment>
-                        ) : null}
-                      </React.Fragment>
-                    )}
-                    {villageCreate && (
-                      <React.Fragment>
+                                <CCol md="3">
+                                  <CLabel className={"label-name-1"}>
+                                    Village Panchayat
+                                    <span className={"text-danger"}> *</span>
+                                  </CLabel>
+
+                                  <CInput
+                                    id={"VillageName"}
+                                    name={"Villagename"}
+                                    placeholder="Enter Village Panchayat Name"
+                                    maxlength="60"
+                                    size="60"
+                                  />
+                                </CCol>
+
+                                <CCol md="3">
+                                  <CLabel className={"label-name-1"}>
+                                    Abbreviation
+                                    <span className={"text-danger"}> *</span>
+                                  </CLabel>
+                                  <CInput
+                                    id={"Villageabrreviation"}
+                                    name={"abbreviation"}
+                                    placeholder="Enter Abbreviation"
+                                    maxlength="5"
+                                    size="5"
+                                  />
+                                </CCol>
+                                <CCol md="3">
+                                  <CLabel className={"label-name-1"}>
+                                    Code
+                                    <span className={"text-danger"}> *</span>
+                                  </CLabel>
+                                  <CInput
+                                    id={"Villagecode"}
+                                    name={"code"}
+                                    placeholder="Enter Code"
+                                    maxlength="5"
+                                    size="5"
+                                  />
+                                </CCol>
+                                <CCol md="3">
+                                  <CButton
+                                    shape={"pill"}
+                                    id={"municipalsave"}
+                                    style={{ marginTop: "30px" }}
+                                    className={"saveBtn"}
+                                  >
+                                    {passing !== "" ? "UPDATE" : "SAVE"}
+                                  </CButton>
+                                  <CButton
+                                    shape={"pill"}
+                                    id={"Villagecancel"}
+                                    style={{ marginTop: "30px", marginLeft: "20px" }}
+                                    className={"cancelBtn"}
+                                    onClick={cancelVillage}
+                                  >
+                                    CANCEL
+                                  </CButton>
+                                  {error !== "" ? <p>{error}</p> : null}
+                                </CCol>
+                              </CRow>
+                            </React.Fragment>
+                          )}
+                        </CRow>
+
                         <CRow
                           className={"row-alignment"}
-                          style={{ marginLeft: "45px", marginTop: "20px" }}
-                          sm={12}
-                          md={12}
-                          lg={12}
+                          md="12"
+                          sm="12"
+                          lg="12"
+                          style={{ marginLeft: "-5px" }}
                         >
-                          <CCol md="3">
-                            <CLabel className={"label-name-1"}>
-                              Village Panchayat
-                              <span className={"text-danger"}> *</span>
-                            </CLabel>
-
-                            <CInput
-                              id={"VillageName"}
-                              name={"Villagename"}
-                              placeholder="Enter Village Panchayat Name"
-                              maxlength="60"
-                              size="60"
-                            />
-                          </CCol>
-
-                          <CCol md="3">
-                            <CLabel className={"label-name-1"}>
-                              Abbreviation
-                              <span className={"text-danger"}> *</span>
-                            </CLabel>
-                            <CInput
-                              id={"Villageabrreviation"}
-                              name={"abbreviation"}
-                              placeholder="Enter Abbreviation"
-                              maxlength="5"
-                              size="5"
-                            />
-                          </CCol>
-                          <CCol md="3">
-                            <CLabel className={"label-name-1"}>
-                              Code
-                              <span className={"text-danger"}> *</span>
-                            </CLabel>
-                            <CInput
-                              id={"Villagecode"}
-                              name={"code"}
-                              placeholder="Enter Code"
-                              maxlength="5"
-                              size="5"
-                            />
-                          </CCol>
-                          <CCol md="3">
-                            <CButton
-                              shape={"pill"}
-                              id={"municipalsave"}
-                              style={{ marginTop: "30px" }}
-                              className={"saveBtn"}
-                            >
-                              {passing !== "" ? "UPDATE" : "SAVE"}
-                            </CButton>
-                            <CButton
-                              shape={"pill"}
-                              id={"Villagecancel"}
-                              style={{ marginTop: "30px", marginLeft: "20px" }}
-                              className={"cancelBtn"}
-                              onClick={cancelVillage}
-                            >
-                              CANCEL
-                            </CButton>
-                            {error !== "" ? <p>{error}</p> : null}
-                          </CCol>
-                        </CRow>
-                      </React.Fragment>
-                    )}
-                  </CRow>
-
-                  <CRow
-                    className={"row-alignment"}
-                    md="12"
-                    sm="12"
-                    lg="12"
-                    style={{ marginLeft: "-5px" }}
-                  >
-                    <CCol className={"column-align"} md="4"></CCol>
-                    {wardList && (
-                      <React.Fragment>
-                        <CCol className={"column-align"} md={4} lg={4}>
-                          <CLabel className={"label-name-1"}>
-                            Ward Number
-                            <span className={"text-danger"}> *</span>
-                          </CLabel>
-                          <Select
-                            placeholder="Select the Ward Number"
-                            id={"Ward"}
-                            type={"text"}
-                            components={{ MenuList: SelectMenuButtonward }}
-                            onChange={changeWard}
-                            options={selectWard}
-                          />
-                           {villageHide.ward &&  selected3.length !== 0 ? (
-                            <div
-                              style={{
-                                width: 300,
-                                marginLeft: "426px",
-                                marginTop: "-40px",
-                                padding: 10,
-                              }}
-                            
-                            >
-                              <i
-                                className={"editIcon"}
-                              
-                                id={"WardEdit"}
-                                class="fas fa-edit"
-                              />
-                              <div
-                                style={{
-                                  width: 300,
-                                  marginLeft: "26px",
-                                  marginTop: "-30px",
-                                  padding: 10,
-                                  color: "red",
-                                }}
-                              >
-                                <i
-                                  className={"editIcon"}
-                                 
-                                  id={"Warddelete"}
-                                  class="fas fa-trash"
+                          <CCol className={"column-align"} md="4"></CCol>
+                          {wardList && (
+                            <React.Fragment>
+                              <CCol className={"column-align"} md={4} lg={4}>
+                                <CLabel className={"label-name-1"}>
+                                  Ward Number
+                                  <span className={"text-danger"}> *</span>
+                                </CLabel>
+                                <Select
+                                  placeholder="Select the Ward Number"
+                                  id={"Ward"}
+                                  type={"text"}
+                                  components={{ MenuList: SelectMenuButtonward }}
+                                  onChange={changeWard}
+                                  options={selectWard}
                                 />
-                              </div>
-                            </div>
-                          ) : null}
-                        </CCol>
-                        {/* <CCol className={"column-align"} md={1} lg={1}>
+                                {villageHide.ward && selected3.length !== 0 ? (
+                                  <div
+                                    style={{
+                                      width: 300,
+                                      marginLeft: "426px",
+                                      marginTop: "-40px",
+                                      padding: 10,
+                                    }}
+
+                                  >
+                                    <i
+                                      className={"editIcon"}
+
+                                      id={"WardEdit"}
+                                      class="fas fa-edit"
+                                    />
+                                    <div
+                                      style={{
+                                        width: 300,
+                                        marginLeft: "26px",
+                                        marginTop: "-30px",
+                                        padding: 10,
+                                        color: "red",
+                                      }}
+                                    >
+                                      <i
+                                        className={"editIcon"}
+
+                                        id={"Warddelete"}
+                                        class="fas fa-trash"
+                                      />
+                                    </div>
+                                  </div>
+                                ) : null}
+                              </CCol>
+                              {/* <CCol className={"column-align"} md={1} lg={1}>
                           <CButton
                             shape={"pill"}
                             id={"addmunicipalcorporation"}
@@ -3312,249 +3359,249 @@ setSideBarup4(false)
                           </CButton>
                         </CCol> */}
 
-                        {municipalName.edit === true ? (
-                          <React.Fragment>
-                            <CCol md={3} lg={3}>
-                              <CButton
-                                style={{
-                                  marginTop: "30px",
-                                }}
-                                id={"WardeEdit"}
-                                className={"btn btn-success"}
-                                onClick={editState}
+                              {municipalName.edit === true ? (
+                                <React.Fragment>
+                                  <CCol md={3} lg={3}>
+                                    <CButton
+                                      style={{
+                                        marginTop: "30px",
+                                      }}
+                                      id={"WardeEdit"}
+                                      className={"btn btn-success"}
+                                      onClick={editState}
+                                    >
+                                      EDIT
+                                    </CButton>
+                                  </CCol>
+                                </React.Fragment>
+                              ) : null}
+                            </React.Fragment>
+                          )}
+                          {wardCreate && (
+                            <React.Fragment>
+                              <CRow
+                                className={"row-alignment"}
+                                style={{ marginLeft: "45px", marginTop: "20px" }}
+                                sm={12}
+                                md={12}
+                                lg={12}
                               >
-                                EDIT
-                              </CButton>
-                            </CCol>
-                          </React.Fragment>
-                        ) : null}
-                      </React.Fragment>
-                    )}
-                    {wardCreate && (
-                      <React.Fragment>
-                        <CRow
-                          className={"row-alignment"}
-                          style={{ marginLeft: "45px", marginTop: "20px" }}
-                          sm={12}
-                          md={12}
-                          lg={12}
-                        >
-                          <CCol md="3">
-                            <CLabel className={"label-name-1"}>
-                              Ward Number
-                              <span className={"text-danger"}> *</span>
-                            </CLabel>
+                                <CCol md="3">
+                                  <CLabel className={"label-name-1"}>
+                                    Ward Number
+                                    <span className={"text-danger"}> *</span>
+                                  </CLabel>
 
-                            <CInput
-                              id={"wardname"}
-                              name={"Wardname"}
-                              placeholder="Enter Ward Number"
-                              maxlength="60"
-                              size="60"
-                            />
-                          </CCol>
+                                  <CInput
+                                    id={"wardname"}
+                                    name={"Wardname"}
+                                    placeholder="Enter Ward Number"
+                                    maxlength="60"
+                                    size="60"
+                                  />
+                                </CCol>
 
-                          <CCol md="3">
-                            <CLabel className={"label-name-1"}>
-                              Abbreviation
-                              <span className={"text-danger"}> *</span>
+                                <CCol md="3">
+                                  <CLabel className={"label-name-1"}>
+                                    Abbreviation
+                                    <span className={"text-danger"}> *</span>
+                                  </CLabel>
+                                  <CInput
+                                    id={"wardabbreviation"}
+                                    name={"abbreviation"}
+                                    placeholder="Enter Abbreviation"
+                                    maxlength="5"
+                                    size="5"
+                                  />
+                                </CCol>
+                                <CCol md="3">
+                                  <CLabel className={"label-name-1"}>
+                                    Code
+                                    <span className={"text-danger"}> *</span>
+                                  </CLabel>
+                                  <CInput
+                                    id={"wardcode"}
+                                    name={"wardcode"}
+                                    placeholder="Enter Code"
+                                    maxlength="5"
+                                    size="5"
+                                  />
+                                </CCol>
+                                <CCol md="3">
+                                  <CButton
+                                    shape={"pill"}
+                                    id={"wardsave"}
+                                    style={{ marginTop: "30px" }}
+                                    className={"saveBtn"}
+                                  >
+                                    {passing !== "" ? "UPDATE" : "SAVE"}
+                                  </CButton>
+                                  <CButton
+                                    shape={"pill"}
+                                    id={"wardcancel"}
+                                    style={{ marginTop: "30px", marginLeft: "20px" }}
+                                    className={"cancelBtn"}
+                                    onClick={cancelWard}
+                                  >
+                                    CANCEL
+                                  </CButton>
+                                  {error !== "" ? <p>{error}</p> : null}
+                                </CCol>
+                              </CRow>
+                            </React.Fragment>
+                          )}
+                        </CRow>
+                        <CCol>
+                          <CLabel
+                            style={{
+                              fontSize: "20PX",
+                              fontFamily: "Open Sans",
+                              fontWeight: "700",
+                              marginLeft: "55px",
+                              marginTop: "20px",
+                            }}
+                          >
+                            Select Street
+                          </CLabel>
+                        </CCol>
+                        <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                          <CCol className={"column-align"} md="4">
+                            <CLabel className={"label-name"}>
+                              Area
+                              <span className={"text-danger"}>*</span>
                             </CLabel>
-                            <CInput
-                              id={"wardabbreviation"}
-                              name={"abbreviation"}
-                              placeholder="Enter Abbreviation"
-                              maxlength="5"
-                              size="5"
+                            <Select
+                              className={"input-align"}
+                              id={"Villagearea"}
+                              name={"area"}
+                              placeholder={"Select Area Name"}
+                              options={select}
                             />
                           </CCol>
-                          <CCol md="3">
-                            <CLabel className={"label-name-1"}>
-                              Code
-                              <span className={"text-danger"}> *</span>
-                            </CLabel>
-                            <CInput
-                              id={"wardcode"}
-                              name={"wardcode"}
-                              placeholder="Enter Code"
-                              maxlength="5"
-                              size="5"
-                            />
-                          </CCol>
-                          <CCol md="3">
+                        </CRow>
+                      </div>
+                      <CRow style={{ marginTop: "30px", marginLeft: "650px" }}>
+                        <CCol md="10">
+                          <CCol
+                            md="5"
+                            style={{
+                              position: "absolute",
+                              marginLeft: "-190px",
+                              float: "right",
+                              marginTop: "-65px",
+                            }}
+                          >
                             <CButton
-                              shape={"pill"}
-                              id={"wardsave"}
-                              style={{ marginTop: "30px" }}
-                              className={"saveBtn"}
-                            >
-                              {passing !== "" ? "UPDATE" : "SAVE"}
-                            </CButton>
-                            <CButton
-                              shape={"pill"}
-                              id={"wardcancel"}
-                              style={{ marginTop: "30px", marginLeft: "20px" }}
+                              style={{
+                                float: "right",
+                              }}
+                              id={"villagecancelAbbreviationConfigureCode"}
                               className={"cancelBtn"}
-                              onClick={cancelWard}
+                              onClick={cancelchange}
                             >
                               CANCEL
                             </CButton>
-                            {error !== "" ? <p>{error}</p> : null}
+                            <CButton
+                              style={{
+                                float: "right",
+                                marginRight: "15px",
+                              }}
+                              id={"saveAbbreviationConfigureCode"}
+                              className={"saveBtn"}
+                              onClick={saveCorporation}
+                            >
+                              Save
+                            </CButton>{" "}
                           </CCol>
-                        </CRow>
-                      </React.Fragment>
-                    )}
-                  </CRow>
-                  <CCol>
-                    <CLabel
-                      style={{
-                        fontSize: "20PX",
-                        fontFamily: "Open Sans",
-                        fontWeight: "700",
-                        marginLeft: "55px",
-                        marginTop: "20px",
-                      }}
-                    >
-                      Select Street
-                    </CLabel>
-                  </CCol>
-                  <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                    <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
-                        Area
-                        <span className={"text-danger"}>*</span>
-                      </CLabel>
-                      <Select
-                        className={"input-align"}
-                        id={"Villagearea"}
-                        name={"area"}
-                        placeholder={"Select Area Name"}
-                        options={select}
-                      />
-                    </CCol>
-                  </CRow>
-                </div>
-                <CRow style={{ marginTop: "30px", marginLeft: "650px" }}>
-                  <CCol md="10">
-                    <CCol
-                      md="5"
-                      style={{
-                        position: "absolute",
-                        marginLeft: "-190px",
-                        float: "right",
-                        marginTop: "-65px",
-                      }}
-                    >
-                      <CButton
-                        style={{
-                          float: "right",
-                        }}
-                        id={"villagecancelAbbreviationConfigureCode"}
-                        className={"cancelBtn"}
-                        onClick={cancelchange}
-                      >
-                        CANCEL
-                      </CButton>
-                      <CButton
-                        style={{
-                          float: "right",
-                          marginRight: "15px",
-                        }}
-                        id={"saveAbbreviationConfigureCode"}
-                        className={"saveBtn"}
-                        onClick={saveCorporation}
-                      >
-                        Save
-                      </CButton>{" "}
-                    </CCol>
-                  </CCol>
-                </CRow>
+                        </CCol>
+                      </CRow>
 
-                <CRow style={{ padding: "4%" }}>
-                  <CDataTable
-                    items={userData}
-                    fields={fields1}
-                    columnFilter
-                    tableFilter
-                    tableLabel={"List of Streets"}
-                    itemsPerPageSelect
-                    itemsPerPage={5}
-                    selectAll={true}
-                    checkedAll={userData.length === selected.length}
-                    onSelectAll={(val) => {
-                      console.log(val, userData);
-                      if (userData.length === selected.length) {
-                        setSelected([]);
-                      } else {
-                        let ids = [];
-                        val.map((x) => {
-                          ids.push(`${x._id}`);
-                        });
-                        setSelected(ids);
-                      }
-                    }}
-                    hover
-                    sorter
-                    pagination
-                    scopedSlots={{
-                      show_details: (item, index) => {
-                        return (
-                          <td className="py-2">
-                            <CRow>
-                              <CInput
-                                type={"checkbox"}
-                                style={{
-                                  width: "15px",
-                                  height: "15px",
-                                  marginLeft: "30px",
-                                  marginBottom: "10px",
-                                }}
-                                onClick={() => {
-                                  if (selected.includes(`${item._id}`)) {
-                                    let values = selected.filter((x) => {
-                                      return `${x}` !== `${item._id}`;
-                                    });
-                                    setSelected(values);
-                                  } else {
-                                    setSelected([...selected, `${item._id}`]);
-                                  }
-                                }}
-                                checked={selected.includes(`${item._id}`)}
-                              />
-                            </CRow>
-                          </td>
-                        );
-                      },
-                      show_details1: (item, index) => {
-                        return (
-                          <td className="py-2">
-                            <CRow>
-                              <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                <i
-                                  id={"constimemDelete"}
-                                  style={{
-                                    marginLeft: "5px",
-                                    color: "black",
-                                    cursor: "pointer",
-                                  }}
-                                  className="fa fa-remove"
-                                ></i>
-                              </CCol>
-                            </CRow>
-                          </td>
-                        );
-                      },
-                      details: (item, index) => {},
-                    }}
-                  />
-                </CRow>
+                      <CRow style={{ padding: "4%" }}>
+                        <CDataTable
+                          items={userData}
+                          fields={fields1}
+                          columnFilter
+                          tableFilter
+                          tableLabel={"List of Streets"}
+                          itemsPerPageSelect
+                          itemsPerPage={5}
+                          selectAll={true}
+                          checkedAll={userData.length === selected.length}
+                          onSelectAll={(val) => {
+                            console.log(val, userData);
+                            if (userData.length === selected.length) {
+                              setSelected([]);
+                            } else {
+                              let ids = [];
+                              val.map((x) => {
+                                ids.push(`${x._id}`);
+                              });
+                              setSelected(ids);
+                            }
+                          }}
+                          hover
+                          sorter
+                          pagination
+                          scopedSlots={{
+                            show_details: (item, index) => {
+                              return (
+                                <td className="py-2">
+                                  <CRow>
+                                    <CInput
+                                      type={"checkbox"}
+                                      style={{
+                                        width: "15px",
+                                        height: "15px",
+                                        marginLeft: "30px",
+                                        marginBottom: "10px",
+                                      }}
+                                      onClick={() => {
+                                        if (selected.includes(`${item._id}`)) {
+                                          let values = selected.filter((x) => {
+                                            return `${x}` !== `${item._id}`;
+                                          });
+                                          setSelected(values);
+                                        } else {
+                                          setSelected([...selected, `${item._id}`]);
+                                        }
+                                      }}
+                                      checked={selected.includes(`${item._id}`)}
+                                    />
+                                  </CRow>
+                                </td>
+                              );
+                            },
+                            show_details1: (item, index) => {
+                              return (
+                                <td className="py-2">
+                                  <CRow>
+                                    <CCol style={{ fontSize: "1.15rem" }} md="12">
+                                      <i
+                                        id={"constimemDelete"}
+                                        style={{
+                                          marginLeft: "5px",
+                                          color: "black",
+                                          cursor: "pointer",
+                                        }}
+                                        className="fa fa-remove"
+                                      ></i>
+                                    </CCol>
+                                  </CRow>
+                                </td>
+                              );
+                            },
+                            details: (item, index) => { },
+                          }}
+                        />
+                      </CRow>
+                    </div>
+                  )}
+                </CCard>
               </div>
             )}
-          </CCard>
+          </div>
         </div>
-      )}
-    </div>
-    </div>
-    </div>
+      </div>
     </div>
   );
 };
