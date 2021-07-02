@@ -151,7 +151,7 @@ const CentralMinister = () => {
       filter: false,
     },
   ];
-  const userData1 = [];
+  const userData1chiefministegrid = [];
   const fields1 = [
     {
       key: "SNo",
@@ -501,7 +501,7 @@ const CentralMinister = () => {
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"corporationmembericon"}
+            id={"centralministergrideye"}
             className="fa fa-eye"
             onClick={partyShow}
           >
@@ -518,7 +518,7 @@ const CentralMinister = () => {
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"corporationmembericon"}
+            id={"centralministergrideye"}
             className="fa fa-eye"
             onClick={chiefministerShow}
                 >
@@ -536,7 +536,7 @@ const CentralMinister = () => {
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"corporationmembericon"}
+            id={"centralministergrideye"}
             className="fa fa-eye"
             onClick={deputychiefministerShow}
           >
@@ -553,7 +553,7 @@ const CentralMinister = () => {
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"corporationmembericon"}
+            id={"centralministergrideye"}
             className="fa fa-eye"
             onClick={ministryShow}
           >
@@ -570,7 +570,7 @@ const CentralMinister = () => {
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"corporationmembericon"}
+            id={"centralministergrideye"}
             className="fa fa-eye"
             onClick={centralMinister}
           >
@@ -1005,8 +1005,8 @@ const CentralMinister = () => {
               </CLabel>
               <Select
                 // className={"input-align"}
-                id={"rajyasabhaState"}
-                name={"state"}
+                id={"centralministerstatus"}
+                name={"status"}
                 placeholder={"Select Status"}
                 value={locations.district}
                 onChange={changeHandler}
@@ -1019,8 +1019,8 @@ const CentralMinister = () => {
               </CLabel>
               <Select
                 style={{ width: "50px", height: "50px" }}
-                id={"rajyasabhaStatus"}
-                name={"Status"}
+                id={"centralministernote"}
+                name={"note"}
                 placeholder={" Select Status "}
                 value={locations.city}
                 onChange={changeHandler}
@@ -1089,7 +1089,7 @@ const CentralMinister = () => {
                           
                             marginLeft: "35px",
                           }}
-                          id={"saveAbbreviationConfigureCode"}
+                          id={"centralministeraddmember"}
                           className={"saveBtn"}
                           onClick={changeMunicipalCorporation}
                         >
@@ -1179,7 +1179,7 @@ const CentralMinister = () => {
                       }}
                     >
                       <CDataTable
-                        items={userData1}
+                        items={userData1chiefministegrid}
                         fields={fields}
                         columnFilter
                         tableFilter
@@ -1594,7 +1594,7 @@ const CentralMinister = () => {
                         <CCol md={1} lg={1}>
                           <CButton
                             shape={"pill"}
-                            id={"addmunicipalcorporation"}
+                            id={"addcentralminister"}
                             style={{ marginTop: "30px" }}
                             className={"saveBtn"}
                             onClick={enableCreate}
@@ -1610,7 +1610,7 @@ const CentralMinister = () => {
                                 style={{
                                   marginTop: "30px",
                                 }}
-                                id={"locationLibraryStateEdit"}
+                                id={"centralministeredit"}
                                 className={"btn btn-success"}
                                 onClick={""}
                               >
@@ -1636,7 +1636,7 @@ const CentralMinister = () => {
                             </CLabel>
 
                             <CInput
-                              id={"MunicipalName"}
+                              id={"centralministerministy"}
                               name={"CentralMinisterMinistryName"}
                               placeholder="Enter Ministry"
                               maxlength="60"
@@ -1650,7 +1650,7 @@ const CentralMinister = () => {
                               <span className={"text-danger"}> *</span>
                             </CLabel>
                             <CInput
-                              id={"municipalabrreviation"}
+                              id={"centralministerabrreviation"}
                               name={"abbreviation"}
                               placeholder="Enter Abbreviation"
                               maxlength="5"
@@ -1663,7 +1663,7 @@ const CentralMinister = () => {
                               <span className={"text-danger"}> *</span>
                             </CLabel>
                             <CInput
-                              id={"municipalcode"}
+                              id={"centralministercode"}
                               name={"code"}
                               style={{ textTransform: "uppercase" }}
                               placeholder="Enter Code"
@@ -1674,7 +1674,7 @@ const CentralMinister = () => {
                           <CCol md="3">
                             <CButton
                               shape={"pill"}
-                              id={"municipalsave"}
+                              id={"centralministersave"}
                               style={{ marginTop: "30px" }}
                               className={"saveBtn"}
                             >
@@ -1713,7 +1713,7 @@ const CentralMinister = () => {
                       </CLabel>
                       <Select
                         // className={"input-align"}
-                        id={"municipalstatename"}
+                        id={"centralministersearchmember"}
                         // name={"municipalTypeofOffice"}
                         placeholder={"Select Party member"}
                         value={typeofOfficess}
@@ -1802,11 +1802,11 @@ const CentralMinister = () => {
                   >
                     <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name-1"}>From Date </CLabel>
-                      <CInput type="date" id={"rajyasabhadatefrom"} />
+                      <CInput type="date" id={"centralministerdatefrom"} />
                     </CCol>
                     <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name-1"}>To Date </CLabel>
-                      <CInput type="date" id={"rajyasabhadatefrom"} />
+                      <CInput type="date" id={"centralministerdateto"} />
                     </CCol>
                   </CRow>
 
@@ -1824,7 +1824,7 @@ const CentralMinister = () => {
                         style={{
                           float: "right",
                         }}
-                        id={"cancelAbbreviationConfigureCode"}
+                        id={"cancelcentralminister"}
                         className={"cancelBtn"}
                         onClick={changeCancelMunicipalCorporation}
                       >
@@ -1835,7 +1835,7 @@ const CentralMinister = () => {
                           float: "right",
                           marginRight: "15px",
                         }}
-                        id={"saveAbbreviationConfigureCode"}
+                        id={"savecentralminister"}
                         className={"saveBtn"}
                         onClick={saveCorporation}
                       >

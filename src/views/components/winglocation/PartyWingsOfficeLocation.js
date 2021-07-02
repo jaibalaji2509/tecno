@@ -32,7 +32,7 @@ function PartyWingsOfficeLocation() {
     setAddPartyOffice(true);
     setCreatepartyOffice(false);
   };
-  const userData1 = [
+  const userDataoffice = [
     {
       SNo: "1",
       Street: "Head Quaters",
@@ -52,7 +52,7 @@ function PartyWingsOfficeLocation() {
       ENTERON: "31/05/2021",
     },
   ];
-  const fields1 = [
+  const fieldsoffice = [
     {
       key: "SNo",
       label: "S.NO",
@@ -269,7 +269,7 @@ function PartyWingsOfficeLocation() {
                         </CLabel>
                         <CInput
                           className={"input-align"}
-                          id={"municipalstatename"}
+                          id={"WingsOffice"}
                           name={"PartyOffice"}
                           placeholder={"Enter Party Office"}
                         />
@@ -281,7 +281,7 @@ function PartyWingsOfficeLocation() {
                         </CLabel>
                         <CInput
                           className={"input-align"}
-                          id={"municipaldistrict"}
+                          id={"WingsOfficeabbrevation"}
                           name={"Abbreviation"}
                           placeholder={"Enter Abbreviation"}
                         />
@@ -295,7 +295,7 @@ function PartyWingsOfficeLocation() {
                         </CLabel>
                         <CInput
                           className={"input-align"}
-                          id={"municipaldistrict"}
+                          id={"WingsOfficecode"}
                           name={"city"}
                           placeholder={"Enter Code"}
                         />
@@ -307,7 +307,7 @@ function PartyWingsOfficeLocation() {
                         </CLabel>
                         <Select
                           className={"input-align"}
-                          id={"municipalarea"}
+                          id={"WingsOfficerepotingto"}
                           name={"area"}
                           placeholder={"Select Reporting To"}
                           options={officeType}
@@ -329,7 +329,7 @@ function PartyWingsOfficeLocation() {
                             style={{
                               float: "right",
                             }}
-                            id={"cancelAbbreviationConfigureCode"}
+                            id={"WingsOfficecancel"}
                             className={"cancelBtn"}
                             onClick={addTypeofPartyOffice}
                           >
@@ -340,7 +340,7 @@ function PartyWingsOfficeLocation() {
                               float: "right",
                               marginRight: "15px",
                             }}
-                            id={"saveAbbreviationConfigureCode"}
+                            id={"saveWingsOffice"}
                             className={"saveBtn"}
                             onClick={""}
                           >
@@ -360,7 +360,7 @@ function PartyWingsOfficeLocation() {
                     lg={12}
                   >
                     <img
-                      id={"employeeDataorgEmployeeData"}
+                      id={"WingsOfficehierarchy"}
                       alt={""}
                       src={
                         "https://img.icons8.com/fluent/2x/organization-chart-people.png"
@@ -377,7 +377,7 @@ function PartyWingsOfficeLocation() {
                   <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
                   <p data-tip="print">
                     <i
-                      id={"locationLibraryDelete"}
+                      id={"WingsOfficeprint"}
                       style={{
                         position: "absolute",
                         top: "-5px",
@@ -394,7 +394,7 @@ function PartyWingsOfficeLocation() {
                   <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
                   <p data-tip="share">
                     <i
-                      id={"locationLibraryDelete"}
+                      id={"WingsOfficeshare"}
                       style={{
                         position: "absolute",
                         top: "-5px",
@@ -411,8 +411,8 @@ function PartyWingsOfficeLocation() {
 
                 <CRow style={{ padding: "4%", marginTop: "-6.5%" }}>
                   <CDataTable
-                    items={userData1}
-                    fields={fields1}
+                    items={userDataoffice}
+                    fields={fieldsoffice}
                     columnFilter
                     tableFilter
                     tableLabel={"List of Type of Party Wing Office"}
@@ -500,7 +500,7 @@ function PartyWingsOfficeLocation() {
                         position: "absolute",
                         marginLeft: "20px",
                       }}
-                      id={"saveAbbreviationConfigureCode"}
+                      id={"WingsOfficeadd"}
                       className={"saveBtn"}
                       onClick={changePartyOffice}
                     >
@@ -642,7 +642,7 @@ function PartyWingsOfficeLocation() {
                   >
                     1
                   </span>
-                  <span className={"divider2"} />
+                  {/* <span className={"divider2"} /> */}
                   <br />
                   <br />
                   {/* </CWidgetDropdown> */}
@@ -656,7 +656,7 @@ function PartyWingsOfficeLocation() {
                   lg={12}
                 >
                   <img
-                    id={"employeeDataorgEmployeeData"}
+                    id={"WingsOfficehierarchy"}
                     alt={""}
                     src={
                       "https://img.icons8.com/fluent/2x/organization-chart-people.png"
@@ -673,7 +673,7 @@ function PartyWingsOfficeLocation() {
                 <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
                 <p data-tip="print">
                   <i
-                    id={"locationLibraryDelete"}
+                    id={"WingsOfficeprint"}
                     style={{
                       position: "absolute",
                       top: "25px",
@@ -690,7 +690,7 @@ function PartyWingsOfficeLocation() {
                 <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
                 <p data-tip="share">
                   <i
-                    id={"locationLibraryDelete"}
+                    id={"WingsOfficeshare"}
                     style={{
                       position: "absolute",
                       top: "0px",
@@ -828,7 +828,7 @@ function PartyWingsOfficeLocation() {
                         cursor: "pointer",
                       }}
                       onClick={addTypeofPartyOffice}
-                      id={"locationLibraryEdit"}
+                      id={"WingsOfficeedit"}
                       className="fas fa-edit"
                     ></i>
                   </CCol>
@@ -846,7 +846,7 @@ function PartyWingsOfficeLocation() {
                   </CLabel>
                   <Select
                     className={"input-align"}
-                    id={"municipalarea"}
+                    id={"WingsOfficereportingto"}
                     name={"area"}
                     placeholder={"Select Reporting To"}
                     options={officeType}
@@ -864,7 +864,7 @@ function PartyWingsOfficeLocation() {
                     type={"text"}
                     className={"input-align"}
                     name={"Address1"}
-                    id={"WinglocationAddress1"}
+                    id={"Winglocationname"}
                     placeholder="Enter Name of Party Office"
                   />
                 </CCol>
@@ -972,7 +972,7 @@ function PartyWingsOfficeLocation() {
                     type={"text"}
                     className={"input-align"}
                     name={"Area "}
-                    id={"WinglocationArea "}
+                    id={"Winglocationstreet"}
                     placeholder="Enter Street "
                   />
                 </CCol>
@@ -993,7 +993,7 @@ function PartyWingsOfficeLocation() {
                       style={{
                         float: "right",
                       }}
-                      id={"cancelAbbreviationConfigureCode"}
+                      id={"cancelAbbreviationConfigureCodeWingsOffice"}
                       className={"cancelBtn"}
                       onClick={cancelPartyOffice}
                     >
@@ -1004,7 +1004,7 @@ function PartyWingsOfficeLocation() {
                         float: "right",
                         marginRight: "15px",
                       }}
-                      id={"saveAbbreviationConfigureCode"}
+                      id={"saveAbbreviationConfigureCodeWingsOffice"}
                       className={"saveBtn"}
                       onClick={""}
                     >

@@ -518,7 +518,7 @@ const MemberTownPanchayat = () => {
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"memberregisterediticon"}
+            id={"membertowngrideye"}
             className="fa fa-eye"
             onClick={chairshow}
           >
@@ -535,7 +535,7 @@ const MemberTownPanchayat = () => {
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"memberregisterediticon"}
+            id={"membertowngrideye"}
             className="fa fa-eye"
             onClick={gridshow}
           >
@@ -552,7 +552,7 @@ const MemberTownPanchayat = () => {
               marginBottom: "15px",
               marginLeft: "20px",
             }}
-            id={"memberregisterediticon"}
+            id={"membertowngrideye"}
             className="fa fa-eye"
             onClick={partshow}
           >
@@ -865,7 +865,7 @@ const MemberTownPanchayat = () => {
                 <span className={"text-danger"}>*</span>
               </CLabel>
               <Select
-                id={"memtownState"}
+                id={"statusmembertown"}
                 name={"state"}
                 placeholder={"Select Status"}
                 value={locations.district}
@@ -878,7 +878,7 @@ const MemberTownPanchayat = () => {
                 <span className={"text-danger"}> *</span>
               </CLabel>
               <CTextarea
-                id={"contimemnote"}
+                id={"membertownnote"}
                 placeholder="Enter Description for Termination"
                 style={{ height: "80px", marginLeft: "10px" }}
                 min="10"
@@ -948,7 +948,7 @@ const MemberTownPanchayat = () => {
                           
                             marginLeft: "35px",
                           }}
-                          id={"saveAbbreviationConfigureCode"}
+                          id={"membertownaddmember"}
                           className={"saveBtn"}
                           onClick={changeMunicipalCorporation}
                         >
@@ -1455,7 +1455,7 @@ const MemberTownPanchayat = () => {
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        id={"memtownstatename"}
+                        id={"memtownsearchmember"}
                         placeholder={"Select Party member"}
                         value={typeofOfficess}
                         onChange={(e) => setTypeofOfficess(e)}

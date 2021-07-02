@@ -285,7 +285,7 @@ function PartyOfficeLocation() {
                       </CLabel>
                       <CInput
                         className={"input-align"}
-                        id={"municipalstatename"}
+                        id={"typeoofparty"}
                         name={"PartyOffice"}
                         placeholder={"Enter Party Office"}
                       />
@@ -297,7 +297,7 @@ function PartyOfficeLocation() {
                       </CLabel>
                       <CInput
                         className={"input-align"}
-                        id={"municipaldistrict"}
+                        id={"partylocationabbrevation"}
                         name={"Abbreviation"}
                         placeholder={"Enter Abbreviation"}
                       />
@@ -311,7 +311,7 @@ function PartyOfficeLocation() {
                       </CLabel>
                       <CInput
                         className={"input-align"}
-                        id={"municipaldistrict"}
+                        id={"locationtypeCode"}
                         name={"city"}
                         placeholder={"Enter Code"}
                       />
@@ -323,7 +323,7 @@ function PartyOfficeLocation() {
                       </CLabel>
                       <Select
                         className={"input-align"}
-                        id={"municipalarea"}
+                        id={"reportingto"}
                         name={"area"}
                         placeholder={"Select Reporting To"}
                         options={officeType}
@@ -345,7 +345,7 @@ function PartyOfficeLocation() {
                           style={{
                             float: "right",
                           }}
-                          id={"cancelAbbreviationConfigureCode"}
+                          id={"typeoofpartycancelAbbreviationConfigureCode"}
                           className={"cancelBtn"}
                           onClick={addTypeofPartyOffice}
                         >
@@ -356,7 +356,7 @@ function PartyOfficeLocation() {
                             float: "right",
                             marginRight: "15px",
                           }}
-                          id={"saveAbbreviationConfigureCode"}
+                          id={"typeoofpartysaveAbbreviationConfigureCode"}
                           className={"saveBtn"}
                           onClick={""}
                         >
@@ -376,7 +376,7 @@ function PartyOfficeLocation() {
                   lg={12}
                 >
                   <img
-                    id={"employeeDataorgEmployeeData"}
+                    id={"typeoofpartyhierarchy"}
                     alt={""}
                     src={
                       "https://img.icons8.com/fluent/2x/organization-chart-people.png"
@@ -393,7 +393,7 @@ function PartyOfficeLocation() {
                 <CCol style={{ fontSize: "1.55rem", }} md={12} sm={12} lg={12}>
                 <p data-tip="print">
                   <i
-                    id={"locationLibraryDelete"}
+                    id={"typeoofpartyprint"}
                     style={{
                       position: "absolute",
                       top: "-5px",
@@ -411,7 +411,7 @@ function PartyOfficeLocation() {
                 <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
                 <p data-tip="share">
                   <i
-                    id={"locationLibraryDelete"}
+                    id={"typeoofpartyshare"}
                     style={{
                       position: "absolute",
                       top: "-5px",
@@ -645,7 +645,7 @@ function PartyOfficeLocation() {
                 lg={12}
               >
                 <img
-                  id={"employeeDataorgEmployeeData"}
+                  id={"typeoofpartyhierarchy"}
                   alt={""}
                   src={
                     "https://img.icons8.com/fluent/2x/organization-chart-people.png"
@@ -662,7 +662,7 @@ function PartyOfficeLocation() {
               <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
               <p data-tip="print">
                 <i
-                  id={"locationLibraryDelete"}
+                  id={"typeoofpartylocationprint"}
                   style={{
                     position: "absolute",
                     top: "205px",
@@ -680,7 +680,7 @@ function PartyOfficeLocation() {
               <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
               <p data-tip="share">
                 <i
-                  id={"locationLibraryDelete"}
+                  id={"typeoofpartylocationshare"}
                   style={{
                     position: "absolute",
                     top: "180px",
@@ -713,7 +713,7 @@ function PartyOfficeLocation() {
                       position: "absolute",
                       marginLeft: "18px",
                     }}
-                    id={"saveAbbreviationConfigureCode"}
+                    id={"addtypeoofpartylocation"}
                     className={"saveBtn"}
                     onClick={changePartyOffice}
                   >
@@ -791,7 +791,7 @@ function PartyOfficeLocation() {
                 </CLabel>
                 <Select
                   type={"text"}
-                  id={"wingReportingTo"}
+                  id={"typeoofpartyoffice"}
                   className={"select"}
                   placeholder="Select the Party Office"
                   options={partyofficeType}
@@ -844,7 +844,7 @@ function PartyOfficeLocation() {
                       cursor: "pointer",
                     }}
                     onClick={addTypeofPartyOffice}
-                    id={"locationLibraryEdit"}
+                    id={"typeoofpartyofficeedit"}
                     className="fas fa-edit"
                   ></i>
                 </CCol>
@@ -862,7 +862,7 @@ function PartyOfficeLocation() {
                 </CLabel>
                 <Select
                   className={"input-align"}
-                  id={"municipalarea"}
+                  id={"typeoofpartyofficeReporting"}
                   name={"area"}
                   placeholder={"Select Reporting To"}
                   options={officeType}
@@ -880,7 +880,7 @@ function PartyOfficeLocation() {
                   type={"text"}
                   className={"input-align"}
                   name={"Address1"}
-                  id={"WinglocationAddress1"}
+                  id={"typeoofpartyofficelocation"}
                   placeholder="Enter Name of Party Office"
                 />
               </CCol>
@@ -913,7 +913,7 @@ function PartyOfficeLocation() {
                 </CLabel>
                 <Select
                   type={"text"}
-                  id={"wingSearchLocation"}
+                  id={"typeoofpartyofficelocationsarch"}
                   className={"select"}
                   placeholder="Country,State,City,Area"
                   options={locations}
@@ -931,7 +931,7 @@ function PartyOfficeLocation() {
                   type={"text"}
                   className={"input-align"}
                   name={"Pincode "}
-                  id={"WinglocatioPincode"}
+                  id={"typeoofpartyofficelocationPincode"}
                   placeholder="Enter Pincode "
                 />
               </CCol>
@@ -944,7 +944,7 @@ function PartyOfficeLocation() {
                   type={"text"}
                   className={"input-align"}
                   name={"State"}
-                  id={"WinglocationState"}
+                  id={"typeoofpartyofficelocationState"}
                   placeholder="Enter State"
                 />
               </CCol>
@@ -960,7 +960,7 @@ function PartyOfficeLocation() {
                   type={"text"}
                   className={"input-align"}
                   name={"City "}
-                  id={"WinglocationCity"}
+                  id={"typeoofpartyofficelocationCity"}
                   placeholder="Enter City "
                 />
               </CCol>
@@ -973,7 +973,7 @@ function PartyOfficeLocation() {
                   type={"text"}
                   className={"input-align"}
                   name={"Area "}
-                  id={"WinglocationArea "}
+                  id={"typeoofpartyofficelocationArea "}
                   placeholder="Enter Area "
                 />
               </CCol>
@@ -988,7 +988,7 @@ function PartyOfficeLocation() {
                   type={"text"}
                   className={"input-align"}
                   name={"Area "}
-                  id={"WinglocationArea "}
+                  id={"typeoofpartyofficelocationArea "}
                   placeholder="Enter Street "
                 />
               </CCol>
@@ -1009,7 +1009,7 @@ function PartyOfficeLocation() {
                     style={{
                       float: "right",
                     }}
-                    id={"cancelAbbreviationConfigureCode"}
+                    id={"typeoofpartyofficelocationcancel"}
                     className={"cancelBtn"}
                     onClick={cancelPartyOffice}
                   >
@@ -1020,7 +1020,7 @@ function PartyOfficeLocation() {
                       float: "right",
                       marginRight: "15px",
                     }}
-                    id={"saveAbbreviationConfigureCode"}
+                    id={"saveAtypeoofpartyofficelocatione"}
                     className={"saveBtn"}
                     onClick={""}
                   >
