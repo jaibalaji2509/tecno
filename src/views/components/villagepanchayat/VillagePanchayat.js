@@ -522,6 +522,7 @@ const VillagePanchayat = () => {
         setTimeout(() => {
           setSideBar2(true);
         }, 1000);
+        setSideBar1(false)
         setSideBarup1(false)
         setSideBarup2(false)
         setSideBarup3(false)
@@ -553,6 +554,8 @@ const VillagePanchayat = () => {
         setTimeout(() => {
           setSideBar3(true);
         }, 1000);
+        setSideBar1(false)
+        setSideBar2(false)
         setSideBarup1(false)
         setSideBarup2(false)
         setSideBarup3(false)
@@ -584,6 +587,8 @@ const VillagePanchayat = () => {
         setTimeout(() => {
           setSideBar4(true);
         }, 1000);
+        setSideBar1(false)
+        setSideBar3(false)
         setSideBarup1(false)
         setSideBarup2(false)
         setSideBarup3(false)
@@ -1094,8 +1099,8 @@ const VillagePanchayat = () => {
               <CButton
                 style={{
                   position: "absolute",
-                  top: "-220px",
-                  right: "-330px",
+                  top: "-100px",
+                  right: "-660px",
                   marginLeft: "330px",
                   backgroundColor: "green",
                   border: "1px solid green",
@@ -1795,8 +1800,8 @@ const VillagePanchayat = () => {
                 className={"menu"}
                 style={{
                   position: "absolute",
-                  top: "-82px",
-                  right: "-550px",
+                  top: "-100px",
+                  right: "-660px",
                   marginLeft: "30px",
                   backgroundColor: "green",
                   border: "1px solid green",
@@ -2002,8 +2007,8 @@ const VillagePanchayat = () => {
                 className={"menu"}
                 style={{
                   position: "absolute",
-                  top: "-82px",
-                  right: "-550px",
+                  top: "-165px",
+                  right: "-660px",
                   marginLeft: "30px",
                   backgroundColor: "green",
                   border: "1px solid green",
@@ -2214,8 +2219,8 @@ const VillagePanchayat = () => {
                 className={"menu"}
                 style={{
                   position: "absolute",
-                  top: "-82px",
-                  right: "-550px",
+                  top: "-165px",
+                  right: "-660px",
                   marginLeft: "30px",
                   backgroundColor: "green",
                   border: "1px solid green",
@@ -2448,8 +2453,8 @@ const VillagePanchayat = () => {
                 className={"menu"}
                 style={{
                   position: "absolute",
-                  top: "-82px",
-                  right: "-550px",
+                  top: "-210px",
+                  right: "-660px",
                   marginLeft: "30px",
                   backgroundColor: "green",
                   border: "1px solid green",
