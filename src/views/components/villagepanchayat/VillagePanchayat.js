@@ -670,15 +670,15 @@ const VillagePanchayat = () => {
             </CCol>
           </CRow>
 
-          <CRow
+          <CRow md="12"
             style={{ marginLeft: "10px", marginTop: "15px" }}
-            id={"createRoleUploadTemplate"}
+         
+          >
+            <CCol md="6"    id={"createRoleUploadTemplate"}
             onClick={() => {
               document.getElementById("uploadRoleTemplate").click();
-            }}
-          >
-            <CCol md="12">
-              <span style={{ fontSize: "20px", cursor: "pointer" }}>
+            }}>
+              <span style={{ fontSize: "20px", cursor: "pointer",color:"blue" }}>
                 <i className="fas fa-upload"></i>&nbsp;
               </span>
 
@@ -690,7 +690,7 @@ const VillagePanchayat = () => {
                 }}
                 className={"form-labels-6"}
               >
-                Upload Village Panchayat
+                Upload 
               </CLabel>
               <CInput
                 id={"uploadRoleTemplate"}
@@ -700,7 +700,29 @@ const VillagePanchayat = () => {
                 accept={SheetJSFT}
               />
             </CCol>
-         
+            <CCol md="6" style={{marginLeft:"150px",marginTop:"-38px"}}> 
+            <CSVLink data={csvData}>
+            <span style={{ fontSize: "20px", cursor: "pointer", color:"red" }}>
+                <i className="fas fa-download">
+                </i>&nbsp;
+             
+             </span>
+           
+              <CLabel
+                style={{
+                  position: "relative",
+                  marginLeft: "20px",
+                  cursor: "pointer",
+                  color:"black"
+                
+                }}
+                className={"form-labels-6"}
+              >
+                Download 
+              </CLabel>
+              </CSVLink>
+              
+            </CCol>
           </CRow>
 <CRow>
 <CCol md="3">
@@ -716,16 +738,7 @@ const VillagePanchayat = () => {
                 Confirm
               </CButton>
 
-              <CSVLink data={csvData}>
-                <CButton
-                  shape={"pill"}
-                  id={"municipalcancel"}
-                  style={{ marginTop: "-55px", marginLeft: "120px" }}
-                  className={"cancelBtn"}
-                >
-                  Download
-                </CButton>
-              </CSVLink>
+           
 
               <CButton
                 className={"menu"}
@@ -826,16 +839,7 @@ const VillagePanchayat = () => {
             <div className={"main-headerlabel"}>
               <span className={"header-label"}>Village panchayat</span>
             </div>
-            <CRow>
-                  <CCol md="5">
-                    <CInput
-                    type="number"
-                    value={mobilenumber}
-                    onChange={(e)=>setMobileNumber(e.target.value)}
-                    />
-                      <span className="text-danger">{validerror}</span>
-                  </CCol>
-                </CRow>
+           
             {locationHide.corporation && (
               <div>
                 <div style={{ marginLeft: "-26px" }}>
@@ -1307,17 +1311,7 @@ const VillagePanchayat = () => {
                             </div>
                           ) : null}
                         </CCol>
-                        {/* <CCol className={"column-align"} md={1} lg={1}>
-                          <CButton
-                            shape={"pill"}
-                            id={"addmunicipalcorporation"}
-                            style={{ marginTop: "30px" }}
-                            className={"saveBtn"}
-                            onClick={addPanchayat}
-                          >
-                            ADD
-                          </CButton>
-                        </CCol> */}
+                       
 
                         {municipalName.edit === true ? (
                           <React.Fragment>
