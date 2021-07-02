@@ -1281,7 +1281,7 @@ const VillagePanchayat = () => {
 
             <CButton
               className={"menu"}
-              style={{ position: "absolute", top: "15px", right: "15px" }}
+              style={{ position: "absolute", top: "15px", right: "15px",backgroundColor: "green", border: "1px solid green" }}
               className={"cancelBtn"}
               onClick={() => {
                 handleClickpanchayat();
@@ -1477,7 +1477,7 @@ const VillagePanchayat = () => {
 
               <CButton
                 className={"menu"}
-                style={{ position: "absolute", top: "15px", right: "15px" }}
+                style={{ position: "absolute", top: "15px", right: "15px",backgroundColor: "green", border: "1px solid green" }}
                 className={"cancelBtn"}
                 onClick={() => {
                   handleClickvillage();
@@ -1693,7 +1693,7 @@ const VillagePanchayat = () => {
 
                 <CButton
                   className={"menu"}
-                  style={{ position: "absolute", top: "15px", right: "15px" }}
+                  style={{ position: "absolute", top: "15px", right: "15px", backgroundColor: "green", border: "1px solid green"}}
                   className={"cancelBtn"}
                   onClick={() => {
                     handleClickward();
