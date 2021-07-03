@@ -563,7 +563,7 @@ function Constituency() {
                   marginLeft: "20px",
                 }}
               >
-                ADDING Parliamentary Constituency{" "}
+                Adding Parliamentary Constituency{" "}
               </span>
             </div>
           </CCol>
@@ -681,7 +681,7 @@ function Constituency() {
 
 
 
-        <CRow style={{ marginLeft: "330px" }}>
+        <CRow style={{ marginLeft: "250px" }}>
 
           <CCol md="3">
             <CButton
@@ -736,7 +736,7 @@ function Constituency() {
                     marginLeft: "20px",
                   }}
                 >
-                  ADDING Legislative Assembly Constituency{" "}
+                  Adding Legislative Assembly Constituency{" "}
                 </span>
               </div>
             </CCol>
@@ -857,7 +857,7 @@ function Constituency() {
             )
           })}
 
-          <CRow style={{ marginLeft: "235px" }}>
+          <CRow style={{ marginLeft: "250px" }}>
 
             <CCol md="3">
               <CButton
@@ -911,7 +911,7 @@ function Constituency() {
                     marginLeft: "20px",
                   }}
                 >
-                  ADDING Parliamentary Constituency{" "}
+                  Adding Parliamentary Constituency{" "}
                 </span>
               </div>
             </CCol>
@@ -1111,7 +1111,7 @@ function Constituency() {
                     marginLeft: "20px",
                   }}
                 >
-                  ADDING Legislative Assembly Constituency {" "}
+                  Adding Legislative Assembly Constituency {" "}
                 </span>
               </div>
             </CCol>

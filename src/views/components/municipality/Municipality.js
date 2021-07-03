@@ -625,7 +625,7 @@ setSideBarup2(false)
                     marginLeft: "20px",
                   }}
                 >
-                  ADDING Municipality{" "}
+                  Adding Municipality{" "}
                 </span>
               </div>
             </CCol>
@@ -743,7 +743,7 @@ setSideBarup2(false)
 
 
 
-          <CRow style={{ marginLeft: "330px" }}>
+          <CRow style={{ marginLeft: "250px" }}>
 
             <CCol md="3">
               <CButton
@@ -798,7 +798,7 @@ setSideBarup2(false)
                       marginLeft: "20px",
                     }}
                   >
-                    ADDING Ward Number{" "}
+                    Adding Ward Number{" "}
                   </span>
                 </div>
               </CCol>
@@ -919,7 +919,7 @@ setSideBarup2(false)
               )
             })}
 
-            <CRow style={{ marginLeft: "235px" }}>
+            <CRow style={{ marginLeft: "250px" }}>
 
               <CCol md="3">
                 <CButton
@@ -973,7 +973,7 @@ setSideBarup2(false)
                       marginLeft: "20px",
                     }}
                   >
-                    ADDING Municipality{" "}
+                    Adding Municipality{" "}
                   </span>
                 </div>
               </CCol>
@@ -1173,7 +1173,7 @@ setSideBarup2(false)
                       marginLeft: "20px",
                     }}
                   >
-                    ADDING Ward Number{" "}
+                    Adding Ward Number{" "}
                   </span>
                 </div>
               </CCol>

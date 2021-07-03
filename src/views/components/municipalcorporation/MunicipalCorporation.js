@@ -691,7 +691,7 @@ const MunicipalCorporation = () => {
                     marginLeft: "20px",
                   }}
                 >
-                  ADDING Municipal Corporation Name{" "}
+                  Adding Municipal Corporation Name{" "}
                 </span>
               </div>
             </CCol>
@@ -866,7 +866,7 @@ const MunicipalCorporation = () => {
                       marginLeft: "20px",
                     }}
                   >
-                    ADDING Ward Number{" "}
+                    Adding Ward Number{" "}
                   </span>
                 </div>
               </CCol>
@@ -1041,7 +1041,7 @@ const MunicipalCorporation = () => {
                       marginLeft: "20px",
                     }}
                   >
-                    ADDING Municipal Corporation Name{" "}
+                    Adding Municipal Corporation Name{" "}
                   </span>
                 </div>
               </CCol>
@@ -1220,7 +1220,7 @@ const MunicipalCorporation = () => {
                       marginLeft: "20px",
                     }}
                   >
-                    ADDING Ward Number{" "}
+                    Adding Ward Number{" "}
                   </span>
                 </div>
               </CCol>
