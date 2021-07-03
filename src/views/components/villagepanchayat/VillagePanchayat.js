@@ -939,11 +939,11 @@ const VillagePanchayat = () => {
 
   const changePanchayatUnion = (e) => {
     setSelected1(e)
-    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: true })
+    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: true,village: false,ward: false  })
   }
   const changeVillage = (e) => {
     setSelected2(e)
-    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: false, village: true })
+    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: false, village: true,ward: false })
   }
   const changeWard = (e) => {
     setSelected3(e)
@@ -982,7 +982,7 @@ const VillagePanchayat = () => {
                 <CCol md="2" style={{ minHeight: "10px" }}>
                   <CLabel
                     className={"label-name-1"}
-                    style={{ fontSize: "block", marginLeft: "-20px" }}
+                    style={{ fontSize: "block", marginLeft: "-25px" }}
                   >
                     District Panchayat
                     <span className={"text-danger"}> *</span>
