@@ -3377,17 +3377,16 @@ setSideBarup5(false)
                 Confirm
               </CButton>
 
-                        <CButton
-                          className={"menu"}
-                          style={{ position: "absolute", marginLeft: "725px", top: "-210px", backgroundColor: "green", border: "1px solid green" }}
-                          className={"cancelBtn"}
-                          onClick={() => {
-                            bulkhandleClick();
-                            // handleClick2();
-                          }}
-                        >
-                          Back
-                        </CButton>
+              <CButton
+                        className={"menu"}
+                        style={{ position: "absolute", top: "-210px", right: "-660px", marginLeft: "10px", backgroundColor: "green", border: "1px solid green" }}
+                        className={"cancelBtn"}
+                        onClick={() => {
+                          bulkhandleClick();
+                        }}
+                      >
+                        Back
+                      </CButton>
                       </CCol>
                   </CRow>
 
