@@ -631,7 +631,7 @@ const canceltownchange = () => {
                     marginLeft: "20px",
                   }}
                 >
-                  ADDING Town Panchayat{" "}
+                  Adding Town Panchayat{" "}
                 </span>
               </div>
             </CCol>
@@ -752,7 +752,7 @@ const canceltownchange = () => {
 
 
 
-          <CRow style={{ marginLeft: "330px" }}>
+          <CRow style={{ marginLeft: "250px" }}>
 
             <CCol md="3">
               <CButton
@@ -807,7 +807,7 @@ const canceltownchange = () => {
                       marginLeft: "20px",
                     }}
                   >
-                    ADDING Ward Number{" "}
+                    Adding Ward Number{" "}
                   </span>
                 </div>
               </CCol>
@@ -928,7 +928,7 @@ const canceltownchange = () => {
               )
             })}
 
-            <CRow style={{ marginLeft: "235px" }}>
+            <CRow style={{ marginLeft: "250px" }}>
 
               <CCol md="3">
                 <CButton
@@ -982,7 +982,7 @@ const canceltownchange = () => {
                       marginLeft: "20px",
                     }}
                   >
-                    ADDING Town panchayat{" "}
+                    Adding Town panchayat{" "}
                   </span>
                 </div>
               </CCol>
@@ -1182,7 +1182,7 @@ const canceltownchange = () => {
                       marginLeft: "20px",
                     }}
                   >
-                    ADDING Ward Number{" "}
+                    Adding Ward Number{" "}
                   </span>
                 </div>
               </CCol>

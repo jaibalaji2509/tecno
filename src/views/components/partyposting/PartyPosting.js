@@ -8,6 +8,7 @@ import {
   CSelect,
   CLink,
 } from "@coreui/react";
+import "./PartyPosting.css";
 import React, { useState } from "react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
@@ -386,345 +387,351 @@ const PartyPosting = () => {
     </Menu>
     )
   }
-  // const handleClick = () => {
+  const [menu, setMenu] = useState({
+    style: "menu2",
+    menuStatus: "open",
+    style3: "menu2",
+  });
+  const handleClick = () => {
   
-  //   switch (menu.menuStatus) {
-  //     case "open":
-  //       setMenu({
-  //         menuStatus: "close",
-  //         // style3: "menu2",
-  //         style: "menu active1",
+    switch (menu.menuStatus) {
+      case "open":
+        setMenu({
+          menuStatus: "close",
+          // style3: "menu2",
+          style: "menu active1",
 
-  //       });
+        });
 
-  //       setTimeout(() => {
-  //         setSideBaradd(true);
-  //       }, 1000);
-  //       setSideBarbulk(false)
-  //       break;
-  //     case "close":
-  //       setMenu({
-  //         menuStatus: "open",
-  //         // style3: "menu2",
-  //         style: "menu active2",
+        setTimeout(() => {
+          setSideBaradd(true);
+        }, 1000);
+        setSideBarbulk(false)
+        break;
+      case "close":
+        setMenu({
+          menuStatus: "open",
+          // style3: "menu2",
+          style: "menu active2",
 
-  //       });
-  //       setTimeout(() => {
-  //         setSideBaradd(false);
-  //       }, 1000);
-  //       break;
-  //   }
-  // };
-  // const bulkhandleClick = () => {
+        });
+        setTimeout(() => {
+          setSideBaradd(false);
+        }, 1000);
+        break;
+    }
+  };
+  const bulkhandleClick = () => {
   
-  //   switch (menu.menuStatus) {
-  //     case "open":
-  //       setMenu({
-  //         menuStatus: "close",
-  //         // style3: "menu2",
+    switch (menu.menuStatus) {
+      case "open":
+        setMenu({
+          menuStatus: "close",
+          // style3: "menu2",
 
-  //         style1: "menu active1",
+          style1: "menu active1",
 
-  //       });
-  //       setSideBarbulk(true);  
-  //       setSideBarbulk(false);
+        });
+        setSideBarbulk(true);  
+        setSideBarbulk(false);
 
-  //       break;
-  //     case "close":
-  //       setMenu({
-  //         menuStatus: "open",
-  //         // style3: "menu2",
-  //         style1: "menu active2",
+        break;
+      case "close":
+        setMenu({
+          menuStatus: "open",
+          // style3: "menu2",
+          style1: "menu active2",
 
-  //       });
-  //       setTimeout(() => {
+        });
+        setTimeout(() => {
 
-  //         setSideBarbulk(false);
-  //       }, 1000);
-  //       break;
-  //   }
-  // };
-  // const SelectMenuButtondepartment = (props) => {
-  //   return (
-  //     <components.MenuList {...props}>
-  //       {props.children}
-  //       <div
-  //         style={{
-  //           marginTop: "-75px",
-  //           marginBottom: "-50px",
-  //           minHeight: "150px",
-  //         }}
-  //       >
-  //         <CLink
-  //           className={"saveBtn"}
-  //           onClick={handleClickdepartment}
-  //           style={{ marginLeft: "200px" }}
-  //         >
-  //           Add{" "}
-  //         </CLink>
-  //         <CLink
-  //           className={"saveBtn"}
-  //           onClick={bulkhandleClickdepartment}
-  //           style={{ marginLeft: "50px" }}
-  //         >
-  //           Bulk Upload{" "}
-  //         </CLink>
-  //       </div>
-  //     </components.MenuList>
-  //   );
-  // };
-  // const handleClickdepartment = () => {
+          setSideBarbulk(false);
+        }, 1000);
+        break;
+    }
+  };
+  const SelectMenuButtondepartment = (props) => {
+    return (
+      <components.MenuList {...props}>
+        {props.children}
+        <div
+          style={{
+            marginTop: "-75px",
+            marginBottom: "-50px",
+            minHeight: "150px",
+          }}
+        >
+          <CLink
+            className={"saveBtn"}
+            onClick={handleClickdepartment}
+            style={{ marginLeft: "200px" }}
+          >
+            Add{" "}
+          </CLink>
+          <CLink
+            className={"saveBtn"}
+            onClick={bulkhandleClickdepartment}
+            style={{ marginLeft: "50px" }}
+          >
+            Bulk Upload{" "}
+          </CLink>
+        </div>
+      </components.MenuList>
+    );
+  };
+  const handleClickdepartment = () => {
   
-  //   switch (menu.menuStatus) {
-  //     case "open":
-  //       setMenu({
-  //         menuStatus: "close",
-  //         // style3: "menu2",
-  //         style: "menu active1",
+    switch (menu.menuStatus) {
+      case "open":
+        setMenu({
+          menuStatus: "close",
+          // style3: "menu2",
+          style: "menu active1",
 
-  //       });
+        });
 
-  //       setTimeout(() => {
-  //         setSideBaradddep(true);
-  //       }, 1000);
-  //       setSideBarbulkdep(false)
-  //       break;
-  //     case "close":
-  //       setMenu({
-  //         menuStatus: "open",
-  //         // style3: "menu2",
-  //         style: "menu active2",
+        setTimeout(() => {
+          setSideBaradddep(true);
+        }, 1000);
+        setSideBarbulkdep(false)
+        break;
+      case "close":
+        setMenu({
+          menuStatus: "open",
+          // style3: "menu2",
+          style: "menu active2",
 
-  //       });
-  //       setTimeout(() => {
-  //         setSideBaradddep(false);
-  //       }, 1000);
-  //       break;
-  //   }
-  // };
-  // const bulkhandleClickdepartment = () => {
+        });
+        setTimeout(() => {
+          setSideBaradddep(false);
+        }, 1000);
+        break;
+    }
+  };
+  const bulkhandleClickdepartment = () => {
   
-  //   switch (menu.menuStatus) {
-  //     case "open":
-  //       setMenu({
-  //         menuStatus: "close",
-  //         // style3: "menu2",
+    switch (menu.menuStatus) {
+      case "open":
+        setMenu({
+          menuStatus: "close",
+          // style3: "menu2",
 
-  //         style1: "menu active1",
+          style1: "menu active1",
 
-  //       });
-  //       setSideBarbulkdep(true);  
-  //       setSideBarbulkdes(false);
+        });
+        setSideBarbulkdep(true);  
+        setSideBarbulkdes(false);
 
-  //       break;
-  //     case "close":
-  //       setMenu({
-  //         menuStatus: "open",
-  //         // style3: "menu2",
-  //         style1: "menu active2",
+        break;
+      case "close":
+        setMenu({
+          menuStatus: "open",
+          // style3: "menu2",
+          style1: "menu active2",
 
-  //       });
-  //       setTimeout(() => {
+        });
+        setTimeout(() => {
 
-  //         setSideBarbulkdep(false);
-  //       }, 1000);
-  //       break;
-  //   }
-  // };
-  // const SelectMenuButtondesignation = (props) => {
-  //   return (
-  //     <components.MenuList {...props}>
-  //       {props.children}
-  //       <div
-  //         style={{
-  //           marginTop: "-58px",
-  //           marginBottom: "-50px",
-  //           minHeight: "150px",
-  //         }}
-  //       >
-  //         <CLink
-  //           className={"saveBtn"}
-  //           onClick={handleClickdesignation}
-  //           style={{ marginLeft: "200px" }}
-  //         >
-  //           Add{" "}
-  //         </CLink>
-  //         <CLink
-  //           className={"saveBtn"}
-  //           onClick={bulkhandleClickdesignation}
-  //           style={{ marginLeft: "50px" }}
-  //         >
-  //           Bulk Upload{" "}
-  //         </CLink>
-  //       </div>
-  //     </components.MenuList>
-  //   );
-  // };
-  // const handleClickdesignation = () => {
+          setSideBarbulkdep(false);
+        }, 1000);
+        break;
+    }
+  };
+  const SelectMenuButtondesignation = (props) => {
+    return (
+      <components.MenuList {...props}>
+        {props.children}
+        <div
+          style={{
+            marginTop: "-58px",
+            marginBottom: "-50px",
+            minHeight: "150px",
+          }}
+        >
+          <CLink
+            className={"saveBtn"}
+            onClick={handleClickdesignation}
+            style={{ marginLeft: "200px" }}
+          >
+            Add{" "}
+          </CLink>
+          <CLink
+            className={"saveBtn"}
+            onClick={bulkhandleClickdesignation}
+            style={{ marginLeft: "50px" }}
+          >
+            Bulk Upload{" "}
+          </CLink>
+        </div>
+      </components.MenuList>
+    );
+  };
+  const handleClickdesignation = () => {
   
-  //   switch (menu.menuStatus) {
-  //     case "open":
-  //       setMenu({
-  //         menuStatus: "close",
-  //         // style3: "menu2",
-  //         style: "menu active1",
+    switch (menu.menuStatus) {
+      case "open":
+        setMenu({
+          menuStatus: "close",
+          // style3: "menu2",
+          style: "menu active1",
 
-  //       });
+        });
 
-  //       setTimeout(() => {
-  //         setSideBaradddes(true);
-  //       }, 1000);
-  //       setSideBarbulkdes(false)
-  //       break;
-  //     case "close":
-  //       setMenu({
-  //         menuStatus: "open",
-  //         // style3: "menu2",
-  //         style: "menu active2",
+        setTimeout(() => {
+          setSideBaradddes(true);
+        }, 1000);
+        setSideBarbulkdes(false)
+        break;
+      case "close":
+        setMenu({
+          menuStatus: "open",
+          // style3: "menu2",
+          style: "menu active2",
 
-  //       });
-  //       setTimeout(() => {
-  //         setSideBaradddes(false);
-  //       }, 1000);
-  //       break;
-  //   }
-  // };
-  // const bulkhandleClickdesignation = () => {
+        });
+        setTimeout(() => {
+          setSideBaradddes(false);
+        }, 1000);
+        break;
+    }
+  };
+  const bulkhandleClickdesignation = () => {
   
-  //   switch (menu.menuStatus) {
-  //     case "open":
-  //       setMenu({
-  //         menuStatus: "close",
-  //         // style3: "menu2",
+    switch (menu.menuStatus) {
+      case "open":
+        setMenu({
+          menuStatus: "close",
+          // style3: "menu2",
 
-  //         style1: "menu active1",
+          style1: "menu active1",
 
-  //       });
-  //       setSideBarbulkdes(true);  
-  //       setSideBarbulkdep(false);
+        });
+        setSideBarbulkdes(true);  
+        setSideBarbulkdep(false);
 
-  //       break;
-  //     case "close":
-  //       setMenu({
-  //         menuStatus: "open",
-  //         // style3: "menu2",
-  //         style1: "menu active2",
+        break;
+      case "close":
+        setMenu({
+          menuStatus: "open",
+          // style3: "menu2",
+          style1: "menu active2",
 
-  //       });
-  //       setTimeout(() => {
+        });
+        setTimeout(() => {
 
-  //         setSideBarbulkdes(false);
-  //       }, 1000);
-  //       break;
-  //   }
-  // };
-  // const SelectMenuButtonrole = (props) => {
-  //   return (
-  //     <components.MenuList {...props}>
-  //       {props.children}
-  //       <div
-  //         style={{
-  //           marginTop: "-58px",
-  //           marginBottom: "-50px",
-  //           minHeight: "150px",
-  //         }}
-  //       >
-  //         <CLink
-  //           className={"saveBtn"}
-  //           onClick={handleClickrole}
-  //           style={{ marginLeft: "200px" }}
-  //         >
-  //           Add{" "}
-  //         </CLink>
-  //         <CLink
-  //           className={"saveBtn"}
-  //           onClick={bulkhandleClickrole}
-  //           style={{ marginLeft: "50px" }}
-  //         >
-  //           Bulk Upload{" "}
-  //         </CLink>
-  //       </div>
-  //     </components.MenuList>
-  //   );
-  // };
-  // const handleClickrole = () => {
+          setSideBarbulkdes(false);
+        }, 1000);
+        break;
+    }
+  };
+  const SelectMenuButtonrole = (props) => {
+    return (
+      <components.MenuList {...props}>
+        {props.children}
+        <div
+          style={{
+            marginTop: "-58px",
+            marginBottom: "-50px",
+            minHeight: "150px",
+          }}
+        >
+          <CLink
+            className={"saveBtn"}
+            onClick={handleClickrole}
+            style={{ marginLeft: "200px" }}
+          >
+            Add{" "}
+          </CLink>
+          <CLink
+            className={"saveBtn"}
+            onClick={bulkhandleClickrole}
+            style={{ marginLeft: "50px" }}
+          >
+            Bulk Upload{" "}
+          </CLink>
+        </div>
+      </components.MenuList>
+    );
+  };
+  const handleClickrole = () => {
   
-  //   switch (menu.menuStatus) {
-  //     case "open":
-  //       setMenu({
-  //         menuStatus: "close",
-  //         // style3: "menu2",
-  //         style: "menu active1",
+    switch (menu.menuStatus) {
+      case "open":
+        setMenu({
+          menuStatus: "close",
+          // style3: "menu2",
+          style: "menu active1",
 
-  //       });
+        });
 
-  //       setTimeout(() => {
-  //         setSideBaraddrole(true);
-  //       }, 1000);
-  //       setSideBarbulkrole(false)
-  //       break;
-  //     case "close":
-  //       setMenu({
-  //         menuStatus: "open",
-  //         // style3: "menu2",
-  //         style: "menu active2",
+        setTimeout(() => {
+          setSideBaraddrole(true);
+        }, 1000);
+        setSideBarbulkrole(false)
+        break;
+      case "close":
+        setMenu({
+          menuStatus: "open",
+          // style3: "menu2",
+          style: "menu active2",
 
-  //       });
-  //       setTimeout(() => {
-  //         setSideBaraddrole(false);
-  //       }, 1000);
-  //       break;
-  //   }
-  // };
-  // const bulkhandleClickrole = () => {
+        });
+        setTimeout(() => {
+          setSideBaraddrole(false);
+        }, 1000);
+        break;
+    }
+  };
+  const bulkhandleClickrole = () => {
   
-  //   switch (menu.menuStatus) {
-  //     case "open":
-  //       setMenu({
-  //         menuStatus: "close",
-  //         // style3: "menu2",
+    switch (menu.menuStatus) {
+      case "open":
+        setMenu({
+          menuStatus: "close",
+          // style3: "menu2",
 
-  //         style1: "menu active1",
+          style1: "menu active1",
 
-  //       });
-  //       setSideBarbulkrole(true);  
-  //       setSideBarbulkdes(false);
+        });
+        setSideBarbulkrole(true);  
+        setSideBarbulkdes(false);
 
-  //       break;
-  //     case "close":
-  //       setMenu({
-  //         menuStatus: "open",
-  //         // style3: "menu2",
-  //         style1: "menu active2",
+        break;
+      case "close":
+        setMenu({
+          menuStatus: "open",
+          // style3: "menu2",
+          style1: "menu active2",
 
-  //       });
-  //       setTimeout(() => {
+        });
+        setTimeout(() => {
 
-  //         setSideBarbulkrole(false);
-  //       }, 1000);
-  //       break;
-  //   }
-  // };
-  // const [sideBaradd, setSideBaradd] = useState(false)
-  // const [sideBaradddep, setSideBaradddep] = useState(false)
-  // const [sideBaradddes, setSideBaradddes] = useState(false)
-  // const [sideBaraddrole, setSideBaraddrole] = useState(false)
+          setSideBarbulkrole(false);
+        }, 1000);
+        break;
+    }
+  };
+  const [sideBaradd, setSideBaradd] = useState(false)
+  const [sideBaradddep, setSideBaradddep] = useState(false)
+  const [sideBaradddes, setSideBaradddes] = useState(false)
+  const [sideBaraddrole, setSideBaraddrole] = useState(false)
 
 
-  // const [sideBarbulk, setSideBarbulk] = useState(false)
-  // const [sideBarbulkdep, setSideBarbulkdep] = useState(false)
-  // const [sideBarbulkdes, setSideBarbulkdes] = useState(false)
-  // const [sideBarbulkrole, setSideBarbulkrole] = useState(false)
+  const [sideBarbulk, setSideBarbulk] = useState(false)
+  const [sideBarbulkdep, setSideBarbulkdep] = useState(false)
+  const [sideBarbulkdes, setSideBarbulkdes] = useState(false)
+  const [sideBarbulkrole, setSideBarbulkrole] = useState(false)
 
-  // const changePanchayatUnion = (e)=>{
-  //   setSelected1(e)
-  //   setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:true})
-  // }
-  // const changeRoleName = (e)=>{
-  //   setSelected2(e)
-  //   setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:false,role:true})
-  // }
+  const changePanchayatUnion = (e)=>{
+    setSelected1(e)
+    setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:true})
+  }
+  const changeRoleName = (e)=>{
+    setSelected2(e)
+    setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:false,role:true})
+  }
   return (
+    
     <div>
       {hideMappingMunicipal && (
         <div>
@@ -900,7 +907,7 @@ const PartyPosting = () => {
                         onChange={(e)=>setLocations(e)}
                         value={collected}
                         onChange={(e) => setCollected(e)}
-                        // components={{ MenuList: SelectMenuButtondepartment }}
+                        components={{ MenuList: SelectMenuButtondepartment }}
                         options={selectDepartment}
                       />
                        {villageHide.districtpanchayat && collected.length !== 0 ? (
@@ -1072,8 +1079,8 @@ const PartyPosting = () => {
                           id={"partypostingDesignation"}
                           type={"text"}                          
                           value={selected1}
-                          // onChange={changePanchayatUnion}
-                          // components={{ MenuList: SelectMenuButtondesignation }}                          
+                          onChange={changePanchayatUnion}
+                          components={{ MenuList: SelectMenuButtondesignation }}                          
                           options={selectDesignation}                         
                         />
                          {villageHide.panchayatunion && selected1.length !== 0 ? (
@@ -1110,18 +1117,7 @@ const PartyPosting = () => {
                                 </div>
                               ) : null}
                       </CCol>
-                      <CCol className={"column-align"} md={1} lg={1}>
-                        <CButton
-                          shape={"pill"}
-                          id={"addpartyPostingcorporation"}
-                          style={{ marginTop: "30px" }}
-                          className={"saveBtn"}
-                          onClick={addDesignation}
-                         
-                        >
-                          ADD
-                        </CButton>
-                      </CCol>
+                     
                     
 
                       {municipalName.edit === true ? (
@@ -1249,8 +1245,8 @@ const PartyPosting = () => {
                         </CLabel>
                         <Select
                        value={selected2}
-                      //  onChange={changeRoleName}
-                      //  components={{ MenuList: SelectMenuButtonrole }}
+                       onChange={changeRoleName}
+                       components={{ MenuList: SelectMenuButtonrole }}
                           placeholder="Select Role Name"
                           id={"Rolecorporation"}
                           name={"partyPostingrole   "}
@@ -1291,18 +1287,7 @@ const PartyPosting = () => {
                                 </div>
                               ) : null}
                       </CCol>
-                      <CCol className={"column-align"} md={1} lg={1}>
-                        <CButton
-                          shape={"pill"}
-                          id={"addRolecorporation"}
-                          style={{ marginTop: "30px" }}
-                          className={"saveBtn"}
-                          onClick={addRole}
-                         
-                        >
-                          ADD
-                        </CButton>
-                      </CCol>
+                     
                      
 
                       {municipalName.edit === true ? (
