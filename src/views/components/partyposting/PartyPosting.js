@@ -721,7 +721,7 @@ const PartyPosting = () => {
   const [sideBarbulkdep, setSideBarbulkdep] = useState(false)
   const [sideBarbulkdes, setSideBarbulkdes] = useState(false)
   const [sideBarbulkrole, setSideBarbulkrole] = useState(false)
-
+  
   const changePanchayatUnion = (e)=>{
     setSelected1(e)
     setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:true})
@@ -730,8 +730,199 @@ const PartyPosting = () => {
     setSelected2(e)
     setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:false,role:true})
   }
+  const [inputList, setInputList] = useState([{ name: "", abbreviation: "", code: "" }]);
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    list[index][name] = value;
+    setInputList(list);
+  };
+  const handleAddClick = (e) => {
+    e.preventDefault()
+    setInputList([...inputList, { name: "", abbreviation: "", code: "" }]);
+  }
+  const handleRemoveClick = (index) => {
+    const list = [...inputList];
+    list.splice(index, 1)
+    setInputList(list);
+  }
   return (
-    
+    <div className={menu.style3}>
+    {sideBaradddep && (
+      <div className={menu.style} style={{ marginLeft: "-108px" }}>
+
+        <CRow className={""}>
+          <CCol md="12" lg="12" sm="12">
+            <div>
+              <span
+                style={{
+                  fontSize: "18px",
+                  fontWeight: "700",
+                  marginLeft: "20px",
+                }}
+              >
+                Adding Department Name{" "}
+              </span>
+            </div>
+          </CCol>
+        </CRow>
+
+
+        {inputList.map((x, i) => {
+          return (
+
+            <CRow
+              className={"row-alignment"}
+              style={{ marginLeft: "5px", marginTop: "20px" }}
+              sm={12}
+              md={12}
+              lg={12}
+            >
+              <CCol md="2">
+                <CLabel className={"label-name-1"} 
+                style={{marginLeft:"-10px"}}
+                >
+                  Department
+                  <span className={"text-danger"}> *</span>
+                </CLabel>
+
+                <CInput
+                  id={"TownName"}
+                  name={"Townname"}
+                  placeholder="Enter Department Name"
+                  maxlength="60"
+                  size="60"
+                  value={x.panchayatname}
+                  onChange={e => handleInputChange(e, i)}
+                style={{marginLeft:"-10px", width:"120px"}}
+                />
+              </CCol>
+
+              <CCol md="2">
+                <CLabel className={"label-name-1"}>
+                  Abbreviation
+                  <span className={"text-danger"}> *</span>
+                </CLabel>
+                <CInput
+                  id={"Townabrreviation"}
+                  name={"abbreviation"}
+                  placeholder="Enter Abbreviation"
+                  maxlength="5"
+                  size="5"
+                  value={x.panchayatabbreviation}
+                  onChange={e => handleInputChange(e, i)}
+                />
+              </CCol>
+              <CCol md="2">
+                <CLabel className={"label-name-1"}>
+                  Code
+                  <span className={"text-danger"}> *</span>
+                </CLabel>
+                <CInput
+                  id={"Towncode"}
+                  name={"code"}
+                  placeholder="Enter Code"
+                  maxlength="5"
+                  size="5"
+                  value={x.panchayatcode}
+                  onChange={e => handleInputChange(e, i)}
+                />
+              </CCol>
+
+              <CRow>
+                <CCol md="3">
+                  {inputList.length - 1 === i &&
+                    <i
+                      style={{
+                        marginLeft: "0px",
+                        marginTop: "35px",
+
+                        fontSize: "1.25rem",
+                        color: "#3273e9",
+                      }}
+                      onClick={handleAddClick}
+                      class={"fa fa-plus"}
+
+                    />
+                  }
+
+
+
+
+                </CCol>
+                <CCol md="3">
+                  {inputList.length !== 1 &&
+                    <i
+                      style={{
+                        marginLeft: "0px",
+                        marginTop: "35px",
+
+                        fontSize: "1.25rem",
+                        color: "black",
+                      }}
+                      onClick={() => handleRemoveClick(i)}
+                      class={"fa fa-remove"}
+
+                    />}
+
+
+
+
+                </CCol>
+
+              </CRow>
+
+
+            </CRow>
+
+
+          )
+        })}
+
+
+
+
+        <CRow style={{ marginLeft: "250px" }}>
+
+          <CCol md="3">
+            <CButton
+              style={{
+                marginLeft: "10px",
+                marginTop: "35px",
+
+              }}
+              onClick={addDepartment}
+              className={"saveBtn"}
+
+            > Save</CButton>
+            <CButton
+              shape={"pill"}
+              id={"Towncancel"}
+              style={{ marginTop: "-59px", marginLeft: "90px" }}
+              className={"cancelBtn"}
+              onClick={handleClickdepartment}
+            >
+              CANCEL
+            </CButton>
+            {error !== "" ? <p>{error}</p> : null}
+          </CCol>
+        </CRow>
+
+
+        <CButton
+          className={"menu"}
+          style={{ position: "absolute", top: "15px", right: "15px", backgroundColor: "green", border: "1px solid green" }}
+          className={"cancelBtn"}
+          onClick={() => {
+            handleClickdepartment();
+            // handleClickward();
+          }}
+        >
+          Back
+        </CButton>
+      </div>
+
+    )}
     <div>
       {hideMappingMunicipal && (
         <div>
@@ -1630,6 +1821,7 @@ const PartyPosting = () => {
           </CCard>
         </div>
       )}
+    </div>
     </div>
   );
 };

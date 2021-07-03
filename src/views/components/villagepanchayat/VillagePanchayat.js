@@ -44,7 +44,7 @@ const VillagePanchayat = () => {
   const [selected1, setSelected1] = useState([]);
   const [selected2, setSelected2] = useState([]);
   const [selected3, setSelected3] = useState([]);
-  const [villageHide, setVillageHide] = useState({ districtpanchayat: true, panchayatunion: false })
+  const [villageHide, setVillageHide] = useState({ districtpanchayat: true, panchayatunion: false, village: false, ward: false})
   const [municipalName] = useState("");
   const [villageList, setvillageList] = useState(true);
   const [villageCreate, setVillageCreate] = useState(false);
@@ -322,7 +322,7 @@ const VillagePanchayat = () => {
   };
   const [hideMappingVillage, setHideMappingVillage] = useState(true);
   const [hideVillagePanchayat, setHideVillagePanchayat] = useState(false);
-  const changeVillagePanchayat = () => {
+  const Addvillagepanchayat = () => {
     setHideMappingVillage(false);
     setHideVillagePanchayat(true);
   };
@@ -939,16 +939,17 @@ const VillagePanchayat = () => {
 
   const changePanchayatUnion = (e) => {
     setSelected1(e)
-    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: true })
+    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: true, village: false, ward: false})
   }
   const changeVillage = (e) => {
     setSelected2(e)
-    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: false, village: true })
+    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: false, village: true, ward: false})
   }
   const changeWard = (e) => {
     setSelected3(e)
-    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: false, village: false, ward: true })
+    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: false, village: false, ward: true})
   }
+  
   return (
     <div className={menu.style3}>
       {sideBar1 && (
@@ -2569,7 +2570,7 @@ const VillagePanchayat = () => {
                                 }}
                                 id={"Villageadd"}
                                 className={"saveBtn"}
-                                onClick={changeVillagePanchayat}
+                                onClick={Addvillagepanchayat}
                               >
                                 Add Village panchayat
                               </CButton>{" "}
@@ -3150,6 +3151,7 @@ const VillagePanchayat = () => {
                                   placeholder="Select Village Panchayat"
                                   id={"VillageSelect"}
                                   type={"text"}
+                                  value={selected2}
                                   components={{ MenuList: SelectMenuButtonvillage }}
                                   onChange={changeVillage}
                                   options={select}
@@ -3313,6 +3315,7 @@ const VillagePanchayat = () => {
                                   placeholder="Select the Ward Number"
                                   id={"Ward"}
                                   type={"text"}
+                                  value={selected3}
                                   components={{ MenuList: SelectMenuButtonward }}
                                   onChange={changeWard}
                                   options={selectWard}
