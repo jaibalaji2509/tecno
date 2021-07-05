@@ -3609,13 +3609,12 @@ function LocationLibrary(props) {
                         <CRow style={{ marginLeft: "450px" }}>
                           <div >
                             <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
-                              {/* <Tippy content="Print"> */}
                               <p data-tip="print">
                                 <i
                                   id="locationLibrarypirnt"
                                   style={{
                                     position: "absolute",
-                                    top: "50px",
+                                    top: "38px",
                                     marginLeft: "400px",
                                     marginBottom: "20px",
                                     color: "black",
@@ -3634,7 +3633,7 @@ function LocationLibrary(props) {
                                 id={"locationLibraryshare"}
                                 style={{
                                   position: "absolute",
-                                  top: "50px",
+                                  top: "38px",
                                   marginLeft: "550px",
                                   marginBottom: "910px",
                                   color: "black",

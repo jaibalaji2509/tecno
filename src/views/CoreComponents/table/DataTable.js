@@ -66,8 +66,11 @@ const CDataTable = (props) => {
     tableLabel,
   } = props;
 
-  const compData = useRef({ firstRun: true, columnFiltered: 0, changeItems: 0 })
-    .current;
+  const compData = useRef({
+    firstRun: true,
+    columnFiltered: 0,
+    changeItems: 0,
+  }).current;
   const [perPageItems, setPerPageItems] = useState(itemsPerPage);
   const [sorterState, setSorterState] = useState(sorterValue || {});
   const [tableFilterState, setTableFilterState] = useState(tableFilterValue);
@@ -354,11 +357,7 @@ const CDataTable = (props) => {
     label:
       (itemsPerPageSelect && itemsPerPageSelect.label) || "Items per page:",
     values: (itemsPerPageSelect && itemsPerPageSelect.values) || [
-      5,
-      10,
-      20,
-      50,
-      100,
+      5, 10, 20, 50, 100
     ],
   };
 
@@ -391,9 +390,10 @@ const CDataTable = (props) => {
 
   useMemo(() => setTableFilterState(tableFilterValue), [tableFilterValue]);
 
-  useMemo(() => setColumnFilterState({ ...columnFilterValue }), [
-    columnFilterValue,
-  ]);
+  useMemo(
+    () => setColumnFilterState({ ...columnFilterValue }),
+    [columnFilterValue]
+  );
 
   //items
   useMemo(() => {
@@ -448,7 +448,7 @@ const CDataTable = (props) => {
       <div style={{ width: "100%" }} ref={innerRef}>
         <div className="row">
           {(tableFilter || cleaner) && (
-            <div className="col-sm-6 form-inline">
+            <div className="col-sm-6 form-inline" style={{marginLeft:"595px",top:"38px"}}>
               {tableFilter && (
                 <>
                   <label>{tableFilterData.label}</label>
@@ -559,19 +559,19 @@ const CDataTable = (props) => {
                 {rawColumnNames.map((colName, index) => {
                   return (
                     <th className={classNames(headerClass(index))} key={index}>
-                    {/* <p>{colName}</p> */}
+                      {/* <p>{colName}</p> */}
                       {colName === "show_details" && selectAll === true ? (
                         <>
                           <CInput
                             type={"checkbox"}
                             style={{
-                              width: "13px",
-                              height: "13px",
-                              marginLeft: "25px",
+                              width: "15px",
+                              height: "15px",
+                              marginLeft: "22px",
                               marginBottom: "10px",
                             }}
                             checked={checkedAll}
-                            onClick={()=> onSelectAll(items)}
+                            onClick={() => onSelectAll(items)}
                           />
                         </>
                       ) : (

@@ -39,8 +39,9 @@ const VillagePanchayat = () => {
   });
 
   const [municipalList, setMunicipalList] = useState(true);
-  const [MunicipalCreate, setmunicipalCreate] = useState(false);
+  const [, setmunicipalCreate] = useState(false);
   const [selected, setSelected] = useState([]);
+  const [collected, setCollected] = useState([]);
   const [selected1, setSelected1] = useState([]);
   const [selected2, setSelected2] = useState([]);
   const [selected3, setSelected3] = useState([]);
@@ -48,8 +49,7 @@ const VillagePanchayat = () => {
   const [municipalName] = useState("");
   const [villageList, setvillageList] = useState(true);
   const [villageCreate, setVillageCreate] = useState(false);
-  const [panchayatList, setPanchayatlist] = useState(true);
-  const [panchayatCreate, setpanchayatCreate] = useState(false);
+  const [panchayatList, ] = useState(true);
   const [wardList, setWardList] = useState(true);
   const [wardCreate, setWardCreate] = useState(false);
   const [locationHide, setLocationHide] = useState({
@@ -186,11 +186,11 @@ const VillagePanchayat = () => {
   ];
   const fields3 = [
     {
-      key: "SNO",
-      label: "S.NO",
-      _style: { width: "1%" },
-      sorter: false,
-      filter: false,
+      key: "SNO",                        
+      label: "S.NO",                        
+      _style: { width: "1%" },                        
+      sorter: false,                        
+      filter: false,                        
     },
 
     { key: "MENU3", label: "Village Panchayat", _style: { width: "1%" } },
@@ -263,11 +263,11 @@ const VillagePanchayat = () => {
     await setMunicipalList(false);
     await setmunicipalCreate(true);
   };
-  const CancelState = async () => {
-    setPassing("");
-    await setMunicipalList(true);
-    await setmunicipalCreate(false);
-  };
+  // const CancelState = async () => {
+  //   setPassing("");
+  //   await setMunicipalList(true);
+  //   await setmunicipalCreate(false);
+  // };
   const cancelVillage = async () => {
     setPassing("");
     await setvillageList(true);
@@ -278,11 +278,11 @@ const VillagePanchayat = () => {
     await setWardList(true);
     await setWardCreate(false);
   };
-  const cancelPanchayat = async () => {
-    setPassing("");
-    await setPanchayatlist(true);
-    await setpanchayatCreate(false);
-  };
+  // const cancelPanchayat = async () => {
+  //   setPassing("");
+  //   await setPanchayatlist(true);
+  //   await setpanchayatCreate(false);
+  // };
   const [hideMappingVillage, setHideMappingVillage] = useState(true);
   const [hideVillagePanchayat, setHideVillagePanchayat] = useState(false);
   const Addvillagepanchayat = () => {
@@ -850,7 +850,7 @@ const VillagePanchayat = () => {
       console.log("more than 10 digit number", "track  ")
   }
   const changedistrictpanchayat = (e) => {
-    setSelected(e)
+    setCollected(e)
     setVillageHide({ ...villageHide, districtpanchayat: true, panchayatunion: false, village: false, ward: false})
   }
   const changePanchayatUnion = (e) => {
@@ -2666,10 +2666,7 @@ const VillagePanchayat = () => {
                                   <span className={"text-danger"}> *</span>
                                 </CLabel>
 
-                                <Select
-                                  //  isMulti
-                                  //  isChecked
-                                  //  closeMenuOnSelect={false}
+                                <Select                                 
                                   placeholder="Select District Panchayat"
                                   id={"Villagedistrict"}
                                   type={"text"}
@@ -2677,11 +2674,10 @@ const VillagePanchayat = () => {
                                   onChange={changedistrictpanchayat}
                                   components={{ MenuList: SelectMenuButtondistrict }}
                                   options={select}
-                                // labelledBy={"Select"}
                                 />
 
 
-                                {villageHide.districtpanchayat && selected.length !== 0 ? (
+                                {villageHide.districtpanchayat && collected.length !== 0 ? (
                                   <div
                                     style={{
                                       width: 300,
@@ -2715,147 +2711,9 @@ const VillagePanchayat = () => {
                                     </div>
                                   </div>
                                 ) : null}
-                              </CCol>
-
-                              {/* <CCol className={"column-align"} md={1} lg={1}>
-                          <CButton
-                            shape={"pill"}
-                            id={"addmunicipalcorporation"}
-                            style={{ marginTop: "30px" }}
-                            className={"saveBtn"}
-                            onClick={enableCreate}
-                          >
-                            ADD
-                          </CButton>
-                        </CCol> */}
-                              {/* <CCol md={1} lg={1}>
-                <CButton
-                  style={{
-                    marginLeft: "0px",
-                    marginTop:"51px",
-                    backgroundColor: "#3273e9",
-                    borderLine: "5px !important",
-                    borderColor: "white",
-                    fontSize: "1.25rem",
-                    color: "#ffff",
-                  }}
-                  onClick={enableCreate}
-                  class={"fa fa-plus"}
-                
-                ></CButton>
-              </CCol>
-              <CCol md={1} lg={1}>
-                <i
-                  style={{
-                    marginLeft: "-77px",
-                    marginTop: "53px",
-
-                    fontSize: "1.45rem",
-                    color: "#3cd3ad",
-                  }}
-                  class={"fa fa-eye"}
-                 
-                ></i>
-              </CCol>
-                        <CCol md={1} lg={1} style={{marginTop:"50px",marginLeft:"-163px"}}>
-                    <ReactFileReader handleFiles={handleFiles} fileTypes={'.CSV'}>
-                    <i className="fa fa-upload" style={{fontSize:"1.45rem"}} />
-                    <CSVLink data={state} ><i className="fa fa-download" style={{fontSize:"1.45rem",marginLeft:"25px",color:"#ea384d"}}/></CSVLink>
-                    </ReactFileReader>
-                    
-                    </CCol> */}
-
-                              {municipalName.edit === true ? (
-                                <React.Fragment>
-                                  <CCol md={3} lg={3}>
-                                    <CButton
-                                      style={{
-                                        marginTop: "30px",
-                                      }}
-                                      id={"Districtedit"}
-                                      className={"btn btn-success"}
-                                      onClick={editState}
-                                    >
-                                      EDIT
-                                    </CButton>
-                                  </CCol>
-                                </React.Fragment>
-                              ) : null}
+                              </CCol>                             
                             </React.Fragment>
-                          )}
-                          {MunicipalCreate && (
-                            <React.Fragment>
-                              <CRow
-                                className={"row-alignment"}
-                                style={{ marginLeft: "45px", marginTop: "20px" }}
-                                sm={12}
-                                md={12}
-                                lg={12}
-                              >
-                                <CCol md="3">
-                                  <CLabel className={"label-name-1"}>
-                                    District panchayat
-                                    <span className={"text-danger"}> *</span>
-                                  </CLabel>
-
-                                  <CInput
-                                    id={"MunicipalName"}
-                                    name={"municipalname"}
-                                    placeholder="Enter District Panchayat Name"
-                                    maxlength="60"
-                                    size="60"
-                                  />
-                                </CCol>
-
-                                <CCol md="3">
-                                  <CLabel className={"label-name-1"}>
-                                    Abbreviation
-                                    <span className={"text-danger"}> *</span>
-                                  </CLabel>
-                                  <CInput
-                                    id={"municipalabrreviation"}
-                                    name={"abbreviation"}
-                                    placeholder="Enter Abbreviation"
-                                    maxlength="5"
-                                    size="5"
-                                  />
-                                </CCol>
-                                <CCol md="3">
-                                  <CLabel className={"label-name-1"}>
-                                    Code
-                                    <span className={"text-danger"}> *</span>
-                                  </CLabel>
-                                  <CInput
-                                    id={"municipalcode"}
-                                    name={"code"}
-                                    placeholder="Enter Code"
-                                    maxlength="5"
-                                    size="5"
-                                  />
-                                </CCol>
-                                <CCol md="3">
-                                  <CButton
-                                    shape={"pill"}
-                                    id={"municipalsave"}
-                                    style={{ marginTop: "30px" }}
-                                    className={"saveBtn"}
-                                  >
-                                    {passing !== "" ? "UPDATE" : "SAVE"}
-                                  </CButton>
-                                  <CButton
-                                    shape={"pill"}
-                                    id={"municipalcancel"}
-                                    style={{ marginTop: "30px", marginLeft: "20px" }}
-                                    className={"cancelBtn"}
-                                    onClick={CancelState}
-                                  >
-                                    CANCEL
-                                  </CButton>
-                                  {error !== "" ? <p>{error}</p> : null}
-                                </CCol>
-                              </CRow>
-                            </React.Fragment>
-                          )}
+                          )}                        
                         </CRow>
                         <CRow
                           className={"row-alignment"}
@@ -2876,7 +2734,6 @@ const VillagePanchayat = () => {
                               placeholder={"Select City Name"}
                               options={select}
                             />
-
                           </CCol>
                           {panchayatList && (
                             <React.Fragment>
@@ -2929,110 +2786,9 @@ const VillagePanchayat = () => {
                                     </div>
                                   </div>
                                 ) : null}
-                              </CCol>
-                              {/* <CCol className={"column-align"} md={1} lg={1}>
-                          <CButton
-                            shape={"pill"}
-                            id={"addmunicipalcorporation"}
-                            style={{ marginTop: "30px" }}
-                            className={"saveBtn"}
-                            onClick={addPanchayat}
-                          >
-                            ADD
-                          </CButton>
-                        </CCol> */}
-
-                              {municipalName.edit === true ? (
-                                <React.Fragment>
-                                  <CCol md={3} lg={3}>
-                                    <CButton
-                                      style={{
-                                        marginTop: "30px",
-                                      }}
-                                      id={"PanchayatEdit"}
-                                      className={"btn btn-success"}
-                                      onClick={editState}
-                                    >
-                                      EDIT
-                                    </CButton>
-                                  </CCol>
-                                </React.Fragment>
-                              ) : null}
+                              </CCol>                            
                             </React.Fragment>
-                          )}
-                          {panchayatCreate && (
-                            <React.Fragment>
-                              <CRow
-                                className={"row-alignment"}
-                                style={{ marginLeft: "45px", marginTop: "20px" }}
-                                sm={12}
-                                md={12}
-                                lg={12}
-                              >
-                                <CCol md="3">
-                                  <CLabel className={"label-name-1"}>
-                                    Panchayat Union
-                                    <span className={"text-danger"}> *</span>
-                                  </CLabel>
-
-                                  <CInput
-                                    id={"Panchayat"}
-                                    name={"municipalname"}
-                                    placeholder="Enter panchayat Union Name"
-                                    maxlength="60"
-                                    size="60"
-                                  />
-                                </CCol>
-
-                                <CCol md="3">
-                                  <CLabel className={"label-name-1"}>
-                                    Abbreviation
-                                    <span className={"text-danger"}> *</span>
-                                  </CLabel>
-                                  <CInput
-                                    id={"Panchayatabbreviation"}
-                                    name={"abbreviation"}
-                                    placeholder="Enter Abbreviation"
-                                    maxlength="5"
-                                    size="5"
-                                  />
-                                </CCol>
-                                <CCol md="3">
-                                  <CLabel className={"label-name-1"}>
-                                    Code
-                                    <span className={"text-danger"}> *</span>
-                                  </CLabel>
-                                  <CInput
-                                    id={"abbreviationcode"}
-                                    name={"code"}
-                                    placeholder="Enter Code"
-                                    maxlength="5"
-                                    size="5"
-                                  />
-                                </CCol>
-                                <CCol md="3">
-                                  <CButton
-                                    shape={"pill"}
-                                    id={"municipalsave"}
-                                    style={{ marginTop: "30px" }}
-                                    className={"saveBtn"}
-                                  >
-                                    {passing !== "" ? "UPDATE" : "SAVE"}
-                                  </CButton>
-                                  <CButton
-                                    shape={"pill"}
-                                    id={"abbreviationcancel"}
-                                    style={{ marginTop: "30px", marginLeft: "20px" }}
-                                    className={"cancelBtn"}
-                                    onClick={cancelPanchayat}
-                                  >
-                                    CANCEL
-                                  </CButton>
-                                  {error !== "" ? <p>{error}</p> : null}
-                                </CCol>
-                              </CRow>
-                            </React.Fragment>
-                          )}
+                          )}                         
                         </CRow>
                         <CRow
                           className={"row-alignment"}

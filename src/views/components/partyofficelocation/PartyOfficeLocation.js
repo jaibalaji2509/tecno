@@ -397,7 +397,7 @@ function PartyOfficeLocation() {
                     id={"typeoofpartyprint"}
                     style={{
                       position: "absolute",
-                      top: "-5px",
+                      top: "33px",
                       marginLeft: "500px",
                       marginBottom: "20px",
                       color: "black",
@@ -415,7 +415,7 @@ function PartyOfficeLocation() {
                     id={"typeoofpartyshare"}
                     style={{
                       position: "absolute",
-                      top: "-5px",
+                      top: "8px",
                       marginLeft: "600px",
                       marginBottom: "910px",
                       color: "black",
@@ -665,7 +665,7 @@ function PartyOfficeLocation() {
                   id={"typeoofpartylocationprint"}
                   style={{
                     position: "absolute",
-                    top: "205px",
+                    top: "175px",
                     marginLeft: "625px",
                     marginBottom: "20px",
                     color: "black",
@@ -683,7 +683,7 @@ function PartyOfficeLocation() {
                   id={"typeoofpartylocationshare"}
                   style={{
                     position: "absolute",
-                    top: "180px",
+                    top: "150px",
                     marginLeft: "710px",
                     marginBottom: "910px",
                     color: "black",

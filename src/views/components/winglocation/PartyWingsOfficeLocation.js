@@ -243,6 +243,7 @@ function PartyWingsOfficeLocation() {
     doc.autoTable(content);
     doc.save("report.pdf")
   }
+  
   return (
     <React.Fragment>
       <div className={menu.style3}>
@@ -375,7 +376,7 @@ function PartyWingsOfficeLocation() {
                       id={"WingsOfficeprint"}
                       style={{
                         position: "absolute",
-                        top: "-5px",
+                        top: "8px",
                         marginLeft: "750px",
                         marginBottom: "20px",
                         color: "black",
@@ -392,7 +393,7 @@ function PartyWingsOfficeLocation() {
                       id={"WingsOfficeshare"}
                       style={{
                         position: "absolute",
-                        top: "-5px",
+                        top: "33px",
                         marginLeft: "850px",
                         marginBottom: "910px",
                         color: "black",
@@ -644,7 +645,7 @@ function PartyWingsOfficeLocation() {
                   id={"typeoofpartylocationprint"}
                   style={{
                     position: "absolute",
-                    top: "205px",
+                    top: "175px",
                     marginLeft: "625px",
                     marginBottom: "20px",
                     color: "black",
@@ -662,7 +663,7 @@ function PartyWingsOfficeLocation() {
                   id={"typeoofpartylocationshare"}
                   style={{
                     position: "absolute",
-                    top: "180px",
+                    top: "150px",
                     marginLeft: "710px",
                     marginBottom: "910px",
                     color: "black",

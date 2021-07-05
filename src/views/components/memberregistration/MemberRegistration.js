@@ -14,18 +14,19 @@ import CDataTable from "../../CoreComponents/table/CDataTable";
 import "./MemberRegistration.css"
 import Select from "react-select";
 import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { Dropdown, Menu } from "antd";
 import 'antd/dist/antd.css';
+import ImageUploading from "react-images-uploading";
 
 function MemberRegistration() {
   const [, setSelected] = useState({});
   const [steetSchema,] = useState([]);
   const [Education,] = useState([]);
   const [Occupation,] = useState([]);
-  const [, setPI] = useState("");
+  // const [, setPI] = useState("");
   const [sideBar1, setSideBar1] = useState(false);
-  const [files, setFiles] = useState("");
+  const [files, ] = useState("");
   const [menu, setMenu] = useState({
     style: "menu",
     style1: "menu1",
@@ -59,24 +60,31 @@ function MemberRegistration() {
     },
   ];
 
-  const handleSave = async (file, folder) => {
-    if (file === undefined) {
-      let e = "cancelled";
-      return console.log(e);
-    }
-    if (file.size > 1048576) {
-      return toast.warning("Please choose below 1 MB file");
-    } else {
-      const imgUri = URL.createObjectURL(file);
-      setPI(file);
-      setFiles(imgUri);
-    }
-  };
+  // const handleSave = async (file, folder) => {
+  //   if (file === undefined) {
+  //     let e = "cancelled";
+  //     return console.log(e);
+  //   }
+  //   if (file.size > 1048576) {
+  //     return toast.warning("Please choose below 1 MB file");
+  //   } else {
+  //     const imgUri = URL.createObjectURL(file);
+  //     setPI(file);
+  //     setFiles(imgUri);
+  //   }
+  // };
 
-  const handleClick = (e) => {
-    document.getElementById("profileImage").click();
-  };
+  // const handleClick = (e) => {
+  //   document.getElementById("profileImage").click();
+  // };
 
+  const [images, setImages] = React.useState([]);
+  const maxNumber = 69;
+  const onChange = (imageList, addUpdateIndex) => {
+    // data for submit
+    console.log(imageList, addUpdateIndex);
+    setImages(imageList);
+  };
   const handleClickhis = () => {
     switch (menu.menuStatus) {
       case "open":
@@ -768,57 +776,49 @@ function MemberRegistration() {
                     </CCol>
                   </CRow>
 
-                  <CRow style={{ marginLeft: "1200px", position: "absolute", marginTop: "30px" }}>
+                  <CRow style={{ marginLeft: "900px", position: "absolute", marginTop: "-561px" }}>
                     <CCol sm="6" lg="3" style={{ marginLeft: "10px" }}>
-                      <CCol md="3">
-                        <div
-                          style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            paddingLeft: "0%",
-                            justifyContent: "center",
-                            marginTop: "1%",
-                          }}
-                        >
-                          <CCol md="3">
-                            <CInput
-                              id={"addEmployeeProfileImage"}
-                              name="file"
-                              type="file"
-                              accept="image/*"
-                              style={{ display: "none" }}
-                              onChange={(e) => {
-                                handleSave(e.target.files[0], "profileImage");
-                              }}
-                            />
-                          </CCol>
-                          <div
-                            id={"addEmployeehandleClick"}
-                            style={{
-                              height: "100px",
-                              width: "100px",
-                              border: "1px dashed black",
-                              marginLeft: "-300px",
-                              marginTop: "-1191px"
-                            }}
-                            onClick={() => handleClick()}
-                          >
-                            <img
-                              alt=""
-                              src={files !== "" ? files : DEFAULT_IMAGE}
-                              style={{
-                                width: "100%",
-                                height: "100%",
-                                position: "acsolute",
-                              }}
-                            />
-                          </div>
-
-                          <CLabel style={{ marginLeft: "-300px" }}>
-                            Click to Upload Image
-                            <span className={"text-danger"}> *</span>
-                          </CLabel>
-                        </div>
+                      <CCol md="3">                        
+<ImageUploading
+        multiple
+        value={images}
+        onChange={onChange}
+        maxNumber={maxNumber}
+        dataURLKey="data_url"
+      >
+        {({
+          imageList,
+          onImageUpload,
+          onImageRemoveAll,
+          onImageUpdate,
+          onImageRemove,
+          isDragging,
+          dragProps
+        }) => (
+          // write your building UI
+          <div className="upload__image-wrapper">
+            <button
+              // style={isDragging ? { color: "red", } : null}
+              style={{ width:"145px", height:"40px",  border:"1px solid #00ff5a"}}
+              onClick={onImageUpload}
+              {...dragProps}
+            >
+              Click or Drop here
+            </button>
+            &nbsp;
+            {/* <button onClick={onImageRemoveAll}>Remove all images</button> */}
+            {imageList.map((image, index) => (
+              <div key={index} className="image-item">
+                <img src={image.data_url} alt="" width="100" />
+                <div className="image-item__btn-wrapper">
+                  <button onClick={() => onImageUpdate(index)}>Update</button>
+                  <button onClick={() => onImageRemove(index)}>Remove</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </ImageUploading>
                       </CCol>
                     </CCol>
                   </CRow>
