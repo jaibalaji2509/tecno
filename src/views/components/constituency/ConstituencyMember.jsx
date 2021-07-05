@@ -6,7 +6,6 @@ import {
   CLabel,
   CRow,
   CTextarea,
-  CSelect,
 } from "@coreui/react";
 import React, { useState } from "react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
@@ -18,7 +17,18 @@ import "./ConstituencyMember.css";
 import { Dropdown, Menu } from "antd";
 import 'antd/dist/antd.css';
 const ConstituencyMember = () => {
-  const [location, setLocation] = useState({
+  // const [location, setLocation] = useState({
+  //   state: "",
+  //   district: "",
+  //   city: "",
+  //   ward: "",
+  //   area: "",
+  //   street: "",
+  //   pincode: "",
+  // });
+  // const [mobilenumber, setMobileNumber] = useState("");
+  // const [otpHide, setOtpHide] = useState(false);
+  const [locations, ] = useState({
     state: "",
     district: "",
     city: "",
@@ -27,30 +37,19 @@ const ConstituencyMember = () => {
     street: "",
     pincode: "",
   });
-  const [mobilenumber, setMobileNumber] = useState("");
-  const [otpHide, setOtpHide] = useState(false);
-  const [locations, setLocations] = useState({
-    state: "",
-    district: "",
-    city: "",
-    ward: "",
-    area: "",
-    street: "",
-    pincode: "",
-  });
-  const [files, setFiles] = useState("");
-  const [municipalList, setMunicipalList] = useState(true);
-  const [MunicipalCreate, setmunicipalCreate] = useState(false);
-  const [municipalListadd, setMunicipalListadd] = useState(true);
-  const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
-  const [municipalCorporation, setMunicipalCorporation] = useState({});
-  const [municipalName, setMuniicipalName] = useState("");
-  const [departmentList, setDepartmentList] = useState(true);
-  const [departmentCreate, setDepartmentCreate] = useState(false);
-  const [designationList, setDesignationList] = useState(true);
-  const [designationCreate, setDesignationCreate] = useState(false);
-  const [roleList, setRoleList] = useState(true);
-  const [roleCreate, setRoleCreate] = useState(false);
+  const [files, ] = useState("");
+  // const [municipalList, setMunicipalList] = useState(true);
+  // const [MunicipalCreate, setmunicipalCreate] = useState(false);
+  // const [municipalListadd, setMunicipalListadd] = useState(true);
+  // const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
+  // const [municipalCorporation, setMunicipalCorporation] = useState({});
+  // const [municipalName, setMuniicipalName] = useState("");
+  // const [departmentList, setDepartmentList] = useState(true);
+  // const [departmentCreate, setDepartmentCreate] = useState(false);
+  // const [designationList, setDesignationList] = useState(true);
+  // const [designationCreate, setDesignationCreate] = useState(false);
+  // const [roleList, setRoleList] = useState(true);
+  // const [roleCreate, setRoleCreate] = useState(false);
   const [locationHide, setLocationHide] = useState({
     corporation: true,
     municipalLocation: false,
@@ -60,7 +59,7 @@ const ConstituencyMember = () => {
     cityLocation: false,
   });
   const [typeofOfficess, setTypeofOfficess] = useState("");
-  const [PI, setPI] = useState("");
+  // const [PI, setPI] = useState("");
   const [gridone, setGridOne] = useState(false)
   const [gridtwo, setGridTwo] = useState(false)
   const [gridthree, setGridThree] = useState(false)
@@ -157,34 +156,9 @@ const ConstituencyMember = () => {
       status: "Active",
     }
   ];
-  const fields1 = [
-    {
-      key: "SNo",
-      label: "S.NO",
-      _style: { width: "3%" },
-      sorter: false,
-      filter: false,
-    },
-    { key: "Type", label: "Type of Office", _style: { width: "10%" } },
-    { key: "Name", label: "Name of Office", _style: { width: "10%" } },
-    { key: "Department", label: "Department", _style: { width: "10%" } },
-    { key: "Designation", label: "Designation", _style: { width: "10%" } },
-    { key: "Role", label: "Role", _style: { width: "10%" } },
-
-    { key: "Member", label: "Name of the Member", _style: { width: "10%" } },
-
-    { key: "EnteredBy", label: "Assigned By", _style: { width: "10%" } },
-    { key: "EnteredOn", label: "Assigned On", _style: { width: "10%" } },
-    {
-      key: "show_details",
-      label: "Action",
-      _style: { width: "10%" },
-      sorter: false,
-      filter: false,
-    },
-  ];
-  const [passing, setPassing] = useState("");
-  const [error, setError] = useState("");
+ 
+  const [passing, ] = useState("");
+  // const [error, setError] = useState("");
   const saveCorporation = async () => {
     setLocationHide({
       ...locationHide,
@@ -262,6 +236,7 @@ const ConstituencyMember = () => {
   const handleClick = () => {
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           style3: "menu2",
@@ -286,6 +261,7 @@ const ConstituencyMember = () => {
   const handleClick2 = () => {
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           style3: "menu2",
@@ -307,36 +283,36 @@ const ConstituencyMember = () => {
         break;
     }
   };
-  const handleClick1 = () => {
-    setSideBar2(false);
-  };
+  // const handleClick1 = () => {
+  //   setSideBar2(false);
+  // };
   const [menu, setMenu] = useState({
     style: "menu",
     style1: "menu1",
     menuStatus: "open",
     style3: "menu1",
   });
-  const [selected, setSelected] = useState({});
+  const [, setSelected] = useState({});
   const menus = (details) => {
     return(
       <Menu>
       <Menu.Item>
-        <a>Edit</a>
+        <a href>Edit</a>
       </Menu.Item>
       <Menu.Item>
-        <a>Delete</a>
+        <a href>Delete</a>
       </Menu.Item>
       <Menu.Item>
-        <a>Remove</a>
+        <a href>Remove</a>
       </Menu.Item>
       <Menu.Item>
-      <a
+      <a href
         onClick={() => {
           setSelected(details);
           handleClick2();
         }}>Update</a>
       </Menu.Item> <Menu.Item>
-        <a
+        <a href
         onClick={() => {
           setSelected(details);
           handleClick();
@@ -721,7 +697,6 @@ const ConstituencyMember = () => {
             </div>
           )}
           <CButton
-            className={"menu"}
             style={{ position: "absolute", top: "15px", right: "15px" }}
             className={"cancelBtn"}
             id="constimemberhistoryback"
@@ -885,7 +860,6 @@ const ConstituencyMember = () => {
             </CCol>
           </CRow>
           <CButton
-            className={"menu"}
             style={{ position: "absolute", top: "15px", right: "15px" }}
             className={"cancelBtn"}
             onClick={handleClick2}
@@ -1003,7 +977,7 @@ const ConstituencyMember = () => {
                                   className={"ant-dropdown-cutomize-by-me"}
                                   overlay={() => menus(item)}
                                 >
-                                  <a
+                                  <a href
                                     className="ant-dropdown-link"
                                     onClick={(e) => e.preventDefault()}
                                   >

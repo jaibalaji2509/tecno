@@ -111,7 +111,7 @@ const CPagination = (props) => {
         {doubleArrows && (
           <li className={backArrowsClasses}>
             {activePage !== 1 ? (
-              <a
+              <a href
                 className="page-link"
                 onClick={() => setPage(1)}
                 aria-label="Go to last page"
@@ -119,7 +119,7 @@ const CPagination = (props) => {
                 {firstButton}
               </a>
             ) : (
-              <a className="page-link" aria-label="Go to last page">
+              <a href className="page-link" aria-label="Go to last page">
                 {firstButton}
               </a>
             )}
@@ -128,7 +128,7 @@ const CPagination = (props) => {
         {arrows && (
           <li className={backArrowsClasses}>
             {activePage !== 1 ? (
-              <a
+              <a href
                 className="page-link"
                 onClick={() => setPage(activePage - 1)}
                 aria-label="Go to last page"
@@ -136,7 +136,7 @@ const CPagination = (props) => {
                 {previousButton}
               </a>
             ) : (
-              <a className="page-link" aria-label="Go to last page">
+              <a href className="page-link" aria-label="Go to last page">
                 {previousButton}
               </a>
             )}
@@ -153,7 +153,7 @@ const CPagination = (props) => {
               className={`${activePage === i ? "active" : ""} page-item`}
               key={i}
             >
-              <a
+              <a href
                 className="page-link"
                 onClick={(e) => setPage(i, e)}
                 aria-label={
@@ -174,7 +174,7 @@ const CPagination = (props) => {
         {arrows && (
           <li className={nextArrowsClasses}>
             {activePage !== pages ? (
-              <a
+              <a href
                 className="page-link"
                 onClick={() => setPage(activePage + 1)}
                 aria-label="Go to last page"
@@ -182,7 +182,7 @@ const CPagination = (props) => {
                 {nextButton}
               </a>
             ) : (
-              <a className="page-link" aria-label="Go to last page">
+              <a href className="page-link" aria-label="Go to last page">
                 {nextButton}
               </a>
             )}
@@ -191,7 +191,7 @@ const CPagination = (props) => {
         {doubleArrows && (
           <li className={nextArrowsClasses}>
             {activePage !== pages ? (
-              <a
+              <a href
                 className="page-link"
                 onClick={() => setPage(pages)}
                 aria-label="Go to last page"
@@ -199,7 +199,7 @@ const CPagination = (props) => {
                 {lastButton}
               </a>
             ) : (
-              <a className="page-link" aria-label="Go to last page">
+              <a href className="page-link" aria-label="Go to last page">
                 {lastButton}
               </a>
             )}

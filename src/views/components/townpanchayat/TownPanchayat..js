@@ -1,4 +1,3 @@
-import { cibTeamviewer } from "@coreui/icons";
 import {
   CButton,
   CCard,
@@ -14,29 +13,17 @@ import Select, { components } from "react-select";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { Dropdown, Menu } from "antd";
 import 'antd/dist/antd.css';
-import { CSVLink, CSVDownload } from 'react-csv';
-import ReactFileReader from 'react-file-reader';
+import { CSVLink } from 'react-csv';
 import * as XLSX from "xlsx";
-import MultiSelect from "react-multi-select-component";
 import SheetJSFT from "../../../Tools/excelupload/SheetJSFT"
 import { make_cols } from "../../../Tools/excelupload/MakeColumn"
 
-const TownPanchayat = () => {
-  const [locations, setLocations] = useState({
-    state: "",
-    district: "",
-    city: "",
-    ward: "",
-    area: "",
-    street: "",
-    pincode: "",
-  });
+const TownPanchayat = () => { 
   const [selected1, setSelected1] = useState([]);
   const [collected, setCollected] = useState([]);
   const [villageHide, setVillageHide] =useState({districtpanchayat:true,panchayatunion:false})
   const [TownList, setTownList] = useState(true);
   const [TownCreate, setTownCreate] = useState(false);
-  const [TownCorporation] = useState({});
   const [TownName ] = useState("");
   const [wardnumberList, seatWardNumberList] = useState(true);
   const [wardNumberCreate, setWardNumberCreate] = useState(false);
@@ -80,7 +67,7 @@ const TownPanchayat = () => {
   on:"10/06/2021",
 },
      ];
-     const [select, selectedRows] =useState({checked:true})
+     const [select, ] =useState({checked:true})
     const handleRowSelection = (row) => {
 
       const selectedRows = []
@@ -166,7 +153,7 @@ const TownPanchayat = () => {
     
     { key: "Town", label: "Town Panchayat Name", _style: { width: "10%" } },
     {
-      key: "show_details3",
+      key: "show_details1",
       label: "Action",
       _style: { width: "10%" },
       sorter: false,
@@ -185,7 +172,7 @@ const TownPanchayat = () => {
     
     { key: "wrd", label: "Ward Number", _style: { width: "10%" } },
     {
-      key: "show_details3",
+      key: "show_details1",
       label: "Action",
       _style: { width: "10%" },
       sorter: false,
@@ -208,57 +195,29 @@ const TownPanchayat = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClicktown}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
         </CLink>
-      ),
-      span: (
-        <CLink
-          className={"saveBtn"}
-          onClick={handleClicktown}
-          style={{ marginLeft: "200px" }}
-        >
-          Add{" "}
-        </CLink>
-      ),
+      ),    
     },
-{value:"puthirankottai",label:"Puthirankottai"},
-{value:"maa",value:"mambakkam"}];
+{value:"puthirankottai",label:"Puthirankottai"},]
+
   const areaselect=[{
-  value:"mariamman",label:"Mariamman Kovil Street"
-},
+  value:"mariamman",label:"Mariamman Kovil Street"},
 {value:"kalaingar",label:"Kalaingar Street"}];
   const wardno=[{
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClicktown}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
         </CLink>
-      ),
-      span: (
-        <CLink
-          className={"saveBtn"}
-          onClick={handleClicktown}
-          style={{ marginLeft: "200px" }}
-        >
-          Add{" "}
-        </CLink>
-      ),
+      ),     
     },
   {  value:"017",label:"018"
-  }];
-  const wardselect=[{
-    value:"1",label:"kavampair"
-  }];
-
-  const changeHandler = (e) => {
-    setLocations({ ...locations, [e.target.name]: e.target.value });
-  };
+  }];   
   const enableCreate = async () => {
     await setTownList(false);
     await setTownCreate(true);
@@ -285,14 +244,8 @@ const canceltownchange = () => {
   setHideMappingTown(true);
     setHideTownPanchayat(false);
   };
-    
-    const addWardNumber = async () => {
-      await seatWardNumberList(false);
-      await setWardNumberCreate(true);
-    };
-
-    const editStateadd = async () => {
-      
+        
+    const editStateadd = async () => {      
     };
     const cancelWardNumber = async () => {
       setPassing("");
@@ -310,11 +263,10 @@ const canceltownchange = () => {
   
       switch (menu.menuStatus) {
         case "open":
+          default:
           setMenu({
             menuStatus: "close",
-            // style3: "menu2",
-            style: "menu active1",
-  
+            style: "menu active1",  
           });
   
           setTimeout(() => {
@@ -341,6 +293,7 @@ const canceltownchange = () => {
   
       switch (menu.menuStatus) {
         case "open":
+          default:
           setMenu({
             menuStatus: "close",
             // style3: "menu2",
@@ -368,48 +321,39 @@ const canceltownchange = () => {
           break;
       }
     };
-    const [sideBarup, setSideBarup] = useState(false)
+    const [, setSideBarup] = useState(false)
     const [sideBarup1, setSideBarup1] = useState(false)
     const [sideBarup2, setSideBarup2] = useState(false)
     const bulkhandleClicktown = () => {
   
       switch (menu.menuStatus) {
         case "open":
+          default:
           setMenu({
-            menuStatus: "close",
-            // style3: "menu2",
-  
-            style1: "menu active1",
-  
+            menuStatus: "close",           
+            style1: "menu active1",  
           });
           setSideBarup1(true);  
-          setSideBarup2(false);
-  
+          setSideBarup2(false);  
           break;
         case "close":
           setMenu({
             menuStatus: "open",
-            // style3: "menu2",
-            style1: "menu active2",
-  
+            style1: "menu active2",  
           });
-          setTimeout(() => {
-  
+          setTimeout(() => {  
             setSideBarup1(false);
           }, 1000);
           break;
       }
     };
-    const bulkhandleClickward = () => {
-  
+    const bulkhandleClickward = () => {  
       switch (menu.menuStatus) {
         case "open":
+        default:
           setMenu({
-            menuStatus: "close",
-            // style3: "menu2",
-  
-            style1: "menu active1",
-  
+            menuStatus: "close",  
+            style1: "menu active1",  
           });
           setSideBarup2(true);
           setSideBarup1(false);
@@ -417,48 +361,35 @@ const canceltownchange = () => {
         case "close":
           setMenu({
             menuStatus: "open",
-            // style3: "menu2",
-            style1: "menu active2",
-  
+            style1: "menu active2",  
           });
-          setTimeout(() => {
-  
+          setTimeout(() => {  
             setSideBarup2(false);
           }, 1000);
           break;
       }
     };
-    const bulkhandleClick = () => {
-  
+    const bulkhandleClick = () => {  
       switch (menu.menuStatus) {
         case "open":
+          default:
           setMenu({
-            menuStatus: "close",
-            // style3: "menu2",
-  
-            style1: "menu active1",
-  
+            menuStatus: "close",  
+            style1: "menu active1",  
           });
-          setSideBarup(true);
-  
-  
-  
+          setSideBarup(true);      
           break;
         case "close":
           setMenu({
-            menuStatus: "open",
-            // style3: "menu2",
-            style1: "menu active2",
-  
+            menuStatus: "open",           
+            style1: "menu active2",  
           });
-          setTimeout(() => {
-  
+          setTimeout(() => {  
             setSideBarup(false);
           }, 1000);
           break;
       }
-    };
-  
+    };  
     const SelectMenuButtonTown = (props) => {
       return (
         <components.MenuList {...props}>
@@ -528,19 +459,9 @@ const canceltownchange = () => {
       list.splice(index, 1)
       setInputList(list);
     }
-  
-  
-    // handle click event of the Add button
     const handleAddClick = (e) => {
       e.preventDefault()
       setInputList([...inputList, { name: "", abbreviation: "", code: "" }]);
-    }
-    const [manual, setManual] = useState(false)
-    const menuToggle = (e) => {
-      e.stopPropagation();
-      setManual({
-        isOpen: !manual.isOpen
-      });
     }
     const [inputList, setInputList] = useState([{ name: "", abbreviation: "", code: "" }]);
     const handleChange = (e) => {
@@ -550,20 +471,15 @@ const canceltownchange = () => {
     };
   
     const handleFile = () => {
-      /* Boilerplate to set up FileReader */
       const reader = new FileReader();
       const rABS = !!reader.readAsBinaryString;
   
       reader.onload = (e) => {
-        /* Parse data */
         const bstr = e.target.result;
         const wb = XLSX.read(bstr, { type: rABS ? 'binary' : 'array', bookVBA: true });
-        /* Get first worksheet */
         const wsname = wb.SheetNames[0];
         const ws = wb.Sheets[wsname];
-        /* Convert array of arrays */
         const data = XLSX.utils.sheet_to_json(ws);
-        /* Update state */
         setExcelUpload({ data: data, cols: make_cols(ws['!ref']) });
         setIsValue(true)
         console.log(JSON.stringify(data, null, 2));
@@ -578,11 +494,11 @@ const canceltownchange = () => {
     }
     const [isValue, setIsValue] = useState(false)
     const [excelupload, setExcelUpload] = React.useState({ file: {}, data: [], cols: [] });
-    const [variable, setVariable] = useState([])
+    const [variable, ] = useState("")
 
     const menusremoveicon = (item) => {
       return (
-        variable.map((x, i) => {
+        variable.map((x, i) => (
           <tr key={i}>
             <td>{x.SNO}</td>
             <td>{x.MENU1}</td>
@@ -590,27 +506,29 @@ const canceltownchange = () => {
             <td>{x.MENU2}</td>
             <td>{x.NUMBER2}</td>
           </tr>
-        })
+        ))
       )
     }
   
     const csvData = [
-      ['firstname', 'lastname', 'email'],
-      ['John', 'Doe', 'john.doe@xyz.com'],
-      ['Jane', 'Doe', 'jane.doe@xyz.com']
+      ['SNo', 'Town' ],
     ];
 
     const menus = (details) => {
       return(
         <Menu>
         <Menu.Item>
-          <a>Edit</a>
+          <a href >Edit</a>
         </Menu.Item>
         <Menu.Item>
-          <a>Delete</a>
+          <a href>Delete</a>
         </Menu.Item>
       </Menu>
       )
+    }
+    const changedistrictpanchayat = (e)=>{
+      setCollected(e)
+      setVillageHide({...villageHide, districtpanchayat:true,panchayatunion:false})
     }
     const changePanchayatUnion = (e)=>{
       setSelected1(e)
@@ -779,13 +697,11 @@ const canceltownchange = () => {
           </CRow>
 
 
-          <CButton
-            className={"menu"}
+          <CButton           
             style={{ position: "absolute", top: "15px", right: "15px", backgroundColor: "green", border: "1px solid green" }}
             className={"cancelBtn"}
             onClick={() => {
               handleClicktown();
-              // handleClickward();
             }}
           >
             Back
@@ -956,12 +872,10 @@ const canceltownchange = () => {
 
 
             <CButton
-              className={"menu"}
               style={{ position: "absolute", top: "15px", right: "15px", backgroundColor: "green", border: "1px solid green" }}
               className={"cancelBtn"}
               onClick={() => {
                 handleClickward();
-                // handleClickward();
               }}
             >
               Back
@@ -1058,12 +972,10 @@ const canceltownchange = () => {
 
 
                   <CButton
-                    className={"menu"}
                     style={{ position: "absolute", top: "-100px", right: "-660px", marginLeft: "30px", backgroundColor: "green", border: "1px solid green" }}
                     className={"cancelBtn"}
                     onClick={() => {
                       bulkhandleClick();
-                      // handleClickward();
                     }}
                   >
                     Back
@@ -1274,12 +1186,10 @@ const canceltownchange = () => {
                 </CButton>
 
                   <CButton
-                    className={"menu"}
                     style={{ position: "absolute",  right: "-660px", marginLeft: "30px", top: "-160px", backgroundColor: "green", border: "1px solid green" }}
                     className={"cancelBtn"}
                     onClick={() => {
                       bulkhandleClick();
-                      // handleClickward();
                     }}
                   >
                     Back
@@ -1501,7 +1411,7 @@ const canceltownchange = () => {
                                     className={"ant-dropdown-cutomize-by-me"}
                                     overlay={() => menus(item)}
                                   >
-                                    <a
+                                    <a href
                                       className="ant-dropdown-link"
                                       onClick={(e) => e.preventDefault()}
                                     >
@@ -1575,7 +1485,7 @@ const canceltownchange = () => {
                               id={"Towncorporation"}
                               type={"text"}
                               value={collected}
-                              onChange={(e) => setCollected(e)}
+                              onChange={changedistrictpanchayat}
                               components={{ MenuList: SelectMenuButtonTown }}
                               options={townselect}
                             />

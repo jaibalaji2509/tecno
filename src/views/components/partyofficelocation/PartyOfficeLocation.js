@@ -7,7 +7,7 @@ import {
   CLabel,
   CButton,
   CInput,
-  CWidgetDropdown,
+  
 } from "@coreui/react";
 import ReactTooltip from "react-tooltip";
 import {} from "../../../services/ApiService";
@@ -27,7 +27,7 @@ function PartyOfficeLocation() {
     menuStatus: "open",
     style3: "menu1",
   });
-  const [locationHide, setLocationHide] = useState({
+  const [locationHide, ] = useState({
     corporation: true,
   });
   const [editShow, setEditShow] = useState(false);
@@ -174,6 +174,7 @@ function PartyOfficeLocation() {
   const addTypeofPartyOffice = () => {
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           style3: "menu2",
@@ -207,20 +208,20 @@ function PartyOfficeLocation() {
     return (
       <Menu>
         <Menu.Item>
-          <a>Edit</a>
+          <a href>Edit</a>
         </Menu.Item>
         <Menu.Item>
-          <a>Delete</a>
+          <a href>Delete</a>
         </Menu.Item>
       </Menu>
     );
   };
-  const people = [
-    { name: "Keanu Reeves", profession: "Actor" },
-    { name: "Lionel Messi", profession: "Football Player" },
-    { name: "Cristiano Ronaldo", profession: "Football Player" },
-    { name: "Jack Nicklaus", profession: "Golf Player" },
-  ];
+  // const people = [
+  //   { name: "Keanu Reeves", profession: "Actor" },
+  //   { name: "Lionel Messi", profession: "Football Player" },
+  //   { name: "Cristiano Ronaldo", profession: "Football Player" },
+  //   { name: "Jack Nicklaus", profession: "Golf Player" },
+  // ];
   const exportPDF = () => {
     const unit = "pt";
     const size = "A4"; // Use A1, A2, A3 or A4
@@ -448,7 +449,7 @@ function PartyOfficeLocation() {
                                 className={"ant-dropdown-cutomize-by-me"}
                                 overlay={() => menus(item)}
                               >
-                                <a
+                                <a href
                                   className="ant-dropdown-link"
                                   onClick={(e) => e.preventDefault()}
                                 >
@@ -477,7 +478,6 @@ function PartyOfficeLocation() {
           {backbutt && (
             <div>
               <CButton
-                className={"menu"}
                 style={{ position: "absolute", top: "15px", right: "15px" }}
                 className={"cancelBtn"}
                 onClick={addTypeofPartyOffice}
@@ -744,7 +744,7 @@ function PartyOfficeLocation() {
                               className={"ant-dropdown-cutomize-by-me"}
                               overlay={() => menus(item)}
                             >
-                              <a
+                              <a href
                                 className="ant-dropdown-link"
                                 onClick={(e) => e.preventDefault()}
                               >

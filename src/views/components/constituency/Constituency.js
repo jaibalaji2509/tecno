@@ -5,15 +5,10 @@ import Select, { components } from "react-select";
 import { Dropdown, Menu } from "antd";
 import 'antd/dist/antd.css';
 import "./Constituency.css";
-import { CSVLink, CSVDownload } from 'react-csv';
-import ReactFileReader from 'react-file-reader';
+import { CSVLink } from 'react-csv';
 import * as XLSX from "xlsx";
-import MultiSelect from "react-multi-select-component";
 import SheetJSFT from "../../../Tools/excelupload/SheetJSFT"
 import { make_cols } from "../../../Tools/excelupload/MakeColumn"
-
-
-
 
 function Constituency() {
   const [selected1, setSelected1] = useState([]);
@@ -24,7 +19,6 @@ function Constituency() {
   const [municipalList, setMunicipalList] = useState(true);
   const [MunicipalCreate, setmunicipalCreate] = useState(false);
   const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
-  const [ParliamentaryConstituency,] = useState({});
   const [municipalName,] = useState("");
 
   const enableCreate = async () => {
@@ -32,10 +26,10 @@ function Constituency() {
     await setmunicipalCreate(true);
   };
 
-  const enableCreateadd = async () => {
-    await setMunicipalListadd(false);
-    await setmunicipalCreateadd(true);
-  };
+  // const enableCreateadd = async () => {
+  //   await setMunicipalListadd(false);
+  //   await setmunicipalCreateadd(true);
+  // };
 
   const editState = async () => {
     await setMunicipalList(false);
@@ -100,21 +94,12 @@ function Constituency() {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClickParliamentary}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
         </CLink>
       ),
-      span: (
-        <CLink
-          className={"saveBtn"}
-          onClick={handleClickParliamentary}
-          style={{ marginLeft: "200px" }}
-        >
-          Add{" "}
-        </CLink>
-      ),
+     
     },
     { value: "tamil", label: "Tamilnadu" },
     { value: "chennai", label: "Chennai" },
@@ -228,16 +213,16 @@ function Constituency() {
     return(
       <Menu>
       <Menu.Item>
-        <a>Edit</a>
+        <a href>Edit</a>
       </Menu.Item>
       <Menu.Item>
-        <a>Delete</a>
+        <a href>Delete</a>
       </Menu.Item>
       <Menu.Item>
-        <a>Remove</a>
+        <a href>Remove</a>
       </Menu.Item>
       <Menu.Item>
-        <a>View</a>
+        <a href>View</a>
       </Menu.Item>
     </Menu>
     )
@@ -250,9 +235,9 @@ function Constituency() {
   const [sideBar1, setSideBar1] = useState(false);
   const [sideBar2, setSideBar2] = useState(false);
   const handleClickParliamentary = () => {
-
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           // style3: "menu2",
@@ -284,6 +269,7 @@ function Constituency() {
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           // style3: "menu2",
@@ -311,13 +297,14 @@ function Constituency() {
         break;
     }
   };
-  const [sideBarup, setSideBarup] = useState(false)
+  const [, setSideBarup] = useState(false)
   const [sideBarup1, setSideBarup1] = useState(false)
   const [sideBarup2, setSideBarup2] = useState(false)
   const bulkhandleClickParliamentary = () => {
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           // style3: "menu2",
@@ -348,6 +335,7 @@ function Constituency() {
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           // style3: "menu2",
@@ -376,6 +364,7 @@ function Constituency() {
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           // style3: "menu2",
@@ -479,13 +468,13 @@ function Constituency() {
     e.preventDefault()
     setInputList([...inputList, { name: "", abbreviation: "", code: "" }]);
   }
-  const [manual, setManual] = useState(false)
-  const menuToggle = (e) => {
-    e.stopPropagation();
-    setManual({
-      isOpen: !manual.isOpen
-    });
-  }
+  // const [manual, setManual] = useState(false)
+  // const menuToggle = (e) => {
+  //   e.stopPropagation();
+  //   setManual({
+  //     isOpen: !manual.isOpen
+  //   });
+  // }
   const [inputList, setInputList] = useState([{ name: "", abbreviation: "", code: "" }]);
   const handleChange = (e) => {
     const files = e.target.files;
@@ -522,11 +511,11 @@ function Constituency() {
   }
   const [isValue, setIsValue] = useState(false)
   const [excelupload, setExcelUpload] = React.useState({ file: {}, data: [], cols: [] });
-  const [variable, setVariable] = useState([])
+  const [variable, ] = useState([])
 
   const menusremoveicon = (item) => {
     return (
-      variable.map((x, i) => {
+      variable.map((x, i) => (
         <tr key={i}>
           <td>{x.SNO}</td>
           <td>{x.MENU1}</td>
@@ -534,7 +523,7 @@ function Constituency() {
           <td>{x.MENU2}</td>
           <td>{x.NUMBER2}</td>
         </tr>
-      })
+      ))
     )
   }
 
@@ -543,7 +532,10 @@ function Constituency() {
     ['John', 'Doe', 'john.doe@xyz.com'],
     ['Jane', 'Doe', 'jane.doe@xyz.com']
   ];
-
+  const changedistrictpanchayat = (e)=>{
+    setCollected(e)
+    setVillageHide({...villageHide, districtpanchayat:true,panchayatunion:false})
+  }
   const changePanchayatUnion = (e)=>{
     setSelected1(e)
     setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:true})
@@ -709,7 +701,6 @@ function Constituency() {
 
 
         <CButton
-          className={"menu"}
           style={{ position: "absolute", top: "15px", right: "15px", backgroundColor: "green", border: "1px solid green" }}
           className={"cancelBtn"}
           onClick={() => {
@@ -885,7 +876,6 @@ function Constituency() {
 
 
           <CButton
-            className={"menu"}
             style={{ position: "absolute", top: "15px", right: "15px", backgroundColor: "green", border: "1px solid green" }}
             className={"cancelBtn"}
             onClick={() => {
@@ -987,12 +977,10 @@ function Constituency() {
 
 
                 <CButton
-                  className={"menu"}
                   style={{ position: "absolute", top: "-100px", right: "-660px", marginLeft: "30px", backgroundColor: "green", border: "1px solid green" }}
                   className={"cancelBtn"}
                   onClick={() => {
                     bulkhandleClick();
-                    // handleClickLegislative();
                   }}
                 >
                   Back
@@ -1203,7 +1191,6 @@ function Constituency() {
                 </CButton>
 
                 <CButton
-                  className={"menu"}
                   style={{ position: "absolute", right: "-660px", marginLeft: "30px", top: "-160px", backgroundColor: "green", border: "1px solid green" }}
                   className={"cancelBtn"}
                   onClick={() => {
@@ -1406,7 +1393,7 @@ function Constituency() {
                               className={"ant-dropdown-cutomize-by-me"}
                               overlay={() => menus(item)}
                             >
-                              <a
+                              <a href
                                 className="ant-dropdown-link"
                                 onClick={(e) => e.preventDefault()}
                               >
@@ -1480,7 +1467,7 @@ function Constituency() {
                             id={"parliamentaryconstituency"}
                             type={"text"}
                             value={collected}
-                            onChange={(e) => setCollected(e)}
+                            onChange={changedistrictpanchayat}
                             components={{ MenuList: SelectMenuButtonParliamentary }}
                             options={select}
                           />

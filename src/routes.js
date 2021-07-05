@@ -25,7 +25,7 @@ const Terminate = React.lazy(() => import('./views/components/terminate/Terminat
 const ConstituencyMember = React.lazy(() => import('./views/components/constituency/ConstituencyMember'));
 const Constituency = React.lazy(() => import('./views/components/constituency/Constituency'));
 
-const Login = React.lazy(() => import('./views/pages/login/Login'));
+// const Login = React.lazy(() => import('./views/pages/login/Login'));
 const LocationLibrary = React.lazy(() => import('./views/components/location_library/Locationlibrary'));
 const TabsList = React.lazy(() => import('./views/components/tabslist/TabsList'));
 const MunicipalCorporation = React.lazy(() => import('./views/components/municipalcorporation/MunicipalCorporation'));

@@ -15,17 +15,15 @@ import "./Municipality.css";
 import { Dropdown, Menu } from "antd";
 import 'antd/dist/antd.css';
 import Select, { components } from "react-select";
-import { CSVLink, CSVDownload } from 'react-csv';
-import ReactFileReader from 'react-file-reader';
+import { CSVLink } from 'react-csv';
 import * as XLSX from "xlsx";
-import MultiSelect from "react-multi-select-component";
 import SheetJSFT from "../../../Tools/excelupload/SheetJSFT"
 import { make_cols } from "../../../Tools/excelupload/MakeColumn"
 
 
 const Municipality = () => {
   const [excelupload, setExcelUpload] = React.useState({ file: {}, data: [], cols: [] });
-  const [locations, setLocations] = useState({
+  const [locations, ] = useState({
     state: "",
     district: "",
     city: "",
@@ -38,10 +36,10 @@ const Municipality = () => {
   const [collected, setCollected] = useState([]);
   const [villageHide, setVillageHide] =useState({districtpanchayat:true,panchayatunion:false})
   const [municipalList, setMunicipalList] = useState(true);
-  const [MunicipalCreate, setmunicipalCreate] = useState(false);
+  const [, setmunicipalCreate] = useState(false);
   const [municipalListadd, setMunicipalListadd] = useState(true);
-  const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
-  const [municipalCorporation,] = useState({});
+  const [, setmunicipalCreateadd] = useState(false);
+  const [,] = useState({});
   const [municipalName,] = useState("");
 
   const [locationHide, setLocationHide] = useState({
@@ -53,11 +51,11 @@ const Municipality = () => {
     cityLocation: false,
   });
 
-  const [variable, setVariable] = useState([])
+  const [variable, ] = useState([])
 
   const menusremoveicon = (item) => {
     return (
-      variable.map((x, i) => {
+      variable.map((x, i) => (
         <tr key={i}>
           <td>{x.SNO}</td>
           <td>{x.MENU1}</td>
@@ -65,24 +63,18 @@ const Municipality = () => {
           <td>{x.MENU2}</td>
           <td>{x.NUMBER2}</td>
         </tr>
-      })
+      ))
     )
   }
 
   const csvData = [
-    ['firstname', 'lastname', 'email'],
-    ['John', 'Doe', 'john.doe@xyz.com'],
-    ['Jane', 'Doe', 'jane.doe@xyz.com']
+    ['SNo', 'Name', ],
+  ];
+  const csvDatasub = [
+    ['SNo', 'Ward', ],
   ];
 
-  const userData = [
-    // {
-    //   SNo: "1",
-    //   Street: "Rangaswamykulam Street",
-    //   Ward:"0098",
-    //   EnteredBy:"sathishKumar",
-    //   EnteredOn:"11/06/2021"
-    // },
+  const userData = [   
     {
       SNo: "1",
       Street: "Kamarajar Street",
@@ -136,16 +128,7 @@ const Municipality = () => {
     { key: "Street", label: "Street Name", _style: { width: "10%" } },
 
   ];
-  const fields = [
-    // {
-    //   key: "show_details1",
-    //   label: "Select",
-    //   _style: { width: "3%" },
-
-    //   sorter: false,
-    //   filter: false,
-
-    // },
+  const fields = [   
     {
       key: "SNo", label: "S.NO", _style: { width: "5%" }, sorter: false,
       filter: false,
@@ -169,7 +152,7 @@ const Municipality = () => {
     },
     { key: "Ward", label: "Ward Number", _style: { width: "10%" } },
     {
-      key: "show_details3", label: "Action", _style: { width: "10%" }, sorter: false,
+      key: "show_details1", label: "Action", _style: { width: "10%" }, sorter: false,
       filter: false,
     },
   ];
@@ -179,14 +162,14 @@ const Municipality = () => {
       key: "SNo", label: "S.NO", _style: { width: "5%" }, sorter: false,
       filter: false,
     },
-    { key: "munci", label: "Municipality", _style: { width: "10%" } },
+    { key: "Name", label: "Municipality", _style: { width: "10%" } },
     {
-      key: "show_details3", label: "Action", _style: { width: "10%" }, sorter: false,
+      key: "show_details1", label: "Action", _style: { width: "10%" }, sorter: false,
       filter: false,
     },
   ];
 
-  const [passing, setPassing] = useState("");
+  const [passing, ] = useState("");
   const [error,] = useState("");
   const saveCorporation = async () => {
     setLocationHide({
@@ -216,18 +199,11 @@ const Municipality = () => {
       }
     }
   };
-  const changeHandler = (e) => {
-    setLocations({ ...locations, [e.target.name]: e.target.value });
-  };
+ 
   const enableCreate = async () => {
     await setMunicipalList(false);
     await setmunicipalCreate(true);
-  };
-
-  const enableCreateadd = async () => {
-    await setMunicipalListadd(false);
-    await setmunicipalCreateadd(true);
-  };
+  }; 
 
   const editState = async () => {
     await setMunicipalList(false);
@@ -238,11 +214,7 @@ const Municipality = () => {
     await setMunicipalListadd(false);
     await setmunicipalCreateadd(true);
   };
-  const CancelState = async () => {
-    setPassing("");
-    await setMunicipalList(true);
-    await setmunicipalCreate(false);
-  };
+  
   const [hideMappingMunicipality, setHideMappingMunicipality] = useState(true)
   const [hideMunicipality, setMunicipality] = useState(false)
   const changeMunicipality = () => {
@@ -254,11 +226,7 @@ const Municipality = () => {
     setMunicipality(false)
   }
 
-  const CancelStateadd = async () => {
-    setPassing("");
-    await setMunicipalListadd(true);
-    await setmunicipalCreateadd(false);
-  };
+ 
   const selectState = [{ value: "TamilNadu", label: "TamilNadu" }];
   const selectDistrict = [{ value: "Kacnhipuram", label: "Kacnhipuram" }];
   const selectMunicipalcorporation = [
@@ -266,21 +234,11 @@ const Municipality = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClickmunici}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
         </CLink>
-      ),
-      span: (
-        <CLink
-          className={"saveBtn"}
-          onClick={handleClickmunici}
-          style={{ marginLeft: "200px" }}
-        >
-          Add{" "}
-        </CLink>
-      ),
+      ),      
     },
     { value: "Wallajabhad", label: "Wallajabhad" },
     { value: "NazharathPet", label: "NazharathPet" },
@@ -294,21 +252,11 @@ const Municipality = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClickward}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
         </CLink>
-      ),
-      span: (
-        <CLink
-          className={"saveBtn"}
-          onClick={handleClickward}
-          style={{ marginLeft: "200px" }}
-        >
-          Add{" "}
-        </CLink>
-      ),
+      ),     
     },
     { value: "0097", label: "0097" }, { value: "0098", label: "0098" }];
 
@@ -375,10 +323,10 @@ const Municipality = () => {
     return (
       <Menu>
         <Menu.Item>
-          <a>Edit</a>
+          <a href>Edit</a>
         </Menu.Item>
         <Menu.Item>
-          <a>Delete</a>
+          <a href>Delete</a>
         </Menu.Item>
       </Menu>
     )
@@ -397,17 +345,9 @@ const Municipality = () => {
   }
 
 
-  // handle click event of the Add button
   const handleAddClick = (e) => {
     e.preventDefault()
     setInputList([...inputList, { name: "", abbreviation: "", code: "" }]);
-  }
-  const [manual, setManual] = useState(false)
-  const menuToggle = (e) => {
-    e.stopPropagation();
-    setManual({
-      isOpen: !manual.isOpen
-    });
   }
   const [inputList, setInputList] = useState([{ name: "", abbreviation: "", code: "" }]);
 
@@ -422,6 +362,7 @@ const Municipality = () => {
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           // style3: "menu2",
@@ -454,6 +395,7 @@ setSideBarup2(false)
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           // style3: "menu2",
@@ -480,13 +422,14 @@ setSideBarup2(false)
         break;
     }
   };
-  const [sideBarup, setSideBarup] = useState(false)
+  const [, setSideBarup] = useState(false)
   const [sideBarup1, setSideBarup1] = useState(false)
   const [sideBarup2, setSideBarup2] = useState(false)
   const bulkhandleClickmunici = () => {
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           // style3: "menu2",
@@ -518,6 +461,7 @@ setSideBarup2(false)
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           // style3: "menu2",
@@ -546,6 +490,7 @@ setSideBarup2(false)
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           // style3: "menu2",
@@ -606,6 +551,10 @@ setSideBarup2(false)
     };
   }
   const [isValue, setIsValue] = useState(false)
+  const changedistrictpanchayat = (e)=>{
+    setCollected(e)
+    setVillageHide({...villageHide, districtpanchayat:true,panchayatunion:false})
+  }
   const changePanchayatUnion = (e)=>{
     setSelected1(e)
     setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:true})
@@ -771,7 +720,6 @@ setSideBarup2(false)
 
 
           <CButton
-            className={"menu"}
             style={{ position: "absolute", top: "15px", right: "15px", backgroundColor: "green", border: "1px solid green" }}
             className={"cancelBtn"}
             onClick={() => {
@@ -947,7 +895,6 @@ setSideBarup2(false)
 
 
             <CButton
-              className={"menu"}
               style={{ position: "absolute", top: "15px", right: "15px", backgroundColor: "green", border: "1px solid green" }}
               className={"cancelBtn"}
               onClick={() => {
@@ -1049,12 +996,10 @@ setSideBarup2(false)
 
 
                   <CButton
-                    className={"menu"}
                     style={{ position: "absolute", top: "-105px", right: "-660px", marginLeft: "30px", backgroundColor: "green", border: "1px solid green" }}
                     className={"cancelBtn"}
                     onClick={() => {
                       bulkhandleClick();
-                      // handleClickward();
                     }}
                   >
                     Back
@@ -1227,7 +1172,7 @@ setSideBarup2(false)
                 />
               </CCol>
               <CCol md="6" style={{ marginLeft: "150px", marginTop: "-38px" }}>
-                <CSVLink data={csvData}>
+                <CSVLink data={csvDatasub}>
                   <span style={{ fontSize: "20px", cursor: "pointer", color: "red" }}>
                     <i className="fas fa-download">
                     </i>&nbsp;
@@ -1265,12 +1210,10 @@ setSideBarup2(false)
                 </CButton>
 
                   <CButton
-                    className={"menu"}
                     style={{ position: "absolute", marginLeft: "710px", top: "-160px", backgroundColor: "green", border: "1px solid green" }}
                     className={"cancelBtn"}
                     onClick={() => {
                       bulkhandleClick();
-                      // handleClickward();
                     }}
                   >
                     Back
@@ -1489,7 +1432,7 @@ setSideBarup2(false)
                                       className={"ant-dropdown-cutomize-by-me"}
                                       overlay={() => menus(item)}
                                     >
-                                      <a
+                                      <a href
                                         className="ant-dropdown-link"
                                         onClick={(e) => e.preventDefault()}
                                       >
@@ -1568,7 +1511,7 @@ setSideBarup2(false)
                                 id={"municipalcorporation"}
                                 type={"text"}
                                 value={collected}
-                                onChange={(e) => setCollected(e)}
+                                onChange={changedistrictpanchayat}
                                 components={{ MenuList: SelectMenuButtonmunici }}
                                 options={selectMunicipalcorporation}
                               />

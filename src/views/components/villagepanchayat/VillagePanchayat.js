@@ -7,7 +7,7 @@ import {
   CLabel,
   CRow,
 } from "@coreui/react";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Select, { components } from "react-select";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
@@ -15,7 +15,7 @@ import { toast } from "react-toastify";
 import { Dropdown, Menu } from "antd";
 import "antd/dist/antd.css";
 import "./VillagePanchayat.css";
-import { CSVLink, CSVDownload } from "react-csv";
+import { CSVLink } from "react-csv";
 
 import * as XLSX from "xlsx";
 import "./VillagePanchayat.css";
@@ -23,7 +23,7 @@ import SheetJSFT from "../../../Tools/excelupload/SheetJSFT";
 import { make_cols } from "../../../Tools/excelupload/MakeColumn";
 
 const VillagePanchayat = () => {
-  const [locations, setLocations] = useState({
+  const [locations, ] = useState({
     state: "",
     district: "",
     city: "",
@@ -44,7 +44,7 @@ const VillagePanchayat = () => {
   const [selected1, setSelected1] = useState([]);
   const [selected2, setSelected2] = useState([]);
   const [selected3, setSelected3] = useState([]);
-  const [villageHide, setVillageHide] = useState({ districtpanchayat: true, panchayatunion: false })
+  const [villageHide, setVillageHide] = useState({ districtpanchayat: true, panchayatunion: false, village: false, ward: false})
   const [municipalName] = useState("");
   const [villageList, setvillageList] = useState(true);
   const [villageCreate, setVillageCreate] = useState(false);
@@ -62,26 +62,15 @@ const VillagePanchayat = () => {
   });
 
   const select = [
-
     {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClickdistrict}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
         </CLink>
-      ),
-      span: (
-        <CLink
-          className={"saveBtn"}
-          onClick={handleClickdistrict}
-          style={{ marginLeft: "200px" }}
-        >
-          Add{" "}
-        </CLink>
-      ),
+      ),      
     },
     { value: "tamil", label: "Tamilnadu", id: "1" },
     { value: "Chengalpattu", label: "Chengalpattu", id: "2" },
@@ -129,33 +118,7 @@ const VillagePanchayat = () => {
     //   on: "10/06/2021",
     // },
   ];
-  const userData1 = [
-    {
-      _id: "00001",
-      SNo: "1.",
-      DistrictPanchayat: "Chennai",
-    },
-    {
-      _id: "00002",
-      SNo: "2.",
-      DistrictPanchayat: "Salem",
-    },
-    {
-      _id: "00003",
-      SNo: "3.",
-      DistrictPanchayat: "Madurai",
-    },
-    {
-      _id: "00004",
-      SNo: "4.",
-      DistrictPanchayat: "Trichy",
-    },
-    {
-      _id: "00005",
-      SNo: "5.",
-      DistrictPanchayat: "Thiruvarur",
-    },
-  ];
+  
   const fields = [
     { key: "SNo", label: "S.NO", _style: { width: "5%" } },
     { key: "Ward", label: "Ward Number", _style: { width: "10%" } },
@@ -322,7 +285,7 @@ const VillagePanchayat = () => {
   };
   const [hideMappingVillage, setHideMappingVillage] = useState(true);
   const [hideVillagePanchayat, setHideVillagePanchayat] = useState(false);
-  const changeVillagePanchayat = () => {
+  const Addvillagepanchayat = () => {
     setHideMappingVillage(false);
     setHideVillagePanchayat(true);
   };
@@ -336,16 +299,16 @@ const VillagePanchayat = () => {
     ["John", "Doe", "john.doe@xyz.com"],
     ["Jane", "Doe", "jane.doe@xyz.com"],
   ];
-  const [variable, setVariable] = useState([]);
+  const [variable, ] = useState([]);
 
   const menus = (details) => {
     return (
       <Menu>
         <Menu.Item>
-          <a>Edit</a>
+          <a href>Edit</a>
         </Menu.Item>
         <Menu.Item>
-          <a>Delete</a>
+          <a href>Delete</a>
         </Menu.Item>
       </Menu>
     );
@@ -481,9 +444,9 @@ const VillagePanchayat = () => {
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
           style: "menu active1",
 
         });
@@ -499,7 +462,6 @@ const VillagePanchayat = () => {
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style: "menu active2",
 
         });
@@ -512,9 +474,9 @@ const VillagePanchayat = () => {
   const handleClickpanchayat = () => {
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
           style: "menu active1",
 
         });
@@ -531,9 +493,7 @@ const VillagePanchayat = () => {
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style: "menu active2",
-
         });
         setTimeout(() => {
           setSideBar2(false);
@@ -544,9 +504,9 @@ const VillagePanchayat = () => {
   const handleClickvillage = () => {
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
           style: "menu active1",
 
         });
@@ -564,7 +524,6 @@ const VillagePanchayat = () => {
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style: "menu active2",
 
         });
@@ -577,9 +536,9 @@ const VillagePanchayat = () => {
   const handleClickward = () => {
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
           style: "menu active1",
 
         });
@@ -597,7 +556,6 @@ const VillagePanchayat = () => {
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style: "menu active2",
 
         });
@@ -610,9 +568,9 @@ const VillagePanchayat = () => {
   const handleClick = () => {
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
           style: "menu active1",
         });
 
@@ -624,7 +582,6 @@ const VillagePanchayat = () => {
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style: "menu active2",
         });
         setTimeout(() => {
@@ -633,7 +590,7 @@ const VillagePanchayat = () => {
         break;
     }
   };
-  const [sideBarup, setSideBarup] = useState(false)
+  const [, setSideBarup] = useState(false)
   const [sideBarup1, setSideBarup1] = useState(false)
   const [sideBarup2, setSideBarup2] = useState(false)
   const [sideBarup3, setSideBarup3] = useState(false)
@@ -641,10 +598,9 @@ const VillagePanchayat = () => {
   const bulkhandleClickdistrict = () => {
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
-
           style1: "menu active1",
         });
         setSideBarup1(true);
@@ -659,7 +615,6 @@ const VillagePanchayat = () => {
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style1: "menu active2",
         });
         setTimeout(() => {
@@ -673,10 +628,9 @@ const VillagePanchayat = () => {
   const bulkhandleClickpanchayat = () => {
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
-
           style1: "menu active1",
         });
         setSideBarup2(true);
@@ -691,7 +645,6 @@ const VillagePanchayat = () => {
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style1: "menu active2",
         });
         setTimeout(() => {
@@ -705,10 +658,9 @@ const VillagePanchayat = () => {
   const bulkhandleClickvillage = () => {
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
-
           style1: "menu active1",
         });
         setSideBarup3(true);
@@ -723,7 +675,6 @@ const VillagePanchayat = () => {
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style1: "menu active2",
         });
         setTimeout(() => {
@@ -737,10 +688,9 @@ const VillagePanchayat = () => {
   const bulkhandleClickward = () => {
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
-
           style1: "menu active1",
         });
         setSideBarup4(true);
@@ -755,7 +705,6 @@ const VillagePanchayat = () => {
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style1: "menu active2",
         });
         setTimeout(() => {
@@ -769,10 +718,9 @@ const VillagePanchayat = () => {
   const bulkhandleClick = () => {
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
-
           style1: "menu active1",
         });
         setSideBarup(true);
@@ -781,7 +729,6 @@ const VillagePanchayat = () => {
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style1: "menu active2",
         });
         setTimeout(() => {
@@ -792,7 +739,6 @@ const VillagePanchayat = () => {
     }
 
   };
-  const [counter, setCount] = useState(0);
 
   const [inputList, setInputList] = useState([
     { panchayatname: "", panchayatabbreviation: "", panchayatcode: "" },
@@ -812,17 +758,16 @@ const VillagePanchayat = () => {
   };
 
   const menusremoveicon = (item) => {
-    return variable.map((x, i) => {
+    return variable.map((x, i) => (
       <tr key={i}>
         <td>{x.SNO}</td>
         <td>{x.MENU1}</td>
         <td>{x.NUMBER1}</td>
         <td>{x.MENU2}</td>
         <td>{x.NUMBER2}</td>
-      </tr>;
-    });
+      </tr>
+    ));
   };
-  // handle click event of the Add button
   const handleAddClick = (e) => {
     e.preventDefault();
     setInputList([
@@ -836,16 +781,6 @@ const VillagePanchayat = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClickward}
-          style={{ marginLeft: "200px" }}
-        >
-          Add{" "}
-        </CLink>
-      ),
-      span: (
-        <CLink
-          className={"saveBtn"}
-          onClick={handleClickward}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -868,23 +803,18 @@ const VillagePanchayat = () => {
   };
 
   const handleFile = () => {
-    /* Boilerplate to set up FileReader */
     const reader = new FileReader();
     const rABS = !!reader.readAsBinaryString;
 
     reader.onload = (e) => {
-      /* Parse data */
       const bstr = e.target.result;
       const wb = XLSX.read(bstr, {
         type: rABS ? "binary" : "array",
         bookVBA: true,
       });
-      /* Get first worksheet */
       const wsname = wb.SheetNames[0];
       const ws = wb.Sheets[wsname];
-      /* Convert array of arrays */
       const data = XLSX.utils.sheet_to_json(ws);
-      /* Update state */
       setExcelUpload({ data: data, cols: make_cols(ws["!ref"]) });
       setIsValue(true);
       console.log(JSON.stringify(data, null, 2));
@@ -898,23 +828,12 @@ const VillagePanchayat = () => {
     }
   };
   const [isValue, setIsValue] = useState(false);
-  const [style, setStyle] = useState({ display: "none" });
 
   const selectPanchayat = [
     {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClickpanchayat}
-          style={{ marginLeft: "200px" }}
-        >
-          Add{" "}
-        </CLink>
-      ),
-      span: (
-        <CLink
-          className={"saveBtn"}
-          onClick={handleClickpanchayat}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
@@ -923,32 +842,30 @@ const VillagePanchayat = () => {
     },
     { value: "chennai", label: "chennai" }, { value: "salem", label: "salem" }, { value: "madurai", label: "madurai" }]
 
-  const [mobilenumber, setMobileNumber] = useState("")
-  const [validerror, setValidError] = useState("")
+  const [mobilenumber, ] = useState("")
   switch (mobilenumber) {
     case (mobilenumber.length > 10):
       return console.log("more than 5 digit number", "track");
-      break;
-
     default:
       console.log("more than 10 digit number", "track  ")
   }
-  // if(mobilenumber.length > 10){
-  //   setValidError("this is longer","track")
-  // }
-
+  const changedistrictpanchayat = (e) => {
+    setSelected(e)
+    setVillageHide({ ...villageHide, districtpanchayat: true, panchayatunion: false, village: false, ward: false})
+  }
   const changePanchayatUnion = (e) => {
     setSelected1(e)
-    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: true,village: false,ward: false  })
+    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: true, village: false, ward: false})
   }
   const changeVillage = (e) => {
     setSelected2(e)
-    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: false, village: true,ward: false })
+    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: false, village: true, ward: false})
   }
   const changeWard = (e) => {
     setSelected3(e)
-    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: false, village: false, ward: true })
+    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: false, village: false, ward: true})
   }
+
   return (
     <div className={menu.style3}>
       {sideBar1 && (
@@ -1280,12 +1197,10 @@ const VillagePanchayat = () => {
 
 
             <CButton
-              className={"menu"}
               style={{ position: "absolute", top: "15px", right: "15px",backgroundColor: "green", border: "1px solid green" }}
               className={"cancelBtn"}
               onClick={() => {
                 handleClickpanchayat();
-                // handleClickpanchayat();
               }}
             >
               Back
@@ -1476,12 +1391,10 @@ const VillagePanchayat = () => {
 
 
               <CButton
-                className={"menu"}
                 style={{ position: "absolute", top: "15px", right: "15px",backgroundColor: "green", border: "1px solid green" }}
                 className={"cancelBtn"}
                 onClick={() => {
                   handleClickvillage();
-                  // handleClickpanchayat();
                 }}
               >
                 Back
@@ -1692,12 +1605,10 @@ const VillagePanchayat = () => {
 
 
                 <CButton
-                  className={"menu"}
                   style={{ position: "absolute", top: "15px", right: "15px", backgroundColor: "green", border: "1px solid green"}}
                   className={"cancelBtn"}
                   onClick={() => {
                     handleClickward();
-                    // handleClickpanchayat();
                   }}
                 >
                   Back
@@ -1797,7 +1708,6 @@ const VillagePanchayat = () => {
            
 
               <CButton
-                className={"menu"}
                 style={{
                   position: "absolute",
                   top: "-100px",
@@ -1809,7 +1719,6 @@ const VillagePanchayat = () => {
                 className={"cancelBtn"}
                 onClick={() => {
                   bulkhandleClick();
-                  // handleClick2();
                 }}
               >
                 Back
@@ -2004,7 +1913,6 @@ const VillagePanchayat = () => {
            
 
               <CButton
-                className={"menu"}
                 style={{
                   position: "absolute",
                   top: "-165px",
@@ -2016,7 +1924,6 @@ const VillagePanchayat = () => {
                 className={"cancelBtn"}
                 onClick={() => {
                   bulkhandleClick();
-                  // handleClick2();
                 }}
               >
                 Back
@@ -2216,7 +2123,6 @@ const VillagePanchayat = () => {
            
 
               <CButton
-                className={"menu"}
                 style={{
                   position: "absolute",
                   top: "-165px",
@@ -2228,7 +2134,6 @@ const VillagePanchayat = () => {
                 className={"cancelBtn"}
                 onClick={() => {
                   bulkhandleClick();
-                  // handleClick2();
                 }}
               >
                 Back
@@ -2450,7 +2355,6 @@ const VillagePanchayat = () => {
            
 
               <CButton
-                className={"menu"}
                 style={{
                   position: "absolute",
                   top: "-210px",
@@ -2462,7 +2366,6 @@ const VillagePanchayat = () => {
                 className={"cancelBtn"}
                 onClick={() => {
                   bulkhandleClick();
-                  // handleClick2();
                 }}
               >
                 Back
@@ -2569,7 +2472,7 @@ const VillagePanchayat = () => {
                                 }}
                                 id={"Villageadd"}
                                 className={"saveBtn"}
-                                onClick={changeVillagePanchayat}
+                                onClick={Addvillagepanchayat}
                               >
                                 Add Village panchayat
                               </CButton>{" "}
@@ -2696,7 +2599,7 @@ const VillagePanchayat = () => {
                                         className={"ant-dropdown-cutomize-by-me"}
                                         overlay={() => menus(item)}
                                       >
-                                        <a
+                                        <a href
                                           className="ant-dropdown-link"
                                           onClick={(e) => e.preventDefault()}
                                         >
@@ -2771,7 +2674,7 @@ const VillagePanchayat = () => {
                                   id={"Villagedistrict"}
                                   type={"text"}
                                   value={selected}
-                                  onChange={(e) => setSelected(e)}
+                                  onChange={changedistrictpanchayat}
                                   components={{ MenuList: SelectMenuButtondistrict }}
                                   options={select}
                                 // labelledBy={"Select"}
@@ -3150,6 +3053,7 @@ const VillagePanchayat = () => {
                                   placeholder="Select Village Panchayat"
                                   id={"VillageSelect"}
                                   type={"text"}
+                                  value={selected2}
                                   components={{ MenuList: SelectMenuButtonvillage }}
                                   onChange={changeVillage}
                                   options={select}
@@ -3313,6 +3217,7 @@ const VillagePanchayat = () => {
                                   placeholder="Select the Ward Number"
                                   id={"Ward"}
                                   type={"text"}
+                                  value={selected3}
                                   components={{ MenuList: SelectMenuButtonward }}
                                   onChange={changeWard}
                                   options={selectWard}
@@ -3538,9 +3443,9 @@ const VillagePanchayat = () => {
                               setSelected([]);
                             } else {
                               let ids = [];
-                              val.map((x) => {
-                                ids.push(`${x._id}`);
-                              });
+                              val.map((x) =>(
+                                ids.push(`${x._id}`)
+                              ));
                               setSelected(ids);
                             }
                           }}
