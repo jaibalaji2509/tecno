@@ -9,11 +9,10 @@ import {
   CWidgetDropdown,
   CInput,
   CLink,
-  CTooltip,
+
 } from "@coreui/react";
-import { DocsLink } from 'src/reusable'
-import { useFormik } from "formik";
-import * as yup from "yup";
+// import { useFormik } from "formik";
+// import * as yup from "yup";
 import "./LocationLibrary.css";
 import ReactTooltip from "react-tooltip";
 import {
@@ -21,166 +20,147 @@ import {
   getState,
   getCity,
   getArea,
-  getAreaSchema,
-  createCountry,
-  createState,
-  createCity,
-  createArea,
-  updateCountry,
-  updateState,
-  updateCity,
-  updateArea,
+  // getAreaSchema,
+  // createState,
+  // createCity,
+  // createArea,
+  // updateState,
+  // updateCity,
+  // updateArea,
 } from "../../../services/ApiService";
-import { toast } from "react-toastify";
-import FormValidation from "../../../Tools/FormValidation/FormValidation";
 import Select, { components } from "react-select";
 import { Dropdown, Menu } from "antd";
 import 'antd/dist/antd.css';
-import { CSVLink, CSVDownload } from 'react-csv';
-import ReactFileReader from 'react-file-reader';
+import { CSVLink } from 'react-csv';
 import * as XLSX from "xlsx";
-import MultiSelect from "react-multi-select-component";
 import SheetJSFT from "../../../Tools/excelupload/SheetJSFT"
 import { make_cols } from "../../../Tools/excelupload/MakeColumn"
 
 function LocationLibrary(props) {
   const [excelupload, setExcelUpload] = React.useState({ file: {}, data: [], cols: [] });
-  const [error, setError] = useState("");
-  const [passing, setPassing] = useState("");
-  const [area, setArea] = useState([]);
-  const [areasSchema, setAreas] = useState([]);
+  const [error, ] = useState("");
+  // const [, setPassing] = useState("");
+  const [, setArea] = useState([]);
+  // const [, setAreas] = useState([]);
   const [selected, setSelected] = useState([]);
   const [selected1, setSelected1] = useState([]);
   const [selected2, setSelected2] = useState([]);
   const [selected3, setSelected3] = useState([]);
   const [selected4, setSelected4] = useState([]);
-  const [villageHide, setVillageHide] =useState({districtpanchayat:true,panchayatunion:false,area:false})
-  const [citySchema, setCity] = useState([]);
-  const [stateSchema, setState] = useState([]);
-  const [countrySchema, setCountry] = useState([]);
-  const [AreaCreate, setAreaCreate] = useState(false);
-  const [StreetCreate, setStreetCreate] = useState(false);
-  const [DoorCreate, setDoorCreate] = useState(false);
-  const [AreaList, setAreaList] = useState(true);
-  const [StreetList, setStreetList] = useState(true);
-  const [DoorList, setDoorList] = useState(true);
-  const [CountryCreate, setCountryCreate] = useState(false);
-  const [CountryList, setCountryList] = useState(true);
-  const [CityCreate, setCityCreate] = useState(false);
-  const [CityList, setCityList] = useState(true);
-  const [StateCreate, setStateCreate] = useState(false);
+  const [villageHide, setVillageHide] = useState({ districtpanchayat: true, panchayatunion: false, area: false })
+  const [, setCity] = useState([]);
+  const [, setState] = useState([]);
+  const [, setCountry] = useState([]);
+  // const [, setAreaCreate] = useState(false);
+  // const [, setStreetCreate] = useState(false);
+  // const [, setDoorCreate] = useState(false);
+  const [AreaList, ] = useState(true);
+  const [StreetList, ] = useState(true);
+  const [DoorList, ] = useState(true);
+  // const [, setCityCreate] = useState(false);
+  const [CityList, ] = useState(true);
+  const [, setStateCreate] = useState(false);
   const [StateList, setStateList] = useState(true);
-  const [countryName, setCountryName] = useState("");
-  const [, setAddHide] = useState(true);
-  const [saveHide, setSaveHide] = useState(false);
-  const [stateName, setStateName] = useState("");
-  const [cityName, setCityName] = useState("");
-  const [streetName, setStreetName] = useState("");
-  const [doorName, setDoorName] = useState("");
-  const [areaName, setAreaName] = useState("");
-  const [, setDeleteId] = useState({ id: "", show: false });
-  const [countrys,] = useState({
-    countryname: "",
-    abbreviation: "",
-    code: "",
-  });
-  const [state1, setState1] = useState({
-    hover: false,
-    hover1: false,
-    hover2: false,
-    hover3: false
-  });
-  const [states, setStates] = useState({
-    statename: "",
-    abbreviation: "",
-    code: "",
-  });
-  const [citys,] = useState({
-    cityName: "",
-    abbreviation: "",
-    code: "",
-  });
-  const [areas,] = useState({
-    areaName: "",
-    abbreviation: "",
-    code: "",
-  });
-  const [stated, setStated] = useState({ value: "" });
-  useEffect(() => {
-    setError("");
-    setPassing("");
-  }, []);
+  const [countryName, ] = useState("");
+  // const [, setAddHide] = useState(true);
+  // const [, setSaveHide] = useState(false);
+  const [stateName, ] = useState("");
+  const [cityName, ] = useState("");
+  const [,] = useState("");
+  // const [areaName, setAreaName] = useState("");
 
-  const formik = useFormik({
-    initialValues: {
-      StateName: "",
-      CountryName: "",
-      CityName: "",
-      AreaName: "",
-      DoorNo: "",
-      Abbreviation1: "",
-      Code1: "",
-      Abbreviation2: "",
-      Code2: "",
-      Abbreviation3: "",
-      Code3: "",
-      Abbreviation4: "",
-      Code4: "",
-      Pincode: "",
-    },
-    validationSchema: yup.object().shape({
-      CountryName: yup.string().required(" Country Name is Required"),
-      StateName: yup.string().required("State Name is Required"),
-      CityName: yup.string().required("City Name is Required"),
-      AreaName: yup.string().required("Area Name is Required"),
-      Abbreviation1: yup
-        .string()
-        .required("Abbreviation is Required")
-        .min(5, "Min 5 Character is Required"),
-      Code1: yup
-        .string()
-        .required(" Code  is Required")
-        .min(5, "Min 5 Character is Required")
-        .max(5, "Max 5 Character is Required"),
-      Abbreviation2: yup
-        .string()
-        .required("Abbreviation is Required")
-        .min(5, "Min 5 Character is Required")
-        .max(5, "Max 5 Character is Required"),
-      Code2: yup
-        .string()
-        .required(" Code  is Required")
-        .min(5, "Min 5 Character is Required")
-        .max(5, "Max 5 Character is Required"),
-      Abbreviation3: yup
-        .string()
-        .required("Abbreviation is Required")
-        .min(5, "Min 5 Character is Required")
-        .max(3, "Max 5 Character is Required"),
-      Code3: yup
-        .string()
-        .required(" Code  is Required")
-        .min(5, "Min 5 Character is Required")
-        .max(5, "Max 5 Character is Required"),
-      Abbreviation4: yup
-        .string()
-        .required("Abbreviation is Required")
-        .min(5, "Min 5 Character is Required")
-        .max(3, "Max 5 Character is Required"),
-      Code4: yup
-        .string()
-        .required(" Code  is Required")
-        .min(5, "Min 5 Character is Required")
-        .max(5, "Max 5 Character is Required"),
-      Pincode: yup.string().required(" Pincode  is Required"),
-    }),
-    onSubmit: (userInputData) => { },
-  });
-  const [variable, setVariable] = useState([])
+
+  // const [states, setStates] = useState({
+  //   statename: "",
+  //   abbreviation: "",
+  //   code: "",
+  // });
+  // const [citys,] = useState({
+  //   cityName: "",
+  //   abbreviation: "",
+  //   code: "",
+  // });
+  // const [areas,] = useState({
+  //   areaName: "",
+  //   abbreviation: "",
+  //   code: "",
+  // });
+  // const [stated, setStated] = useState({ value: "" });
+  // useEffect(() => {
+  //   setError("");
+  //   setPassing("");
+  // }, []);
+
+  // const formik = useFormik({
+  //   initialValues: {
+  //     StateName: "",
+  //     CountryName: "",
+  //     CityName: "",
+  //     AreaName: "",
+  //     DoorNo: "",
+  //     Abbreviation1: "",
+  //     Code1: "",
+  //     Abbreviation2: "",
+  //     Code2: "",
+  //     Abbreviation3: "",
+  //     Code3: "",
+  //     Abbreviation4: "",
+  //     Code4: "",
+  //     Pincode: "",
+  //   },
+  //   validationSchema: yup.object().shape({
+  //     CountryName: yup.string().required(" Country Name is Required"),
+  //     StateName: yup.string().required("State Name is Required"),
+  //     CityName: yup.string().required("City Name is Required"),
+  //     AreaName: yup.string().required("Area Name is Required"),
+  //     Abbreviation1: yup
+  //       .string()
+  //       .required("Abbreviation is Required")
+  //       .min(5, "Min 5 Character is Required"),
+  //     Code1: yup
+  //       .string()
+  //       .required(" Code  is Required")
+  //       .min(5, "Min 5 Character is Required")
+  //       .max(5, "Max 5 Character is Required"),
+  //     Abbreviation2: yup
+  //       .string()
+  //       .required("Abbreviation is Required")
+  //       .min(5, "Min 5 Character is Required")
+  //       .max(5, "Max 5 Character is Required"),
+  //     Code2: yup
+  //       .string()
+  //       .required(" Code  is Required")
+  //       .min(5, "Min 5 Character is Required")
+  //       .max(5, "Max 5 Character is Required"),
+  //     Abbreviation3: yup
+  //       .string()
+  //       .required("Abbreviation is Required")
+  //       .min(5, "Min 5 Character is Required")
+  //       .max(3, "Max 5 Character is Required"),
+  //     Code3: yup
+  //       .string()
+  //       .required(" Code  is Required")
+  //       .min(5, "Min 5 Character is Required")
+  //       .max(5, "Max 5 Character is Required"),
+  //     Abbreviation4: yup
+  //       .string()
+  //       .required("Abbreviation is Required")
+  //       .min(5, "Min 5 Character is Required")
+  //       .max(3, "Max 5 Character is Required"),
+  //     Code4: yup
+  //       .string()
+  //       .required(" Code  is Required")
+  //       .min(5, "Min 5 Character is Required")
+  //       .max(5, "Max 5 Character is Required"),
+  //     Pincode: yup.string().required(" Pincode  is Required"),
+  //   }),
+  //   onSubmit: (userInputData) => { },
+  // });
+  const [variable,] = useState([])
 
   const menusgrid = (item) => {
     return (
-      variable.map((x, i) => {
+      variable.map((x, i) => (
         <tr key={i}>
           <td>{x.SNO}</td>
           <td>{x.MENU1}</td>
@@ -188,7 +168,7 @@ function LocationLibrary(props) {
           <td>{x.MENU2}</td>
           <td>{x.NUMBER2}</td>
         </tr>
-      })
+    ))
     )
   }
 
@@ -199,27 +179,27 @@ function LocationLibrary(props) {
     ['Jane', 'Doe', 'jane.doe@xyz.com']
   ];
 
-  const CancelCity = async () => {
-    formik.values.Abbreviation3 = "";
-    formik.values.Code3 = "";
-    formik.values.CityName = "";
-    setPassing("");
-    await setCityList(true);
-    await setCityCreate(false);
-  };
+  // const CancelCity = async () => {
+  //   formik.values.Abbreviation3 = "";
+  //   formik.values.Code3 = "";
+  //   formik.values.CityName = "";
+  //   setPassing("");
+  //   await setCityList(true);
+  //   await setCityCreate(false);
+  // };
 
-  const Canceldoor = async () => {
-    formik.values.DoorNo = "";
-    setPassing("");
-    await setDoorList(true);
-    await setDoorCreate(false);
-  }
+  // const Canceldoor = async () => {
+  //   formik.values.DoorNo = "";
+  //   setPassing("");
+  //   await setDoorList(true);
+  //   await setDoorCreate(false);
+  // }
 
   const SelectMenuButtonstate = (props) => {
     return (
       <components.MenuList  {...props}>
         {props.children}
-        <div style={{ marginTop: "-57px", minHeight: "80px"  }} >
+        <div style={{ marginTop: "-57px", minHeight: "80px" }} >
           <CLink className={"saveBtn"} onClick={handleClickstate} style={{ marginLeft: "300px" }}>Add</CLink>
           <CLink className={"saveBtn"} onClick={bulkhandleClickstate} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
         </div>
@@ -230,7 +210,7 @@ function LocationLibrary(props) {
     return (
       <components.MenuList  {...props}>
         {props.children}
-        <div style={{ marginTop: "-57px", minHeight: "80px"  }} >
+        <div style={{ marginTop: "-57px", minHeight: "80px" }} >
           <CLink className={"saveBtn"} onClick={handleClickcity} style={{ marginLeft: "300px" }}>Add</CLink>
           <CLink className={"saveBtn"} onClick={bulkhandleClickcity} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
         </div>
@@ -241,7 +221,7 @@ function LocationLibrary(props) {
     return (
       <components.MenuList  {...props}>
         {props.children}
-        <div style={{ marginTop: "-57px", minHeight: "80px"  }} >
+        <div style={{ marginTop: "-57px", minHeight: "80px" }} >
           <CLink className={"saveBtn"} onClick={handleClickarea} style={{ marginLeft: "300px" }}>Add</CLink>
           <CLink className={"saveBtn"} onClick={bulkhandleClickarea} style={{ marginLeft: "10px" }}>Bulk Upload </CLink>
         </div>
@@ -287,9 +267,9 @@ function LocationLibrary(props) {
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
           style: "menu active1",
 
         });
@@ -297,16 +277,15 @@ function LocationLibrary(props) {
         setTimeout(() => {
           setSideBar1(true);
         }, 1000);
-setSideBarup1(false)
-setSideBarup2(false)
-setSideBarup3(false)
-setSideBarup4(false)
-setSideBarup5(false)
+        setSideBarup1(false)
+        setSideBarup2(false)
+        setSideBarup3(false)
+        setSideBarup4(false)
+        setSideBarup5(false)
         break;
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style: "menu active2",
 
         });
@@ -320,9 +299,9 @@ setSideBarup5(false)
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
           style: "menu active1",
 
         });
@@ -331,17 +310,16 @@ setSideBarup5(false)
           setSideBar2(true);
         }, 1000);
         setSideBar1(false);
-setSideBarup1(false)
-setSideBarup2(false)
-setSideBarup3(false)
-setSideBarup4(false)
-setSideBarup5(false)
+        setSideBarup1(false)
+        setSideBarup2(false)
+        setSideBarup3(false)
+        setSideBarup4(false)
+        setSideBarup5(false)
 
         break;
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style: "menu active2",
 
         });
@@ -355,9 +333,9 @@ setSideBarup5(false)
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
           style: "menu active1",
 
         });
@@ -366,17 +344,16 @@ setSideBarup5(false)
           setSideBar3(true);
         }, 1000);
         setSideBar2(false);
-setSideBarup1(false)
-setSideBarup2(false)
-setSideBarup3(false)
-setSideBarup4(false)
-setSideBarup5(false)
+        setSideBarup1(false)
+        setSideBarup2(false)
+        setSideBarup3(false)
+        setSideBarup4(false)
+        setSideBarup5(false)
 
         break;
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style: "menu active2",
 
         });
@@ -390,9 +367,9 @@ setSideBarup5(false)
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
           style: "menu active1",
 
         });
@@ -400,18 +377,17 @@ setSideBarup5(false)
         setTimeout(() => {
           setSideBar4(true);
         }, 1000);
-setSideBar3(false);
-setSideBarup1(false)
-setSideBarup2(false)
-setSideBarup3(false)
-setSideBarup4(false)
-setSideBarup5(false)
+        setSideBar3(false);
+        setSideBarup1(false)
+        setSideBarup2(false)
+        setSideBarup3(false)
+        setSideBarup4(false)
+        setSideBarup5(false)
 
         break;
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style: "menu active2",
 
         });
@@ -425,9 +401,9 @@ setSideBarup5(false)
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
           style: "menu active1",
 
         });
@@ -435,18 +411,17 @@ setSideBarup5(false)
         setTimeout(() => {
           setSideBar5(true);
         }, 1000);
-setSideBar4(false);
-setSideBarup1(false)
-setSideBarup2(false)
-setSideBarup3(false)
-setSideBarup4(false)
-setSideBarup5(false)
+        setSideBar4(false);
+        setSideBarup1(false)
+        setSideBarup2(false)
+        setSideBarup3(false)
+        setSideBarup4(false)
+        setSideBarup5(false)
 
         break;
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style: "menu active2",
 
         });
@@ -456,7 +431,7 @@ setSideBarup5(false)
         break;
     }
   };
-  const [sideBarup, setSideBarup] = useState(false)
+  const [, setSideBarup] = useState(false)
   const [sideBarup1, setSideBarup1] = useState(false)
   const [sideBarup2, setSideBarup2] = useState(false)
   const [sideBarup3, setSideBarup3] = useState(false)
@@ -467,9 +442,9 @@ setSideBarup5(false)
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
 
           style1: "menu active1",
 
@@ -486,7 +461,6 @@ setSideBarup5(false)
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style1: "menu active2",
 
         });
@@ -501,9 +475,9 @@ setSideBarup5(false)
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
 
           style1: "menu active1",
 
@@ -521,7 +495,6 @@ setSideBarup5(false)
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style1: "menu active2",
 
         });
@@ -535,9 +508,9 @@ setSideBarup5(false)
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
 
           style1: "menu active1",
 
@@ -555,7 +528,6 @@ setSideBarup5(false)
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style1: "menu active2",
 
         });
@@ -569,9 +541,9 @@ setSideBarup5(false)
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
 
           style1: "menu active1",
 
@@ -589,7 +561,6 @@ setSideBarup5(false)
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style1: "menu active2",
 
         });
@@ -603,9 +574,9 @@ setSideBarup5(false)
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
 
           style1: "menu active1",
 
@@ -622,7 +593,6 @@ setSideBarup5(false)
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style1: "menu active2",
 
         });
@@ -637,9 +607,9 @@ setSideBarup5(false)
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
 
           style1: "menu active1",
 
@@ -652,7 +622,6 @@ setSideBarup5(false)
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu2",
           style1: "menu active2",
 
         });
@@ -663,245 +632,244 @@ setSideBarup5(false)
         break;
     }
   };
-  const CancelState = async () => {
-    setStated({ ...stated, StateName: "", Code2: "", Abbreviation2: "" });
-    formik.values.Abbreviation2 = "";
-    formik.values.Code2 = "";
-    formik.values.StateName = "";
-    setPassing("");
-    await setStateList(true);
-    await setStateCreate(false);
-  };
+  // const CancelState = async () => {
+  //   setStated({ ...stated, StateName: "", Code2: "", Abbreviation2: "" });
+  //   formik.values.Abbreviation2 = "";
+  //   formik.values.Code2 = "";
+  //   formik.values.StateName = "";
+  //   setPassing("");
+  //   await setStateList(true);
+  //   await setStateCreate(false);
+  // };
 
-  const CancelArea = async () => {
-    setStated({
-      ...stated,
-      AreaName: "",
-      Code4: "",
-      Pincode: "",
-      Abbreviation4: "",
-    });
-    formik.values.Abbreviation4 = "";
-    formik.values.Code4 = "";
-    formik.values.AreaName = "";
-    formik.values.Pincode = "";
-    setPassing("");
-    await setAreaList(true);
-    await setAreaCreate(false);
-  };
+  // const CancelArea = async () => {
+  //   setStated({
+  //     ...stated,
+  //     AreaName: "",
+  //     Code4: "",
+  //     Pincode: "",
+  //     Abbreviation4: "",
+  //   });
+  //   formik.values.Abbreviation4 = "";
+  //   formik.values.Code4 = "";
+  //   formik.values.AreaName = "";
+  //   formik.values.Pincode = "";
+  //   setPassing("");
+  //   await setAreaList(true);
+  //   await setAreaCreate(false);
+  // };
 
 
 
-  const State = async () => {
-    if (passing === "") {
-      var response;
-      let body = formik.values;
-      body = {
-        statename: states.statename,
-        abbreviation: states.abbreviation,
-        code: states.code,
-      };
-      try {
-        response = await createState(JSON.stringify(body));
-        if (response.success === true) {
-          response.State.label = response.State.stateName;
-          toast.success(response.message, { autoClose: 1000 });
-          setTimeout(() => {
-            setStateCreate(false);
-            setStateList(true);
-          }, 1300);
-          formik.handleReset({});
-          setState([...stateSchema, response.State]);
-          formik.values = {};
+  // const State = async () => {
+  //   if (passing === "") {
+  //     var response;
+  //     let body = formik.values;
+  //     body = {
+  //       statename: states.statename,
+  //       abbreviation: states.abbreviation,
+  //       code: states.code,
+  //     };
+  //     try {
+  //       response = await createState(JSON.stringify(body));
+  //       if (response.success === true) {
+  //         response.State.label = response.State.stateName;
+  //         toast.success(response.message, { autoClose: 1000 });
+  //         setTimeout(() => {
+  //           setStateCreate(false);
+  //           setStateList(true);
+  //         }, 1300);
+  //         formik.handleReset({});
+  //         setState([...stateSchema, response.State]);
+  //         formik.values = {};
 
-          return 0;
-        }
+  //         return 0;
+  //       }
 
-        toast.error(response.error);
-      } catch (e) {
-        console.log(e);
-      }
-    } else {
-      try {
-        response = await updateState(
-          formik.values.StateName,
-          formik.values.Abbreviation2,
-          formik.values.Code2,
-          passing
-        );
-        getAllAreas();
-        if (response.success === true) {
-          toast.success(response.message, { autoClose: 1000 });
-          setTimeout(() => {
-            setStateCreate(false);
-            setStateList(true);
-          }, 1300);
-          setStateName("");
-          setCityName("");
-          setAreaName("");
-          setCity([]);
-          setArea([]);
-          getAllState();
-          const elementsIndex = stateSchema.findIndex(
-            (element) => element._id === passing
-          );
-          let newArray = [...stateSchema];
-          response.updateOfficeType = {
-            ...response.updateOfficeType,
-            valu: response.updateOfficeType._id,
-            label: response.updateOfficeType.stateNAme,
-          };
-          newArray[elementsIndex] = response.updateOfficeType;
-          setState([...stateSchema, newArray]);
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    }
-  };
+  //       toast.error(response.error);
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   } else {
+  //     try {
+  //       response = await updateState(
+  //         formik.values.StateName,
+  //         formik.values.Abbreviation2,
+  //         formik.values.Code2,
+  //         passing
+  //       );
+  //       getAllAreas();
+  //       if (response.success === true) {
+  //         toast.success(response.message, { autoClose: 1000 });
+  //         setTimeout(() => {
+  //           setStateCreate(false);
+  //           setStateList(true);
+  //         }, 1300);
+  //         setStateName("");
+  //         setCityName("");
+  //         setAreaName("");
+  //         setCity([]);
+  //         setArea([]);
+  //         getAllState();
+  //         const elementsIndex = stateSchema.findIndex(
+  //           (element) => element._id === passing
+  //         );
+  //         let newArray = [...stateSchema];
+  //         response.updateOfficeType = {
+  //           ...response.updateOfficeType,
+  //           valu: response.updateOfficeType._id,
+  //           label: response.updateOfficeType.stateNAme,
+  //         };
+  //         newArray[elementsIndex] = response.updateOfficeType;
+  //         setState([...stateSchema, newArray]);
+  //       }
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   }
+  // };
 
-  const City = async () => {
-    if (passing === "") {
-      var response;
-      let body = formik.values;
-      body = {
-        cityname: citys.cityname,
-        abbreviation: citys.abbreviation,
-        code: citys.code,
-      };
-      try {
-        response = await createCity(JSON.stringify(body));
-        if (response.success === true) {
-          getAllAreas();
-          toast.success(response.message, { autoClose: 1000 });
-          setTimeout(() => {
-            setCityCreate(false);
-            setCityList(true);
-          }, 1300);
+  // const City = async () => {
+  //   if (passing === "") {
+  //     var response;
+  //     let body = formik.values;
+  //     body = {
+  //       cityname: citys.cityname,
+  //       abbreviation: citys.abbreviation,
+  //       code: citys.code,
+  //     };
+  //     try {
+  //       response = await createCity(JSON.stringify(body));
+  //       if (response.success === true) {
+  //         getAllAreas();
+  //         toast.success(response.message, { autoClose: 1000 });
+  //         setTimeout(() => {
+  //           setCityCreate(false);
+  //           setCityList(true);
+  //         }, 1300);
 
-          response.City = {
-            ...response.City,
-            value: response.City._id,
-            label: response.City.cityName,
-          };
-          formik.handleReset({});
-          setCity([...citySchema, response.City]);
-          formik.values = {};
+  //         response.City = {
+  //           ...response.City,
+  //           value: response.City._id,
+  //           label: response.City.cityName,
+  //         };
+  //         formik.handleReset({});
+  //         setCity([...citySchema, response.City]);
+  //         formik.values = {};
 
-          return 0;
-        }
-        toast.error(response.error);
-      } catch (e) {
-        console.log(e);
-      }
-    } else {
-      try {
-        response = await updateCity(
-          formik.values.CityName,
-          formik.values.Abbreviation3,
-          formik.values.Code3,
-          passing
-        );
-        if (response.success === true) {
-          toast.success(response.message, { autoClose: 1000 });
-          setCityName("");
-          setAreaName("");
-          setArea([]);
-          getAllCity();
-          getAllAreas();
-          setTimeout(() => {
-            setCityCreate(false);
-            setCityList(true);
-          }, 1300);
-          const elementsIndex = citySchema.findIndex(
-            (element) => element._id === passing
-          );
-          let newArray = [...citySchema];
-          response.updateOfficeType = {
-            ...response.updateOfficeType,
-            value: response.updateOfficeType._id,
-            label: response.updateOfficeType.cityName,
-          };
-          newArray[elementsIndex] = response.updateOfficeType;
-          setCity(newArray);
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    }
-  };
+  //         return 0;
+  //       }
+  //       toast.error(response.error);
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   } else {
+  //     try {
+  //       response = await updateCity(
+  //         formik.values.CityName,
+  //         formik.values.Abbreviation3,
+  //         formik.values.Code3,
+  //         passing
+  //       );
+  //       if (response.success === true) {
+  //         toast.success(response.message, { autoClose: 1000 });
+  //         setCityName("");
+  //         setAreaName("");
+  //         setArea([]);
+  //         getAllCity();
+  //         getAllAreas();
+  //         setTimeout(() => {
+  //           setCityCreate(false);
+  //           setCityList(true);
+  //         }, 1300);
+  //         const elementsIndex = citySchema.findIndex(
+  //           (element) => element._id === passing
+  //         );
+  //         let newArray = [...citySchema];
+  //         response.updateOfficeType = {
+  //           ...response.updateOfficeType,
+  //           value: response.updateOfficeType._id,
+  //           label: response.updateOfficeType.cityName,
+  //         };
+  //         newArray[elementsIndex] = response.updateOfficeType;
+  //         setCity(newArray);
+  //       }
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   }
+  // };
 
-  const Area = async () => {
-    if (passing === "") {
-      var response;
-      let body = formik.values;
-      body = {
-        areaname: areas.areaname,
-        abbreviation: citys.abbreviation,
-        code: citys.code,
-      };
-      try {
-        response = await createArea(JSON.stringify(body));
-        if (response.success === true) {
-          formik.values = {};
-          toast.success(response.message, { autoClose: 1000 });
-          setTimeout(() => {
-            setAreaCreate(false);
-            setAreaList(true);
-          }, 1300);
-          formik.handleReset({});
-          setArea("");
-          getAllArea();
-          getAllAreas();
-          formik.values = {};
-          return 0;
-        }
-        toast.error(response.error);
-      } catch (e) {
-        console.log(e);
-      }
-    } else {
-      try {
-        response = await updateArea(
-          formik.values.AreaName,
-          formik.values.Abbreviation4,
-          formik.values.Code4,
-          formik.values.Pincode,
-          passing
-        );
-        if (response.success === true) {
-          getAllAreas();
-          formik.values.CountryName = "";
-          formik.values.AreaName = "";
-          formik.values.Abbreviation4 = "";
-          formik.values.Code4 = "";
-          formik.values.Pincode = "";
-          setPassing("");
-          toast.success(response.message);
-          setTimeout(() => {
-            setAreaCreate(false);
-            setAreaList(true);
-          }, 2000);
-          setAreaName("");
-          const elementsIndex = areasSchema.findIndex(
-            (element) => element._id === passing
-          );
-          let newArray = [...areasSchema];
-          response.updateOfficeType = {
-            ...response.updateOfficeType,
-            value: response.updateOfficeType._id,
-            label: response.updateOfficeType.areaName,
-          };
-          newArray[elementsIndex] = response.updateOfficeType;
-          setArea(newArray);
-          getAllAreas();
-        }
-      } catch (e) {
-        console.log(e);
-      }
-    }
-  };
-  const state = []
+  // const Area = async () => {
+  //   if (passing === "") {
+  //     var response;
+  //     let body = formik.values;
+  //     body = {
+  //       areaname: areas.areaname,
+  //       abbreviation: citys.abbreviation,
+  //       code: citys.code,
+  //     };
+  //     try {
+  //       response = await createArea(JSON.stringify(body));
+  //       if (response.success === true) {
+  //         formik.values = {};
+  //         toast.success(response.message, { autoClose: 1000 });
+  //         setTimeout(() => {
+  //           setAreaCreate(false);
+  //           setAreaList(true);
+  //         }, 1300);
+  //         formik.handleReset({});
+  //         setArea("");
+  //         getAllArea();
+  //         getAllAreas();
+  //         formik.values = {};
+  //         return 0;
+  //       }
+  //       toast.error(response.error);
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   } else {
+  //     try {
+  //       response = await updateArea(
+  //         formik.values.AreaName,
+  //         formik.values.Abbreviation4,
+  //         formik.values.Code4,
+  //         formik.values.Pincode,
+  //         passing
+  //       );
+  //       if (response.success === true) {
+  //         getAllAreas();
+  //         formik.values.CountryName = "";
+  //         formik.values.AreaName = "";
+  //         formik.values.Abbreviation4 = "";
+  //         formik.values.Code4 = "";
+  //         formik.values.Pincode = "";
+  //         setPassing("");
+  //         toast.success(response.message);
+  //         setTimeout(() => {
+  //           setAreaCreate(false);
+  //           setAreaList(true);
+  //         }, 2000);
+  //         setAreaName("");
+  //         const elementsIndex = areasSchema.findIndex(
+  //           (element) => element._id === passing
+  //         );
+  //         let newArray = [...areasSchema];
+  //         response.updateOfficeType = {
+  //           ...response.updateOfficeType,
+  //           value: response.updateOfficeType._id,
+  //           label: response.updateOfficeType.areaName,
+  //         };
+  //         newArray[elementsIndex] = response.updateOfficeType;
+  //         setArea(newArray);
+  //         getAllAreas();
+  //       }
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   }
+  // };
   const getAllCountry = async () => {
     var response;
     try {
@@ -984,32 +952,32 @@ setSideBarup5(false)
     getAllCountry();
     getAllState();
     getAllCity();
-  }, [countryName, stateName, cityName, areaName]);
+  }, );
 
-  const getAllAreas = async () => {
-    var response;
-    try {
-      response = await getAreaSchema();
-      if (response) {
-        if (response.Area) {
-          response.Area.map((x, i) => {
-            x.value = x._id;
-            x.label = `${capitalize(x.state.stateName)}, ${capitalize(
-              x.city.cityName
-            )}, ${capitalize(x.areaName)}, ${x.pincode}`;
-            x.cityName = x.city.cityName;
-            x.stateName = x.state.stateName;
-            x.countryName = x.country.countryName;
-            x.sNo = i + 1;
-            return 0;
-          });
-        }
-        setAreas(response.Area);
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  // const getAllAreas = async () => {
+  //   var response;
+  //   try {
+  //     response = await getAreaSchema();
+  //     if (response) {
+  //       if (response.Area) {
+  //         response.Area.map((x, i) => {
+  //           x.value = x._id;
+  //           x.label = `${capitalize(x.state.stateName)}, ${capitalize(
+  //             x.city.cityName
+  //           )}, ${capitalize(x.areaName)}, ${x.pincode}`;
+  //           x.cityName = x.city.cityName;
+  //           x.stateName = x.state.stateName;
+  //           x.countryName = x.country.countryName;
+  //           x.sNo = i + 1;
+  //           return 0;
+  //         });
+  //       }
+  //       setAreas(response.Area);
+  //     }
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
 
   const capitalize = (x) => {
     let s = x.toLowerCase();
@@ -1020,77 +988,41 @@ setSideBarup5(false)
     await setStateList(false);
     await setStateCreate(true);
   };
-  const cityCreate = async () => {
-    await setCityList(false);
-    await setCityCreate(true);
-  };
-  const areaCreate = async () => {
-    await setAreaList(false);
-    await setAreaCreate(true);
-  };
-  const addStreet = async () => {
-    await setStreetList(false);
-    await setStreetCreate(true);
-  }
-  const addDoor = async () => {
-    await setDoorList(false);
-    await setDoorCreate(true);
-  }
 
-  const EditCountry = async (data) => {
-    await setAddHide(false);
-    await setSaveHide(true);
-    setCountryName({
-      label: data.country.countryName,
-      value: data.country._id,
-      edit: false,
-    });
-    setStateName({
-      label: data.state.stateName,
-      value: data.state._id,
-      edit: false,
-    });
-    setCityName({
-      label: data.city.cityName,
-      value: data.city._id,
-      edit: false,
-    });
-    setAreaName({ label: data.areaName, value: data._id, edit: false });
 
-    setPassing(data._id);
-  };
-  const [details, setDetails] = useState([]);
-  useEffect(() => {
-    let val1 = formik.values.Code1;
-    formik.values.Code1 = val1.toUpperCase();
-    let val2 = formik.values.Code2;
-    formik.values.Code2 = val2.toUpperCase();
-    let val3 = formik.values.Code3;
-    formik.values.Code3 = val3.toUpperCase();
-    let val4 = formik.values.Code4;
-    formik.values.Code4 = val4.toUpperCase();
-  }, [formik.values]);
+  // const addStreet = async () => {
+  //   await setStreetList(false);
+  //   await setStreetCreate(true);
+  // }
+  // const addDoor = async () => {
+  //   await setDoorList(false);
+  //   await setDoorCreate(true);
+  // }
+
+
+  // const [details, setDetails] = useState([]);
+  // useEffect(() => {
+  //   let val1 = formik.values.Code1;
+  //   formik.values.Code1 = val1.toUpperCase();
+  //   let val2 = formik.values.Code2;
+  //   formik.values.Code2 = val2.toUpperCase();
+  //   let val3 = formik.values.Code3;
+  //   formik.values.Code3 = val3.toUpperCase();
+  //   let val4 = formik.values.Code4;
+  //   formik.values.Code4 = val4.toUpperCase();
+  // }, [formik.values]);
 
   const selectState = [
     {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClickstate}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
         </CLink>
       ),
-      span: (
-        <CLink
-          className={"saveBtn"}
-          onClick={handleClickstate}
-          style={{ marginLeft: "200px" }}
-        >
-          Add{" "}
-        </CLink>
-      ),
+     
     },
     { value: "TamilNadu", label: "TamilNadu" }]
 
@@ -1099,21 +1031,12 @@ setSideBarup5(false)
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClickcity}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
         </CLink>
       ),
-      span: (
-        <CLink
-          className={"saveBtn"}
-          onClick={handleClickcity}
-          style={{ marginLeft: "200px" }}
-        >
-          Add{" "}
-        </CLink>
-      ),
+     
     },
     { value: "Chennai", label: "Chennai" }]
 
@@ -1122,21 +1045,12 @@ setSideBarup5(false)
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClickstreet}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
         </CLink>
       ),
-      span: (
-        <CLink
-          className={"saveBtn"}
-          onClick={handleClickstreet}
-          style={{ marginLeft: "200px" }}
-        >
-          Add{" "}
-        </CLink>
-      ),
+     
     },
     { value: "Pondy Baza", label: "Kuttu Road" }]
 
@@ -1145,21 +1059,12 @@ setSideBarup5(false)
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClickdoor}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
         </CLink>
       ),
-      span: (
-        <CLink
-          className={"saveBtn"}
-          onClick={handleClickdoor}
-          style={{ marginLeft: "200px" }}
-        >
-          Add{" "}
-        </CLink>
-      ),
+     
     },
     { value: "Pondy Baza", label: "119" }]
 
@@ -1168,21 +1073,12 @@ setSideBarup5(false)
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClickarea}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
         </CLink>
       ),
-      span: (
-        <CLink
-          className={"saveBtn"}
-          onClick={handleClickarea}
-          style={{ marginLeft: "200px" }}
-        >
-          Add{" "}
-        </CLink>
-      ),
+     
     },
     { value: "TNagar", label: "Vadapalani" }]
 
@@ -1219,7 +1115,7 @@ setSideBarup5(false)
       filter: false,
     },
   ];
-  
+
   const fields1 = [
     {
       key: "sNo", _style: { width: "10%" }, sorter: false,
@@ -1297,79 +1193,65 @@ setSideBarup5(false)
     },
   ]
 
-  const toggleDetails = (index) => {
-    const position = details.indexOf(index);
-    let newDetails = details.slice();
-    if (position !== -1) {
-      newDetails.splice(position, 1);
-    } else {
-      newDetails = [...details, index];
-    }
-    setDetails(newDetails);
-  };
-  const deleteConfirm = (id) => {
-    setDeleteId({ id: id, show: true });
-  };
+  // const editState = async () => {
+  //   await setStateList(false);
+  //   await setStateCreate(true);
+  //   formik.values.StateName = stateName.stateName;
+  //   formik.values.Abbreviation2 = stateName.abbreviation;
+  //   formik.values.Code2 = stateName.code;
+  //   setPassing(stateName._id);
+  // };
 
-  const editState = async () => {
-    await setStateList(false);
-    await setStateCreate(true);
-    formik.values.StateName = stateName.stateName;
-    formik.values.Abbreviation2 = stateName.abbreviation;
-    formik.values.Code2 = stateName.code;
-    setPassing(stateName._id);
-  };
+  // const editDoor = async () => {
+  //   await setDoorList(false);
+  //   await setDoorCreate(true);
+  //   formik.values.StateName = stateName.stateName;
+  //   formik.values.Abbreviation2 = stateName.abbreviation;
+  //   formik.values.Code2 = stateName.code;
+  //   setPassing(stateName._id);
+  // };
 
-  const editDoor = async () => {
-    await setDoorList(false);
-    await setDoorCreate(true);
-    formik.values.StateName = stateName.stateName;
-    formik.values.Abbreviation2 = stateName.abbreviation;
-    formik.values.Code2 = stateName.code;
-    setPassing(stateName._id);
-  };
+  // const editCity = async () => {
+  //   await setCityList(false);
+  //   await setCityCreate(true);
+  //   formik.values.CityName = cityName.cityName;
+  //   formik.values.Abbreviation3 = cityName.abbreviation;
+  //   formik.values.Code3 = cityName.code;
+  //   setPassing(cityName._id);
+  // };
 
-  const editCity = async () => {
-    await setCityList(false);
-    await setCityCreate(true);
-    formik.values.CityName = cityName.cityName;
-    formik.values.Abbreviation3 = cityName.abbreviation;
-    formik.values.Code3 = cityName.code;
-    setPassing(cityName._id);
-  };
+  // const editArea = async () => {
+  //   await setAreaList(false);
+  //   await setAreaCreate(true);
+  //   formik.values.AreaName = areaName.areaName;
+  //   formik.values.Pincode = areaName.pincode;
+  //   formik.values.Abbreviation4 = areaName.abbreviation;
+  //   formik.values.Code4 = areaName.code;
+  //   setPassing(areaName._id);
+  // };
 
-  const editArea = async () => {
-    await setAreaList(false);
-    await setAreaCreate(true);
-    formik.values.AreaName = areaName.areaName;
-    formik.values.Pincode = areaName.pincode;
-    formik.values.Abbreviation4 = areaName.abbreviation;
-    formik.values.Code4 = areaName.code;
-    setPassing(areaName._id);
-  };
+  // const CancelEdit = async () => {
+  //   await setCountryName("");
+  //   await setStateName("");
+  //   await setCityName("");
+  //   await setAreaName("");
 
-  const CancelEdit = async () => {
-    await setCountryName("");
-    await setStateName("");
-    await setCityName("");
-    await setAreaName("");
-
-    await setAddHide(true);
-    await setSaveHide(false);
-  };
+  //   await setAddHide(true);
+  //   await setSaveHide(false);
+  // };
 
 
-  const statechangeHandler = (e) => {
-    setStates({ ...states, [e.target.name]: e.target.value });
-  };
+  // const statechangeHandler = (e) => {
+  //   setStates({ ...states, [e.target.name]: e.target.value });
+  // };
   const menus = (details) => {
     return (
       <Menu>
         <Menu.Item>
-          <a>Edit</a>
+          <a href>Edit</a>
         </Menu.Item>
         <Menu.Item>
-          <a>Delete</a>
+          <a href>Delete</a>
         </Menu.Item>
       </Menu>
     )
@@ -1390,18 +1272,12 @@ setSideBarup5(false)
   }
 
 
-  // handle click event of the Add button
   const handleAddClick = (e) => {
     e.preventDefault()
     setInputList([...inputList, { name: "", abbreviation: "", code: "" }]);
   }
-  const [manual, setManual] = useState(false)
-  const menuToggle = (e) => {
-    e.stopPropagation();
-    setManual({
-      isOpen: !manual.isOpen
-    });
-  }
+  // const [manual, setManual] = useState(false)
+
 
 
 
@@ -1417,15 +1293,11 @@ setSideBarup5(false)
     const rABS = !!reader.readAsBinaryString;
 
     reader.onload = (e) => {
-      /* Parse data */
       const bstr = e.target.result;
       const wb = XLSX.read(bstr, { type: rABS ? 'binary' : 'array', bookVBA: true });
-      /* Get first worksheet */
       const wsname = wb.SheetNames[0];
       const ws = wb.Sheets[wsname];
-      /* Convert array of arrays */
       const data = XLSX.utils.sheet_to_json(ws);
-      /* Update state */
       setExcelUpload({ data: data, cols: make_cols(ws['!ref']) });
       setIsValue(true)
       console.log(JSON.stringify(data, null, 2));
@@ -1440,21 +1312,25 @@ setSideBarup5(false)
   }
   const [isValue, setIsValue] = useState(false)
 
-  const changePanchayatUnion = (e)=>{
+  const changedistrictpanchayat = (e) => {
+    setSelected(e)
+    setVillageHide({ ...villageHide, districtpanchayat: true, panchayatunion: false, area: false, street: false, door: false })
+  }
+  const changePanchayatUnion = (e) => {
     setSelected1(e)
-    setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:true,area:false})
+    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: true, area: false, street: false, door: false })
   }
-  const changeArea = (e)=>{
+  const changeArea = (e) => {
     setSelected2(e)
-    setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:false,area:true})
+    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: false, area: true, street: false, door: false })
   }
-  const changeStreet = (e)=>{
+  const changeStreet = (e) => {
     setSelected3(e)
-    setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:false,area:false,street:true})
+    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: false, area: false, street: true, door: false })
   }
-  const changeDoor = (e)=>{
+  const changeDoor = (e) => {
     setSelected4(e)
-    setVillageHide({...villageHide, districtpanchayat:false,panchayatunion:false,area:false,street:false,door:true})
+    setVillageHide({ ...villageHide, districtpanchayat: false, panchayatunion: false, area: false, street: false, door: true })
   }
   return (
     <div className={menu.style3}>
@@ -1552,11 +1428,8 @@ setSideBarup5(false)
 
                       />
                     }
-
-
-
-
                   </CCol>
+
                   <CCol md="3">
                     {inputList.length !== 1 &&
                       <i
@@ -1571,23 +1444,13 @@ setSideBarup5(false)
                         class={"fa fa-remove"}
 
                       />}
-
-
-
-
                   </CCol>
-
                 </CRow>
-
-
               </CRow>
 
 
             )
           })}
-
-
-
 
           <CRow style={{ marginLeft: "250px" }}>
 
@@ -1617,12 +1480,10 @@ setSideBarup5(false)
 
 
           <CButton
-            className={"menu"}
-            style={{ position: "absolute", top: "15px",backgroundColor: "green", border: "1px solid green", right: "15px" }}
+            style={{ position: "absolute", top: "15px", backgroundColor: "green", border: "1px solid green", right: "15px" }}
             className={"cancelBtn"}
             onClick={() => {
               handleClickstate();
-              // handleClick2();
             }}
           >
             Back
@@ -1651,22 +1512,22 @@ setSideBarup5(false)
               </CCol>
             </CRow>
             <CRow
-                    className={"row-alignment"}
-                    style={{ marginLeft: "5px", marginTop: "20px" }}
-                    sm={12}
-                    md={12}
-                    lg={12}
-                  >
-                    <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      State:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>TamilNadu</span>
-                    </CCol>
-                    </CRow>
+              className={"row-alignment"}
+              style={{ marginLeft: "5px", marginTop: "20px" }}
+              sm={12}
+              md={12}
+              lg={12}
+            >
+              <CCol>
+                <CLabel
+                  style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                  className={"form-labels-6"}
+                >
+                  State:
+                </CLabel>
+                <span style={{ marginTop: "13px", marginLeft: "5px", }}>TamilNadu</span>
+              </CCol>
+            </CRow>
 
             {inputList.map((x, i) => {
               return (
@@ -1794,12 +1655,10 @@ setSideBarup5(false)
 
 
             <CButton
-              className={"menu"}
               style={{ position: "absolute", top: "15px", right: "15px", backgroundColor: "green", border: "1px solid green" }}
               className={"cancelBtn"}
               onClick={() => {
                 handleClickcity();
-                // handleClick2();
               }}
             >
               Back
@@ -1827,32 +1686,32 @@ setSideBarup5(false)
                 </CCol>
               </CRow>
               <CRow
-                    className={"row-alignment"}
-                    style={{ marginLeft: "5px", marginTop: "20px" }}
-                    sm={12}
-                    md={12}
-                    lg={12}
+                className={"row-alignment"}
+                style={{ marginLeft: "5px", marginTop: "20px" }}
+                sm={12}
+                md={12}
+                lg={12}
+              >
+                <CCol>
+                  <CLabel
+                    style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                    className={"form-labels-6"}
                   >
-                    <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      State:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>TamilNadu</span>
-                    </CCol>
-                    <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      District / City:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>Chennai</span>
-                    </CCol>
-                  </CRow>
-                 
+                    State:
+                  </CLabel>
+                  <span style={{ marginTop: "13px", marginLeft: "5px", }}>TamilNadu</span>
+                </CCol>
+                <CCol>
+                  <CLabel
+                    style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                    className={"form-labels-6"}
+                  >
+                    District / City:
+                  </CLabel>
+                  <span style={{ marginTop: "13px", marginLeft: "5px", }}>Chennai</span>
+                </CCol>
+              </CRow>
+
 
               {inputList.map((x, i) => {
                 return (
@@ -1943,9 +1802,6 @@ setSideBarup5(false)
 
                           />}
 
-
-
-
                       </CCol>
                       <CCol md="3">
                         {inputList.length !== 1 &&
@@ -1961,18 +1817,9 @@ setSideBarup5(false)
                             class={"fa fa-remove"}
 
                           />}
-
-
-
-
                       </CCol>
-
                     </CRow>
-
-
                   </CRow>
-
-
                 )
               })}
 
@@ -2004,12 +1851,10 @@ setSideBarup5(false)
 
 
               <CButton
-                className={"menu"}
                 style={{ position: "absolute", top: "15px", right: "15px", backgroundColor: "green", border: "1px solid green" }}
                 className={"cancelBtn"}
                 onClick={() => {
                   handleClickarea();
-                  // handleClick2();
                 }}
               >
                 Back
@@ -2038,52 +1883,51 @@ setSideBarup5(false)
                   </CCol>
                 </CRow>
                 <CRow
-                    className={"row-alignment"}
-                    style={{ marginLeft: "5px", marginTop: "20px" }}
-                    sm={12}
-                    md={12}
-                    lg={12}
-                  >
-                    <CCol>
+                  className={"row-alignment"}
+                  style={{ marginLeft: "5px", marginTop: "20px" }}
+                  sm={12}
+                  md={12}
+                  lg={12}
+                >
+                  <CCol>
                     <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
+                      style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
                       className={"form-labels-6"}
                     >
                       State:
                     </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>TamilNadu</span>
-                    </CCol>
-                    <CCol>
+                    <span style={{ marginTop: "13px", marginLeft: "5px", }}>TamilNadu</span>
+                  </CCol>
+                  <CCol>
                     <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
+                      style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
                       className={"form-labels-6"}
                     >
                       Village / Area / Locality:
                     </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>Vadapalani</span>
-                    </CCol>
-                  </CRow>
-                  <CRow
-                    className={"row-alignment"}
-                    style={{ marginLeft: "5px", marginTop: "5px" }}
-                    sm={12}
-                    md={12}
-                    lg={12}
-                  >
-                    <CCol>
+                    <span style={{ marginTop: "13px", marginLeft: "5px", }}>Vadapalani</span>
+                  </CCol>
+                </CRow>
+                <CRow
+                  className={"row-alignment"}
+                  style={{ marginLeft: "5px", marginTop: "5px" }}
+                  sm={12}
+                  md={12}
+                  lg={12}
+                >
+                  <CCol>
                     <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
+                      style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
                       className={"form-labels-6"}
                     >
                       District / City:
                     </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>Chennai</span>
-                    </CCol>
-                    </CRow>
+                    <span style={{ marginTop: "13px", marginLeft: "5px", }}>Chennai</span>
+                  </CCol>
+                </CRow>
 
                 {inputList.map((x, i) => {
                   return (
-
                     <CRow
                       className={"row-alignment"}
                       style={{ marginLeft: "5px", marginTop: "20px" }}
@@ -2155,10 +1999,6 @@ setSideBarup5(false)
                               class={"fa fa-plus"}
 
                             />}
-
-
-
-
                         </CCol>
                         <CCol md="3">
                           {inputList.length !== 1 &&
@@ -2174,23 +2014,11 @@ setSideBarup5(false)
                               class={"fa fa-remove"}
 
                             />}
-
-
-
-
                         </CCol>
-
                       </CRow>
-
-
                     </CRow>
-
-
                   )
                 })}
-
-
-
 
                 <CRow style={{ marginLeft: "250px" }}>
 
@@ -2218,20 +2046,16 @@ setSideBarup5(false)
                   </CCol>
                 </CRow>
 
-
                 <CButton
-                  className={"menu"}
                   style={{ position: "absolute", top: "15px", right: "15px", backgroundColor: "green", border: "1px solid green" }}
                   className={"cancelBtn"}
                   onClick={() => {
                     handleClickstreet();
-                    // handleClick2();
                   }}
                 >
                   Back
                 </CButton>
               </div>
-
             )}
             <div className={menu.style3}>
               {sideBar5 && (
@@ -2261,22 +2085,22 @@ setSideBarup5(false)
                     lg={12}
                   >
                     <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      State:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>TamilNadu</span>
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        State:
+                      </CLabel>
+                      <span style={{ marginTop: "13px", marginLeft: "5px", }}>TamilNadu</span>
                     </CCol>
                     <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      Village / Area / Locality:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>Vadapalani</span>
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        Village / Area / Locality:
+                      </CLabel>
+                      <span style={{ marginTop: "13px", marginLeft: "5px", }}>Vadapalani</span>
                     </CCol>
                   </CRow>
                   <CRow
@@ -2287,22 +2111,22 @@ setSideBarup5(false)
                     lg={12}
                   >
                     <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      District / City:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>Chennai</span>
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        District / City:
+                      </CLabel>
+                      <span style={{ marginTop: "13px", marginLeft: "5px", }}>Chennai</span>
                     </CCol>
                     <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      Street:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>Kamaraj Nagar</span>
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        Street:
+                      </CLabel>
+                      <span style={{ marginTop: "13px", marginLeft: "5px", }}>Kamaraj Nagar</span>
                     </CCol>
                   </CRow>
 
@@ -2348,10 +2172,6 @@ setSideBarup5(false)
                                 class={"fa fa-plus"}
 
                               />}
-
-
-
-
                           </CCol>
                           <CCol md="3">
                             {inputList.length !== 1 &&
@@ -2367,26 +2187,12 @@ setSideBarup5(false)
                                 class={"fa fa-remove"}
 
                               />}
-
-
-
-
                           </CCol>
-
                         </CRow>
-
-
                       </CRow>
-
-
                     )
                   })}
-
-
-
-
                   <CRow style={{ marginLeft: "250px" }}>
-
                     <CCol md="3">
                       <CButton
                         style={{
@@ -2411,21 +2217,18 @@ setSideBarup5(false)
                     </CCol>
                   </CRow>
 
-
                   <CButton
-                    className={"menu"}
                     style={{ position: "absolute", top: "15px", right: "15px" }}
                     className={"cancelBtn"}
                     onClick={() => {
                       handleClickdoor();
-                      // handleClick2();
                     }}
                   >
                     Back
                   </CButton>
                 </div>
-
               )}
+
               {sideBarup1 && (
                 <div className={menu.style1} style={{ marginLeft: "-108px" }}>
 
@@ -2446,89 +2249,84 @@ setSideBarup5(false)
                   </CRow>
 
                   <CRow md="12"
-            style={{ marginLeft: "10px", marginTop: "15px" }}
-         
-          >
-            <CCol md="6"    id={"createRoleUploadTemplate"}
-            onClick={() => {
-              document.getElementById("uploadRoleTemplate").click();
-            }}>
-              <span style={{ fontSize: "20px", cursor: "pointer",color:"blue" }}>
-                <i className="fas fa-upload"></i>&nbsp;
-              </span>
+                    style={{ marginLeft: "10px", marginTop: "15px" }}
+                  >
+                    <CCol md="6" id={"createRoleUploadTemplate"}
+                      onClick={() => {
+                        document.getElementById("uploadRoleTemplate").click();
+                      }}>
+                      <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
+                        <i className="fas fa-upload"></i>&nbsp;
+                      </span>
 
-              <CLabel
-                style={{
-                  position: "relative",
-                  marginLeft: "20px",
-                  cursor: "pointer",
-                }}
-                className={"form-labels-6"}
-              >
-                Upload 
-              </CLabel>
-              <CInput
-                id={"uploadRoleTemplate"}
-                style={{ display: "none" }}
-                type={"file"}
-                onChange={handleChange}
-                accept={SheetJSFT}
-              />
-            </CCol>
-            <CCol md="6" style={{marginLeft:"150px",marginTop:"-38px"}}> 
-            <CSVLink data={csvData}>
-            <span style={{ fontSize: "20px", cursor: "pointer", color:"red" }}>
-                <i className="fas fa-download">
-                </i>&nbsp;
-             
-             </span>
-           
-              <CLabel
-                style={{
-                  position: "relative",
-                  marginLeft: "20px",
-                  cursor: "pointer",
-                  color:"black"
-                
-                }}
-                className={"form-labels-6"}
-              >
-                Download 
-              </CLabel>
-              </CSVLink>
-              
-            </CCol>
-          </CRow>
-<CRow>
-<CCol md="3">
-              <CButton
-                style={{
-                  marginLeft: "30px",
-                  marginTop: "25px",
-                }}
-                onClick={handleFile}
-                className={"saveBtn"}
-              >
-                {" "}
-                Confirm
-              </CButton>
+                      <CLabel
+                        style={{
+                          position: "relative",
+                          marginLeft: "20px",
+                          cursor: "pointer",
+                        }}
+                        className={"form-labels-6"}
+                      >
+                        Upload
+                      </CLabel>
+                      <CInput
+                        id={"uploadRoleTemplate"}
+                        style={{ display: "none" }}
+                        type={"file"}
+                        onChange={handleChange}
+                        accept={SheetJSFT}
+                      />
+                    </CCol>
+                    <CCol md="6" style={{ marginLeft: "150px", marginTop: "-38px" }}>
+                      <CSVLink data={csvData}>
+                        <span style={{ fontSize: "20px", cursor: "pointer", color: "red" }}>
+                          <i className="fas fa-download">
+                          </i>&nbsp;
+                        </span>
+
+                        <CLabel
+                          style={{
+                            position: "relative",
+                            marginLeft: "20px",
+                            cursor: "pointer",
+                            color: "black"
+                          }}
+                          className={"form-labels-6"}
+                        >
+                          Download
+                        </CLabel>
+                      </CSVLink>
+
+                    </CCol>
+                  </CRow>
+                  <CRow>
+                    <CCol md="3">
+                      <CButton
+                        style={{
+                          marginLeft: "30px",
+                          marginTop: "25px",
+                        }}
+                        onClick={handleFile}
+                        className={"saveBtn"}
+                      >
+                        {" "}
+                        Confirm
+                      </CButton>
 
 
                       <CButton
-                        className={"menu"}
                         style={{ position: "absolute", top: "-95px", right: "-660px", marginLeft: "30px", backgroundColor: "green", border: "1px solid green" }}
                         className={"cancelBtn"}
                         onClick={() => {
                           bulkhandleClick();
-                          // handleClick2();
                         }}
                       >
                         Back
                       </CButton>
                     </CCol>
-                    </CRow>
-                  
-               
+                  </CRow>
+
+
 
                   {isValue && excelupload.data !== 0 ? (
                     <div>
@@ -2599,13 +2397,9 @@ setSideBarup5(false)
                           >
                             Cancel
                           </CButton>
-
-
-
                         </CCol>
                       </CRow>
                     </div>
-
                   ) : null}
                 </div>
               )}
@@ -2627,7 +2421,7 @@ setSideBarup5(false)
                       </div>
                     </CCol>
                   </CRow>
-                  
+
                   <CRow
                     className={"row-alignment"}
                     style={{ marginLeft: "5px", marginTop: "20px" }}
@@ -2636,97 +2430,95 @@ setSideBarup5(false)
                     lg={12}
                   >
                     <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      State:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>TamilNadu</span>
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        State:
+                      </CLabel>
+                      <span style={{ marginTop: "13px", marginLeft: "5px", }}>TamilNadu</span>
                     </CCol>
-                    </CRow>
+                  </CRow>
 
-                    <CRow md="12"
-            style={{ marginLeft: "10px", marginTop: "15px" }}
-         
-          >
-            <CCol md="6"    id={"createRoleUploadTemplate"}
-            onClick={() => {
-              document.getElementById("uploadRoleTemplate").click();
-            }}>
-              <span style={{ fontSize: "20px", cursor: "pointer",color:"blue" }}>
-                <i className="fas fa-upload"></i>&nbsp;
-              </span>
+                  <CRow md="12"
+                    style={{ marginLeft: "10px", marginTop: "15px" }}
 
-              <CLabel
-                style={{
-                  position: "relative",
-                  marginLeft: "20px",
-                  cursor: "pointer",
-                }}
-                className={"form-labels-6"}
-              >
-                Upload 
-              </CLabel>
-              <CInput
-                id={"uploadRoleTemplate"}
-                style={{ display: "none" }}
-                type={"file"}
-                onChange={handleChange}
-                accept={SheetJSFT}
-              />
-            </CCol>
-            <CCol md="6" style={{marginLeft:"150px",marginTop:"-38px"}}> 
-            <CSVLink data={csvData}>
-            <span style={{ fontSize: "20px", cursor: "pointer", color:"red" }}>
-                <i className="fas fa-download">
-                </i>&nbsp;
-             
-             </span>
-           
-              <CLabel
-                style={{
-                  position: "relative",
-                  marginLeft: "20px",
-                  cursor: "pointer",
-                  color:"black"
-                
-                }}
-                className={"form-labels-6"}
-              >
-                Download 
-              </CLabel>
-              </CSVLink>
-              
-            </CCol>
-          </CRow>
-<CRow>
-<CCol md="3">
-              <CButton
-                style={{
-                  marginLeft: "30px",
-                  marginTop: "25px",
-                }}
-                onClick={handleFile}
-                className={"saveBtn"}
-              >
-                {" "}
-                Confirm
-              </CButton>
+                  >
+                    <CCol md="6" id={"createRoleUploadTemplate"}
+                      onClick={() => {
+                        document.getElementById("uploadRoleTemplate").click();
+                      }}>
+                      <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
+                        <i className="fas fa-upload"></i>&nbsp;
+                      </span>
+
+                      <CLabel
+                        style={{
+                          position: "relative",
+                          marginLeft: "20px",
+                          cursor: "pointer",
+                        }}
+                        className={"form-labels-6"}
+                      >
+                        Upload
+                      </CLabel>
+                      <CInput
+                        id={"uploadRoleTemplate"}
+                        style={{ display: "none" }}
+                        type={"file"}
+                        onChange={handleChange}
+                        accept={SheetJSFT}
+                      />
+                    </CCol>
+                    <CCol md="6" style={{ marginLeft: "150px", marginTop: "-38px" }}>
+                      <CSVLink data={csvData}>
+                        <span style={{ fontSize: "20px", cursor: "pointer", color: "red" }}>
+                          <i className="fas fa-download">
+                          </i>&nbsp;
+
+                        </span>
+
+                        <CLabel
+                          style={{
+                            position: "relative",
+                            marginLeft: "20px",
+                            cursor: "pointer",
+                            color: "black"
+
+                          }}
+                          className={"form-labels-6"}
+                        >
+                          Download
+                        </CLabel>
+                      </CSVLink>
+
+                    </CCol>
+                  </CRow>
+                  <CRow>
+                    <CCol md="3">
+                      <CButton
+                        style={{
+                          marginLeft: "30px",
+                          marginTop: "25px",
+                        }}
+                        onClick={handleFile}
+                        className={"saveBtn"}
+                      >
+                        {" "}
+                        Confirm
+                      </CButton>
 
 
                       <CButton
-                        className={"menu"}
                         style={{ position: "absolute", top: "-160px", right: "-660px", marginLeft: "30px", backgroundColor: "green", border: "1px solid green" }}
                         className={"cancelBtn"}
                         onClick={() => {
                           bulkhandleClick();
-                          // handleClick2();
                         }}
                       >
                         Back
                       </CButton>
-                    </CCol>                   
+                    </CCol>
                   </CRow>
 
                   {isValue && excelupload.data !== 0 ? (
@@ -2760,7 +2552,6 @@ setSideBarup5(false)
                                       <i
                                         style={{
                                           marginLeft: "35px",
-
                                         }}
                                         className="fa fa-remove"
                                         bsStyle="overlay"
@@ -2831,106 +2622,99 @@ setSideBarup5(false)
                     lg={12}
                   >
                     <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      State:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>TamilNadu</span>
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        State:
+                      </CLabel>
+                      <span style={{ marginTop: "13px", marginLeft: "5px", }}>TamilNadu</span>
                     </CCol>
                     <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      District / City:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>Chennai</span>
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        District / City:
+                      </CLabel>
+                      <span style={{ marginTop: "13px", marginLeft: "5px", }}>Chennai</span>
                     </CCol>
-                    </CRow>
+                  </CRow>
 
-                    <CRow md="12"
-            style={{ marginLeft: "10px", marginTop: "15px" }}
-         
-          >
-            <CCol md="6"    id={"createRoleUploadTemplate"}
-            onClick={() => {
-              document.getElementById("uploadRoleTemplate").click();
-            }}>
-              <span style={{ fontSize: "20px", cursor: "pointer",color:"blue" }}>
-                <i className="fas fa-upload"></i>&nbsp;
-              </span>
+                  <CRow md="12"
+                    style={{ marginLeft: "10px", marginTop: "15px" }}
+                  >
+                    <CCol md="6" id={"createRoleUploadTemplate"}
+                      onClick={() => {
+                        document.getElementById("uploadRoleTemplate").click();
+                      }}>
+                      <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
+                        <i className="fas fa-upload"></i>&nbsp;
+                      </span>
 
-              <CLabel
-                style={{
-                  position: "relative",
-                  marginLeft: "20px",
-                  cursor: "pointer",
-                }}
-                className={"form-labels-6"}
-              >
-                Upload 
-              </CLabel>
-              <CInput
-                id={"uploadRoleTemplate"}
-                style={{ display: "none" }}
-                type={"file"}
-                onChange={handleChange}
-                accept={SheetJSFT}
-              />
-            </CCol>
-            <CCol md="6" style={{marginLeft:"150px",marginTop:"-38px"}}> 
-            <CSVLink data={csvData}>
-            <span style={{ fontSize: "20px", cursor: "pointer", color:"red" }}>
-                <i className="fas fa-download">
-                </i>&nbsp;
-             
-             </span>
-           
-              <CLabel
-                style={{
-                  position: "relative",
-                  marginLeft: "20px",
-                  cursor: "pointer",
-                  color:"black"
-                
-                }}
-                className={"form-labels-6"}
-              >
-                Download 
-              </CLabel>
-              </CSVLink>
-              
-            </CCol>
-          </CRow>
-<CRow>
-<CCol md="3">
-              <CButton
-                style={{
-                  marginLeft: "30px",
-                  marginTop: "25px",
-                }}
-                onClick={handleFile}
-                className={"saveBtn"}
-              >
-                {" "}
-                Confirm
-              </CButton>
+                      <CLabel
+                        style={{
+                          position: "relative",
+                          marginLeft: "20px",
+                          cursor: "pointer",
+                        }}
+                        className={"form-labels-6"}
+                      >
+                        Upload
+                      </CLabel>
+                      <CInput
+                        id={"uploadRoleTemplate"}
+                        style={{ display: "none" }}
+                        type={"file"}
+                        onChange={handleChange}
+                        accept={SheetJSFT}
+                      />
+                    </CCol>
+                    <CCol md="6" style={{ marginLeft: "150px", marginTop: "-38px" }}>
+                      <CSVLink data={csvData}>
+                        <span style={{ fontSize: "20px", cursor: "pointer", color: "red" }}>
+                          <i className="fas fa-download">
+                          </i>&nbsp;
+                        </span>
 
+                        <CLabel
+                          style={{
+                            position: "relative",
+                            marginLeft: "20px",
+                            cursor: "pointer",
+                            color: "black"
+                          }}
+                          className={"form-labels-6"}
+                        >
+                          Download
+                        </CLabel>
+                      </CSVLink>
+                    </CCol>
+                  </CRow>
+                  <CRow>
+                    <CCol md="3">
+                      <CButton
+                        style={{
+                          marginLeft: "30px",
+                          marginTop: "25px",
+                        }}
+                        onClick={handleFile}
+                        className={"saveBtn"}
+                      >
+                        {" "}
+                        Confirm
+                      </CButton>
 
                       <CButton
-                        className={"menu"}
                         style={{ position: "absolute", top: "-160px", right: "-660px", marginLeft: "30px", backgroundColor: "green", border: "1px solid green" }}
                         className={"cancelBtn"}
                         onClick={() => {
                           bulkhandleClick();
-                          // handleClick2();
                         }}
                       >
                         Back
                       </CButton>
-                    </CCol>                   
+                    </CCol>
                   </CRow>
 
                   {isValue && excelupload.data !== 0 ? (
@@ -2940,7 +2724,6 @@ setSideBarup5(false)
                           padding: "4%",
                           marginTop: "1.5%",
                           marginLeft: "-45px",
-
                         }}
                       >
                         <CDataTable
@@ -2953,7 +2736,6 @@ setSideBarup5(false)
                           itemsPerPage={5}
                           hover
                           sorter
-
                           pagination
                           scopedSlots={{
                             show_details3: (item, index) => {
@@ -3003,19 +2785,14 @@ setSideBarup5(false)
                           >
                             Cancel
                           </CButton>
-
-
-
                         </CCol>
                       </CRow>
                     </div>
-
                   ) : null}
                 </div>
               )}
               {sideBarup4 && (
                 <div className={menu.style1} style={{ marginLeft: "-108px" }}>
-
                   <CRow className={""}>
                     <CCol md="12" lg="12" sm="12">
                       <div>
@@ -3039,22 +2816,22 @@ setSideBarup5(false)
                     lg={12}
                   >
                     <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      State:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>TamilNadu</span>
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        State:
+                      </CLabel>
+                      <span style={{ marginTop: "13px", marginLeft: "5px", }}>TamilNadu</span>
                     </CCol>
                     <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      Village / Area / Locality:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>Vadapalani</span>
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        Village / Area / Locality:
+                      </CLabel>
+                      <span style={{ marginTop: "13px", marginLeft: "5px", }}>Vadapalani</span>
                     </CCol>
                   </CRow>
                   <CRow
@@ -3065,88 +2842,82 @@ setSideBarup5(false)
                     lg={12}
                   >
                     <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      District / City:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>Chennai</span>
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        District / City:
+                      </CLabel>
+                      <span style={{ marginTop: "13px", marginLeft: "5px", }}>Chennai</span>
                     </CCol>
                     <CCol>
-                      </CCol>
-                      </CRow>
-                      <CRow md="12"
-            style={{ marginLeft: "10px", marginTop: "15px" }}
-         
-          >
-            <CCol md="6"    id={"createRoleUploadTemplate"}
-            onClick={() => {
-              document.getElementById("uploadRoleTemplate").click();
-            }}>
-              <span style={{ fontSize: "20px", cursor: "pointer",color:"blue" }}>
-                <i className="fas fa-upload"></i>&nbsp;
-              </span>
+                    </CCol>
+                  </CRow>
+                  <CRow md="12"
+                    style={{ marginLeft: "10px", marginTop: "15px" }}
+                  >
+                    <CCol md="6" id={"createRoleUploadTemplate"}
+                      onClick={() => {
+                        document.getElementById("uploadRoleTemplate").click();
+                      }}>
+                      <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
+                        <i className="fas fa-upload"></i>&nbsp;
+                      </span>
 
-              <CLabel
-                style={{
-                  position: "relative",
-                  marginLeft: "20px",
-                  cursor: "pointer",
-                }}
-                className={"form-labels-6"}
-              >
-                Upload 
-              </CLabel>
-              <CInput
-                id={"uploadRoleTemplate"}
-                style={{ display: "none" }}
-                type={"file"}
-                onChange={handleChange}
-                accept={SheetJSFT}
-              />
-            </CCol>
-            <CCol md="6" style={{marginLeft:"150px",marginTop:"-38px"}}> 
-            <CSVLink data={csvData}>
-            <span style={{ fontSize: "20px", cursor: "pointer", color:"red" }}>
-                <i className="fas fa-download">
-                </i>&nbsp;
-             
-             </span>
-           
-              <CLabel
-                style={{
-                  position: "relative",
-                  marginLeft: "20px",
-                  cursor: "pointer",
-                  color:"black"
-                
-                }}
-                className={"form-labels-6"}
-              >
-                Download 
-              </CLabel>
-              </CSVLink>
-              
-            </CCol>
-          </CRow>
-<CRow>
-<CCol md="3">
-              <CButton
-                style={{
-                  marginLeft: "30px",
-                  marginTop: "25px",
-                }}
-                onClick={handleFile}
-                className={"saveBtn"}
-              >
-                {" "}
-                Confirm
-              </CButton>
+                      <CLabel
+                        style={{
+                          position: "relative",
+                          marginLeft: "20px",
+                          cursor: "pointer",
+                        }}
+                        className={"form-labels-6"}
+                      >
+                        Upload
+                      </CLabel>
 
+                      <CInput
+                        id={"uploadRoleTemplate"}
+                        style={{ display: "none" }}
+                        type={"file"}
+                        onChange={handleChange}
+                        accept={SheetJSFT}
+                      />
+                    </CCol>
+                    <CCol md="6" style={{ marginLeft: "150px", marginTop: "-38px" }}>
+                      <CSVLink data={csvData}>
+                        <span style={{ fontSize: "20px", cursor: "pointer", color: "red" }}>
+                          <i className="fas fa-download">
+                          </i>&nbsp;
+                        </span>
+                        <CLabel
+                          style={{
+                            position: "relative",
+                            marginLeft: "20px",
+                            cursor: "pointer",
+                            color: "black"
+                          }}
+                          className={"form-labels-6"}
+                        >
+                          Download
+                        </CLabel>
+                      </CSVLink>
+                    </CCol>
+                  </CRow>
+                  <CRow>
+                    <CCol md="3">
+                      <CButton
+                        style={{
+                          marginLeft: "30px",
+                          marginTop: "25px",
+                        }}
+                        onClick={handleFile}
+                        className={"saveBtn"}
+                      >
+                        {" "}
+                        Confirm
+                      </CButton>
 
                       <CButton
-                        className={"menu"}
                         style={{ position: "absolute", top: "-210px", right: "-660px", marginLeft: "10px", backgroundColor: "green", border: "1px solid green" }}
                         className={"cancelBtn"}
                         onClick={() => {
@@ -3155,7 +2926,7 @@ setSideBarup5(false)
                       >
                         Back
                       </CButton>
-                    </CCol>                    
+                    </CCol>
                   </CRow>
 
                   {isValue && excelupload.data !== 0 ? (
@@ -3178,7 +2949,6 @@ setSideBarup5(false)
                           itemsPerPage={5}
                           hover
                           sorter
-
                           pagination
                           scopedSlots={{
                             show_details3: (item, index) => {
@@ -3186,11 +2956,9 @@ setSideBarup5(false)
                                 <td className="py-1">
                                   <CRow>
                                     <CCol style={{ fontSize: "1rem" }} md="16">
-
                                       <i
                                         style={{
                                           marginLeft: "35px",
-
                                         }}
                                         className="fa fa-remove"
                                         bsStyle="overlay"
@@ -3206,18 +2974,15 @@ setSideBarup5(false)
                         />
                       </CRow>
                       <CRow style={{ paddingLeft: "180px" }}>
-
                         <CCol md="3">
                           <CButton
                             type="file"
                             style={{
                               marginLeft: "450px",
                               marginTop: "35px",
-
                             }}
                             onClick={enableCreate}
                             className={"saveBtn"}
-
                           > Save</CButton>
                           <CButton
                             shape={"pill"}
@@ -3228,19 +2993,14 @@ setSideBarup5(false)
                           >
                             Cancel
                           </CButton>
-
-
-
                         </CCol>
                       </CRow>
                     </div>
-
                   ) : null}
                 </div>
               )}
               {sideBarup5 && (
                 <div className={menu.style1} style={{ marginLeft: "-108px" }}>
-
                   <CRow className={""}>
                     <CCol md="12" lg="12" sm="12">
                       <div>
@@ -3264,22 +3024,22 @@ setSideBarup5(false)
                     lg={12}
                   >
                     <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      State:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>TamilNadu</span>
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        State:
+                      </CLabel>
+                      <span style={{ marginTop: "13px", marginLeft: "5px", }}>TamilNadu</span>
                     </CCol>
                     <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      Village / Area / Locality:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>Vadapalani</span>
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        Village / Area / Locality:
+                      </CLabel>
+                      <span style={{ marginTop: "13px", marginLeft: "5px", }}>Vadapalani</span>
                     </CCol>
                   </CRow>
                   <CRow
@@ -3290,95 +3050,87 @@ setSideBarup5(false)
                     lg={12}
                   >
                     <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      District / City:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>Chennai</span>
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        District / City:
+                      </CLabel>
+                      <span style={{ marginTop: "13px", marginLeft: "5px", }}>Chennai</span>
                     </CCol>
                     <CCol>
-                    <CLabel
-                      style={{ position: "relative", marginLeft: "5px", fontSize:"23px", fontWeight:"650", cursor: "pointer" }}
-                      className={"form-labels-6"}
-                    >
-                      Street:
-                    </CLabel>
-                    <span style={{ marginTop:"13px", marginLeft:"5px", }}>Kamaraj Nagar</span>
+                      <CLabel
+                        style={{ position: "relative", marginLeft: "5px", fontSize: "23px", fontWeight: "650", cursor: "pointer" }}
+                        className={"form-labels-6"}
+                      >
+                        Street:
+                      </CLabel>
+                      <span style={{ marginTop: "13px", marginLeft: "5px", }}>Kamaraj Nagar</span>
                     </CCol>
                   </CRow>
 
                   <CRow md="12"
-            style={{ marginLeft: "10px", marginTop: "15px" }}
-         
-          >
-            <CCol md="6"    id={"createRoleUploadTemplate"}
-            onClick={() => {
-              document.getElementById("uploadRoleTemplate").click();
-            }}>
-              <span style={{ fontSize: "20px", cursor: "pointer",color:"blue" }}>
-                <i className="fas fa-upload"></i>&nbsp;
-              </span>
-
-              <CLabel
-                style={{
-                  position: "relative",
-                  marginLeft: "20px",
-                  cursor: "pointer",
-                }}
-                className={"form-labels-6"}
-              >
-                Upload 
-              </CLabel>
-              <CInput
-                id={"uploadRoleTemplate"}
-                style={{ display: "none" }}
-                type={"file"}
-                onChange={handleChange}
-                accept={SheetJSFT}
-              />
-            </CCol>
-            <CCol md="6" style={{marginLeft:"150px",marginTop:"-38px"}}> 
-            <CSVLink data={csvData}>
-            <span style={{ fontSize: "20px", cursor: "pointer", color:"red" }}>
-                <i className="fas fa-download">
-                </i>&nbsp;
-             
-             </span>
-           
-              <CLabel
-                style={{
-                  position: "relative",
-                  marginLeft: "20px",
-                  cursor: "pointer",
-                  color:"black"
-                
-                }}
-                className={"form-labels-6"}
-              >
-                Download 
-              </CLabel>
-              </CSVLink>
-              
-            </CCol>
-          </CRow>
-<CRow>
-<CCol md="3">
-              <CButton
-                style={{
-                  marginLeft: "30px",
-                  marginTop: "25px",
-                }}
-                onClick={handleFile}
-                className={"saveBtn"}
-              >
-                {" "}
-                Confirm
-              </CButton>
-
-              <CButton
-                        className={"menu"}
+                    style={{ marginLeft: "10px", marginTop: "15px" }}
+                  >
+                    <CCol md="6" id={"createRoleUploadTemplate"}
+                      onClick={() => {
+                        document.getElementById("uploadRoleTemplate").click();
+                      }}>
+                      <span style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}>
+                        <i className="fas fa-upload"></i>&nbsp;
+                      </span>
+                      <CLabel
+                        style={{
+                          position: "relative",
+                          marginLeft: "20px",
+                          cursor: "pointer",
+                        }}
+                        className={"form-labels-6"}
+                      >
+                        Upload
+                      </CLabel>
+                      <CInput
+                        id={"uploadRoleTemplate"}
+                        style={{ display: "none" }}
+                        type={"file"}
+                        onChange={handleChange}
+                        accept={SheetJSFT}
+                      />
+                    </CCol>
+                    <CCol md="6" style={{ marginLeft: "150px", marginTop: "-38px" }}>
+                      <CSVLink data={csvData}>
+                        <span style={{ fontSize: "20px", cursor: "pointer", color: "red" }}>
+                          <i className="fas fa-download">
+                          </i>&nbsp;
+                        </span>
+                        <CLabel
+                          style={{
+                            position: "relative",
+                            marginLeft: "20px",
+                            cursor: "pointer",
+                            color: "black"
+                          }}
+                          className={"form-labels-6"}
+                        >
+                          Download
+                        </CLabel>
+                      </CSVLink>
+                    </CCol>
+                  </CRow>
+                  <CRow>
+                    <CCol md="3">
+                      <CButton
+                        style={{
+                          marginLeft: "30px",
+                          marginTop: "25px",
+                        }}
+                        onClick={handleFile}
+                        className={"saveBtn"}
+                      >
+                        {" "}
+                        Confirm
+                      </CButton>
+                      <CButton
                         style={{ position: "absolute", top: "-210px", right: "-660px", marginLeft: "10px", backgroundColor: "green", border: "1px solid green" }}
                         className={"cancelBtn"}
                         onClick={() => {
@@ -3387,9 +3139,8 @@ setSideBarup5(false)
                       >
                         Back
                       </CButton>
-                      </CCol>
+                    </CCol>
                   </CRow>
-
                   {isValue && excelupload.data !== 0 ? (
                     <div>
                       <CRow
@@ -3397,7 +3148,6 @@ setSideBarup5(false)
                           padding: "4%",
                           marginTop: "1.5%",
                           marginLeft: "-45px",
-
                         }}
                       >
                         <CDataTable
@@ -3410,7 +3160,6 @@ setSideBarup5(false)
                           itemsPerPage={5}
                           hover
                           sorter
-
                           pagination
                           scopedSlots={{
                             show_details3: (item, index) => {
@@ -3418,11 +3167,9 @@ setSideBarup5(false)
                                 <td className="py-1">
                                   <CRow>
                                     <CCol style={{ fontSize: "1rem" }} md="16">
-
                                       <i
                                         style={{
                                           marginLeft: "35px",
-
                                         }}
                                         className="fa fa-remove"
                                         bsStyle="overlay"
@@ -3438,18 +3185,15 @@ setSideBarup5(false)
                         />
                       </CRow>
                       <CRow style={{ paddingLeft: "180px" }}>
-
                         <CCol md="3">
                           <CButton
                             type="file"
                             style={{
                               marginLeft: "450px",
                               marginTop: "35px",
-
                             }}
                             onClick={enableCreate}
                             className={"saveBtn"}
-
                           > Save</CButton>
                           <CButton
                             shape={"pill"}
@@ -3460,17 +3204,12 @@ setSideBarup5(false)
                           >
                             Cancel
                           </CButton>
-
-
-
                         </CCol>
                       </CRow>
                     </div>
-
                   ) : null}
                 </div>
               )}
-
               <div>
                 <div>
                   <CCard className={"cardSave"}>
@@ -3480,13 +3219,11 @@ setSideBarup5(false)
                           Location Library
                         </span>
                       </div>
-
                       <CRow className={"row-alignment"} style={{ marginLeft: "-76px" }}>
                         <CCol className={"column-align"} md="12" lg="12" sm="12">
                           <p className="mandatory_txt" style={{ marginLeft: "50px" }}>
                             Mandatory fields are marked with an asterisk (*)
                           </p>
-
                           <CRow className={"row-alignment"}>
                             {StateList && (
                               <React.Fragment>
@@ -3498,197 +3235,46 @@ setSideBarup5(false)
                                   <Select
                                     placeholder="Select the State Name"
                                     id={"locationLibraryState"}
-                                    type={"text"}
-                                    // onChange={(e) => {
-                                    //   if (stateName.label) {
-                                    //     setStateName({ ...e, edit: countryName.edit });
-                                    //   } else {
-                                    //     setStateName({ ...e, edit: true });
-                                    //   }
-                                    // }}
-                                    // value={stateName}
-                                    onChange={(e) => setSelected(e)}
+                                    type={"text"}                                
+                                    onChange={changedistrictpanchayat}
                                     options={selectState}
                                     components={{ MenuList: SelectMenuButtonstate }}
-                                  // isDisabled={CountryCreate || CityCreate || AreaCreate}
                                   />
 
-{villageHide.districtpanchayat && selected.length !== 0 ? (
-                            <div
-                              style={{
-                                width: 300,
-                                marginLeft: "446px",
-                                marginTop: "-40px",
-                                padding: 10,
-                              }}
-                            
-                            >
-                              <i
-                                className={"editIcon"}
-                              
-                                id={"locationlibrary"}
-                                class="fas fa-edit"
-                              />
-                              <div
-                                style={{
-                                  width: 300,
-                                  marginLeft: "26px",
-                                  marginTop: "-30px",
-                                  padding: 10,
-                                  color: "red",
-                                }}
-                              >
-                                <i
-                                  className={"editIcon"}
-                                 
-                                  id={"officeLocationEdit"}
-                                  class="fas fa-trash"
-                                />
-                              </div>
-                            </div>
-                          ) : null}
-                        </CCol>
-
-                                {/* <CCol className={"column-align"} md={1} lg={1}>
-                        <CButton
-                          shape={"pill"}
-                          id={"locationLibraryStateAdd"}
-                          style={{ marginTop: "30px" }}
-                          className={"saveBtn"}
-                          onClick={enableCreate}
-                          disabled={CountryCreate || CityCreate || AreaCreate}
-                        >
-                          ADD
-                        </CButton>
-                      </CCol>
-                      {countryName.edit && <React.Fragment></React.Fragment>} */}
-
-                                {stateName.edit === true ? (
-                                  <React.Fragment>
-                                    <CCol md={3} lg={3} className={"column-align"} style={{ marginLeft: "-20px" }}>
-                                      <CButton
+                                  {villageHide.districtpanchayat && selected.length !== 0 ? (
+                                    <div
+                                      style={{
+                                        width: 300,
+                                        marginLeft: "446px",
+                                        marginTop: "-40px",
+                                        padding: 10,
+                                      }}
+                                    >
+                                      <i
+                                        className={"editIcon"}
+                                        id={"locationlibrary"}
+                                        class="fas fa-edit"
+                                      />
+                                      <div
                                         style={{
-                                          marginTop: "30px",
+                                          width: 300,
+                                          marginLeft: "26px",
+                                          marginTop: "-30px",
+                                          padding: 10,
+                                          color: "red",
                                         }}
-                                        id={"locationLibraryStateEdit"}
-                                        className={"btn btn-success"}
-                                        onClick={editState}
-                                        disabled={
-                                          CountryCreate || CityCreate || AreaCreate
-                                        }
                                       >
-                                        EDIT
-                                      </CButton>
-                                    </CCol>
-                                  </React.Fragment>
-                                ) : null}
+                                        <i
+                                          className={"editIcon"}
+                                          id={"officeLocationEdit"}
+                                          class="fas fa-trash"
+                                        />
+                                      </div>
+                                    </div>
+                                  ) : null}
+                                </CCol>                               
                               </React.Fragment>
-                            )}
-                            {StateCreate && (
-                              <React.Fragment>
-                                <CRow className={"column-align3"} sm={12} md={12} lg={12}>
-                                  <CCol md="3">
-                                    <CLabel className={"label-name-3"}>
-                                      State Name
-                                      <span className={"text-danger"}> *</span>
-                                    </CLabel>
-                                    <CInput
-                                      onKeyPress={(e) =>
-                                        FormValidation.value_Without_Number_Symbols(e)
-                                      }
-                                      id={"locationLibraryStateName"}
-                                      name={"statename"}
-                                      value={states.statename}
-                                      onChange={statechangeHandler}
-                                      placeholder="State Name"
-                                      maxlength="60"
-                                      size="60"
-                                    />
-                                    {formik.errors.StateName ? (
-                                      <div className="text-danger">
-                                        {" "}
-                                        {formik.errors.StateName}
-                                      </div>
-                                    ) : null}
-                                  </CCol>
-
-                                  <CCol md="3">
-                                    <CLabel className={"label-name-3"}>
-                                      Abbreviation
-                                      <span className={"text-danger"}> *</span>
-                                    </CLabel>
-                                    <CInput
-                                      onKeyPress={(e) =>
-                                        FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                                          e
-                                        )
-                                      }
-                                      id={"locationLibraryStateAbbreviation"}
-                                      name={"abbreviation"}
-                                      value={states.abbreviation}
-                                      onChange={statechangeHandler}
-                                      placeholder="Enter Abbreviation"
-                                      maxlength="5"
-                                      size="5"
-                                    />
-                                    {formik.errors.Abbreviation2 ? (
-                                      <div className="text-danger">
-                                        {" "}
-                                        {formik.errors.Abbreviation2}
-                                      </div>
-                                    ) : null}
-                                  </CCol>
-                                  <CCol md="3">
-                                    <CLabel className={"label-name-3"}>
-                                      Code
-                                      <span className={"text-danger"}> *</span>
-                                    </CLabel>
-                                    <CInput
-                                      id={"locationLibraryStateCode"}
-                                      onKeyPress={(e) =>
-                                        FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                                          e
-                                        )
-                                      }
-                                      name={"code"}
-                                      value={states.code}
-                                      onChange={statechangeHandler}
-                                      style={{ textTransform: "uppercase" }}
-                                      placeholder="Enter Code"
-                                      maxlength="5"
-                                      size="5"
-                                    />
-                                    {formik.errors.Code2 ? (
-                                      <div className="text-danger">
-                                        {" "}
-                                        {formik.errors.Code2}
-                                      </div>
-                                    ) : null}
-                                  </CCol>
-                                  <CCol md="3">
-                                    <CButton
-                                      shape={"pill"}
-                                      id={"locationLibraryStateSave"}
-                                      style={{ marginTop: "30px" }}
-                                      className={"saveBtn"}
-                                      onClick={State}
-                                    >
-                                      {passing !== "" ? "UPDATE" : "SAVE"}
-                                    </CButton>
-                                    <CButton
-                                      shape={"pill"}
-                                      id={"locationLibraryStateCancel"}
-                                      style={{ marginTop: "30px", marginLeft: "20px" }}
-                                      className={"cancelBtn"}
-                                      onClick={CancelState}
-                                    >
-                                      CANCEL
-                                    </CButton>
-                                    {error !== "" ? <p>{error}</p> : null}
-                                  </CCol>
-                                </CRow>
-                              </React.Fragment>
-                            )}
+                            )}                            
                             <CRow style={{ marginLeft: "1300px", position: "absolute", marginTop: "10px" }}>
                               <CCol sm="6" lg="3" style={{ marginLeft: "-30px" }}>
                                 <CWidgetDropdown
@@ -3731,181 +3317,48 @@ setSideBarup5(false)
                                     id={"locationLibraryCity"}
                                     type={"text"}
                                     onChange={changePanchayatUnion}
-                                    options={selectCity}
-                                    // 
+                                    options={selectCity}                                    
                                     components={{ MenuList: SelectMenuButtoncity }}
 
                                   />
 
-                                 {villageHide.panchayatunion &&  selected1.length !== 0 ? (
-                            <div
-                              style={{
-                                width: 300,
-                                marginLeft: "446px",
-                                marginTop: "-40px",
-                                padding: 10,
-                              }}
-                            
-                            >
-                              <i
-                                className={"editIcon"}
-                              
-                                id={"locationlibrarycityedit"}
-                                class="fas fa-edit"
-                              />
-                              <div
-                                style={{
-                                  width: 300,
-                                  marginLeft: "26px",
-                                  marginTop: "-30px",
-                                  padding: 10,
-                                  color: "red",
-                                }}
-                              >
-                                <i
-                                  className={"editIcon"}
-                                 
-                                  id={"locationlibrarycitydelete"}
-                                  class="fas fa-trash"
-                                />
-                              </div>
-                            </div>
-                          ) : null}
-                        </CCol>
+                                  {villageHide.panchayatunion && selected1.length !== 0 ? (
+                                    <div
+                                      style={{
+                                        width: 300,
+                                        marginLeft: "446px",
+                                        marginTop: "-40px",
+                                        padding: 10,
+                                      }}
 
-                                {/* {stateName.edit && (
-                        <React.Fragment>
-                          <CCol className={"column-align"} md={1} lg={1}>
-                            <CButton
-                              id={"locationLibraryCityAdd"}
-                              shape={"pill"}
-                              style={{ marginTop: "30px" }}
-                              className={"saveBtn"}
-                              onClick={cityCreate}
-                              disabled={
-                                CountryCreate || StateCreate || AreaCreate
-                              }
-                            >
-                              ADD
-                            </CButton>
-                          </CCol>
-                        </React.Fragment>
-                      )} */}
+                                    >
+                                      <i
+                                        className={"editIcon"}
 
-                                {cityName.edit === true && (
-                                  <React.Fragment>
-                                    <CCol md={3} lg={3} className={"column-align"} style={{ marginLeft: "-20px" }}>
-                                      <CButton
-                                        style={{ marginTop: "30px" }}
-                                        className={"btn btn-success"}
-                                        onClick={editCity}
-                                        disabled={
-                                          CountryCreate || StateCreate || AreaCreate
-                                        }
-                                        id={"locationLibraryCityEdit"}
+                                        id={"locationlibrarycityedit"}
+                                        class="fas fa-edit"
+                                      />
+                                      <div
+                                        style={{
+                                          width: 300,
+                                          marginLeft: "26px",
+                                          marginTop: "-30px",
+                                          padding: 10,
+                                          color: "red",
+                                        }}
                                       >
-                                        EDIT
-                                      </CButton>
-                                    </CCol>
-                                  </React.Fragment>
-                                )}
-                              </React.Fragment>
-                            )}
-                            {CityCreate && (
-                              <React.Fragment>
-                                <CRow className={"column-align3"} sm={12} md={12} lg={12}>
-                                  <CCol md="3">
-                                    <CLabel className={"label-name-3"}>
-                                      City Name
-                                      <span className={"text-danger"}> *</span>
-                                    </CLabel>
-                                    <CInput
-                                      onKeyPress={(e) =>
-                                        FormValidation.value_Without_Number_Symbols(e)
-                                      }
-                                      id={"locationLibraryCityName"}
-                                      name={"CityName"}
-                                      value={formik.values.CityName}
-                                      onChange={formik.handleChange}
-                                      placeholder="City Name"
-                                      maxlength="60"
-                                      size="60"
-                                    />
-                                    {formik.errors.CityName ? (
-                                      <div className="text-danger">
-                                        {" "}
-                                        {formik.errors.CityName}
+                                        <i
+                                          className={"editIcon"}
+
+                                          id={"locationlibrarycitydelete"}
+                                          class="fas fa-trash"
+                                        />
                                       </div>
-                                    ) : null}
-                                  </CCol>
-
-                                  <CCol md="3">
-                                    <CLabel className={"label-name-3"}>
-                                      Abbreviation
-                                      <span className={"text-danger"}> *</span>
-                                    </CLabel>
-                                    <CInput
-                                      onKeyPress={(e) =>
-                                        FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                                          e
-                                        )
-                                      }
-                                      id={"locationLibraryCityAbbreviation"}
-                                      name={"Abbreviation3"}
-                                      value={formik.values.Abbreviation3}
-                                      onChange={formik.handleChange}
-                                      placeholder="Enter Abbreviation"
-                                      maxlength="5"
-                                      size="5"
-                                    />
-
-                                  </CCol>
-                                  <CCol md="3">
-                                    <CLabel className={"label-name-3"}>
-                                      Code
-                                      <span className={"text-danger"}> *</span>
-                                    </CLabel>
-                                    <CInput
-                                      onKeyPress={(e) =>
-                                        FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                                          e
-                                        )
-                                      }
-                                      id={"locationLibraryCityCode"}
-                                      name={"Code3"}
-                                      value={formik.values.Code3}
-                                      onChange={formik.handleChange}
-                                      style={{ textTransform: "uppercase" }}
-                                      placeholder="Enter Code"
-                                      maxlength="5"
-                                      size="5"
-                                    />
-
-                                  </CCol>
-                                  <CCol md="3">
-                                    <CButton
-                                      shape={"pill"}
-                                      style={{ marginTop: "30px" }}
-                                      className={"saveBtn"}
-                                      onClick={City}
-                                      id={"locationLibraryCitySave"}
-                                    >
-                                      {passing !== "" ? "UPDATE" : "SAVE"}
-                                    </CButton>
-                                    <CButton
-                                      shape={"pill"}
-                                      style={{ marginTop: "30px", marginLeft: "20px" }}
-                                      className={"cancelBtn"}
-                                      onClick={CancelCity}
-                                      id={"locationLibraryCityCancel"}
-                                    >
-                                      CANCEL
-                                    </CButton>
-                                    {error !== "" ? <p>{error}</p> : null}
-                                  </CCol>
-                                </CRow>
+                                    </div>
+                                  ) : null}
+                                </CCol>
                               </React.Fragment>
-                            )}
+                            )}                            
                             <CRow style={{ marginTop: "40px", marginLeft: "1300px", position: "absolute" }}>
                               <CCol sm="3" lg="3" style={{ marginLeft: "-30px" }}>
                                 <CWidgetDropdown
@@ -3950,210 +3403,42 @@ setSideBarup5(false)
                                     onChange={changeArea}
                                     options={selectVillage}
                                     components={{ MenuList: SelectMenuButtonarea }}
-
                                   />
-                                 {villageHide.area &&  selected2.length !== 0 ? (
-                            <div
-                              style={{
-                                width: 300,
-                                marginLeft: "446px",
-                                marginTop: "-40px",
-                                padding: 10,
-                              }}
-                            
-                            >
-                              <i
-                                className={"editIcon"}
-                              
-                                id={"locationLibraryAreaEdit"}
-                                class="fas fa-edit"
-                              />
-                              <div
-                                style={{
-                                  width: 300,
-                                  marginLeft: "26px",
-                                  marginTop: "-30px",
-                                  padding: 10,
-                                  color: "red",
-                                }}
-                              >
-                                <i
-                                  className={"editIcon"}
-                                 
-                                  id={"locationLibraryAreadelete"}
-                                  class="fas fa-trash"
-                                />
-                              </div>
-                            </div>
-                          ) : null}
-                        </CCol>
-
-                                {/* {cityName.edit && (
-                        <React.Fragment>
-                          <CCol className={"column-align"} md={1} lg={1}>
-                            <CButton
-                              id={"locationLibraryAreaAdd"}
-                              shape={"pill"}
-                              style={{ marginTop: "30px" }}
-                              className={"saveBtn"}
-                              onClick={areaCreate}
-                              disabled={
-                                CountryCreate || StateCreate || CityCreate || StreetCreate
-                              }
-                            >
-                              ADD
-                            </CButton>
-                          </CCol>
-                        </React.Fragment>
-                      )} */}
-                                {areaName.edit && (
-                                  <React.Fragment>
-                                    <CCol md={3} lg={3} className={"column-align"} style={{ marginLeft: "-20px" }}>
-                                      <CButton
+                                  {villageHide.area && selected2.length !== 0 ? (
+                                    <div
+                                      style={{
+                                        width: 300,
+                                        marginLeft: "446px",
+                                        marginTop: "-40px",
+                                        padding: 10,
+                                      }}
+                                    >
+                                      <i
+                                        className={"editIcon"}
                                         id={"locationLibraryAreaEdit"}
-                                        style={{ marginTop: "30px" }}
-                                        className={"btn btn-success"}
-                                        onClick={editArea}
-                                        disabled={
-                                          CountryCreate || StateCreate || CityCreate || StreetCreate
-                                        }
+                                        class="fas fa-edit"
+                                      />
+                                      <div
+                                        style={{
+                                          width: 300,
+                                          marginLeft: "26px",
+                                          marginTop: "-30px",
+                                          padding: 10,
+                                          color: "red",
+                                        }}
                                       >
-                                        EDIT
-                                      </CButton>
-                                    </CCol>
-                                  </React.Fragment>
-                                )}
-                                {saveHide && (
-                                  <React.Fragment>
-                                    <CCol className={"column-align"} md="2">
-                                      <CButton
-                                        style={{ marginTop: "30px" }}
-                                        className={"saveBtn"}
-                                        id={"locationLibraryAreaSave"}
-                                      >
-                                        SAVE
-                                      </CButton>
+                                        <i
+                                          className={"editIcon"}
 
-                                      <CButton
-                                        style={{ marginTop: "30px", marginLeft: "20px" }}
-                                        className={"cancelBtn"}
-                                        onClick={CancelEdit}
-                                        id={"locationLibraryAreaCancel"}
-                                      >
-                                        CANCEL
-                                      </CButton>
-                                      {error !== "" ? <p>{error}</p> : null}
-                                    </CCol>
-                                  </React.Fragment>
-                                )}
+                                          id={"locationLibraryAreadelete"}
+                                          class="fas fa-trash"
+                                        />
+                                      </div>
+                                    </div>
+                                  ) : null}
+                                </CCol>                            
                               </React.Fragment>
-                            )}
-                            {AreaCreate && (
-                              <React.Fragment>
-                                <CRow className={"column-align3"} sm={12} md={12} lg={12}>
-                                  <CCol md="2">
-                                    <CLabel className={"label-name-3"}>
-                                      Area Name
-                                      <span className={"text-danger"}> *</span>
-                                    </CLabel>
-                                    <CInput
-                                      onKeyPress={(e) =>
-                                        FormValidation.value_Without_Number_Symbols(e)
-                                      }
-                                      id={"locationLibraryAreaName"}
-                                      name={"AreaName"}
-                                      value={formik.values.AreaName}
-                                      onChange={formik.handleChange}
-                                      placeholder="Area Name"
-                                      maxlength="60"
-                                      size="60"
-                                    />
-
-                                  </CCol>
-
-                                  <CCol md="2">
-                                    <CLabel className={"label-name-3"}>
-                                      Abbreviation
-                                      <span className={"text-danger"}> *</span>
-                                    </CLabel>
-                                    <CInput
-                                      onKeyPress={(e) =>
-                                        FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                                          e
-                                        )
-                                      }
-                                      id={"locationLibraryAreaAbbreviation"}
-                                      name={"Abbreviation4"}
-                                      value={formik.values.Abbreviation4}
-                                      onChange={formik.handleChange}
-                                      placeholder="Enter Abbreviation"
-                                      maxlength="5"
-                                      size="5"
-                                    />
-
-                                  </CCol>
-                                  <CCol md="2">
-                                    <CLabel className={"label-name-3"}>
-                                      Code
-                                      <span className={"text-danger"}> *</span>
-                                    </CLabel>
-                                    <CInput
-                                      onKeyPress={(e) =>
-                                        FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                                          e
-                                        )
-                                      }
-                                      id={"locationLibraryAreaCode"}
-                                      name={"Code4"}
-                                      value={formik.values.Code4}
-                                      onChange={formik.handleChange}
-                                      style={{ textTransform: "uppercase" }}
-                                      placeholder="Enter Code"
-                                      maxlength="5"
-                                      size="5"
-                                    />
-
-                                  </CCol>
-                                  <CCol md="2">
-                                    <CLabel className={"label-name-1"}>
-                                      Pincode
-                                      <span className={"text-danger"}> *</span>
-                                    </CLabel>
-                                    <CInput
-                                      onKeyPress={(e) => FormValidation.value_Only_Number(e)}
-                                      name={"Pincode"}
-                                      type={"text"}
-                                      id={"locationLibraryAreaPincode"}
-                                      onChange={formik.handleChange}
-                                      value={formik.values.Pincode}
-                                      placeholder="Enter Pincode"
-                                      autoComplete="none"
-                                      maxlength="6"
-                                      size="6"
-                                    />
-                                  </CCol>
-                                  <CCol md="2">
-                                    <CButton
-                                      style={{ marginTop: "30px" }}
-                                      className={"saveBtn"}
-                                      onClick={Area}
-                                      id={"locationLibraryAreaSave"}
-                                    >
-                                      SAVE
-                                    </CButton>
-                                    <CButton
-                                      style={{ marginTop: "-50px", marginLeft: "80px" }}
-                                      className={"cancelBtn"}
-                                      onClick={CancelArea}
-                                      id={"locationLibraryAreaCancel"}
-                                    >
-                                      CANCEL
-                                    </CButton>
-                                    {error !== "" ? <p>{error}</p> : null}
-                                  </CCol>
-                                </CRow>
-                              </React.Fragment>
-                            )}
+                            )}                            
                             <CRow style={{ marginTop: "70px", marginLeft: "1300px", position: "absolute" }}>
                               <CCol sm="3" lg="3" style={{ marginLeft: "-30px" }}>
                                 <CWidgetDropdown
@@ -4165,7 +3450,6 @@ setSideBarup5(false)
                                     height: "100px",
                                     marginRight: "85px"
                                   }}
-
                                   header=""
                                   text=""
                                 >
@@ -4194,194 +3478,50 @@ setSideBarup5(false)
                                   </CLabel>
                                   <Select
                                     placeholder="Select the Street Name"
-                                    id={"locationLibraryStreet"}
-                                    // onChange={(e) => {
-                                    //   if (streetName.label) {
-                                    //     setStreetName({ ...e, edit: areaName.edit });
-                                    //   } else {
-                                    //     setStreetName({ ...e, edit: true });
-                                    //   }
-                                    // }}
-                                    // value={streetName.value ? streetName : null}
+                                    id={"locationLibraryStreet"}                                   
                                     onChange={changeStreet}
                                     components={{ MenuList: SelectMenuButtonstreet }}
-                                    options={selectStreet}
-                                  // isDisabled={
-                                  //   CountryCreate || StateCreate || CityCreate || AreaCreate
-                                  // }
+                                    options={selectStreet}                                  
                                   />
-                                    {villageHide.street &&  selected3.length !== 0 ? (
-                            <div
-                              style={{
-                                width: 300,
-                                marginLeft: "446px",
-                                marginTop: "-40px",
-                                padding: 10,
-                              }}
-                            
-                            >
-                              <i
-                                className={"editIcon"}
-                              
-                                id={"locationLibraryStreetedit"}
-                                class="fas fa-edit"
-                              />
-                              <div
-                                style={{
-                                  width: 300,
-                                  marginLeft: "26px",
-                                  marginTop: "-30px",
-                                  padding: 10,
-                                  color: "red",
-                                }}
-                              >
-                                <i
-                                  className={"editIcon"}
-                                 
-                                  id={"locationLibraryStreetdelete"}
-                                  class="fas fa-trash"
-                                />
-                              </div>
-                            </div>
-                          ) : null}
-                                </CCol>
+                                  {villageHide.street && selected3.length !== 0 ? (
+                                    <div
+                                      style={{
+                                        width: 300,
+                                        marginLeft: "446px",
+                                        marginTop: "-40px",
+                                        padding: 10,
+                                      }}
 
-                                {/* {streetName.edit && (
-                        <React.Fragment>
-                          <CCol className={"column-align"} md={1} lg={1}>
-                            <CButton
-                              id={"locationLibrarystreetAdd"}
-                              shape={"pill"}
-                              style={{ marginTop: "30px" }}
-                              className={"saveBtn"}
-                              onClick={addStreet}
-                              disabled={
-                                CountryCreate || StateCreate || CityCreate || AreaCreate
-                              }
-                            >
-                              ADD
-                            </CButton>
-                          </CCol>
-                        </React.Fragment>
-                      )} */}
-                                {streetName.edit && (
-                                  <React.Fragment>
-                                    <CCol md={3} lg={3} className={"column-align"} style={{ marginLeft: "-20px" }}>
-                                      <CButton
-                                        id={"locationLibraryStreetEdit"}
-                                        style={{ marginTop: "30px" }}
-                                        className={"btn btn-success"}
-                                        onClick={addStreet}
-                                        disabled={
-                                          CountryCreate || StateCreate || CityCreate || AreaCreate
-                                        }
+                                    >
+                                      <i
+                                        className={"editIcon"}
+
+                                        id={"locationLibraryStreetedit"}
+                                        class="fas fa-edit"
+                                      />
+                                      <div
+                                        style={{
+                                          width: 300,
+                                          marginLeft: "26px",
+                                          marginTop: "-30px",
+                                          padding: 10,
+                                          color: "red",
+                                        }}
                                       >
-                                        EDIT
-                                      </CButton>
-                                    </CCol>
-                                  </React.Fragment>
-                                )}
-                                {saveHide && (
-                                  <React.Fragment>
+                                        <i
+                                          className={"editIcon"}
 
-                                  </React.Fragment>
-                                )}
+                                          id={"locationLibraryStreetdelete"}
+                                          class="fas fa-trash"
+                                        />
+                                      </div>
+                                    </div>
+                                  ) : null}
+                                </CCol>                               
                               </React.Fragment>
-
-                            )}
-                            {StreetCreate && (
-                              <React.Fragment>
-                                <CRow className={"column-align3"} sm={12} md={12} lg={12}>
-                                  <CCol md="3">
-                                    <CLabel className={"label-name-3"}>
-                                      Street Name
-                                      <span className={"text-danger"}> *</span>
-                                    </CLabel>
-                                    <CInput
-                                      onKeyPress={(e) =>
-                                        FormValidation.value_Without_Number_Symbols(e)
-                                      }
-                                      id={"llocationLibraryStreetName"}
-                                      name={"StreetName"}
-                                      value={formik.values.streetName}
-                                      onChange={formik.handleChange}
-                                      placeholder="Area Name"
-                                      maxlength="60"
-                                      size="60"
-                                    />
-
-                                  </CCol>
-
-                                  <CCol md="3">
-                                    <CLabel className={"label-name-3"}>
-                                      Abbreviation
-                                      <span className={"text-danger"}> *</span>
-                                    </CLabel>
-                                    <CInput
-                                      onKeyPress={(e) =>
-                                        FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                                          e
-                                        )
-                                      }
-                                      id={"locationLibraryStreetAbbreviation"}
-                                      name={"Abbreviation4"}
-                                      value={formik.values.Abbreviation4}
-                                      onChange={formik.handleChange}
-                                      placeholder="Enter Abbreviation"
-                                      maxlength="5"
-                                      size="5"
-                                    />
-
-                                  </CCol>
-                                  <CCol md="3">
-                                    <CLabel className={"label-name-3"}>
-                                      Code
-                                      <span className={"text-danger"}> *</span>
-                                    </CLabel>
-                                    <CInput
-                                      onKeyPress={(e) =>
-                                        FormValidation.value_Without_Number_Without_Symbols_Without_Space(
-                                          e
-                                        )
-                                      }
-                                      id={"locationLibraryStreetCode"}
-                                      name={"Code4"}
-                                      value={formik.values.Code4}
-                                      onChange={formik.handleChange}
-                                      style={{ textTransform: "uppercase" }}
-                                      placeholder="Enter Code"
-                                      maxlength="5"
-                                      size="5"
-                                    />
-
-                                  </CCol>
-                                  <CCol md="2">
-                                    <CButton
-                                      style={{ marginTop: "30px" }}
-                                      className={"saveBtn"}
-                                      onClick={Area}
-                                      id={"locationLibraryStreetSave"}
-                                    >
-                                      SAVE
-                                    </CButton>
-                                    <CButton
-                                      style={{ marginTop: "-55px", marginLeft: "80px" }}
-                                      className={"cancelBtn"}
-                                      onClick={CancelArea}
-                                      id={"locationLibraryAreaCancel"}
-                                    >
-                                      CANCEL
-                                    </CButton>
-                                    {error !== "" ? <p>{error}</p> : null}
-                                  </CCol>
-                                </CRow>
-                              </React.Fragment>
-                            )}
-
-
+                            )}                            
                             <CRow style={{ marginTop: "100px", marginLeft: "1300px", position: "absolute" }}>
                               <CCol sm="3" lg="3" style={{ marginLeft: "-30px" }}>
-
                                 <CWidgetDropdown
                                   style={{
                                     width: "280px",
@@ -4391,7 +3531,6 @@ setSideBarup5(false)
                                     height: "100px",
                                     marginRight: "85px"
                                   }}
-
                                   header=""
                                   text=""
                                 >
@@ -4409,8 +3548,6 @@ setSideBarup5(false)
                               </CCol>
                             </CRow>
                           </CRow>
-
-
                           <CRow className={"row-alignment"}>
                             {DoorList && (
                               <React.Fragment>
@@ -4424,148 +3561,47 @@ setSideBarup5(false)
                                     id={"locationLibrarydoor"}
                                     onChange={changeDoor}
                                     components={{ MenuList: SelectMenuButtondoor }}
-                                    options={selectDoor}
-                                  // isDisabled={
-                                  //   CountryCreate || StateCreate || CityCreate
-                                  // }
+                                    options={selectDoor}                                
                                   />
-                                   {villageHide.door &&  selected4.length !== 0 ? (
-                            <div
-                              style={{
-                                width: 300,
-                                marginLeft: "446px",
-                                marginTop: "-40px",
-                                padding: 10,
-                              }}
-                            
-                            >
-                              <i
-                                className={"editIcon"}
-                              
-                                id={"locationLibrarydooredit"}
-                                class="fas fa-edit"
-                              />
-                              <div
-                                style={{
-                                  width: 300,
-                                  marginLeft: "26px",
-                                  marginTop: "-30px",
-                                  padding: 10,
-                                  color: "red",
-                                }}
-                              >
-                                <i
-                                  className={"editIcon"}
-                                 
-                                  id={"locationLibrarydoordelete"}
-                                  class="fas fa-trash"
-                                />
-                              </div>
-                            </div>
-                          ) : null}
-                                </CCol>
+                                  {villageHide.door && selected4.length !== 0 ? (
+                                    <div
+                                      style={{
+                                        width: 300,
+                                        marginLeft: "446px",
+                                        marginTop: "-40px",
+                                        padding: 10,
+                                      }}
+                                    >
+                                      <i
+                                        className={"editIcon"}
 
-                                {doorName.edit && (
-                                  <React.Fragment>
-                                    <CCol className={"column-align"} md={1} lg={1}>
-                                      <CButton
-                                        id={"locationLibrarydoorAdd"}
-                                        shape={"pill"}
-                                        style={{ marginTop: "30px", marginLeft: "22px" }}
-                                        className={"saveBtn"}
-                                        onClick={addDoor}
-                                        disabled={
-                                          CountryCreate || StateCreate || CityCreate
-                                        }
-                                      >
-                                        ADD
-                                      </CButton>
-                                    </CCol>
-                                  </React.Fragment>
-                                )}
-                                {doorName.edit && (
-                                  <React.Fragment>
-                                    <CCol md={3} lg={3} className={"column-align"} style={{ marginLeft: "10px" }}>
-                                      <CButton
+                                        id={"locationLibrarydooredit"}
+                                        class="fas fa-edit"
+                                      />
+                                      <div
                                         style={{
-                                          marginTop: "30px",
+                                          width: 300,
+                                          marginLeft: "26px",
+                                          marginTop: "-30px",
+                                          padding: 10,
+                                          color: "red",
                                         }}
-                                        id={"locationLibrarydoorEdit"}
-                                        className={"btn btn-success"}
-                                        onClick={editDoor}
-                                        disabled={
-                                          CountryCreate || CityCreate || AreaCreate
-                                        }
                                       >
-                                        EDIT
-                                      </CButton>
-                                    </CCol>
-                                  </React.Fragment>
-                                )}
-                                {saveHide && (
-                                  <React.Fragment>
+                                        <i
+                                          className={"editIcon"}
 
-                                  </React.Fragment>
-                                )}
+                                          id={"locationLibrarydoordelete"}
+                                          class="fas fa-trash"
+                                        />
+                                      </div>
+                                    </div>
+                                  ) : null}
+                                </CCol>                               
                               </React.Fragment>
-
-                            )}
-                            {DoorCreate && (
-                              <React.Fragment>
-                                <CRow className={"column-align3"} sm={12} md={12} lg={12}>
-                                  <CCol md="3">
-                                    <CLabel className={"label-name-3"}>
-                                      Door No.
-                                      <span className={"text-danger"}> *</span>
-                                    </CLabel>
-                                    <CInput
-                                      onKeyPress={(e) =>
-                                        FormValidation.value_Only_Number(e)
-                                      }
-                                      id={"locationLibrarydoorName"}
-                                      name={"StreetName"}
-                                      value={formik.values.streetName}
-                                      onChange={formik.handleChange}
-                                      placeholder=" Door No."
-                                      maxlength="10"
-                                      size="10"
-                                      style={{ width: "300px" }}
-                                    />
-
-                                  </CCol>
-
-                                  <CCol md="2">
-                                    <CButton
-                                      shape={"pill"}
-                                      id={"locationLibrarydoorSave"}
-                                      style={{ marginTop: "32px", marginLeft: "155px", marginBottom: "-2px" }}
-                                      className={"saveBtn"}
-                                      onClick={State}
-                                    >
-                                      {passing !== "" ? "UPDATE" : "SAVE"}
-                                    </CButton>
-                                    <CButton
-                                      style={{ marginTop: "-55px", marginLeft: "250px" }}
-                                      className={"cancelBtn"}
-                                      onClick={Canceldoor}
-                                      id={"locationLibrarydoorCancel"}
-                                    >
-                                      CANCEL
-                                    </CButton>
-                                    {error !== "" ? <p>{error}</p> : null}
-                                  </CCol>
-                                </CRow>
-                              </React.Fragment>
-
-
-                            )}
-
+                            )}                            
                           </CRow>
-
-
                         </CCol>
                       </CRow>
-
 
                       <CRow
                         style={{ padding: "1%", marginTop: "-1.5%", marginLeft: "27px" }}
@@ -4626,12 +3662,11 @@ setSideBarup5(false)
                                 <td className="py-1">
                                   <CRow>
                                     <CCol style={{ fontSize: "1.15rem" }} md="16">
-
                                       <Dropdown
                                         className={"ant-dropdown-cutomize-by-me"}
                                         overlay={() => menus(item)}
                                       >
-                                        <a
+                                        <a href
                                           className="ant-dropdown-link"
                                           onClick={(e) => e.preventDefault()}
                                         >
@@ -4664,8 +3699,6 @@ setSideBarup5(false)
         </div>
       </div>
     </div>
-
   );
 }
-
 export default LocationLibrary;

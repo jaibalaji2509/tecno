@@ -13,7 +13,7 @@ import CDataTable from "src/views/CoreComponents/table/DataTable";
 import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
 
 const Terminate = () => {
-  const [files, setFiles] = useState("");
+  const [files, ] = useState("");
   const [show, setShow] = useState(false);
   const [filterVal, setFilterVal] = useState("");
   return (

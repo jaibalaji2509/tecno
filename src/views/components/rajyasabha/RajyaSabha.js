@@ -5,7 +5,6 @@ import {
   CInput,
   CLabel,
   CRow,
-  CSelect,
   CTextarea,
 } from "@coreui/react";
 import React, { useState } from "react";
@@ -18,17 +17,17 @@ import "./RajyaSabha.css";
 import { Dropdown, Menu } from "antd";
 import 'antd/dist/antd.css';
 const RajyaSabha = () => {
-  const [location, setLocation] = useState({
-    state: "",
-    district: "",
-    city: "",
-    ward: "",
-    area: "",
-    street: "",
-    pincode: "",
-  });
-  const [mobilenumber, setMobileNumber] = useState("");
-  const [otpHide, setOtpHide] = useState(false);
+  // const [location, setLocation] = useState({
+  //   state: "",
+  //   district: "",
+  //   city: "",
+  //   ward: "",
+  //   area: "",
+  //   street: "",
+  //   pincode: "",
+  // });
+  // const [mobilenumber, setMobileNumber] = useState("");
+  // const [, setOtpHide] = useState(false);
   const [locations, setLocations] = useState({
     state: "",
     district: "",
@@ -38,19 +37,17 @@ const RajyaSabha = () => {
     street: "",
     pincode: "",
   });
-  const [files, setFiles] = useState("");
-  const [municipalList, setMunicipalList] = useState(true);
-  const [MunicipalCreate, setmunicipalCreate] = useState(false);
-  const [municipalListadd, setMunicipalListadd] = useState(true);
-  const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
-  const [municipalCorporation, setMunicipalCorporation] = useState({});
-  const [municipalName, setMuniicipalName] = useState("");
-  const [departmentList, setDepartmentList] = useState(true);
-  const [departmentCreate, setDepartmentCreate] = useState(false);
-  const [designationList, setDesignationList] = useState(true);
-  const [designationCreate, setDesignationCreate] = useState(false);
-  const [roleList, setRoleList] = useState(true);
-  const [roleCreate, setRoleCreate] = useState(false);
+  const [files, ] = useState("");
+  // const [, setMunicipalList] = useState(true);
+  // const [, setmunicipalCreate] = useState(false);
+  // const [, setMunicipalListadd] = useState(true);
+  // const [, setmunicipalCreateadd] = useState(false);
+  // const [, setDepartmentList] = useState(true);
+  // const [, setDepartmentCreate] = useState(false);
+  // const [, setDesignationList] = useState(true);
+  // const [, setDesignationCreate] = useState(false);
+  // const [, setRoleList] = useState(true);
+  // const [, setRoleCreate] = useState(false);
   const [locationHide, setLocationHide] = useState({
     corporation: true,
     municipalLocation: false,
@@ -60,8 +57,7 @@ const RajyaSabha = () => {
     cityLocation: false,
   });
   const [typeofOfficess, setTypeofOfficess] = useState("");
-  const [PI, setPI] = useState("");
-  const userData = [];
+  // const [, setPI] = useState("");
 
   const fields = [
     {
@@ -71,9 +67,6 @@ const RajyaSabha = () => {
       sorter: false,
       filter: false,
     },
-    // { key: "State", label: "State", _style: { width: "10%" } },
-    // { key: "District", label: "District", _style: { width: "10%" } },
-    // { key: "Area", label: "Ward", _style: { width: "10%" } },
     { key: "Name", label: "Name of Party Mmeber", _style: { width: "20%" } },
     { key: "Type", label: "Gender", _style: { width: "10%" } },
     { key: "Department", label: "Age", _style: { width: "10%" } },
@@ -82,8 +75,6 @@ const RajyaSabha = () => {
     { key: "Status", label: "Status", _style: { width: "10%" } },
     { key: "EnteredBy", label: "Entered By", _style: { width: "10%" } },
     { key: "EnteredOn", label: " Entered on", _style: { width: "10%" } },
-    // { key: "male", label: "Male", _style: { width: "10%" } },
-    // { key: "female", label: "Female", _style: { width: "10%" } },
     {
       key: "show_details",
       label: "Action",
@@ -130,36 +121,8 @@ const RajyaSabha = () => {
       EnteredOn: "24/05/2028",
     },
   ];
-  const fieldsuse = [
-    {
-      key: "SNo",
-      label: "S.NO",
-      _style: { width: "3%" },
-      sorter: false,
-      filter: false,
-    },
-    { key: "Type", label: "Type of Office", _style: { width: "10%" } },
-    { key: "Name", label: "Name of Office", _style: { width: "10%" } },
-    { key: "Department", label: "Department", _style: { width: "10%" } },
-    { key: "Designation", label: "Designation", _style: { width: "10%" } },
-    { key: "Role", label: "Role", _style: { width: "10%" } },
-
-    { key: "Member", label: "Name of the Member", _style: { width: "10%" } },
-
-    { key: "EnteredBy", label: "Assigned By", _style: { width: "10%" } },
-    { key: "EnteredOn", label: "Assigned On", _style: { width: "10%" } },
-    // { key: "male", label: "Male", _style: { width: "10%" } },
-    // { key: "female", label: "Female", _style: { width: "10%" } },
-    {
-      key: "show_details",
-      label: "Action",
-      _style: { width: "10%" },
-      sorter: false,
-      filter: false,
-    },
-  ];
-  const [passing, setPassing] = useState("");
-  const [error, setError] = useState("");
+  const [passing, ] = useState("");
+  // const [, setError] = useState("");
   const saveCorporation = async () => {
     setLocationHide({
       ...locationHide,
@@ -200,147 +163,147 @@ const RajyaSabha = () => {
       label: "Sathish Kumar TamilNadu Chennai TNagar - 600017",
     },
   ];
-  const selectDepartment = [
-    { value: "Physician", label: "Physician" },
-    { value: "Weaver", label: "Weaver" },
-  ];
-  const selectDesignation = [
-    { value: "Team Leader", label: "Team Leader" },
-    { value: "Vice President", label: "Vice President" },
-  ];
-  const selectTypeofParty = [
-    { value: "Youth Wings Association", label: "Youth Wings Association" },
-    { value: "Lawyers Wings Association", label: "Lawyers Wings Association" },
-  ];
-  const selectLocation = [
-    {
-      value: "Chennai Youth Wings Office ",
-      label: "Chennai Youth Wings Office ",
-    },
-    {
-      value: "Chennai Lawyers Wings Office ",
-      label: "Chennai Lawyers Wings Office",
-    },
-  ];
-  const selectRole = [
-    { value: "General", label: "General" },
-    { value: "General", label: "General" },
-  ];
-  const selectAdministartive = [
-    {
-      value: "Head Quaters Chennai Physician Under Secretary General ",
-      label: "Head Quaters Chennai Physician Under Secretary General",
-    },
-  ];
-  const selectFunctional = [
-    {
-      value: "Head Quaters Chennai Physician  Secretary General ",
-      label: "Head Quaters Chennai Physician  Secretary General",
-    },
-  ];
-  const saveMunicipalLocation = () => {
-    setLocationHide({
-      ...locationHide,
-      municipalLocation: false,
-      districtPanchayat: true,
-    });
-  };
-  const saveDistrictPanchayat = () => {
-    console.log(locationHide, "hidr");
-    setLocationHide({
-      ...locationHide,
-      districtPanchayat: false,
-      townPanchayat: true,
-    });
-  };
-  const savetownPanchayat = () => {
-    console.log(locationHide, "hidr");
-    setLocationHide({
-      ...locationHide,
-      villagePanchayat: true,
-      townPanchayat: false,
-    });
-  };
-  const saveVillagePanchayat = () => {
-    console.log(locationHide, "hidr");
-    setLocationHide({
-      ...locationHide,
-      villagePanchayat: false,
-      cityLocation: true,
-    });
-  };
-  const cityLocation = () => {
-    setLocationHide({
-      ...locationHide,
-      cityLocation: true,
-      townPanchayat: false,
-    });
-  };
-  const cancelcityLocation = () => {
-    setLocationHide({
-      ...locationHide,
-      cityLocation: false,
-      corporation: true,
-    });
-  };
+  // const selectDepartment = [
+  //   { value: "Physician", label: "Physician" },
+  //   { value: "Weaver", label: "Weaver" },
+  // ];
+  // const selectDesignation = [
+  //   { value: "Team Leader", label: "Team Leader" },
+  //   { value: "Vice President", label: "Vice President" },
+  // ];
+  // const selectTypeofParty = [
+  //   { value: "Youth Wings Association", label: "Youth Wings Association" },
+  //   { value: "Lawyers Wings Association", label: "Lawyers Wings Association" },
+  // ];
+  // const selectLocation = [
+  //   {
+  //     value: "Chennai Youth Wings Office ",
+  //     label: "Chennai Youth Wings Office ",
+  //   },
+  //   {
+  //     value: "Chennai Lawyers Wings Office ",
+  //     label: "Chennai Lawyers Wings Office",
+  //   },
+  // ];
+  // const selectRole = [
+  //   { value: "General", label: "General" },
+  //   { value: "General", label: "General" },
+  // ];
+  // const selectAdministartive = [
+  //   {
+  //     value: "Head Quaters Chennai Physician Under Secretary General ",
+  //     label: "Head Quaters Chennai Physician Under Secretary General",
+  //   },
+  // ];
+  // const selectFunctional = [
+  //   {
+  //     value: "Head Quaters Chennai Physician  Secretary General ",
+  //     label: "Head Quaters Chennai Physician  Secretary General",
+  //   },
+  // ];
+  // const saveMunicipalLocation = () => {
+  //   setLocationHide({
+  //     ...locationHide,
+  //     municipalLocation: false,
+  //     districtPanchayat: true,
+  //   });
+  // };
+  // const saveDistrictPanchayat = () => {
+  //   console.log(locationHide, "hidr");
+  //   setLocationHide({
+  //     ...locationHide,
+  //     districtPanchayat: false,
+  //     townPanchayat: true,
+  //   });
+  // };
+  // const savetownPanchayat = () => {
+  //   console.log(locationHide, "hidr");
+  //   setLocationHide({
+  //     ...locationHide,
+  //     villagePanchayat: true,
+  //     townPanchayat: false,
+  //   });
+  // };
+  // const saveVillagePanchayat = () => {
+  //   console.log(locationHide, "hidr");
+  //   setLocationHide({
+  //     ...locationHide,
+  //     villagePanchayat: false,
+  //     cityLocation: true,
+  //   });
+  // };
+  // const cityLocation = () => {
+  //   setLocationHide({
+  //     ...locationHide,
+  //     cityLocation: true,
+  //     townPanchayat: false,
+  //   });
+  // };
+  // const cancelcityLocation = () => {
+  //   setLocationHide({
+  //     ...locationHide,
+  //     cityLocation: false,
+  //     corporation: true,
+  //   });
+  // };
   const changeHandler = (e) => {
     setLocations({ ...locations, [e.target.name]: e.target.value });
   };
-  const otpChangeHandle = (e) => {
-    setMobileNumber(e.target.value);
-    if (mobilenumber.length > 8) {
-      setOtpHide(true);
-    } else {
-      setError("enter valid data");
-    }
-  };
-  const addDepartment = async () => {
-    await setDepartmentList(false);
-    await setDepartmentCreate(true);
-  };
-  const addDesignation = async () => {
-    await setDesignationList(false);
-    await setDesignationCreate(true);
-  };
-  const addRole = async () => {
-    await setRoleList(false);
-    await setRoleCreate(true);
-  };
-  const editState = async () => {
-    await setMunicipalList(false);
-    await setmunicipalCreate(true);
-    // formik.values.StateName = stateName.stateName;
-    // formik.values.Abbreviation2 = stateName.abbreviation;
-    // formik.values.Code2 = stateName.code;
-    // setPassing(stateName._id);
-    // getState();
-    // getAllAreas();
-  };
-  const CancelState = async () => {
-    setPassing("");
-    await setMunicipalList(true);
-    await setmunicipalCreate(false);
-  };
-  const enableCreateadd = async () => {
-    await setMunicipalListadd(false);
-    await setmunicipalCreateadd(true);
-  };
-  const selectName = [{ value: "Sathishkumar", label: "SathishKumar" }];
-  const editStateadd = async () => {
-    await setMunicipalListadd(false);
-    await setmunicipalCreateadd(true);
-    // formik.values.StateName = stateName.stateName;
-    // formik.values.Abbreviation2 = stateName.abbreviation;
-    // formik.values.Code2 = stateName.code;
-    // setPassing(stateName._id);
-    // getState();
-    // getAllAreas();
-  };
-  const CancelStateadd = async () => {
-    setPassing("");
-    await setMunicipalListadd(true);
-    await setmunicipalCreateadd(false);
-  };
+  // const otpChangeHandle = (e) => {
+  //   setMobileNumber(e.target.value);
+  //   if (mobilenumber.length > 8) {
+  //     setOtpHide(true);
+  //   } else {
+  //     setError("enter valid data");
+  //   }
+  // };
+  // const addDepartment = async () => {
+  //   await setDepartmentList(false);
+  //   await setDepartmentCreate(true);
+  // };
+  // const addDesignation = async () => {
+  //   await setDesignationList(false);
+  //   await setDesignationCreate(true);
+  // };
+  // const addRole = async () => {
+  //   await setRoleList(false);
+  //   await setRoleCreate(true);
+  // };
+  // const editState = async () => {
+  //   await setMunicipalList(false);
+  //   await setmunicipalCreate(true);
+  //   // formik.values.StateName = stateName.stateName;
+  //   // formik.values.Abbreviation2 = stateName.abbreviation;
+  //   // formik.values.Code2 = stateName.code;
+  //   // setPassing(stateName._id);
+  //   // getState();
+  //   // getAllAreas();
+  // };
+  // const CancelState = async () => {
+  //   setPassing("");
+  //   await setMunicipalList(true);
+  //   await setmunicipalCreate(false);
+  // };
+  // const enableCreateadd = async () => {
+  //   await setMunicipalListadd(false);
+  //   await setmunicipalCreateadd(true);
+  // };
+  // const selectName = [{ value: "Sathishkumar", label: "SathishKumar" }];
+  // const editStateadd = async () => {
+  //   await setMunicipalListadd(false);
+  //   await setmunicipalCreateadd(true);
+  //   // formik.values.StateName = stateName.stateName;
+  //   // formik.values.Abbreviation2 = stateName.abbreviation;
+  //   // formik.values.Code2 = stateName.code;
+  //   // setPassing(stateName._id);
+  //   // getState();
+  //   // getAllAreas();
+  // };
+  // const CancelStateadd = async () => {
+  //   setPassing("");
+  //   await setMunicipalListadd(true);
+  //   await setmunicipalCreateadd(false);
+  // };
 
   const [hideMappingMunicipal, setHideMappingmunicipal] = useState(true);
   const [hideCorporation, setHideCorporation] = useState(false);
@@ -352,19 +315,19 @@ const RajyaSabha = () => {
     setHideMappingmunicipal(true);
     setHideCorporation(false);
   };
-  const handleSave = async (file, folder) => {
-    if (file === undefined) {
-      let e = "cancelled";
-      return console.log(e);
-    }
-    if (file.size > 1048576) {
-      return toast.warning("Please choose below 1 MB file");
-    } else {
-      const imgUri = URL.createObjectURL(file);
-      setPI(file);
-      setFiles(imgUri);
-    }
-  };
+  // const handleSave = async (file, folder) => {
+  //   if (file === undefined) {
+  //     let e = "cancelled";
+  //     return console.log(e);
+  //   }
+  //   if (file.size > 1048576) {
+  //     return toast.warning("Please choose below 1 MB file");
+  //   } else {
+  //     const imgUri = URL.createObjectURL(file);
+  //     setPI(file);
+  //     setFiles(imgUri);
+  //   }
+  // };
 
   //     const handleClick = () => {
   //      setSideBar1(false)
@@ -373,6 +336,7 @@ const RajyaSabha = () => {
   const handleClick = () => {
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           style3: "menu2",
@@ -397,6 +361,7 @@ const RajyaSabha = () => {
   const handleClick2 = () => {
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           style3: "menu2",
@@ -418,16 +383,16 @@ const RajyaSabha = () => {
         break;
     }
   };
-  const handleClick1 = () => {
-    setSideBar2(false);
-  };
+  // const handleClick1 = () => {
+  //   setSideBar2(false);
+  // };
   const [menu, setMenu] = useState({
     style: "menu",
     style1: "menu1",
     menuStatus: "open",
     style3: "menu1",
   });
-  const [selected, setSelected] = useState({});
+  const [, setSelected] = useState({});
   const [gridShow, setGridShow] = useState({
     view1: false,
     view2: false,
@@ -438,22 +403,22 @@ const RajyaSabha = () => {
     return(
       <Menu>
       <Menu.Item>
-        <a>Edit</a>
+        <a href>Edit</a>
       </Menu.Item>
       <Menu.Item>
-        <a>Delete</a>
+        <a href>Delete</a>
       </Menu.Item>
       <Menu.Item>
-        <a>Remove</a>
+        <a href>Remove</a>
       </Menu.Item>
       <Menu.Item>
-      <a
+      <a href
         onClick={() => {
           setSelected(details);
           handleClick2();
         }}>Update</a>
       </Menu.Item> <Menu.Item>
-        <a
+        <a href
         onClick={() => {
           setSelected(details);
           handleClick();
@@ -779,7 +744,6 @@ const RajyaSabha = () => {
             </CRow>
           )}
           <CButton
-            className={"menu"}
             style={{ position: "absolute", top: "15px", right: "15px" }}
             className={"cancelBtn"}
             onClick={() => {
@@ -941,7 +905,6 @@ const RajyaSabha = () => {
             </CCol>
           </CRow>
           <CButton
-            className={"menu"}
             style={{ position: "absolute", top: "15px", right: "15px" }}
             className={"cancelBtn"}
             onClick={handleClick2}
@@ -1038,7 +1001,7 @@ const RajyaSabha = () => {
                                   className={"ant-dropdown-cutomize-by-me"}
                                   overlay={() => menus(item)}
                                 >
-                                  <a
+                                  <a href
                                     className="ant-dropdown-link"
                                     onClick={(e) => e.preventDefault()}
                                   >

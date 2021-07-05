@@ -7,7 +7,6 @@ import {
   CLabel,
   CButton,
   CInput,
-  CWidgetDropdown
 } from "@coreui/react";
 import { } from "../../../services/ApiService";
 import Select from "react-select";
@@ -171,6 +170,7 @@ function PartyWingsOfficeLocation() {
   const addTypeofPartyOffice = () => {
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           style3: "menu2",
@@ -201,7 +201,7 @@ function PartyWingsOfficeLocation() {
     setHidePartyOffice(false);
     setBackButt(true)
   };
-  const [locationHide, setLocationHide] = useState({
+  const [locationHide, ] = useState({
     corporation: true,
   });
 
@@ -209,24 +209,19 @@ function PartyWingsOfficeLocation() {
     return (
       <Menu>
         <Menu.Item>
-          <a>Edit</a>
+          <a href>Edit</a>
         </Menu.Item>
         <Menu.Item>
-          <a>Delete</a>
+          <a href>Delete</a>
         </Menu.Item>
       </Menu>
     )
   }
-  const people = [
-    { name: "Keanu Reeves", profession: "Actor" },
-    { name: "Lionel Messi", profession: "Football Player" },
-    { name: "Cristiano Ronaldo", profession: "Football Player" },
-    { name: "Jack Nicklaus", profession: "Golf Player" },
-  ]
+
   const exportPDF = () => {
     const unit = "pt";
-    const size = "A4"; // Use A1, A2, A3 or A4
-    const orientation = "portrait"; // portrait or landscape
+    const size = "A4";
+    const orientation = "portrait"; 
 
     const marginLeft = 40;
     const doc = new jsPDF(orientation, unit, size);
@@ -432,7 +427,7 @@ function PartyWingsOfficeLocation() {
                                   className={"ant-dropdown-cutomize-by-me"}
                                   overlay={() => menus(item)}
                                 >
-                                  <a
+                                  <a href
                                     className="ant-dropdown-link"
                                     onClick={(e) => e.preventDefault()}
                                   >
@@ -461,7 +456,6 @@ function PartyWingsOfficeLocation() {
             {backbutt && (
               <div>
                 <CButton
-                  className={"menu"}
                   style={{ position: "absolute", top: "15px", right: "15px" }}
                   className={"cancelBtn"}
                   onClick={addTypeofPartyOffice}
@@ -482,43 +476,16 @@ function PartyWingsOfficeLocation() {
               <div>
 
               </div>
-              <CRow style={{ marginTop: "130px" }}>
-                <CCol >
-                  <CCol
-                    md="5"
-                    style={{
-                      marginLeft: "5px",
-
-                      marginTop: "-10px",
-                      top: "33px",
-                    }}
-                  >
-                    <CButton
-                      style={{
-
-
-                        position: "absolute",
-                        marginLeft: "20px",
-                      }}
-                      id={"WingsOfficeadd"}
-                      className={"saveBtn"}
-                      onClick={changePartyOffice}
-                    >
-                      Add Party Wings Office Location
-                    </CButton>{" "}
-                  </CCol>
-                </CCol>
-              </CRow>
-
-              <CRow
-                style={{
-                  marginTop: "75px",
-                  marginLeft: "240px",
-                  position: "absolute",
-                }}
-              >
-                <CCol sm="3" lg="3" style={{ marginLeft: "-160px" }}>
-                  {/* <CWidgetDropdown
+              <div style={{marginTop:"-30px"}}>
+            <CRow
+              style={{
+                marginTop: "65px",
+                marginLeft: "240px",
+                position: "absolute",
+              }}
+            >
+              <CCol sm="3" lg="3" style={{ marginLeft: "-160px" }}>
+                {/* <CWidgetDropdown
                   style={{
                     width: "280px",
                     textAlign: "center",
@@ -531,41 +498,41 @@ function PartyWingsOfficeLocation() {
                   text=""
                 > */}
                   <span
-
+                  
                     style={{
-                      position: "absolute",
+                      position:"absolute",
                       marginLeft: "45px",
                       fontSize: "22px",
                       fontWeight: "700",
-                      color: "#134e5e"
+                      color:"#134e5e"
                     }}
                   >
                     Total
                   </span>
                   <span
                     style={{
-                      display: "block",
+                      display:"block",
                       marginLeft: "-41px",
-                      marginTop: "-75px",
+                      marginTop:"-75px",
                       padding: "100px",
                       fontSize: "24px",
                       fontWeight: "500",
-                      color: "lightgrey"
+                      color:"grey"
                     }}
                   >
-                    2
-
+                  2
+          
                   </span>
-                  <span className="divider" />
+                <span class="divider"/>
                   <br />
-                  <br>
-
-                  </br>
+                <br>
+                
+                </br>
                   <br />
-                  {/* </CWidgetDropdown> */}
-                </CCol>
-                <CCol sm="3" lg="3" style={{ marginLeft: "290px", display: "flex" }}>
-                  {/* <CWidgetDropdown
+                {/* </CWidgetDropdown> */}
+              </CCol>
+              <CCol sm="3" lg="3" style={{ marginLeft: "290px" ,display:"flex"}}>
+                {/* <CWidgetDropdown
                   style={{
                     width: "280px",
                     textAlign: "center",
@@ -577,14 +544,14 @@ function PartyWingsOfficeLocation() {
                   header=""
                   text=""
                 > */}
-
-
+                         
+             
                   <span
                     style={{
                       marginLeft: "-294px",
                       fontSize: "22px",
                       fontWeight: "700",
-                      color: "#4cb8c4 "
+                      color:"#4cb8c4 "
                     }}
                   >
                     District Party Office
@@ -595,19 +562,19 @@ function PartyWingsOfficeLocation() {
                       marginTop: "28px",
                       fontSize: "24px",
                       fontWeight: "500",
-                      color: "lightgrey"
+                      color:"grey"
                     }}
                   >
                     2
                   </span>
-                  <span className={"divider1"} />
+                  <span className={"divider1"}/>
                   <br />
-
+                  
                   <br />
-                  {/* </CWidgetDropdown> */}
-                </CCol>
-                <CCol sm="3" lg="3" style={{ marginLeft: "450px", position: "relative", display: "flex" }}>
-                  {/* <CWidgetDropdown
+                {/* </CWidgetDropdown> */}
+              </CCol>
+              <CCol sm="3" lg="3"  style={{ marginLeft: "440px" ,position:"relative",display:"flex"}}>
+                {/* <CWidgetDropdown
                   style={{
                     width: "280px",
                     textAlign: "center",
@@ -621,11 +588,11 @@ function PartyWingsOfficeLocation() {
                 > */}
                   <span
                     style={{
-                      marginTop: "-228px",
-                      left: "-21px",
-                      fontSize: "22px",
+                      marginTop:"-228px",
+                     left: "-21px",
+                     fontSize: "22px",
                       fontWeight: "700",
-                      color: "#ec6f66"
+                      color:"#ec6f66"
                     }}
                   >
                     Circle Party Office
@@ -637,74 +604,104 @@ function PartyWingsOfficeLocation() {
                       marginTop: "-201px",
                       fontSize: "24px",
                       fontWeight: "500",
-                      color: "lightgrey"
+                      color:"grey"
                     }}
                   >
                     1
                   </span>
-                  {/* <span className={"divider2"} /> */}
+                  <span className={"divider2"}/>
                   <br />
                   <br />
-                  {/* </CWidgetDropdown> */}
-                </CCol>
-              </CRow>
-              <CRow style={{ marginLeft: "250px", marginBottom: "-20px" }}>
-                <CCol
-                  style={{ fontSize: "1.55rem", top: "112px" }}
-                  md={12}
-                  sm={12}
-                  lg={12}
-                >
-                  <img
-                    id={"WingsOfficehierarchy"}
-                    alt={""}
-                    src={
-                      "https://img.icons8.com/fluent/2x/organization-chart-people.png"
-                    }
-                    style={{
-                      height: "40px",
-                      width: "40px",
+                {/* </CWidgetDropdown> */}
+              </CCol>
+            </CRow>
+            </div>
+            <CRow style={{ marginLeft: "150px" }}>
+              <CCol
+                style={{ fontSize: "1.55rem", top: "255px" }}
+                md={12}
+                sm={12}
+                lg={12}
+              >
+                <img
+                  id={"typeoofpartyhierarchy"}
+                  alt={""}
+                  src={
+                    "https://img.icons8.com/fluent/2x/organization-chart-people.png"
+                  }
+                  style={{
+                    height: "40px",
+                    width: "40px",
 
-                      marginLeft: "650px",
-                      marginBottom: "55px",
-                    }}
-                  />
-                </CCol>
-                <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
-                <p data-tip="print">
-                  <i
-                    id={"WingsOfficeprint"}
+                    marginLeft: "800px",
+                    marginBottom: "20px",
+                  }}
+                />
+              </CCol>
+              <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
+              <p data-tip="print">
+                <i
+                  id={"typeoofpartylocationprint"}
+                  style={{
+                    position: "absolute",
+                    top: "205px",
+                    marginLeft: "625px",
+                    marginBottom: "20px",
+                    color: "black",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => exportPDF()}
+                  className="fa fa-print"
+                ></i>
+                </p>
+                <ReactTooltip/>
+              </CCol>
+              <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
+              <p data-tip="share">
+                <i
+                  id={"typeoofpartylocationshare"}
+                  style={{
+                    position: "absolute",
+                    top: "180px",
+                    marginLeft: "710px",
+                    marginBottom: "910px",
+                    color: "black",
+                  }}
+                  className="fa fa-share-alt"
+                ></i>
+                </p>
+                <ReactTooltip/>
+              </CCol>
+            </CRow>
+            <CRow style={{marginTop:"-10px"}}>
+              <CCol md="10" lg="10" sm="10">
+                <CCol
+                  md="5"
+                  style={{
+                    marginLeft: "5px",
+                    float: "right",
+                   Top: "100px",
+                    top: "73px",
+                    position: "absolute",
+                  }}
+                >
+                  <CButton
                     style={{
+                      float: "right",
+                      marginRight: "762px",
                       position: "absolute",
-                      top: "25px",
-                      marginLeft: "450px",
-                      marginBottom: "20px",
-                      color: "black",
+                      marginLeft: "18px",
                     }}
-                    onClick={() => exportPDF()}
-                    className="fa fa-print"
-                  ></i>
-                  </p>
-                  <ReactTooltip/>
+                    id={"addtypeoofpartylocation"}
+                    className={"saveBtn"}
+                    onClick={changePartyOffice}
+                  >
+                    Add Party Wings Office Location
+                  </CButton>{" "}
                 </CCol>
-                <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
-                <p data-tip="share">
-                  <i
-                    id={"WingsOfficeshare"}
-                    style={{
-                      position: "absolute",
-                      top: "0px",
-                      marginLeft: "550px",
-                      marginBottom: "910px",
-                      color: "black",
-                    }}
-                    className="fa fa-share-alt"
-                  ></i>
-                  </p>
-               <ReactTooltip/>
-                </CCol>
-              </CRow>
-              <CRow style={{ padding: "4%", marginTop: "-7.5%" }}>
+              </CCol>
+            </CRow>
+              <CRow style={{ padding: "4%", marginTop: "5.5%" }}>
                 <CDataTable
                   items={userData}
                   fields={fields}
@@ -727,7 +724,7 @@ function PartyWingsOfficeLocation() {
                                 className={"ant-dropdown-cutomize-by-me"}
                                 overlay={() => menus(item)}
                               >
-                                <a
+                                <a href
                                   className="ant-dropdown-link"
                                   onClick={(e) => e.preventDefault()}
                                 >

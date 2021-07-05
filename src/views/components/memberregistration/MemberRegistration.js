@@ -9,7 +9,6 @@ import {
   CInput,
   CInputRadio,
   CFormGroup,
-  CSelect,
 } from "@coreui/react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import "./MemberRegistration.css"
@@ -81,6 +80,7 @@ function MemberRegistration() {
   const handleClickhis = () => {
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           style3: "menu2",
@@ -102,11 +102,12 @@ function MemberRegistration() {
         break;
     }
   };
-  const [sideBar2, setSideBar2] = useState(false);
+  const [, setSideBar2] = useState(false);
 
   const handleClickback = () => {
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           style3: "menu2",
@@ -172,26 +173,26 @@ function MemberRegistration() {
     setHide(false);
     setMemberHide(true)
   }
-  const [gridShow, setGridShow] = useState({
-    view1: false,
-    view2: false,
-    view3: false,
-    view4: false
-  });
+  // const [gridShow, setGridShow] = useState({
+  //   view1: false,
+  //   view2: false,
+  //   view3: false,
+  //   view4: false
+  // });
   const menus = (details) => {
     return (
       <Menu>
         <Menu.Item>
-          <a>Edit</a>
+          <a href>Edit</a>
         </Menu.Item>
         <Menu.Item>
-          <a>Delete</a>
+          <a href>Delete</a>
         </Menu.Item>
         <Menu.Item>
-          <a>View</a>
+          <a href>View</a>
         </Menu.Item>
         <Menu.Item>
-          <a
+          <a href
             onClick={() => {
               setSelected(details);
               handleClickhis();
@@ -301,7 +302,6 @@ function MemberRegistration() {
 
 
           <CButton
-            className={"menu"}
             style={{ position: "absolute", top: "15px", right: "15px" }}
             className={"cancelBtn"}
             onClick={() => {
@@ -478,7 +478,7 @@ function MemberRegistration() {
                               className={"ant-dropdown-cutomize-by-me"}
                               overlay={() => menus(item)}
                             >
-                              <a
+                              <a href
                                 className="ant-dropdown-link"
                                 onClick={(e) => e.preventDefault()}
                               >
@@ -785,7 +785,6 @@ function MemberRegistration() {
                               id={"addEmployeeProfileImage"}
                               name="file"
                               type="file"
-                              id="profileImage"
                               accept="image/*"
                               style={{ display: "none" }}
                               onChange={(e) => {
@@ -848,7 +847,7 @@ function MemberRegistration() {
                                     className={"ant-dropdown-cutomize-by-me"}
                                     overlay={() => menus(item)}
                                   >
-                                    <a
+                                    <a href
                                       className="ant-dropdown-link"
                                       onClick={(e) => e.preventDefault()}
                                     >

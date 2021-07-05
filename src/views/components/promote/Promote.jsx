@@ -13,7 +13,7 @@ import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
 import Select from "react-select";
 
 const Promote = () => {
-  const [files, setFiles] = useState("");
+  const [files, ] = useState("");
   const [show, setShow] = useState(false);
   const [filterVal, setFilterVal] = useState("");
   const userData = [

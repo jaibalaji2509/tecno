@@ -7,10 +7,8 @@ import Select, { components } from "react-select";
 import { Dropdown, Menu } from "antd";
 import 'antd/dist/antd.css';
 import "./MunicipalCorporation.css";
-import { CSVLink, CSVDownload } from 'react-csv';
-import ReactFileReader from 'react-file-reader';
+import { CSVLink } from 'react-csv';
 import * as XLSX from "xlsx";
-import MultiSelect from "react-multi-select-component";
 import SheetJSFT from "../../../Tools/excelupload/SheetJSFT"
 import { make_cols } from "../../../Tools/excelupload/MakeColumn"
 
@@ -26,7 +24,7 @@ const MunicipalCorporation = () => {
     pincode: "",
   });
 
-  const [locations, setLocations] = useState({
+  const [locations, ] = useState({
     state: "",
     district: "",
     city: "",
@@ -42,9 +40,8 @@ const MunicipalCorporation = () => {
   const [selected1, setSelected1] = useState([]);
   const [collected, setCollected] = useState([]);
   const [villageHide, setVillageHide] = useState({ districtpanchayat: true, panchayatunion: false })
-  const [municipalCorporation] = useState({});
   const [municipalName] = useState("");
-  const [selected, setSelection] = useState([]);
+  const [selected, ] = useState([]);
   const [locationHide, setLocationHide] = useState({
     corporation: true,
     municipalLocation: false,
@@ -54,20 +51,7 @@ const MunicipalCorporation = () => {
     cityLocation: false,
   });
   const userData = [
-    // {
-    //   SNo: "1",
-    //   ward: "0017",
-    //   street: "TNagar",
-    //   EnteredBy: "Sathishkumar",
-    //   Enteredon: "11/06/2021",
-    // },
-    // {
-    //   SNo: "2",
-    //   ward: "0017",
-    //   street: "Pondy Bazar",
-    //   EnteredBy: "Sathishkumar",
-    //   Enteredon: "11/06/2021",
-    // },
+   
     {
       SNo: "1",
       ward: "0005",
@@ -103,10 +87,29 @@ const MunicipalCorporation = () => {
       EnteredBy: "Sathishkumar",
       Enteredon: "11/06/2021",
     },
+    {
+      SNo: "6",
+      ward: "0017",
+      street: "TNagar",
+      EnteredBy: "Sathishkumar",
+      Enteredon: "11/06/2021",
+    },
+    {
+      SNo: "7",
+      ward: "0017",
+      street: "Pondy Bazar",
+      EnteredBy: "Sathishkumar",
+      Enteredon: "11/06/2021",
+    },
   ];
   const [checked, setChecked] = useState(false);
   const handleChange = (event) => {
     setChecked(event.target.checked);
+  };
+  const handleChangeex = (e) => {
+    const files = e.target.files;
+    if (files && files[0]) setExcelUpload({ file: files[0] });
+
   };
   const userData1 = [
     {
@@ -191,15 +194,7 @@ const MunicipalCorporation = () => {
     },
   ];
 
-  const fields = [
-    // {
-    //   key: "show_details1",
-    //   label: "Select",
-    //   _style: { width: "3%" },
-    //   sorter: false,
-    //   filter: false,
-    // },
-
+  const fields = [    
     {
       key: "SNo",
       label: "S.NO",
@@ -334,11 +329,7 @@ const MunicipalCorporation = () => {
     setPassing("");
     await setMunicipalList(true);
     await setmunicipalCreate(false);
-  };
-  const enableCreateadd = async () => {
-    await setMunicipalListadd(false);
-    await setmunicipalCreateadd(true);
-  };
+  }; 
   const [stateName, setStateName] = useState("");
   const editMunicipalCorporationadd = async () => {
     await setMunicipalListadd(false);
@@ -367,21 +358,11 @@ const MunicipalCorporation = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClickmunici}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
         </CLink>
-      ),
-      span: (
-        <CLink
-          className={"saveBtn"}
-          onClick={handleClickmunici}
-          style={{ marginLeft: "200px" }}
-        >
-          Add{" "}
-        </CLink>
-      ),
+      ),     
     },
     { value: "South Chennai", label: "South Chennai" },
   ];
@@ -394,26 +375,15 @@ const MunicipalCorporation = () => {
       span: (
         <CLink
           className={"saveBtn"}
-          onClick={handleClickward}
           style={{ marginLeft: "200px" }}
         >
           Add{" "}
         </CLink>
-      ),
-      span: (
-        <CLink
-          className={"saveBtn"}
-          onClick={handleClickward}
-          style={{ marginLeft: "200px" }}
-        >
-          Add{" "}
-        </CLink>
-      ),
+      ),      
     },
     { value: "0017", label: "0017" },
     { value: "0018", label: "0018" },
   ];
-  const [state, setState] = useState([])
 
 
 
@@ -430,13 +400,12 @@ const MunicipalCorporation = () => {
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
           style: "menu active1",
-
         });
-
+        
         setTimeout(() => {
           setSideBar1(true);
         }, 1000);
@@ -461,6 +430,7 @@ const MunicipalCorporation = () => {
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           // style3: "menu2",
@@ -488,7 +458,7 @@ const MunicipalCorporation = () => {
         break;
     }
   };
-  const [sideBarup, setSideBarup] = useState(false)
+  const [, setSideBarup] = useState(false)
   const [sideBarup1, setSideBarup1] = useState(false)
   const [sideBarup2, setSideBarup2] = useState(false)
 
@@ -496,6 +466,7 @@ const MunicipalCorporation = () => {
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           // style3: "menu2",
@@ -526,6 +497,7 @@ const MunicipalCorporation = () => {
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
           // style3: "menu2",
@@ -555,9 +527,9 @@ const MunicipalCorporation = () => {
 
     switch (menu.menuStatus) {
       case "open":
+        default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
 
           style1: "menu active1",
 
@@ -581,30 +553,17 @@ const MunicipalCorporation = () => {
     }
   };
 
-  const handleFiles = files => {
-    var reader = new FileReader();
-    reader.onload = function (e) {
-      // Use reader.result
-      setState(reader.result);
-      console.log(reader.result);
-    }
-    reader.readAsText(files[0]);
-  }
+  
   const handleFile = () => {
-    /* Boilerplate to set up FileReader */
     const reader = new FileReader();
     const rABS = !!reader.readAsBinaryString;
 
     reader.onload = (e) => {
-      /* Parse data */
       const bstr = e.target.result;
       const wb = XLSX.read(bstr, { type: rABS ? 'binary' : 'array', bookVBA: true });
-      /* Get first worksheet */
       const wsname = wb.SheetNames[0];
       const ws = wb.Sheets[wsname];
-      /* Convert array of arrays */
       const data = XLSX.utils.sheet_to_json(ws);
-      /* Update state */
       setExcelUpload({ data: data, cols: make_cols(ws['!ref']) });
       setIsValue(true)
       console.log(JSON.stringify(data, null, 2));
@@ -619,11 +578,11 @@ const MunicipalCorporation = () => {
   }
 
   const [isValue, setIsValue] = useState(false)
-  const [variable, setVariable] = useState([])
+  const [variable, ] = useState([])
 
   const menusremoveicon = (item) => {
     return (
-      variable.map((x, i) => {
+      variable.map((x, i) => (
         <tr key={i}>
           <td>{x.SNO}</td>
           <td>{x.MENU1}</td>
@@ -631,22 +590,24 @@ const MunicipalCorporation = () => {
           <td>{x.MENU2}</td>
           <td>{x.NUMBER2}</td>
         </tr>
-      })
+      ))      
     )
   }
   const csvData = [
-    ['firstname', 'lastname', 'email'],
-    ['John', 'Doe', 'john.doe@xyz.com'],
-    ['Jane', 'Doe', 'jane.doe@xyz.com']
+    ['SNo', 'municipal', ],
   ];
+  const csvDatasub = [    
+    ['SNo', 'ward', ]
+  ];
+
   const menus = (details) => {
     return (
       <Menu>
         <Menu.Item>
-          <a>Edit</a>
+          Edit
         </Menu.Item>
         <Menu.Item>
-          <a>Delete</a>
+          Delete
         </Menu.Item>
       </Menu>
     )
@@ -667,10 +628,13 @@ const MunicipalCorporation = () => {
   }
 
 
-  // handle click event of the Add button
   const handleAddClick = (e) => {
     e.preventDefault()
     setInputList([...inputList, { name: "", abbreviation: "", code: "" }]);
+  }
+  const changedistrictpanchayat = (e) => {
+    setCollected(e)
+    setVillageHide({ ...villageHide, districtpanchayat: true, panchayatunion: false })
   }
   const changePanchayatUnion = (e) => {
     setSelected1(e)
@@ -838,12 +802,10 @@ const MunicipalCorporation = () => {
 
 
           <CButton
-            className={"menu"}
             style={{ position: "absolute", top: "15px", right: "40px", backgroundColor: "green", border: "1px solid green" }}
             className={"cancelBtn"}
             onClick={() => {
               handleClickmunici();
-              // handleClick2();
             }}
           >
             Back
@@ -1015,7 +977,6 @@ const MunicipalCorporation = () => {
 
 
             <CButton
-              className={"menu"}
               style={{ position: "absolute", top: "15px", right: "40px", backgroundColor: "green", border: "1px solid green" }}
               className={"cancelBtn"}
               onClick={() => {
@@ -1073,7 +1034,7 @@ const MunicipalCorporation = () => {
                   id={"uploadRoleTemplate"}
                   style={{ display: "none" }}
                   type={"file"}
-                  onChange={handleChange}
+                  onChange={handleChangeex}
                   accept={SheetJSFT}
                 />
               </CCol>
@@ -1116,7 +1077,6 @@ const MunicipalCorporation = () => {
                 </CButton>
 
                 <CButton
-                        className={"menu"}
                         style={{ position: "absolute", top: "-105px", right: "-640px", marginLeft: "10px", backgroundColor: "green", border: "1px solid green" }}
                         className={"cancelBtn"}
                         onClick={() => {
@@ -1269,12 +1229,12 @@ const MunicipalCorporation = () => {
                   id={"uploadRoleTemplate"}
                   style={{ display: "none" }}
                   type={"file"}
-                  onChange={handleChange}
+                  onChange={handleChangeex}
                   accept={SheetJSFT}
                 />
               </CCol>
               <CCol md="6" style={{ marginLeft: "150px", marginTop: "-38px" }}>
-                <CSVLink data={csvData}>
+                <CSVLink data={csvDatasub}>
                   <span style={{ fontSize: "20px", cursor: "pointer", color: "red" }}>
                     <i className="fas fa-download">
                     </i>&nbsp;
@@ -1312,7 +1272,6 @@ const MunicipalCorporation = () => {
                 </CButton>
 
                 <CButton
-                        className={"menu"}
                         style={{ position: "absolute", top: "-165px", right: "-640px", marginLeft: "10px", backgroundColor: "green", border: "1px solid green" }}
                         className={"cancelBtn"}
                         onClick={() => {
@@ -1526,7 +1485,7 @@ const MunicipalCorporation = () => {
                                     className={"ant-dropdown-cutomize-by-me"}
                                     overlay={() => menus(item)}
                                   >
-                                    <a
+                                    <a href
                                       className="ant-dropdown-link"
                                       onClick={(e) => e.preventDefault()}
                                     >
@@ -1597,7 +1556,7 @@ const MunicipalCorporation = () => {
                               id={"municipalcorporation"}
                               type={"text"}
                               value={selected}
-                              onChange={(e) => setCollected(e)}
+                              onChange={changedistrictpanchayat}
                               components={{ MenuList: SelectMenuButtonMunicicorp }}
                               options={selectMunicipalcorporation}
                             />

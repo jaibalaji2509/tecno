@@ -2,32 +2,21 @@ import {
   CButton,
   CCard,
   CCol,
-  CInput,
   CLabel,
   CRow,
-  CSelect,
 } from "@coreui/react";
 import React, { useState } from "react";
-import Toaster from "src/views/notifications/toaster/Toaster";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
 import { toast } from "react-toastify";
 import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
-import Select, { components } from "react-select";
+import Select from "react-select";
 import { Dropdown, Menu } from "antd";
 import 'antd/dist/antd.css';
 const AssignPartyPosting = () => {
-  const [location, setLocation] = useState({
-    state: "",
-    district: "",
-    city: "",
-    ward: "",
-    area: "",
-    street: "",
-    pincode: "",
-  });
-  const [mobilenumber, setMobileNumber] = useState("");
-  const [otpHide, setOtpHide] = useState(false);
+ 
+  // const [mobilenumber, setMobileNumber] = useState("");
+  // const [, setOtpHide] = useState(false);
   const [locations, setLocations] = useState({
     state: "",
     district: "",
@@ -37,19 +26,19 @@ const AssignPartyPosting = () => {
     street: "",
     pincode: "",
   });
-  const [files, setFiles] = useState("");
-  const [municipalList, setMunicipalList] = useState(true);
-  const [MunicipalCreate, setmunicipalCreate] = useState(false);
-  const [municipalListadd, setMunicipalListadd] = useState(true);
-  const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
-  const [municipalCorporation, setMunicipalCorporation] = useState({});
-  const [municipalName, setMuniicipalName] = useState("");
-  const [departmentList, setDepartmentList] = useState(true);
-  const [departmentCreate, setDepartmentCreate] = useState(false);
-  const [designationList, setDesignationList] = useState(true);
-  const [designationCreate, setDesignationCreate] = useState(false);
-  const [roleList, setRoleList] = useState(true);
-  const [roleCreate, setRoleCreate] = useState(false);
+  const [files, ] = useState("");
+  // const [, setMunicipalList] = useState(true);
+  // const [, setmunicipalCreate] = useState(false);
+  // const [, setMunicipalListadd] = useState(true);
+  // const [, setmunicipalCreateadd] = useState(false);
+  // // const [municipalCorporation, setMunicipalCorporation] = useState({});
+  // // const [municipalName, setMuniicipalName] = useState("");
+  // const [, setDepartmentList] = useState(true);
+  // const [, setDepartmentCreate] = useState(false);
+  // const [, setDesignationList] = useState(true);
+  // const [, setDesignationCreate] = useState(false);
+  // const [, setRoleList] = useState(true);
+  // const [, setRoleCreate] = useState(false);
   const [locationHide, setLocationHide] = useState({
     corporation: true,
     municipalLocation: false,
@@ -59,7 +48,7 @@ const AssignPartyPosting = () => {
     cityLocation: false,
   });
   const [typeofOfficess, setTypeofOfficess] = useState("");
-  const [PI, setPI] = useState("");
+  // const [, setPI] = useState("");
   const userData = [
     {
         SNo: "1",
@@ -82,9 +71,7 @@ const AssignPartyPosting = () => {
       sorter: false,
       filter: false,
     },
-    // { key: "State", label: "State", _style: { width: "10%" } },
-    // { key: "District", label: "District", _style: { width: "10%" } },
-    // { key: "Area", label: "Ward", _style: { width: "10%" } },
+   
     { key: "Name", label: "Name of Party Office", _style: { width: "10%" } },
     { key: "Type", label: "Type of Office", _style: { width: "10%" } },
     { key: "Department", label: "Department", _style: { width: "10%" } },
@@ -93,8 +80,7 @@ const AssignPartyPosting = () => {
     { key: "Status", label: "Status", _style: { width: "10%" } },
     { key: "EnteredBy", label: " From Date", _style: { width: "10%" } },
     { key: "EnteredOn", label: " To Date", _style: { width: "10%" } },
-    // { key: "male", label: "Male", _style: { width: "10%" } },
-    // { key: "female", label: "Female", _style: { width: "10%" } },
+    
     {
       key: "show_details",
       label: "Action",
@@ -147,8 +133,7 @@ const AssignPartyPosting = () => {
 
     { key: "EnteredBy", label: "Assigned By", _style: { width: "10%" } },
     { key: "EnteredOn", label: "Assigned On", _style: { width: "10%" } },
-    // { key: "male", label: "Male", _style: { width: "10%" } },
-    // { key: "female", label: "Female", _style: { width: "10%" } },
+    
     {
       key: "show_details",
       label: "Action",
@@ -157,8 +142,8 @@ const AssignPartyPosting = () => {
       filter: false,
     },
   ];
-  const [passing, setPassing] = useState("");
-  const [error, setError] = useState("");
+  const [passing, ] = useState("");
+  // const [, setError] = useState("");
   const saveCorporation = async () => {
     setLocationHide({
       ...locationHide,
@@ -217,121 +202,121 @@ const AssignPartyPosting = () => {
     { value: "General", label: "General" },
     { value: "General", label: "General" },
   ];
-  const selectAdministartive = [
-    {
-      value: "Head Quaters Chennai Physician Under Secretary General ",
-      label: "Head Quaters Chennai Physician Under Secretary General",
-    },
-  ];
-  const selectFunctional = [
-    {
-      value: "Head Quaters Chennai Physician  Secretary General ",
-      label: "Head Quaters Chennai Physician  Secretary General",
-    },
-  ];
-  const saveMunicipalLocation = () => {
-    setLocationHide({
-      ...locationHide,
-      municipalLocation: false,
-      districtPanchayat: true,
-    });
-  };
-  const saveDistrictPanchayat = () => {
-    console.log(locationHide, "hidr");
-    setLocationHide({
-      ...locationHide,
-      districtPanchayat: false,
-      townPanchayat: true,
-    });
-  };
-  const savetownPanchayat = () => {
-    console.log(locationHide, "hidr");
-    setLocationHide({
-      ...locationHide,
-      villagePanchayat: true,
-      townPanchayat: false,
-    });
-  };
-  const saveVillagePanchayat = () => {
-    console.log(locationHide, "hidr");
-    setLocationHide({
-      ...locationHide,
-      villagePanchayat: false,
-      cityLocation: true,
-    });
-  };
-  const cityLocation = () => {
-    setLocationHide({
-      ...locationHide,
-      cityLocation: true,
-      townPanchayat: false,
-    });
-  };
-  const cancelcityLocation = () => {
-    setLocationHide({
-      ...locationHide,
-      cityLocation: false,
-      corporation: true,
-    });
-  };
+  // const selectAdministartive = [
+  //   {
+  //     value: "Head Quaters Chennai Physician Under Secretary General ",
+  //     label: "Head Quaters Chennai Physician Under Secretary General",
+  //   },
+  // ];
+  // const selectFunctional = [
+  //   {
+  //     value: "Head Quaters Chennai Physician  Secretary General ",
+  //     label: "Head Quaters Chennai Physician  Secretary General",
+  //   },
+  // ];
+  // const saveMunicipalLocation = () => {
+  //   setLocationHide({
+  //     ...locationHide,
+  //     municipalLocation: false,
+  //     districtPanchayat: true,
+  //   });
+  // };
+  // const saveDistrictPanchayat = () => {
+  //   console.log(locationHide, "hidr");
+  //   setLocationHide({
+  //     ...locationHide,
+  //     districtPanchayat: false,
+  //     townPanchayat: true,
+  //   });
+  // };
+  // const savetownPanchayat = () => {
+  //   console.log(locationHide, "hidr");
+  //   setLocationHide({
+  //     ...locationHide,
+  //     villagePanchayat: true,
+  //     townPanchayat: false,
+  //   });
+  // };
+  // const saveVillagePanchayat = () => {
+  //   console.log(locationHide, "hidr");
+  //   setLocationHide({
+  //     ...locationHide,
+  //     villagePanchayat: false,
+  //     cityLocation: true,
+  //   });
+  // };
+  // const cityLocation = () => {
+  //   setLocationHide({
+  //     ...locationHide,
+  //     cityLocation: true,
+  //     townPanchayat: false,
+  //   });
+  // };
+  // const cancelcityLocation = () => {
+  //   setLocationHide({
+  //     ...locationHide,
+  //     cityLocation: false,
+  //     corporation: true,
+  //   });
+  // };
   const changeHandler = (e) => {
     setLocations({ ...locations, [e.target.name]: e.target.value });
   };
-  const otpChangeHandle = (e) => {
-    setMobileNumber(e.target.value);
-    if (mobilenumber.length > 8) {
-      setOtpHide(true);
-    } else {
-      setError("enter valid data");
-    }
-  };
-  const addDepartment = async () => {
-    await setDepartmentList(false);
-    await setDepartmentCreate(true);
-  };
-  const addDesignation = async () => {
-    await setDesignationList(false);
-    await setDesignationCreate(true);
-  };
-  const addRole = async () => {
-    await setRoleList(false);
-    await setRoleCreate(true);
-  };
-  const editState = async () => {
-    await setMunicipalList(false);
-    await setmunicipalCreate(true);
-    // formik.values.StateName = stateName.stateName;
-    // formik.values.Abbreviation2 = stateName.abbreviation;
-    // formik.values.Code2 = stateName.code;
-    // setPassing(stateName._id);
-    // getState();
-    // getAllAreas();
-  };
-  const CancelState = async () => {
-    setPassing("");
-    await setMunicipalList(true);
-    await setmunicipalCreate(false);
-  };
-  const enableCreateadd = async () => {
-    await setMunicipalListadd(false);
-    await setmunicipalCreateadd(true);
-  };
+  // const otpChangeHandle = (e) => {
+  //   setMobileNumber(e.target.value);
+  //   if (mobilenumber.length > 8) {
+  //     setOtpHide(true);
+  //   } else {
+  //     setError("enter valid data");
+  //   }
+  // };
+  // const addDepartment = async () => {
+  //   await setDepartmentList(false);
+  //   await setDepartmentCreate(true);
+  // };
+  // const addDesignation = async () => {
+  //   await setDesignationList(false);
+  //   await setDesignationCreate(true);
+  // };
+  // const addRole = async () => {
+  //   await setRoleList(false);
+  //   await setRoleCreate(true);
+  // };
+  // const editState = async () => {
+  //   await setMunicipalList(false);
+  //   await setmunicipalCreate(true);
+  //   // formik.values.StateName = stateName.stateName;
+  //   // formik.values.Abbreviation2 = stateName.abbreviation;
+  //   // formik.values.Code2 = stateName.code;
+  //   // setPassing(stateName._id);
+  //   // getState();
+  //   // getAllAreas();
+  // };
+  // const CancelState = async () => {
+  //   setPassing("");
+  //   await setMunicipalList(true);
+  //   await setmunicipalCreate(false);
+  // };
+  // const enableCreateadd = async () => {
+  //   await setMunicipalListadd(false);
+  //   await setmunicipalCreateadd(true);
+  // };
 const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
-  const editStateadd = async () => {
-    await setMunicipalListadd(false);
-    await setmunicipalCreateadd(true);
-    // formik.values.StateName = stateName.stateName;
-    // formik.values.Abbreviation2 = stateName.abbreviation;
-    // formik.values.Code2 = stateName.code;
-    // setPassing(stateName._id);
-    // getState();
-    // getAllAreas();
-  };
-  const CancelStateadd = async () => {
-    setPassing("");
-    await setMunicipalListadd(true);
-    await setmunicipalCreateadd(false);
-  };
+  // const editStateadd = async () => {
+  //   await setMunicipalListadd(false);
+  //   await setmunicipalCreateadd(true);
+  //   // formik.values.StateName = stateName.stateName;
+  //   // formik.values.Abbreviation2 = stateName.abbreviation;
+  //   // formik.values.Code2 = stateName.code;
+  //   // setPassing(stateName._id);
+  //   // getState();
+  //   // getAllAreas();
+  // };
+  // const CancelStateadd = async () => {
+  //   setPassing("");
+  //   await setMunicipalListadd(true);
+  //   await setmunicipalCreateadd(false);
+  // };
 
   const [hideMappingMunicipal, setHideMappingmunicipal] = useState(true);
   const [hideCorporation, setHideCorporation] = useState(false);
@@ -344,31 +329,31 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
     setHideCorporation(false);
   };
 
-  const handleSave = async (file, folder) => {
-    if (file === undefined) {
-      let e = "cancelled";
-      return console.log(e);
-    }
-    if (file.size > 1048576) {
-      return toast.warning("Please choose below 1 MB file");
-    } else {
-      const imgUri = URL.createObjectURL(file);
-      setPI(file);
-      setFiles(imgUri);
-    }
-  };
+  // const handleSave = async (file, folder) => {
+  //   if (file === undefined) {
+  //     let e = "cancelled";
+  //     return console.log(e);
+  //   }
+  //   if (file.size > 1048576) {
+  //     return toast.warning("Please choose below 1 MB file");
+  //   } else {
+  //     const imgUri = URL.createObjectURL(file);
+  //     setPI(file);
+  //     setFiles(imgUri);
+  //   }
+  // };
 
-  const handleClick = (e) => {
-    document.getElementById("profileImage").click();
-  };
+  // const handleClick = (e) => {
+  //   document.getElementById("profileImage").click();
+  // };
   const menus = (details) => {
     return(
       <Menu>
         <Menu.Item>
-        <a>Edit</a>
+        <a href>Edit</a>
       </Menu.Item>
       <Menu.Item>
-        <a>Delete</a>
+        <a href>Delete</a>
       </Menu.Item>
     </Menu>
     )
@@ -477,7 +462,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                                   className={"ant-dropdown-cutomize-by-me"}
                                   overlay={() => menus(item)}
                                 >
-                                  <a
+                                  <a href
                                     className="ant-dropdown-link"
                                     onClick={(e) => e.preventDefault()}
                                   >
@@ -819,7 +804,7 @@ const selectName = [{value:"Sathishkumar",label:"SathishKumar"}]
                                   className={"ant-dropdown-cutomize-by-me"}
                                   overlay={() => menus(item)}
                                 >
-                                  <a
+                                  <a href
                                     className="ant-dropdown-link"
                                     onClick={(e) => e.preventDefault()}
                                   >

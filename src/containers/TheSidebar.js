@@ -13,7 +13,7 @@ import {
   CLabel,
 } from '@coreui/react'
 
-import CIcon from '@coreui/icons-react'
+// import CIcon from '@coreui/icons-react'
 
 // sidebar nav config
 import navigation from './_nav'
