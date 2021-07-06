@@ -239,7 +239,7 @@ const ConstituencyMember = () => {
         default:
         setMenu({
           menuStatus: "close",
-          style3: "menu2",
+          // style3: "menu2",
           style: "menu active",
           style1: "menu1",
         });
@@ -248,7 +248,7 @@ const ConstituencyMember = () => {
       case "close":
         setMenu({
           menuStatus: "open",
-          style3: "menu1",
+          // style3: "menu1",
           style: "menu",
           style1: "menu1",
         });

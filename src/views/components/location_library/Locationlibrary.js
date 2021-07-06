@@ -254,7 +254,7 @@ function LocationLibrary(props) {
   const [menu, setMenu] = useState({
     style: "menu2",
     menuStatus: "open",
-    style3: "menu2",
+    // style3: "menu2",
   });
 
   const [sideBar1, setSideBar1] = useState(false);

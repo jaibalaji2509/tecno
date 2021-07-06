@@ -318,7 +318,7 @@ const VillagePanchayat = () => {
     style1: "menu1",
     menuStatus: "open",
 
-    style3: "menu2",
+    // style3: "menu2",
   });
   const SelectMenuButtondistrict = (props) => {
     return (
@@ -842,13 +842,7 @@ const VillagePanchayat = () => {
     },
     { value: "chennai", label: "chennai" }, { value: "salem", label: "salem" }, { value: "madurai", label: "madurai" }]
 
-  const [mobilenumber, ] = useState("")
-  switch (mobilenumber) {
-    case (mobilenumber.length > 10):
-      return console.log("more than 5 digit number", "track");
-    default:
-      console.log("more than 10 digit number", "track  ")
-  }
+ 
   const changedistrictpanchayat = (e) => {
     setCollected(e)
     setVillageHide({ ...villageHide, districtpanchayat: true, panchayatunion: false, village: false, ward: false})
@@ -899,7 +893,7 @@ const VillagePanchayat = () => {
                 <CCol md="2" style={{ minHeight: "10px" }}>
                   <CLabel
                     className={"label-name-1"}
-                    style={{ fontSize: "block", marginLeft: "-20px" }}
+                    style={{ fontSize: "block", marginLeft: "-25px" }}
                   >
                     District Panchayat
                     <span className={"text-danger"}> *</span>

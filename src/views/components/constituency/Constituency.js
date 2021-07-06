@@ -263,7 +263,7 @@ function Constituency() {
   const [menu, setMenu] = useState({
     style: "menu2",
     menuStatus: "open",
-    style3: "menu2",
+    // style3: "menu2",
   });
   const [sideBar1, setSideBar1] = useState(false);
   const [sideBar2, setSideBar2] = useState(false);
