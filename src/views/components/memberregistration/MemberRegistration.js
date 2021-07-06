@@ -14,19 +14,21 @@ import CDataTable from "../../CoreComponents/table/CDataTable";
 import "./MemberRegistration.css"
 import Select from "react-select";
 import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { Dropdown, Menu } from "antd";
 import 'antd/dist/antd.css';
 import ImageUploading from "react-images-uploading";
+import ReactTooltip from 'react-tooltip';
 
 function MemberRegistration() {
   const [, setSelected] = useState({});
   const [steetSchema,] = useState([]);
   const [Education,] = useState([]);
   const [Occupation,] = useState([]);
-  // const [, setPI] = useState("");
+  const [, setPI] = useState("");
   const [sideBar1, setSideBar1] = useState(false);
-  const [files, ] = useState("");
+  const [files, setFiles ] = useState("");
+
   const [menu, setMenu] = useState({
     style: "menu",
     style1: "menu1",
@@ -60,23 +62,23 @@ function MemberRegistration() {
     },
   ];
 
-  // const handleSave = async (file, folder) => {
-  //   if (file === undefined) {
-  //     let e = "cancelled";
-  //     return console.log(e);
-  //   }
-  //   if (file.size > 1048576) {
-  //     return toast.warning("Please choose below 1 MB file");
-  //   } else {
-  //     const imgUri = URL.createObjectURL(file);
-  //     setPI(file);
-  //     setFiles(imgUri);
-  //   }
-  // };
+  const handleSave = async (file, folder) => {
+    if (file === undefined) {
+      let e = "cancelled";
+      return console.log(e);
+    }
+    if (file.size > 1048576) {
+      return toast.warning("Please choose below 1 MB file");
+    } else {
+      const imgUri = URL.createObjectURL(file);
+      setPI(file);
+      setFiles(imgUri);
+    }
+  };
 
-  // const handleClick = (e) => {
-  //   document.getElementById("profileImage").click();
-  // };
+  const handleClick = (e) => {
+    document.getElementById("profileImage").click();
+  };
 
   const [images, setImages] = React.useState([]);
   const maxNumber = 69;
@@ -209,7 +211,7 @@ function MemberRegistration() {
         </Menu.Item>
       </Menu>
     )
-  }
+  } 
 
   return (
     <div className={menu.style3}>
@@ -332,6 +334,7 @@ function MemberRegistration() {
             </div>
             <CRow style={{ marginTop: "30px" }} >
               <CCol sm="6" lg="3" style={{ marginLeft: "10px" }}>
+              <p data-tip="Male">
                 <CWidgetDropdown
                   style={{ width: "280px", textAlign: "center", fontSize: "30px", float: "right" }}
                   color="gradient-primary"
@@ -342,9 +345,12 @@ function MemberRegistration() {
                   <span style={{ marginLeft: "-162px", marginTop: "30px",fontSize: "24px", fontWeight:"700" }}>2</span>
                   <br /><br />
                 </CWidgetDropdown>
+                </p>
+                <ReactTooltip/>
               </CCol>
 
               <CCol sm="6" lg="3" style={{ marginLeft: "10px" }}>
+              <p data-tip="Female">
                 <CWidgetDropdown
                   style={{ width: "280px", fontSize: "30px", }}
 
@@ -356,9 +362,12 @@ function MemberRegistration() {
                   <span style={{ marginLeft: "-165px", marginTop: "30px",fontSize: "24px",fontWeight:"700" }}>2</span>
                   <br /><br />
                 </CWidgetDropdown>
+                </p>
+                <ReactTooltip/>
               </CCol>
 
               <CCol sm="6" lg="3" style={{ marginLeft: "-10px" }}>
+              <p data-tip="TransGender">
                 <CWidgetDropdown
                   style={{ width: "280px", fontSize: "30px", }}
 
@@ -370,9 +379,12 @@ function MemberRegistration() {
                   <span style={{ marginLeft: "-200px", marginTop: "30px",fontSize: "24px",fontWeight:"700" }}>1</span>
                   <br /><br />
                 </CWidgetDropdown>
+                </p>
+                <ReactTooltip/>
               </CCol>
 
               <CCol sm="6" lg="3" style={{ marginLeft: "-10px" }}>
+              <p data-tip="Total Count">
                 <CWidgetDropdown
                   style={{ width: "280px", fontSize: "30px", }}
 
@@ -384,11 +396,13 @@ function MemberRegistration() {
                   <span style={{ marginLeft: "-204px", marginTop: "30px",fontSize: "24px",fontWeight:"700" }}>5</span>
                   <br /><br />
                 </CWidgetDropdown>
+                </p>
+                <ReactTooltip/>
               </CCol>
             </CRow>
 
             <CButton
-              id={"memberregisteraddbutton"}
+              id={"memberregisteraddCButton"}
               className={"saveBtn"}
               onClick={enableCreate}
               style={{
@@ -505,9 +519,7 @@ function MemberRegistration() {
                         </CRow>
                       </td>
                     );
-
                   },
-
                   details: (item, index) => { },
                 }}
               />
@@ -733,7 +745,10 @@ function MemberRegistration() {
                           <span className={"text-danger"}>*</span>
                         </CLabel>
                         <Select
-                          type={"text"}
+
+
+
+type={"text"}
                           id={"memberregisterstreet"}
                           className={"select"}
                           placeholder="Select the Street Name"
@@ -795,27 +810,64 @@ function MemberRegistration() {
           isDragging,
           dragProps
         }) => (
-          // write your building UI
+         
           <div className="upload__image-wrapper">
-            <button
+           
+               <CCol md="3">
+              <CInput
+                name="file"
+                type="file"
+                id="profileImage"
+                accept="image/*"
+                style={{ display: "none" }}
+                onChange={(e) => {
+                  handleSave(e.target.files[0], "profileImage");
+                }}
+              />
+            </CCol>
+            <div
+              id={"addEmployeehandleClick"}
+              style={{
+                height: "100px",
+                width: "100px",
+                border: "1px dashed black",
+              }}
+              onClick={() => handleClick()}
+            >
+              <img
+                alt=""
+                src={files !== "" ? files : DEFAULT_IMAGE}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  position: "acsolute",
+                }}
+              />
+            </div>
+            <CLabel className={"form-label1"} style={{width:"88px"}}>
+              Upload Image
+            </CLabel>
+            
+            {/* <CButton
               // style={isDragging ? { color: "red", } : null}
-              style={{ width:"145px", height:"40px",  border:"1px solid #00ff5a"}}
+              style={{ width:"145px", height:"40px", marginLeft:"125px",marginTop:"-275px", border:"1px solid #00ff5a"}}
+              className={"saveBtn"}
               onClick={onImageUpload}
               {...dragProps}
             >
               Click or Drop here
-            </button>
+            </CButton> */}
             &nbsp;
-            {/* <button onClick={onImageRemoveAll}>Remove all images</button> */}
-            {imageList.map((image, index) => (
-              <div key={index} className="image-item">
-                <img src={image.data_url} alt="" width="100" />
+            {/* <CButton onClick={onImageRemoveAll}>Remove all images</CButton> */}
+            {/* {imageList.map((image, index) => (
+              <div key={index} className="image-item" style={{marginLeft:"135px",marginTop:"-130px"}}>
+                <img src={image.data_url } alt="" width="100" />
                 <div className="image-item__btn-wrapper">
-                  <button onClick={() => onImageUpdate(index)}>Update</button>
-                  <button onClick={() => onImageRemove(index)}>Remove</button>
+                  <CButton className={"saveBtn"} onClick={() => onImageUpdate(index)} >Update</CButton>
+                  <CButton className={"cancelBtn"} onClick={() => onImageRemove(index)} >Remove</CButton>
                 </div>
               </div>
-            ))}
+            ))} */}
           </div>
         )}
       </ImageUploading>

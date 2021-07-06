@@ -137,7 +137,6 @@ const routes = [
 
 
 
-  { path: '/partyposting',  exact: true, name: 'Party Posting', component: PartyPosting },
   { path: '/assignpartyposting',  exact: true, name: 'Assign Party Posting', component:AssignPartyPosting },
   { path: '/memberPromote',  exact: true, name: 'Member Promote', component: Promote },
   { path: '/memberSuspend',  exact: true, name: 'Member Suspend', component: Suspend },

@@ -3277,6 +3277,7 @@ function LocationLibrary(props) {
                             )}                            
                             <CRow style={{ marginLeft: "1300px", position: "absolute", marginTop: "10px" }}>
                               <CCol sm="6" lg="3" style={{ marginLeft: "-30px" }}>
+                              <p data-tip="State">
                                 <CWidgetDropdown
                                   style={{
                                     width: "280px",
@@ -3301,6 +3302,8 @@ function LocationLibrary(props) {
                                   <br />
                                   <br />
                                 </CWidgetDropdown>
+                                </p>
+                                <ReactTooltip/>
                               </CCol>
                             </CRow>
                           </CRow>
@@ -3361,6 +3364,7 @@ function LocationLibrary(props) {
                             )}                            
                             <CRow style={{ marginTop: "40px", marginLeft: "1300px", position: "absolute" }}>
                               <CCol sm="3" lg="3" style={{ marginLeft: "-30px" }}>
+                              <p data-tip="District / City">
                                 <CWidgetDropdown
                                   style={{
                                     width: "280px",
@@ -3385,6 +3389,8 @@ function LocationLibrary(props) {
                                   <br />
                                   <br />
                                 </CWidgetDropdown>
+                                </p>
+                                <ReactTooltip/>
                               </CCol>
                             </CRow>
 
@@ -3441,6 +3447,7 @@ function LocationLibrary(props) {
                             )}                            
                             <CRow style={{ marginTop: "70px", marginLeft: "1300px", position: "absolute" }}>
                               <CCol sm="3" lg="3" style={{ marginLeft: "-30px" }}>
+                              <p data-tip="Village / Area">
                                 <CWidgetDropdown
                                   style={{
                                     width: "280px",
@@ -3464,6 +3471,8 @@ function LocationLibrary(props) {
                                   <br />
                                   <br />
                                 </CWidgetDropdown>
+                                </p>
+                                <ReactTooltip/>
                               </CCol>
                             </CRow>
                           </CRow>
@@ -3522,6 +3531,7 @@ function LocationLibrary(props) {
                             )}                            
                             <CRow style={{ marginTop: "100px", marginLeft: "1300px", position: "absolute" }}>
                               <CCol sm="3" lg="3" style={{ marginLeft: "-30px" }}>
+                              <p data-tip="Street">
                                 <CWidgetDropdown
                                   style={{
                                     width: "280px",
@@ -3545,6 +3555,8 @@ function LocationLibrary(props) {
                                   <br />
                                   <br />
                                 </CWidgetDropdown>
+                                </p>
+                                <ReactTooltip/>
                               </CCol>
                             </CRow>
                           </CRow>
@@ -3615,7 +3627,7 @@ function LocationLibrary(props) {
                                   style={{
                                     position: "absolute",
                                     top: "38px",
-                                    marginLeft: "400px",
+                                    marginLeft: "180px",
                                     marginBottom: "20px",
                                     color: "black",
                                   }}
@@ -3634,7 +3646,7 @@ function LocationLibrary(props) {
                                 style={{
                                   position: "absolute",
                                   top: "38px",
-                                  marginLeft: "550px",
+                                  marginLeft: "420px",
                                   marginBottom: "910px",
                                   color: "black",
                                 }}

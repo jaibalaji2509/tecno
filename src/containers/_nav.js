@@ -83,7 +83,7 @@ const _nav = [
       {
         id: "AdminandSubAdminSideBar",
         _tag: "CSidebarNavItem",
-        name: 'Party   Wings Office Location',
+        name: 'Party Wings Office Location',
         to: "/PartyWingsOfficeLocation",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },

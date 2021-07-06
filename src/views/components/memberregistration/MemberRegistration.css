@@ -492,3 +492,12 @@ body {
 .ant-dropdown {
   left: 1290px !important;
 }
+.image-item {
+  display: flex;
+  margin: 10px 0;
+}
+.image-item__btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}

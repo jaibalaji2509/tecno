@@ -7,11 +7,11 @@ import {
   CLabel,
   CButton,
   CInput,
-  
+  CLink,
 } from "@coreui/react";
 import ReactTooltip from "react-tooltip";
 import {} from "../../../services/ApiService";
-import Select from "react-select";
+import Select, { components } from "react-select";
 import "./PartyOfficeLocation.css";
 import { Dropdown, Menu } from "antd";
 import "antd/dist/antd.css";
@@ -30,7 +30,7 @@ function PartyOfficeLocation() {
   const [locationHide, ] = useState({
     corporation: true,
   });
-  const [editShow, setEditShow] = useState(false);
+  // const [editShow, setEditShow] = useState(false);
   const [sideBar1, setSideBar1] = useState(false);
   const changePartyOffice = async () => {
     await setAddPartyOffice(false);
@@ -160,10 +160,17 @@ function PartyOfficeLocation() {
   ];
   const officeType = [{ value: "Head Office", label: "Head Office" }];
   const partyofficeType = [
+    {
+      span: (
+        <CLink className={"saveBtn"} style={{ marginLeft: "200px" }}>
+          Add{" "}
+        </CLink>
+      ),
+    },
     { value: "Head Office", label: "Head Office - Chennai Head Office" },
     { value: "District Office", label: "District Office" },
   ];
-  const [typeofPartyOffice, setTypeofPartyOffice] = useState("");
+  // const [typeofPartyOffice, setTypeofPartyOffice] = useState("");
 
   const locations = [
     {
@@ -266,7 +273,38 @@ function PartyOfficeLocation() {
     doc.autoTable(content);
     doc.save("report.pdf");
   };
-
+  const SelectMenuButtonpartyoffice = (props) => {
+    return (
+      <components.MenuList {...props}>
+        {props.children}
+        <div
+          style={{
+            marginTop: "-95px",
+            marginBottom: "-50px",
+            minHeight: "150px",
+          }}
+        >
+          <CLink
+            className={"saveBtn"}
+            onClick={addTypeofPartyOffice}
+            style={{ marginLeft: "350px" }}
+          >
+            Add{" "}
+          </CLink>
+          <CLink
+            className={"saveBtn"}
+            onClick={() => {
+              addTypeofPartyOffice();
+              viewTypeofPartyOffice();
+            }}
+            style={{ marginLeft: "50px" }}
+          >
+            View{" "}
+          </CLink>
+        </div>
+      </components.MenuList>
+    );
+  };
   return (
     <div className={menu.style3}>
       {sideBar1 && (
@@ -371,7 +409,7 @@ function PartyOfficeLocation() {
 
               <CRow style={{ marginLeft: "250px" }}>
                 <CCol
-                  style={{ fontSize: "1.55rem", top: "45px" }}
+                  style={{ fontSize: "1.55rem", top: "81px" }}
                   md={12}
                   sm={12}
                   lg={12}
@@ -386,7 +424,7 @@ function PartyOfficeLocation() {
                       height: "40px",
                       width: "40px",
 
-                      marginLeft: "700px",
+                      marginLeft: "638px",
                       marginBottom: "20px",
                     }}
                   />
@@ -398,7 +436,7 @@ function PartyOfficeLocation() {
                     style={{
                       position: "absolute",
                       top: "33px",
-                      marginLeft: "500px",
+                      marginLeft: "410px",
                       marginBottom: "20px",
                       color: "black",
                     
@@ -416,7 +454,7 @@ function PartyOfficeLocation() {
                     style={{
                       position: "absolute",
                       top: "8px",
-                      marginLeft: "600px",
+                      marginLeft: "515px",
                       marginBottom: "910px",
                       color: "black",
                     }}
@@ -639,7 +677,7 @@ function PartyOfficeLocation() {
             </div>
             <CRow style={{ marginLeft: "150px" }}>
               <CCol
-                style={{ fontSize: "1.55rem", top: "255px" }}
+                style={{ fontSize: "1.55rem", top: "221px" }}
                 md={12}
                 sm={12}
                 lg={12}
@@ -654,7 +692,7 @@ function PartyOfficeLocation() {
                     height: "40px",
                     width: "40px",
 
-                    marginLeft: "800px",
+                    marginLeft: "740px",
                     marginBottom: "20px",
                   }}
                 />
@@ -666,7 +704,7 @@ function PartyOfficeLocation() {
                   style={{
                     position: "absolute",
                     top: "175px",
-                    marginLeft: "625px",
+                    marginLeft: "514px",
                     marginBottom: "20px",
                     color: "black",
                     cursor: "pointer",
@@ -684,7 +722,7 @@ function PartyOfficeLocation() {
                   style={{
                     position: "absolute",
                     top: "150px",
-                    marginLeft: "710px",
+                    marginLeft: "633px",
                     marginBottom: "910px",
                     color: "black",
                   }}
@@ -795,15 +833,18 @@ function PartyOfficeLocation() {
                   className={"select"}
                   placeholder="Select the Party Office"
                   options={partyofficeType}
-                  value={typeofPartyOffice}
-                  onChange={(e) => {
-                    setTypeofPartyOffice(e);
-                    setEditShow(true);
+                  components={{
+                    MenuList: SelectMenuButtonpartyoffice,
                   }}
+                  // value={typeofPartyOffice}                  
+                  // onChange={(e) => {
+                  //   setTypeofPartyOffice(e);
+                  //   setEditShow(true);
+                  // }}
                 />
               </CCol>
 
-              <CCol md={1} lg={1}>
+              {/* <CCol md={1} lg={1}>
                 <CButton
                   style={{
                     marginLeft: "6px",
@@ -817,8 +858,8 @@ function PartyOfficeLocation() {
                   class={"fa fa-plus"}
                   onClick={addTypeofPartyOffice}
                 ></CButton>
-              </CCol>
-              <CCol md={1} lg={1}>
+              </CCol> */}
+              {/* <CCol md={1} lg={1}>
                 <i
                   style={{
                     marginLeft: "-47px",
@@ -832,8 +873,8 @@ function PartyOfficeLocation() {
                     viewTypeofPartyOffice();
                   }}
                 ></i>
-              </CCol>
-              {editShow && (
+              </CCol> */}
+              {/* {editShow && (
                 <CCol md={1} lg={1}>
                   <i
                     style={{
@@ -848,7 +889,7 @@ function PartyOfficeLocation() {
                     className="fas fa-edit"
                   ></i>
                 </CCol>
-              )}
+              )} */}
 
               <CCol
                 className={"column-align"}
