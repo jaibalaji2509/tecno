@@ -822,7 +822,7 @@ function PartyOfficeLocation() {
               </div>
             </div>
             <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-              <CCol className={"column-align"} md={5} lg={5}>
+            <CCol className={"column-align"} md={5} lg={5}>
                 <CLabel className={"label-name"}>
                   Type of Party Office
                   <span className={"text-danger"}>*</span>
@@ -842,61 +842,9 @@ function PartyOfficeLocation() {
                   //   setEditShow(true);
                   // }}
                 />
-              </CCol>
+              </CCol>                        
 
-              {/* <CCol md={1} lg={1}>
-                <CButton
-                  style={{
-                    marginLeft: "6px",
-                    marginTop: "50px",
-                    backgroundColor: "#3273e9",
-                    borderLine: "5px !important",
-                    borderColor: "white",
-                    fontSize: "1.25rem",
-                    color: "#ffff",
-                  }}
-                  class={"fa fa-plus"}
-                  onClick={addTypeofPartyOffice}
-                ></CButton>
-              </CCol> */}
-              {/* <CCol md={1} lg={1}>
-                <i
-                  style={{
-                    marginLeft: "-47px",
-                    marginTop: "52px",
-                    fontSize: "1.50rem",
-                    color: "#3cd3ad",
-                  }}
-                  class={"fa fa-eye"}
-                  onClick={() => {
-                    addTypeofPartyOffice();
-                    viewTypeofPartyOffice();
-                  }}
-                ></i>
-              </CCol> */}
-              {/* {editShow && (
-                <CCol md={1} lg={1}>
-                  <i
-                    style={{
-                      marginLeft: "-80px",
-                      marginTop: "68px",
-                      fontSize: "1.25rem",
-                      color: "#3480e2",
-                      cursor: "pointer",
-                    }}
-                    onClick={addTypeofPartyOffice}
-                    id={"typeoofpartyofficeedit"}
-                    className="fas fa-edit"
-                  ></i>
-                </CCol>
-              )} */}
-
-              <CCol
-                className={"column-align"}
-                md={4}
-                lg={4}
-                style={{ marginLeft: "-105px" }}
-              >
+                <CCol className={"column-align"} md={5} lg={5}>
                 <CLabel className={"label-name"}>
                   Reporting To Office
                   <span className={"text-danger"}>*</span>
