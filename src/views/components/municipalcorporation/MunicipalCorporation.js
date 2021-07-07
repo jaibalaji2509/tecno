@@ -37,11 +37,11 @@ const MunicipalCorporation = () => {
   const [MunicipalCreate, setmunicipalCreate] = useState(false);
   const [municipalListadd, setMunicipalListadd] = useState(true);
   const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
+  const [selected, setSelected] = useState([]);
   const [selected1, setSelected1] = useState([]);
   const [collected, setCollected] = useState([]);
   const [villageHide, setVillageHide] = useState({ districtpanchayat: true, panchayatunion: false })
   const [municipalName] = useState("");
-  const [selected, ] = useState([]);
   const [locationHide, setLocationHide] = useState({
     corporation: true,
     municipalLocation: false,
@@ -102,10 +102,10 @@ const MunicipalCorporation = () => {
       Enteredon: "11/06/2021",
     },
   ];
-  const [checked, setChecked] = useState(false);
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-  };
+  // const [checked, setChecked] = useState(false);
+  // const handleChange = (event) => {
+  //   setChecked(event.target.checked);
+  // };
   const handleChangeex = (e) => {
     const files = e.target.files;
     if (files && files[0]) setExcelUpload({ file: files[0] });
@@ -135,7 +135,18 @@ const MunicipalCorporation = () => {
     },
   ];
   const fields1 = [
-
+    {
+      key: "show_details",
+      label: "Select",
+      _style: { width: "3%" },
+      name: (
+        <div>
+          Email <input type={"checkbox"} onClick={""} />
+        </div>
+      ),
+      sorter: false,
+      filter: false,
+    },
     {
       key: "SNo",
       label: "S.NO",
@@ -144,18 +155,8 @@ const MunicipalCorporation = () => {
       filter: false,
     },
 
-    { key: "ward", label: "Ward Name", _style: { width: "10%" } },
-    { key: "street", label: "Street Name", _style: { width: "10%" } },
-    {
-      key: "EnteredBy",
-      label: "Entered By",
-      _style: { width: "10%" },
-    },
-    {
-      key: "Enteredon",
-      label: "Entered On",
-      _style: { width: "10%" },
-    },
+    { key: "street", label: "Door No / Street Name", _style: { width: "10%" } },
+    
   ];
   const fieldss1 = [
     {
@@ -204,7 +205,7 @@ const MunicipalCorporation = () => {
     },
 
     { key: "ward", label: "Ward Name", _style: { width: "10%" } },
-    { key: "street", label: "Street Name", _style: { width: "10%" } },
+    { key: "street", label: "Door No and Street Name", _style: { width: "10%" } },
     {
       key: "EnteredBy",
       label: "Entered By",
@@ -388,7 +389,7 @@ const MunicipalCorporation = () => {
 
 
   const [menu, setMenu] = useState({
-    style: "menu2",
+    // style: "menu2",
     menuStatus: "open",
     // style3: "menu2",
   });
@@ -990,7 +991,7 @@ const MunicipalCorporation = () => {
 
         )}
         {sideBarup1 && (
-          <div className={menu.style1} style={{ marginLeft: "-85px" }}>
+          <div className={menu.style1} style={{ marginLeft: "-85px" , overflow:"auto" }}>
 
             <CRow className={""}>
               <CCol md="12" lg="12" sm="12">
@@ -1168,7 +1169,7 @@ const MunicipalCorporation = () => {
           </div>
         )}
         {sideBarup2 && (
-          <div className={menu.style1} style={{ marginLeft: "-85px" }}>
+          <div className={menu.style1} style={{ marginLeft: "-85px", overflow:"auto" }}>
 
             <CRow className={""}>
               <CCol md="12" lg="12" sm="12">
@@ -1554,8 +1555,7 @@ const MunicipalCorporation = () => {
                             <Select
                               placeholder="Select Municipal Corporation"
                               id={"municipalcorporation"}
-                              type={"text"}
-                              value={selected}
+                              type={"text"}                             
                               onChange={changedistrictpanchayat}
                               components={{ MenuList: SelectMenuButtonMunicicorp }}
                               options={selectMunicipalcorporation}
@@ -1952,6 +1952,20 @@ const MunicipalCorporation = () => {
                       tableLabel={"List of Streets"}
                       itemsPerPageSelect
                       itemsPerPage={5}
+                      selectAll={true}
+                      checkedAll={userData.length === selected.length}
+                      onSelectAll={(val) => {
+                        console.log(val, userData);
+                        if (userData.length === selected.length) {
+                          setSelected([]);
+                        } else {
+                          let ids = [];
+                          val.map((x) =>(
+                            ids.push(`${x._id}`)
+                          ));
+                          setSelected(ids);
+                        }
+                      }}
                       hover
                       sorter
                       pagination
@@ -1964,42 +1978,31 @@ const MunicipalCorporation = () => {
                         show_details: (item, index) => {
                           return (
                             <td className="py-2">
-                              {/* <CRow>
-                              <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                <i
-                                  id={"locationLibraryDelete"}
-                                  style={{
-                                    marginLeft: "5px",
-                                    marginLeft: "10px",
-                                    color: "black",
-                                    cursor: "pointer",
-                                  }}
-                                  className="fa fa-remove"
-                                ></i>
-                              </CCol>
-                            </CRow> */}
-                            </td>
-                          );
-                        },
-                        show_details1: (item, index) => {
-                          return (
-                            <td className="py-2">
                               <CRow>
-                                <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                  {/* <CInput type="checkbox" style={{width:"20px"}}/> */}
-                                  <CInput
-                                    type="checkbox"
-                                    checked={checked}
-                                    onChange={handleChange}
-                                    inputProps={{
-                                      "aria-label": "primary checkbox",
-                                    }}
-                                  />
-                                </CCol>
+                                <CInput
+                                  type={"checkbox"}
+                                  style={{
+                                    width: "15px",
+                                    height: "15px",
+                                    marginLeft: "30px",
+                                    marginBottom: "10px",
+                                  }}
+                                  onClick={() => {
+                                    if (selected.includes(`${item._id}`)) {
+                                      let values = selected.filter((x) => {
+                                        return `${x}` !== `${item._id}`;
+                                      });
+                                      setSelected(values);
+                                    } else {
+                                      setSelected([...selected, `${item._id}`]);
+                                    }
+                                  }}
+                                  checked={selected.includes(`${item._id}`)}
+                                />
                               </CRow>
                             </td>
                           );
-                        },
+                        },                   
                         details: (item, index) => { },
                       }}
                     />

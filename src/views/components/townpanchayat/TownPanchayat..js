@@ -20,6 +20,7 @@ import { make_cols } from "../../../Tools/excelupload/MakeColumn"
 
 const TownPanchayat = () => { 
   const [selected1, setSelected1] = useState([]);
+  const [selected, setSelected] = useState([]);
   const [collected, setCollected] = useState([]);
   const [villageHide, setVillageHide] =useState({districtpanchayat:true,panchayatunion:false})
   const [TownList, setTownList] = useState(true);
@@ -95,7 +96,7 @@ const TownPanchayat = () => {
       filter: false,
     },
     { key: "Ward", label: "Ward Number", _style: { width: "10%" } },
-    { key: "Street", label: "Street Name", _style: { width: "10%" } },
+    { key: "Street", label: "Door No / Street Name", _style: { width: "10%" } },
    
   
     {
@@ -122,13 +123,13 @@ const TownPanchayat = () => {
   ];
   const fields1 = [
     {
-      key: "show_details",
+      key: "show_details1",
       label: "Select",
       _style: { width: "3%" },
-      // name: <div>Email <input type={"checkbox"} onClick={""}/></div>,
-      // sorter: false,
-      // filter: false,
-      // checked:true,
+      name: <div>Email <input type={"checkbox"} onClick={""}/></div>,
+      sorter: false,
+      filter: false,
+      checked:true,
     },
     {
       key: "SNo",
@@ -138,7 +139,7 @@ const TownPanchayat = () => {
       filter: false,
     },
     
-    { key: "Street", label: "Street Name", _style: { width: "10%" } },
+    { key: "Street", label: "Door No / Street Name", _style: { width: "10%" } },
   
   ];
   const fieldss1 = [
@@ -253,7 +254,7 @@ const canceltownchange = () => {
       await setWardNumberCreate(false);
     };
     const [menu, setMenu] = useState({
-      style: "menu2",
+      // style: "menu2",
       menuStatus: "open",
       // style3: "menu2",
     });
@@ -396,7 +397,7 @@ const canceltownchange = () => {
           {props.children}
           <div
             style={{
-              marginTop: "-75px",
+              marginTop: "-55px",
               marginBottom: "-50px",
               minHeight: "150px",
             }}
@@ -884,7 +885,7 @@ const canceltownchange = () => {
 
         )}
         {sideBarup1 && (
-          <div className={menu.style1} style={{ marginLeft: "-108px" }}>
+          <div className={menu.style1} style={{ marginLeft: "-108px", overflow:"auto" }}>
 
             <CRow className={""}>
               <CCol md="12" lg="12" sm="12">
@@ -1082,7 +1083,7 @@ const canceltownchange = () => {
           </div>
         )}
         {sideBarup2 && (
-          <div className={menu.style1} style={{ marginLeft: "-108px", minHeight: "900px" }}>
+          <div className={menu.style1} style={{ marginLeft: "-108px", overflow:"auto" }}>
 
             <CRow className={""}>
               <CCol md="12" lg="12" sm="12">
@@ -1878,12 +1879,26 @@ const canceltownchange = () => {
                       checked
                       sorter
                       pagination
+                      selectAll={true}
+                      checkedAll={userData.length === selected.length}
+                      onSelectAll={(val) => {
+                        console.log(val, userData);
+                        if (userData.length === selected.length) {
+                          setSelected([]);
+                        } else {
+                          let ids = [];
+                          val.map((x) =>(
+                            ids.push(`${x._id}`)
+                          ));
+                          setSelected(ids);
+                        }
+                      }}
                       scopedSlots={{
-                        show_details: (item, index) => {
+                        show_details1: (item, index) => {
                           return (
                             <td className="py-2">
                               <CRow>
-                                {/* <CInput
+                                <CInput
                                   type={"checkbox"}
                                   style={{
                                     width: "15px",
@@ -1891,33 +1906,22 @@ const canceltownchange = () => {
                                     marginLeft: "30px",
                                     marginBottom: "10px",
                                   }}
-                                /> */}
-                                {/* <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                </CCol> */}
-                              </CRow>
-                            </td>
-                          );
-                        },
-                        show_details1: (item, index) => {
-                          return (
-                            <td className="py-2">
-                              <CRow>
-                          
-                                <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                <i
-                                  id={"TownconstimemDelete"}
-                                  style={{
-                                    marginLeft: "5px",
-                                    color: "black",
-                                    cursor: "pointer",
+                                  onClick={() => {
+                                    if (selected.includes(`${item._id}`)) {
+                                      let values = selected.filter((x) => {
+                                        return `${x}` !== `${item._id}`;
+                                      });
+                                      setSelected(values);
+                                    } else {
+                                      setSelected([...selected, `${item._id}`]);
+                                    }
                                   }}
-                                  className="fa fa-remove"
-                                ></i>
-                                </CCol>
+                                  checked={selected.includes(`${item._id}`)}
+                                />
                               </CRow>
                             </td>
                           );
-                        },
+                        },                       
                         details: (item, index) => {},
                       }}
                     />

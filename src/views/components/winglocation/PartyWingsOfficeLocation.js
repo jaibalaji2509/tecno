@@ -7,13 +7,13 @@ import {
   CLabel,
   CButton,
   CInput,
-  CLink
+  CLink,
 } from "@coreui/react";
-import { } from "../../../services/ApiService";
+import {} from "../../../services/ApiService";
 import Select, { components } from "react-select";
 import "./PartyWingsOfficeLocation.css";
 import { Dropdown, Menu } from "antd";
-import 'antd/dist/antd.css';
+import "antd/dist/antd.css";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import ReactTooltip from "react-tooltip";
@@ -109,7 +109,7 @@ function PartyWingsOfficeLocation() {
       area: "Mylapore",
       by: "Jai Balaji",
       on: "31/05/2021",
-    }
+    },
   ];
 
   const fields = [
@@ -178,7 +178,7 @@ function PartyWingsOfficeLocation() {
   const addTypeofPartyOffice = () => {
     switch (menu.menuStatus) {
       case "open":
-        default:
+      default:
         setMenu({
           menuStatus: "close",
           style3: "menu2",
@@ -188,8 +188,8 @@ function PartyWingsOfficeLocation() {
         setSideBar1(true);
         setHidePartyOffice(true);
         setBackButt(false);
+        setCreatepartyOffice(false);
         break;
-
       case "close":
         setMenu({
           menuStatus: "open",
@@ -200,6 +200,7 @@ function PartyWingsOfficeLocation() {
         setTimeout(() => {
           setSideBar1(false);
         }, 1000);
+        setCreatepartyOffice(true);
         break;
     }
   };
@@ -207,9 +208,9 @@ function PartyWingsOfficeLocation() {
   const [backbutt, setBackButt] = useState(false);
   const viewTypeofPartyOffice = () => {
     setHidePartyOffice(false);
-    setBackButt(true)
+    setBackButt(true);
   };
-  const [locationHide, ] = useState({
+  const [locationHide] = useState({
     corporation: true,
   });
 
@@ -223,13 +224,13 @@ function PartyWingsOfficeLocation() {
           <a href>Delete</a>
         </Menu.Item>
       </Menu>
-    )
-  }
+    );
+  };
 
   const exportPDF = () => {
     const unit = "pt";
     const size = "A4";
-    const orientation = "portrait"; 
+    const orientation = "portrait";
 
     const marginLeft = 40;
     const doc = new jsPDF(orientation, unit, size);
@@ -237,20 +238,39 @@ function PartyWingsOfficeLocation() {
     doc.setFontSize(15);
 
     const title = "Party Wings Office Location";
-    const headers = [["SNo", "Name of Party Wings Office", "Type of Party Wings Office ", "Hierarchy Reporting Office", "Address 1", "Entered By", "Entered On"]];
+    const headers = [
+      [
+        "SNo",
+        "Name of Party Wings Office",
+        "Type of Party Wings Office ",
+        "Hierarchy Reporting Office",
+        "Address 1",
+        "Entered By",
+        "Entered On",
+      ],
+    ];
 
-    const data = userData.map(elt => [elt.SNo, elt.NAMEOFWINGOFFICE, elt.WingOffice, elt.ReportingTo, elt.address, elt.area, elt.by, elt.on]);
+    const data = userData.map((elt) => [
+      elt.SNo,
+      elt.NAMEOFWINGOFFICE,
+      elt.WingOffice,
+      elt.ReportingTo,
+      elt.address,
+      elt.area,
+      elt.by,
+      elt.on,
+    ]);
 
     let content = {
       startY: 50,
       head: headers,
-      body: data
+      body: data,
     };
 
     doc.text(title, marginLeft, 40);
     doc.autoTable(content);
-    doc.save("report.pdf")
-  }
+    doc.save("report.pdf");
+  };
   const SelectMenuButtonpartywingsoffice = (props) => {
     return (
       <components.MenuList {...props}>
@@ -282,14 +302,22 @@ function PartyWingsOfficeLocation() {
         </div>
       </components.MenuList>
     );
-  }; 
+  };
   return (
     <React.Fragment>
       <div className={menu.style3}>
         {sideBar1 && (
-          <div className={menu.style}>
-            <div className={"main-headerlabel"} style={{ marginTop: "-40px" }}>
-              <span className={"header-label"}> Adding Type of Party Wings Office</span>
+          <div
+            className={menu.style}
+            style={{              
+              overflow: "auto",
+            }}
+          >
+            <div className={"main-headerlabel"}>
+              <span className={"header-label"}>
+                {" "}
+                Adding Type of Party Wings Office
+              </span>
             </div>
 
             {locationHide.corporation && (
@@ -389,7 +417,7 @@ function PartyWingsOfficeLocation() {
 
                 <CRow>
                   <CCol
-                    style={{ fontSize: "1.55rem", top: "80px" }}
+                    style={{ fontSize: "1.55rem", top: "118px" }}
                     md={12}
                     sm={12}
                     lg={12}
@@ -410,37 +438,37 @@ function PartyWingsOfficeLocation() {
                     />
                   </CCol>
                   <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
-                  <p data-tip="print">
-                    <i
-                      id={"WingsOfficeprint"}
-                      style={{
-                        position: "absolute",
-                        top: "33px",
-                        marginLeft: "675px",
-                        marginBottom: "20px",
-                        color: "black",
-                      }}
-                      onClick={() => exportPDF()}
-                      className="fa fa-print"
-                    ></i>
+                    <p data-tip="print">
+                      <i
+                        id={"WingsOfficeprint"}
+                        style={{
+                          position: "absolute",
+                          top: "68px",
+                          marginLeft: "675px",
+                          marginBottom: "20px",
+                          color: "black",
+                        }}
+                        onClick={() => exportPDF()}
+                        className="fa fa-print"
+                      ></i>
                     </p>
-                    <ReactTooltip/>
+                    <ReactTooltip />
                   </CCol>
                   <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
-                  <p data-tip="share">
-                    <i
-                      id={"WingsOfficeshare"}
-                      style={{
-                        position: "absolute",
-                        top: "8px",
-                        marginLeft: "787px",
-                        marginBottom: "910px",
-                        color: "black",
-                      }}
-                      className="fa fa-share-alt"
-                    ></i>
+                    <p data-tip="share">
+                      <i
+                        id={"WingsOfficeshare"}
+                        style={{
+                          position: "absolute",
+                          top: "45px",
+                          marginLeft: "787px",
+                          marginBottom: "910px",
+                          color: "black",
+                        }}
+                        className="fa fa-share-alt"
+                      ></i>
                     </p>
-                    <ReactTooltip/>
+                    <ReactTooltip />
                   </CCol>
                 </CRow>
 
@@ -462,12 +490,12 @@ function PartyWingsOfficeLocation() {
                           <td className="py-1">
                             <CRow>
                               <CCol style={{ fontSize: "1.15rem" }} md="16">
-
                                 <Dropdown
                                   className={"ant-dropdown-cutomize-by-me"}
                                   overlay={() => menus(item)}
                                 >
-                                  <a href
+                                  <a
+                                    href
                                     className="ant-dropdown-link"
                                     onClick={(e) => e.preventDefault()}
                                   >
@@ -487,7 +515,7 @@ function PartyWingsOfficeLocation() {
                           </td>
                         );
                       },
-                      details: (item, index) => { },
+                      details: (item, index) => {},
                     }}
                   />
                 </CRow>
@@ -511,21 +539,21 @@ function PartyWingsOfficeLocation() {
           <div>
             <CCard className={"cardSave"}>
               <div className={"main-headerlabel"}>
-                <span className={"header-label"}>party Wings Office Location</span>
+                <span className={"header-label"}>
+                  party Wings Office Location
+                </span>
               </div>
-              <div>
-
-              </div>
-              <div style={{marginTop:"-30px"}}>
-            <CRow
-              style={{
-                marginTop: "65px",
-                marginLeft: "240px",
-                position: "absolute",
-              }}
-            >
-              <CCol sm="3" lg="3" style={{ marginLeft: "-160px" }}>
-                {/* <CWidgetDropdown
+              <div></div>
+              <div style={{ marginTop: "-30px" }}>
+                <CRow
+                  style={{
+                    marginTop: "65px",
+                    marginLeft: "240px",
+                    position: "absolute",
+                  }}
+                >
+                  <CCol sm="3" lg="3" style={{ marginLeft: "-160px" }}>
+                    {/* <CWidgetDropdown
                   style={{
                     width: "280px",
                     textAlign: "center",
@@ -537,42 +565,42 @@ function PartyWingsOfficeLocation() {
                   header=""
                   text=""
                 > */}
-                  <span
-                  
-                    style={{
-                      position:"absolute",
-                      marginLeft: "45px",
-                      fontSize: "22px",
-                      fontWeight: "700",
-                      color:"#134e5e"
-                    }}
+                    <span
+                      style={{
+                        position: "absolute",
+                        marginLeft: "45px",
+                        fontSize: "22px",
+                        fontWeight: "700",
+                        color: "#134e5e",
+                      }}
+                    >
+                      Total
+                    </span>
+                    <span
+                      style={{
+                        display: "block",
+                        marginLeft: "-41px",
+                        marginTop: "-75px",
+                        padding: "100px",
+                        fontSize: "24px",
+                        fontWeight: "500",
+                        color: "grey",
+                      }}
+                    >
+                      2
+                    </span>
+                    <span class="divider" />
+                    <br />
+                    <br></br>
+                    <br />
+                    {/* </CWidgetDropdown> */}
+                  </CCol>
+                  <CCol
+                    sm="3"
+                    lg="3"
+                    style={{ marginLeft: "290px", display: "flex" }}
                   >
-                    Total
-                  </span>
-                  <span
-                    style={{
-                      display:"block",
-                      marginLeft: "-41px",
-                      marginTop:"-75px",
-                      padding: "100px",
-                      fontSize: "24px",
-                      fontWeight: "500",
-                      color:"grey"
-                    }}
-                  >
-                  2
-          
-                  </span>
-                <span class="divider"/>
-                  <br />
-                <br>
-                
-                </br>
-                  <br />
-                {/* </CWidgetDropdown> */}
-              </CCol>
-              <CCol sm="3" lg="3" style={{ marginLeft: "290px" ,display:"flex"}}>
-                {/* <CWidgetDropdown
+                    {/* <CWidgetDropdown
                   style={{
                     width: "280px",
                     textAlign: "center",
@@ -584,37 +612,44 @@ function PartyWingsOfficeLocation() {
                   header=""
                   text=""
                 > */}
-                         
-             
-                  <span
+
+                    <span
+                      style={{
+                        marginLeft: "-294px",
+                        fontSize: "22px",
+                        fontWeight: "700",
+                        color: "#4cb8c4 ",
+                      }}
+                    >
+                      District Party Office
+                    </span>
+                    <span
+                      style={{
+                        marginLeft: "-120px",
+                        marginTop: "28px",
+                        fontSize: "24px",
+                        fontWeight: "500",
+                        color: "grey",
+                      }}
+                    >
+                      2
+                    </span>
+                    <span className={"divider1"} />
+                    <br />
+
+                    <br />
+                    {/* </CWidgetDropdown> */}
+                  </CCol>
+                  <CCol
+                    sm="3"
+                    lg="3"
                     style={{
-                      marginLeft: "-294px",
-                      fontSize: "22px",
-                      fontWeight: "700",
-                      color:"#4cb8c4 "
+                      marginLeft: "440px",
+                      position: "relative",
+                      display: "flex",
                     }}
                   >
-                    District Party Office
-                  </span>
-                  <span
-                    style={{
-                      marginLeft: "-120px",
-                      marginTop: "28px",
-                      fontSize: "24px",
-                      fontWeight: "500",
-                      color:"grey"
-                    }}
-                  >
-                    2
-                  </span>
-                  <span className={"divider1"}/>
-                  <br />
-                  
-                  <br />
-                {/* </CWidgetDropdown> */}
-              </CCol>
-              <CCol sm="3" lg="3"  style={{ marginLeft: "440px" ,position:"relative",display:"flex"}}>
-                {/* <CWidgetDropdown
+                    {/* <CWidgetDropdown
                   style={{
                     width: "280px",
                     textAlign: "center",
@@ -626,120 +661,120 @@ function PartyWingsOfficeLocation() {
                   header=""
                   text=""
                 > */}
-                  <span
-                    style={{
-                      marginTop:"-228px",
-                     left: "-21px",
-                     fontSize: "22px",
-                      fontWeight: "700",
-                      color:"#ec6f66"
-                    }}
-                  >
-                    Circle Party Office
-                  </span>
-                  <br />
-                  <span
-                    style={{
-                      marginLeft: "-112px",
-                      marginTop: "-201px",
-                      fontSize: "24px",
-                      fontWeight: "500",
-                      color:"grey"
-                    }}
-                  >
-                    1
-                  </span>
-                  <span className={"divider2"}/>
-                  <br />
-                  <br />
-                {/* </CWidgetDropdown> */}
-              </CCol>
-            </CRow>
-            </div>
-            <CRow style={{ marginLeft: "150px" }}>
-              <CCol
-                style={{ fontSize: "1.55rem", top: "225px" }}
-                md={12}
-                sm={12}
-                lg={12}
-              >
-                <img
-                  id={"typeoofpartyhierarchy"}
-                  alt={""}
-                  src={
-                    "https://img.icons8.com/fluent/2x/organization-chart-people.png"
-                  }
-                  style={{
-                    height: "40px",
-                    width: "40px",
-                    marginLeft: "740px",
-                    marginBottom: "20px",
-                  }}
-                />
-              </CCol>
-              <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
-              <p data-tip="print">
-                <i
-                  id={"typeoofpartylocationprint"}
-                  style={{
-                    position: "absolute",
-                    top: "175px",
-                    marginLeft: "515px",
-                    marginBottom: "20px",
-                    color: "black",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => exportPDF()}
-                  className="fa fa-print"
-                ></i>
-                </p>
-                <ReactTooltip/>
-              </CCol>
-              <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
-              <p data-tip="share">
-                <i
-                  id={"typeoofpartylocationshare"}
-                  style={{
-                    position: "absolute",
-                    top: "150px",
-                    marginLeft: "622px",
-                    marginBottom: "910px",
-                    color: "black",
-                  }}
-                  className="fa fa-share-alt"
-                ></i>
-                </p>
-                <ReactTooltip/>
-              </CCol>
-            </CRow>
-            <CRow style={{marginTop:"-10px"}}>
-              <CCol md="10" lg="10" sm="10">
+                    <span
+                      style={{
+                        marginTop: "-228px",
+                        left: "-21px",
+                        fontSize: "22px",
+                        fontWeight: "700",
+                        color: "#ec6f66",
+                      }}
+                    >
+                      Circle Party Office
+                    </span>
+                    <br />
+                    <span
+                      style={{
+                        marginLeft: "-112px",
+                        marginTop: "-201px",
+                        fontSize: "24px",
+                        fontWeight: "500",
+                        color: "grey",
+                      }}
+                    >
+                      1
+                    </span>
+                    <span className={"divider2"} />
+                    <br />
+                    <br />
+                    {/* </CWidgetDropdown> */}
+                  </CCol>
+                </CRow>
+              </div>
+              <CRow style={{ marginLeft: "150px" }}>
                 <CCol
-                  md="5"
-                  style={{
-                    marginLeft: "5px",
-                    float: "right",
-                   Top: "100px",
-                    top: "73px",
-                    position: "absolute",
-                  }}
+                  style={{ fontSize: "1.55rem", top: "260px" }}
+                  md={12}
+                  sm={12}
+                  lg={12}
                 >
-                  <CButton
+                  <img
+                    id={"typeoofpartyhierarchy"}
+                    alt={""}
+                    src={
+                      "https://img.icons8.com/fluent/2x/organization-chart-people.png"
+                    }
                     style={{
-                      float: "right",
-                      marginRight: "762px",
-                      position: "absolute",
-                      marginLeft: "18px",
+                      height: "40px",
+                      width: "40px",
+                      marginLeft: "740px",
+                      marginBottom: "20px",
                     }}
-                    id={"addtypeoofpartylocation"}
-                    className={"saveBtn"}
-                    onClick={changePartyOffice}
-                  >
-                    Add Party Wings Office Location
-                  </CButton>{" "}
+                  />
                 </CCol>
-              </CCol>
-            </CRow>
+                <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
+                  <p data-tip="print">
+                    <i
+                      id={"typeoofpartylocationprint"}
+                      style={{
+                        position: "absolute",
+                        top: "210px",
+                        marginLeft: "515px",
+                        marginBottom: "20px",
+                        color: "black",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => exportPDF()}
+                      className="fa fa-print"
+                    ></i>
+                  </p>
+                  <ReactTooltip />
+                </CCol>
+                <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
+                  <p data-tip="share">
+                    <i
+                      id={"typeoofpartylocationshare"}
+                      style={{
+                        position: "absolute",
+                        top: "185px",
+                        marginLeft: "622px",
+                        marginBottom: "910px",
+                        color: "black",
+                      }}
+                      className="fa fa-share-alt"
+                    ></i>
+                  </p>
+                  <ReactTooltip />
+                </CCol>
+              </CRow>
+              <CRow style={{ marginTop: "-10px" }}>
+                <CCol md="10" lg="10" sm="10">
+                  <CCol
+                    md="5"
+                    style={{
+                      marginLeft: "5px",
+                      float: "right",
+                      Top: "100px",
+                      top: "73px",
+                      position: "absolute",
+                    }}
+                  >
+                    <CButton
+                      style={{
+                        float: "right",
+                        marginRight: "762px",
+                        position: "absolute",
+                        marginLeft: "18px",
+                      }}
+                      id={"addtypeoofpartylocation"}
+                      className={"saveBtn"}
+                      onClick={changePartyOffice}
+                    >
+                      Add Party Wings Office Location
+                    </CButton>{" "}
+                  </CCol>
+                </CCol>
+              </CRow>
               <CRow style={{ padding: "4%", marginTop: "5.5%" }}>
                 <CDataTable
                   items={userData}
@@ -758,12 +793,12 @@ function PartyWingsOfficeLocation() {
                         <td className="py-1">
                           <CRow>
                             <CCol style={{ fontSize: "1.15rem" }} md="16">
-
                               <Dropdown
                                 className={"ant-dropdown-cutomize-by-me"}
                                 overlay={() => menus(item)}
                               >
-                                <a href
+                                <a
+                                  href
                                   className="ant-dropdown-link"
                                   onClick={(e) => e.preventDefault()}
                                 >
@@ -783,7 +818,7 @@ function PartyWingsOfficeLocation() {
                         </td>
                       );
                     },
-                    details: (item, index) => { },
+                    details: (item, index) => {},
                   }}
                 />
               </CRow>
@@ -796,7 +831,10 @@ function PartyWingsOfficeLocation() {
             <CCard className={"cardSave"}>
               <div style={{ marginLeft: "-2px" }}>
                 <div className={"row-headerlabel"}>
-                  <span style={{ marginLeft: "70px" }} className={"header-label"}>
+                  <span
+                    style={{ marginLeft: "70px" }}
+                    className={"header-label"}
+                  >
                     {" "}
                     Adding Party Wings Office Location{" "}
                   </span>
@@ -818,7 +856,7 @@ function PartyWingsOfficeLocation() {
                     components={{
                       MenuList: SelectMenuButtonpartywingsoffice,
                     }}
-                    // value={typeofPartyOffice}                    
+                    // value={typeofPartyOffice}
                     // onChange={(e) => {
                     //   setTypeofPartyOffice(e);
                     //   setEditShow(true);
@@ -826,59 +864,7 @@ function PartyWingsOfficeLocation() {
                   />
                 </CCol>
 
-                {/* <CCol md={1} lg={1}>
-                  <CButton
-                    style={{
-                      marginLeft: "26px",
-                      marginTop: "63px",
-                      backgroundColor: "#f9d423",
-                      borderLine: "5px !important",
-                      borderColor: "white",
-                      fontSize: "1.25rem",
-                      color: "#ffff",
-                    }}
-                    class={"fa fa-plus"}
-                    onClick={addTypeofPartyOffice}
-                  ></CButton>
-                </CCol> */}
-                {/* <CCol md={1} lg={1}>
-                  <i
-                    style={{
-                      marginLeft: "-25px",
-                      marginTop: "65px",
-                      fontSize: "1.50rem",
-                      color: "red",
-                    }}
-                    class={"fa fa-eye"}
-                    onClick={() => {
-                      addTypeofPartyOffice();
-                      viewTypeofPartyOffice();
-                    }}
-                  ></i>
-                </CCol> */}
-                {/* {editShow && (
-                  <CCol md={1} lg={1}>
-                    <i
-                      style={{
-                        marginLeft: "-80px",
-                        marginTop: "65px",
-                        fontSize: "1.25rem",
-                        color: "#3480e2",
-                        cursor: "pointer",
-                      }}
-                      onClick={addTypeofPartyOffice}
-                      id={"WingsOfficeedit"}
-                      className="fas fa-edit"
-                    ></i>
-                  </CCol>
-                )} */}
-
-                <CCol
-                  className={"column-align"}
-                  md={4}
-                  lg={4}
-                  style={{ marginLeft: "-105px" }}
-                >
+                <CCol className={"column-align"} md={5} lg={5}>
                   <CLabel className={"label-name"}>
                     Hierarchy Reporting To Office
                     <span className={"text-danger"}>*</span>
@@ -947,28 +933,29 @@ function PartyWingsOfficeLocation() {
               <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                 <CCol className={"column-align"} md={5} lg={5}>
                   <CLabel className={"label-name"}>
-                    Pincode
+                    Door No. / Street
                     <span className={"text-danger"}>*</span>
                   </CLabel>
                   <CInput
                     type={"text"}
                     className={"input-align"}
-                    name={"Pincode "}
-                    id={"WinglocatioPincode"}
-                    placeholder="Enter Pincode "
+                    name={"Area "}
+                    id={"typeoofpartyofficelocationArea "}
+                    placeholder="Enter Street "
                   />
                 </CCol>
+
                 <CCol className={"column-align"} md={5} lg={5}>
                   <CLabel className={"label-name"}>
-                    State
+                    Area / Village
                     <span className={"text-danger"}>*</span>
                   </CLabel>
                   <CInput
                     type={"text"}
                     className={"input-align"}
-                    name={"State"}
-                    id={"WinglocationState"}
-                    placeholder="Enter State"
+                    name={"Area "}
+                    id={"typeoofpartyofficelocationArea "}
+                    placeholder="Enter Area "
                   />
                 </CCol>
               </CRow>
@@ -983,36 +970,36 @@ function PartyWingsOfficeLocation() {
                     type={"text"}
                     className={"input-align"}
                     name={"City "}
-                    id={"WinglocationCity"}
+                    id={"typeoofpartyofficelocationCity"}
                     placeholder="Enter City "
                   />
                 </CCol>
                 <CCol className={"column-align"} md={5} lg={5}>
                   <CLabel className={"label-name"}>
-                    Area / Village
+                    State
                     <span className={"text-danger"}>*</span>
                   </CLabel>
                   <CInput
                     type={"text"}
                     className={"input-align"}
-                    name={"Area "}
-                    id={"WinglocationArea "}
-                    placeholder="Enter Area "
+                    name={"State"}
+                    id={"typeoofpartyofficelocationState"}
+                    placeholder="Enter State"
                   />
                 </CCol>
               </CRow>
               <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                 <CCol className={"column-align"} md={5} lg={5}>
                   <CLabel className={"label-name"}>
-                    Street
+                    Pincode
                     <span className={"text-danger"}>*</span>
                   </CLabel>
                   <CInput
                     type={"text"}
                     className={"input-align"}
-                    name={"Area "}
-                    id={"Winglocationstreet"}
-                    placeholder="Enter Street "
+                    name={"Pincode "}
+                    id={"typeoofpartyofficelocationPincode"}
+                    placeholder="Enter Pincode "
                   />
                 </CCol>
               </CRow>

@@ -191,6 +191,7 @@ function PartyOfficeLocation() {
         setSideBar1(true);
         setHidePartyOffice(true);
         setBackButt(false);
+        setCreatepartyOffice(false);
         break;
       case "close":
         setMenu({
@@ -202,6 +203,7 @@ function PartyOfficeLocation() {
         setTimeout(() => {
           setSideBar1(false);
         }, 1000);
+        setCreatepartyOffice(true);
         break;
     }
   };
@@ -308,7 +310,7 @@ function PartyOfficeLocation() {
   return (
     <div className={menu.style3}>
       {sideBar1 && (
-        <div className={menu.style}>
+        <div className={menu.style}style={{overflow:"auto" }}>
           <div className={"main-headerlabel"} style={{ marginTop: "-40px" }}>
             <span className={"header-label"}> Adding Type of Party Office</span>
           </div>
@@ -409,7 +411,7 @@ function PartyOfficeLocation() {
 
               <CRow style={{ marginLeft: "250px" }}>
                 <CCol
-                  style={{ fontSize: "1.55rem", top: "81px" }}
+                  style={{ fontSize: "1.55rem", top: "72px" }}
                   md={12}
                   sm={12}
                   lg={12}
@@ -423,8 +425,7 @@ function PartyOfficeLocation() {
                     style={{
                       height: "40px",
                       width: "40px",
-
-                      marginLeft: "638px",
+                      marginLeft: "630px",
                       marginBottom: "20px",
                     }}
                   />
@@ -435,7 +436,7 @@ function PartyOfficeLocation() {
                     id={"typeoofpartyprint"}
                     style={{
                       position: "absolute",
-                      top: "33px",
+                      top: "20px",
                       marginLeft: "410px",
                       marginBottom: "20px",
                       color: "black",
@@ -453,7 +454,7 @@ function PartyOfficeLocation() {
                     id={"typeoofpartyshare"}
                     style={{
                       position: "absolute",
-                      top: "8px",
+                      top: "-2px",
                       marginLeft: "515px",
                       marginBottom: "910px",
                       color: "black",
@@ -465,7 +466,7 @@ function PartyOfficeLocation() {
                 </CCol>
               </CRow>
 
-              <CRow style={{ padding: "4%", marginTop: "-6.5%" }}>
+              <CRow style={{ padding: "4%", marginTop: "-10.5%" }}>
                 <CDataTable
                   items={userData1}
                   fields={fields1}
@@ -677,7 +678,7 @@ function PartyOfficeLocation() {
             </div>
             <CRow style={{ marginLeft: "150px" }}>
               <CCol
-                style={{ fontSize: "1.55rem", top: "221px" }}
+                style={{ fontSize: "1.55rem", top: "260px" }}
                 md={12}
                 sm={12}
                 lg={12}
@@ -703,7 +704,7 @@ function PartyOfficeLocation() {
                   id={"typeoofpartylocationprint"}
                   style={{
                     position: "absolute",
-                    top: "175px",
+                    top: "210px",
                     marginLeft: "514px",
                     marginBottom: "20px",
                     color: "black",
@@ -721,7 +722,7 @@ function PartyOfficeLocation() {
                   id={"typeoofpartylocationshare"}
                   style={{
                     position: "absolute",
-                    top: "150px",
+                    top: "185px",
                     marginLeft: "633px",
                     marginBottom: "910px",
                     color: "black",
@@ -822,7 +823,7 @@ function PartyOfficeLocation() {
               </div>
             </div>
             <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-              <CCol className={"column-align"} md={5} lg={5}>
+            <CCol className={"column-align"} md={5} lg={5}>
                 <CLabel className={"label-name"}>
                   Type of Party Office
                   <span className={"text-danger"}>*</span>
@@ -842,61 +843,9 @@ function PartyOfficeLocation() {
                   //   setEditShow(true);
                   // }}
                 />
-              </CCol>
+              </CCol>                        
 
-              {/* <CCol md={1} lg={1}>
-                <CButton
-                  style={{
-                    marginLeft: "6px",
-                    marginTop: "50px",
-                    backgroundColor: "#3273e9",
-                    borderLine: "5px !important",
-                    borderColor: "white",
-                    fontSize: "1.25rem",
-                    color: "#ffff",
-                  }}
-                  class={"fa fa-plus"}
-                  onClick={addTypeofPartyOffice}
-                ></CButton>
-              </CCol> */}
-              {/* <CCol md={1} lg={1}>
-                <i
-                  style={{
-                    marginLeft: "-47px",
-                    marginTop: "52px",
-                    fontSize: "1.50rem",
-                    color: "#3cd3ad",
-                  }}
-                  class={"fa fa-eye"}
-                  onClick={() => {
-                    addTypeofPartyOffice();
-                    viewTypeofPartyOffice();
-                  }}
-                ></i>
-              </CCol> */}
-              {/* {editShow && (
-                <CCol md={1} lg={1}>
-                  <i
-                    style={{
-                      marginLeft: "-80px",
-                      marginTop: "68px",
-                      fontSize: "1.25rem",
-                      color: "#3480e2",
-                      cursor: "pointer",
-                    }}
-                    onClick={addTypeofPartyOffice}
-                    id={"typeoofpartyofficeedit"}
-                    className="fas fa-edit"
-                  ></i>
-                </CCol>
-              )} */}
-
-              <CCol
-                className={"column-align"}
-                md={4}
-                lg={4}
-                style={{ marginLeft: "-105px" }}
-              >
+                <CCol className={"column-align"} md={5} lg={5}>
                 <CLabel className={"label-name"}>
                   Reporting To Office
                   <span className={"text-danger"}>*</span>
@@ -963,32 +912,34 @@ function PartyOfficeLocation() {
             </CRow>
 
             <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-              <CCol className={"column-align"} md={5} lg={5}>
+            <CCol className={"column-align"} md={5} lg={5}>
                 <CLabel className={"label-name"}>
-                  Pincode
+                  Door No. / Street
                   <span className={"text-danger"}>*</span>
                 </CLabel>
                 <CInput
                   type={"text"}
                   className={"input-align"}
-                  name={"Pincode "}
-                  id={"typeoofpartyofficelocationPincode"}
-                  placeholder="Enter Pincode "
+                  name={"Area "}
+                  id={"typeoofpartyofficelocationArea "}
+                  placeholder="Enter Street "
                 />
               </CCol>
+              
               <CCol className={"column-align"} md={5} lg={5}>
                 <CLabel className={"label-name"}>
-                  State
+                  Area / Village
                   <span className={"text-danger"}>*</span>
                 </CLabel>
                 <CInput
                   type={"text"}
                   className={"input-align"}
-                  name={"State"}
-                  id={"typeoofpartyofficelocationState"}
-                  placeholder="Enter State"
+                  name={"Area "}
+                  id={"typeoofpartyofficelocationArea "}
+                  placeholder="Enter Area "
                 />
               </CCol>
+              
             </CRow>
 
             <CRow className={"row-alignment"} md="12" sm="12" lg="12">
@@ -1007,30 +958,30 @@ function PartyOfficeLocation() {
               </CCol>
               <CCol className={"column-align"} md={5} lg={5}>
                 <CLabel className={"label-name"}>
-                  Area / Village
+                  State
                   <span className={"text-danger"}>*</span>
                 </CLabel>
                 <CInput
                   type={"text"}
                   className={"input-align"}
-                  name={"Area "}
-                  id={"typeoofpartyofficelocationArea "}
-                  placeholder="Enter Area "
+                  name={"State"}
+                  id={"typeoofpartyofficelocationState"}
+                  placeholder="Enter State"
                 />
               </CCol>
             </CRow>
             <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-              <CCol className={"column-align"} md={5} lg={5}>
+            <CCol className={"column-align"} md={5} lg={5}>
                 <CLabel className={"label-name"}>
-                  Street
+                  Pincode
                   <span className={"text-danger"}>*</span>
                 </CLabel>
                 <CInput
                   type={"text"}
                   className={"input-align"}
-                  name={"Area "}
-                  id={"typeoofpartyofficelocationArea "}
-                  placeholder="Enter Street "
+                  name={"Pincode "}
+                  id={"typeoofpartyofficelocationPincode"}
+                  placeholder="Enter Pincode "
                 />
               </CCol>
             </CRow>

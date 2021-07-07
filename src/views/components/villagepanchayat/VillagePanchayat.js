@@ -122,7 +122,7 @@ const VillagePanchayat = () => {
   const fields = [
     { key: "SNo", label: "S.NO", _style: { width: "5%" } },
     { key: "Ward", label: "Ward Number", _style: { width: "10%" } },
-    { key: "Street", label: "Street Name", _style: { width: "10%" } },
+    { key: "Street", label: "Door No / Street Name", _style: { width: "10%" } },
     { key: "by", label: "Entered By", _style: { width: "10%" } },
     { key: "on", label: "Entered On", _style: { width: "10%" } },
 
@@ -143,7 +143,7 @@ const VillagePanchayat = () => {
     },
     { key: "SNo", label: "S.NO", _style: { width: "5%" } },
 
-    { key: "Street", label: "Street Name", _style: { width: "10%" } },
+    { key: "Street", label: "Door No / Street Name", _style: { width: "10%" } },
   ];
 
   const fieldss1 = [
@@ -1612,7 +1612,7 @@ const VillagePanchayat = () => {
             )}
 
             {sideBarup1 && (
-              <div className={menu.style1} style={{ marginLeft: "-108px" }}>
+              <div className={menu.style1} style={{ marginLeft: "-108px" , overflow:"auto" }}>
 
                 <CRow className={""}>
 
@@ -1800,7 +1800,7 @@ const VillagePanchayat = () => {
               </div>
             )}
             {sideBarup2 && (
-              <div className={menu.style1} style={{ marginLeft: "-108px" }}>
+              <div className={menu.style1} style={{ marginLeft: "-108px" , overflow:"auto" }}>
 
                 <CRow className={""}>
                   <CCol md="12" lg="12" sm="12">
@@ -2002,7 +2002,7 @@ const VillagePanchayat = () => {
               </div>
             )}
             {sideBarup3 && (
-              <div className={menu.style1} style={{ marginLeft: "-108px" }}>
+              <div className={menu.style1} style={{ marginLeft: "-108px", overflow:"auto" }}>
 
                 <CRow className={""}>
                   <CCol md="12" lg="12" sm="12">
@@ -2216,7 +2216,7 @@ const VillagePanchayat = () => {
               </div>
             )}
             {sideBarup4 && (
-              <div className={menu.style1} style={{ marginLeft: "-108px" }}>
+              <div className={menu.style1} style={{ marginLeft: "-108px" , overflow:"auto" }}>
 
                 <CRow className={""}>
                   <CCol md="12" lg="12" sm="12">

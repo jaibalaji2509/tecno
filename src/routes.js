@@ -120,22 +120,11 @@ const routes = [
   { path:"/townpanchayat", exact:true, name : "Town Panchayat", component:TownPanchayat},
   { path:"/villagepanchayat", exact:true, name : "Village Panchayat", component:VillagePanchayat},
  
-  // { path: '/AddMemberRegister',  exact: true, name: 'AddMemberRegister', component: AddMemberRegister },
   { path: '/MemberRegistration',  exact: true, name: 'MemberRegistration', component: MemberRegistration },
-  // { path: '/OfficeType',  exact: true, name: 'OfficeType', component: OfficeType },
-  // { path: '/WingLocation',  exact: true, name: 'WingLocation', component: WingLocation },
   { path:"/constituency", exact:true, name : "Constituency", component:Constituency},
   { path: '/WingLocation',  exact: true, name: 'WingLocation', component: PartyWingsOfficeLocation },
-  { path: '/memberRegistration',  exact: true, name: 'Member Registration', component: MemberRegistration },
-  // { path: '/partywingsoffice',  exact: true, name: 'PartyWingsOfficeType', component: PartyWingsOfficeType },
-  
-
-  
-  { path: '/MemberRegistration',  exact: true, name: 'Member Registration', component: MemberRegistration },
   { path: '/PartyWingsOfficeLocation',  exact: true, name: 'Party Wings Office Location', component: PartyWingsOfficeLocation },
   { path: '/Terminate',  exact: true, name: 'Terminate Member', component: Terminate },
-
-
 
   { path: '/assignpartyposting',  exact: true, name: 'Assign Party Posting', component:AssignPartyPosting },
   { path: '/memberPromote',  exact: true, name: 'Member Promote', component: Promote },
@@ -145,9 +134,7 @@ const routes = [
   { path: '/partyposting',  exact: true, name: 'Party Posting', component: PartyPosting },
   { path: '/assignpartyposting',  exact: true, name: 'Assign Party Posting', component:AssignPartyPosting },
 
-  { path: '/memberTerminate',  exact: true, name: 'Terminate Member', component: Terminate },
   { path: '/ConstituencyMember',  exact: true, name: 'Constituency Member', component: ConstituencyMember },
-  // { path: '/Constituency',  exact: true, name: 'Constituency', component: Constituency },
   { path: '/rajyaSabha',  exact: true, name: 'Rajya Sabha', component: RajyaSabha },
   { path: '/corporation',  exact: true, name: 'Member Corporation', component: Corporation },
   { path: '/MemberTownPanchayat',  exact: true, name: 'Member of Town Panchayat', component: MemberTownPanchayat },
