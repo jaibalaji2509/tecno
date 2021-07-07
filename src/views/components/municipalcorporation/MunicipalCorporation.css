@@ -1,10 +1,6 @@
 .ant-dropdown {
     left: 100px !important;
   }
-  
-
-
-
 
 .menu {
   background: #ffffff;
@@ -15,16 +11,10 @@
   min-height: 570px;
   max-height: 570px;
   margin-left: 2px;
-  padding: 30px 60px;
- 
- 
+  padding: 30px 60px; 
   border-radius: 20px solid red !important;
-
-  
   transition: all 1.5s ease-in-out;
- 
   left: 575px;
-  
   z-index: 8;
 }
 
@@ -34,8 +24,7 @@
   left: 755px;
   z-index: 10;
   min-height: 620px;
-  max-height: auto;
-  
+  max-height: auto;  
   animation: slide-in 2.5s forwards;
   -webkit-animation: slide-in 2.5s forwards;
   border: 2px solid grey;

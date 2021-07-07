@@ -19,6 +19,7 @@ import SheetJSFT from "../../../Tools/excelupload/SheetJSFT";
 import { make_cols } from "../../../Tools/excelupload/MakeColumn";
 
 function Constituency() {
+  const [selected, setSelected] = useState([]);
   const [selected1, setSelected1] = useState([]);
   const [collected, setCollected] = useState([]);
   const [villageHide, setVillageHide] = useState({
@@ -26,7 +27,7 @@ function Constituency() {
     panchayatunion: false,
   });
   const [error] = useState("");
-  const [municipalListadd, ] = useState(true);
+  const [municipalListadd] = useState(true);
   const [municipalList, setMunicipalList] = useState(true);
   const [, setmunicipalCreate] = useState(false);
   // const [, setmunicipalCreateadd] = useState(false);
@@ -97,7 +98,11 @@ function Constituency() {
     },
     { key: "Area", label: "Area / Village ", _style: { width: "10%" } },
     { key: "Ward", label: "Ward", _style: { width: "10%" } },
-    { key: "Street", label: "Street Name", _style: { width: "10%" } },
+    {
+      key: "Street",
+      label: "Door No / Street Name",
+      _style: { width: "10%" },
+    },
     { key: "Total", label: "Total  ", _style: { width: "10%" } },
     { key: "Male", label: "Male ", _style: { width: "10%" } },
     { key: "female", label: "Female", _style: { width: "10%" } },
@@ -222,7 +227,11 @@ function Constituency() {
       _style: { width: "10%" },
     },
     { key: "Village", label: "Village / Ward", _style: { width: "10%" } },
-    { key: "Street", label: "Street", _style: { width: "10%" } },
+    {
+      key: "Street",
+      label: "Door No / Street Name",
+      _style: { width: "10%" },
+    },
 
     {
       label: "Action",
@@ -905,7 +914,16 @@ function Constituency() {
           </div>
         )}
         {sideBarup1 && (
-          <div className={menu.style1} style={{ marginLeft: "-108px" }}>
+          <div
+            className={menu.style1}
+            style={{
+              marginLeft: "-108px",
+              minHeight: `${window.innerHeight - 198}px`,
+              maxHeight: `${window.innerHeight - 198}px`,
+              overflow: "auto",
+              padding: "0px 20px 0px 30px",
+            }}
+          >
             <CRow className={""}>
               <CCol md="12" lg="12" sm="12">
                 <div>
@@ -997,7 +1015,7 @@ function Constituency() {
                 <CButton
                   style={{
                     position: "absolute",
-                    top: "-100px",
+                    top: "-70px",
                     right: "-660px",
                     marginLeft: "30px",
                     backgroundColor: "green",
@@ -1108,8 +1126,15 @@ function Constituency() {
         {sideBarup2 && (
           <div
             className={menu.style1}
-            style={{ marginLeft: "-108px", minHeight: "900px" }}
+            style={{
+              marginLeft: "-108px",
+              minHeight: `${window.innerHeight - 198}px`,
+              maxHeight: `${window.innerHeight - 198}px`,
+              overflow: "auto",
+              padding: "0px 20px 0px 30px",
+            }}
           >
+            
             <CRow className={""}>
               <CCol md="12" lg="12" sm="12">
                 <div>
@@ -1150,7 +1175,6 @@ function Constituency() {
                 </span>
               </CCol>
             </CRow>
-
             <CRow md="12" style={{ marginLeft: "10px", marginTop: "15px" }}>
               <CCol
                 md="6"
@@ -1228,7 +1252,7 @@ function Constituency() {
                     position: "absolute",
                     right: "-660px",
                     marginLeft: "30px",
-                    top: "-160px",
+                    top: "-130px",
                     backgroundColor: "green",
                     border: "1px solid green",
                   }}
@@ -1242,7 +1266,6 @@ function Constituency() {
                 </CButton>
               </CCol>
             </CRow>
-
             {isValue && excelupload.data !== 0 ? (
               <div>
                 <CRow
@@ -1629,9 +1652,9 @@ function Constituency() {
                                   </div>
                                 </div>
                               ) : null}
-                            </CCol>                          
+                            </CCol>
                           </React.Fragment>
-                        )}                       
+                        )}
                       </CRow>
 
                       <CRow>
@@ -1756,28 +1779,49 @@ function Constituency() {
                           hover
                           sorter
                           pagination
+                          selectAll={true}
+                          checkedAll={userData.length === selected.length}
+                          onSelectAll={(val) => {
+                            console.log(val, userData);
+                            if (userData.length === selected.length) {
+                              setSelected([]);
+                            } else {
+                              let ids = [];
+                              val.map((x) =>(
+                                ids.push(`${x._id}`)
+                              ));
+                              setSelected(ids);
+                            }
+                          }}
                           scopedSlots={{
                             show_details: (item, index) => {
                               return (
                                 <td className="py-2">
-                                  <CInput
-                                    type={"checkbox"}
-                                    style={{
-                                      width: "15px",
-                                      height: "15px",
-                                      marginLeft: "30px",
-                                      marginBottom: "10px",
-                                    }}
-                                  />
                                   <CRow>
-                                    <CCol
-                                      style={{ fontSize: "1.15rem" }}
-                                      md="12"
-                                    ></CCol>
+                                    <CInput
+                                      type={"checkbox"}
+                                      style={{
+                                        width: "15px",
+                                        height: "15px",
+                                        marginLeft: "30px",
+                                        marginBottom: "10px",
+                                      }}
+                                      onClick={() => {
+                                        if (selected.includes(`${item._id}`)) {
+                                          let values = selected.filter((x) => {
+                                            return `${x}` !== `${item._id}`;
+                                          });
+                                          setSelected(values);
+                                        } else {
+                                          setSelected([...selected, `${item._id}`]);
+                                        }
+                                      }}
+                                      checked={selected.includes(`${item._id}`)}
+                                    />
                                   </CRow>
                                 </td>
                               );
-                            },
+                            },  
                             show_details1: (item, index) => {
                               return (
                                 <td className="py-2">

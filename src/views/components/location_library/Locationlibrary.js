@@ -9,7 +9,6 @@ import {
   CWidgetDropdown,
   CInput,
   CLink,
-
 } from "@coreui/react";
 // import { useFormik } from "formik";
 // import * as yup from "yup";
@@ -2230,7 +2229,7 @@ function LocationLibrary(props) {
               )}
 
               {sideBarup1 && (
-                <div className={menu.style1} style={{ marginLeft: "-108px" }}>
+                <div className={menu.style1} style={{ marginLeft: "-108px" , overflow:"auto" }}>
 
                   <CRow className={""}>
                     <CCol md="12" lg="12" sm="12">
@@ -2404,7 +2403,7 @@ function LocationLibrary(props) {
                 </div>
               )}
               {sideBarup2 && (
-                <div className={menu.style1} style={{ marginLeft: "-108px" }}>
+                <div className={menu.style1} style={{ marginLeft: "-108px" , overflow:"auto" }}>
 
                   <CRow className={""}>
                     <CCol md="12" lg="12" sm="12">
@@ -2597,7 +2596,7 @@ function LocationLibrary(props) {
                 </div>
               )}
               {sideBarup3 && (
-                <div className={menu.style1} style={{ marginLeft: "-108px" }}>
+                <div className={menu.style1} style={{ marginLeft: "-108px", overflow:"auto" }}>
 
                   <CRow className={""}>
                     <CCol md="12" lg="12" sm="12">
@@ -2792,7 +2791,8 @@ function LocationLibrary(props) {
                 </div>
               )}
               {sideBarup4 && (
-                <div className={menu.style1} style={{ marginLeft: "-108px" }}>
+                <div className={menu.style1} style={{ marginLeft: "-108px" , overflow:"auto" }}
+                >
                   <CRow className={""}>
                     <CCol md="12" lg="12" sm="12">
                       <div>
@@ -3000,7 +3000,7 @@ function LocationLibrary(props) {
                 </div>
               )}
               {sideBarup5 && (
-                <div className={menu.style1} style={{ marginLeft: "-108px" }}>
+                <div className={menu.style1} style={{ marginLeft: "-108px", overflow:"auto" }}>
                   <CRow className={""}>
                     <CCol md="12" lg="12" sm="12">
                       <div>
@@ -3626,8 +3626,8 @@ function LocationLibrary(props) {
                                   id="locationLibrarypirnt"
                                   style={{
                                     position: "absolute",
-                                    top: "38px",
-                                    marginLeft: "180px",
+                                    top: "74px",
+                                    marginLeft: "470px",
                                     marginBottom: "20px",
                                     color: "black",
                                   }}
@@ -3645,8 +3645,8 @@ function LocationLibrary(props) {
                                 id={"locationLibraryshare"}
                                 style={{
                                   position: "absolute",
-                                  top: "38px",
-                                  marginLeft: "420px",
+                                  top: "74px",
+                                  marginLeft: "560px",
                                   marginBottom: "910px",
                                   color: "black",
                                 }}

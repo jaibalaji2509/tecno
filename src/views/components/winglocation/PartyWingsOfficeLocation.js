@@ -188,8 +188,8 @@ function PartyWingsOfficeLocation() {
         setSideBar1(true);
         setHidePartyOffice(true);
         setBackButt(false);
+        setCreatepartyOffice(false);
         break;
-
       case "close":
         setMenu({
           menuStatus: "open",
@@ -200,6 +200,7 @@ function PartyWingsOfficeLocation() {
         setTimeout(() => {
           setSideBar1(false);
         }, 1000);
+        setCreatepartyOffice(true);
         break;
     }
   };
@@ -306,8 +307,13 @@ function PartyWingsOfficeLocation() {
     <React.Fragment>
       <div className={menu.style3}>
         {sideBar1 && (
-          <div className={menu.style}>
-            <div className={"main-headerlabel"} style={{ marginTop: "-40px" }}>
+          <div
+            className={menu.style}
+            style={{              
+              overflow: "auto",
+            }}
+          >
+            <div className={"main-headerlabel"}>
               <span className={"header-label"}>
                 {" "}
                 Adding Type of Party Wings Office
@@ -411,7 +417,7 @@ function PartyWingsOfficeLocation() {
 
                 <CRow>
                   <CCol
-                    style={{ fontSize: "1.55rem", top: "80px" }}
+                    style={{ fontSize: "1.55rem", top: "118px" }}
                     md={12}
                     sm={12}
                     lg={12}
@@ -437,7 +443,7 @@ function PartyWingsOfficeLocation() {
                         id={"WingsOfficeprint"}
                         style={{
                           position: "absolute",
-                          top: "33px",
+                          top: "68px",
                           marginLeft: "675px",
                           marginBottom: "20px",
                           color: "black",
@@ -454,7 +460,7 @@ function PartyWingsOfficeLocation() {
                         id={"WingsOfficeshare"}
                         style={{
                           position: "absolute",
-                          top: "8px",
+                          top: "45px",
                           marginLeft: "787px",
                           marginBottom: "910px",
                           color: "black",
@@ -687,7 +693,7 @@ function PartyWingsOfficeLocation() {
               </div>
               <CRow style={{ marginLeft: "150px" }}>
                 <CCol
-                  style={{ fontSize: "1.55rem", top: "225px" }}
+                  style={{ fontSize: "1.55rem", top: "260px" }}
                   md={12}
                   sm={12}
                   lg={12}
@@ -712,7 +718,7 @@ function PartyWingsOfficeLocation() {
                       id={"typeoofpartylocationprint"}
                       style={{
                         position: "absolute",
-                        top: "175px",
+                        top: "210px",
                         marginLeft: "515px",
                         marginBottom: "20px",
                         color: "black",
@@ -730,7 +736,7 @@ function PartyWingsOfficeLocation() {
                       id={"typeoofpartylocationshare"}
                       style={{
                         position: "absolute",
-                        top: "150px",
+                        top: "185px",
                         marginLeft: "622px",
                         marginBottom: "910px",
                         color: "black",
@@ -927,28 +933,29 @@ function PartyWingsOfficeLocation() {
               <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                 <CCol className={"column-align"} md={5} lg={5}>
                   <CLabel className={"label-name"}>
-                    Pincode
+                    Door No. / Street
                     <span className={"text-danger"}>*</span>
                   </CLabel>
                   <CInput
                     type={"text"}
                     className={"input-align"}
-                    name={"Pincode "}
-                    id={"WinglocatioPincode"}
-                    placeholder="Enter Pincode "
+                    name={"Area "}
+                    id={"typeoofpartyofficelocationArea "}
+                    placeholder="Enter Street "
                   />
                 </CCol>
+
                 <CCol className={"column-align"} md={5} lg={5}>
                   <CLabel className={"label-name"}>
-                    State
+                    Area / Village
                     <span className={"text-danger"}>*</span>
                   </CLabel>
                   <CInput
                     type={"text"}
                     className={"input-align"}
-                    name={"State"}
-                    id={"WinglocationState"}
-                    placeholder="Enter State"
+                    name={"Area "}
+                    id={"typeoofpartyofficelocationArea "}
+                    placeholder="Enter Area "
                   />
                 </CCol>
               </CRow>
@@ -963,36 +970,36 @@ function PartyWingsOfficeLocation() {
                     type={"text"}
                     className={"input-align"}
                     name={"City "}
-                    id={"WinglocationCity"}
+                    id={"typeoofpartyofficelocationCity"}
                     placeholder="Enter City "
                   />
                 </CCol>
                 <CCol className={"column-align"} md={5} lg={5}>
                   <CLabel className={"label-name"}>
-                    Area / Village
+                    State
                     <span className={"text-danger"}>*</span>
                   </CLabel>
                   <CInput
                     type={"text"}
                     className={"input-align"}
-                    name={"Area "}
-                    id={"WinglocationArea "}
-                    placeholder="Enter Area "
+                    name={"State"}
+                    id={"typeoofpartyofficelocationState"}
+                    placeholder="Enter State"
                   />
                 </CCol>
               </CRow>
               <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                 <CCol className={"column-align"} md={5} lg={5}>
                   <CLabel className={"label-name"}>
-                    Street
+                    Pincode
                     <span className={"text-danger"}>*</span>
                   </CLabel>
                   <CInput
                     type={"text"}
                     className={"input-align"}
-                    name={"Area "}
-                    id={"Winglocationstreet"}
-                    placeholder="Enter Street "
+                    name={"Pincode "}
+                    id={"typeoofpartyofficelocationPincode"}
+                    placeholder="Enter Pincode "
                   />
                 </CCol>
               </CRow>

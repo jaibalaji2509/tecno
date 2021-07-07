@@ -33,6 +33,7 @@ const Municipality = () => {
     pincode: "",
   });
   const [selected1, setSelected1] = useState([]);
+  const [selected, setSelected] = useState([]);
   const [collected, setCollected] = useState([]);
   const [villageHide, setVillageHide] =useState({districtpanchayat:true,panchayatunion:false})
   const [municipalList, setMunicipalList] = useState(true);
@@ -125,7 +126,7 @@ const Municipality = () => {
       filter: false,
     },
 
-    { key: "Street", label: "Street Name", _style: { width: "10%" } },
+    { key: "Street", label: "Door No / Street Name", _style: { width: "10%" } },
 
   ];
   const fields = [   
@@ -134,7 +135,7 @@ const Municipality = () => {
       filter: false,
     },
 
-    { key: "Street", label: "Street Name", _style: { width: "10%" } },
+    { key: "Street", label: "Door No / Street Name", _style: { width: "10%" } },
     { key: "Ward", label: "Ward Name", _style: { width: "10%" } },
     { key: "EnteredBy", label: "Entered By", _style: { width: "10%" } },
     { key: "EnteredOn", label: "Entered On", _style: { width: "10%" } },
@@ -908,7 +909,7 @@ setSideBarup2(false)
 
         )}
         {sideBarup1 && (
-          <div className={menu.style1} style={{ marginLeft: "-108px" }}>
+          <div className={menu.style1} style={{ marginLeft: "-108px" , overflow:"auto" }}>
 
             <CRow className={""}>
               <CCol md="12" lg="12" sm="12">
@@ -1106,7 +1107,7 @@ setSideBarup2(false)
           </div>
         )}
         {sideBarup2 && (
-          <div className={menu.style1} style={{ marginLeft: "-108px", minHeight: "900px" }}>
+          <div className={menu.style1} style={{ marginLeft: "-108px", overflow:"auto" }}>
 
             <CRow className={""}>
               <CCol md="12" lg="12" sm="12">
@@ -1745,9 +1746,22 @@ setSideBarup2(false)
                         itemsPerPageSelect
                         itemsPerPage={5}
                         hover
-                        sorter
-                        checked
+                        sorter                       
                         pagination
+                        selectAll={true}
+                        checkedAll={userData.length === selected.length}
+                        onSelectAll={(val) => {
+                          console.log(val, userData);
+                          if (userData.length === selected.length) {
+                            setSelected([]);
+                          } else {
+                            let ids = [];
+                            val.map((x) =>(
+                              ids.push(`${x._id}`)
+                            ));
+                            setSelected(ids);
+                          }
+                        }}
                         scopedSlots={{
                           show_details1: (item, index) => {
                             return (
@@ -1761,9 +1775,18 @@ setSideBarup2(false)
                                       marginLeft: "30px",
                                       marginBottom: "10px",
                                     }}
+                                    onClick={() => {
+                                      if (selected.includes(`${item._id}`)) {
+                                        let values = selected.filter((x) => {
+                                          return `${x}` !== `${item._id}`;
+                                        });
+                                        setSelected(values);
+                                      } else {
+                                        setSelected([...selected, `${item._id}`]);
+                                      }
+                                    }}
+                                    checked={selected.includes(`${item._id}`)}
                                   />
-                                  <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                  </CCol>
                                 </CRow>
                               </td>
                             );

@@ -115,28 +115,7 @@ const PartyPosting = () => {
         Role: "General",
         EnteredBy:"Sathish",
         EnteredOn:"01/06/2021"
-      },
-      {
-        SNo: "2",
-        Name: "Lawyers Team",
-        Type: "Head Quaters",
-        Department: "Lawyers",
-        Designation: "Secretary",
-        Role: "General",
-        EnteredBy:"Sathish",
-        EnteredOn:"01/06/2021"
-      },
-      {
-        SNo: "2",
-        Name: "Lawyers Team",
-        Type: "Head Quaters",
-        Department: "Lawyers",
-        Designation: "Secretary",
-        Role: "General",
-        EnteredBy:"Sathish",
-        EnteredOn:"01/06/2021"
-      },
-     
+      },        
   ];
 
   const userDataFunctional = [
@@ -391,7 +370,7 @@ const PartyPosting = () => {
     )
   }
   const [menu, setMenu] = useState({
-    style: "menu2",
+    // style: "menu2",
     menuStatus: "open",
     // style3: "menu2",
   });
@@ -1385,7 +1364,7 @@ const PartyPosting = () => {
 
     )}
    {sideBarbulkdep && (
-          <div className={menu.style1} style={{ marginLeft: "-108px" }}>
+          <div className={menu.style1} style={{ marginLeft: "-108px" , overflow:"auto" }}>
 
             <CRow className={""}>
               <CCol md="12" lg="12" sm="12">
@@ -1583,7 +1562,7 @@ const PartyPosting = () => {
           </div>
         )}
 {sideBarbulkdes && (
-          <div className={menu.style1} style={{ marginLeft: "-108px", minHeight: "900px" }}>
+          <div className={menu.style1} style={{ marginLeft: "-108px", overflow:"auto" }}>
 
             <CRow className={""}>
               <CCol md="12" lg="12" sm="12">
@@ -1775,7 +1754,7 @@ const PartyPosting = () => {
           </div>
         )}
 {sideBarbulkrole && (
-          <div className={menu.style1} style={{ marginLeft: "-108px", minHeight: "900px" }}>
+          <div className={menu.style1} style={{ marginLeft: "-108px", overflow:"auto" }}>
 
             <CRow className={""}>
               <CCol md="12" lg="12" sm="12">

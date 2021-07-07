@@ -448,7 +448,7 @@ const CDataTable = (props) => {
       <div style={{ width: "100%" }} ref={innerRef}>
         <div className="row">
           {(tableFilter || cleaner) && (
-            <div className="col-sm-6 form-inline" style={{marginLeft:"595px",top:"38px"}}>
+            <div className="col-sm-6 form-inline">
               {tableFilter && (
                 <>
                   <label>{tableFilterData.label}</label>
