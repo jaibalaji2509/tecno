@@ -491,6 +491,7 @@ const MunicipalCorporation = () => {
 
           setSideBarup(false);
         }, 1000);
+        setIsValue(false);
         break;
     }
   };

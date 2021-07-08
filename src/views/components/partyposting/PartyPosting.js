@@ -430,6 +430,7 @@ const PartyPosting = () => {
 
           setSideBarbulk(false);
         }, 1000);
+        setIsValue(false);  
         break;
     }
   };
@@ -2093,7 +2094,7 @@ const PartyPosting = () => {
             </div>
             {locationHide.corporation && (
               <div>
-                <div style={{ marginLeft: "-26px" }}>
+                <div style={{ marginLeft: "-3px" }}>
                   
 
                   <CRow className={"row-alignment"} md="12" sm="12" lg="12">
@@ -2656,14 +2657,14 @@ const PartyPosting = () => {
                         fontWeight: "700",
                         marginLeft: "30px",
                         marginTop: "-10px",
-                      }}
+                      }}                     
                     >
                     Administration Reporting 
                     </CLabel>
                   </CCol>
-                  <CRow className={"row-alignment"} style={{marginLeft:"-40px"}}>
+                  <CRow className={"row-alignment"} style={{marginLeft:"-28px"}}>
                   <CCol className={"column-align"} md="6">
-                      <CLabel className={"label-name-1"}>
+                      <CLabel className={"label-name-1"} style={{marginLeft:"10px"}}>
                       Hierarchy Report to
                         <span className={"text-danger"}>*</span>
                       </CLabel>
@@ -2674,6 +2675,7 @@ const PartyPosting = () => {
                         placeholder={"Select Hierarchy Report to"}
                         value={locations.district}
                         onChange={(e) => setLocations(e)}
+                        
                         options={selectAdministartive}
                       />
                     </CCol>
@@ -2752,16 +2754,16 @@ const PartyPosting = () => {
                         fontSize: "20PX",
                         fontFamily: "Open Sans",
                         fontWeight: "700",
-                        marginLeft: "35px",
+                        marginLeft: "30px",
                         marginTop: "-90px",
                       }}
                     >
                    Functional Reporting 
                     </CLabel>
                   </CCol>
-                  <CRow className={"row-alignment"} style={{marginLeft:"-36px"}}>
+                  <CRow className={"row-alignment"} style={{marginLeft:"-29px"}}>
                   <CCol className={"column-align"} md="6">
-                      <CLabel className={"label-name-1"}>
+                      <CLabel className={"label-name-1"} style={{marginLeft:"10px"}}>
                       Hierarchy Report to
                         <span className={"text-danger"}>*</span>
                       </CLabel>
@@ -2841,6 +2843,7 @@ const PartyPosting = () => {
                 </CRow>
              
               </div>
+             
             )}
 
          

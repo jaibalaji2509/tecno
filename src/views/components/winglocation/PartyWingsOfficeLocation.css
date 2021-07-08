@@ -62,3 +62,6 @@
     bottom: 40%;
     border-left: 1px solid lightgray; 
   }
+  .ant-dropdown {
+    left: 1370px !important;
+  }

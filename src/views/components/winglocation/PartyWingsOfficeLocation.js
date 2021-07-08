@@ -444,6 +444,7 @@ function PartyWingsOfficeLocation() {
                         style={{
                           position: "absolute",
                           top: "68px",
+                          marginTop:"-20px",
                           marginLeft: "675px",
                           marginBottom: "20px",
                           color: "black",
@@ -691,6 +692,34 @@ function PartyWingsOfficeLocation() {
                   </CCol>
                 </CRow>
               </div>
+              <CRow style={{ marginTop: "-10px" }}>
+                <CCol md="10" lg="10" sm="10">
+                  <CCol
+                    md="5"
+                    style={{
+                      marginLeft: "5px",
+                      float: "right",
+                      Top: "100px",
+                      top: "170px",
+                      position: "absolute",
+                    }}
+                  >
+                    <CButton
+                      style={{
+                        float: "right",
+                        marginRight: "762px",
+                        position: "absolute",
+                        marginLeft: "18px",
+                      }}
+                      id={"addtypeoofpartylocation"}
+                      className={"saveBtn"}
+                      onClick={changePartyOffice}
+                    >
+                      Add Party Wings Office Location
+                    </CButton>{" "}
+                  </CCol>
+                </CCol>
+              </CRow>
               <CRow style={{ marginLeft: "150px" }}>
                 <CCol
                   style={{ fontSize: "1.55rem", top: "260px" }}
@@ -720,6 +749,7 @@ function PartyWingsOfficeLocation() {
                         position: "absolute",
                         top: "210px",
                         marginLeft: "515px",
+                        marginTop:"-15px",
                         marginBottom: "20px",
                         color: "black",
                         cursor: "pointer",
@@ -747,34 +777,7 @@ function PartyWingsOfficeLocation() {
                   <ReactTooltip />
                 </CCol>
               </CRow>
-              <CRow style={{ marginTop: "-10px" }}>
-                <CCol md="10" lg="10" sm="10">
-                  <CCol
-                    md="5"
-                    style={{
-                      marginLeft: "5px",
-                      float: "right",
-                      Top: "100px",
-                      top: "73px",
-                      position: "absolute",
-                    }}
-                  >
-                    <CButton
-                      style={{
-                        float: "right",
-                        marginRight: "762px",
-                        position: "absolute",
-                        marginLeft: "18px",
-                      }}
-                      id={"addtypeoofpartylocation"}
-                      className={"saveBtn"}
-                      onClick={changePartyOffice}
-                    >
-                      Add Party Wings Office Location
-                    </CButton>{" "}
-                  </CCol>
-                </CCol>
-              </CRow>
+             
               <CRow style={{ padding: "4%", marginTop: "5.5%" }}>
                 <CDataTable
                   items={userData}
@@ -841,6 +844,25 @@ function PartyWingsOfficeLocation() {
                 </div>
               </div>
 
+              <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                <CCol className={"column-align"} md={5} lg={5}>
+                  <CLabel className={"label-name"}>
+                  Name of Party Wings Office
+                    <span className={"text-danger"}>*</span>
+                  </CLabel>
+                  <Select
+                    type={"text"}
+                    id={"wingReportingTo"}
+                    className={"select"}
+                    placeholder="Select the Party Office"
+                    options={partyofficeType}
+                    components={{
+                      MenuList: SelectMenuButtonpartywingsoffice,
+                    }}                    
+                  />
+                </CCol>
+                </CRow>
+                
               <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                 <CCol className={"column-align"} md={5} lg={5}>
                   <CLabel className={"label-name"}>

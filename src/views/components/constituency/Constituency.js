@@ -410,6 +410,7 @@ function Constituency() {
         setTimeout(() => {
           setSideBarup(false);
         }, 1000);
+        setIsValue(false);  
         break;
     }
   };

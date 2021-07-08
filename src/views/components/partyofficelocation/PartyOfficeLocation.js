@@ -676,6 +676,34 @@ function PartyOfficeLocation() {
               </CCol>
             </CRow>
             </div>
+            <CRow style={{marginTop:"-10px"}}>
+              <CCol md="10" lg="10" sm="10">
+                <CCol
+                  md="5"
+                  style={{
+                    marginLeft: "5px",
+                    float: "right",
+                   Top: "100px",
+                    top: "170px",
+                    position: "absolute",
+                  }}
+                >
+                  <CButton
+                    style={{
+                      float: "right",
+                      marginRight: "762px",
+                      position: "absolute",
+                      marginLeft: "18px",
+                    }}
+                    id={"addtypeoofpartylocation"}
+                    className={"saveBtn"}
+                    onClick={changePartyOffice}
+                  >
+                    Add Party Office Location
+                  </CButton>{" "}
+                </CCol>
+              </CCol>
+            </CRow>
             <CRow style={{ marginLeft: "150px" }}>
               <CCol
                 style={{ fontSize: "1.55rem", top: "260px" }}
@@ -705,6 +733,7 @@ function PartyOfficeLocation() {
                   style={{
                     position: "absolute",
                     top: "210px",
+                    marginTop:"-10px",
                     marginLeft: "514px",
                     marginBottom: "20px",
                     color: "black",
@@ -733,34 +762,7 @@ function PartyOfficeLocation() {
                 <ReactTooltip/>
               </CCol>
             </CRow>
-            <CRow style={{marginTop:"-10px"}}>
-              <CCol md="10" lg="10" sm="10">
-                <CCol
-                  md="5"
-                  style={{
-                    marginLeft: "5px",
-                    float: "right",
-                   Top: "100px",
-                    top: "73px",
-                    position: "absolute",
-                  }}
-                >
-                  <CButton
-                    style={{
-                      float: "right",
-                      marginRight: "762px",
-                      position: "absolute",
-                      marginLeft: "18px",
-                    }}
-                    id={"addtypeoofpartylocation"}
-                    className={"saveBtn"}
-                    onClick={changePartyOffice}
-                  >
-                    Add Party Office Location
-                  </CButton>{" "}
-                </CCol>
-              </CCol>
-            </CRow>
+           <div>
             <CRow style={{ padding: "4%", marginTop: "5.5%" }}>
               <CDataTable
                 items={userData}
@@ -807,6 +809,7 @@ function PartyOfficeLocation() {
                 }}
               />
             </CRow>
+            </div>
           </CCard>
         </div>
       )}

@@ -515,6 +515,7 @@ setSideBarup2(false)
 
           setSideBarup(false);
         }, 1000);
+        setIsValue(false);
         break;
     }
   };

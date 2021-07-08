@@ -732,9 +732,9 @@ const VillagePanchayat = () => {
           style1: "menu active2",
         });
         setTimeout(() => {
-          setIsValue(false);
           setSideBarup(false);
         }, 1000);
+        setIsValue(false);       
         break;
     }
 

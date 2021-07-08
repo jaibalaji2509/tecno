@@ -264,4 +264,6 @@
      margin: bottom 120px;
    }                              
  
- 
+   .ant-dropdown {
+    left: 1370px !important;
+  }

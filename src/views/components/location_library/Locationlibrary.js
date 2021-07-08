@@ -614,7 +614,7 @@ function LocationLibrary(props) {
 
         });
         setSideBarup(true);
-
+       
 
 
         break;
@@ -624,10 +624,10 @@ function LocationLibrary(props) {
           style1: "menu active2",
 
         });
-        setTimeout(() => {
-
+        setTimeout(() => {          
           setSideBarup(false);
         }, 1000);
+        setIsValue(false);
         break;
     }
   };
