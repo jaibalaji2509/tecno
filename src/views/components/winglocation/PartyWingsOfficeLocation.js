@@ -23,6 +23,7 @@ function PartyWingsOfficeLocation() {
   const [createPartyOffice, setCreatepartyOffice] = useState(false);
   // const [editShow, setEditShow] = useState(false);
   const [sideBar1, setSideBar1] = useState(false);
+  const [sideBar2, setSideBar2] = useState(false);
 
   const changePartyOffice = async () => {
     await setAddPartyOffice(false);
@@ -188,6 +189,7 @@ function PartyWingsOfficeLocation() {
         setSideBar1(true);
         setHidePartyOffice(true);
         setBackButt(false);
+        setSideBar2(false);
         setCreatepartyOffice(false);
         break;
       case "close":
@@ -204,14 +206,52 @@ function PartyWingsOfficeLocation() {
         break;
     }
   };
+  const addTypeofPartyOfficename = () => {
+    switch (menu.menuStatus) {
+      case "open":
+      default:
+        setMenu({
+          menuStatus: "close",
+          style3: "menu2",
+          style: "menu active",
+          style1: "menu1",
+        });
+        setSideBar2(true);        
+        setHidePartyOffice2(true);
+        setBackButt2(false);
+        setCreatepartyOffice(false);
+        break;
+      case "close":
+        setMenu({
+          menuStatus: "open",
+          style3: "menu1",
+          style: "menu",
+          style1: "menu1",
+        });
+        setTimeout(() => {
+          setSideBar1(false);
+        }, 1000);
+        setCreatepartyOffice(true);
+        break;
+    }
+  };
+  const [backbutt2, setBackButt2] = useState(false);
+  const [hidePartyOffice2, setHidePartyOffice2] = useState(true);
   const [hidePartyOffice, setHidePartyOffice] = useState(true);
   const [backbutt, setBackButt] = useState(false);
   const viewTypeofPartyOffice = () => {
     setHidePartyOffice(false);
     setBackButt(true);
   };
+  const viewTypeofPartyOfficename = () => {
+    setHidePartyOffice2(false);
+    setBackButt2(true);
+  };
   const [locationHide] = useState({
     corporation: true,
+  });
+  const [locationHide2] = useState({
+    corporation2: true,
   });
 
   const menus = (details) => {
@@ -294,6 +334,38 @@ function PartyWingsOfficeLocation() {
             onClick={() => {
               addTypeofPartyOffice();
               viewTypeofPartyOffice();
+            }}
+            style={{ marginLeft: "50px" }}
+          >
+            View{" "}
+          </CLink>
+        </div>
+      </components.MenuList>
+    );
+  };
+  const SelectMenuButtonpartynamewingsoffice = (props) => {
+    return (
+      <components.MenuList {...props}>
+        {props.children}
+        <div
+          style={{
+            marginTop: "-95px",
+            marginBottom: "-50px",
+            minHeight: "150px",
+          }}
+        >
+          <CLink
+            className={"saveBtn"}
+            onClick={addTypeofPartyOfficename}
+            style={{ marginLeft: "350px" }}
+          >
+            Add{" "}
+          </CLink>
+          <CLink
+            className={"saveBtn"}
+            onClick={() => {
+              addTypeofPartyOfficename();
+              viewTypeofPartyOfficename();
             }}
             style={{ marginLeft: "50px" }}
           >
@@ -535,7 +607,235 @@ function PartyWingsOfficeLocation() {
             )}
           </div>
         )}
+        {sideBar2 && (
+          <div
+            className={menu.style}
+            style={{              
+              overflow: "auto",
+            }}
+          >
+            <div className={"main-headerlabel"}>
+              <span className={"header-label"}>
+                {" "}
+                Adding Name of Party Wings Office 
+              </span>
+            </div>
 
+            {locationHide2.corporation2 && (
+              <div>
+                {hidePartyOffice2 && (
+                  <div style={{ marginLeft: "-26px" }}>
+                    <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                      <CCol className={"column-align"} md="4">
+                        <CLabel className={"label-name"}>
+                        Name of Party Wings Office 
+                          <span className={"text-danger"}>*</span>
+                        </CLabel>
+                        <CInput
+                          className={"input-align"}
+                          id={"WingsOffice"}
+                          name={"PartyOffice"}
+                          placeholder={"Enter Party Office"}
+                        />
+                      </CCol>
+                      <CCol className={"column-align"} md="4">
+                        <CLabel className={"label-name"}>
+                          Abbreviation
+                          <span className={"text-danger"}>*</span>
+                        </CLabel>
+                        <CInput
+                          className={"input-align"}
+                          id={"WingsOfficeabbrevation"}
+                          name={"Abbreviation"}
+                          placeholder={"Enter Abbreviation"}
+                        />
+                      </CCol>
+                    </CRow>
+                    <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                      <CCol className={"column-align"} md="4">
+                        <CLabel className={"label-name"}>
+                          Code
+                          <span className={"text-danger"}>*</span>
+                        </CLabel>
+                        <CInput
+                          className={"input-align"}
+                          id={"WingsOfficecode"}
+                          name={"city"}
+                          placeholder={"Enter Code"}
+                        />
+                      </CCol>
+                      <CCol className={"column-align"} md="4">
+                        <CLabel className={"label-name"}>
+                          Hierarchy Reporting To Office
+                          <span className={"text-danger"}>*</span>
+                        </CLabel>
+                        <Select
+                          className={"input-align"}
+                          id={"WingsOfficerepotingto"}
+                          name={"area"}
+                          placeholder={"Select Reporting To"}
+                          options={officeType}
+                        />
+                      </CCol>
+                    </CRow>
+                    <CRow style={{ marginTop: "45px" }}>
+                      <CCol md="10">
+                        <CCol
+                          md="5"
+                          style={{
+                            marginLeft: "270px",
+                            float: "right",
+                            marginTop: "-25px",
+                            position: "absolute",
+                          }}
+                        >
+                          <CButton
+                            style={{
+                              float: "right",
+                            }}
+                            id={"WingsOfficecancel"}
+                            className={"cancelBtn"}
+                            onClick={addTypeofPartyOffice}
+                          >
+                            CANCEL
+                          </CButton>
+                          <CButton
+                            style={{
+                              float: "right",
+                              marginRight: "15px",
+                            }}
+                            id={"saveWingsOffice"}
+                            className={"saveBtn"}
+                            onClick={""}
+                          >
+                            Save
+                          </CButton>{" "}
+                        </CCol>
+                      </CCol>
+                    </CRow>
+                  </div>
+                )}
+
+                <CRow>
+                  <CCol
+                    style={{ fontSize: "1.55rem", top: "118px" }}
+                    md={12}
+                    sm={12}
+                    lg={12}
+                  >
+                    <img
+                      id={"WingsOfficehierarchy"}
+                      alt={""}
+                      src={
+                        "https://img.icons8.com/fluent/2x/organization-chart-people.png"
+                      }
+                      style={{
+                        height: "40px",
+                        width: "40px",
+
+                        marginLeft: "900px",
+                        marginBottom: "20px",
+                      }}
+                    />
+                  </CCol>
+                  <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
+                    <p data-tip="print">
+                      <i
+                        id={"WingsOfficeprint"}
+                        style={{
+                          position: "absolute",
+                          top: "68px",
+                          marginTop:"-20px",
+                          marginLeft: "675px",
+                          marginBottom: "20px",
+                          color: "black",
+                        }}
+                        onClick={() => exportPDF()}
+                        className="fa fa-print"
+                      ></i>
+                    </p>
+                    <ReactTooltip />
+                  </CCol>
+                  <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
+                    <p data-tip="share">
+                      <i
+                        id={"WingsOfficeshare"}
+                        style={{
+                          position: "absolute",
+                          top: "45px",
+                          marginLeft: "787px",
+                          marginBottom: "910px",
+                          color: "black",
+                        }}
+                        className="fa fa-share-alt"
+                      ></i>
+                    </p>
+                    <ReactTooltip />
+                  </CCol>
+                </CRow>
+
+                <CRow style={{ padding: "4%", marginTop: "-6.5%" }}>
+                  <CDataTable
+                    items={userDataoffice}
+                    fields={fieldsoffice}
+                    columnFilter
+                    tableFilter
+                    tableLabel={"List of Name of Party Wings Office "}
+                    itemsPerPageSelect
+                    itemsPerPage={5}
+                    hover
+                    sorter
+                    pagination
+                    scopedSlots={{
+                      show_details: (item, index) => {
+                        return (
+                          <td className="py-1">
+                            <CRow>
+                              <CCol style={{ fontSize: "1.15rem" }} md="16">
+                                <Dropdown
+                                  className={"ant-dropdown-cutomize-by-me"}
+                                  overlay={() => menus(item)}
+                                >
+                                  <a href
+                                    
+                                    className="ant-dropdown-link"
+                                    onClick={(e) => e.preventDefault()}
+                                  >
+                                    <i
+                                      style={{
+                                        marginLeft: "35px",
+                                        color: "black",
+                                      }}
+                                      className="fa fa-ellipsis-v"
+                                      bsStyle="overlay"
+                                      onClick={menus}
+                                    />
+                                  </a>
+                                </Dropdown>
+                              </CCol>
+                            </CRow>
+                          </td>
+                        );
+                      },
+                      details: (item, index) => {},
+                    }}
+                  />
+                </CRow>
+              </div>
+            )}
+            {backbutt2 && (
+              <div>
+                <CButton
+                  style={{ position: "absolute", top: "15px", right: "15px" }}
+                  className={"cancelBtn"}
+                  onClick={addTypeofPartyOffice}
+                >
+                  Back
+                </CButton>
+              </div>
+            )}
+          </div>
+        )}
         {addPartyOffice && (
           <div>
             <CCard className={"cardSave"}>
@@ -857,12 +1157,12 @@ function PartyWingsOfficeLocation() {
                     placeholder="Select the Party Office"
                     options={partyofficeType}
                     components={{
-                      MenuList: SelectMenuButtonpartywingsoffice,
+                      MenuList: SelectMenuButtonpartynamewingsoffice,
                     }}                    
                   />
                 </CCol>
                 </CRow>
-                
+
               <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                 <CCol className={"column-align"} md={5} lg={5}>
                   <CLabel className={"label-name"}>
@@ -1064,7 +1364,8 @@ function PartyWingsOfficeLocation() {
             </CCard>
           </div>
         )}
-      </div>
+        </div>
+      
     </React.Fragment>
   );
 }

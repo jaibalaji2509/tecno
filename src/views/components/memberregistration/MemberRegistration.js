@@ -303,13 +303,10 @@ function MemberRegistration() {
                 Role: "General",
                 FromDate: "12/08/2010",
                 ToDate: "25/06/2020",
-
                 Status: "Retired",
               },
             ]}
           />
-
-
 
           <CButton
             style={{ position: "absolute", top: "15px", right: "15px" }}
@@ -323,7 +320,6 @@ function MemberRegistration() {
           </CButton>
 
         </div>
-
       )}
 
       <CCard className={"cardSave"}>
