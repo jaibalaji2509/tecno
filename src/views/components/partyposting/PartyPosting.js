@@ -1957,7 +1957,7 @@ const PartyPosting = () => {
         <div>
           <CCard className={"cardSave"}>
             <div className={"main-headerlabel"}>
-              <span className={"header-label"}> Viewed Party Posting</span>
+              <span className={"header-label"}> View Party Posting</span>
             </div>
             {locationHide.corporation && (
               <div>

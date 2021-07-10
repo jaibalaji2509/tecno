@@ -1414,6 +1414,7 @@ function Constituency() {
                       <span className={"text-danger"}> *</span>
                     </CLabel>
                     <Select
+                    isMulti
                       placeholder="Select Legislative Assembly Constituency"
                       id={"legislativeAssemblyconstitue"}
                       type={"text"}

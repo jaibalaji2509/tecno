@@ -90,7 +90,7 @@ const ConstituencyMember = () => {
   }
 
   const fields = [
-    { key: "sNo", label: "Sl. No", _style: { width: "1%" } },
+    { key: "sNo", label: "Sl. No", _style: { width: "2%" }, sorter:false,filter:false },
     {
       key: "typeconstituency",
       label: "Type of Constituency",
@@ -1073,11 +1073,11 @@ const ConstituencyMember = () => {
                   </CRow>
 
                   <CRow
-                    className={"row-alignment"}
+                    // className={"row-alignment"}
                     md="12"
                     sm="12"
                     lg="12"
-                    style={{ marginLeft: "7px" }}
+                    style={{ marginLeft: "10px" }}
                   >
                     <CCol className={"column-align"} md="6">
                       <CLabel className={"label-name-1"}>
