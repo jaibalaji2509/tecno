@@ -169,6 +169,7 @@ import {
     };
     const [sideBar1, setSideBar1] = useState(false);
     const [sideBar2, setSideBar2] = useState(false);
+    const [sideBar3, setSideBar3] = useState(false);
     const selectTypeofOffice = [
       { value: "Arun Kumar", label: "Kalaiyarasan Lawyer Association Vice President of DMK N0 14 Nazarathpet Kanchipuram" },
       { value: "Arun Kumar", label: "Arun Kumar" },
@@ -283,6 +284,7 @@ import {
             style1: "menu1",
           });
           setSideBar1(true);
+          setHideMappingmunicipal(false);
           break;
         case "close":
           setMenu({
@@ -294,9 +296,54 @@ import {
           setTimeout(() => {
             setSideBar1(false);
           }, 1000);
+          setHideMappingmunicipal(true);
           setchairTwo(true);
           setchairOne(false);
           setvice(false);
+          setSideBar3(false);
+          break;
+      }
+    };
+    const cancelclick = () => {
+      setMenu({
+        menuStatus: "open",
+        style3: "menu1",
+        style: "menu",
+        style1: "menu1",
+      });
+      setSideBar1(false);
+      setHideMappingmunicipal(true);
+      setGridOne(false);
+      setGridTwo(false);
+      setGridThree(false);
+    }
+    const handleClick3 = () => {
+      switch (menu.menuStatus) {
+        case "open":
+          default:
+          setMenu({
+            menuStatus: "close",
+            style3: "menu2",
+            style: "menu active",
+            style1: "menu1",
+          });
+          setSideBar3(true);
+          setHideMappingmunicipal(false);
+          break;
+        case "close":
+          setMenu({
+            menuStatus: "open",
+            style3: "menu1",
+            style: "menu",
+            style1: "menu1",
+          });
+          setTimeout(() => {
+            setSideBar3(false);
+          }, 1000);
+          setHideMappingmunicipal(true);
+          setGridOne(false);
+          setGridTwo(false);
+          setGridThree(false);
           break;
       }
     };
@@ -311,6 +358,7 @@ import {
             style1: "menu active",
           });
           setSideBar2(true);
+          setHideMappingmunicipal(false);
           break;
         case "close":
           setMenu({
@@ -322,6 +370,7 @@ import {
           setTimeout(() => {
             setSideBar2(false);
           }, 1000);
+          setHideMappingmunicipal(true);
           break;
       }
     };
@@ -360,6 +409,14 @@ import {
         }}
         >History</a>
       </Menu.Item>
+      <Menu.Item>
+        <a href
+        onClick={() => {
+          setSelected(details);
+          handleClick3();
+        }}
+        >Posting History</a>
+      </Menu.Item>
     </Menu>
     )
   }
@@ -367,7 +424,7 @@ import {
     return (
       <div className={menu.style3}>
         {sideBar1 && (
-          <div className={menu.style} style={{ minHeight: "800px" }}>
+          <div className={menu.style} style={{ overflow:"auto" }}>
             <CRow className={""}>
               <CCol md="12" lg="12" sm="12">
                 <div>
@@ -682,11 +739,330 @@ import {
             )}
            
             <CButton
-              style={{ position: "absolute", top: "15px", right: "15px" }}
+              style={{ position: "absolute", backgroundColor: "green",
+              border: "1px solid green", top: "15px", right: "15px" }}
+              className={"cancelBtn"}
+              onClick={cancelclick}
+            >
+              Back
+            </CButton>
+          </div>
+        )}
+         {sideBar3 && (
+          <div className={menu.style} style={{ overflow:"auto" }}>
+            <CRow className={""}>
+              <CCol md="12" lg="12" sm="12">
+                <div>
+                  <span
+                    style={{
+                      fontSize: "22px",
+                      fontWeight: "700",
+                      marginLeft: "20px",
+                    }}
+                  >
+                    Posting History{" "}
+                  </span>
+                </div>
+              </CCol>
+            </CRow>
+              
+            <CRow style={{ marginTop: "25px" }}>
+            <CCol>
+            <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"stateministereyegridicon"}
+            className="fa fa-eye"
+            onClick={chiefministerShow}
+          >
+           Chief Minister
+          </i>
+          <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"stateministereyegridicon"}
+            className="fa fa-eye"
+            onClick={deputychiefministerShow}
+                >
+                 Deputy Chief Minister        
+          </i>
+          <i
+            style={{
+              fontWeight: "700",
+              padding: "10px",
+              backgroundColor: "#1313d4",
+              color: "#fff",
+              borderRadius: "4px",
+              cursor: "pointer",
+              marginBottom: "15px",
+              marginLeft: "20px",
+            }}
+            id={"stateministereyegridicon"}
+            className="fa fa-eye"
+            onClick={ministryShow}
+          >
+            Ministry
+          </i>
+            </CCol>
+            </CRow>  
+            {gridone && (
+              <div>
+                <CRow>
+                  <CCol
+                    style={{
+                      marginLeft: "30px",
+  
+                      maxHeight: "290px",
+                      minHeight: "290px",
+                      marginBottom: "-25px",
+                      overflow: "auto",
+                      marginTop: "50px",
+                    }}
+                  >
+                    <CDataTable
+                      items={[
+                       
+                        {
+                          sNo: "1",
+                          Corporation:"Sathish Narayana",
+                          Ministry:"Home Minister",
+                          from: "29/01/2020",
+                          to: "31/02/2025",
+                          status: "Active",
+                        },
+                        {
+                          sNo: "2",
+                          Corporation:"Kalaiyarasan",
+                          Ministry:"Agriculture Minister",
+                          from: "29/01/2005",
+                          to: "31/02/2010",
+                          status: "InActive",
+                        },
+                        {
+                          sNo: "3",
+                          Corporation:"Arun Kalyan",
+                          Ministry:"Health Minister",
+                          from: "29/01/2010",
+                          to: "31/02/2015",
+                          status: "InActive",
+                        },
+                      ]}
+                      fields={[
+                        { key: "sNo", label: "SNo", _style: { width: "1%" } },
+                        {
+                          key: "Corporation",
+                          label: "Name of the MLA",
+                          _style: { width: "10%" },
+                        },
+                        {
+                            key: "Ministry",
+                            label: "Ministry",
+                            _style: { width: "10%" },
+                          },
+                        {
+                          key: "from",
+                          label: "From Date",
+                          _style: { width: "10%" },
+                        },
+                        { key: "to", label: "To Date", _style: { width: "10%" } },
+                        {
+                          key: "status",
+                          label: "Status",
+                          _style: { width: "10%" },
+                        },
+                      ]}
+                      columnFilter
+                      tableFilter
+                      tableLabel={"History of chief Minister"}
+                      itemsPerPageSelect
+                      itemsPerPage={5}
+                      hover
+                      sorter
+                      pagination
+                    />
+                  </CCol>
+                </CRow>
+              </div>
+            )}
+            {gridtwo && (
+              <div>
+                <CRow>
+                  <CCol
+                    style={{
+                      marginLeft: "30px",
+  
+                      maxHeight: "290px",
+                      minHeight: "290px",
+                      marginBottom: "-25px",
+                      overflow: "auto",
+                      marginTop: "50px",
+                    }}
+                  >
+                    <CDataTable
+                      items={[
+                        {
+                            sNo: "1",
+                            Name:"Kalaiyarasan",
+                            Ministry:"Agriculture Minister",
+                            from: "29/01/2000",
+                            to: "31/02/2005",
+                            status: "InActive",
+                          },
+                          {
+                            sNo: "2",
+                            Name:"Sathish Narayanan",
+                            Ministry:"Agriculture Minister",
+                            from: "29/01/2005",
+                            to: "31/02/2010",
+                            status: "InActive",
+                          },
+                          {
+                            sNo: "3",
+                            Name:"Arun Kalyan",
+                            Ministry:"Agriculture Minister",
+                            from: "29/01/2020",
+                            to: "31/02/2025",
+                            status: "Active",
+                          },
+                      ]}
+                      fields={[
+                        { key: "sNo", label: "Sl. No", _style: { width: "1%" } },
+                        {
+                          key: "Name",
+                          label: "Name of the MLA",
+                          _style: { width: "10%" },
+                        },
+                        {
+                            key: "Ministry",
+                            label: "Ministry",
+                            _style: { width: "10%" },
+                          },
+                        {
+                          key: "from",
+                          label: "From Date",
+                          _style: { width: "10%" },
+                        },
+                        { key: "to", label: "To Date", _style: { width: "10%" } },
+                        {
+                          key: "status",
+                          label: "Status",
+                          _style: { width: "10%" },
+                        },
+                      ]}
+                      columnFilter
+                      tableFilter
+                      tableLabel={"History of Deputy Chief Minister "}
+                      itemsPerPageSelect
+                      itemsPerPage={5}
+                      hover
+                      sorter
+                      pagination
+                    />
+                  </CCol>
+                </CRow>
+              </div>
+            )}
+            {gridthree && (
+              <div>
+                <CRow>
+                  <CCol
+                    style={{
+                      marginLeft: "30px",
+  
+                      maxHeight: "290px",
+                      minHeight: "290px",
+                      marginBottom: "-25px",
+                      overflow: "auto",
+                      marginTop: "50px",
+                    }}
+                  >
+                    <CDataTable
+                      items={[
+                        {
+                            sNo: "1",
+                            Name:"Kalaiyarasan",
+                            Ministry:"Food Minister",
+                            from: "29/01/2020",
+                            to: "31/02/2025",
+                            status: "Active",
+                          },
+                          {
+                            sNo: "2",
+                            Name:"Arun Kalyan",
+                            Ministry:"Health Minister",
+                            from: "29/01/2005",
+                            to: "31/02/2010",
+                            status: "InActive",
+                          },
+                          {
+                            sNo: "3",
+                            Name:"Sathish Narayanan",
+                            Ministry:"Home Minister",
+                            from: "29/01/2010",
+                            to: "31/02/2015",
+                            status: "InActive",
+                          },
+                      ]}
+                      fields={[
+                        { key: "sNo", label: "Sl. No", _style: { width: "1%" } },
+                        {
+                          key: "Name",
+                          label: "Name of the MLA",
+                          _style: { width: "19%" },
+                        },
+                        
+                        {
+                          key: "Ministry",
+                          label: "Ministry",
+                          _style: { width: "10%" },
+                        },
+                       
+                        {
+                          key: "from",
+                          label: "From Date",
+                          _style: { width: "10%" },
+                        },
+                        { key: "to", label: "To Date", _style: { width: "10%" } },
+                        { key: "status", label: "Status", _style: { width: "10%" } },
+                        
+                      ]}
+                      columnFilter
+                      tableFilter
+                      tableLabel={"History of Ministry"}
+                      itemsPerPageSelect
+                      itemsPerPage={5}
+                      hover
+                      sorter
+                      pagination
+                    />
+                  </CCol>
+                </CRow>
+              </div>
+            )}
+           
+            <CButton
+              style={{ position: "absolute", backgroundColor: "green",
+              border: "1px solid green", top: "15px", right: "15px" }}
               className={"cancelBtn"}
               onClick={() => {
                 handleClick();
-                handleClick2();
+                handleClick3();
               }}
             >
               Back
@@ -844,7 +1220,8 @@ import {
               </CCol>
             </CRow>
             <CButton
-              style={{ position: "absolute", top: "15px", right: "15px" }}
+              style={{ position: "absolute", backgroundColor: "green",
+              border: "1px solid green", top: "15px", right: "15px" }}
               className={"cancelBtn"}
               onClick={handleClick2}
             >

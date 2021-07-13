@@ -15,7 +15,7 @@ import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
 import Select from "react-select";
 import "./RajyaSabha.css";
 import { Dropdown, Menu } from "antd";
-import 'antd/dist/antd.css';
+import "antd/dist/antd.css";
 const RajyaSabha = () => {
   // const [location, setLocation] = useState({
   //   state: "",
@@ -37,7 +37,7 @@ const RajyaSabha = () => {
     street: "",
     pincode: "",
   });
-  const [files, ] = useState("");
+  const [files] = useState("");
   // const [, setMunicipalList] = useState(true);
   // const [, setmunicipalCreate] = useState(false);
   // const [, setMunicipalListadd] = useState(true);
@@ -121,7 +121,7 @@ const RajyaSabha = () => {
       EnteredOn: "24/05/2028",
     },
   ];
-  const [passing, ] = useState("");
+  const [passing] = useState("");
   // const [, setError] = useState("");
   const saveCorporation = async () => {
     setLocationHide({
@@ -247,7 +247,7 @@ const RajyaSabha = () => {
   //   });
   // };
   const changeHandler = (e) => {
-    setLocations({ ...locations, [e.target.name]: e.target.value });
+    setLocations({ ...locations,city: e.target.value });
   };
   // const otpChangeHandle = (e) => {
   //   setMobileNumber(e.target.value);
@@ -336,7 +336,7 @@ const RajyaSabha = () => {
   const handleClick = () => {
     switch (menu.menuStatus) {
       case "open":
-        default:
+      default:
         setMenu({
           menuStatus: "close",
           style3: "menu2",
@@ -344,6 +344,7 @@ const RajyaSabha = () => {
           style1: "menu1",
         });
         setSideBar1(true);
+        setHideMappingmunicipal(false);
         break;
       case "close":
         setMenu({
@@ -355,13 +356,25 @@ const RajyaSabha = () => {
         setTimeout(() => {
           setSideBar1(false);
         }, 1000);
+        setHideMappingmunicipal(true);
         break;
     }
+  };
+  const cancelclick = () => {
+    setMenu({
+      menuStatus: "open",
+      style3: "menu1",
+      style: "menu",
+      style1: "menu1",
+    });
+    setSideBar1(false);
+    setHideMappingmunicipal(true);
+    setGridShow(false);
   };
   const handleClick2 = () => {
     switch (menu.menuStatus) {
       case "open":
-        default:
+      default:
         setMenu({
           menuStatus: "close",
           style3: "menu2",
@@ -369,6 +382,7 @@ const RajyaSabha = () => {
           style1: "menu active",
         });
         setSideBar2(true);
+        setHideMappingmunicipal(false);
         break;
       case "close":
         setMenu({
@@ -380,8 +394,19 @@ const RajyaSabha = () => {
         setTimeout(() => {
           setSideBar2(false);
         }, 1000);
+        setHideMappingmunicipal(true);
         break;
     }
+  };
+  const cancelclick1 = () => {
+    setMenu({
+      menuStatus: "open",
+      style3: "menu1",
+      style: "menu",
+      style1: "menu1",
+    });
+    setSideBar2(false);
+    setHideMappingmunicipal(true);
   };
   // const handleClick1 = () => {
   //   setSideBar2(false);
@@ -400,34 +425,42 @@ const RajyaSabha = () => {
     view4: false,
   });
   const menus = (details) => {
-    return(
+    return (
       <Menu>
-      <Menu.Item>
-        <a href>Edit</a>
-      </Menu.Item>
-      <Menu.Item>
-        <a href>Delete</a>
-      </Menu.Item>
-      <Menu.Item>
-        <a href>Remove</a>
-      </Menu.Item>
-      <Menu.Item>
-      <a href
-        onClick={() => {
-          setSelected(details);
-          handleClick2();
-        }}>Update</a>
-      </Menu.Item> <Menu.Item>
-        <a href
-        onClick={() => {
-          setSelected(details);
-          handleClick();
-        }}
-        >History</a>
-      </Menu.Item>
-    </Menu>
-    )
-  }
+        <Menu.Item>
+          <a href>Edit</a>
+        </Menu.Item>
+        <Menu.Item>
+          <a href>Delete</a>
+        </Menu.Item>
+        <Menu.Item>
+          <a href>Remove</a>
+        </Menu.Item>
+        <Menu.Item>
+          <a
+            href
+            onClick={() => {
+              setSelected(details);
+              handleClick2();
+            }}
+          >
+            Update
+          </a>
+        </Menu.Item>{" "}
+        <Menu.Item>
+          <a
+            href
+            onClick={() => {
+              setSelected(details);
+              handleClick();
+            }}
+          >
+            History
+          </a>
+        </Menu.Item>
+      </Menu>
+    );
+  };
 
   return (
     <div className={menu.style3}>
@@ -744,19 +777,22 @@ const RajyaSabha = () => {
             </CRow>
           )}
           <CButton
-            style={{ position: "absolute", top: "15px", right: "15px" }}
-            className={"cancelBtn"}
-            onClick={() => {
-              handleClick();
-              handleClick2();
+            style={{
+              position: "absolute",
+              backgroundColor: "green",
+              border: "1px solid green",
+              top: "15px",
+              right: "15px",
             }}
+            className={"cancelBtn"}
+            onClick={cancelclick}
           >
             Back
           </CButton>
         </div>
       )}
       {sideBar2 && (
-        <div className={menu.style1}>
+        <div className={menu.style1} style={{overflow:"auto"}}>
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
               <div>
@@ -887,6 +923,7 @@ const RajyaSabha = () => {
                   }}
                   id={"rajyasabhacancel"}
                   className={"cancelBtn"}
+                  onClick={cancelclick1}
                 >
                   CANCEL
                 </CButton>
@@ -905,9 +942,15 @@ const RajyaSabha = () => {
             </CCol>
           </CRow>
           <CButton
-            style={{ position: "absolute", top: "15px", right: "15px" }}
+            style={{
+              position: "absolute",
+              backgroundColor: "green",
+              border: "1px solid green",
+              top: "15px",
+              right: "15px",
+            }}
             className={"cancelBtn"}
-            onClick={handleClick2}
+            onClick={cancelclick1}
           >
             Back
           </CButton>
@@ -923,14 +966,10 @@ const RajyaSabha = () => {
               <div>
                 <div style={{ marginLeft: "-26px" }}>
                   <CRow style={{ marginTop: "45px" }}>
-                    <CCol >
-                      <CCol
-                        md="5"
-                       
-                      >
+                    <CCol>
+                      <CCol md="5">
                         <CButton
                           style={{
-                            
                             marginLeft: "35px",
                           }}
                           id={"addmemberrajyasabha"}
@@ -996,12 +1035,12 @@ const RajyaSabha = () => {
                           <td className="py-1">
                             <CRow>
                               <CCol style={{ fontSize: "1.15rem" }} md="16">
-                              
                                 <Dropdown
                                   className={"ant-dropdown-cutomize-by-me"}
                                   overlay={() => menus(item)}
                                 >
-                                  <a href
+                                  <a
+                                    href
                                     className="ant-dropdown-link"
                                     onClick={(e) => e.preventDefault()}
                                   >
@@ -1187,7 +1226,7 @@ const RajyaSabha = () => {
                       >
                         Map Member
                       </CButton>{" "}
-                </CCol>
+                    </CCol>
                   </CCol>
                 </div>
               </div>

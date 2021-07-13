@@ -16,7 +16,7 @@ import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
 import Select from "react-select";
 import "./Corporation.css";
 import { Dropdown, Menu } from "antd";
-import 'antd/dist/antd.css';
+import "antd/dist/antd.css";
 const Corporation = () => {
   // const [location, setLocation] = useState({
   //   state: "",
@@ -38,7 +38,7 @@ const Corporation = () => {
     street: "",
     pincode: "",
   });
-  const [files, ] = useState("");
+  const [files] = useState("");
   // const [municipalList, setMunicipalList] = useState(true);
   // const [MunicipalCreate, setmunicipalCreate] = useState(false);
   // const [municipalListadd, setMunicipalListadd] = useState(true);
@@ -138,8 +138,8 @@ const Corporation = () => {
     },
   ];
   const userDataMayorCorporation = [];
- 
-  const [passing, ] = useState("");
+
+  const [passing] = useState("");
   const saveCorporation = async () => {
     setLocationHide({
       ...locationHide,
@@ -170,8 +170,13 @@ const Corporation = () => {
   };
   const [sideBar1, setSideBar1] = useState(false);
   const [sideBar2, setSideBar2] = useState(false);
+  const [sideBar3, setSideBar3] = useState(false);
   const selectTypeofOffice = [
-    { value: "Arun Kumar", label: "Kalaiyarasan Lawyer Association Vice President of DMK N0 14 Nazarathpet Kanchipuram" },
+    {
+      value: "Arun Kumar",
+      label:
+        "Kalaiyarasan Lawyer Association Vice President of DMK N0 14 Nazarathpet Kanchipuram",
+    },
     { value: "Arun Kumar", label: "Arun Kumar" },
     { value: "Sathish Kumae", label: "Sathish Kumaer" },
     {
@@ -311,7 +316,7 @@ const Corporation = () => {
   const handleClick = () => {
     switch (menu.menuStatus) {
       case "open":
-        default:
+      default:
         setMenu({
           menuStatus: "close",
           style3: "menu2",
@@ -319,6 +324,7 @@ const Corporation = () => {
           style1: "menu1",
         });
         setSideBar1(true);
+        setHideMappingmunicipal(false);
         break;
       case "close":
         setMenu({
@@ -330,17 +336,63 @@ const Corporation = () => {
         setTimeout(() => {
           setSideBar1(false);
         }, 1000);
+        setHideMappingmunicipal(true);
         setchairTwo(true);
         setchairOne(false);
         setvice(false);
+        setSideBar3(false);
         break;
-       
+    }
+  };
+  const cancelclick = () => {
+    setMenu({
+      menuStatus: "open",
+      style3: "menu1",
+      style: "menu",
+      style1: "menu1",
+    });
+    setHideMappingmunicipal(true);
+    setSideBar1(false);
+    setGridOne(false);
+    setGridTwo(false);
+    setGridThree(false);
+    setGridFour(false);
+  };
+  const handleClick3 = () => {
+    switch (menu.menuStatus) {
+      case "open":
+      default:
+        setMenu({
+          menuStatus: "close",
+          style3: "menu2",
+          style: "menu active",
+          style1: "menu1",
+        });
+        setSideBar3(true);
+        setHideMappingmunicipal(false);
+        break;
+      case "close":
+        setMenu({
+          menuStatus: "open",
+          style3: "menu1",
+          style: "menu",
+          style1: "menu1",
+        });
+        setTimeout(() => {
+          setSideBar3(false);
+        }, 1000);
+        setHideMappingmunicipal(true);
+        setGridOne(false);
+        setGridTwo(false);
+        setGridThree(false);
+        setGridFour(false);
+        break;
     }
   };
   const handleClick2 = () => {
     switch (menu.menuStatus) {
       case "open":
-        default:
+      default:
         setMenu({
           menuStatus: "close",
           style3: "menu2",
@@ -348,6 +400,7 @@ const Corporation = () => {
           style1: "menu active",
         });
         setSideBar2(true);
+        setHideMappingmunicipal(false);
         break;
       case "close":
         setMenu({
@@ -359,6 +412,7 @@ const Corporation = () => {
         setTimeout(() => {
           setSideBar2(false);
         }, 1000);
+        setHideMappingmunicipal(true);
         break;
     }
   };
@@ -373,33 +427,52 @@ const Corporation = () => {
   });
   const [, setSelected] = useState({});
   const menus = (details) => {
-    return(
+    return (
       <Menu>
-      <Menu.Item>
-        <a href>Remove</a>
-      </Menu.Item>
-      <Menu.Item>
-      <a href
-        onClick={() => {
-          setSelected(details);
-          handleClick2();
-        }}>Update</a>
-      </Menu.Item> <Menu.Item>
-        <a href
-        onClick={() => {
-          setSelected(details);
-          handleClick();
-        }}
-        >History</a>
-      </Menu.Item>
-    </Menu>
-    )
-  }
+        <Menu.Item>
+          <a href>Remove</a>
+        </Menu.Item>
+        <Menu.Item>
+          <a
+            href
+            onClick={() => {
+              setSelected(details);
+              handleClick2();
+            }}
+          >
+            Update
+          </a>
+        </Menu.Item>{" "}
+        <Menu.Item>
+          <a
+            href
+            onClick={() => {
+              setSelected(details);
+              handleClick();
+            }}
+          >
+            History
+          </a>
+        </Menu.Item>
+        <Menu.Item>
+          <a
+            href
+            onClick={() => {
+              setSelected(details);
+              handleClick3();
+            }}
+          >
+            Posting History
+          </a>
+        </Menu.Item>
+      </Menu>
+    );
+  };
 
   return (
     <div className={menu.style3}>
       {sideBar1 && (
-        <div className={menu.style} style={{ minHeight: "800px" }}>
+        <div className={menu.style} style={{ overflow: "auto" }}>
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
               <div>
@@ -471,76 +544,75 @@ const Corporation = () => {
             </CCol>
           </CRow>
           <CRow style={{ marginTop: "25px" }}>
-          <CCol>
-            <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"corporationmembericon"}
-            className="fa fa-eye"
-            onClick={mayorShow}
-          >
-           Mayor
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"corporationmembericon"}
-            className="fa fa-eye"
-            onClick={deputymayorShow}
-            >
-             Deputy Mayor
-        
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"corporationmembericon"}
-            className="fa fa-eye"
-            onClick={partshow}
-          >
-            Party Posting
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"corporationmembericon"}
-            className="fa fa-eye"
-            onClick={councilarShow}
-          >
-           Councilar
-          </i>
+            <CCol>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"corporationmembericon"}
+                className="fa fa-eye"
+                onClick={mayorShow}
+              >
+                Mayor
+              </i>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"corporationmembericon"}
+                className="fa fa-eye"
+                onClick={deputymayorShow}
+              >
+                Deputy Mayor
+              </i>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"corporationmembericon"}
+                className="fa fa-eye"
+                onClick={partshow}
+              >
+                Party Posting
+              </i>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"corporationmembericon"}
+                className="fa fa-eye"
+                onClick={councilarShow}
+              >
+                Councilar
+              </i>
             </CCol>
           </CRow>
 
@@ -562,7 +634,7 @@ const Corporation = () => {
                     items={[
                       {
                         sNo: "1",
-                        Corporation:"Kancheepuram",
+                        Corporation: "Kancheepuram",
                         from: "29/01/2005",
                         to: "31/02/2015",
                         status: "InActive",
@@ -686,7 +758,7 @@ const Corporation = () => {
                         label: "Name of Party / Type of Party  Office",
                         _style: { width: "19%" },
                       },
-                      
+
                       {
                         key: "Department",
                         label: "Department",
@@ -705,7 +777,6 @@ const Corporation = () => {
                       },
                       { key: "to", label: "To Date", _style: { width: "10%" } },
                       { key: "to", label: "Status", _style: { width: "10%" } },
-                      
                     ]}
                     columnFilter
                     tableFilter
@@ -783,11 +854,316 @@ const Corporation = () => {
             </div>
           )}
           <CButton
-            style={{ position: "absolute", top: "15px", right: "15px" }}
+            style={{
+              position: "absolute",
+              backgroundColor: "green",
+              border: "1px solid green",
+              top: "15px",
+              right: "15px",
+            }}
+            className={"cancelBtn"}
+            onClick={cancelclick}
+          >
+            Back
+          </CButton>
+        </div>
+      )}
+      {sideBar3 && (
+        <div className={menu.style} style={{ overflow: "auto" }}>
+          <CRow className={""}>
+            <CCol md="12" lg="12" sm="12">
+              <div>
+                <span
+                  style={{
+                    fontSize: "22px",
+                    fontWeight: "700",
+                    marginLeft: "20px",
+                  }}
+                >
+                  Posting History{" "}
+                </span>
+              </div>
+            </CCol>
+          </CRow>
+
+          <CRow style={{ marginTop: "25px" }}>
+            <CCol>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"corporationmembericon"}
+                className="fa fa-eye"
+                onClick={mayorShow}
+              >
+                Mayor
+              </i>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"corporationmembericon"}
+                className="fa fa-eye"
+                onClick={deputymayorShow}
+              >
+                Deputy Mayor
+              </i>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"corporationmembericon"}
+                className="fa fa-eye"
+                onClick={councilarShow}
+              >
+                Councilar
+              </i>
+            </CCol>
+          </CRow>
+
+          {gridone && (
+            <div>
+              <CRow>
+                <CCol
+                  style={{
+                    marginLeft: "30px",
+
+                    maxHeight: "290px",
+                    minHeight: "290px",
+                    marginBottom: "-25px",
+                    overflow: "auto",
+                    marginTop: "50px",
+                  }}
+                >
+                  <CDataTable
+                    items={[
+                      {
+                        sNo: "1",
+                        name:"Sathish Narayana",
+                        from: "25/5/2010",
+                        to: "24/5/2015",
+                        status: "INACTIVE",
+                      },
+                      {
+                        sNo: "2",
+                        name:"Arun Vikram",
+                        from: "25/5/2015",
+                        to: "24/5/2020",
+                        status: "INACTIVE",
+                      },
+                      {
+                        sNo: "3",
+                        name:"Jaya Kumar",
+                        from: "25/5/2020",
+                        to: "24/5/2025",
+                        status: "ACTIVE",
+                      },
+                    ]}
+                    fields={[
+                      { key: "sNo", label: "SNo", _style: { width: "1%" } },
+                      {
+                        key: "name",
+                        label: "Name",
+                        _style: { width: "10%" },
+                      },
+                      {
+                        key: "from",
+                        label: "From Date",
+                        _style: { width: "10%" },
+                      },
+                      { key: "to", label: "To Date", _style: { width: "10%" } },
+                      {
+                        key: "status",
+                        label: "Status",
+                        _style: { width: "10%" },
+                      },
+                    ]}
+                    columnFilter
+                    tableFilter
+                    tableLabel={"History of Mayor"}
+                    itemsPerPageSelect
+                    itemsPerPage={5}
+                    hover
+                    sorter
+                    pagination
+                  />
+                </CCol>
+              </CRow>
+            </div>
+          )}
+          {gridtwo && (
+            <div>
+              <CRow>
+                <CCol
+                  style={{
+                    marginLeft: "30px",
+
+                    maxHeight: "290px",
+                    minHeight: "290px",
+                    marginBottom: "-25px",
+                    overflow: "auto",
+                    marginTop: "50px",
+                  }}
+                >
+                  <CDataTable
+                    items={[
+                      {
+                        sNo: "1",
+                        name:"Sathish Narayana",
+                        from: "25/5/2010",
+                        to: "24/5/2015",
+                        status: "INACTIVE",
+                      },
+                      {
+                        sNo: "2",
+                        name:"Arun Vikram",
+                        from: "25/5/2015",
+                        to: "24/5/2020",
+                        status: "INACTIVE",
+                      },
+                      {
+                        sNo: "3",
+                        name:"Jaya Kumar",
+                        from: "25/5/2020",
+                        to: "24/5/2025",
+                        status: "ACTIVE",
+                      },
+                    ]}
+                    fields={[
+                      { key: "sNo", label: "Sl. No", _style: { width: "1%" } },
+                      {
+                        key: "name",
+                        label: "Name",
+                        _style: { width: "10%" },
+                      },
+                      {
+                        key: "from",
+                        label: "From Date",
+                        _style: { width: "10%" },
+                      },
+                      { key: "to", label: "To Date", _style: { width: "10%" } },
+                      {
+                        key: "status",
+                        label: "Status",
+                        _style: { width: "10%" },
+                      },
+                    ]}
+                    columnFilter
+                    tableFilter
+                    tableLabel={"History of Deputy Mayor"}
+                    itemsPerPageSelect
+                    itemsPerPage={5}
+                    hover
+                    sorter
+                    pagination
+                  />
+                </CCol>
+              </CRow>
+            </div>
+          )}
+          {gridfour && (
+            <div>
+              <CRow>
+                <CCol
+                  style={{
+                    marginLeft: "30px",
+
+                    maxHeight: "290px",
+                    minHeight: "290px",
+                    marginBottom: "-25px",
+                    overflow: "auto",
+                    marginTop: "50px",
+                  }}
+                >
+                  <CDataTable
+                    items={[
+                      {
+                        sNo: "1",
+                        name:"Sathish Narayana",
+                        from: "25/5/2010",
+                        to: "24/5/2015",
+                        status: "INACTIVE",
+                      },
+                      {
+                        sNo: "2",
+                        name:"Arun Vikram",
+                        from: "25/5/2015",
+                        to: "24/5/2020",
+                        status: "INACTIVE",
+                      },
+                      {
+                        sNo: "3",
+                        name:"Jaya Kumar",
+                        from: "25/5/2020",
+                        to: "24/5/2025",
+                        status: "ACTIVE",
+                      },
+                    ]}
+                    fields={[
+                      { key: "sNo", label: "Sl. No", _style: { width: "1%" } },
+                      {
+                        key: "name",
+                        label: "Name",
+                        _style: { width: "10%" },
+                      },
+                      {
+                        key: "from",
+                        label: "From Date",
+                        _style: { width: "10%" },
+                      },
+                      { key: "to", label: "To Date", _style: { width: "5%" } },
+                      {
+                        key: "status",
+                        label: "Status",
+                        _style: { width: "5%" },
+                      },
+                    ]}
+                    columnFilter
+                    tableFilter
+                    tableLabel={"History of Councilar"}
+                    itemsPerPageSelect
+                    itemsPerPage={5}
+                    hover
+                    sorter
+                    pagination
+                  />
+                </CCol>
+              </CRow>
+            </div>
+          )}
+          <CButton
+            style={{
+              position: "absolute",
+              backgroundColor: "green",
+              border: "1px solid green",
+              top: "15px",
+              right: "15px",
+            }}
             className={"cancelBtn"}
             onClick={() => {
               handleClick();
-              handleClick2();
+              handleClick3();
             }}
           >
             Back
@@ -945,7 +1321,13 @@ const Corporation = () => {
             </CCol>
           </CRow>
           <CButton
-            style={{ position: "absolute", top: "15px", right: "15px" }}
+            style={{
+              position: "absolute",
+              backgroundColor: "green",
+              border: "1px solid green",
+              top: "15px",
+              right: "15px",
+            }}
             className={"cancelBtn"}
             onClick={handleClick2}
           >
@@ -964,13 +1346,9 @@ const Corporation = () => {
                 <div style={{ marginLeft: "-26px" }}>
                   <CRow style={{ marginTop: "45px" }}>
                     <CCol>
-                      <CCol
-                        md="5"
-                       
-                      >
+                      <CCol md="5">
                         <CButton
                           style={{
-                           
                             marginLeft: "35px",
                           }}
                           id={"corporationaddmember"}
@@ -1005,7 +1383,7 @@ const Corporation = () => {
                       </CLabel>
                       <Select
                         id={"corporationCity"}
-                        name={"Status"}                       
+                        name={"Status"}
                         placeholder={" Select District / City "}
                         options={city}
                       />
@@ -1108,12 +1486,12 @@ const Corporation = () => {
                               <td className="py-1">
                                 <CRow>
                                   <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                  
                                     <Dropdown
                                       className={"ant-dropdown-cutomize-by-me"}
                                       overlay={() => menus(item)}
                                     >
-                                      <a href
+                                      <a
+                                        href
                                         className="ant-dropdown-link"
                                         onClick={(e) => e.preventDefault()}
                                       >
@@ -1132,7 +1510,6 @@ const Corporation = () => {
                                 </CRow>
                               </td>
                             );
-     
                           },
 
                           details: (item, index) => {},
@@ -1154,27 +1531,27 @@ const Corporation = () => {
                         items={[
                           {
                             SNo: "1.",
-                            Corporation:"Kancheepuram",
-                            Name:"Mani Raja",
-                            from:"25/06/2011",
-                            to:"12/03/2016",
-                            Status:"InActive"
+                            Corporation: "Kancheepuram",
+                            Name: "Mani Raja",
+                            from: "25/06/2011",
+                            to: "12/03/2016",
+                            Status: "InActive",
                           },
-                        //   {
-                        //     SNo: "2.",
-                        //     Corporation:"Salem",
-                        //     Name:"KathirVel",
-                        //     from:"05/06/2015",
-                        //     to:"12/03/2025",
-                        //     Status:"InActive"
-                        //   },
+                          //   {
+                          //     SNo: "2.",
+                          //     Corporation:"Salem",
+                          //     Name:"KathirVel",
+                          //     from:"05/06/2015",
+                          //     to:"12/03/2025",
+                          //     Status:"InActive"
+                          //   },
                           {
                             SNo: "2.",
-                            Corporation:"Kancheepuram",
-                            Name:"Kalaiyarasan",
-                            from:"21/02/2014",
-                            to:"12/06/2024",
-                            Status:"Active"
+                            Corporation: "Kancheepuram",
+                            Name: "Kalaiyarasan",
+                            from: "21/02/2014",
+                            to: "12/06/2024",
+                            Status: "Active",
                           },
                         ]}
                         fields={[
@@ -1237,12 +1614,12 @@ const Corporation = () => {
                               <td className="py-1">
                                 <CRow>
                                   <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                  
                                     <Dropdown
                                       className={"ant-dropdown-cutomize-by-me"}
                                       overlay={() => menus(item)}
                                     >
-                                      <a href
+                                      <a
+                                        href
                                         className="ant-dropdown-link"
                                         onClick={(e) => e.preventDefault()}
                                       >
@@ -1354,12 +1731,12 @@ const Corporation = () => {
                               <td className="py-1">
                                 <CRow>
                                   <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                  
                                     <Dropdown
                                       className={"ant-dropdown-cutomize-by-me"}
                                       overlay={() => menus(item)}
                                     >
-                                      <a href
+                                      <a
+                                        href
                                         className="ant-dropdown-link"
                                         onClick={(e) => e.preventDefault()}
                                       >
@@ -1378,7 +1755,7 @@ const Corporation = () => {
                                 </CRow>
                               </td>
                             );
-                               },
+                          },
                           details: (item, index) => {},
                         }}
                       />
@@ -1527,7 +1904,11 @@ const Corporation = () => {
                     lg="12"
                     style={{ marginLeft: "7px" }}
                   >
-                    <CCol className={"column-align"} md="6" style={{marginLeft:"30px"}}>
+                    <CCol
+                      className={"column-align"}
+                      md="6"
+                      style={{ marginLeft: "30px" }}
+                    >
                       <CLabel className={"label-name-1"}>
                         Search Member
                         <span className={"text-danger"}>*</span>
@@ -1687,15 +2068,14 @@ const Corporation = () => {
                           status: (item) => <td></td>,
                         }}
                         items={[
-                            {
-                                SNo: "1",
-                                town:"kanchipuram",
-                                ward:"0014",
-                                from: "14 May 2001",
-                                to: "12 May 2006",
-                                Status: "InActive",
-                              },
-                            
+                          {
+                            SNo: "1",
+                            town: "kanchipuram",
+                            ward: "0014",
+                            from: "14 May 2001",
+                            to: "12 May 2006",
+                            Status: "InActive",
+                          },
                         ]}
                         fields={[
                           {

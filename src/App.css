@@ -126,6 +126,7 @@ html:not([dir="rtl"]) .c-sidebar-nav-dropdown-toggle:after {
 .c-sidebar .c-sidebar-nav-dropdown-toggle:hover {
   color: #fff;
   background: #225da2;
+  font-size: 20px;
 }
 
 .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-dropdown-items li svg {
@@ -174,7 +175,8 @@ html:not([dir="rtl"]) .c-sidebar-nav-dropdown-toggle:after {
 .c-sidebar .c-sidebar-nav-dropdown-toggle {
   color: #000;
   background: transparent;
-  font-size: 14px !important;
+  font-weight: 595;
+  font-size: 17px !important;
   font-family: "Open Sans" !important;
 }
 
@@ -629,12 +631,17 @@ label.scrollCardText.ttlCount-data {
 .reAssign-Detail {
   color: #000;
   font-size: 15px;
+  margin-left: 150px;
+  position: relative;
+  margin-top: 3px;
 }
 
 .reAssign-Label {
   padding: 0px;
   font-weight: bold;
+  font-size: 17px;  
   color: #2a579a;
+  position: absolute;
 }
 
 .Roless-card-container-7 {
@@ -1297,7 +1304,6 @@ button.cancelBtn {
   box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 30%) !important;
 }
 .scrollCardText {
-  font-weight: bold !important;
   display: block !important;
   font-size: 13px !important;
   font-family: "Google Sans";

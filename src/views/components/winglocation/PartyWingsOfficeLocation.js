@@ -36,7 +36,7 @@ function PartyWingsOfficeLocation() {
   const userDataoffice = [
     {
       SNo: "1",
-      Street: "Head Quaters",
+      Street: "Head Office TamilNadu Chennai Mylapore - 600004 ",
       District: "HOF",
       Area: "HO",
       male: " - ",
@@ -48,7 +48,7 @@ function PartyWingsOfficeLocation() {
       Street: "Branch Office",
       District: "BOFF",
       Area: "BO",
-      male: " Head Quaters ",
+      male: " Head Office TamilNadu Chennai Mylapore - 600004  ",
       ENTERBY: "Jai Balaji ",
       ENTERON: "31/05/2021",
     },
@@ -94,7 +94,7 @@ function PartyWingsOfficeLocation() {
     {
       SNo: "1",
       NAMEOFWINGOFFICE: "Chennai Wing Office",
-      WingOffice: "Head Quaters",
+      WingOffice: "Head Office TamilNadu Chennai Mylapore - 600004 ",
       ReportingTo: "-",
       address: "Jones Road",
       area: "Saidapet",
@@ -105,7 +105,7 @@ function PartyWingsOfficeLocation() {
       SNo: "2",
       NAMEOFWINGOFFICE: "Chennai Youth  Association",
       WingOffice: "Branch Office",
-      ReportingTo: "Head Quaters",
+      ReportingTo: "Head Office TamilNadu Chennai Mylapore - 600004",
       address: "Abiramipuram Street",
       area: "Mylapore",
       by: "Jai Balaji",
@@ -150,7 +150,7 @@ function PartyWingsOfficeLocation() {
       filter: false,
     },
   ];
-  const officeType = [{ value: "Head Office", label: "Head Quaters" }];
+  const officeType = [{ value: "Head Office", label: "Head Office TamilNadu Chennai Mylapore - 600004 " }];
   const partyofficeType = [
     {
       span: (
@@ -205,8 +205,9 @@ function PartyWingsOfficeLocation() {
         setCreatepartyOffice(true);
         break;
     }
+    setSideBar2(false);
   };
-  const addTypeofPartyOfficename = () => {
+  const addTypeofPartyOffice1 = () => {
     switch (menu.menuStatus) {
       case "open":
       default:
@@ -216,9 +217,10 @@ function PartyWingsOfficeLocation() {
           style: "menu active",
           style1: "menu1",
         });
-        setSideBar2(true);        
-        setHidePartyOffice2(true);
-        setBackButt2(false);
+        setSideBar2(true);
+        setHidePartyOffice(true);
+        setBackButt(false);
+        setSideBar1(false);
         setCreatepartyOffice(false);
         break;
       case "close":
@@ -229,30 +231,32 @@ function PartyWingsOfficeLocation() {
           style1: "menu1",
         });
         setTimeout(() => {
-          setSideBar1(false);
+          setSideBar2(false);
         }, 1000);
         setCreatepartyOffice(true);
         break;
     }
+    setSideBar1(false);
   };
-  const [backbutt2, setBackButt2] = useState(false);
-  const [hidePartyOffice2, setHidePartyOffice2] = useState(true);
+
+  // const [backbutt2, setBackButt2] = useState(false);
+  // const [hidePartyOffice2, setHidePartyOffice2] = useState(true);
   const [hidePartyOffice, setHidePartyOffice] = useState(true);
   const [backbutt, setBackButt] = useState(false);
   const viewTypeofPartyOffice = () => {
     setHidePartyOffice(false);
     setBackButt(true);
   };
-  const viewTypeofPartyOfficename = () => {
-    setHidePartyOffice2(false);
-    setBackButt2(true);
+  const viewTypeofPartyOffice1 = () => {
+    setHidePartyOffice(false);
+    setBackButt(true);
   };
   const [locationHide] = useState({
     corporation: true,
   });
-  const [locationHide2] = useState({
-    corporation2: true,
-  });
+  // const [locationHide2] = useState({
+  //   corporation2: true,
+  // });
 
   const menus = (details) => {
     return (
@@ -274,7 +278,6 @@ function PartyWingsOfficeLocation() {
 
     const marginLeft = 40;
     const doc = new jsPDF(orientation, unit, size);
-
     doc.setFontSize(15);
 
     const title = "Party Wings Office Location";
@@ -356,7 +359,7 @@ function PartyWingsOfficeLocation() {
         >
           <CLink
             className={"saveBtn"}
-            onClick={addTypeofPartyOfficename}
+            onClick={addTypeofPartyOffice1}
             style={{ marginLeft: "350px" }}
           >
             Add{" "}
@@ -364,8 +367,8 @@ function PartyWingsOfficeLocation() {
           <CLink
             className={"saveBtn"}
             onClick={() => {
-              addTypeofPartyOfficename();
-              viewTypeofPartyOfficename();
+              addTypeofPartyOffice1();
+              viewTypeofPartyOffice1();
             }}
             style={{ marginLeft: "50px" }}
           >
@@ -381,8 +384,9 @@ function PartyWingsOfficeLocation() {
         {sideBar1 && (
           <div
             className={menu.style}
-            style={{              
+            style={{
               overflow: "auto",
+              marginLeft: "20px",
             }}
           >
             <div className={"main-headerlabel"}>
@@ -395,7 +399,7 @@ function PartyWingsOfficeLocation() {
             {locationHide.corporation && (
               <div>
                 {hidePartyOffice && (
-                  <div style={{ marginLeft: "-26px" }}>
+                  <div>
                     <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                       <CCol className={"column-align"} md="4">
                         <CLabel className={"label-name"}>
@@ -466,7 +470,7 @@ function PartyWingsOfficeLocation() {
                             }}
                             id={"WingsOfficecancel"}
                             className={"cancelBtn"}
-                            onClick={addTypeofPartyOffice}
+                            onClick={addTypeofPartyOffice1}
                           >
                             CANCEL
                           </CButton>
@@ -516,7 +520,7 @@ function PartyWingsOfficeLocation() {
                         style={{
                           position: "absolute",
                           top: "68px",
-                          marginTop:"-20px",
+                          marginTop: "-20px",
                           marginLeft: "675px",
                           marginBottom: "20px",
                           color: "black",
@@ -597,9 +601,15 @@ function PartyWingsOfficeLocation() {
             {backbutt && (
               <div>
                 <CButton
-                  style={{ position: "absolute", top: "15px", right: "15px" }}
+                  style={{
+                    position: "absolute",
+                    top: "15px",
+                    backgroundColor: "green",
+                    border: "1px solid green",
+                    right: "15px",
+                  }}
                   className={"cancelBtn"}
-                  onClick={addTypeofPartyOffice}
+                  onClick={addTypeofPartyOffice1}
                 >
                   Back
                 </CButton>
@@ -607,28 +617,34 @@ function PartyWingsOfficeLocation() {
             )}
           </div>
         )}
+        {/* <div className={menu.style3}> */}
         {sideBar2 && (
           <div
             className={menu.style}
-            style={{              
-              overflow: "auto",
-            }}
+            style={
+              sideBar2
+                ? {
+                    overflow: "auto",
+                    marginLeft: "20px",
+                  }
+                : { display: "none" }
+            }
           >
             <div className={"main-headerlabel"}>
               <span className={"header-label"}>
                 {" "}
-                Adding Name of Party Wings Office 
+                Adding Name of Party Wings Office
               </span>
             </div>
 
-            {locationHide2.corporation2 && (
+            {locationHide.corporation && (
               <div>
-                {hidePartyOffice2 && (
+                {hidePartyOffice && (
                   <div style={{ marginLeft: "-26px" }}>
                     <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                       <CCol className={"column-align"} md="4">
                         <CLabel className={"label-name"}>
-                        Name of Party Wings Office 
+                          Name of Party Wings Office
                           <span className={"text-danger"}>*</span>
                         </CLabel>
                         <CInput
@@ -745,7 +761,7 @@ function PartyWingsOfficeLocation() {
                         style={{
                           position: "absolute",
                           top: "68px",
-                          marginTop:"-20px",
+                          marginTop: "3px",
                           marginLeft: "675px",
                           marginBottom: "20px",
                           color: "black",
@@ -780,7 +796,7 @@ function PartyWingsOfficeLocation() {
                     fields={fieldsoffice}
                     columnFilter
                     tableFilter
-                    tableLabel={"List of Name of Party Wings Office "}
+                    tableLabel={"List of Name of Party Wings Office"}
                     itemsPerPageSelect
                     itemsPerPage={5}
                     hover
@@ -796,8 +812,8 @@ function PartyWingsOfficeLocation() {
                                   className={"ant-dropdown-cutomize-by-me"}
                                   overlay={() => menus(item)}
                                 >
-                                  <a href
-                                    
+                                  <a
+                                    href
                                     className="ant-dropdown-link"
                                     onClick={(e) => e.preventDefault()}
                                   >
@@ -823,10 +839,11 @@ function PartyWingsOfficeLocation() {
                 </CRow>
               </div>
             )}
-            {backbutt2 && (
+            {backbutt && (
               <div>
                 <CButton
-                  style={{ position: "absolute", top: "15px", right: "15px" }}
+                  style={{ position: "absolute", top: "15px", backgroundColor: "green",
+                  border: "1px solid green", right: "15px" }}
                   className={"cancelBtn"}
                   onClick={addTypeofPartyOffice}
                 >
@@ -1049,7 +1066,7 @@ function PartyWingsOfficeLocation() {
                         position: "absolute",
                         top: "210px",
                         marginLeft: "515px",
-                        marginTop:"-15px",
+                        marginTop: "0px",
                         marginBottom: "20px",
                         color: "black",
                         cursor: "pointer",
@@ -1077,7 +1094,7 @@ function PartyWingsOfficeLocation() {
                   <ReactTooltip />
                 </CCol>
               </CRow>
-             
+
               <CRow style={{ padding: "4%", marginTop: "5.5%" }}>
                 <CDataTable
                   items={userData}
@@ -1147,7 +1164,7 @@ function PartyWingsOfficeLocation() {
               <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                 <CCol className={"column-align"} md={5} lg={5}>
                   <CLabel className={"label-name"}>
-                  Name of Party Wings Office
+                    Name of Party Wings Office
                     <span className={"text-danger"}>*</span>
                   </CLabel>
                   <Select
@@ -1158,10 +1175,10 @@ function PartyWingsOfficeLocation() {
                     options={partyofficeType}
                     components={{
                       MenuList: SelectMenuButtonpartynamewingsoffice,
-                    }}                    
+                    }}
                   />
                 </CCol>
-                </CRow>
+              </CRow>
 
               <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                 <CCol className={"column-align"} md={5} lg={5}>
@@ -1364,8 +1381,7 @@ function PartyWingsOfficeLocation() {
             </CCard>
           </div>
         )}
-        </div>
-      
+      </div>
     </React.Fragment>
   );
 }

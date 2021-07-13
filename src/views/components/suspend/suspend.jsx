@@ -23,7 +23,6 @@ const Suspend = () => {
             minHeight: `${window.innerHeight - 198}px`,
             maxHeight: `${window.innerHeight - 198}px`,
             overflow: "auto",
-            padding: "0px 20px 0px 30px",
           }}
         >
           <div className={"main-headerlabel"}>

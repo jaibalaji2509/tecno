@@ -17,7 +17,7 @@ import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
 import Select from "react-select";
 import "./MemberTownPanchayat.css";
 import { Dropdown, Menu } from "antd";
-import 'antd/dist/antd.css';
+import "antd/dist/antd.css";
 const MemberTownPanchayat = () => {
   // const [mobilenumber, setMobileNumber] = useState("");
   // const [, setOtpHide] = useState(false);
@@ -30,7 +30,7 @@ const MemberTownPanchayat = () => {
     street: "",
     pincode: "",
   });
-  const [files, ] = useState("");
+  const [files] = useState("");
   // const [, setMunicipalList] = useState(true);
   // const [, setmunicipalCreate] = useState(false);
   // const [, setMunicipalListadd] = useState(true);
@@ -118,8 +118,8 @@ const MemberTownPanchayat = () => {
     },
   ];
   const userData1 = [];
-  
-  const [passing, ] = useState("");
+
+  const [passing] = useState("");
   // const [error, setError] = useState("");
   const saveCorporation = async () => {
     setLocationHide({
@@ -151,6 +151,7 @@ const MemberTownPanchayat = () => {
   };
   const [sideBar1, setSideBar1] = useState(false);
   const [sideBar2, setSideBar2] = useState(false);
+  const [sideBar3, setSideBar3] = useState(false);
   const selectTypeofOffice = [
     { value: "Arun Kumar", label: "Arun Kumar" },
     { value: "Sathish Kumae", label: "Sathish Kumaer" },
@@ -329,9 +330,10 @@ const MemberTownPanchayat = () => {
           style1: "menu1",
         });
         setSideBar1(true);
+        setHideMappingmunicipal(false);
         break;
       case "close":
-        default:
+      default:
         setMenu({
           menuStatus: "open",
           style3: "menu1",
@@ -341,17 +343,31 @@ const MemberTownPanchayat = () => {
         setTimeout(() => {
           setSideBar1(false);
         }, 1000);
-        setchairTwo(true);
+        setHideMappingmunicipal(true);
+        setchairTwo(false);
         setchairOne(false);
         setvice(false);
+        setSideBar3(false);
         break;
-      
     }
+  };
+  const cancelclick = () => {
+    setMenu({
+      menuStatus: "open",
+      style3: "menu1",
+      style: "menu",
+      style1: "menu1",
+    });
+    setSideBar1(false);
+    setHideMappingmunicipal(true);
+        setchairTwo(false);
+        setchairOne(false);
+        setvice(false);
   };
   const handleClick2 = () => {
     switch (menu.menuStatus) {
       case "open":
-        default:
+      default:
         setMenu({
           menuStatus: "close",
           style3: "menu2",
@@ -359,6 +375,7 @@ const MemberTownPanchayat = () => {
           style1: "menu active",
         });
         setSideBar2(true);
+        setHideMappingmunicipal(false);
         break;
       case "close":
         setMenu({
@@ -369,7 +386,38 @@ const MemberTownPanchayat = () => {
         });
         setTimeout(() => {
           setSideBar2(false);
+          setHideMappingmunicipal(true);
         }, 1000);
+        break;
+    }
+  };
+  const handleClick3 = () => {
+    switch (menu.menuStatus) {
+      case "open":
+        setMenu({
+          menuStatus: "close",
+          style3: "menu2",
+          style: "menu active",
+          style1: "menu1",
+        });
+        setSideBar3(true);
+        setHideMappingmunicipal(false);
+        break;
+      case "close":
+      default:
+        setMenu({
+          menuStatus: "open",
+          style3: "menu1",
+          style: "menu",
+          style1: "menu1",
+        });
+        setTimeout(() => {
+          setSideBar3(false);
+        }, 1000);
+        setHideMappingmunicipal(true);
+        setchairTwo(false);
+    setchairOne(false);
+    setvice(false);
         break;
     }
   };
@@ -384,28 +432,47 @@ const MemberTownPanchayat = () => {
   });
   const [, setSelected] = useState({});
   const menus = (details) => {
-    return(
+    return (
       <Menu>
-      <Menu.Item>
-        <a href>Remove</a>
-      </Menu.Item>
-      <Menu.Item>
-      <a href
-        onClick={() => {
-          setSelected(details);
-          handleClick2();
-        }}>Update</a>
-      </Menu.Item> <Menu.Item>
-        <a href
-        onClick={() => {
-          setSelected(details);
-          handleClick();
-        }}
-        >History</a>
-      </Menu.Item>
-    </Menu>
-    )
-  }
+        <Menu.Item>
+          <a href>Remove</a>
+        </Menu.Item>
+        <Menu.Item>
+          <a
+            href
+            onClick={() => {
+              setSelected(details);
+              handleClick2();
+            }}
+          >
+            Update
+          </a>
+        </Menu.Item>
+        <Menu.Item>
+          <a
+            href
+            onClick={() => {
+              setSelected(details);
+              handleClick();
+            }}
+          >
+            History
+          </a>
+        </Menu.Item>
+        <Menu.Item>
+          <a
+            href
+            onClick={() => {
+              setSelected(details);
+              handleClick3();
+            }}
+          >
+            Posting History
+          </a>
+        </Menu.Item>
+      </Menu>
+    );
+  };
 
   return (
     <div className={menu.style3}>
@@ -556,10 +623,11 @@ const MemberTownPanchayat = () => {
                     items={[
                       {
                         SNo: "1",
-                        from: "25/5/2020",
-                        to: "24/5/2025",
+                        name:"Sathish Narayana",
+                        from: "25/5/2010",
+                        to: "24/5/2015",
                         Status: "ACTIVE",
-                      },
+                      },                     
                     ]}
                     fields={[
                       {
@@ -568,7 +636,7 @@ const MemberTownPanchayat = () => {
                         _style: { width: "3%" },
                         sorter: false,
                         filter: false,
-                      },
+                      },                      
                       {
                         key: "from",
                         label: "From Date",
@@ -728,11 +796,349 @@ const MemberTownPanchayat = () => {
             </div>
           )}
           <CButton
-            style={{ position: "absolute", top: "15px", right: "15px" }}
+            style={{
+              position: "absolute",
+              backgroundColor: "green",
+              border: "1px solid green",
+              top: "15px",
+              right: "15px",
+            }}
+            className={"cancelBtn"}
+            onClick={cancelclick}
+          >
+            Back
+          </CButton>
+        </div>
+      )}
+
+      {sideBar3 && (
+        <div
+          className={menu.style}
+          style={
+            sideBar3
+              ? {
+                  overflow: "auto",
+                }
+              : { display: "none" }
+          }
+        >
+          <CRow className={""}>
+            <CCol md="12" lg="12" sm="12">
+              <div>
+                <span
+                  style={{
+                    fontSize: "22px",
+                    fontWeight: "700",
+                    marginLeft: "20px",
+                  }}
+                >
+                  Posting History{" "}
+                </span>
+              </div>
+            </CCol>
+          </CRow>
+
+          <CRow style={{ marginTop: "25px" }}>
+            <CCol>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"membertowngrideye"}
+                className="fa fa-eye"
+                onClick={chairshow}
+              >
+                Chairman
+              </i>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"membertowngrideye"}
+                className="fa fa-eye"
+                onClick={gridshow}
+              >
+                Vice-Chairman
+              </i>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"membertowngrideye"}
+                className="fa fa-eye"
+                onClick={partshow}
+              >
+                Party Posting
+              </i>
+            </CCol>
+          </CRow>
+
+          {chairtwo && (
+            <div>
+              <CRow>
+                <CCol
+                  style={{
+                    marginLeft: "30px",
+
+                    maxHeight: "290px",
+                    minHeight: "290px",
+                    marginBottom: "-25px",
+                    overflow: "auto",
+                    marginTop: "10px",
+                  }}
+                >
+                  <CDataTable
+                    tableLabel={"History of Chairman"}
+                    columnFilter
+                    tableFilter
+                    hover
+                    sorter
+                    pagination
+                    scopedSlots={{
+                      status: (item) => <td></td>,
+                    }}
+                    items={[
+                      {
+                        SNo: "1",
+                        name:"Sathish Narayana",
+                        from: "25/5/2010",
+                        to: "24/5/2015",
+                        Status: "INACTIVE",
+                      },
+                      {
+                        SNo: "2",
+                        name:"Arun Vikram",
+                        from: "25/5/2015",
+                        to: "24/5/2020",
+                        Status: "INACTIVE",
+                      },
+                      {
+                        SNo: "3",
+                        name:"Jaya Kumar",
+                        from: "25/5/2020",
+                        to: "24/5/2025",
+                        Status: "ACTIVE",
+                      },
+                    ]}
+                    fields={[
+                      {
+                        key: "SNo",
+                        label: "S.NO",
+                        _style: { width: "3%" },
+                        sorter: false,
+                        filter: false,
+                      },
+                      {
+                        key: "name",
+                        label: "Name",
+                        _style: { width: "10%" },
+                      },
+                      {
+                        key: "from",
+                        label: "From Date",
+                        _style: { width: "10%" },
+                      },
+                      { key: "to", label: "To Date", _style: { width: "10%" } },
+                      {
+                        key: "Status",
+                        label: "Status",
+                        _style: { width: "10%" },
+                      },
+                    ]}
+                  />
+                </CCol>
+              </CRow>
+            </div>
+          )}
+          {vice && (
+            <div>
+              <CRow>
+                <CCol
+                  style={{
+                    marginLeft: "30px",
+
+                    maxHeight: "290px",
+                    minHeight: "290px",
+                    marginBottom: "-25px",
+                    overflow: "auto",
+                    marginTop: "10px",
+                  }}
+                >
+                  <CDataTable
+                    tableLabel={"History of Vice Chairman"}
+                    columnFilter
+                    tableFilter
+                    hover
+                    sorter
+                    pagination
+                    scopedSlots={{
+                      status: (item) => <td></td>,
+                    }}
+                    items={[
+                      {
+                        SNo: "1",
+                        name:"Sathish Narayana",
+                        from: "25/5/2010",
+                        to: "24/5/2015",
+                        Status: "INACTIVE",
+                      },
+                      {
+                        SNo: "2",
+                        name:"Arun Vikram",
+                        from: "25/5/2015",
+                        to: "24/5/2020",
+                        Status: "INACTIVE",
+                      },
+                      {
+                        SNo: "3",
+                        name:"Jaya Kumar",
+                        from: "25/5/2020",
+                        to: "24/5/2025",
+                        Status: "ACTIVE",
+                      },
+                    ]}
+                    fields={[
+                      {
+                        key: "SNo",
+                        label: "S.NO",
+                        _style: { width: "3%" },
+                        sorter: false,
+                        filter: false,
+                      },
+                      {
+                        key: "name",
+                        label: "Name",
+                        _style: { width: "10%" },
+                      },
+                      {
+                        key: "from",
+                        label: "From Date",
+                        _style: { width: "10%" },
+                      },
+                      { key: "to", label: "To Date", _style: { width: "10%" } },
+                      {
+                        key: "Status",
+                        label: "Status",
+                        _style: { width: "10%" },
+                      },
+                    ]}
+                  />
+                </CCol>
+              </CRow>
+            </div>
+          )}
+
+          {chairone && (
+            <div>
+              <CRow>
+                <CCol
+                  style={{
+                    marginLeft: "30px",
+
+                    maxHeight: "290px",
+                    minHeight: "290px",
+                    marginBottom: "-25px",
+                    overflow: "auto",
+                    marginTop: "10px",
+                  }}
+                >
+                  <CDataTable
+                    tableLabel={"History of Ward Member"}
+                    columnFilter
+                    tableFilter
+                    hover
+                    sorter
+                    pagination
+                    scopedSlots={{
+                      status: (item) => <td></td>,
+                    }}
+                    items={[
+                      {
+                        SNo: "1",
+                        name:"Sathish Narayana",
+                        from: "25/5/2010",
+                        to: "24/5/2015",
+                        Status: "INACTIVE",
+                      },
+                      {
+                        SNo: "2",
+                        name:"Arun Vikram",
+                        from: "25/5/2015",
+                        to: "24/5/2020",
+                        Status: "INACTIVE",
+                      },
+                      {
+                        SNo: "3",
+                        name:"Jaya Kumar",
+                        from: "25/5/2020",
+                        to: "24/5/2025",
+                        Status: "ACTIVE",
+                      },
+                    ]}
+                    fields={[
+                      {
+                        key: "SNo",
+                        label: "S.NO",
+                        _style: { width: "3%" },
+                        sorter: false,
+                        filter: false,
+                      },
+                      {
+                        key: "name",
+                        label: "Name",
+                        _style: { width: "10%" },
+                      },
+                      {
+                        key: "from",
+                        label: "From Date",
+                        _style: { width: "10%" },
+                      },
+                      { key: "to", label: "To Date", _style: { width: "10%" } },
+                      {
+                        key: "Status",
+                        label: "Status",
+                        _style: { width: "10%" },
+                      },
+                    ]}
+                  />
+                </CCol>
+              </CRow>
+            </div>
+          )}
+
+          <CButton
+            style={{
+              position: "absolute",
+              backgroundColor: "green",
+              border: "1px solid green",
+              top: "15px",
+              right: "15px",
+            }}
             className={"cancelBtn"}
             onClick={() => {
               handleClick();
-              handleClick2();
+              handleClick3();
             }}
           >
             Back
@@ -888,7 +1294,13 @@ const MemberTownPanchayat = () => {
             </CCol>
           </CRow>
           <CButton
-            style={{ position: "absolute", top: "15px", right: "15px" }}
+            style={{
+              position: "absolute",
+              backgroundColor: "green",
+              border: "1px solid green",
+              top: "15px",
+              right: "15px",
+            }}
             className={"cancelBtn"}
             onClick={handleClick2}
           >
@@ -906,14 +1318,10 @@ const MemberTownPanchayat = () => {
               <div>
                 <div style={{ marginLeft: "-26px" }}>
                   <CRow style={{ marginTop: "45px" }}>
-                    <CCol >
-                      <CCol
-                        md="5"
-                       
-                      >
+                    <CCol>
+                      <CCol md="5">
                         <CButton
                           style={{
-                          
                             marginLeft: "35px",
                           }}
                           id={"membertownaddmember"}
@@ -1046,12 +1454,12 @@ const MemberTownPanchayat = () => {
                               <td className="py-1">
                                 <CRow>
                                   <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                  
                                     <Dropdown
                                       className={"ant-dropdown-cutomize-by-me"}
                                       overlay={() => menus(item)}
                                     >
-                                      <a href
+                                      <a
+                                        href
                                         className="ant-dropdown-link"
                                         onClick={(e) => e.preventDefault()}
                                       >
@@ -1147,12 +1555,12 @@ const MemberTownPanchayat = () => {
                               <td className="py-1">
                                 <CRow>
                                   <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                  
                                     <Dropdown
                                       className={"ant-dropdown-cutomize-by-me"}
                                       overlay={() => menus(item)}
                                     >
-                                      <a href
+                                      <a
+                                        href
                                         className="ant-dropdown-link"
                                         onClick={(e) => e.preventDefault()}
                                       >
@@ -1259,12 +1667,12 @@ const MemberTownPanchayat = () => {
                               <td className="py-1">
                                 <CRow>
                                   <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                  
                                     <Dropdown
                                       className={"ant-dropdown-cutomize-by-me"}
                                       overlay={() => menus(item)}
                                     >
-                                      <a href
+                                      <a
+                                        href
                                         className="ant-dropdown-link"
                                         onClick={(e) => e.preventDefault()}
                                       >
@@ -1592,8 +2000,13 @@ const MemberTownPanchayat = () => {
                             filter: false,
                           },
                           {
-                            key: "town",
-                            label: "Town Panchayat",
+                            key: "type",
+                            label: "Type of Local Body",
+                            _style: { width: "10%" },
+                          },
+                          {
+                            key: "name",
+                            label: "Name of Local Body",
                             _style: { width: "10%" },
                           },
                           {

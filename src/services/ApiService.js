@@ -24,6 +24,27 @@ export async function getAllRole(query) {
     throw new Error(errorResponse.error);
   }
 }
+
+export async function roleDelete(id) {
+  const token = localStorage.getItem(`token`);
+  const response = await fetch(`/role/delete/${id}`, {
+    method: `put`,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  });
+  if (response.status === 200) {
+    return await response.json();
+  } else if (response.status === 401) {
+    localStorage.removeItem("token");
+    window.location.pathname = "/login";
+    throw new Error(`User Unauthorized. Please login again.`);
+  } else {
+    let errorResponse = await response.json();
+    throw errorResponse.error;
+  }
+}
 export async function getFutureJob(body) {
   try {
     let bodys = body || ``;

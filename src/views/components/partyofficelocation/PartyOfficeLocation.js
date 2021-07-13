@@ -27,7 +27,7 @@ function PartyOfficeLocation() {
     menuStatus: "open",
     style3: "menu1",
   });
-  const [locationHide, ] = useState({
+  const [locationHide] = useState({
     corporation: true,
   });
   // const [editShow, setEditShow] = useState(false);
@@ -181,7 +181,7 @@ function PartyOfficeLocation() {
   const addTypeofPartyOffice = () => {
     switch (menu.menuStatus) {
       case "open":
-        default:
+      default:
         setMenu({
           menuStatus: "close",
           style3: "menu2",
@@ -206,6 +206,16 @@ function PartyOfficeLocation() {
         setCreatepartyOffice(true);
         break;
     }
+  };
+  const cancelTypeofPartyOffice = () => {
+    setMenu({
+      menuStatus: "open",
+      style3: "menu1",
+      style: "menu",
+      style1: "menu1",
+    });
+    setCreatepartyOffice(true);
+    setSideBar1(false);
   };
   const [hidePartyOffice, setHidePartyOffice] = useState(true);
   const [backbutt, setBackButt] = useState(false);
@@ -307,10 +317,14 @@ function PartyOfficeLocation() {
       </components.MenuList>
     );
   };
+
   return (
     <div className={menu.style3}>
       {sideBar1 && (
-        <div className={menu.style}style={{overflow:"auto" }}>
+        <div
+          className={menu.style}
+          style={{ overflow: "auto", marginLeft: "20px" }}
+        >
           <div className={"main-headerlabel"} style={{ marginTop: "-40px" }}>
             <span className={"header-label"}> Adding Type of Party Office</span>
           </div>
@@ -388,7 +402,7 @@ function PartyOfficeLocation() {
                           }}
                           id={"typeoofpartycancelAbbreviationConfigureCode"}
                           className={"cancelBtn"}
-                          onClick={addTypeofPartyOffice}
+                          onClick={cancelTypeofPartyOffice}
                         >
                           CANCEL
                         </CButton>
@@ -430,39 +444,38 @@ function PartyOfficeLocation() {
                     }}
                   />
                 </CCol>
-                <CCol style={{ fontSize: "1.55rem", }} md={12} sm={12} lg={12}>
-                <p data-tip="print">
-                  <i
-                    id={"typeoofpartyprint"}
-                    style={{
-                      position: "absolute",
-                      top: "20px",
-                      marginLeft: "410px",
-                      marginBottom: "20px",
-                      color: "black",
-                    
-                    }}
-                    onClick={() => exportPDF()}
-                    className="fa fa-print"
-                  ></i>
+                <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
+                  <p data-tip="print">
+                    <i
+                      id={"typeoofpartyprint"}
+                      style={{
+                        position: "absolute",
+                        top: "20px",
+                        marginLeft: "410px",
+                        marginBottom: "20px",
+                        color: "black",
+                      }}
+                      onClick={() => exportPDF()}
+                      className="fa fa-print"
+                    ></i>
                   </p>
-                  <ReactTooltip/>
+                  <ReactTooltip />
                 </CCol>
                 <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
-                <p data-tip="share">
-                  <i
-                    id={"typeoofpartyshare"}
-                    style={{
-                      position: "absolute",
-                      top: "-2px",
-                      marginLeft: "515px",
-                      marginBottom: "910px",
-                      color: "black",
-                    }}
-                    className="fa fa-share-alt"
-                  ></i>
+                  <p data-tip="share">
+                    <i
+                      id={"typeoofpartyshare"}
+                      style={{
+                        position: "absolute",
+                        top: "-2px",
+                        marginLeft: "515px",
+                        marginBottom: "910px",
+                        color: "black",
+                      }}
+                      className="fa fa-share-alt"
+                    ></i>
                   </p>
-                  <ReactTooltip/>
+                  <ReactTooltip />
                 </CCol>
               </CRow>
 
@@ -488,7 +501,8 @@ function PartyOfficeLocation() {
                                 className={"ant-dropdown-cutomize-by-me"}
                                 overlay={() => menus(item)}
                               >
-                                <a href
+                                <a
+                                  href
                                   className="ant-dropdown-link"
                                   onClick={(e) => e.preventDefault()}
                                 >
@@ -517,9 +531,15 @@ function PartyOfficeLocation() {
           {backbutt && (
             <div>
               <CButton
-                style={{ position: "absolute", top: "15px", right: "15px" }}
+                style={{
+                  position: "absolute",
+                  top: "15px",
+                  backgroundColor: "green",
+                  border: "1px solid green",
+                  right: "15px",
+                }}
                 className={"cancelBtn"}
-                onClick={addTypeofPartyOffice}
+                onClick={cancelTypeofPartyOffice}
               >
                 Back
               </CButton>
@@ -536,16 +556,16 @@ function PartyOfficeLocation() {
               </span>
             </div>
 
-           <div style={{marginTop:"-30px"}}>
-            <CRow
-              style={{
-                marginTop: "65px",
-                marginLeft: "240px",
-                position: "absolute",
-              }}
-            >
-              <CCol sm="3" lg="3" style={{ marginLeft: "-160px" }}>
-                {/* <CWidgetDropdown
+            <div style={{ marginTop: "-30px" }}>
+              <CRow
+                style={{
+                  marginTop: "65px",
+                  marginLeft: "240px",
+                  position: "absolute",
+                }}
+              >
+                <CCol sm="3" lg="3" style={{ marginLeft: "-160px" }}>
+                  {/* <CWidgetDropdown
                   style={{
                     width: "280px",
                     textAlign: "center",
@@ -558,41 +578,41 @@ function PartyOfficeLocation() {
                   text=""
                 > */}
                   <span
-                  
                     style={{
-                      position:"absolute",
+                      position: "absolute",
                       marginLeft: "45px",
                       fontSize: "22px",
                       fontWeight: "700",
-                      color:"#134e5e"
+                      color: "#134e5e",
                     }}
                   >
                     Total
                   </span>
                   <span
                     style={{
-                      display:"block",
+                      display: "block",
                       marginLeft: "-41px",
-                      marginTop:"-75px",
+                      marginTop: "-75px",
                       padding: "100px",
                       fontSize: "24px",
                       fontWeight: "500",
-                      color:"grey"
+                      color: "grey",
                     }}
                   >
-                  2
-          
+                    2
                   </span>
-                <span class="divider"/>
+                  <span class="divider" />
                   <br />
-                <br>
-                
-                </br>
+                  <br></br>
                   <br />
-                {/* </CWidgetDropdown> */}
-              </CCol>
-              <CCol sm="3" lg="3" style={{ marginLeft: "290px" ,display:"flex"}}>
-                {/* <CWidgetDropdown
+                  {/* </CWidgetDropdown> */}
+                </CCol>
+                <CCol
+                  sm="3"
+                  lg="3"
+                  style={{ marginLeft: "290px", display: "flex" }}
+                >
+                  {/* <CWidgetDropdown
                   style={{
                     width: "280px",
                     textAlign: "center",
@@ -604,14 +624,13 @@ function PartyOfficeLocation() {
                   header=""
                   text=""
                 > */}
-                         
-             
+
                   <span
                     style={{
                       marginLeft: "-294px",
                       fontSize: "22px",
                       fontWeight: "700",
-                      color:"#4cb8c4 "
+                      color: "#4cb8c4 ",
                     }}
                   >
                     District Party Office
@@ -622,19 +641,27 @@ function PartyOfficeLocation() {
                       marginTop: "28px",
                       fontSize: "24px",
                       fontWeight: "500",
-                      color:"grey"
+                      color: "grey",
                     }}
                   >
                     2
                   </span>
-                  <span className={"divider1"}/>
+                  <span className={"divider1"} />
                   <br />
-                  
+
                   <br />
-                {/* </CWidgetDropdown> */}
-              </CCol>
-              <CCol sm="3" lg="3"  style={{ marginLeft: "440px" ,position:"relative",display:"flex"}}>
-                {/* <CWidgetDropdown
+                  {/* </CWidgetDropdown> */}
+                </CCol>
+                <CCol
+                  sm="3"
+                  lg="3"
+                  style={{
+                    marginLeft: "440px",
+                    position: "relative",
+                    display: "flex",
+                  }}
+                >
+                  {/* <CWidgetDropdown
                   style={{
                     width: "280px",
                     textAlign: "center",
@@ -648,11 +675,11 @@ function PartyOfficeLocation() {
                 > */}
                   <span
                     style={{
-                      marginTop:"-228px",
-                     left: "-21px",
-                     fontSize: "22px",
+                      marginTop: "-228px",
+                      left: "-21px",
+                      fontSize: "22px",
                       fontWeight: "700",
-                      color:"#ec6f66"
+                      color: "#ec6f66",
                     }}
                   >
                     Circle Party Office
@@ -664,26 +691,26 @@ function PartyOfficeLocation() {
                       marginTop: "-201px",
                       fontSize: "24px",
                       fontWeight: "500",
-                      color:"grey"
+                      color: "grey",
                     }}
                   >
                     1
                   </span>
-                  <span className={"divider2"}/>
+                  <span className={"divider2"} />
                   <br />
                   <br />
-                {/* </CWidgetDropdown> */}
-              </CCol>
-            </CRow>
+                  {/* </CWidgetDropdown> */}
+                </CCol>
+              </CRow>
             </div>
-            <CRow style={{marginTop:"-10px"}}>
+            <CRow style={{ marginTop: "-10px" }}>
               <CCol md="10" lg="10" sm="10">
                 <CCol
                   md="5"
                   style={{
                     marginLeft: "5px",
                     float: "right",
-                   Top: "100px",
+                    Top: "100px",
                     top: "170px",
                     position: "absolute",
                   }}
@@ -727,88 +754,89 @@ function PartyOfficeLocation() {
                 />
               </CCol>
               <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
-              <p data-tip="print">
-                <i
-                  id={"typeoofpartylocationprint"}
-                  style={{
-                    position: "absolute",
-                    top: "210px",
-                    marginTop:"-10px",
-                    marginLeft: "514px",
-                    marginBottom: "20px",
-                    color: "black",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => exportPDF()}
-                  className="fa fa-print"
-                ></i>
+                <p data-tip="print">
+                  <i
+                    id={"typeoofpartylocationprint"}
+                    style={{
+                      position: "absolute",
+                      top: "210px",
+                      marginTop: "0px",
+                      marginLeft: "514px",
+                      marginBottom: "20px",
+                      color: "black",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => exportPDF()}
+                    className="fa fa-print"
+                  ></i>
                 </p>
-                <ReactTooltip/>
+                <ReactTooltip />
               </CCol>
               <CCol style={{ fontSize: "1.55rem" }} md={12} sm={12} lg={12}>
-              <p data-tip="share">
-                <i
-                  id={"typeoofpartylocationshare"}
-                  style={{
-                    position: "absolute",
-                    top: "185px",
-                    marginLeft: "633px",
-                    marginBottom: "910px",
-                    color: "black",
-                  }}
-                  className="fa fa-share-alt"
-                ></i>
+                <p data-tip="share">
+                  <i
+                    id={"typeoofpartylocationshare"}
+                    style={{
+                      position: "absolute",
+                      top: "185px",
+                      marginLeft: "633px",
+                      marginBottom: "910px",
+                      color: "black",
+                    }}
+                    className="fa fa-share-alt"
+                  ></i>
                 </p>
-                <ReactTooltip/>
+                <ReactTooltip />
               </CCol>
             </CRow>
-           <div>
-            <CRow style={{ padding: "4%", marginTop: "5.5%" }}>
-              <CDataTable
-                items={userData}
-                fields={fields}
-                columnFilter
-                tableFilter
-                tableLabel={"List of Type of party Office Location"}
-                itemsPerPageSelect
-                itemsPerPage={5}
-                hover
-                sorter
-                pagination
-                scopedSlots={{
-                  show_details: (item, index) => {
-                    return (
-                      <td className="py-1">
-                        <CRow>
-                          <CCol style={{ fontSize: "1.15rem" }} md="16">
-                            <Dropdown
-                              className={"ant-dropdown-cutomize-by-me"}
-                              overlay={() => menus(item)}
-                            >
-                              <a href
-                                className="ant-dropdown-link"
-                                onClick={(e) => e.preventDefault()}
+            <div>
+              <CRow style={{ padding: "4%", marginTop: "5.5%" }}>
+                <CDataTable
+                  items={userData}
+                  fields={fields}
+                  columnFilter
+                  tableFilter
+                  tableLabel={"List of Type of party Office Location"}
+                  itemsPerPageSelect
+                  itemsPerPage={5}
+                  hover
+                  sorter
+                  pagination
+                  scopedSlots={{
+                    show_details: (item, index) => {
+                      return (
+                        <td className="py-1">
+                          <CRow>
+                            <CCol style={{ fontSize: "1.15rem" }} md="16">
+                              <Dropdown
+                                className={"ant-dropdown-cutomize-by-me"}
+                                overlay={() => menus(item)}
                               >
-                                <i
-                                  style={{
-                                    marginLeft: "5px",
-                                    color: "black",
-                                  }}
-                                  className="fa fa-ellipsis-v"
-                                  bsStyle="overlay"
-                                  onClick={menus}
-                                />
-                              </a>
-                            </Dropdown>
-                          </CCol>
-                        </CRow>
-                      </td>
-                    );
-                  },
-                  details: (item, index) => {},
-                }}
-              />
-            </CRow>
+                                <a
+                                  href
+                                  className="ant-dropdown-link"
+                                  onClick={(e) => e.preventDefault()}
+                                >
+                                  <i
+                                    style={{
+                                      marginLeft: "5px",
+                                      color: "black",
+                                    }}
+                                    className="fa fa-ellipsis-v"
+                                    bsStyle="overlay"
+                                    onClick={menus}
+                                  />
+                                </a>
+                              </Dropdown>
+                            </CCol>
+                          </CRow>
+                        </td>
+                      );
+                    },
+                    details: (item, index) => {},
+                  }}
+                />
+              </CRow>
             </div>
           </CCard>
         </div>
@@ -826,7 +854,7 @@ function PartyOfficeLocation() {
               </div>
             </div>
             <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-            <CCol className={"column-align"} md={5} lg={5}>
+              <CCol className={"column-align"} md={5} lg={5}>
                 <CLabel className={"label-name"}>
                   Type of Party Office
                   <span className={"text-danger"}>*</span>
@@ -840,15 +868,15 @@ function PartyOfficeLocation() {
                   components={{
                     MenuList: SelectMenuButtonpartyoffice,
                   }}
-                  // value={typeofPartyOffice}                  
+                  // value={typeofPartyOffice}
                   // onChange={(e) => {
                   //   setTypeofPartyOffice(e);
                   //   setEditShow(true);
                   // }}
                 />
-              </CCol>                        
+              </CCol>
 
-                <CCol className={"column-align"} md={5} lg={5}>
+              <CCol className={"column-align"} md={5} lg={5}>
                 <CLabel className={"label-name"}>
                   Reporting To Office
                   <span className={"text-danger"}>*</span>
@@ -915,7 +943,7 @@ function PartyOfficeLocation() {
             </CRow>
 
             <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-            <CCol className={"column-align"} md={5} lg={5}>
+              <CCol className={"column-align"} md={5} lg={5}>
                 <CLabel className={"label-name"}>
                   Door No. / Street
                   <span className={"text-danger"}>*</span>
@@ -928,7 +956,7 @@ function PartyOfficeLocation() {
                   placeholder="Enter Street "
                 />
               </CCol>
-              
+
               <CCol className={"column-align"} md={5} lg={5}>
                 <CLabel className={"label-name"}>
                   Area / Village
@@ -942,7 +970,6 @@ function PartyOfficeLocation() {
                   placeholder="Enter Area "
                 />
               </CCol>
-              
             </CRow>
 
             <CRow className={"row-alignment"} md="12" sm="12" lg="12">
@@ -974,7 +1001,7 @@ function PartyOfficeLocation() {
               </CCol>
             </CRow>
             <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-            <CCol className={"column-align"} md={5} lg={5}>
+              <CCol className={"column-align"} md={5} lg={5}>
                 <CLabel className={"label-name"}>
                   Pincode
                   <span className={"text-danger"}>*</span>

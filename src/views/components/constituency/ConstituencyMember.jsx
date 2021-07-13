@@ -228,7 +228,7 @@ const ConstituencyMember = () => {
   ];
   const changeHandler = (e) => {
     setLocations({ ...locations, [e.target.name]: e.target.value });
-};
+  };
   const [hideMappingMunicipal, setHideMappingmunicipal] = useState(true);
   const [hideCorporation, setHideCorporation] = useState(false);
   const changeMunicipalCorporation = () => {
@@ -251,6 +251,7 @@ const ConstituencyMember = () => {
           style1: "menu1",
         });
         setSideBar1(true);
+        setHideMappingmunicipal(false);
         break;
       case "close":
         setMenu({
@@ -265,6 +266,20 @@ const ConstituencyMember = () => {
         break;
     }
   };
+  const cancelclick = () => {
+    setMenu({
+      menuStatus: "open",
+      style3: "menu1",
+      style: "menu",
+      style1: "menu1",
+    });
+    setHideMappingmunicipal(true);
+    setSideBar1(false);
+    setGridOne(false);
+    setGridTwo(false);
+    setGridThree(false);
+    setGridFour(false);
+  };
   const handleClick2 = () => {
     switch (menu.menuStatus) {
       case "open":
@@ -276,6 +291,7 @@ const ConstituencyMember = () => {
           style1: "menu active",
         });
         setSideBar2(true);
+        setHideMappingmunicipal(false);
         break;
       case "close":
         setMenu({
@@ -287,6 +303,7 @@ const ConstituencyMember = () => {
         setTimeout(() => {
           setSideBar2(false);
         }, 1000);
+        setHideMappingmunicipal(true);
         break;
     }
   };
@@ -341,10 +358,7 @@ const ConstituencyMember = () => {
   return (
     <div className={menu.style3}>
       {sideBar1 && (
-        <div
-          className={menu.style}
-          style={{ minHeight: "800px", overflow: "auto" }}
-        >
+        <div className={menu.style} style={{ overflow: "auto" }}>
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
               <div>
@@ -498,7 +512,6 @@ const ConstituencyMember = () => {
                     maxHeight: "290px",
                     minHeight: "290px",
                     marginBottom: "-25px",
-                    overflow: "auto",
                     marginTop: "50px",
                   }}
                 >
@@ -574,11 +587,9 @@ const ConstituencyMember = () => {
                 <CCol
                   style={{
                     marginLeft: "30px",
-
                     maxHeight: "290px",
                     minHeight: "290px",
                     marginBottom: "-25px",
-                    overflow: "auto",
                     marginTop: "50px",
                   }}
                 >
@@ -635,7 +646,6 @@ const ConstituencyMember = () => {
                     maxHeight: "290px",
                     minHeight: "290px",
                     marginBottom: "-25px",
-                    overflow: "auto",
                     marginTop: "50px",
                   }}
                 >
@@ -692,7 +702,6 @@ const ConstituencyMember = () => {
                     maxHeight: "290px",
                     minHeight: "290px",
                     marginBottom: "-25px",
-                    overflow: "auto",
                     marginTop: "50px",
                   }}
                 >
@@ -740,13 +749,16 @@ const ConstituencyMember = () => {
             </div>
           )}
           <CButton
-            style={{ position: "absolute", top: "15px", right: "15px" }}
+            style={{
+              position: "absolute",
+              backgroundColor: "green",
+              border: "1px solid green",
+              top: "15px",
+              right: "15px",
+            }}
             className={"cancelBtn"}
             id="constimemberhistoryback"
-            onClick={() => {
-              handleClick();
-              handleClick2();
-            }}
+            onClick={cancelclick}
           >
             Back
           </CButton>
@@ -902,7 +914,13 @@ const ConstituencyMember = () => {
             </CCol>
           </CRow>
           <CButton
-            style={{ position: "absolute", top: "15px", right: "15px" }}
+            style={{
+              position: "absolute",
+              backgroundColor: "green",
+              border: "1px solid green",
+              top: "15px",
+              right: "15px",
+            }}
             className={"cancelBtn"}
             onClick={handleClick2}
           >
