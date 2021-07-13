@@ -20,6 +20,7 @@ import "jspdf-autotable";
 import {
   createTypeofPartyOffice,
   getAllTypeofPartyOffice,
+  updateTypeofPartyOffice,
 } from "../../../services/ApiService";
 
 function PartyOfficeLocation() {
@@ -73,7 +74,7 @@ function PartyOfficeLocation() {
   const [unitPrice, setUnitPrice] = useState("");
   const [inEditMode, setInEditMode] = useState({
     status: false,
-  rowKey:""
+    rowKey: null,
   });
 
   const fields1 = [
@@ -246,6 +247,7 @@ function PartyOfficeLocation() {
     setCreatepartyOffice(true);
     setSideBar1(false);
   };
+  const [passing, sePassings] = useState("");
   const [hidePartyOffice, setHidePartyOffice] = useState(true);
   const [backbutt, setBackButt] = useState(false);
   const viewTypeofPartyOffice = () => {
@@ -258,12 +260,13 @@ function PartyOfficeLocation() {
     console.log(data, "editabledATA");
     setInEditMode({
       status: true,
-      rowKey: id,
+      // rowKey: id,
     });
-console.log(inEditMode.rowKey, "editaaa");
-    setUnitPrice({ unitPrice: data.typeofpartyoffice });
-    setDistrictValue({ DistrictValue: data.abbreviation });
-    setAreaValue({ AreaValue: data.code });
+    console.log(inEditMode.rowKey, "editaaa");
+    setUnitPrice(data.typeofpartyoffice);
+    setDistrictValue(data.abbreviation);
+    setAreaValue(data.code);
+    sePassings(data._id);
   };
   const menus = (details) => {
     return (
@@ -365,6 +368,7 @@ console.log(inEditMode.rowKey, "editaaa");
   };
   const saveTypeofPartyOffice = async () => {
     console.log("hello value");
+
     var response;
     let body = {
       typeofpartyoffice: DistrictValue,
@@ -376,9 +380,11 @@ console.log(inEditMode.rowKey, "editaaa");
       response = await createTypeofPartyOffice(JSON.stringify(body));
 
       if (response.success === true) {
-        alert("created scuccessfully");
+        setInEditMode({ status: false });
       }
-    } catch (error) {}
+    } catch (error) {
+      alert("value not change");
+    }
   };
   const [getPartyOffice, setGetPartyOffice] = useState([]);
 
@@ -407,6 +413,23 @@ console.log(inEditMode.rowKey, "editaaa");
     getTypeofPartyOffice();
   }, []);
 
+  const updatePartyOffice = async () => {
+    var response;
+
+    try {
+      response = await updateTypeofPartyOffice(
+        unitPrice,
+        DistrictValue,
+        AreaValue,
+        passing
+      );
+      console.log(response, "validadata");
+      if (response.success === true) {
+        setInEditMode({ status: false });
+        getTypeofPartyOffice();
+      }
+    } catch (error) {}
+  };
   return (
     <div className={menu.style3}>
       {sideBar1 && (
@@ -423,24 +446,22 @@ console.log(inEditMode.rowKey, "editaaa");
                 <div style={{ marginLeft: "-26px" }}>
                   <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                     <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
+                      <CLabel className={"label-name-1"}>
                         Type of Party Office
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <CInput
-                        className={"input-align"}
                         id={"typeoofparty"}
                         name={"PartyOffice"}
                         placeholder={"Enter Party Office"}
                       />
                     </CCol>
                     <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
+                      <CLabel className={"label-name-1"}>
                         Abbreviation
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <CInput
-                        className={"input-align"}
                         id={"partylocationabbrevation"}
                         name={"Abbreviation"}
                         placeholder={"Enter Abbreviation"}
@@ -449,24 +470,22 @@ console.log(inEditMode.rowKey, "editaaa");
                   </CRow>
                   <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                     <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
+                      <CLabel className={"label-name-1"}>
                         Code
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <CInput
-                        className={"input-align"}
                         id={"locationtypeCode"}
                         name={"city"}
                         placeholder={"Enter Code"}
                       />
                     </CCol>
                     <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
+                      <CLabel className={"label-name-1"}>
                         Reporting To Office
                         <span className={"text-danger"}>*</span>
                       </CLabel>
                       <Select
-                        className={"input-align"}
                         id={"reportingto"}
                         name={"area"}
                         placeholder={"Select Reporting To"}
@@ -479,7 +498,7 @@ console.log(inEditMode.rowKey, "editaaa");
                       <CCol
                         md="5"
                         style={{
-                          marginLeft: "270px",
+                          marginLeft: "250px",
                           float: "right",
                           marginTop: "-25px",
                           position: "absolute",
@@ -585,19 +604,17 @@ console.log(inEditMode.rowKey, "editaaa");
                       return (
                         <td className="py-1">
                           <td>
-                            {inEditMode.status &&
-                            inEditMode.rowKey === item.id ? (
+                            {inEditMode.status && passing === item._id ? (
                               <React.Fragment>
-                                <button onClick={() => saveTypeofPartyOffice()}>
-                                  <i
-                                    className={"fa fa-save"}
-                                    style={{
-                                      color: "red",
-                                      position: "absolute",
-                                      marginTop: "4px",
-                                    }}
-                                  />
-                                </button>
+                                <i
+                                  className={"fa fa-save"}
+                                  style={{
+                                    color: "red",
+                                    position: "absolute",
+                                    marginTop: "4px",
+                                  }}
+                                  onClick={() => updatePartyOffice()}
+                                />
 
                                 <i
                                   className={"fa fa-remove"}
@@ -616,22 +633,20 @@ console.log(inEditMode.rowKey, "editaaa");
                                   color: "blue",
                                 }}
                                 className={"fa fa-edit"}
-                                onClick={() =>
-                                  onEdit(item)
-                                }
+                                onClick={() => onEdit(item)}
                               />
                             )}
                           </td>
                         </td>
                       );
                     },
+
                     show_details2: (item, index) => {
                       return (
                         <td key={index}>
-                          {inEditMode.status &&
-                          inEditMode.rowKey === item.id ? (
+                          {inEditMode.status && passing === item._id ? (
                             <input
-                              value={DistrictValue?.DistrictValue || ""}
+                              value={DistrictValue}
                               onChange={(event) =>
                                 setDistrictValue(event.target.value)
                               }
@@ -645,10 +660,9 @@ console.log(inEditMode.rowKey, "editaaa");
                     show_details3: (item, index) => {
                       return (
                         <td>
-                          {inEditMode.status &&
-                          inEditMode.rowKey === item.id ? (
+                          {inEditMode.status && passing === item._id ? (
                             <input
-                              value={AreaValue?.AreaValue || ""}
+                              value={AreaValue}
                               onChange={(event) =>
                                 setAreaValue(event.target.value)
                               }
@@ -663,10 +677,9 @@ console.log(inEditMode.rowKey, "editaaa");
                       return (
                         <td className="py-1">
                           <td>
-                            {inEditMode.status &&
-                            inEditMode.rowKey === item.id ? (
+                            {inEditMode.status && passing === item._id ? (
                               <input
-                                value={unitPrice?.unitPrice || ""}
+                                value={unitPrice}
                                 onChange={(event) =>
                                   setUnitPrice(event.target.value)
                                 }
