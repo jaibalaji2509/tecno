@@ -3,7 +3,7 @@ import CDataTable from "../../CoreComponents/table/CDataTable";
 import {
   CRow,
   CCard,
-  CCol,
+  CCol, 
   CLabel,
   CButton,
   CInput,
@@ -196,7 +196,7 @@ function PartyOfficeLocation() {
         </CLink>
       ),
     },
-    { value: "Head Office", label: "Head Office - Chennai Head Office" },
+    { value: "Head Office", label: "Head Office" },
     { value: "District Office", label: "District Office" },
   ];
   // const [typeofPartyOffice, setTypeofPartyOffice] = useState("");

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import {
   CRow,
@@ -17,6 +17,11 @@ import "antd/dist/antd.css";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import ReactTooltip from "react-tooltip";
+import {
+  createTypeofPartyOffice,
+  getAllTypeofPartyOffice,
+} from "../../../services/ApiService";
+
 
 function PartyWingsOfficeLocation() {
   const [addPartyOffice, setAddPartyOffice] = useState(true);
@@ -53,6 +58,35 @@ function PartyWingsOfficeLocation() {
       ENTERON: "31/05/2021",
     },
   ];
+  const [inEditMode, setInEditMode] = useState({
+    status: false,
+  rowKey:""
+  });
+  const [getPartyOffice, setGetPartyOffice] = useState([]);
+  const getTypeofPartyOffice = async () => {
+    var response;
+    try {
+      response = await getAllTypeofPartyOffice();
+      let array = [];
+      if (response.TypeofPartyOffice) {
+        console.log(response.TypeofPartyOffice, "mapdata");
+        response.TypeofPartyOffice.map((x, i) => {
+          array.push({
+            ...x,
+            typeofpartyoffice: x.typeofpartyoffice,
+            abbreviation: x.abbreviation,
+            code: x.code,
+          });
+        });
+        setGetPartyOffice(array);
+      }
+    } catch (error) {
+      console.log("data nof find");
+    }
+  };
+  useEffect(() => {
+    getTypeofPartyOffice();
+  }, []);
   const fieldsoffice = [
     {
       key: "SNo",
@@ -62,9 +96,9 @@ function PartyWingsOfficeLocation() {
       filter: false,
     },
 
-    { key: "Street", label: "Type of Party Office", _style: { width: "15%" } },
-    { key: "District", label: "Abbreviation", _style: { width: "10%" } },
-    { key: "Area", label: "Code", _style: { width: "10%" } },
+    { key: "show_details1", label: "Type of Party Office", _style: { width: "15%" } },
+    { key: "show_details2", label: "Abbreviation", _style: { width: "10%" } },
+    { key: "show_details3", label: "Code", _style: { width: "10%" } },
     { key: "male", label: "Reporting To Office", _style: { width: "12%" } },
 
     {
@@ -378,6 +412,47 @@ function PartyWingsOfficeLocation() {
       </components.MenuList>
     );
   };
+  const [data, setData] = useState([]);
+  const [DistrictValue, setDistrictValue] = useState("");
+  const [AreaValue, setAreaValue] = useState("");
+  const [unitPrice, setUnitPrice] = useState("");
+  const onCancel = () => {
+    // reset the inEditMode state value
+    setInEditMode({
+      status: false,
+      rowKey: null,
+    });
+    // reset the unit price state value
+    setUnitPrice(null);
+  };
+  const onEdit = (data, id) => {
+    console.log(data, "editabledATA");
+    setInEditMode({
+      status: true,
+      rowKey: id,
+    });
+console.log(inEditMode.rowKey, "editaaa");
+    setUnitPrice({ unitPrice: data.typeofpartyoffice });
+    setDistrictValue({ DistrictValue: data.abbreviation });
+    setAreaValue({ AreaValue: data.code });
+  };
+  const saveTypeofPartyOffice = async () => {
+    console.log("hello value");
+    var response;
+    let body = {
+      typeofpartyoffice: DistrictValue,
+      abbreviation: AreaValue,
+      code: unitPrice,
+    };
+    console.log(body, "bodytype");
+    try {
+      response = await createTypeofPartyOffice(JSON.stringify(body));
+
+      if (response.success === true) {
+        alert("created scuccessfully");
+      }
+    } catch (error) {}
+  };
   return (
     <React.Fragment>
       <div className={menu.style3}>
@@ -551,7 +626,7 @@ function PartyWingsOfficeLocation() {
 
                 <CRow style={{ padding: "4%", marginTop: "-6.5%" }}>
                   <CDataTable
-                    items={userDataoffice}
+                    items={getPartyOffice}
                     fields={fieldsoffice}
                     columnFilter
                     tableFilter
@@ -565,30 +640,97 @@ function PartyWingsOfficeLocation() {
                       show_details: (item, index) => {
                         return (
                           <td className="py-1">
-                            <CRow>
-                              <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                <Dropdown
-                                  className={"ant-dropdown-cutomize-by-me"}
-                                  overlay={() => menus(item)}
-                                >
-                                  <a
-                                    href
-                                    className="ant-dropdown-link"
-                                    onClick={(e) => e.preventDefault()}
-                                  >
+                            <td>
+                              {inEditMode.status &&
+                              inEditMode.rowKey === item.id ? (
+                                <React.Fragment>
+                                  <button onClick={() => saveTypeofPartyOffice()}>
                                     <i
+                                      className={"fa fa-save"}
                                       style={{
-                                        marginLeft: "35px",
-                                        color: "black",
+                                        color: "red",
+                                        position: "absolute",
+                                        marginTop: "4px",
                                       }}
-                                      className="fa fa-ellipsis-v"
-                                      bsStyle="overlay"
-                                      onClick={menus}
                                     />
-                                  </a>
-                                </Dropdown>
-                              </CCol>
-                            </CRow>
+                                  </button>
+  
+                                  <i
+                                    className={"fa fa-remove"}
+                                    style={{
+                                      position: "initial",
+                                      marginLeft: "26px",
+                                      fontSize: "1.1rem",
+                                      top: "205px",
+                                    }}
+                                    onClick={() => onCancel()}
+                                  />
+                                </React.Fragment>
+                              ) : (
+                                <i
+                                  style={{
+                                    color: "blue",
+                                  }}
+                                  className={"fa fa-edit"}
+                                  onClick={() =>
+                                    onEdit(item)
+                                  }
+                                />
+                              )}
+                            </td>
+                          </td>
+                        );
+                      },
+                      show_details2: (item, index) => {
+                        return (
+                          <td key={index}>
+                            {inEditMode.status &&
+                            inEditMode.rowKey === item.id ? (
+                              <input
+                                value={DistrictValue?.DistrictValue || ""}
+                                onChange={(event) =>
+                                  setDistrictValue(event.target.value)
+                                }
+                              />
+                            ) : (
+                              item.abbreviation
+                            )}
+                          </td>
+                        );
+                      },
+                      show_details3: (item, index) => {
+                        return (
+                          <td>
+                            {inEditMode.status &&
+                            inEditMode.rowKey === item.id ? (
+                              <input
+                                value={AreaValue?.AreaValue || ""}
+                                onChange={(event) =>
+                                  setAreaValue(event.target.value)
+                                }
+                              />
+                            ) : (
+                              item.code
+                            )}
+                          </td>
+                        );
+                      },
+                      show_details1: (item, index) => {
+                        return (
+                          <td className="py-1">
+                            <td>
+                              {inEditMode.status &&
+                              inEditMode.rowKey === item.id ? (
+                                <input
+                                  value={unitPrice?.unitPrice || ""}
+                                  onChange={(event) =>
+                                    setUnitPrice(event.target.value)
+                                  }
+                                />
+                              ) : (
+                                item.typeofpartyoffice
+                              )}
+                            </td>
                           </td>
                         );
                       },
@@ -792,7 +934,7 @@ function PartyWingsOfficeLocation() {
 
                 <CRow style={{ padding: "4%", marginTop: "-6.5%" }}>
                   <CDataTable
-                    items={userDataoffice}
+                    items={getPartyOffice}
                     fields={fieldsoffice}
                     columnFilter
                     tableFilter
@@ -806,30 +948,97 @@ function PartyWingsOfficeLocation() {
                       show_details: (item, index) => {
                         return (
                           <td className="py-1">
-                            <CRow>
-                              <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                <Dropdown
-                                  className={"ant-dropdown-cutomize-by-me"}
-                                  overlay={() => menus(item)}
-                                >
-                                  <a
-                                    href
-                                    className="ant-dropdown-link"
-                                    onClick={(e) => e.preventDefault()}
-                                  >
+                            <td>
+                              {inEditMode.status &&
+                              inEditMode.rowKey === item.id ? (
+                                <React.Fragment>
+                                  <button onClick={() => saveTypeofPartyOffice()}>
                                     <i
+                                      className={"fa fa-save"}
                                       style={{
-                                        marginLeft: "35px",
-                                        color: "black",
+                                        color: "red",
+                                        position: "absolute",
+                                        marginTop: "4px",
                                       }}
-                                      className="fa fa-ellipsis-v"
-                                      bsStyle="overlay"
-                                      onClick={menus}
                                     />
-                                  </a>
-                                </Dropdown>
-                              </CCol>
-                            </CRow>
+                                  </button>
+  
+                                  <i
+                                    className={"fa fa-remove"}
+                                    style={{
+                                      position: "initial",
+                                      marginLeft: "26px",
+                                      fontSize: "1.1rem",
+                                      top: "205px",
+                                    }}
+                                    onClick={() => onCancel()}
+                                  />
+                                </React.Fragment>
+                              ) : (
+                                <i
+                                  style={{
+                                    color: "blue",
+                                  }}
+                                  className={"fa fa-edit"}
+                                  onClick={() =>
+                                    onEdit(item)
+                                  }
+                                />
+                              )}
+                            </td>
+                          </td>
+                        );
+                      },
+                      show_details2: (item, index) => {
+                        return (
+                          <td key={index}>
+                            {inEditMode.status &&
+                            inEditMode.rowKey === item.id ? (
+                              <input
+                                value={DistrictValue?.DistrictValue || ""}
+                                onChange={(event) =>
+                                  setDistrictValue(event.target.value)
+                                }
+                              />
+                            ) : (
+                              item.abbreviation
+                            )}
+                          </td>
+                        );
+                      },
+                      show_details3: (item, index) => {
+                        return (
+                          <td>
+                            {inEditMode.status &&
+                            inEditMode.rowKey === item.id ? (
+                              <input
+                                value={AreaValue?.AreaValue || ""}
+                                onChange={(event) =>
+                                  setAreaValue(event.target.value)
+                                }
+                              />
+                            ) : (
+                              item.code
+                            )}
+                          </td>
+                        );
+                      },
+                      show_details1: (item, index) => {
+                        return (
+                          <td className="py-1">
+                            <td>
+                              {inEditMode.status &&
+                              inEditMode.rowKey === item.id ? (
+                                <input
+                                  value={unitPrice?.unitPrice || ""}
+                                  onChange={(event) =>
+                                    setUnitPrice(event.target.value)
+                                  }
+                                />
+                              ) : (
+                                item.typeofpartyoffice
+                              )}
+                            </td>
                           </td>
                         );
                       },
