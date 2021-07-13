@@ -45,7 +45,8 @@ export async function roleDelete(id) {
 export async function getAllTypeofPartyOffice(query) {
   let querys = query || ``;
 
-  const response = await fetch( `/TypeofPartyOfficeController/getAll?${querys}`,
+  const response = await fetch(
+    `/TypeofPartyOfficeController/getAll?${querys}`,
     {
       method: `get`,
       headers: {
@@ -253,6 +254,37 @@ export async function updateEmployeeMovement(body) {
         Authorization: token,
       },
       body: data,
+    });
+    if (response.status === 401) {
+      localStorage.removeItem("token");
+      window.location.pathname = "/login";
+      throw new Error(`User Unauthorized. Please login again.`);
+    }
+    return await response.json();
+  } catch (e) {
+    throw e;
+  }
+}
+export async function updateTypeofPartyOffice(
+  unitPrice,
+  DistrictValue,
+  AreaValue,
+  id
+) {
+  try {
+    const response = await fetch(`/TypeofPartyOfficeController/update`, {
+      method: `put`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        typeofpartyoffice: unitPrice,
+        abbreviation: DistrictValue,
+        code: AreaValue,
+      id:id,
+      
+
+      }),
     });
     if (response.status === 401) {
       localStorage.removeItem("token");
