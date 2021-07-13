@@ -1,8 +1,6 @@
 // import Axios from "axios";
 import { toast } from "react-toastify";
 
-
-
 export async function getAllRole(query) {
   let querys = query || ``;
   const token = localStorage.getItem(`token`);
@@ -13,6 +11,29 @@ export async function getAllRole(query) {
       Authorization: token,
     },
   });
+  if (response.status === 200) {
+    return await response.json();
+  } else if (response.status === 401) {
+    localStorage.removeItem("token");
+    window.location.pathname = "/login";
+    throw new Error(`User Unauthorized. Please login again.`);
+  } else {
+    let errorResponse = await response.json();
+    throw new Error(errorResponse.error);
+  }
+}
+
+export async function getAllTypeofPartyOffice(query) {
+  let querys = query || ``;
+
+  const response = await fetch( `/TypeofPartyOfficeController/getAll?${querys}`,
+    {
+      method: `get`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
   if (response.status === 200) {
     return await response.json();
   } else if (response.status === 401) {
@@ -92,6 +113,7 @@ export async function addPromoteEmployee(body) {
     throw e;
   }
 }
+
 export async function getAllDepartment() {
   const token = localStorage.getItem(`token`);
   const response = await fetch(`/department/getAll`, {
@@ -503,7 +525,6 @@ export async function updateOfficeLocation(body) {
   }
 }
 
-
 export async function getHierarchy() {
   try {
     const token = localStorage.getItem(`token`);
@@ -531,14 +552,12 @@ export async function getHierarchy() {
 
 export async function saveCreateMemberRegister(body) {
   try {
- 
     const response = await fetch(`/location`, {
       method: `post`,
       headers: {
         "Content-Type": "application/json",
-    
       },
-      body:body,
+      body: body,
     });
     if (response.status === 401) {
       localStorage.removeItem("token");
@@ -550,50 +569,49 @@ export async function saveCreateMemberRegister(body) {
     throw e;
   }
 }
-  export async function saveCreateCorporation(body) {
-    try {
+export async function saveCreateCorporation(body) {
+  try {
     //   let token = await localStorage.getItem("token");
-      const response = await fetch(`/location`, {
-        method: `post`,
-        headers: {
-          "Content-Type": "application/json",
+    const response = await fetch(`/location`, {
+      method: `post`,
+      headers: {
+        "Content-Type": "application/json",
         //   Authorization: token,
-        },
-        body:body,
-      });
-      if (response.status === 401) {
-        localStorage.removeItem("token");
-        window.location.pathname = "/login";
-        throw new Error(`User Unauthorized. Please login again.`);
-      }
-      return await response.json();
-    } catch (e) {
-      throw e;
+      },
+      body: body,
+    });
+    if (response.status === 401) {
+      localStorage.removeItem("token");
+      window.location.pathname = "/login";
+      throw new Error(`User Unauthorized. Please login again.`);
     }
+    return await response.json();
+  } catch (e) {
+    throw e;
   }
-  export async function createCountry(body) {
-    try {
-      // let token = localStorage.getItem("token");
-      const response = await fetch(`/saveCountry`, {
-        method: `post`,
-        headers: {
-          "Content-Type": "application/json",
-          // Authorization: token,
-        },
-        body: body,
-      });
-      if (response.status === 401) {
-        localStorage.removeItem("token");
-        window.location.pathname = "/login";
-        throw new Error(`User Unauthorized. Please login again.`);
-      }
-      return await response.json();
-    } catch (e) {
-      throw e;
+}
+export async function createCountry(body) {
+  try {
+    // let token = localStorage.getItem("token");
+    const response = await fetch(`/saveCountry`, {
+      method: `post`,
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: token,
+      },
+      body: body,
+    });
+    if (response.status === 401) {
+      localStorage.removeItem("token");
+      window.location.pathname = "/login";
+      throw new Error(`User Unauthorized. Please login again.`);
     }
+    return await response.json();
+  } catch (e) {
+    throw e;
   }
+}
 
-  
 export async function updateCountry(CountryName, Abbreviation1, Code1, id) {
   // const token = localStorage.getItem("token");
   const response = await fetch(`/updateCountry`, {
@@ -642,7 +660,6 @@ export async function createArea(body) {
     throw e;
   }
 }
-
 
 export async function createCity(body) {
   try {
@@ -770,7 +787,6 @@ export async function updateState(StateName, Abbreviation2, Code2, id) {
   }
 }
 
-
 export async function getAreaSchema() {
   // const token = localStorage.getItem(`token`);
   const response = await fetch(`/getAllAreas`, {
@@ -855,6 +871,28 @@ export async function getCountry() {
     throw new Error(errorResponse.error);
   }
 }
+export async function createTypeofPartyOffice(body) {
+  try {
+    // let token = localStorage.getItem("token");
+    const response = await fetch(`/TypeofPartyOfficeController/create`, {
+      method: `post`,
+      headers: {
+        "Content-Type": "application/json",
+        // Authorization: token,
+      },
+      body: body,
+    });
+    if (response.status === 401) {
+      // localStorage.removeItem("token");
+      // window.location.pathname = "/login";
+      throw new Error(`User Unauthorized. Please login again.`);
+    }
+    return await response.json();
+  } catch (e) {
+    throw e;
+  }
+}
+
 export async function getCity(id) {
   try {
     // const token = localStorage.getItem(`token`);
