@@ -464,3 +464,6 @@ transition: all 1.5s ease-out;
    margin: bottom 120px;
  }                              
 
+ .ant-dropdown {
+  left: 1370px !important;
+}

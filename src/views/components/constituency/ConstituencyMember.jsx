@@ -15,20 +15,10 @@ import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
 import Select from "react-select";
 import "./ConstituencyMember.css";
 import { Dropdown, Menu } from "antd";
-import 'antd/dist/antd.css';
+import "antd/dist/antd.css";
+
 const ConstituencyMember = () => {
-  // const [location, setLocation] = useState({
-  //   state: "",
-  //   district: "",
-  //   city: "",
-  //   ward: "",
-  //   area: "",
-  //   street: "",
-  //   pincode: "",
-  // });
-  // const [mobilenumber, setMobileNumber] = useState("");
-  // const [otpHide, setOtpHide] = useState(false);
-  const [locations, ] = useState({
+  const [, setLocations] = useState({
     state: "",
     district: "",
     city: "",
@@ -37,7 +27,18 @@ const ConstituencyMember = () => {
     street: "",
     pincode: "",
   });
-  const [files, ] = useState("");
+  // const [mobilenumber, setMobileNumber] = useState("");
+  // const [otpHide, setOtpHide] = useState(false);
+  const [locations] = useState({
+    state: "",
+    district: "",
+    city: "",
+    ward: "",
+    area: "",
+    street: "",
+    pincode: "",
+  });
+  const [files] = useState("");
   // const [municipalList, setMunicipalList] = useState(true);
   // const [MunicipalCreate, setmunicipalCreate] = useState(false);
   // const [municipalListadd, setMunicipalListadd] = useState(true);
@@ -60,34 +61,34 @@ const ConstituencyMember = () => {
   });
   const [typeofOfficess, setTypeofOfficess] = useState("");
   // const [PI, setPI] = useState("");
-  const [gridone, setGridOne] = useState(false)
-  const [gridtwo, setGridTwo] = useState(false)
-  const [gridthree, setGridThree] = useState(false)
-  const [gridfour, setGridFour] = useState(false)
+  const [gridone, setGridOne] = useState(false);
+  const [gridtwo, setGridTwo] = useState(false);
+  const [gridthree, setGridThree] = useState(false);
+  const [gridfour, setGridFour] = useState(false);
   const gridshow = () => {
     setGridOne(false);
-    setGridTwo(true)
-    setGridThree(false)
-    setGridFour(false)
-  }
+    setGridTwo(true);
+    setGridThree(false);
+    setGridFour(false);
+  };
   const chairshow = () => {
     setGridOne(true);
-    setGridTwo(false)
-    setGridThree(false)
-    setGridFour(false)
-  }
+    setGridTwo(false);
+    setGridThree(false);
+    setGridFour(false);
+  };
   const partshow = () => {
     setGridOne(false);
-    setGridTwo(false)
-    setGridThree(true)
-    setGridFour(false)
-  }
+    setGridTwo(false);
+    setGridThree(true);
+    setGridFour(false);
+  };
   const centralgrid = () => {
     setGridOne(false);
-    setGridTwo(false)
-    setGridThree(false)
-    setGridFour(true)
-  }
+    setGridTwo(false);
+    setGridThree(false);
+    setGridFour(true);
+  };
 
   const fields = [
     { key: "sNo", label: "Sl. No", _style: { width: "2%" }, sorter:false,filter:false },
@@ -154,10 +155,10 @@ const ConstituencyMember = () => {
       from: "11/5/2021",
       to: "11/5/2026",
       status: "Active",
-    }
+    },
   ];
- 
-  const [passing, ] = useState("");
+
+  const [passing] = useState("");
   // const [error, setError] = useState("");
   const saveCorporation = async () => {
     setLocationHide({
@@ -190,19 +191,28 @@ const ConstituencyMember = () => {
   const [sideBar1, setSideBar1] = useState(false);
   const [sideBar2, setSideBar2] = useState(false);
   const selectTypeofOffice = [
-    { value: "	O. Panneerselvam, AIADMK since 11 May 2021", label: "	O. Panneerselvam, AIADMK since 11 May 2021" },
-    { value: "stalin", label: "Udhayanidhi Youth Wing Secretary of DMK, 	25/9, Chittaranjan Road, Cenotaph Road, Alwarpet, Chennai - 600018, Tamil Nadu, India" }
+    {
+      value: "	O. Panneerselvam, AIADMK since 11 May 2021",
+      label: "	O. Panneerselvam, AIADMK since 11 May 2021",
+    },
+    {
+      value: "stalin",
+      label:
+        "Udhayanidhi Youth Wing Secretary of DMK, 	25/9, Chittaranjan Road, Cenotaph Road, Alwarpet, Chennai - 600018, Tamil Nadu, India",
+    },
   ];
   const SelectType = [
     { value: "All", label: "All" },
     { value: "Parliamentry Assembly", label: "Parlimentry Assemblly" },
     { value: "legistative", label: "Legistative Assembly" },
   ];
-  const selectestatusupdate = [{
-    value: "register", label: "Registration"
-  },
-  { value: "die", label: "Died" },
-  ];
+  // const selectestatusupdate = [
+  //   {
+  //     value: "register",
+  //     label: "Registration",
+  //   },
+  //   { value: "die", label: "Died" },
+  // ];
   const Selectstatus = [
     { value: "all", label: "All" },
     { value: "active", label: "Active" },
@@ -210,18 +220,15 @@ const ConstituencyMember = () => {
     { value: "resigned", label: "Resigned" },
     { value: "died", label: "Died" },
   ];
-  const selectstate = [
-    { value: 'tamilnadu', label: "Tamilnadu" },
-  ];
-  const selectcity = [
-    { value: "chennai", label: "Chennai" },
-  ]
+  const selectstate = [{ value: "tamilnadu", label: "Tamilnadu" }];
+  const selectcity = [{ value: "chennai", label: "Chennai" }];
   const selectname = [
     { value: "ambattur", label: "Ambattur" },
-    { value: "chepauk", label: "Chepauk-Thiruvallikeni constituency" }
-  ]
-
-
+    { value: "chepauk", label: "Chepauk-Thiruvallikeni constituency" },
+  ];
+  const changeHandler = (e) => {
+    setLocations({ ...locations, [e.target.name]: e.target.value });
+  };
   const [hideMappingMunicipal, setHideMappingmunicipal] = useState(true);
   const [hideCorporation, setHideCorporation] = useState(false);
   const changeMunicipalCorporation = () => {
@@ -236,19 +243,20 @@ const ConstituencyMember = () => {
   const handleClick = () => {
     switch (menu.menuStatus) {
       case "open":
-        default:
+      default:
         setMenu({
           menuStatus: "close",
-          // style3: "menu2",
+          style3: "menu2",
           style: "menu active",
           style1: "menu1",
         });
         setSideBar1(true);
+        setHideMappingmunicipal(false);
         break;
       case "close":
         setMenu({
           menuStatus: "open",
-          // style3: "menu1",
+          style3: "menu1",
           style: "menu",
           style1: "menu1",
         });
@@ -258,10 +266,24 @@ const ConstituencyMember = () => {
         break;
     }
   };
+  const cancelclick = () => {
+    setMenu({
+      menuStatus: "open",
+      style3: "menu1",
+      style: "menu",
+      style1: "menu1",
+    });
+    setHideMappingmunicipal(true);
+    setSideBar1(false);
+    setGridOne(false);
+    setGridTwo(false);
+    setGridThree(false);
+    setGridFour(false);
+  };
   const handleClick2 = () => {
     switch (menu.menuStatus) {
       case "open":
-        default:
+      default:
         setMenu({
           menuStatus: "close",
           style3: "menu2",
@@ -269,6 +291,7 @@ const ConstituencyMember = () => {
           style1: "menu active",
         });
         setSideBar2(true);
+        setHideMappingmunicipal(false);
         break;
       case "close":
         setMenu({
@@ -280,6 +303,7 @@ const ConstituencyMember = () => {
         setTimeout(() => {
           setSideBar2(false);
         }, 1000);
+        setHideMappingmunicipal(true);
         break;
     }
   };
@@ -294,40 +318,47 @@ const ConstituencyMember = () => {
   });
   const [, setSelected] = useState({});
   const menus = (details) => {
-    return(
+    return (
       <Menu>
-      <Menu.Item>
-        <a href>Edit</a>
-      </Menu.Item>
-      <Menu.Item>
-        <a href>Delete</a>
-      </Menu.Item>
-      <Menu.Item>
-        <a href>Remove</a>
-      </Menu.Item>
-      <Menu.Item>
-      <a href
-        onClick={() => {
-          setSelected(details);
-          handleClick2();
-        }}>Update</a>
-      </Menu.Item> <Menu.Item>
-        <a href
-        onClick={() => {
-          setSelected(details);
-          handleClick();
-        }}
-        >History</a>
-      </Menu.Item>
-    </Menu>
-    )
-  }
-
+        <Menu.Item>
+          <a href>Edit</a>
+        </Menu.Item>
+        <Menu.Item>
+          <a href>Delete</a>
+        </Menu.Item>
+        <Menu.Item>
+          <a href>Remove</a>
+        </Menu.Item>
+        <Menu.Item>
+          <a
+            href
+            onClick={() => {
+              setSelected(details);
+              handleClick2();
+            }}
+          >
+            Update
+          </a>
+        </Menu.Item>{" "}
+        <Menu.Item>
+          <a
+            href
+            onClick={() => {
+              setSelected(details);
+              handleClick();
+            }}
+          >
+            History
+          </a>
+        </Menu.Item>
+      </Menu>
+    );
+  };
 
   return (
     <div className={menu.style3}>
       {sideBar1 && (
-        <div className={menu.style} style={{ minHeight: "800px", }}>
+        <div className={menu.style} style={{ overflow: "auto" }}>
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
               <div>
@@ -350,7 +381,7 @@ const ConstituencyMember = () => {
                 Name
                 <span style={{ fontSize: "14px", fontFamily: "normal" }}>
                   {" "}
-                  - K. Anbazhagan
+                  -
                 </span>
               </CLabel>
             </CCol>
@@ -359,7 +390,7 @@ const ConstituencyMember = () => {
                 Gender
                 <span style={{ fontSize: "14px", fontFamily: "normal" }}>
                   {" "}
-                  - Male
+                  -
                 </span>
               </CLabel>
             </CCol>
@@ -377,103 +408,103 @@ const ConstituencyMember = () => {
                   top: "-3%",
                 }}
               />
-
             </CCol>
           </CRow>
 
-         
-              <CRow className={"row-alignment"} style={{ marginLeft: "-61px", marginTop: "15px" }}>
-                <CCol
-                  className={"column-align"}
-                  md="4"
-                  style={{ marginTop: "-120px" }}
-                >
-                  <CLabel className={"label-name"}>
-                    Age
-                <span style={{ fontSize: "14px", fontFamily: "normal" }}>
-                      {" "}
-                  - 98
-                </span>
-                  </CLabel>
-                </CCol>
-              </CRow>
-              <CRow style={{ marginTop: "25px" }}>
-            <CCol>
-            <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"constihistorygridparty"}
-            className="fa fa-eye"
-            onClick={chairshow}
+          <CRow
+            className={"row-alignment"}
+            style={{ marginLeft: "-61px", marginTop: "15px" }}
           >
-            Party Posting
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"constihistorygridpublic"}
-            className="fa fa-eye"
-            onClick={gridshow}
+            <CCol
+              className={"column-align"}
+              md="4"
+              style={{ marginTop: "-120px" }}
             >
-              PUBLIC REPRESENTATIVE POSTING
-        
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"constihistorygridstate"}
-            className="fa fa-eye"
-            onClick={partshow}
-          >
-           STATE MINISTRY PORTFOLIO
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"constihistorygridcentral"}
-            className="fa fa-eye"
-            onClick={centralgrid}
-          >
-            CENTRAL MINISTERS PORTFOLIO
-          </i>
-       
-            </CCol></CRow>
+              <CLabel className={"label-name"}>
+                DOB
+                <span style={{ fontSize: "14px", fontFamily: "normal" }}>
+                  {" "}
+                  -
+                </span>
+              </CLabel>
+            </CCol>
+          </CRow>
+          <CRow style={{ marginTop: "25px" }}>
+            <CCol>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"constihistorygridparty"}
+                className="fa fa-eye"
+                onClick={chairshow}
+              >
+                Party Posting
+              </i>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"constihistorygridpublic"}
+                className="fa fa-eye"
+                onClick={gridshow}
+              >
+                PUBLIC REPRESENTATIVE POSTING
+              </i>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"constihistorygridstate"}
+                className="fa fa-eye"
+                onClick={partshow}
+              >
+                STATE MINISTRY PORTFOLIO
+              </i>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"constihistorygridcentral"}
+                className="fa fa-eye"
+                onClick={centralgrid}
+              >
+                CENTRAL MINISTERS PORTFOLIO
+              </i>
+            </CCol>
+          </CRow>
 
-              { gridone && (
+          {gridone && (
             <div>
-              <CRow >
+              <CRow>
                 <CCol
                   style={{
                     marginLeft: "30px",
@@ -481,53 +512,61 @@ const ConstituencyMember = () => {
                     maxHeight: "290px",
                     minHeight: "290px",
                     marginBottom: "-25px",
-                    overflow: "auto",
-                    marginTop: "50px"
+                    marginTop: "50px",
                   }}
                 >
-
                   <CDataTable
-                    items={[{
-                      sNo: "1",
-                      typeconstituency: "Dravida Munnetra Kazhagam",
-                      name: "	Purasawalkam",
-                      state: "Minister for Health and Social Welfare",
-                      city: "Member of Parliament",
-                      member: "General Secretary",
-                      from: "15 March 1971",
-                      to: '31 January 1976'
-                    },
-                    { sNo: "2" },
-                    { sNo: "3" },
-                    { sNo: "4" },
-                    { sNo: "5" },
-                    { sNo: "6" },
-                    { sNo: "7" },
+                    items={[
+                      {
+                        sNo: "1",
+                        typeconstituency: "Dravida Munnetra Kazhagam",
+                        name: "	Purasawalkam",
+                        state: "Minister for Health and Social Welfare",
+                        city: "Member of Parliament",
+                        member: "General Secretary",
+                        from: "15 March 1971",
+                        to: "31 January 1976",
+                      },
+                      { sNo: "2" },
+                      { sNo: "3" },
+                      { sNo: "4" },
+                      { sNo: "5" },
+                      { sNo: "6" },
+                      { sNo: "7" },
                     ]}
-                    fields={[{ key: "sNo", label: "Sl. No", _style: { width: "1%" } },
-                    {
-                      key: "typeconstituency",
-                      label: "Name of Party / Party Wings Office",
-                      _style: { width: "19%" },
-                    },
-                    {
-                      key: "name",
-                      label: "Type of Office",
-                      _style: { width: "10%" },
-                    },
-                    {
-                      key: "state",
-                      label: "Department",
-                      _style: { width: "10%" },
-                    },
-                    {
-                      key: "city",
-                      label: "Designation",
-                      _style: { width: "10%" },
-                    },
-                    { key: "member", label: "Role", _style: { width: "10%" } },
-                    { key: "from", label: "From Date", _style: { width: "10%" } },
-                    { key: "to", label: "To Date", _style: { width: "10%" } },
+                    fields={[
+                      { key: "sNo", label: "Sl. No", _style: { width: "1%" } },
+                      {
+                        key: "typeconstituency",
+                        label: "Name of Party / Party Wings Office",
+                        _style: { width: "19%" },
+                      },
+                      {
+                        key: "name",
+                        label: "Type of Office",
+                        _style: { width: "10%" },
+                      },
+                      {
+                        key: "state",
+                        label: "Department",
+                        _style: { width: "10%" },
+                      },
+                      {
+                        key: "city",
+                        label: "Designation",
+                        _style: { width: "10%" },
+                      },
+                      {
+                        key: "member",
+                        label: "Role",
+                        _style: { width: "10%" },
+                      },
+                      {
+                        key: "from",
+                        label: "From Date",
+                        _style: { width: "10%" },
+                      },
+                      { key: "to", label: "To Date", _style: { width: "10%" } },
                     ]}
                     columnFilter
                     tableFilter
@@ -542,39 +581,47 @@ const ConstituencyMember = () => {
               </CRow>
             </div>
           )}
-          { gridtwo && (
+          {gridtwo && (
             <div>
               <CRow>
                 <CCol
                   style={{
                     marginLeft: "30px",
-
                     maxHeight: "290px",
                     minHeight: "290px",
                     marginBottom: "-25px",
-                    overflow: "auto",
-                    marginTop: "50px"
+                    marginTop: "50px",
                   }}
                 >
                   <CDataTable
-                    items={[{
-                      sNo: "1",
-                      name: "Member of Tamil Nadu legislative assembly",
-                      from: "14 May 2001",
-                      to: "12 May 2006",
-                      status: "Died",
-                    },
+                    items={[
+                      {
+                        sNo: "1",
+                        name: "Member of Tamil Nadu legislative assembly",
+                        from: "14 May 2001",
+                        to: "12 May 2006",
+                        status: "Died",
+                      },
                     ]}
-                    fields={[{ key: "sNo", label: "Sl. No", _style: { width: "1%" } },
+                    fields={[
+                      { key: "sNo", label: "Sl. No", _style: { width: "1%" } },
 
-                    {
-                      key: "name",
-                      label: "Name of Representative Posting",
-                      _style: { width: "10%" },
-                    },
-                    { key: "from", label: "From Date", _style: { width: "10%" } },
-                    { key: "to", label: "To Date", _style: { width: "5%" } },
-                    { key: "status", label: "Status", _style: { width: "5%" } },
+                      {
+                        key: "name",
+                        label: "Name of Representative Posting",
+                        _style: { width: "10%" },
+                      },
+                      {
+                        key: "from",
+                        label: "From Date",
+                        _style: { width: "10%" },
+                      },
+                      { key: "to", label: "To Date", _style: { width: "5%" } },
+                      {
+                        key: "status",
+                        label: "Status",
+                        _style: { width: "5%" },
+                      },
                     ]}
                     columnFilter
                     tableFilter
@@ -589,7 +636,7 @@ const ConstituencyMember = () => {
               </CRow>
             </div>
           )}
-          { gridthree && (
+          {gridthree && (
             <div>
               <CRow>
                 <CCol
@@ -599,34 +646,38 @@ const ConstituencyMember = () => {
                     maxHeight: "290px",
                     minHeight: "290px",
                     marginBottom: "-25px",
-                    overflow: "auto",
-                    marginTop: "50px"
+                    marginTop: "50px",
                   }}
                 >
                   <CDataTable
-                    items={[{
-                      sNo: "1",
-                      typeconstituency: "Minister of Education",
-                      name: "cabinet ministerial portfolios",
-                      from: "16 May 1996",
-                      to: "15 May 2001"
-                    },
-
+                    items={[
+                      {
+                        sNo: "1",
+                        typeconstituency: "Minister of Education",
+                        name: "cabinet ministerial portfolios",
+                        from: "16 May 1996",
+                        to: "15 May 2001",
+                      },
                     ]}
-                    fields={[{ key: "sNo", label: "Sl. No", _style: { width: "1%" } },
-                    {
-                      key: "typeconstituency",
-                      label: "Name of the Ministry",
-                      _style: { width: "19%" },
-                    },
-                    {
-                      key: "name",
-                      label: "Portfolio",
-                      _style: { width: "10%" },
-                    },
+                    fields={[
+                      { key: "sNo", label: "Sl. No", _style: { width: "1%" } },
+                      {
+                        key: "typeconstituency",
+                        label: "Name of the Ministry",
+                        _style: { width: "19%" },
+                      },
+                      {
+                        key: "name",
+                        label: "Portfolio",
+                        _style: { width: "10%" },
+                      },
 
-                    { key: "from", label: "From Date", _style: { width: "10%" } },
-                    { key: "to", label: "To Date", _style: { width: "5%" } },
+                      {
+                        key: "from",
+                        label: "From Date",
+                        _style: { width: "10%" },
+                      },
+                      { key: "to", label: "To Date", _style: { width: "5%" } },
                     ]}
                     columnFilter
                     tableFilter
@@ -641,9 +692,8 @@ const ConstituencyMember = () => {
               </CRow>
             </div>
           )}
-          { gridfour && (
+          {gridfour && (
             <div>
-
               <CRow>
                 <CCol
                   style={{
@@ -652,36 +702,38 @@ const ConstituencyMember = () => {
                     maxHeight: "290px",
                     minHeight: "290px",
                     marginBottom: "-25px",
-                    overflow: "auto",
-                    marginTop: "50px"
+                    marginTop: "50px",
                   }}
                 >
                   <CDataTable
-                    items={[{
-                      sNo: "1",
-                      typeconstituency: "Minister of Finance",
-                      name: "cabinet ministerial portfolios",
-                      from: "17 May 2006",
-                      to: " 15 May 2011",
-                    },
-
+                    items={[
+                      {
+                        sNo: "1",
+                        typeconstituency: "Minister of Finance",
+                        name: "cabinet ministerial portfolios",
+                        from: "17 May 2006",
+                        to: " 15 May 2011",
+                      },
                     ]}
-                    fields={[{ key: "sNo", label: "Sl. No", _style: { width: "1%" } },
-                    {
-                      key: "typeconstituency",
-                      label: "Name of the Ministry",
-                      _style: { width: "19%" },
-                    },
-                    {
-                      key: "name",
-                      label: "Portfolio",
-                      _style: { width: "10%" },
-                    },
+                    fields={[
+                      { key: "sNo", label: "Sl. No", _style: { width: "1%" } },
+                      {
+                        key: "typeconstituency",
+                        label: "Name of the Ministry",
+                        _style: { width: "19%" },
+                      },
+                      {
+                        key: "name",
+                        label: "Portfolio",
+                        _style: { width: "10%" },
+                      },
 
-                    { key: "from", label: "From Date", _style: { width: "10%" } },
-                    { key: "to", label: "To Date", _style: { width: "5%" } },
-
-
+                      {
+                        key: "from",
+                        label: "From Date",
+                        _style: { width: "10%" },
+                      },
+                      { key: "to", label: "To Date", _style: { width: "5%" } },
                     ]}
                     columnFilter
                     tableFilter
@@ -697,13 +749,16 @@ const ConstituencyMember = () => {
             </div>
           )}
           <CButton
-            style={{ position: "absolute", top: "15px", right: "15px" }}
+            style={{
+              position: "absolute",
+              backgroundColor: "green",
+              border: "1px solid green",
+              top: "15px",
+              right: "15px",
+            }}
             className={"cancelBtn"}
             id="constimemberhistoryback"
-            onClick={() => {
-              handleClick();
-              handleClick2();
-            }}
+            onClick={cancelclick}
           >
             Back
           </CButton>
@@ -733,7 +788,7 @@ const ConstituencyMember = () => {
                 Name
                 <span style={{ fontSize: "14px", fontFamily: "normal" }}>
                   {" "}
-                  - K. Anbazhagan
+                  -
                 </span>
               </CLabel>
             </CCol>
@@ -742,7 +797,7 @@ const ConstituencyMember = () => {
                 Gender
                 <span style={{ fontSize: "14px", fontFamily: "normal" }}>
                   {" "}
-                  - Male
+                  -
                 </span>
               </CLabel>
             </CCol>
@@ -766,18 +821,18 @@ const ConstituencyMember = () => {
             <CCol
               className={"column-align"}
               md="4"
-              style={{ marginTop: "20px" }}
+              style={{ marginTop: "-120px" }}
             >
               <CLabel className={"label-name"}>
-                Age
+                DOB
                 <span style={{ fontSize: "14px", fontFamily: "normal" }}>
                   {" "}
-                  - 98
+                  -
                 </span>
               </CLabel>
             </CCol>
           </CRow>
-          <CCol style={{ marginTop: "0px", marginLeft: "-40px" }}>
+          <CCol style={{ marginTop: "-90px", marginLeft: "-40px" }}>
             <CLabel
               style={{
                 fontSize: "20PX",
@@ -787,7 +842,7 @@ const ConstituencyMember = () => {
                 marginTop: "60px",
               }}
             >
-              No of Times as MP
+              No of Times as
             </CLabel>
           </CCol>
 
@@ -804,24 +859,23 @@ const ConstituencyMember = () => {
                 <span className={"text-danger"}>*</span>
               </CLabel>
               <Select
-                style={{ width: "50px", height: "50px" }}
-                id={"constituencymemstatus"}
-                name={"Status"}
-                placeholder={" Select Status "}
-                
-                options={selectestatusupdate}
+                // className={"input-align"}
+                id={"memmunicipalStatus"}
+                name={"state"}
+                placeholder={"Select Status"}
+                value={locations.district}
+                onChange={changeHandler}
               />
             </CCol>
             <CCol className={"column-align"} md="4">
               <CLabel className={"label-name-1"}>
                 Note
-                    <span className={"text-danger"}> *</span>
+                <span className={"text-danger"}> *</span>
               </CLabel>
               <CTextarea
                 id={"contimemnote"}
                 placeholder="Enter Description for Termination"
                 style={{ height: "80px", marginLeft: "10px" }}
-
                 min="10"
                 max="500"
               ></CTextarea>
@@ -860,7 +914,13 @@ const ConstituencyMember = () => {
             </CCol>
           </CRow>
           <CButton
-            style={{ position: "absolute", top: "15px", right: "15px" }}
+            style={{
+              position: "absolute",
+              backgroundColor: "green",
+              border: "1px solid green",
+              top: "15px",
+              right: "15px",
+            }}
             className={"cancelBtn"}
             onClick={handleClick2}
           >
@@ -877,16 +937,11 @@ const ConstituencyMember = () => {
             {locationHide.corporation && (
               <div>
                 <div style={{ marginLeft: "-26px" }}>
-
                   <CRow style={{ marginTop: "45px" }}>
                     <CCol>
-                      <CCol
-                        md="5"
-                       
-                      >
+                      <CCol md="5">
                         <CButton
                           style={{
-                        
                             marginLeft: "35px",
                           }}
                           id={"saveAbbreviationConfigureCode"}
@@ -950,11 +1005,15 @@ const ConstituencyMember = () => {
                       />
                     </CCol>
                   </CRow>
-
                 </div>
 
-               
-                <CRow style={{ padding: "4%", marginTop: "-1.5%" ,marginLeft:"-40px"}}>
+                <CRow
+                  style={{
+                    padding: "4%",
+                    marginTop: "-1.5%",
+                    marginLeft: "-40px",
+                  }}
+                >
                   <CDataTable
                     items={userData1memberconstituency}
                     fields={fields}
@@ -972,12 +1031,12 @@ const ConstituencyMember = () => {
                           <td className="py-1">
                             <CRow>
                               <CCol style={{ fontSize: "1.15rem" }} md="16">
-                              
                                 <Dropdown
                                   className={"ant-dropdown-cutomize-by-me"}
                                   overlay={() => menus(item)}
                                 >
-                                  <a href
+                                  <a
+                                    href
                                     className="ant-dropdown-link"
                                     onClick={(e) => e.preventDefault()}
                                   >
@@ -997,7 +1056,7 @@ const ConstituencyMember = () => {
                           </td>
                         );
                       },
-                      details: (item, index) => { },
+                      details: (item, index) => {},
                     }}
                   />
                 </CRow>
@@ -1104,7 +1163,7 @@ const ConstituencyMember = () => {
                         marginTop: "60px",
                       }}
                     >
-                      Member Details 
+                      Member Details
                     </CLabel>
                   </CCol>
 
@@ -1145,14 +1204,17 @@ const ConstituencyMember = () => {
                           top: "-3%",
                         }}
                       />
-
                     </CCol>
                   </CRow>
                   <CRow
                     className={"row-alignment"}
                     style={{ marginTop: "-140px" }}
                   >
-                    <CCol className={"column-align"} md="4" style={{ marginTop: "35px" }}>
+                    <CCol
+                      className={"column-align"}
+                      md="4"
+                      style={{ marginTop: "35px" }}
+                    >
                       <CLabel className={"label-name"}>
                         Age
                         <span
@@ -1172,13 +1234,21 @@ const ConstituencyMember = () => {
                       top: "10px",
                     }}
                   >
-                    <CCol className={"column-align"} md="4" style={{ marginTop: "60px" }}>
+                    <CCol
+                      className={"column-align"}
+                      md="4"
+                      style={{ marginTop: "60px" }}
+                    >
                       <CLabel className={"label-name-1"}>
                         Date of Appointment{" "}
                       </CLabel>
                       <CInput type="date" id={"constimemdatefrom"} />
                     </CCol>
-                    <CCol className={"column-align"} md="4" style={{ marginTop: "60px" }}>
+                    <CCol
+                      className={"column-align"}
+                      md="4"
+                      style={{ marginTop: "60px" }}
+                    >
                       <CLabel className={"label-name-1"}>
                         Date of Retirmment{" "}
                       </CLabel>
@@ -1204,7 +1274,7 @@ const ConstituencyMember = () => {
                           className={"cancelBtn"}
                         >
                           CANCEL
-                      </CButton>
+                        </CButton>
                         <CButton
                           style={{
                             float: "right",
@@ -1215,7 +1285,7 @@ const ConstituencyMember = () => {
                           onClick={saveCorporation}
                         >
                           Save
-                      </CButton>{" "}
+                        </CButton>{" "}
                       </CCol>
                     </CCol>
                   </CRow>
@@ -1230,4 +1300,3 @@ const ConstituencyMember = () => {
 };
 
 export default ConstituencyMember;
-

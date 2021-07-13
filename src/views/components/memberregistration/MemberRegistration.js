@@ -216,7 +216,7 @@ function MemberRegistration() {
   return (
     <div className={menu.style3}>
       {sideBar1 && (
-        <div className={menu.style}>
+        <div className={menu.style} style={{overflow:"auto"}}>
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
               <div>
@@ -303,13 +303,10 @@ function MemberRegistration() {
                 Role: "General",
                 FromDate: "12/08/2010",
                 ToDate: "25/06/2020",
-
                 Status: "Retired",
               },
             ]}
           />
-
-
 
           <CButton
             style={{ position: "absolute", top: "15px", right: "15px" }}
@@ -323,7 +320,6 @@ function MemberRegistration() {
           </CButton>
 
         </div>
-
       )}
 
       <CCard className={"cardSave"}>

@@ -63,8 +63,6 @@ const PartyOfficeLocation = React.lazy(() => import('./views/components/partyoff
 const PartyPosting = React.lazy(() => import('./views/components/partyposting/PartyPosting'));
 const AssignPartyPosting = React.lazy(() => import('./views/components/assignpartyposting/AssignPartyPosting'));
 
-// const AddMemberRegister = React.lazy(() => import('./views/components/MemberRegistration'))
-
 const StateMinister = React.lazy(() => import('./views/components/stateminister/StateMinister'));
 const CentralMinister = React.lazy(() => import('./views/components/centralminister/CentralMinister'));
 const ClientInitiation = React.lazy(() => import('./views/components/clientinitiation/ClientInitiation'));

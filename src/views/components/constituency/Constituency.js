@@ -7,6 +7,9 @@ import {
   CRow,
   CLink,
 } from "@coreui/react";
+import { roleDelete } from "../../../services/ApiService";
+import { toast } from "react-toastify";
+import ConfirmDelete from "../confirmMessage/confirmDelete";
 import React, { useState } from "react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import Select, { components } from "react-select";
@@ -274,8 +277,73 @@ function Constituency() {
     menuStatus: "open",
     // style3: "menu2",
   });
+  const [sideBar1e, setSideBar1e] = useState(false);
+  const [sideBar2e, setSideBar2e] = useState(false);
   const [sideBar1, setSideBar1] = useState(false);
   const [sideBar2, setSideBar2] = useState(false);
+  const editClickmunici = () => {
+    switch (menu.menuStatus) {
+      case "open":
+      default:
+        setMenu({
+          menuStatus: "close",
+          style: "menu active1",
+        });
+
+        setTimeout(() => {
+          setSideBar1e(true);
+        }, 1000);
+        setSideBar2e(false);
+        setSideBar1(false);
+        setSideBar2(false);
+        setSideBarup1(false);
+        setSideBarup2(false);
+        break;
+      case "close":
+        setMenu({
+          menuStatus: "open",
+          // style3: "menu2",
+          style: "menu active2",
+        });
+        setTimeout(() => {
+          setSideBar1e(false);
+        }, 1000);
+        setInputList([{ name: "", abbreviation: "", code: "" },]);
+        break;
+    }
+  };
+  const editClickward = () => {
+    switch (menu.menuStatus) {
+      case "open":
+      default:
+        setMenu({
+          menuStatus: "close",
+          // style3: "menu2",
+          style: "menu active1",
+        });
+
+        setTimeout(() => {
+          setSideBar2e(true);
+        }, 1000);
+        setSideBar1e(false);
+        setSideBar1(false);
+        setSideBarup1(false);
+        setSideBarup2(false);
+        setSideBar2(false);
+        break;
+      case "close":
+        setMenu({
+          menuStatus: "open",
+          // style3: "menu2",
+          style: "menu active2",
+        });
+        setTimeout(() => {
+          setSideBar2e(false);
+        }, 1000);
+        setInputList([{ name: "", abbreviation: "", code: "" },]);
+        break;
+    }
+  };
   const handleClickParliamentary = () => {
     switch (menu.menuStatus) {
       case "open":
@@ -289,6 +357,8 @@ function Constituency() {
         setTimeout(() => {
           setSideBar1(true);
         }, 1000);
+        setSideBar1e(false);
+        setSideBar2e(false);
         setSideBar2(false);
         setSideBarup1(false);
         setSideBarup2(false);
@@ -302,6 +372,7 @@ function Constituency() {
         setTimeout(() => {
           setSideBar1(false);
         }, 1000);
+        setInputList([{ name: "", abbreviation: "", code: "" },]);
         break;
     }
   };
@@ -318,6 +389,8 @@ function Constituency() {
         setTimeout(() => {
           setSideBar2(true);
         }, 1000);
+        setSideBar1e(false);
+        setSideBar2e(false);
         setSideBar1(false);
         setSideBarup1(false);
         setSideBarup2(false);
@@ -331,6 +404,7 @@ function Constituency() {
         setTimeout(() => {
           setSideBar2(false);
         }, 1000);
+        setInputList([{ name: "", abbreviation: "", code: "" },]);
         break;
     }
   };
@@ -348,6 +422,8 @@ function Constituency() {
           style1: "menu active1",
         });
         setSideBarup1(true);
+        setSideBar1e(false);
+        setSideBar2e(false);
         setSideBarup2(false);
 
         break;
@@ -375,6 +451,8 @@ function Constituency() {
         });
         setSideBarup2(true);
         setSideBarup1(false);
+        setSideBar1e(false);
+        setSideBar2e(false);
         break;
       case "close":
         setMenu({
@@ -410,6 +488,7 @@ function Constituency() {
         setTimeout(() => {
           setSideBarup(false);
         }, 1000);
+        setIsValue(false);
         break;
     }
   };
@@ -428,14 +507,14 @@ function Constituency() {
           <CLink
             className={"saveBtn"}
             onClick={handleClickParliamentary}
-            style={{ marginLeft: "200px" }}
+            style={{ marginLeft: "250px" }}
           >
             Add{" "}
           </CLink>
           <CLink
             className={"saveBtn"}
             onClick={bulkhandleClickParliamentary}
-            style={{ marginLeft: "50px" }}
+            style={{ marginLeft: "10px" }}
           >
             Bulk Upload{" "}
           </CLink>
@@ -457,14 +536,14 @@ function Constituency() {
           <CLink
             className={"saveBtn"}
             onClick={handleClickLegislative}
-            style={{ marginLeft: "200px" }}
+            style={{ marginLeft: "250px" }}
           >
             Add{" "}
           </CLink>
           <CLink
             className={"saveBtn"}
             onClick={bulkhandleClickLegislative}
-            style={{ marginLeft: "50px" }}
+            style={{ marginLeft: "10px" }}
           >
             Bulk Upload{" "}
           </CLink>
@@ -575,531 +654,342 @@ function Constituency() {
       panchayatunion: true,
     });
   };
+  const deletemodal = (id) => {
+    setDeleteId({ id: id, show: true });
+  };
+  const cancelConfirmDlete = () => {
+    setDeleteId({ id: "", show: false });
+  };
+  const [deleteId, setDeleteId] = useState({ id: "", show: false });
+  const deleteRole = async () => {
+    try {
+      const response = await roleDelete(deleteId.id);
+      if (response) {
+        if (response.success) {
+          cancelConfirmDlete();
+          let array = RoleList;
+          let data = array.filter((x) => {
+            return x._id !== deleteId.id;
+          });
+          setRoleList(data);
+        } else {
+          toast.error(response.error);
+        }
+      }
+    } catch (e) {
+      toast.error(e, { autoClose: 2000 });
+      cancelConfirmDlete();
+    }
+  };
+  const [RoleList, setRoleList] = useState([]);
   return (
-    <div className={menu.style3}>
-      {sideBar1 && (
-        <div className={menu.style} style={{ marginLeft: "-108px" }}>
-          <CRow className={""}>
-            <CCol md="12" lg="12" sm="12">
-              <div>
-                <span
-                  style={{
-                    fontSize: "18px",
-                    fontWeight: "700",
-                    marginLeft: "20px",
-                  }}
-                >
-                  Adding Parliamentary Constituency{" "}
-                </span>
-              </div>
-            </CCol>
-          </CRow>
-
-          {inputList.map((x, i) => {
-            return (
-              <CRow
-                className={"row-alignment"}
-                style={{ marginLeft: "5px", marginTop: "20px" }}
-                sm={12}
-                md={12}
-                lg={12}
-              >
-                <CCol md="2">
-                  <CLabel className={"label-name-1"}>
-                    Parliamentary
-                    <span className={"text-danger"}> *</span>
-                  </CLabel>
-
-                  <CInput
-                    id={"Parliamentary"}
-                    name={"Parliamentaryname"}
-                    placeholder="Enter Parliamentary Constituency"
-                    maxlength="60"
-                    size="60"
-                    value={x.panchayatname}
-                    onChange={(e) => handleInputChange(e, i)}
-                  />
+    <React.Fragment>
+      <ConfirmDelete
+        details={deleteId}
+        confirm={deleteRole}
+        cancel={cancelConfirmDlete}
+      />
+      <div className={menu.style3}>
+        {sideBar1 && (
+          <div className={menu.style} style={{ marginLeft: "-108px" ,overflow:"auto"}}>
+            <div style={{ marginLeft: "-60px" }}>
+              <CRow className={""}>
+                <CCol md="12" lg="12" sm="12">
+                  <div>
+                    <span
+                      style={{
+                        fontSize: "21px",
+                        fontWeight: "700",
+                        fontFamily: "Arial, Helvetica, sans-serif",
+                        marginLeft: "20px",
+                      }}
+                    >
+                      Add Parliamentary Constituency{" "}
+                    </span>
+                  </div>
                 </CCol>
-
-                <CCol md="2">
-                  <CLabel className={"label-name-1"}>
-                    Abbreviation
-                    <span className={"text-danger"}> *</span>
-                  </CLabel>
-                  <CInput
-                    id={"Parliamentaryabrreviation"}
-                    name={"abbreviation"}
-                    placeholder="Enter Abbreviation"
-                    maxlength="5"
-                    size="5"
-                    value={x.panchayatabbreviation}
-                    onChange={(e) => handleInputChange(e, i)}
-                  />
-                </CCol>
-                <CCol md="2">
-                  <CLabel className={"label-name-1"}>
-                    Code
-                    <span className={"text-danger"}> *</span>
-                  </CLabel>
-                  <CInput
-                    id={"Parliamentarycode"}
-                    name={"code"}
-                    placeholder="Enter Code"
-                    maxlength="5"
-                    size="5"
-                    value={x.panchayatcode}
-                    onChange={(e) => handleInputChange(e, i)}
-                  />
-                </CCol>
-
-                <CRow>
-                  <CCol md="3">
-                    {inputList.length - 1 === i && (
-                      <i
-                        style={{
-                          marginLeft: "0px",
-                          marginTop: "35px",
-
-                          fontSize: "1.25rem",
-                          color: "#3273e9",
-                        }}
-                        onClick={handleAddClick}
-                        class={"fa fa-plus"}
-                      />
-                    )}
-                  </CCol>
-                  <CCol md="3">
-                    {inputList.length !== 1 && (
-                      <i
-                        style={{
-                          marginLeft: "0px",
-                          marginTop: "35px",
-
-                          fontSize: "1.25rem",
-                          color: "black",
-                        }}
-                        onClick={() => handleRemoveClick(i)}
-                        class={"fa fa-remove"}
-                      />
-                    )}
-                  </CCol>
-                </CRow>
               </CRow>
-            );
-          })}
 
-          <CRow style={{ marginLeft: "250px" }}>
-            <CCol md="3">
+              {inputList.map((x, i) => {
+                return (
+                  <CRow
+                    className={"row-alignment"}
+                    style={{ marginLeft: "5px", marginTop: "20px" }}
+                    sm={12}
+                    md={12}
+                    lg={12}
+                  >
+                    <CCol md="2">
+                      <CLabel className={"label-name-1"}>
+                        Parliamentary
+                        <span className={"text-danger"}> *</span>
+                      </CLabel>
+
+                      <CInput
+                        id={"Parliamentary"}
+                        name={"Parliamentaryname"}
+                        placeholder="Enter Parliamentary Constituency"
+                        maxlength="60"
+                        size="60"
+                        value={x.panchayatname}
+                        onChange={(e) => handleInputChange(e, i)}
+                      />
+                    </CCol>
+
+                    <CCol md="2">
+                      <CLabel className={"label-name-1"}>
+                        Abbreviation
+                        <span className={"text-danger"}> *</span>
+                      </CLabel>
+                      <CInput
+                        id={"Parliamentaryabrreviation"}
+                        name={"abbreviation"}
+                        placeholder="Enter Abbreviation"
+                        maxlength="5"
+                        size="5"
+                        value={x.panchayatabbreviation}
+                        onChange={(e) => handleInputChange(e, i)}
+                      />
+                    </CCol>
+                    <CCol md="2">
+                      <CLabel className={"label-name-1"}>
+                        Code
+                        <span className={"text-danger"}> *</span>
+                      </CLabel>
+                      <CInput
+                        id={"Parliamentarycode"}
+                        name={"code"}
+                        placeholder="Enter Code"
+                        maxlength="5"
+                        size="5"
+                        value={x.panchayatcode}
+                        onChange={(e) => handleInputChange(e, i)}
+                      />
+                    </CCol>
+
+                    <CRow>
+                      <CCol md="3">
+                        {inputList.length - 1 === i && (
+                          <i
+                            style={{
+                              marginLeft: "0px",
+                              marginTop: "35px",
+
+                              fontSize: "1.25rem",
+                              color: "#3273e9",
+                            }}
+                            onClick={handleAddClick}
+                            class={"fa fa-plus"}
+                          />
+                        )}
+                      </CCol>
+                      <CCol md="3">
+                        {inputList.length !== 1 && (
+                          <i
+                            style={{
+                              marginLeft: "0px",
+                              marginTop: "35px",
+
+                              fontSize: "1.25rem",
+                              color: "black",
+                            }}
+                            onClick={() => handleRemoveClick(i)}
+                            class={"fa fa-remove"}
+                          />
+                        )}
+                      </CCol>
+                    </CRow>
+                  </CRow>
+                );
+              })}
+
+              <CRow style={{ marginLeft: "250px" }}>
+                <CCol md="3">
+                  <CButton
+                    style={{
+                      marginLeft: "10px",
+                      marginTop: "35px",
+                    }}
+                    onClick={enableCreate}
+                    className={"saveBtn"}
+                  >
+                    {" "}
+                    Save
+                  </CButton>
+                  <CButton
+                    shape={"pill"}
+                    id={"Parliamentarycancel"}
+                    style={{ marginTop: "-59px", marginLeft: "90px" }}
+                    className={"cancelBtn"}
+                    onClick={handleClickParliamentary}
+                  >
+                    CANCEL
+                  </CButton>
+                  {error !== "" ? <p>{error}</p> : null}
+                </CCol>
+              </CRow>
+
               <CButton
                 style={{
-                  marginLeft: "10px",
-                  marginTop: "35px",
+                  position: "absolute",
+                  top: "15px",
+                  right: "15px",
+                  backgroundColor: "green",
+                  border: "1px solid green",
                 }}
-                onClick={enableCreate}
-                className={"saveBtn"}
-              >
-                {" "}
-                Save
-              </CButton>
-              <CButton
-                shape={"pill"}
-                id={"Parliamentarycancel"}
-                style={{ marginTop: "-59px", marginLeft: "90px" }}
                 className={"cancelBtn"}
-                onClick={handleClickParliamentary}
+                onClick={() => {
+                  handleClickParliamentary();
+                  // handleClickLegislative();
+                }}
               >
-                CANCEL
+                Back
               </CButton>
-              {error !== "" ? <p>{error}</p> : null}
-            </CCol>
-          </CRow>
-
-          <CButton
-            style={{
-              position: "absolute",
-              top: "15px",
-              right: "15px",
-              backgroundColor: "green",
-              border: "1px solid green",
-            }}
-            className={"cancelBtn"}
-            onClick={() => {
-              handleClickParliamentary();
-              // handleClickLegislative();
-            }}
-          >
-            Back
-          </CButton>
-        </div>
-      )}
-      <div className={menu.style3}>
-        {sideBar2 && (
-          <div className={menu.style} style={{ marginLeft: "-108px" }}>
-            <CRow className={""}>
-              <CCol md="12" lg="12" sm="12">
-                <div>
-                  <span
-                    style={{
-                      fontSize: "18px",
-                      fontWeight: "700",
-                      marginLeft: "20px",
-                    }}
-                  >
-                    Adding Legislative Assembly Constituency{" "}
-                  </span>
-                </div>
-              </CCol>
-            </CRow>
-            <CRow
-              className={"row-alignment"}
-              style={{ marginLeft: "5px", marginTop: "20px" }}
-              sm={12}
-              md={12}
-              lg={12}
-            >
-              <CCol>
-                <CLabel
-                  style={{
-                    position: "relative",
-                    marginLeft: "5px",
-                    fontSize: "23px",
-                    fontWeight: "650",
-                    cursor: "pointer",
-                  }}
-                  className={"form-labels-6"}
-                >
-                  Parliamentary Constituency:
-                </CLabel>
-                <span style={{ marginTop: "13px", marginLeft: "5px" }}>
-                  TamilNadu
-                </span>
-              </CCol>
-            </CRow>
-
-            {inputList.map((x, i) => {
-              return (
+            </div>
+          </div>
+        )}
+        <div className={menu.style3}>
+          {sideBar2 && (
+            <div className={menu.style} style={{ marginLeft: "-108px",overflow:"auto" }}>
+              <div style={{ marginLeft: "-60px" }}>
+                <CRow className={""}>
+                  <CCol md="12" lg="12" sm="12">
+                    <div>
+                      <span
+                        style={{
+                          fontSize: "21px",
+                          fontWeight: "700",
+                          fontFamily: "Arial, Helvetica, sans-serif",
+                          marginLeft: "20px",
+                        }}
+                      >
+                        Add Legislative Assembly Constituency{" "}
+                      </span>
+                    </div>
+                  </CCol>
+                </CRow>
                 <CRow
-                  className={"row-alignment"}
+                  className={"LengthDataw"}
                   style={{ marginLeft: "5px", marginTop: "20px" }}
                   sm={12}
                   md={12}
                   lg={12}
                 >
-                  <CCol md="2">
-                    <CLabel className={"label-name-1"}>
-                      Legislative
-                      <span className={"text-danger"}> *</span>
+                  <CCol md="6">
+                    <CLabel className={"form-labels-9 col-md-5 reAssign-Label"} 
+                    style={{position:"fixed"}}
+                    >
+                      Parliamentary Constituency:{" "}
                     </CLabel>
 
-                    <CInput
-                      id={"LegislativeName"}
-                      name={"Legislativename"}
-                      placeholder="Enter Ward Number"
-                      maxlength="60"
-                      size="60"
-                      value={x.panchayatname}
-                      onChange={(e) => handleInputChange(e, i)}
-                    />
-                  </CCol>
-
-                  <CCol md="2">
-                    <CLabel className={"label-name-1"}>
-                      Abbreviation
-                      <span className={"text-danger"}> *</span>
+                    <CLabel className={"reAssign-Detail"}
+                    style={{marginLeft:"230px"}}
+                    >
+                      {selected.assignedTo
+                        ? selected.assignedTo.firstName
+                        : "TamilNadu"}
                     </CLabel>
-                    <CInput
-                      id={"Legislativeabrreviation"}
-                      name={"abbreviation"}
-                      placeholder="Enter Abbreviation"
-                      maxlength="5"
-                      size="5"
-                      value={x.panchayatabbreviation}
-                      onChange={(e) => handleInputChange(e, i)}
-                    />
                   </CCol>
-                  <CCol md="2">
-                    <CLabel className={"label-name-1"}>
-                      Code
-                      <span className={"text-danger"}> *</span>
-                    </CLabel>
-                    <CInput
-                      id={"Legislativecode"}
-                      name={"code"}
-                      placeholder="Enter Code"
-                      maxlength="5"
-                      size="5"
-                      value={x.panchayatcode}
-                      onChange={(e) => handleInputChange(e, i)}
-                    />
-                  </CCol>
-
-                  <CRow>
-                    <CCol md="3">
-                      {inputList.length - 1 === i && (
-                        <i
-                          style={{
-                            marginLeft: "0px",
-                            marginTop: "35px",
-
-                            fontSize: "1.25rem",
-                            color: "#3273e9",
-                          }}
-                          onClick={handleAddClick}
-                          class={"fa fa-plus"}
-                        />
-                      )}
-                    </CCol>
-                    <CCol md="3">
-                      {inputList.length !== 1 && (
-                        <i
-                          style={{
-                            marginLeft: "0px",
-                            marginTop: "35px",
-
-                            fontSize: "1.25rem",
-                            color: "black",
-                          }}
-                          onClick={() => handleRemoveClick(i)}
-                          class={"fa fa-remove"}
-                        />
-                      )}
-                    </CCol>
-                  </CRow>
                 </CRow>
-              );
-            })}
 
-            <CRow style={{ marginLeft: "250px" }}>
-              <CCol md="3">
-                <CButton
-                  style={{
-                    marginLeft: "10px",
-                    marginTop: "35px",
-                  }}
-                  onClick={enableCreate}
-                  className={"saveBtn"}
-                >
-                  {" "}
-                  Save
-                </CButton>
-                <CButton
-                  shape={"pill"}
-                  id={"Legislativecancel"}
-                  style={{ marginTop: "-59px", marginLeft: "90px" }}
-                  className={"cancelBtn"}
-                  onClick={handleClickLegislative}
-                >
-                  CANCEL
-                </CButton>
-                {error !== "" ? <p>{error}</p> : null}
-              </CCol>
-            </CRow>
+                {inputList.map((x, i) => {
+                  return (
+                    <CRow
+                      className={"row-alignment"}
+                      style={{ marginLeft: "5px", marginTop: "20px" }}
+                      sm={12}
+                      md={12}
+                      lg={12}
+                    >
+                      <CCol md="2">
+                        <CLabel className={"label-name-1"}>
+                          Legislative
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
 
-            <CButton
-              style={{
-                position: "absolute",
-                top: "15px",
-                right: "15px",
-                backgroundColor: "green",
-                border: "1px solid green",
-              }}
-              className={"cancelBtn"}
-              onClick={() => {
-                handleClickLegislative();
-                // handleClickLegislative();
-              }}
-            >
-              Back
-            </CButton>
-          </div>
-        )}
-        {sideBarup1 && (
-          <div
-            className={menu.style1}
-            style={{
-              marginLeft: "-108px",
-              minHeight: `${window.innerHeight - 198}px`,
-              maxHeight: `${window.innerHeight - 198}px`,
-              overflow: "auto",
-              padding: "0px 20px 0px 30px",
-            }}
-          >
-            <CRow className={""}>
-              <CCol md="12" lg="12" sm="12">
-                <div>
-                  <span
-                    style={{
-                      fontSize: "18px",
-                      fontWeight: "700",
-                      marginLeft: "20px",
-                    }}
-                  >
-                    Adding Parliamentary Constituency{" "}
-                  </span>
-                </div>
-              </CCol>
-            </CRow>
+                        <CInput
+                          id={"LegislativeName"}
+                          name={"Legislativename"}
+                          placeholder="Enter Ward Number"
+                          maxlength="60"
+                          size="60"
+                          value={x.panchayatname}
+                          onChange={(e) => handleInputChange(e, i)}
+                        />
+                      </CCol>
 
-            <CRow md="12" style={{ marginLeft: "10px", marginTop: "15px" }}>
-              <CCol
-                md="6"
-                id={"createRoleUploadTemplate"}
-                onClick={() => {
-                  document.getElementById("uploadRoleTemplate").click();
-                }}
-              >
-                <span
-                  style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}
-                >
-                  <i className="fas fa-upload"></i>&nbsp;
-                </span>
+                      <CCol md="2">
+                        <CLabel className={"label-name-1"}>
+                          Abbreviation
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <CInput
+                          id={"Legislativeabrreviation"}
+                          name={"abbreviation"}
+                          placeholder="Enter Abbreviation"
+                          maxlength="5"
+                          size="5"
+                          value={x.panchayatabbreviation}
+                          onChange={(e) => handleInputChange(e, i)}
+                        />
+                      </CCol>
+                      <CCol md="2">
+                        <CLabel className={"label-name-1"}>
+                          Code
+                          <span className={"text-danger"}> *</span>
+                        </CLabel>
+                        <CInput
+                          id={"Legislativecode"}
+                          name={"code"}
+                          placeholder="Enter Code"
+                          maxlength="5"
+                          size="5"
+                          value={x.panchayatcode}
+                          onChange={(e) => handleInputChange(e, i)}
+                        />
+                      </CCol>
 
-                <CLabel
-                  style={{
-                    position: "relative",
-                    marginLeft: "20px",
-                    cursor: "pointer",
-                  }}
-                  className={"form-labels-6"}
-                >
-                  Upload
-                </CLabel>
-                <CInput
-                  id={"uploadRoleTemplate"}
-                  style={{ display: "none" }}
-                  type={"file"}
-                  onChange={handleChange}
-                  accept={SheetJSFT}
-                />
-              </CCol>
-              <CCol md="6" style={{ marginLeft: "150px", marginTop: "-38px" }}>
-                <CSVLink data={csvData}>
-                  <span
-                    style={{
-                      fontSize: "20px",
-                      cursor: "pointer",
-                      color: "red",
-                    }}
-                  >
-                    <i className="fas fa-download"></i>&nbsp;
-                  </span>
+                      <CRow>
+                        <CCol md="3">
+                          {inputList.length - 1 === i && (
+                            <i
+                              style={{
+                                marginLeft: "0px",
+                                marginTop: "35px",
 
-                  <CLabel
-                    style={{
-                      position: "relative",
-                      marginLeft: "20px",
-                      cursor: "pointer",
-                      color: "black",
-                    }}
-                    className={"form-labels-6"}
-                  >
-                    Download
-                  </CLabel>
-                </CSVLink>
-              </CCol>
-            </CRow>
-            <CRow>
-              <CCol md="3">
-                <CButton
-                  style={{
-                    marginLeft: "30px",
-                    marginTop: "25px",
-                  }}
-                  onClick={handleFile}
-                  className={"saveBtn"}
-                >
-                  {" "}
-                  Confirm
-                </CButton>
+                                fontSize: "1.25rem",
+                                color: "#3273e9",
+                              }}
+                              onClick={handleAddClick}
+                              class={"fa fa-plus"}
+                            />
+                          )}
+                        </CCol>
+                        <CCol md="3">
+                          {inputList.length !== 1 && (
+                            <i
+                              style={{
+                                marginLeft: "0px",
+                                marginTop: "35px",
 
-                <CButton
-                  style={{
-                    position: "absolute",
-                    top: "-70px",
-                    right: "-660px",
-                    marginLeft: "30px",
-                    backgroundColor: "green",
-                    border: "1px solid green",
-                  }}
-                  className={"cancelBtn"}
-                  onClick={() => {
-                    bulkhandleClick();
-                  }}
-                >
-                  Back
-                </CButton>
-              </CCol>
-            </CRow>
+                                fontSize: "1.25rem",
+                                color: "black",
+                              }}
+                              onClick={() => handleRemoveClick(i)}
+                              class={"fa fa-remove"}
+                            />
+                          )}
+                        </CCol>
+                      </CRow>
+                    </CRow>
+                  );
+                })}
 
-            {isValue && excelupload.data !== 0 ? (
-              <div>
-                <CRow
-                  style={{
-                    padding: "4%",
-                    marginTop: "1.5%",
-                    marginLeft: "-45px",
-                  }}
-                >
-                  <CDataTable
-                    items={excelupload.data}
-                    fields={fieldss1}
-                    columnFilter
-                    tableFilter
-                    tableLabel={"List of Parliamentary Constituency"}
-                    itemsPerPageSelect
-                    itemsPerPage={5}
-                    hover
-                    sorter
-                    pagination
-                    scopedSlots={{
-                      show_details: (item, index) => {
-                        return (
-                          <td className="py-2">
-                            <CRow>
-                              {/* <CInput
-                                    type={"checkbox"}
-                                    style={{
-                                      width: "15px",
-                                      height: "15px",
-                                      marginLeft: "30px",
-                                      marginBottom: "10px",
-                                    }}
-                                  /> */}
-                              {/* <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                  </CCol> */}
-                            </CRow>
-                          </td>
-                        );
-                      },
-                      show_details1: (item, index) => {
-                        return (
-                          <td className="py-2">
-                            <CRow>
-                              <CCol style={{ fontSize: "1.15rem" }} md="12">
-                                <i
-                                  id={"constimemDelete"}
-                                  style={{
-                                    marginLeft: "5px",
-                                    color: "black",
-                                    cursor: "pointer",
-                                  }}
-                                  className="fa fa-remove"
-                                ></i>
-                              </CCol>
-                            </CRow>
-                          </td>
-                        );
-                      },
-                      details: (item, index) => {},
-                    }}
-                  />
-                </CRow>
-                <CRow style={{ paddingLeft: "180px" }}>
+                <CRow style={{ marginLeft: "250px" }}>
                   <CCol md="3">
                     <CButton
-                      type="file"
                       style={{
-                        marginLeft: "450px",
+                        marginLeft: "10px",
                         marginTop: "35px",
                       }}
                       onClick={enableCreate}
@@ -1110,410 +1000,802 @@ function Constituency() {
                     </CButton>
                     <CButton
                       shape={"pill"}
-                      id={"Parliamentarycancel"}
-                      style={{ marginTop: "-60px", marginLeft: "550px" }}
+                      id={"Legislativecancel"}
+                      style={{ marginTop: "-59px", marginLeft: "90px" }}
                       className={"cancelBtn"}
-                      onClick={bulkhandleClick}
+                      onClick={handleClickLegislative}
                     >
-                      Cancel
+                      CANCEL
                     </CButton>
+                    {error !== "" ? <p>{error}</p> : null}
                   </CCol>
                 </CRow>
-              </div>
-            ) : null}
-          </div>
-        )}
-        {sideBarup2 && (
-          <div
-            className={menu.style1}
-            style={{
-              marginLeft: "-108px",
-              minHeight: `${window.innerHeight - 198}px`,
-              maxHeight: `${window.innerHeight - 198}px`,
-              overflow: "auto",
-              padding: "0px 20px 0px 30px",
-            }}
-          >
-            
-            <CRow className={""}>
-              <CCol md="12" lg="12" sm="12">
-                <div>
-                  <span
-                    style={{
-                      fontSize: "18px",
-                      fontWeight: "700",
-                      marginLeft: "20px",
-                    }}
-                  >
-                    Adding Legislative Assembly Constituency{" "}
-                  </span>
-                </div>
-              </CCol>
-            </CRow>
-            <CRow
-              className={"row-alignment"}
-              style={{ marginLeft: "5px", marginTop: "20px" }}
-              sm={12}
-              md={12}
-              lg={12}
-            >
-              <CCol>
-                <CLabel
-                  style={{
-                    position: "relative",
-                    marginLeft: "5px",
-                    fontSize: "23px",
-                    fontWeight: "650",
-                    cursor: "pointer",
-                  }}
-                  className={"form-labels-6"}
-                >
-                  Parliamentary Constituency:
-                </CLabel>
-                <span style={{ marginTop: "13px", marginLeft: "5px" }}>
-                  TamilNadu
-                </span>
-              </CCol>
-            </CRow>
-            <CRow md="12" style={{ marginLeft: "10px", marginTop: "15px" }}>
-              <CCol
-                md="6"
-                id={"createRoleUploadTemplate"}
-                onClick={() => {
-                  document.getElementById("uploadRoleTemplate").click();
-                }}
-              >
-                <span
-                  style={{ fontSize: "20px", cursor: "pointer", color: "blue" }}
-                >
-                  <i className="fas fa-upload"></i>&nbsp;
-                </span>
-
-                <CLabel
-                  style={{
-                    position: "relative",
-                    marginLeft: "20px",
-                    cursor: "pointer",
-                  }}
-                  className={"form-labels-6"}
-                >
-                  Upload
-                </CLabel>
-                <CInput
-                  id={"uploadRoleTemplate"}
-                  style={{ display: "none" }}
-                  type={"file"}
-                  onChange={handleChange}
-                  accept={SheetJSFT}
-                />
-              </CCol>
-              <CCol md="6" style={{ marginLeft: "150px", marginTop: "-38px" }}>
-                <CSVLink data={csvData}>
-                  <span
-                    style={{
-                      fontSize: "20px",
-                      cursor: "pointer",
-                      color: "red",
-                    }}
-                  >
-                    <i className="fas fa-download"></i>&nbsp;
-                  </span>
-
-                  <CLabel
-                    style={{
-                      position: "relative",
-                      marginLeft: "20px",
-                      cursor: "pointer",
-                      color: "black",
-                    }}
-                    className={"form-labels-6"}
-                  >
-                    Download
-                  </CLabel>
-                </CSVLink>
-              </CCol>
-            </CRow>
-            <CRow>
-              <CCol md="3">
-                <CButton
-                  style={{
-                    marginLeft: "30px",
-                    marginTop: "25px",
-                  }}
-                  onClick={handleFile}
-                  className={"saveBtn"}
-                >
-                  {" "}
-                  Confirm
-                </CButton>
 
                 <CButton
                   style={{
                     position: "absolute",
-                    right: "-660px",
-                    marginLeft: "30px",
-                    top: "-130px",
+                    top: "15px",
+                    right: "15px",
                     backgroundColor: "green",
                     border: "1px solid green",
                   }}
                   className={"cancelBtn"}
                   onClick={() => {
-                    bulkhandleClick();
+                    handleClickLegislative();
                     // handleClickLegislative();
                   }}
                 >
                   Back
                 </CButton>
-              </CCol>
-            </CRow>
-            {isValue && excelupload.data !== 0 ? (
-              <div>
-                <CRow
-                  style={{
-                    padding: "4%",
-                    marginTop: "-1.5%",
-                    marginLeft: "-45px",
-                  }}
-                >
-                  <CDataTable
-                    items={excelupload.data}
-                    fields={fields2}
-                    columnFilter
-                    tableFilter
-                    tableLabel={"List of Legislative Assembly constituency"}
-                    itemsPerPageSelect
-                    itemsPerPage={5}
-                    hover
-                    sorter
-                    pagination
-                    scopedSlots={{
-                      show_details3: (item, index) => {
-                        return (
-                          <td className="py-1">
-                            <CRow>
-                              <CCol style={{ fontSize: "1rem" }} md="16">
-                                <i
-                                  style={{
-                                    marginLeft: "35px",
-                                  }}
-                                  className="fa fa-remove"
-                                  bsStyle="overlay"
-                                  onClick={() => menusremoveicon(item)}
-                                />
-                              </CCol>
-                            </CRow>
-                          </td>
-                        );
-                      },
-                      details: (item, index) => {},
-                    }}
-                  />
-                </CRow>
-                <CRow style={{ paddingLeft: "180px" }}>
-                  <CCol md="3">
-                    <CButton
-                      type="file"
-                      style={{
-                        marginLeft: "450px",
-                        marginTop: "5px",
-                      }}
-                      onClick={enableCreate}
-                      className={"saveBtn"}
-                    >
-                      {" "}
-                      Save
-                    </CButton>
-                    <CButton
-                      shape={"pill"}
-                      id={"Legislativecancel"}
-                      style={{ marginTop: "-60px", marginLeft: "550px" }}
-                      className={"cancelBtn"}
-                      onClick={bulkhandleClick}
-                    >
-                      Cancel
-                    </CButton>
-                  </CCol>
-                </CRow>
               </div>
-            ) : null}
-          </div>
-        )}
-        <React.Fragment>
-          {memberhide && (
-            <div>
-              <CCard className={"cardSave"}>
-                <div className={"main-headerlabel"}>
-                  <span className={"header-label"}>Constituency</span>
-                </div>
-                <CRow style={{ marginTop: "45px" }}>
-                  <CCol>
-                    <CCol md="5">
-                      <CButton
-                        style={{
-                          marginLeft: "45px",
-                        }}
-                        id={"LegislativesaveAbbreviationConfigureCode"}
-                        className={"saveBtn"}
-                        onClick={viewcreate}
-                      >
-                        Add Constituency
-                      </CButton>{" "}
-                    </CCol>
-                  </CCol>
-                </CRow>
-
-                <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                  <CCol className={"column-align"} md="4">
-                    <CLabel className={"label-name"}>
-                      State
-                      <span className={"text-danger"}>*</span>
-                    </CLabel>
-                    <Select
-                      styles={{ marginLeft: "50px" }}
-                      type={"text"}
-                      id={"constituencyState"}
-                      className={"input-align"}
-                      placeholder="Select the State"
-                      options={select}
-                    />
-                  </CCol>
-                  <CCol className={"column-align"} md="4">
-                    <CLabel className={"label-name"}>
-                      District / City
-                      <span className={"text-danger"}>*</span>
-                    </CLabel>
-                    <Select
-                      styles={{ marginLeft: "50px" }}
-                      type={"text"}
-                      id={"constituencycity"}
-                      className={"input-align"}
-                      placeholder="Select the District / City "
-                      options={select}
-                    />
-                  </CCol>
-                </CRow>
-
-                <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                  <CCol className={"column-align"} md="4">
-                    <CLabel className={"label-name"}>
-                      Parliamentary Constituency
-                      <span className={"text-danger"}> *</span>
-                    </CLabel>
-                    <Select
-                      placeholder="Select Parliamentary Constituency"
-                      id={"parliamentaryconstituency"}
-                      type={"text"}
-                      className={"input-align"}
-                      style={{ marginLeft: "5px" }}
-                      options={select}
-                    />
-                  </CCol>
-                  <CCol className={"column-align"} md="4">
-                    <CLabel className={"label-name"}>
-                      Legislative Assembly Constituency
-                      <span className={"text-danger"}> *</span>
-                    </CLabel>
-                    <Select
-                    isMulti
-                      placeholder="Select Legislative Assembly Constituency"
-                      id={"legislativeAssemblyconstitue"}
-                      type={"text"}
-                      className={"input-align"}
-                      style={{ marginLeft: "5px" }}
-                      options={select}
-                    />
-                  </CCol>
-                </CRow>
-
-                <CRow
-                  style={{
-                    padding: "4%",
-                    marginTop: "-2.5%",
-                    marginLeft: "2px",
-                  }}
-                >
-                  <CDataTable
-                    items={userDataview}
-                    fields={fieldsview}
-                    columnFilter
-                    tableFilter
-                    tableLabel={"List of Constituency"}
-                    itemsPerPageSelect
-                    itemsPerPage={5}
-                    hover
-                    sorter
-                    pagination
-                    scopedSlots={{
-                      show_detailsview: (item, index) => {
-                        return (
-                          <td className="py-1">
-                            <CRow>
-                              <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                <Dropdown
-                                  className={"ant-dropdown-cutomize-by-me"}
-                                  overlay={() => menus(item)}
-                                >
-                                  <a
-                                    href
-                                    className="ant-dropdown-link"
-                                    onClick={(e) => e.preventDefault()}
-                                  >
-                                    <i
-                                      style={{
-                                        marginLeft: "35px",
-                                        color: "black",
-                                      }}
-                                      className="fa fa-ellipsis-v"
-                                      bsStyle="overlay"
-                                      onClick={menus}
-                                    />
-                                  </a>
-                                </Dropdown>
-                              </CCol>
-                            </CRow>
-                          </td>
-                        );
-                      },
-                      details: (item, index) => {},
-                    }}
-                  />
-                </CRow>
-              </CCard>
             </div>
           )}
-          {hide && (
-            <div>
-              <CCard className={"cardSave"}>
-                <div className={"main-headerlabel"}>
-                  <span className={"header-label"}>Constituency</span>
-                </div>
-
-                <CRow
-                  className={"row-alignment"}
-                  style={{ marginLeft: "-76px" }}
-                >
-                  <CCol className={"column-align"} md="12" lg="12" sm="12">
-                    <p className="mandatory_txt" style={{ marginLeft: "50px" }}>
-                      Mandatory fields are marked with an asterisk (*)
-                    </p>
-
-                    <div style={{ marginLeft: "-20px" }}>
-                      <div className={"row-headerlabel"}>
+          <div className={menu.style3}>
+            {sideBar1e && (
+              <div className={menu.style} style={{ marginLeft: "-108px",overflow:"auto" }}>
+                <div style={{ marginLeft: "-60px" }}>
+                  <CRow className={""}>
+                    <CCol md="12" lg="12" sm="12">
+                      <div>
                         <span
-                          style={{ marginLeft: "70px" }}
-                          className={"header-label"}
+                          style={{
+                            fontSize: "21px",
+                            fontWeight: "700",
+                            fontFamily: "Arial, Helvetica, sans-serif",
+                            marginLeft: "20px",
+                          }}
                         >
-                          {" "}
-                          Adding CONSTITUENCY{" "}
+                          Edit Parliamentary Constituency{" "}
                         </span>
                       </div>
+                    </CCol>
+                  </CRow>
+
+                  {inputList.map((x, i) => {
+                    return (
                       <CRow
                         className={"row-alignment"}
-                        md="12"
-                        sm="12"
-                        lg="12"
-                        style={{ marginLeft: "-6px" }}
+                        style={{ marginLeft: "5px", marginTop: "20px" }}
+                        sm={12}
+                        md={12}
+                        lg={12}
                       >
+                        <CCol md="2">
+                          <CLabel className={"label-name-1"}>
+                            Parliamentary
+                            <span className={"text-danger"}> *</span>
+                          </CLabel>
+
+                          <CInput
+                            id={"Parliamentary"}
+                            name={"Parliamentaryname"}
+                            placeholder="Enter Parliamentary Constituency"
+                            maxlength="60"
+                            size="60"
+                            value={x.panchayatname}
+                            onChange={(e) => handleInputChange(e, i)}
+                          />
+                        </CCol>
+
+                        <CCol md="2">
+                          <CLabel className={"label-name-1"}>
+                            Abbreviation
+                            <span className={"text-danger"}> *</span>
+                          </CLabel>
+                          <CInput
+                            id={"Parliamentaryabrreviation"}
+                            name={"abbreviation"}
+                            placeholder="Enter Abbreviation"
+                            maxlength="5"
+                            size="5"
+                            value={x.panchayatabbreviation}
+                            onChange={(e) => handleInputChange(e, i)}
+                          />
+                        </CCol>
+                        <CCol md="2">
+                          <CLabel className={"label-name-1"}>
+                            Code
+                            <span className={"text-danger"}> *</span>
+                          </CLabel>
+                          <CInput
+                            id={"Parliamentarycode"}
+                            name={"code"}
+                            placeholder="Enter Code"
+                            maxlength="5"
+                            size="5"
+                            value={x.panchayatcode}
+                            onChange={(e) => handleInputChange(e, i)}
+                          />
+                        </CCol>
+
+                       
+                      </CRow>
+                    );
+                  })}
+
+                  <CRow style={{ marginLeft: "250px" }}>
+                    <CCol md="3">
+                      <CButton
+                        style={{
+                          marginLeft: "10px",
+                          marginTop: "35px",
+                        }}
+                        onClick={enableCreate}
+                        className={"saveBtn"}
+                      >
+                        {" "}
+                        Update
+                      </CButton>
+                      <CButton
+                        shape={"pill"}
+                        id={"Parliamentarycancel"}
+                        style={{ marginTop: "-59px", marginLeft: "90px" }}
+                        className={"cancelBtn"}
+                        onClick={handleClickParliamentary}
+                      >
+                        CANCEL
+                      </CButton>
+                      {error !== "" ? <p>{error}</p> : null}
+                    </CCol>
+                  </CRow>
+
+                  <CButton
+                    style={{
+                      position: "absolute",
+                      top: "15px",
+                      right: "15px",
+                      backgroundColor: "green",
+                      border: "1px solid green",
+                    }}
+                    className={"cancelBtn"}
+                    onClick={() => {
+                      handleClickParliamentary();
+                      // handleClickLegislative();
+                    }}
+                  >
+                    Back
+                  </CButton>
+                </div>
+              </div>
+            )}
+            <div className={menu.style3}>
+              {sideBar2e && (
+                <div className={menu.style} style={{ marginLeft: "-108px",overflow:"auto" }}>
+                  <div style={{ marginLeft: "-60px" }}>
+                    <CRow className={""}>
+                      <CCol md="12" lg="12" sm="12">
+                        <div>
+                          <span
+                            style={{
+                              fontSize: "21px",
+                              fontWeight: "700",
+                              fontFamily: "Arial, Helvetica, sans-serif",
+                              marginLeft: "20px",
+                            }}
+                          >
+                            Edit Legislative Assembly Constituency{" "}
+                          </span>
+                        </div>
+                      </CCol>
+                    </CRow>
+                    <CRow
+                      className={"LengthDataw"}
+                      style={{ marginLeft: "5px", marginTop: "20px" }}
+                      sm={12}
+                      md={12}
+                      lg={12}
+                    >
+                      <CCol md="6">
+                        <CLabel
+                          className={"form-labels-9 col-md-5 reAssign-Label"}
+                        style={{position:"fixed"}}
+                        >
+                          Parliamentary Constituency:{" "}
+                        </CLabel>
+
+                        <CLabel className={"reAssign-Detail"}
+                        style={{marginLeft:"230px"}}
+                        >
+                          {selected.assignedTo
+                            ? selected.assignedTo.firstName
+                            : "TamilNadu"}
+                        </CLabel>
+                      </CCol>
+                    </CRow>
+
+                    {inputList.map((x, i) => {
+                      return (
+                        <CRow
+                          className={"row-alignment"}
+                          style={{ marginLeft: "5px", marginTop: "20px" }}
+                          sm={12}
+                          md={12}
+                          lg={12}
+                        >
+                          <CCol md="2">
+                            <CLabel className={"label-name-1"}>
+                              Legislative
+                              <span className={"text-danger"}> *</span>
+                            </CLabel>
+
+                            <CInput
+                              id={"LegislativeName"}
+                              name={"Legislativename"}
+                              placeholder="Enter Ward Number"
+                              maxlength="60"
+                              size="60"
+                              value={x.panchayatname}
+                              onChange={(e) => handleInputChange(e, i)}
+                            />
+                          </CCol>
+
+                          <CCol md="2">
+                            <CLabel className={"label-name-1"}>
+                              Abbreviation
+                              <span className={"text-danger"}> *</span>
+                            </CLabel>
+                            <CInput
+                              id={"Legislativeabrreviation"}
+                              name={"abbreviation"}
+                              placeholder="Enter Abbreviation"
+                              maxlength="5"
+                              size="5"
+                              value={x.panchayatabbreviation}
+                              onChange={(e) => handleInputChange(e, i)}
+                            />
+                          </CCol>
+                          <CCol md="2">
+                            <CLabel className={"label-name-1"}>
+                              Code
+                              <span className={"text-danger"}> *</span>
+                            </CLabel>
+                            <CInput
+                              id={"Legislativecode"}
+                              name={"code"}
+                              placeholder="Enter Code"
+                              maxlength="5"
+                              size="5"
+                              value={x.panchayatcode}
+                              onChange={(e) => handleInputChange(e, i)}
+                            />
+                          </CCol>                         
+                        </CRow>
+                      );
+                    })}
+
+                    <CRow style={{ marginLeft: "250px" }}>
+                      <CCol md="3">
+                        <CButton
+                          style={{
+                            marginLeft: "10px",
+                            marginTop: "35px",
+                          }}
+                          onClick={enableCreate}
+                          className={"saveBtn"}
+                        >
+                          {" "}
+                          Update
+                        </CButton>
+                        <CButton
+                          shape={"pill"}
+                          id={"Legislativecancel"}
+                          style={{ marginTop: "-59px", marginLeft: "90px" }}
+                          className={"cancelBtn"}
+                          onClick={handleClickLegislative}
+                        >
+                          CANCEL
+                        </CButton>
+                        {error !== "" ? <p>{error}</p> : null}
+                      </CCol>
+                    </CRow>
+
+                    <CButton
+                      style={{
+                        position: "absolute",
+                        top: "15px",
+                        right: "15px",
+                        backgroundColor: "green",
+                        border: "1px solid green",
+                      }}
+                      className={"cancelBtn"}
+                      onClick={() => {
+                        handleClickLegislative();
+                        // handleClickLegislative();
+                      }}
+                    >
+                      Back
+                    </CButton>
+                  </div>
+                </div>
+              )}  
+              {sideBarup1 && (
+                <div
+                  className={menu.style1}
+                  style={{
+                    marginLeft: "-108px",
+                    minHeight: `${window.innerHeight - 198}px`,
+                    maxHeight: `${window.innerHeight - 198}px`,
+                    overflow: "auto",
+                    padding: "0px 20px 0px 30px",
+                  }}
+                >
+                  <div style={{ marginLeft: "-30px" }}>
+                    <CRow className={""}>
+                      <CCol md="12" lg="12" sm="12">
+                        <div>
+                          <span
+                            style={{
+                              fontSize: "21px",
+                              fontWeight: "700",
+                              fontFamily: "Arial, Helvetica, sans-serif",
+                              marginLeft: "20px",
+                            }}
+                          >
+                            Add Parliamentary Constituency{" "}
+                          </span>
+                        </div>
+                      </CCol>
+                    </CRow>
+
+                    <CRow
+                      md="12"
+                      style={{ marginLeft: "10px", marginTop: "15px" }}
+                    >
+                      <CCol
+                        md="6"
+                        id={"createRoleUploadTemplate"}
+                        onClick={() => {
+                          document.getElementById("uploadRoleTemplate").click();
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontSize: "20px",
+                            cursor: "pointer",
+                            color: "blue",
+                          }}
+                        >
+                          <i className="fas fa-upload"></i>&nbsp;
+                        </span>
+
+                        <CLabel
+                          style={{
+                            position: "relative",
+                            marginLeft: "20px",
+                            cursor: "pointer",
+                          }}
+                          className={"form-labels-6"}
+                        >
+                          Upload
+                        </CLabel>
+                        <CInput
+                          id={"uploadRoleTemplate"}
+                          style={{ display: "none" }}
+                          type={"file"}
+                          onChange={handleChange}
+                          accept={SheetJSFT}
+                        />
+                      </CCol>
+                      <CCol
+                        md="6"
+                        style={{ marginLeft: "150px", marginTop: "-38px" }}
+                      >
+                        <CSVLink data={csvData}>
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              cursor: "pointer",
+                              color: "red",
+                            }}
+                          >
+                            <i className="fas fa-download"></i>&nbsp;
+                          </span>
+
+                          <CLabel
+                            style={{
+                              position: "relative",
+                              marginLeft: "20px",
+                              cursor: "pointer",
+                              color: "black",
+                            }}
+                            className={"form-labels-6"}
+                          >
+                            Download
+                          </CLabel>
+                        </CSVLink>
+                      </CCol>
+                    </CRow>
+                    <CRow>
+                      <CCol md="3">
+                        <CButton
+                          style={{
+                            marginLeft: "30px",
+                            marginTop: "25px",
+                          }}
+                          onClick={handleFile}
+                          className={"saveBtn"}
+                        >
+                          {" "}
+                          Confirm
+                        </CButton>
+
+                        <CButton
+                          style={{
+                            position: "absolute",
+                            top: "-70px",
+                            right: "-660px",
+                            marginLeft: "30px",
+                            backgroundColor: "green",
+                            border: "1px solid green",
+                          }}
+                          className={"cancelBtn"}
+                          onClick={() => {
+                            bulkhandleClick();
+                          }}
+                        >
+                          Back
+                        </CButton>
+                      </CCol>
+                    </CRow>
+
+                    {isValue && excelupload.data !== 0 ? (
+                      <div>
+                        <CRow
+                          style={{
+                            padding: "4%",
+                            marginTop: "1.5%",
+                            marginLeft: "-45px",
+                          }}
+                        >
+                          <CDataTable
+                            items={excelupload.data}
+                            fields={fieldss1}
+                            columnFilter
+                            tableFilter
+                            tableLabel={"List of Parliamentary Constituency"}
+                            itemsPerPageSelect
+                            itemsPerPage={5}
+                            hover
+                            sorter
+                            pagination
+                            scopedSlots={{
+                              show_details: (item, index) => {
+                                return (
+                                  <td className="py-2">
+                                    <CRow>
+                                      {/* <CInput
+                                    type={"checkbox"}
+                                    style={{
+                                      width: "15px",
+                                      height: "15px",
+                                      marginLeft: "30px",
+                                      marginBottom: "10px",
+                                    }}
+                                  /> */}
+                                      {/* <CCol style={{ fontSize: "1.15rem" }} md="12">
+                                  </CCol> */}
+                                    </CRow>
+                                  </td>
+                                );
+                              },
+                              show_details1: (item, index) => {
+                                return (
+                                  <td className="py-2">
+                                    <CRow>
+                                      <CCol
+                                        style={{ fontSize: "1.15rem" }}
+                                        md="12"
+                                      >
+                                        <i
+                                          id={"constimemDelete"}
+                                          style={{
+                                            marginLeft: "5px",
+                                            color: "black",
+                                            cursor: "pointer",
+                                          }}
+                                          className="fa fa-remove"
+                                        ></i>
+                                      </CCol>
+                                    </CRow>
+                                  </td>
+                                );
+                              },
+                              details: (item, index) => {},
+                            }}
+                          />
+                        </CRow>
+                        <CRow style={{ paddingLeft: "180px" }}>
+                          <CCol md="3">
+                            <CButton
+                              type="file"
+                              style={{
+                                marginLeft: "450px",
+                                marginTop: "35px",
+                              }}
+                              onClick={enableCreate}
+                              className={"saveBtn"}
+                            >
+                              {" "}
+                              Save
+                            </CButton>
+                            <CButton
+                              shape={"pill"}
+                              id={"Parliamentarycancel"}
+                              style={{
+                                marginTop: "-60px",
+                                marginLeft: "550px",
+                              }}
+                              className={"cancelBtn"}
+                              onClick={bulkhandleClick}
+                            >
+                              Cancel
+                            </CButton>
+                          </CCol>
+                        </CRow>
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+              )}
+              {sideBarup2 && (
+                <div
+                  className={menu.style1}
+                  style={{
+                    marginLeft: "-108px",
+                    minHeight: `${window.innerHeight - 198}px`,
+                    maxHeight: `${window.innerHeight - 198}px`,
+                    overflow: "auto",
+                    padding: "0px 20px 0px 30px",
+                  }}
+                >
+                  <div style={{ marginLeft: "-30px" }}>
+                    <CRow className={""}>
+                      <CCol md="12" lg="12" sm="12" style={{ marginTop: "20px" }}>
+                        <div>
+                          <span
+                            style={{
+                              fontSize: "21px",
+                              fontWeight: "700",
+                              fontFamily: "Arial, Helvetica, sans-serif",
+                              marginLeft: "20px",
+                            }}
+                          >
+                            Add Legislative Assembly Constituency{" "}
+                          </span>
+                        </div>
+                      </CCol>
+                    </CRow>
+                    <CRow
+                      className={"LengthDataw"}
+                      style={{ marginLeft: "5px", marginTop: "20px" }}
+                      sm={12}
+                      md={12}
+                      lg={12}
+                    >
+                      <CCol md="6">
+                        <CLabel
+                          className={"form-labels-9 col-md-5 reAssign-Label"}
+                        style={{position:"fixed"}}
+                        >
+                          Parliamentary Constituency:{" "}
+                        </CLabel>
+
+                        <CLabel className={"reAssign-Detail"}
+                        style={{marginLeft:"230px"}}
+                        >
+                          {selected.assignedTo
+                            ? selected.assignedTo.firstName
+                            : "TamilNadu"}
+                        </CLabel>
+                      </CCol>
+                    </CRow>
+                    <CRow
+                      md="12"
+                      style={{ marginLeft: "10px", marginTop: "15px" }}
+                    >
+                      <CCol
+                        md="6"
+                        id={"createRoleUploadTemplate"}
+                        onClick={() => {
+                          document.getElementById("uploadRoleTemplate").click();
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontSize: "20px",
+                            cursor: "pointer",
+                            color: "blue",
+                          }}
+                        >
+                          <i className="fas fa-upload"></i>&nbsp;
+                        </span>
+
+                        <CLabel
+                          style={{
+                            position: "relative",
+                            marginLeft: "20px",
+                            cursor: "pointer",
+                          }}
+                          className={"form-labels-6"}
+                        >
+                          Upload
+                        </CLabel>
+                        <CInput
+                          id={"uploadRoleTemplate"}
+                          style={{ display: "none" }}
+                          type={"file"}
+                          onChange={handleChange}
+                          accept={SheetJSFT}
+                        />
+                      </CCol>
+                      <CCol
+                        md="6"
+                        style={{ marginLeft: "150px", marginTop: "-38px" }}
+                      >
+                        <CSVLink data={csvData}>
+                          <span
+                            style={{
+                              fontSize: "20px",
+                              cursor: "pointer",
+                              color: "red",
+                            }}
+                          >
+                            <i className="fas fa-download"></i>&nbsp;
+                          </span>
+
+                          <CLabel
+                            style={{
+                              position: "relative",
+                              marginLeft: "20px",
+                              cursor: "pointer",
+                              color: "black",
+                            }}
+                            className={"form-labels-6"}
+                          >
+                            Download
+                          </CLabel>
+                        </CSVLink>
+                      </CCol>
+                    </CRow>
+                    <CRow>
+                      <CCol md="3">
+                        <CButton
+                          style={{
+                            marginLeft: "30px",
+                            marginTop: "25px",
+                          }}
+                          onClick={handleFile}
+                          className={"saveBtn"}
+                        >
+                          {" "}
+                          Confirm
+                        </CButton>
+
+                        <CButton
+                          style={{
+                            position: "absolute",
+                            right: "-660px",
+                            marginLeft: "30px",
+                            top: "-130px",
+                            backgroundColor: "green",
+                            border: "1px solid green",
+                          }}
+                          className={"cancelBtn"}
+                          onClick={() => {
+                            bulkhandleClick();
+                            // handleClickLegislative();
+                          }}
+                        >
+                          Back
+                        </CButton>
+                      </CCol>
+                    </CRow>
+                    {isValue && excelupload.data !== 0 ? (
+                      <div>
+                        <CRow
+                          style={{
+                            padding: "4%",
+                            marginTop: "-1.5%",
+                            marginLeft: "-45px",
+                          }}
+                        >
+                          <CDataTable
+                            items={excelupload.data}
+                            fields={fields2}
+                            columnFilter
+                            tableFilter
+                            tableLabel={
+                              "List of Legislative Assembly constituency"
+                            }
+                            itemsPerPageSelect
+                            itemsPerPage={5}
+                            hover
+                            sorter
+                            pagination
+                            scopedSlots={{
+                              show_details3: (item, index) => {
+                                return (
+                                  <td className="py-1">
+                                    <CRow>
+                                      <CCol
+                                        style={{ fontSize: "1rem" }}
+                                        md="16"
+                                      >
+                                        <i
+                                          style={{
+                                            marginLeft: "35px",
+                                          }}
+                                          className="fa fa-remove"
+                                          bsStyle="overlay"
+                                          onClick={() => menusremoveicon(item)}
+                                        />
+                                      </CCol>
+                                    </CRow>
+                                  </td>
+                                );
+                              },
+                              details: (item, index) => {},
+                            }}
+                          />
+                        </CRow>
+                        <CRow style={{ paddingLeft: "180px" }}>
+                          <CCol md="3">
+                            <CButton
+                              type="file"
+                              style={{
+                                marginLeft: "450px",
+                                marginTop: "5px",
+                              }}
+                              onClick={enableCreate}
+                              className={"saveBtn"}
+                            >
+                              {" "}
+                              Save
+                            </CButton>
+                            <CButton
+                              shape={"pill"}
+                              id={"Legislativecancel"}
+                              style={{
+                                marginTop: "-60px",
+                                marginLeft: "550px",
+                              }}
+                              className={"cancelBtn"}
+                              onClick={bulkhandleClick}
+                            >
+                              Cancel
+                            </CButton>
+                          </CCol>
+                        </CRow>
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+              )}
+              <React.Fragment>
+                {memberhide && (
+                  <div>
+                    <CCard className={"cardSave"}>
+                      <div className={"main-headerlabel"}>
+                        <span className={"header-label"}>Constituency</span>
+                      </div>
+                      <CRow style={{ marginTop: "45px" }}>
+                        <CCol>
+                          <CCol md="5">
+                            <CButton
+                              style={{
+                                marginLeft: "45px",
+                              }}
+                              id={"LegislativesaveAbbreviationConfigureCode"}
+                              className={"saveBtn"}
+                              onClick={viewcreate}
+                            >
+                              Add Constituency
+                            </CButton>{" "}
+                          </CCol>
+                        </CCol>
+                      </CRow>
+
+                      <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                         <CCol className={"column-align"} md="4">
                           <CLabel className={"label-name"}>
                             State
@@ -1523,72 +1805,11 @@ function Constituency() {
                             styles={{ marginLeft: "50px" }}
                             type={"text"}
                             id={"constituencyState"}
-                            options={select}
                             className={"input-align"}
                             placeholder="Select the State"
+                            options={select}
                           />
                         </CCol>
-                        {municipalList && (
-                          <React.Fragment>
-                            <CCol className={"column-align"} md={4} lg={4}>
-                              <CLabel className={"label-name-1"}>
-                                Parliamentary Constituency
-                                <span className={"text-danger"}> *</span>
-                              </CLabel>
-                              <Select
-                                placeholder="Select Parliamentary Constituency"
-                                id={"parliamentaryconstituency"}
-                                type={"text"}
-                                value={collected}
-                                onChange={changedistrictpanchayat}
-                                components={{
-                                  MenuList: SelectMenuButtonParliamentary,
-                                }}
-                                options={select}
-                              />
-                              {villageHide.districtpanchayat &&
-                              collected.length !== 0 ? (
-                                <div
-                                  style={{
-                                    width: 300,
-                                    marginLeft: "446px",
-                                    marginTop: "-40px",
-                                    padding: 10,
-                                  }}
-                                >
-                                  <i
-                                    className={"editIcon"}
-                                    id={"oParliamentaryEdit"}
-                                    class="fas fa-edit"
-                                  />
-                                  <div
-                                    style={{
-                                      width: 300,
-                                      marginLeft: "26px",
-                                      marginTop: "-30px",
-                                      padding: 10,
-                                      color: "red",
-                                    }}
-                                  >
-                                    <i
-                                      className={"editIcon"}
-                                      id={"Parliamentarytrash"}
-                                      class="fas fa-trash"
-                                    />
-                                  </div>
-                                </div>
-                              ) : null}
-                            </CCol>
-                          </React.Fragment>
-                        )}
-                      </CRow>
-                      <CRow
-                        className={"row-alignment"}
-                        md="12"
-                        sm="12"
-                        lg="12"
-                        style={{ marginLeft: "-6px" }}
-                      >
                         <CCol className={"column-align"} md="4">
                           <CLabel className={"label-name"}>
                             District / City
@@ -1599,256 +1820,92 @@ function Constituency() {
                             type={"text"}
                             id={"constituencycity"}
                             className={"input-align"}
-                            options={select}
                             placeholder="Select the District / City "
-                          />
-                        </CCol>
-                        {municipalListadd && (
-                          <React.Fragment>
-                            <CCol className={"column-align"} md={4} lg={4}>
-                              <CLabel className={"label-name-1"}>
-                                Legislative Assembly Constituency
-                                <span className={"text-danger"}> *</span>
-                              </CLabel>
-                              <Select
-                                placeholder="Select the Legislative Assembly"
-                                id={"legislative"}
-                                type={"text"}
-                                value={selected1}
-                                onChange={changePanchayatUnion}
-                                components={{
-                                  MenuList: SelectMenuButtonLegislative,
-                                }}
-                                options={select}
-                              />
-                              {villageHide.panchayatunion &&
-                              selected1.length !== 0 ? (
-                                <div
-                                  style={{
-                                    width: 300,
-                                    marginLeft: "446px",
-                                    marginTop: "-40px",
-                                    padding: 10,
-                                  }}
-                                >
-                                  <i
-                                    className={"editIcon"}
-                                    id={"legislativeEdit"}
-                                    class="fas fa-edit"
-                                  />
-                                  <div
-                                    style={{
-                                      width: 300,
-                                      marginLeft: "26px",
-                                      marginTop: "-30px",
-                                      padding: 10,
-                                      color: "red",
-                                    }}
-                                  >
-                                    <i
-                                      className={"editIcon"}
-                                      id={"legislativetrash"}
-                                      class="fas fa-trash"
-                                    />
-                                  </div>
-                                </div>
-                              ) : null}
-                            </CCol>
-                          </React.Fragment>
-                        )}
-                      </CRow>
-
-                      <CRow>
-                        <CCol>
-                          <CLabel
-                            style={{
-                              fontSize: "20PX",
-                              fontFamily: "Open Sans",
-                              fontWeight: "700",
-                              marginLeft: "71px",
-                              marginTop: "20px",
-                            }}
-                          >
-                            Select Street
-                          </CLabel>
-                        </CCol>
-                      </CRow>
-
-                      <CRow
-                        className={"row-alignment"}
-                        md="12"
-                        sm="12"
-                        lg="12"
-                        style={{ marginLeft: "-6px" }}
-                      >
-                        <CCol className={"column-align"} md="4">
-                          <CLabel className={"label-name"}>
-                            Area / Village
-                            <span className={"text-danger"}>*</span>
-                          </CLabel>
-                          <Select
-                            type={"text"}
-                            id={"constituencyarea"}
-                            className={"input-align"}
-                            placeholder="Select the Area / Village"
                             options={select}
                           />
                         </CCol>
+                      </CRow>
 
+                      <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                         <CCol className={"column-align"} md="4">
                           <CLabel className={"label-name"}>
-                            Ward Name
+                            Parliamentary Constituency
                             <span className={"text-danger"}> *</span>
                           </CLabel>
                           <Select
+                            placeholder="Select Parliamentary Constituency"
+                            id={"parliamentaryconstituency"}
                             type={"text"}
-                            id={"constituencyward"}
                             className={"input-align"}
-                            placeholder="Select the Ward"
+                            style={{ marginLeft: "5px" }}
                             options={select}
                           />
                         </CCol>
-                      </CRow>
-                      <CRow
-                        className={"row-alignment"}
-                        md="12"
-                        sm="12"
-                        lg="12"
-                        style={{ marginLeft: "-6px" }}
-                      >
                         <CCol className={"column-align"} md="4">
                           <CLabel className={"label-name"}>
-                            Street Name
-                            <span className={"text-danger"}>*</span>
+                            Legislative Assembly Constituency
+                            <span className={"text-danger"}> *</span>
                           </CLabel>
                           <Select
+                            placeholder="Select Legislative Assembly Constituency"
+                            id={"legislativeAssemblyconstitue"}
                             type={"text"}
-                            id={"constituencystreet"}
                             className={"input-align"}
-                            placeholder="Select the Street "
+                            style={{ marginLeft: "5px" }}
                             options={select}
                           />
                         </CCol>
                       </CRow>
-                      <CRow>
-                        <CCol md="10">
-                          <CCol
-                            md="5"
-                            style={{
-                              marginTop: "-35px",
-                              marginLeft: "285px",
-                            }}
-                          >
-                            <CButton
-                              style={{
-                                float: "right",
-                              }}
-                              id={"cancelconstituency"}
-                              className={"cancelBtn"}
-                              onClick={cancelview}
-                            >
-                              CANCEL
-                            </CButton>
-                            <CButton
-                              style={{
-                                float: "right",
-                                marginRight: "15px",
-                              }}
-                              id={"saveconstituencyabbreviationconfigurecode"}
-                              className={"saveBtn"}
-                            >
-                              Save
-                            </CButton>{" "}
-                          </CCol>
-                        </CCol>
-                      </CRow>
+
                       <CRow
                         style={{
-                          padding: "6%",
-                          marginTop: "-3.5%",
-                          marginLeft: "-30px",
+                          padding: "4%",
+                          marginTop: "-2.5%",
+                          marginLeft: "2px",
                         }}
                       >
                         <CDataTable
-                          items={userData}
-                          fields={fields}
+                          items={userDataview}
+                          fields={fieldsview}
                           columnFilter
                           tableFilter
-                          tableLabel={"List of Streets"}
+                          tableLabel={"List of Constituency"}
                           itemsPerPageSelect
                           itemsPerPage={5}
                           hover
                           sorter
                           pagination
-                          selectAll={true}
-                          checkedAll={userData.length === selected.length}
-                          onSelectAll={(val) => {
-                            console.log(val, userData);
-                            if (userData.length === selected.length) {
-                              setSelected([]);
-                            } else {
-                              let ids = [];
-                              val.map((x) =>(
-                                ids.push(`${x._id}`)
-                              ));
-                              setSelected(ids);
-                            }
-                          }}
                           scopedSlots={{
-                            show_details: (item, index) => {
+                            show_detailsview: (item, index) => {
                               return (
-                                <td className="py-2">
-                                  <CRow>
-                                    <CInput
-                                      type={"checkbox"}
-                                      style={{
-                                        width: "15px",
-                                        height: "15px",
-                                        marginLeft: "30px",
-                                        marginBottom: "10px",
-                                      }}
-                                      onClick={() => {
-                                        if (selected.includes(`${item._id}`)) {
-                                          let values = selected.filter((x) => {
-                                            return `${x}` !== `${item._id}`;
-                                          });
-                                          setSelected(values);
-                                        } else {
-                                          setSelected([...selected, `${item._id}`]);
-                                        }
-                                      }}
-                                      checked={selected.includes(`${item._id}`)}
-                                    />
-                                  </CRow>
-                                </td>
-                              );
-                            },  
-                            show_details1: (item, index) => {
-                              return (
-                                <td className="py-2">
+                                <td className="py-1">
                                   <CRow>
                                     <CCol
                                       style={{ fontSize: "1.15rem" }}
-                                      md="12"
+                                      md="16"
                                     >
-                                      <i
-                                        style={{
-                                          marginRight: "5px",
-                                          color: "#3480e2",
-                                          cursor: "pointer",
-                                        }}
-                                        id={"constituencyediticon"}
-                                        className="fas fa-edit"
-                                      ></i>
-                                      <i
-                                        id={"constituencydelete"}
-                                        style={{
-                                          marginLeft: "5px",
-                                          color: "#e85654",
-                                          cursor: "pointer",
-                                        }}
-                                        className="fa fa-trash"
-                                      ></i>
+                                      <Dropdown
+                                        className={
+                                          "ant-dropdown-cutomize-by-me"
+                                        }
+                                        overlay={() => menus(item)}
+                                      >
+                                        <a
+                                          href
+                                          className="ant-dropdown-link"
+                                          onClick={(e) => e.preventDefault()}
+                                        >
+                                          <i
+                                            style={{
+                                              marginLeft: "35px",
+                                              color: "black",
+                                            }}
+                                            className="fa fa-ellipsis-v"
+                                            bsStyle="overlay"
+                                            onClick={menus}
+                                          />
+                                        </a>
+                                      </Dropdown>
                                     </CCol>
                                   </CRow>
                                 </td>
@@ -1858,15 +1915,429 @@ function Constituency() {
                           }}
                         />
                       </CRow>
-                    </div>
-                  </CCol>
-                </CRow>
-              </CCard>
+                    </CCard>
+                  </div>
+                )}
+                {hide && (
+                  <div>
+                    <CCard className={"cardSave"}>
+                      <div className={"main-headerlabel"}>
+                        <span className={"header-label"}>Constituency</span>
+                      </div>
+
+                      <CRow
+                        className={"row-alignment"}
+                        style={{ marginLeft: "-76px" }}
+                      >
+                        <CCol
+                          className={"column-align"}
+                          md="12"
+                          lg="12"
+                          sm="12"
+                        >
+                          <p
+                            className="mandatory_txt"
+                            style={{ marginLeft: "50px" }}
+                          >
+                            Mandatory fields are marked with an asterisk (*)
+                          </p>
+
+                          <div style={{ marginLeft: "-20px" }}>
+                            <div className={"row-headerlabel"}>
+                              <span
+                                style={{ marginLeft: "70px" }}
+                                className={"header-label"}
+                              >
+                                {" "}
+                                Adding CONSTITUENCY{" "}
+                              </span>
+                            </div>
+                            <CRow
+                              className={"row-alignment"}
+                              md="12"
+                              sm="12"
+                              lg="12"
+                              style={{ marginLeft: "-6px" }}
+                            >
+                              <CCol className={"column-align"} md="4">
+                                <CLabel className={"label-name"}>
+                                  State
+                                  <span className={"text-danger"}>*</span>
+                                </CLabel>
+                                <Select
+                                  styles={{ marginLeft: "50px" }}
+                                  type={"text"}
+                                  id={"constituencyState"}
+                                  options={select}
+                                  className={"input-align"}
+                                  placeholder="Select the State"
+                                />
+                              </CCol>
+                              {municipalList && (
+                                <React.Fragment>
+                                  <CCol
+                                    className={"column-align"}
+                                    md={4}
+                                    lg={4}
+                                  >
+                                    <CLabel className={"label-name-1"}>
+                                      Parliamentary Constituency
+                                      <span className={"text-danger"}> *</span>
+                                    </CLabel>
+                                    <Select
+                                      placeholder="Select Parliamentary Constituency"
+                                      id={"parliamentaryconstituency"}
+                                      type={"text"}
+                                      value={collected}
+                                      onChange={changedistrictpanchayat}
+                                      components={{
+                                        MenuList: SelectMenuButtonParliamentary,
+                                      }}
+                                      options={select}
+                                    />
+                                    {villageHide.districtpanchayat &&
+                                    collected.length !== 0 ? (
+                                      <div
+                                        style={{
+                                          width: 300,
+                                          marginLeft: "446px",
+                                          marginTop: "-40px",
+                                          padding: 10,
+                                        }}
+                                      >
+                                        <i
+                                          onClick={editClickmunici}
+                                          className={"editIcon"}
+                                          id={"oParliamentaryEdit"}
+                                          class="fas fa-edit"
+                                        />
+                                        <div
+                                          style={{
+                                            width: 300,
+                                            marginLeft: "26px",
+                                            marginTop: "-30px",
+                                            padding: 10,
+                                            color: "red",
+                                          }}
+                                        >
+                                          <i
+                                            onClick={deletemodal}
+                                            className={"editIcon"}
+                                            id={"Parliamentarytrash"}
+                                            class="fas fa-trash"
+                                          />
+                                        </div>
+                                      </div>
+                                    ) : null}
+                                  </CCol>
+                                </React.Fragment>
+                              )}
+                            </CRow>
+                            <CRow
+                              className={"row-alignment"}
+                              md="12"
+                              sm="12"
+                              lg="12"
+                              style={{ marginLeft: "-6px" }}
+                            >
+                              <CCol className={"column-align"} md="4">
+                                <CLabel className={"label-name"}>
+                                  District / City
+                                  <span className={"text-danger"}>*</span>
+                                </CLabel>
+                                <Select
+                                  styles={{ marginLeft: "50px" }}
+                                  type={"text"}
+                                  id={"constituencycity"}
+                                  className={"input-align"}
+                                  options={select}
+                                  placeholder="Select the District / City "
+                                />
+                              </CCol>
+                              {municipalListadd && (
+                                <React.Fragment>
+                                  <CCol
+                                    className={"column-align"}
+                                    md={4}
+                                    lg={4}
+                                  >
+                                    <CLabel className={"label-name-1"}>
+                                      Legislative Assembly Constituency
+                                      <span className={"text-danger"}> *</span>
+                                    </CLabel>
+                                    <Select
+                                      placeholder="Select the Legislative Assembly"
+                                      id={"legislative"}
+                                      type={"text"}
+                                      value={selected1}
+                                      onChange={changePanchayatUnion}
+                                      components={{
+                                        MenuList: SelectMenuButtonLegislative,
+                                      }}
+                                      options={select}
+                                    />
+                                    {villageHide.panchayatunion &&
+                                    selected1.length !== 0 ? (
+                                      <div
+                                        style={{
+                                          width: 300,
+                                          marginLeft: "446px",
+                                          marginTop: "-40px",
+                                          padding: 10,
+                                        }}
+                                      >
+                                        <i
+                                          onClick={editClickward}
+                                          className={"editIcon"}
+                                          id={"legislativeEdit"}
+                                          class="fas fa-edit"
+                                        />
+                                        <div
+                                          style={{
+                                            width: 300,
+                                            marginLeft: "26px",
+                                            marginTop: "-30px",
+                                            padding: 10,
+                                            color: "red",
+                                          }}
+                                        >
+                                          <i
+                                            onClick={deletemodal}
+                                            className={"editIcon"}
+                                            id={"legislativetrash"}
+                                            class="fas fa-trash"
+                                          />
+                                        </div>
+                                      </div>
+                                    ) : null}
+                                  </CCol>
+                                </React.Fragment>
+                              )}
+                            </CRow>
+
+                            <CRow>
+                              <CCol>
+                                <CLabel
+                                  style={{
+                                    fontSize: "20PX",
+                                    fontFamily: "Open Sans",
+                                    fontWeight: "700",
+                                    marginLeft: "71px",
+                                    marginTop: "20px",
+                                  }}
+                                >
+                                  Select Street
+                                </CLabel>
+                              </CCol>
+                            </CRow>
+
+                            <CRow
+                              className={"row-alignment"}
+                              md="12"
+                              sm="12"
+                              lg="12"
+                              style={{ marginLeft: "-6px" }}
+                            >
+                              <CCol className={"column-align"} md="4">
+                                <CLabel className={"label-name"}>
+                                  Area / Village
+                                  <span className={"text-danger"}>*</span>
+                                </CLabel>
+                                <Select
+                                  type={"text"}
+                                  id={"constituencyarea"}
+                                  className={"input-align"}
+                                  placeholder="Select the Area / Village"
+                                  options={select}
+                                />
+                              </CCol>
+
+                              <CCol className={"column-align"} md="4">
+                                <CLabel className={"label-name"}>
+                                  Ward Name
+                                  <span className={"text-danger"}> *</span>
+                                </CLabel>
+                                <Select
+                                  type={"text"}
+                                  id={"constituencyward"}
+                                  className={"input-align"}
+                                  placeholder="Select the Ward"
+                                  options={select}
+                                />
+                              </CCol>
+                            </CRow>
+                            <CRow
+                              className={"row-alignment"}
+                              md="12"
+                              sm="12"
+                              lg="12"
+                              style={{ marginLeft: "-6px" }}
+                            >
+                              <CCol className={"column-align"} md="4">
+                                <CLabel className={"label-name"}>
+                                  Street Name
+                                  <span className={"text-danger"}>*</span>
+                                </CLabel>
+                                <Select
+                                  type={"text"}
+                                  id={"constituencystreet"}
+                                  className={"input-align"}
+                                  placeholder="Select the Street "
+                                  options={select}
+                                />
+                              </CCol>
+                            </CRow>
+                            <CRow>
+                              <CCol md="10">
+                                <CCol
+                                  md="5"
+                                  style={{
+                                    marginTop: "-35px",
+                                    marginLeft: "285px",
+                                  }}
+                                >
+                                  <CButton
+                                    style={{
+                                      float: "right",
+                                    }}
+                                    id={"cancelconstituency"}
+                                    className={"cancelBtn"}
+                                    onClick={cancelview}
+                                  >
+                                    CANCEL
+                                  </CButton>
+                                  <CButton
+                                    style={{
+                                      float: "right",
+                                      marginRight: "15px",
+                                    }}
+                                    id={
+                                      "saveconstituencyabbreviationconfigurecode"
+                                    }
+                                    className={"saveBtn"}
+                                  >
+                                    Save
+                                  </CButton>{" "}
+                                </CCol>
+                              </CCol>
+                            </CRow>
+                            <CRow
+                              style={{
+                                padding: "6%",
+                                marginTop: "-3.5%",
+                                marginLeft: "-30px",
+                              }}
+                            >
+                              <CDataTable
+                                items={userData}
+                                fields={fields}
+                                columnFilter
+                                tableFilter
+                                tableLabel={"List of Streets"}
+                                itemsPerPageSelect
+                                itemsPerPage={5}
+                                hover
+                                sorter
+                                pagination
+                                selectAll={true}
+                                checkedAll={userData.length === selected.length}
+                                onSelectAll={(val) => {
+                                  console.log(val, userData);
+                                  if (userData.length === selected.length) {
+                                    setSelected([]);
+                                  } else {
+                                    let ids = [];
+                                    val.map((x) => ids.push(`${x._id}`));
+                                    setSelected(ids);
+                                  }
+                                }}
+                                scopedSlots={{
+                                  show_details: (item, index) => {
+                                    return (
+                                      <td className="py-2">
+                                        <CRow>
+                                          <CInput
+                                            type={"checkbox"}
+                                            style={{
+                                              width: "15px",
+                                              height: "15px",
+                                              marginLeft: "30px",
+                                              marginBottom: "10px",
+                                            }}
+                                            onClick={() => {
+                                              if (
+                                                selected.includes(`${item._id}`)
+                                              ) {
+                                                let values = selected.filter(
+                                                  (x) => {
+                                                    return (
+                                                      `${x}` !== `${item._id}`
+                                                    );
+                                                  }
+                                                );
+                                                setSelected(values);
+                                              } else {
+                                                setSelected([
+                                                  ...selected,
+                                                  `${item._id}`,
+                                                ]);
+                                              }
+                                            }}
+                                            checked={selected.includes(
+                                              `${item._id}`
+                                            )}
+                                          />
+                                        </CRow>
+                                      </td>
+                                    );
+                                  },
+                                  show_details1: (item, index) => {
+                                    return (
+                                      <td className="py-2">
+                                        <CRow>
+                                          <CCol
+                                            style={{ fontSize: "1.15rem" }}
+                                            md="12"
+                                          >
+                                            <i
+                                              style={{
+                                                marginRight: "5px",
+                                                color: "#3480e2",
+                                                cursor: "pointer",
+                                              }}
+                                              id={"constituencyediticon"}
+                                              className="fas fa-edit"
+                                            ></i>
+                                            <i
+                                              id={"constituencydelete"}
+                                              style={{
+                                                marginLeft: "5px",
+                                                color: "#e85654",
+                                                cursor: "pointer",
+                                              }}
+                                              className="fa fa-trash"
+                                            ></i>
+                                          </CCol>
+                                        </CRow>
+                                      </td>
+                                    );
+                                  },
+                                  details: (item, index) => {},
+                                }}
+                              />
+                            </CRow>
+                          </div>
+                        </CCol>
+                      </CRow>
+                    </CCard>
+                  </div>
+                )}
+              </React.Fragment>
             </div>
-          )}
-        </React.Fragment>
+          </div>
+        </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 }
 export default Constituency;

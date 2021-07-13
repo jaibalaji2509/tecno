@@ -69,9 +69,7 @@ const _nav = [
     name: "Party Organization Setup",
     route: "/AdminSetup",
     icon: "cil-drop",
-    _children: [
-     
-      
+    _children: [           
       {
         id: "CSidebarNavItemSideBar",
         _tag: "CSidebarNavItem",
@@ -79,7 +77,6 @@ const _nav = [
         to: "/partyofficelocation",
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
-
       {
         id: "AdminandSubAdminSideBar",
         _tag: "CSidebarNavItem",
@@ -102,18 +99,14 @@ const _nav = [
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
     ],
-  },
-
+  },  
   
-
   {
     id: "AdminSetupSideBar",
     _tag: "CSidebarNavDropdown",
-    name: "Party Member Managrmrnt",
+    name: "Party Member Management",
     route: "/partyMember",    
-    icon: 'cil-drop',
-   
-  
+    icon: 'cil-drop',     
     _children: [
       {
         id: "AdminSetupSideBar",

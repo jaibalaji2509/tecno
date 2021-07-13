@@ -236,6 +236,16 @@ function PartyOfficeLocation() {
         break;
     }
   };
+  const cancelTypeofPartyOffice = () => {
+    setMenu({
+      menuStatus: "open",
+      style3: "menu1",
+      style: "menu",
+      style1: "menu1",
+    });
+    setCreatepartyOffice(true);
+    setSideBar1(false);
+  };
   const [hidePartyOffice, setHidePartyOffice] = useState(true);
   const [backbutt, setBackButt] = useState(false);
   const viewTypeofPartyOffice = () => {
@@ -400,7 +410,10 @@ console.log(inEditMode.rowKey, "editaaa");
   return (
     <div className={menu.style3}>
       {sideBar1 && (
-        <div className={menu.style} style={{ overflow: "auto" }}>
+        <div
+          className={menu.style}
+          style={{ overflow: "auto", marginLeft: "20px" }}
+        >
           <div className={"main-headerlabel"} style={{ marginTop: "-40px" }}>
             <span className={"header-label"}> Adding Type of Party Office</span>
           </div>
@@ -478,7 +491,7 @@ console.log(inEditMode.rowKey, "editaaa");
                           }}
                           id={"typeoofpartycancelAbbreviationConfigureCode"}
                           className={"cancelBtn"}
-                          onClick={addTypeofPartyOffice}
+                          onClick={cancelTypeofPartyOffice}
                         >
                           CANCEL
                         </CButton>
@@ -674,9 +687,15 @@ console.log(inEditMode.rowKey, "editaaa");
           {backbutt && (
             <div>
               <CButton
-                style={{ position: "absolute", top: "15px", right: "15px" }}
+                style={{
+                  position: "absolute",
+                  top: "15px",
+                  backgroundColor: "green",
+                  border: "1px solid green",
+                  right: "15px",
+                }}
                 className={"cancelBtn"}
-                onClick={addTypeofPartyOffice}
+                onClick={cancelTypeofPartyOffice}
               >
                 Back
               </CButton>
@@ -840,6 +859,34 @@ console.log(inEditMode.rowKey, "editaaa");
                 </CCol>
               </CRow>
             </div>
+            <CRow style={{ marginTop: "-10px" }}>
+              <CCol md="10" lg="10" sm="10">
+                <CCol
+                  md="5"
+                  style={{
+                    marginLeft: "5px",
+                    float: "right",
+                    Top: "100px",
+                    top: "170px",
+                    position: "absolute",
+                  }}
+                >
+                  <CButton
+                    style={{
+                      float: "right",
+                      marginRight: "762px",
+                      position: "absolute",
+                      marginLeft: "18px",
+                    }}
+                    id={"addtypeoofpartylocation"}
+                    className={"saveBtn"}
+                    onClick={changePartyOffice}
+                  >
+                    Add Party Office Location
+                  </CButton>{" "}
+                </CCol>
+              </CCol>
+            </CRow>
             <CRow style={{ marginLeft: "150px" }}>
               <CCol
                 style={{ fontSize: "1.55rem", top: "260px" }}
@@ -869,6 +916,7 @@ console.log(inEditMode.rowKey, "editaaa");
                     style={{
                       position: "absolute",
                       top: "210px",
+                      marginTop: "0px",
                       marginLeft: "514px",
                       marginBottom: "20px",
                       color: "black",
@@ -897,80 +945,55 @@ console.log(inEditMode.rowKey, "editaaa");
                 <ReactTooltip />
               </CCol>
             </CRow>
-            <CRow style={{ marginTop: "-10px" }}>
-              <CCol md="10" lg="10" sm="10">
-                <CCol
-                  md="5"
-                  style={{
-                    marginLeft: "5px",
-                    float: "right",
-                    Top: "100px",
-                    top: "73px",
-                    position: "absolute",
-                  }}
-                >
-                  <CButton
-                    style={{
-                      float: "right",
-                      marginRight: "762px",
-                      position: "absolute",
-                      marginLeft: "18px",
-                    }}
-                    id={"addtypeoofpartylocation"}
-                    className={"saveBtn"}
-                    onClick={changePartyOffice}
-                  >
-                    Add Party Office Location
-                  </CButton>{" "}
-                </CCol>
-              </CCol>
-            </CRow>
-            <CRow style={{ padding: "4%", marginTop: "5.5%" }}>
-              <CDataTable
-                items={userData}
-                fields={fields}
-                columnFilter
-                tableFilter
-                tableLabel={"List of Type of Party Office Location"}
-                itemsPerPageSelect
-                itemsPerPage={5}
-                hover
-                sorter
-                pagination
-                scopedSlots={{
-                  show_details: (item, index) => {
-                    return (
-                      <td className="py-1">
-                        {/* <CRow>
-                          <CCol style={{ fontSize: "1.15rem" }} md="16">
-                            <Dropdown
-                              className={"ant-dropdown-cutomize-by-me"}
-                              overlay={() => menus(item)}
-                            >
-                              <a href
-                                className="ant-dropdown-link"
-                                onClick={(e) => e.preventDefault()}
+            <div>
+              <CRow style={{ padding: "4%", marginTop: "5.5%" }}>
+                <CDataTable
+                  items={userData}
+                  fields={fields}
+                  columnFilter
+                  tableFilter
+                  tableLabel={"List of Type of party Office Location"}
+                  itemsPerPageSelect
+                  itemsPerPage={5}
+                  hover
+                  sorter
+                  pagination
+                  scopedSlots={{
+                    show_details: (item, index) => {
+                      return (
+                        <td className="py-1">
+                          <CRow>
+                            <CCol style={{ fontSize: "1.15rem" }} md="16">
+                              <Dropdown
+                                className={"ant-dropdown-cutomize-by-me"}
+                                overlay={() => menus(item)}
                               >
-                                <i
-                                  style={{
-                                    marginLeft: "5px",
-                                    color: "black",
-                                  }}
-                                  className="fa fa-ellipsis-v"
-                                  bsStyle="overlay"
-                                  onClick={menus}
-                                />
-                              </a>
-                            </Dropdown>
-                          </CCol>
-                        </CRow> */}
-                      </td>
-                    );
-                  },
-                  details: (item, index) => {},
-                }}
-              />
-            </CRow>
+                                <a
+                                  href
+                                  className="ant-dropdown-link"
+                                  onClick={(e) => e.preventDefault()}
+                                >
+                                  <i
+                                    style={{
+                                      marginLeft: "5px",
+                                      color: "black",
+                                    }}
+                                    className="fa fa-ellipsis-v"
+                                    bsStyle="overlay"
+                                    onClick={menus}
+                                  />
+                                </a>
+                              </Dropdown>
+                            </CCol>
+                          </CRow>
+                        </td>
+                      );
+                    },
+                    details: (item, index) => {},
+                  }}
+                />
+              </CRow>
+            </div>
           </CCard>
         </div>
       )}
