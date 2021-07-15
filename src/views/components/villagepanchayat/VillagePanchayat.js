@@ -84,6 +84,7 @@ const VillagePanchayat = () => {
     { value: "5", label: "018" },
     { value: "5", label: "019" },
   ];
+  
   const userData = [
     // {
     //   SNo: "1.",
@@ -4320,10 +4321,11 @@ const VillagePanchayat = () => {
                                     tableLabel={"List of Streets"}
                                     itemsPerPageSelect
                                     itemsPerPage={5}
+                                    hover
+                                    sorter
+                                    pagination
                                     selectAll={true}
-                                    checkedAll={
-                                      userData.length === selected.length
-                                    }
+                                    checkedAll={userData.length === selected.length}
                                     onSelectAll={(val) => {
                                       console.log(val, userData);
                                       if (userData.length === selected.length) {
@@ -4334,9 +4336,6 @@ const VillagePanchayat = () => {
                                         setSelected(ids);
                                       }
                                     }}
-                                    hover
-                                    sorter
-                                    pagination
                                     scopedSlots={{
                                       show_details: (item, index) => {
                                         return (
@@ -4351,18 +4350,10 @@ const VillagePanchayat = () => {
                                                   marginBottom: "10px",
                                                 }}
                                                 onClick={() => {
-                                                  if (
-                                                    selected.includes(
-                                                      `${item._id}`
-                                                    )
-                                                  ) {
-                                                    let values =
-                                                      selected.filter((x) => {
-                                                        return (
-                                                          `${x}` !==
-                                                          `${item._id}`
-                                                        );
-                                                      });
+                                                  if (selected.includes(`${item._id}`)) {
+                                                    let values = selected.filter((x) => {
+                                                      return `${x}` !== `${item._id}`;
+                                                    });
                                                     setSelected(values);
                                                   } else {
                                                     setSelected([
@@ -4371,9 +4362,7 @@ const VillagePanchayat = () => {
                                                     ]);
                                                   }
                                                 }}
-                                                checked={selected.includes(
-                                                  `${item._id}`
-                                                )}
+                                                checked={selected.includes(`${item._id}`)}
                                               />
                                             </CRow>
                                           </td>
@@ -4383,18 +4372,24 @@ const VillagePanchayat = () => {
                                         return (
                                           <td className="py-2">
                                             <CRow>
-                                              <CCol
-                                                style={{ fontSize: "1.15rem" }}
-                                                md="12"
-                                              >
+                                              <CCol style={{ fontSize: "1.15rem" }} md="12">
                                                 <i
-                                                  id={"constimemDelete"}
                                                   style={{
-                                                    marginLeft: "5px",
-                                                    color: "black",
+                                                    marginRight: "5px",
+                                                    color: "#3480e2",
                                                     cursor: "pointer",
                                                   }}
-                                                  className="fa fa-remove"
+                                                  id={"constituencyediticon"}
+                                                  className="fas fa-edit"
+                                                ></i>
+                                                <i
+                                                  id={"constituencydelete"}
+                                                  style={{
+                                                    marginLeft: "5px",
+                                                    color: "#e85654",
+                                                    cursor: "pointer",
+                                                  }}
+                                                  className="fa fa-trash"
                                                 ></i>
                                               </CCol>
                                             </CRow>

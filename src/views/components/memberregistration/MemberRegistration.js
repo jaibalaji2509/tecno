@@ -13,7 +13,7 @@ import {
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import "./MemberRegistration.css"
 import Select from "react-select";
-import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
+import DEFAULT_IMAGE from "../../../assets/img/download (1).png";
 import { toast } from "react-toastify";
 import { Dropdown, Menu } from "antd";
 import 'antd/dist/antd.css';
@@ -182,6 +182,7 @@ function MemberRegistration() {
   const cancelCreate = () => {
     setHide(false);
     setMemberHide(true)
+    setFiles("");
   }
   // const [gridShow, setGridShow] = useState({
   //   view1: false,
@@ -326,9 +327,9 @@ function MemberRegistration() {
         {memberhide && (
           <div>
             <div className={"main-headerlabel"}>
-              <span className={"header-label"}>Member Registration</span>
+              <span className={"header-label"} style={{marginLeft:"-80px"}}>Member Registration</span>
             </div>
-            <CRow style={{ marginTop: "30px" }} >
+            {/* <CRow style={{ marginTop: "30px" }} >
               <CCol sm="6" lg="3" style={{ marginLeft: "10px" }}>
               <p data-tip="Male">
                 <CWidgetDropdown
@@ -395,25 +396,179 @@ function MemberRegistration() {
                 </p>
                 <ReactTooltip/>
               </CCol>
-            </CRow>
+            </CRow> */}
+  <div style={{ marginTop: "-30px" }}>
+              <CRow
+                style={{
+                  marginTop: "65px",
+                  marginLeft: "240px",
+                  position: "absolute",
+                }}
+              >
+                <CCol sm="3" lg="3" style={{ marginLeft: "-150px" }}>
+                  
+                  <span
+                    style={{
+                      position: "absolute",
+                      marginLeft: "45px",
+                      fontSize: "22px",
+                      fontWeight: "700",
+                      color: "#134e5e",
+                    }}
+                  >
+                    Male
+                  </span>
+                  <span
+                    style={{
+                      display: "block",
+                      marginLeft: "-41px",
+                      marginTop: "-75px",
+                      padding: "100px",
+                      fontSize: "24px",
+                      fontWeight: "500",
+                      color: "grey",
+                    }}
+                  >
+                    2
+                  </span>
+                  <span class="divider" />
+                  <br />
+                  <br></br>
+                  <br />
+                  
+                </CCol>
+                <CCol
+                  sm="3"
+                  lg="3"
+                  style={{ marginLeft: "300px", display: "flex" }}
+                >
+                  
 
-            <CButton
+                  <span
+                    style={{
+                      marginLeft: "-294px",
+                      fontSize: "22px",
+                      fontWeight: "700",
+                      color: "#4cb8c4 ",
+                    }}
+                  >
+                    Female
+                  </span>
+                  <span
+                    style={{
+                      marginLeft: "-55px",
+                      marginTop: "28px",
+                      fontSize: "24px",
+                      fontWeight: "500",
+                      color: "grey",
+                    }}
+                  >
+                    2
+                  </span>
+                  <span className={"divider1"} />
+                  <br />
+
+                  <br />
+                  
+                </CCol>
+                <CCol
+                  sm="3"
+                  lg="3"
+                  style={{
+                    marginLeft: "400px",
+                    position: "relative",
+                    display: "flex",
+                  }}
+                >
+                  
+                  <span
+                    style={{
+                      marginTop: "-228px",
+                      left: "-21px",
+                      fontSize: "22px",
+                      fontWeight: "700",
+                      color: "#30a961",
+                      marginLeft:"25px"
+                    }}
+                  >
+                    TransGender
+                  </span>
+                  <br />
+                  <span
+                    style={{
+                      marginLeft: "-75px",
+                      marginTop: "-201px",
+                      fontSize: "24px",
+                      fontWeight: "500",
+                      color: "grey",
+                    }}
+                  >
+                    1
+                  </span>
+                  <span className={"divider2"} />
+                  <br />
+                  <br />
+                 
+                </CCol>
+                <CCol
+                  sm="3"
+                  lg="3"
+                  style={{
+                    marginLeft: "800px",
+                    position: "relative",
+                    display: "flex",
+                    top:"-45px"
+                  }}
+                >
+                  
+                  <span
+                    style={{
+                      marginTop: "-228px",
+                      left: "-21px",
+                      fontSize: "22px",
+                      fontWeight: "700",
+                      color: "#ec6f66",
+                    }}
+                  >
+                    Total
+                  </span>
+                  <br />
+                  <span
+                    style={{
+                      marginLeft: "-32px",
+                      marginTop: "-201px",
+                      fontSize: "24px",
+                      fontWeight: "500",
+                      color: "grey",
+                    }}
+                  >
+                    5
+                  </span>
+                  <span className={"divider3"} />
+                  <br />
+                  <br />
+                 
+                </CCol>
+              </CRow>
+            </div> 
+            <CRow style={{marginLeft:"4.5%",marginTop:"210px"}}>
+              <CCol>
+
+              <CButton
               id={"memberregisteraddCButton"}
               className={"saveBtn"}
               onClick={enableCreate}
-              style={{
-                marginLeft: "4.5%",
+              style={{               
                 width: "120px",
-                cursor: "pointer",
-                marginTop: "10px",
-                marginBottom: "-50px"
+                cursor: "pointer",                
               }}
             >
-
               Add Member
             </CButton>
+              </CCol>
+            </CRow>                      
 
-            <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-16px", marginTop: "30px" }}>
+            <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-16px", marginTop: "10px" }}>
               <CCol className={"column-align"} md="5">
                 <CLabel className={"label-name"}>
                   State
@@ -741,10 +896,7 @@ function MemberRegistration() {
                           <span className={"text-danger"}>*</span>
                         </CLabel>
                         <Select
-
-
-
-type={"text"}
+                          type={"text"}
                           id={"memberregisterstreet"}
                           className={"select"}
                           placeholder="Select the Street Name"
@@ -826,7 +978,7 @@ type={"text"}
               style={{
                 height: "100px",
                 width: "100px",
-                border: "1px dashed black",
+                // border: "1px dashed black",
               }}
               onClick={() => handleClick()}
             >
@@ -840,8 +992,8 @@ type={"text"}
                 }}
               />
             </div>
-            <CLabel className={"form-label1"} style={{width:"88px"}}>
-              Upload Image
+            <CLabel className={"form-label1"} style={{width:"142px",position:"absolute"}}>
+              Click to Upload Image
             </CLabel>
             
             {/* <CButton

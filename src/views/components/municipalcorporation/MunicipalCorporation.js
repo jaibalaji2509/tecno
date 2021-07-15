@@ -54,6 +54,7 @@ const MunicipalCorporation = () => {
   const [municipalListadd, setMunicipalListadd] = useState(true);
   const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
   const [selected, setSelected] = useState([]);
+  const [selecteds, setSelecteds] = useState([]);
   const [selected1, setSelected1] = useState([]);
   const [collected, setCollected] = useState([]);
   const [villageHide, setVillageHide] = useState({
@@ -1098,8 +1099,8 @@ const MunicipalCorporation = () => {
                                 </CLabel>
 
                                 <CLabel className={"reAssign-Detail"} style={{marginLeft:"190px",marginTop:"3px"}}>
-                                  {selected.assignedTo
-                                    ? selected.assignedTo.firstName
+                                  {selecteds.assignedTo
+                                    ? selecteds.assignedTo.firstName
                                     : ": South Chennai"}
                                 </CLabel>
                               </CCol>                             
@@ -1278,8 +1279,8 @@ const MunicipalCorporation = () => {
                                 </CLabel>
 
                                 <CLabel className={"reAssign-Detail"} style={{marginLeft:"190px",marginTop:"3px"}}>
-                                  {selected.assignedTo
-                                    ? selected.assignedTo.firstName
+                                  {selecteds.assignedTo
+                                    ? selecteds.assignedTo.firstName
                                     : ": South Chennai"}
                                 </CLabel>
                               </CCol>                             
@@ -1625,8 +1626,8 @@ const MunicipalCorporation = () => {
                                 </CLabel>
 
                                 <CLabel className={"reAssign-Detail"} style={{marginLeft:"190px",marginTop:"3px"}}>
-                                  {selected.assignedTo
-                                    ? selected.assignedTo.firstName
+                                  {selecteds.assignedTo
+                                    ? selecteds.assignedTo.firstName
                                     : ": South Chennai"}
                                 </CLabel>
                               </CCol>                             
@@ -2182,8 +2183,7 @@ const MunicipalCorporation = () => {
                               <Select
                                 id={"municipaldistrict"}
                                 name={"city"}
-                                placeholder={" Corporation Name"}
-                                value={selected1}
+                                placeholder={" Corporation Name"}                                
                                 onChange={(e) => setSelected1(e)}
                                 options={selectDistrict}
                               />
@@ -2428,7 +2428,7 @@ const MunicipalCorporation = () => {
                           </CCol>
                         </CRow>
                         <CRow style={{ padding: "4%", marginTop: "-3.5%" }}>
-                          <CDataTable
+                          <CDataTable                          
                             items={userData1}
                             fields={fields1}
                             columnFilter
@@ -2436,25 +2436,20 @@ const MunicipalCorporation = () => {
                             tableLabel={"List of Streets"}
                             itemsPerPageSelect
                             itemsPerPage={5}
+                            hover
+                            sorter
+                            pagination
                             selectAll={true}
-                            checkedAll={userData.length === selected.length}
+                            checkedAll={userData1.length === selected.length}
                             onSelectAll={(val) => {
-                              console.log(val, userData);
-                              if (userData.length === selected.length) {
+                              console.log(val, userData1);
+                              if (userData1.length === selected.length) {
                                 setSelected([]);
                               } else {
                                 let ids = [];
                                 val.map((x) => ids.push(`${x._id}`));
                                 setSelected(ids);
                               }
-                            }}
-                            hover
-                            sorter
-                            pagination
-                            tableCheckbox
-                            columncheckbox
-                            options={{
-                              selection: true,
                             }}
                             scopedSlots={{
                               show_details: (item, index) => {
@@ -2475,7 +2470,9 @@ const MunicipalCorporation = () => {
                                           ) {
                                             let values = selected.filter(
                                               (x) => {
-                                                return `${x}` !== `${item._id}`;
+                                                return (
+                                                  `${x}` !== `${item._id}`
+                                                );
                                               }
                                             );
                                             setSelected(values);
@@ -2490,6 +2487,37 @@ const MunicipalCorporation = () => {
                                           `${item._id}`
                                         )}
                                       />
+                                    </CRow>
+                                  </td>
+                                );
+                              },
+                              show_details1: (item, index) => {
+                                return (
+                                  <td className="py-2">
+                                    <CRow>
+                                      <CCol
+                                        style={{ fontSize: "1.15rem" }}
+                                        md="12"
+                                      >
+                                        <i
+                                          style={{
+                                            marginRight: "5px",
+                                            color: "#3480e2",
+                                            cursor: "pointer",
+                                          }}
+                                          id={"constituencyediticon"}
+                                          className="fas fa-edit"
+                                        ></i>
+                                        <i
+                                          id={"constituencydelete"}
+                                          style={{
+                                            marginLeft: "5px",
+                                            color: "#e85654",
+                                            cursor: "pointer",
+                                          }}
+                                          className="fa fa-trash"
+                                        ></i>
+                                      </CCol>
                                     </CRow>
                                   </td>
                                 );

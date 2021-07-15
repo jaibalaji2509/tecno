@@ -109,7 +109,7 @@ const Municipality = () => {
   ];
   const fields3 = [
     {
-      key: "show_details1",
+      key: "show_details",
       label: "Select",
       _style: { width: "3%" },
       sorter: false,
@@ -2189,24 +2189,8 @@ const Municipality = () => {
                               </CCol>
                             </CCol>
                           </CRow>
-                          <CRow
-                            style={{ marginLeft: "33px", marginTop: "131px" }}
-                          >
-                            <CInput
-                              type={"checkbox"}
-                              style={{
-                                width: "15px",
-                                height: "15px",
-                                marginLeft: "30px",
-                                marginBottom: "10px",
-                              }}
-                            />
-                            <CCol
-                              style={{ fontSize: "1.15rem" }}
-                              md="12"
-                            ></CCol>
-                          </CRow>
-                          <CRow style={{ padding: "4%", marginTop: "-17%" }}>
+                         
+                          <CRow style={{ padding: "4%", marginTop: "-4%" }}>
                             <CDataTable
                               items={userData1}
                               fields={fields3}
@@ -2219,10 +2203,10 @@ const Municipality = () => {
                               sorter
                               pagination
                               selectAll={true}
-                              checkedAll={userData.length === selected.length}
+                              checkedAll={userData1.length === selected.length}
                               onSelectAll={(val) => {
-                                console.log(val, userData);
-                                if (userData.length === selected.length) {
+                                console.log(val, userData1);
+                                if (userData1.length === selected.length) {
                                   setSelected([]);
                                 } else {
                                   let ids = [];
@@ -2231,7 +2215,7 @@ const Municipality = () => {
                                 }
                               }}
                               scopedSlots={{
-                                show_details1: (item, index) => {
+                                show_details: (item, index) => {
                                   return (
                                     <td className="py-2">
                                       <CRow>
@@ -2270,7 +2254,7 @@ const Municipality = () => {
                                     </td>
                                   );
                                 },
-                                show_details: (item, index) => {
+                                show_details1: (item, index) => {
                                   return (
                                     <td className="py-2">
                                       <CRow>
@@ -2284,11 +2268,11 @@ const Municipality = () => {
                                               color: "#3480e2",
                                               cursor: "pointer",
                                             }}
-                                            id={"municiedit"}
+                                            id={"constituencyediticon"}
                                             className="fas fa-edit"
                                           ></i>
                                           <i
-                                            id={"municidelete"}
+                                            id={"constituencydelete"}
                                             style={{
                                               marginLeft: "5px",
                                               color: "#e85654",

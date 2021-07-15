@@ -7,6 +7,7 @@ import {
   CLabel,
   CButton,
   CInput,
+  CWidgetDropdown,
   CLink,
 } from "@coreui/react";
 import ReactTooltip from "react-tooltip";
@@ -725,7 +726,60 @@ function PartyOfficeLocation() {
                 Type of Party Office Location
               </span>
             </div>
+            {/* <CRow style={{ marginTop: "30px" }} >
+              <CCol sm="6" lg="3" style={{ marginLeft: "10px" }}>
+              <p data-tip="Male">
+                <CWidgetDropdown
+                  style={{ width: "280px", textAlign: "center", fontSize: "30px", float: "right" }}
+                  color="gradient-primary"
+                  header=""
+                  text=""
+                >
+                  <span style={{ marginLeft: "-50px", fontSize: "24px", fontWeight:"700" }}>Total</span>
+                  <span style={{ marginLeft: "-162px", marginTop: "30px",fontSize: "24px", fontWeight:"700" }}>2</span>
+                  <br /><br />
+                </CWidgetDropdown>
+                </p>
+                <ReactTooltip/>
+                <span class="divider" />
+              </CCol>
 
+              <CCol sm="6" lg="3" style={{ marginLeft: "10px" }}>
+              <p data-tip="Female">
+                <CWidgetDropdown
+                  style={{ width: "280px", fontSize: "30px", }}
+
+                  color="gradient-info"
+                  header=""
+                  text=""
+                >
+                  <span style={{ marginLeft: "-100px",fontSize: "24px",fontWeight:"700" }}>District Party Office</span>
+                  <span style={{ marginLeft: "-243px", marginTop: "30px",fontSize: "24px",fontWeight:"700" }}>2</span>
+                  <br /><br />
+                </CWidgetDropdown>
+                </p>
+                <ReactTooltip/>
+                <span className={"divider1"} />
+              </CCol>
+
+              <CCol sm="6" lg="3" style={{ marginLeft: "-10px" }}>
+              <p data-tip="TransGender">
+                <CWidgetDropdown
+                  style={{ width: "280px", fontSize: "30px", }}
+
+                  color="gradient-warning"
+                  header=""
+                  text=""
+                >
+                  <span style={{ marginLeft: "-75px", fontSize: "24px",fontWeight:"700" }}> Circle Party Office</span>
+                  <span style={{ marginLeft: "-200px", marginTop: "30px",fontSize: "24px",fontWeight:"700" }}>1</span>
+                  <br /><br />
+                </CWidgetDropdown>
+                </p>
+                <ReactTooltip/>
+                <span className={"divider2"} />
+              </CCol>              
+            </CRow> */}
             <div style={{ marginTop: "-30px" }}>
               <CRow
                 style={{
@@ -735,18 +789,7 @@ function PartyOfficeLocation() {
                 }}
               >
                 <CCol sm="3" lg="3" style={{ marginLeft: "-160px" }}>
-                  {/* <CWidgetDropdown
-                  style={{
-                    width: "280px",
-                    textAlign: "center",
-                    fontSize: "30px",
-                    float: "right",
-                    height: "100px",
-                  }}
-                  color="gradient-danger"
-                  header=""
-                  text=""
-                > */}
+                  
                   <span
                     style={{
                       position: "absolute",
@@ -775,25 +818,14 @@ function PartyOfficeLocation() {
                   <br />
                   <br></br>
                   <br />
-                  {/* </CWidgetDropdown> */}
+                  
                 </CCol>
                 <CCol
                   sm="3"
                   lg="3"
                   style={{ marginLeft: "290px", display: "flex" }}
                 >
-                  {/* <CWidgetDropdown
-                  style={{
-                    width: "280px",
-                    textAlign: "center",
-                    fontSize: "30px",
-                    float: "right",
-                    height: "100px",
-                  }}
-                  color="gradient-primary"
-                  header=""
-                  text=""
-                > */}
+                  
 
                   <span
                     style={{
@@ -820,7 +852,7 @@ function PartyOfficeLocation() {
                   <br />
 
                   <br />
-                  {/* </CWidgetDropdown> */}
+                  
                 </CCol>
                 <CCol
                   sm="3"
@@ -831,18 +863,7 @@ function PartyOfficeLocation() {
                     display: "flex",
                   }}
                 >
-                  {/* <CWidgetDropdown
-                  style={{
-                    width: "280px",
-                    textAlign: "center",
-                    fontSize: "30px",
-                    float: "right",
-                    height: "100px",
-                  }}
-                  color="gradient-warning"
-                  header=""
-                  text=""
-                > */}
+                  
                   <span
                     style={{
                       marginTop: "-228px",
@@ -869,10 +890,10 @@ function PartyOfficeLocation() {
                   <span className={"divider2"} />
                   <br />
                   <br />
-                  {/* </CWidgetDropdown> */}
+                 
                 </CCol>
               </CRow>
-            </div>
+            </div> 
             <CRow style={{ marginTop: "-10px" }}>
               <CCol md="10" lg="10" sm="10">
                 <CCol

@@ -501,3 +501,35 @@ body {
   flex-direction: column;
   margin-left: 10px;
 }
+.divider {
+  position: absolute;
+    left: 180px;
+    top: -10px;
+    height: 60px;
+    bottom: 40%;
+    border-left: 1px solid lightgray;
+}
+.divider1{
+  position: absolute;
+  left: -85px;
+  top: -11px;
+  height: 60px;
+  bottom: 40%;
+  border-left: 1px solid lightgray; 
+}
+.divider2{
+  position: absolute;
+  left: 290px;
+  top: -238px;
+  height: 60px;
+  bottom: 40%;
+  border-left: 1px solid lightgray; 
+}
+.divider3{
+  position: absolute;
+  left: 390px;
+  top: -238px;
+  height: 60px;
+  bottom: 40%;
+  border-left: 1px solid lightgray; 
+}
