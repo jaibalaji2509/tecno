@@ -175,8 +175,8 @@ html:not([dir="rtl"]) .c-sidebar-nav-dropdown-toggle:after {
 .c-sidebar .c-sidebar-nav-dropdown-toggle {
   color: #000;
   background: transparent;
-  font-weight: 595;
-  font-size: 17px !important;
+  font-weight: 650;
+  font-size: 14px !important;
   font-family: "Open Sans" !important;
 }
 
@@ -1305,7 +1305,7 @@ button.cancelBtn {
 }
 .scrollCardText {
   display: block !important;
-  font-size: 13px !important;
+  font-size: 11px !important;
   font-family: "Google Sans";
 }
 .EmpCountNo {

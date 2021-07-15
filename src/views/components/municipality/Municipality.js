@@ -826,7 +826,7 @@ const Municipality = () => {
             </div>
           </div>
         )}
-        <div className={menu.style3}>
+        
           {sideBar1e && (
             <div className={menu.style} style={{ marginLeft: "-108px",overflow:"auto" }}>
               <div style={{ marginLeft: "-60px" }}>
@@ -953,8 +953,7 @@ const Municipality = () => {
                 </CButton>
               </div>
             </div>
-          )}
-          <div className={menu.style3}>
+          )}         
             {sideBar2 && (
               <div className={menu.style} style={{ marginLeft: "-108px",overflow:"auto" }}>
                 <div style={{ marginLeft: "-60px" }}>
@@ -1134,7 +1133,7 @@ const Municipality = () => {
                 </div>
               </div>
             )}
-            <div className={menu.style3}>
+           
               {sideBar2e && (
                 <div className={menu.style} style={{ marginLeft: "-108px" ,overflow:"auto"}}>
                   <div style={{ marginLeft: "-60px" }}>
@@ -2312,10 +2311,7 @@ const Municipality = () => {
                   </div>
                 )}
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            </div>         
     </React.Fragment>
   );
 };

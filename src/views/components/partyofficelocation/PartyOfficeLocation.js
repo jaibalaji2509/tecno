@@ -18,7 +18,7 @@ import "antd/dist/antd.css";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import {
-  createTypeofPartyOffice,
+  // createTypeofPartyOffice,
   getAllTypeofPartyOffice,
   updateTypeofPartyOffice,
 } from "../../../services/ApiService";
@@ -46,28 +46,28 @@ function PartyOfficeLocation() {
     setCreatepartyOffice(false);
   };
 
-  const userData1 = [
-    {
-      id: "1",
-      SNo: "1",
-      Street: "Head Quaters",
-      District: "HOF",
-      Area: "HO",
-      male: " - ",
-      ENTERBY: "Sathish ",
-      ENTERON: "12/05/2021",
-    },
-    {
-      id: "2",
-      SNo: "2",
-      Street: "Branch Office",
-      District: "BOFF",
-      Area: "BO",
-      male: " Head Quaters ",
-      ENTERBY: "Sathish ",
-      ENTERON: "31/05/2021",
-    },
-  ];
+  // const userData1 = [
+  //   {
+  //     id: "1",
+  //     SNo: "1",
+  //     Street: "Head Quaters",
+  //     District: "HOF",
+  //     Area: "HO",
+  //     male: " - ",
+  //     ENTERBY: "Sathish ",
+  //     ENTERON: "12/05/2021",
+  //   },
+  //   {
+  //     id: "2",
+  //     SNo: "2",
+  //     Street: "Branch Office",
+  //     District: "BOFF",
+  //     Area: "BO",
+  //     male: " Head Quaters ",
+  //     ENTERBY: "Sathish ",
+  //     ENTERON: "31/05/2021",
+  //   },
+  // ];
 
   const [AreaValue, setAreaValue] = useState("");
   const [DistrictValue, setDistrictValue] = useState("");
@@ -254,7 +254,7 @@ function PartyOfficeLocation() {
     setHidePartyOffice(false);
     setBackButt(true);
   };
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
 
   const onEdit = (data, id) => {
     console.log(data, "editabledATA");
@@ -366,26 +366,26 @@ function PartyOfficeLocation() {
       </components.MenuList>
     );
   };
-  const saveTypeofPartyOffice = async () => {
-    console.log("hello value");
+  // const saveTypeofPartyOffice = async () => {
+  //   console.log("hello value");
 
-    var response;
-    let body = {
-      typeofpartyoffice: DistrictValue,
-      abbreviation: AreaValue,
-      code: unitPrice,
-    };
-    console.log(body, "bodytype");
-    try {
-      response = await createTypeofPartyOffice(JSON.stringify(body));
+  //   var response;
+  //   let body = {
+  //     typeofpartyoffice: DistrictValue,
+  //     abbreviation: AreaValue,
+  //     code: unitPrice,
+  //   };
+  //   console.log(body, "bodytype");
+  //   try {
+  //     response = await createTypeofPartyOffice(JSON.stringify(body));
 
-      if (response.success === true) {
-        setInEditMode({ status: false });
-      }
-    } catch (error) {
-      alert("value not change");
-    }
-  };
+  //     if (response.success === true) {
+  //       setInEditMode({ status: false });
+  //     }
+  //   } catch (error) {
+  //     alert("value not change");
+  //   }
+  // };
   const [getPartyOffice, setGetPartyOffice] = useState([]);
 
   const getTypeofPartyOffice = async () => {
@@ -402,6 +402,7 @@ function PartyOfficeLocation() {
             abbreviation: x.abbreviation,
             code: x.code,
           });
+          return 0;
         });
         setGetPartyOffice(array);
       }

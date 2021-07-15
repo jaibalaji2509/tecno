@@ -674,7 +674,7 @@ const TownPanchayat = () => {
                   </div>
                 </CCol>
               </CRow>
-
+                                                              
               {inputList.map((x, i) => {
                 return (
                   <CRow
@@ -815,8 +815,7 @@ const TownPanchayat = () => {
               </CButton>
             </div>
           </div>
-        )}
-        <div className={menu.style3}>
+        )}       
           {sideBar2 && (
             <div className={menu.style} style={{ marginLeft: "-108px",overflow:"auto" }}>
               <div style={{ marginLeft: "-60px" }}>
@@ -993,7 +992,7 @@ const TownPanchayat = () => {
               </div>
             </div>
           )}
-          <div className={menu.style3}>
+         
             {sideBar1e && (
               <div className={menu.style} style={{ marginLeft: "-108px" ,overflow:"auto"}}>
                 <div style={{ marginLeft: "-60px" }}>
@@ -1124,7 +1123,7 @@ const TownPanchayat = () => {
                 </div>
               </div>
             )}
-            <div className={menu.style3}>
+           
               {sideBar2e && (
                 <div className={menu.style} style={{ marginLeft: "-108px" ,overflow:"auto"}}>
                   <div style={{ marginLeft: "-60px" }}>
@@ -2454,10 +2453,7 @@ const TownPanchayat = () => {
                   </div>
                 )}
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            </div>         
     </React.Fragment>
   );
 };

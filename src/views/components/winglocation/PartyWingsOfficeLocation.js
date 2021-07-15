@@ -18,8 +18,9 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 import ReactTooltip from "react-tooltip";
 import {
-  createTypeofPartyOffice,
-  getAllTypeofPartyOffice,
+  // createTypeofPartyOffice,
+  getAllTypeofPartyOffice,              
+  updateTypeofPartyOffice,              
 } from "../../../services/ApiService";
 
 
@@ -38,26 +39,7 @@ function PartyWingsOfficeLocation() {
     setAddPartyOffice(true);
     setCreatepartyOffice(false);
   };
-  const userDataoffice = [
-    {
-      SNo: "1",
-      Street: "Head Office TamilNadu Chennai Mylapore - 600004 ",
-      District: "HOF",
-      Area: "HO",
-      male: " - ",
-      ENTERBY: "Jai Balaji ",
-      ENTERON: "12/05/2021",
-    },
-    {
-      SNo: "2",
-      Street: "Branch Office",
-      District: "BOFF",
-      Area: "BO",
-      male: " Head Office TamilNadu Chennai Mylapore - 600004  ",
-      ENTERBY: "Jai Balaji ",
-      ENTERON: "31/05/2021",
-    },
-  ];
+  
   const [inEditMode, setInEditMode] = useState({
     status: false,
   rowKey:""
@@ -73,21 +55,24 @@ function PartyWingsOfficeLocation() {
         response.TypeofPartyOffice.map((x, i) => {
           array.push({
             ...x,
+            SNo:(i+1),
             typeofpartyoffice: x.typeofpartyoffice,
             abbreviation: x.abbreviation,
             code: x.code,
           });
+          return 0;
         });
-        setGetPartyOffice(array);
-      }
-    } catch (error) {
+        setGetPartyOffice(array);            
+      }      
+    }     
+    catch (error) {
       console.log("data nof find");
     }
   };
   useEffect(() => {
     getTypeofPartyOffice();
   }, []);
-  const fieldsoffice = [
+  const fieldsoffice = [    
     {
       key: "SNo",
       label: "S.NO",
@@ -96,7 +81,51 @@ function PartyWingsOfficeLocation() {
       filter: false,
     },
 
-    { key: "show_details1", label: "Type of Party Office", _style: { width: "15%" } },
+    {
+      key: "show_details1",
+      label: "Type of Party Office",
+      _style: { width: "15%" },
+    },
+    { key: "show_details2", label: "Abbreviation", _style: { width: "10%" } },
+    { key: "show_details3", label: "Code", _style: { width: "10%" } },
+    { key: "male", label: "Reporting To Office", _style: { width: "12%" } },
+
+    {
+      key: "ENTERBY",
+      label: "Entered By",
+      _style: { width: "7%" },
+      sorter: false,
+      filter: false,
+    },
+    {
+      key: "ENTERON",
+      label: "Entered On",
+      _style: { width: "7%" },
+      sorter: false,
+      filter: false,
+    },
+    {
+      key: "show_details",
+      label: "Action",
+      _style: { width: "5%" },
+      sorter: false,
+      filter: false,
+    },
+  ];
+  const fieldsoffice1 = [    
+    {
+      key: "SNo",
+      label: "S.NO",
+      _style: { width: "5%" },
+      sorter: false,
+      filter: false,
+    },
+
+    {
+      key: "show_details1",
+      label: "Type of Party Office",
+      _style: { width: "15%" },
+    },
     { key: "show_details2", label: "Abbreviation", _style: { width: "10%" } },
     { key: "show_details3", label: "Code", _style: { width: "10%" } },
     { key: "male", label: "Reporting To Office", _style: { width: "12%" } },
@@ -174,7 +203,6 @@ function PartyWingsOfficeLocation() {
     { key: "address", label: "Address 1", _style: { width: "15%" } },
     { key: "by", label: "Entered By", _style: { width: "10%" } },
     { key: "on", label: "Entered On", _style: { width: "10%" } },
-
     {
       label: "Action",
       key: "show_details",
@@ -242,6 +270,7 @@ function PartyWingsOfficeLocation() {
     setSideBar2(false);
   };
   const addTypeofPartyOffice1 = () => {
+
     switch (menu.menuStatus) {
       case "open":
       default:
@@ -412,10 +441,28 @@ function PartyWingsOfficeLocation() {
       </components.MenuList>
     );
   };
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const [DistrictValue, setDistrictValue] = useState("");
   const [AreaValue, setAreaValue] = useState("");
   const [unitPrice, setUnitPrice] = useState("");
+  const [passing, sePassings] = useState("");
+  const updatePartyOffice = async () => {
+    var response;
+
+    try {
+      response = await updateTypeofPartyOffice(
+        unitPrice,
+        DistrictValue,
+        AreaValue,
+        passing
+      );
+      console.log(response, "validadata");
+      if (response.success === true) {
+        setInEditMode({ status: false });
+        getTypeofPartyOffice();
+      }
+    } catch (error) {}
+  };
   const onCancel = () => {
     // reset the inEditMode state value
     setInEditMode({
@@ -429,30 +476,31 @@ function PartyWingsOfficeLocation() {
     console.log(data, "editabledATA");
     setInEditMode({
       status: true,
-      rowKey: id,
+      // rowKey: id,
     });
-console.log(inEditMode.rowKey, "editaaa");
-    setUnitPrice({ unitPrice: data.typeofpartyoffice });
-    setDistrictValue({ DistrictValue: data.abbreviation });
-    setAreaValue({ AreaValue: data.code });
+    console.log(inEditMode.rowKey, "editaaa");
+    setUnitPrice(data.typeofpartyoffice);
+    setDistrictValue(data.abbreviation);
+    setAreaValue(data.code);
+    sePassings(data._id);
   };
-  const saveTypeofPartyOffice = async () => {
-    console.log("hello value");
-    var response;
-    let body = {
-      typeofpartyoffice: DistrictValue,
-      abbreviation: AreaValue,
-      code: unitPrice,
-    };
-    console.log(body, "bodytype");
-    try {
-      response = await createTypeofPartyOffice(JSON.stringify(body));
+  // const saveTypeofPartyOffice = async () => {
+  //   console.log("hello value");
+  //   var response;
+  //   let body = {
+  //     typeofpartyoffice: DistrictValue,
+  //     abbreviation: AreaValue,
+  //     code: unitPrice,
+  //   };
+  //   console.log(body, "bodytype");
+  //   try {
+  //     response = await createTypeofPartyOffice(JSON.stringify(body));
 
-      if (response.success === true) {
-        alert("created scuccessfully");
-      }
-    } catch (error) {}
-  };
+  //     if (response.success === true) {
+  //       alert("created scuccessfully");
+  //     }
+  //   } catch (error) {}
+  // };
   return (
     <React.Fragment>
       <div className={menu.style3}>
@@ -641,19 +689,17 @@ console.log(inEditMode.rowKey, "editaaa");
                         return (
                           <td className="py-1">
                             <td>
-                              {inEditMode.status &&
-                              inEditMode.rowKey === item.id ? (
+                              {inEditMode.status && passing === item._id ? (
                                 <React.Fragment>
-                                  <button onClick={() => saveTypeofPartyOffice()}>
-                                    <i
-                                      className={"fa fa-save"}
-                                      style={{
-                                        color: "red",
-                                        position: "absolute",
-                                        marginTop: "4px",
-                                      }}
-                                    />
-                                  </button>
+                                  <i
+                                    className={"fa fa-save"}
+                                    style={{
+                                      color: "red",
+                                      position: "absolute",
+                                      marginTop: "4px",
+                                    }}
+                                    onClick={() => updatePartyOffice()}
+                                  />
   
                                   <i
                                     className={"fa fa-remove"}
@@ -672,22 +718,20 @@ console.log(inEditMode.rowKey, "editaaa");
                                     color: "blue",
                                   }}
                                   className={"fa fa-edit"}
-                                  onClick={() =>
-                                    onEdit(item)
-                                  }
+                                  onClick={() => onEdit(item)}
                                 />
                               )}
                             </td>
                           </td>
                         );
                       },
+  
                       show_details2: (item, index) => {
                         return (
                           <td key={index}>
-                            {inEditMode.status &&
-                            inEditMode.rowKey === item.id ? (
+                            {inEditMode.status && passing === item._id ? (
                               <input
-                                value={DistrictValue?.DistrictValue || ""}
+                                value={DistrictValue}
                                 onChange={(event) =>
                                   setDistrictValue(event.target.value)
                                 }
@@ -701,10 +745,9 @@ console.log(inEditMode.rowKey, "editaaa");
                       show_details3: (item, index) => {
                         return (
                           <td>
-                            {inEditMode.status &&
-                            inEditMode.rowKey === item.id ? (
+                            {inEditMode.status && passing === item._id ? (
                               <input
-                                value={AreaValue?.AreaValue || ""}
+                                value={AreaValue}
                                 onChange={(event) =>
                                   setAreaValue(event.target.value)
                                 }
@@ -719,10 +762,9 @@ console.log(inEditMode.rowKey, "editaaa");
                         return (
                           <td className="py-1">
                             <td>
-                              {inEditMode.status &&
-                              inEditMode.rowKey === item.id ? (
+                              {inEditMode.status && passing === item._id ? (
                                 <input
-                                  value={unitPrice?.unitPrice || ""}
+                                  value={unitPrice}
                                   onChange={(event) =>
                                     setUnitPrice(event.target.value)
                                   }
@@ -758,8 +800,7 @@ console.log(inEditMode.rowKey, "editaaa");
               </div>
             )}
           </div>
-        )}
-        {/* <div className={menu.style3}> */}
+        )}      
         {sideBar2 && (
           <div
             className={menu.style}
@@ -935,7 +976,7 @@ console.log(inEditMode.rowKey, "editaaa");
                 <CRow style={{ padding: "4%", marginTop: "-6.5%" }}>
                   <CDataTable
                     items={getPartyOffice}
-                    fields={fieldsoffice}
+                    fields={fieldsoffice1}
                     columnFilter
                     tableFilter
                     tableLabel={"List of Name of Party Wings Office"}
@@ -949,19 +990,17 @@ console.log(inEditMode.rowKey, "editaaa");
                         return (
                           <td className="py-1">
                             <td>
-                              {inEditMode.status &&
-                              inEditMode.rowKey === item.id ? (
+                              {inEditMode.status && passing === item._id ? (
                                 <React.Fragment>
-                                  <button onClick={() => saveTypeofPartyOffice()}>
-                                    <i
-                                      className={"fa fa-save"}
-                                      style={{
-                                        color: "red",
-                                        position: "absolute",
-                                        marginTop: "4px",
-                                      }}
-                                    />
-                                  </button>
+                                  <i
+                                    className={"fa fa-save"}
+                                    style={{
+                                      color: "red",
+                                      position: "absolute",
+                                      marginTop: "4px",
+                                    }}
+                                    onClick={() => updatePartyOffice()}
+                                  />
   
                                   <i
                                     className={"fa fa-remove"}
@@ -980,22 +1019,20 @@ console.log(inEditMode.rowKey, "editaaa");
                                     color: "blue",
                                   }}
                                   className={"fa fa-edit"}
-                                  onClick={() =>
-                                    onEdit(item)
-                                  }
+                                  onClick={() => onEdit(item)}
                                 />
                               )}
                             </td>
                           </td>
                         );
                       },
+  
                       show_details2: (item, index) => {
                         return (
                           <td key={index}>
-                            {inEditMode.status &&
-                            inEditMode.rowKey === item.id ? (
+                            {inEditMode.status && passing === item._id ? (
                               <input
-                                value={DistrictValue?.DistrictValue || ""}
+                                value={DistrictValue}
                                 onChange={(event) =>
                                   setDistrictValue(event.target.value)
                                 }
@@ -1009,10 +1046,9 @@ console.log(inEditMode.rowKey, "editaaa");
                       show_details3: (item, index) => {
                         return (
                           <td>
-                            {inEditMode.status &&
-                            inEditMode.rowKey === item.id ? (
+                            {inEditMode.status && passing === item._id ? (
                               <input
-                                value={AreaValue?.AreaValue || ""}
+                                value={AreaValue}
                                 onChange={(event) =>
                                   setAreaValue(event.target.value)
                                 }
@@ -1027,10 +1063,9 @@ console.log(inEditMode.rowKey, "editaaa");
                         return (
                           <td className="py-1">
                             <td>
-                              {inEditMode.status &&
-                              inEditMode.rowKey === item.id ? (
+                              {inEditMode.status && passing === item._id ? (
                                 <input
-                                  value={unitPrice?.unitPrice || ""}
+                                  value={unitPrice}
                                   onChange={(event) =>
                                     setUnitPrice(event.target.value)
                                   }
