@@ -16,7 +16,7 @@ import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
 import Select from "react-select";
 import "./CentralMinister.css";
 import { Dropdown, Menu } from "antd";
-import 'antd/dist/antd.css';
+import "antd/dist/antd.css";
 const CentralMinister = () => {
   // const [location, setLocation] = useState({
   //   state: "",
@@ -38,13 +38,13 @@ const CentralMinister = () => {
     street: "",
     pincode: "",
   });
-  const [files, ] = useState("");
+  const [files] = useState("");
   const [ministryList, setMinistryList] = useState(true);
   const [ministryCreate, setMinistryCreate] = useState(false);
   // const [ministryListadd, setMinistryListadd] = useState(true);
   // const [ministryCreateadd, setMinistryCreateadd] = useState(false);
   // const [municipalCorporation, setMunicipalCorporation] = useState({});
-  const [municipalName, ] = useState("");
+  const [municipalName] = useState("");
   // const [departmentList, setDepartmentList] = useState(true);
   // const [departmentCreate, setDepartmentCreate] = useState(false);
   // const [designationList, setDesignationList] = useState(true);
@@ -153,9 +153,9 @@ const CentralMinister = () => {
     },
   ];
   const userData1chiefministegrid = [];
-  
-  const [passing, ] = useState("");
-  const [error, ] = useState("");
+
+  const [passing] = useState("");
+  const [error] = useState("");
   const saveCorporation = async () => {
     setLocationHide({
       ...locationHide,
@@ -293,7 +293,7 @@ const CentralMinister = () => {
   const handleClick = () => {
     switch (menu.menuStatus) {
       case "open":
-        default:
+      default:
         setMenu({
           menuStatus: "close",
           style3: "menu2",
@@ -313,8 +313,8 @@ const CentralMinister = () => {
         setTimeout(() => {
           setSideBar1(false);
         }, 1000);
-        setSideBar3(false);        
-        break;       
+        setSideBar3(false);
+        break;
     }
   };
   const cancelclick = () => {
@@ -331,11 +331,11 @@ const CentralMinister = () => {
     setGridThree(false);
     setGridFour(false);
     setGridFive(false);
-  }
+  };
   const handleClick3 = () => {
     switch (menu.menuStatus) {
       case "open":
-        default:
+      default:
         setMenu({
           menuStatus: "close",
           style3: "menu2",
@@ -364,13 +364,13 @@ const CentralMinister = () => {
         setchairTwo(false);
         setchairOne(false);
         setvice(false);
-        break;       
+        break;
     }
   };
   const handleClick2 = () => {
     switch (menu.menuStatus) {
       case "open":
-        default:
+      default:
         setMenu({
           menuStatus: "close",
           style3: "menu2",
@@ -409,51 +409,62 @@ const CentralMinister = () => {
     { value: "Transportation Ministry", label: "Transportation Ministry" },
   ];
   function handleSelectFilter(option, checked) {
-    if(checked){
+    if (checked) {
       setFilter(option); // add option to filter array
       // let filterArr = fields.filter(row => row.color == option);
-    }else{
+    } else {
       //if unchecked, remove from filterArr and unfilter the table
-      let filterArr = fields.filter(row => row.color !== option);
+      let filterArr = fields.filter((row) => row.color !== option);
       setFilter(filterArr);
     }
   }
   const menus = (details) => {
-    return(
+    return (
       <Menu>
-      <Menu.Item>
-        <a href>Remove</a>
-      </Menu.Item>
-      <Menu.Item>
-      <a href
-        onClick={() => {
-          setSelected(details);
-          handleClick2();
-        }}>Update</a>
-      </Menu.Item> <Menu.Item>
-        <a href
-        onClick={() => {
-          setSelected(details);
-          handleClick();
-        }}
-        >History</a>
-      </Menu.Item>
-      <Menu.Item>
-        <a href
-        onClick={() => {
-          setSelected(details);
-          handleClick3();
-        }}
-        >Posting History</a>
-      </Menu.Item>
-    </Menu>
-    )
-  }
+        <Menu.Item>
+          <a href>Remove</a>
+        </Menu.Item>
+        <Menu.Item>
+          <a
+            href
+            onClick={() => {
+              setSelected(details);
+              handleClick2();
+            }}
+          >
+            Update
+          </a>
+        </Menu.Item>{" "}
+        <Menu.Item>
+          <a
+            href
+            onClick={() => {
+              setSelected(details);
+              handleClick();
+            }}
+          >
+            History
+          </a>
+        </Menu.Item>
+        <Menu.Item>
+          <a
+            href
+            onClick={() => {
+              setSelected(details);
+              handleClick3();
+            }}
+          >
+            Posting History
+          </a>
+        </Menu.Item>
+      </Menu>
+    );
+  };
 
   return (
     <div className={menu.style3}>
       {sideBar1 && (
-        <div className={menu.style} style={{ overflow:"auto" }}>
+        <div className={menu.style} style={{ overflow: "auto" }}>
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
               <div>
@@ -526,94 +537,92 @@ const CentralMinister = () => {
           </CRow>
           <CRow style={{ marginTop: "25px" }}>
             <CCol>
-           
-            <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"centralministergrideye"}
-            className="fa fa-eye"
-            onClick={partyShow}
-          >
-           party Posting
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"centralministergrideye"}
-            className="fa fa-eye"
-            onClick={chiefministerShow}
-                >
-                 As a MP
-        
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"centralministergrideye"}
-            className="fa fa-eye"
-            onClick={deputychiefministerShow}
-          >
-            As a MLA
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"centralministergrideye"}
-            className="fa fa-eye"
-            onClick={ministryShow}
-          >
-            State Minister
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"centralministergrideye"}
-            className="fa fa-eye"
-            onClick={centralMinister}
-          >
-            Central Minister
-          </i>
-            </CCol>           
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"centralministergrideye"}
+                className="fa fa-eye"
+                onClick={partyShow}
+              >
+                party Posting
+              </i>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"centralministergrideye"}
+                className="fa fa-eye"
+                onClick={chiefministerShow}
+              >
+                As a MP
+              </i>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"centralministergrideye"}
+                className="fa fa-eye"
+                onClick={deputychiefministerShow}
+              >
+                As a MLA
+              </i>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"centralministergrideye"}
+                className="fa fa-eye"
+                onClick={ministryShow}
+              >
+                State Minister
+              </i>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"centralministergrideye"}
+                className="fa fa-eye"
+                onClick={centralMinister}
+              >
+                Central Minister
+              </i>
+            </CCol>
           </CRow>
 
           {gridone && (
@@ -934,8 +943,13 @@ const CentralMinister = () => {
             </div>
           )}
           <CButton
-            style={{ position: "absolute", backgroundColor: "green",
-            border: "1px solid green", top: "15px", right: "15px" }}
+            style={{
+              position: "absolute",
+              backgroundColor: "green",
+              border: "1px solid green",
+              top: "15px",
+              right: "15px",
+            }}
             className={"cancelBtn"}
             onClick={cancelclick}
           >
@@ -943,8 +957,8 @@ const CentralMinister = () => {
           </CButton>
         </div>
       )}
-       {sideBar3 && (
-        <div className={menu.style} style={{overflow:"auto"}}>
+      {sideBar3 && (
+        <div className={menu.style} style={{ overflow: "auto" }}>
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
               <div>
@@ -963,77 +977,75 @@ const CentralMinister = () => {
 
           <CRow style={{ marginTop: "25px" }}>
             <CCol>
-                    
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"centralministergrideye"}
-            className="fa fa-eye"
-            onClick={chiefministerShow}
-                >
-                 As a MP
-        
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"centralministergrideye"}
-            className="fa fa-eye"
-            onClick={deputychiefministerShow}
-          >
-            As a MLA
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"centralministergrideye"}
-            className="fa fa-eye"
-            onClick={ministryShow}
-          >
-            State Minister
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"centralministergrideye"}
-            className="fa fa-eye"
-            onClick={centralMinister}
-          >
-            Central Minister
-          </i>
-            </CCol>           
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"centralministergrideye"}
+                className="fa fa-eye"
+                onClick={chiefministerShow}
+              >
+                As a MP
+              </i>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"centralministergrideye"}
+                className="fa fa-eye"
+                onClick={deputychiefministerShow}
+              >
+                As a MLA
+              </i>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"centralministergrideye"}
+                className="fa fa-eye"
+                onClick={ministryShow}
+              >
+                State Minister
+              </i>
+              <i
+                style={{
+                  fontWeight: "700",
+                  padding: "10px",
+                  backgroundColor: "#1313d4",
+                  color: "#fff",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginBottom: "15px",
+                  marginLeft: "20px",
+                }}
+                id={"centralministergrideye"}
+                className="fa fa-eye"
+                onClick={centralMinister}
+              >
+                Central Minister
+              </i>
+            </CCol>
           </CRow>
 
           {gridone && (
@@ -1272,7 +1284,7 @@ const CentralMinister = () => {
                 </CCol>
               </CRow>
             </div>
-          )}         
+          )}
           {gridfive && (
             <div>
               <CRow>
@@ -1354,8 +1366,13 @@ const CentralMinister = () => {
             </div>
           )}
           <CButton
-            style={{ position: "absolute", backgroundColor: "green",
-            border: "1px solid green", top: "15px", right: "15px" }}
+            style={{
+              position: "absolute",
+              backgroundColor: "green",
+              border: "1px solid green",
+              top: "15px",
+              right: "15px",
+            }}
             className={"cancelBtn"}
             onClick={() => {
               handleClick();
@@ -1517,8 +1534,13 @@ const CentralMinister = () => {
             </CCol>
           </CRow>
           <CButton
-            style={{ position: "absolute",  backgroundColor: "green",
-            border: "1px solid green",top: "15px", right: "15px" }}
+            style={{
+              position: "absolute",
+              backgroundColor: "green",
+              border: "1px solid green",
+              top: "15px",
+              right: "15px",
+            }}
             className={"cancelBtn"}
             onClick={handleClick2}
           >
@@ -1536,14 +1558,10 @@ const CentralMinister = () => {
               <div>
                 <div style={{ marginLeft: "-26px" }}>
                   <CRow style={{ marginTop: "45px" }}>
-                    <CCol >
-                      <CCol
-                        md="5"
-                        
-                      >
+                    <CCol>
+                      <CCol md="5">
                         <CButton
                           style={{
-                          
                             marginLeft: "35px",
                           }}
                           id={"centralministeraddmember"}
@@ -1578,51 +1596,51 @@ const CentralMinister = () => {
                       </CLabel>
                       <CCol md="12" style={{ marginLeft: "-10px" }}>
                         <CFormGroup variant="custom-radio" inline>
-                       <CInputRadio
-                          custom
-                          id="inline-radio1"
-                          onClick={changeChiefMinister}
-                          name="inline-radios"
-                          value="option1"
-                        />
-                        <CLabel
-                          variant="custom-checkbox"
-                          htmlFor="inline-radio1"
-                        >
-                          Chief Minister
-                        </CLabel>
-                      </CFormGroup>
-                      <CFormGroup variant="custom-radio" inline>
-                        <CInputRadio
-                          custom
-                          id="inline-radio2"
-                          onClick={changeDeputyChiefMinister}
-                          name="inline-radios"
-                          value="option2"
-                        />
-                        <CLabel
-                          variant="custom-checkbox"
-                          htmlFor="inline-radio2"
-                        >
-                          Prime Minister
-                        </CLabel>
-                      </CFormGroup>
-                      <CFormGroup variant="custom-radio" inline>
-                        <CInputRadio
-                          custom
-                          id="inline-radio3"
-                          onClick={changeMinistry}
-                          name="inline-radios"
-                          value="option3"
-                        />
-                        <CLabel
-                          variant="custom-checkbox"
-                          htmlFor="inline-radio3"
-                        >
-                          Ministry
-                        </CLabel>
-                      </CFormGroup>
-                    </CCol>
+                          <CInputRadio
+                            custom
+                            id="inline-radio1"
+                            onClick={changeChiefMinister}
+                            name="inline-radios"
+                            value="option1"
+                          />
+                          <CLabel
+                            variant="custom-checkbox"
+                            htmlFor="inline-radio1"
+                          >
+                            Chief Minister
+                          </CLabel>
+                        </CFormGroup>
+                        <CFormGroup variant="custom-radio" inline>
+                          <CInputRadio
+                            custom
+                            id="inline-radio2"
+                            onClick={changeDeputyChiefMinister}
+                            name="inline-radios"
+                            value="option2"
+                          />
+                          <CLabel
+                            variant="custom-checkbox"
+                            htmlFor="inline-radio2"
+                          >
+                            Prime Minister
+                          </CLabel>
+                        </CFormGroup>
+                        <CFormGroup variant="custom-radio" inline>
+                          <CInputRadio
+                            custom
+                            id="inline-radio3"
+                            onClick={changeMinistry}
+                            name="inline-radios"
+                            value="option3"
+                          />
+                          <CLabel
+                            variant="custom-checkbox"
+                            htmlFor="inline-radio3"
+                          >
+                            Ministry
+                          </CLabel>
+                        </CFormGroup>
+                      </CCol>
                     </CCol>
                   </CRow>
                 </div>
@@ -1652,12 +1670,12 @@ const CentralMinister = () => {
                               <td className="py-1">
                                 <CRow>
                                   <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                  
                                     <Dropdown
                                       className={"ant-dropdown-cutomize-by-me"}
                                       overlay={() => menus(item)}
                                     >
-                                      <a href
+                                      <a
+                                        href
                                         className="ant-dropdown-link"
                                         onClick={(e) => e.preventDefault()}
                                       >
@@ -1676,7 +1694,6 @@ const CentralMinister = () => {
                                 </CRow>
                               </td>
                             );
-     
                           },
 
                           details: (item, index) => {},
@@ -1796,12 +1813,12 @@ const CentralMinister = () => {
                               <td className="py-1">
                                 <CRow>
                                   <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                  
                                     <Dropdown
                                       className={"ant-dropdown-cutomize-by-me"}
                                       overlay={() => menus(item)}
                                     >
-                                      <a href
+                                      <a
+                                        href
                                         className="ant-dropdown-link"
                                         onClick={(e) => e.preventDefault()}
                                       >
@@ -1820,7 +1837,6 @@ const CentralMinister = () => {
                                 </CRow>
                               </td>
                             );
-     
                           },
 
                           details: (item, index) => {},
@@ -1917,12 +1933,12 @@ const CentralMinister = () => {
                               <td className="py-1">
                                 <CRow>
                                   <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                  
                                     <Dropdown
                                       className={"ant-dropdown-cutomize-by-me"}
                                       overlay={() => menus(item)}
                                     >
-                                      <a href
+                                      <a
+                                        href
                                         className="ant-dropdown-link"
                                         onClick={(e) => e.preventDefault()}
                                       >
@@ -1941,7 +1957,6 @@ const CentralMinister = () => {
                                 </CRow>
                               </td>
                             );
-     
                           },
 
                           details: (item, index) => {},

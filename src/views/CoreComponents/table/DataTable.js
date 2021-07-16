@@ -161,7 +161,7 @@ const CDataTable = (props) => {
 
   useEffect(() => {
     onSorterValueChange && onSorterValueChange(sorterState);
-  }, [JSON.stringify(sorterState)]);
+  }, );
 
   const paginationChange = (e) => {
     onPaginationChange && onPaginationChange(Number(e.target.value));
@@ -185,7 +185,7 @@ const CDataTable = (props) => {
 
   useEffect(() => {
     onColumnFilterChange && onColumnFilterChange(columnFilterState);
-  }, [JSON.stringify(columnFilterState)]);
+  }, );
 
   const tableFilterChange = (value, type) => {
     const isLazy = tableFilter && tableFilter.lazy === true;
@@ -197,7 +197,7 @@ const CDataTable = (props) => {
 
   useEffect(() => {
     onTableFilterChange && onTableFilterChange(tableFilterState);
-  }, [tableFilterState]);
+  }, );
 
   const getClickedColumnName = (e, detailsClick) => {
     if (detailsClick) {
@@ -234,12 +234,7 @@ const CDataTable = (props) => {
 
   useMemo(() => {
     compData.columnFiltered++;
-  }, [
-    JSON.stringify(columnFilter),
-    JSON.stringify(columnFilterState),
-    itemsDataColumns.join(""),
-    compData.changeItems,
-  ]);
+  },);
 
   const columnFiltered = useMemo(() => {
     let items = passedItems;
@@ -255,7 +250,7 @@ const CDataTable = (props) => {
       }
     });
     return items;
-  }, [compData.columnFiltered]);
+  }, );
 
   const tableFiltered = useMemo(() => {
     let items = columnFiltered;
@@ -269,7 +264,7 @@ const CDataTable = (props) => {
       return !!itemsDataColumns.find((key) => valueContainFilter(item[key]));
     });
     return items;
-  }, [compData.columnFiltered, tableFilterState, JSON.stringify(tableFilter)]);
+  }, );
 
   const sortedItems = useMemo(() => {
     const col = sorterState.column;
@@ -291,17 +286,13 @@ const CDataTable = (props) => {
       return a > b ? 1 * flip : b > a ? -1 * flip : 0;
     });
     return sorted;
-  }, [
-    JSON.stringify(tableFiltered),
-    JSON.stringify(sorterState),
-    JSON.stringify(sorter),
-  ]);
+  }, );
 
   useEffect(() => {
     !compData.firstRun &&
       onFilteredItemsChange &&
       onFilteredItemsChange(sortedItems);
-  }, [JSON.stringify(sortedItems)]);
+  }, );
 
   const tableClasses = [
     "table",
@@ -332,13 +323,13 @@ const CDataTable = (props) => {
   const totalPages = Math.ceil(sortedItems.length / perPageItems) || 1;
   useMemo(() => {
     !compData.firstRun && onPagesChange && onPagesChange(totalPages);
-  }, [totalPages]);
+  }, );
 
   const computedPage = useMemo(() => {
     const compPage = pagination ? page : activePage;
     !compData.firstRun && onPageChange && onPageChange(compPage);
     return compPage;
-  }, [page, activePage, pagination]);
+  },);
 
   const firstItemIndex = (computedPage - 1) * perPageItems || 0;
 

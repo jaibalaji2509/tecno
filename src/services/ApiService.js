@@ -281,9 +281,7 @@ export async function updateTypeofPartyOffice(
         typeofpartyoffice: unitPrice,
         abbreviation: DistrictValue,
         code: AreaValue,
-      id:id,
-      
-
+        id: id,
       }),
     });
     if (response.status === 401) {

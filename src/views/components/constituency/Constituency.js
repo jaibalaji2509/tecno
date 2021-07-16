@@ -308,7 +308,7 @@ function Constituency() {
         setTimeout(() => {
           setSideBar1e(false);
         }, 1000);
-        setInputList([{ name: "", abbreviation: "", code: "" },]);
+        setInputList([{ name: "", abbreviation: "", code: "" }]);
         break;
     }
   };
@@ -340,7 +340,7 @@ function Constituency() {
         setTimeout(() => {
           setSideBar2e(false);
         }, 1000);
-        setInputList([{ name: "", abbreviation: "", code: "" },]);
+        setInputList([{ name: "", abbreviation: "", code: "" }]);
         break;
     }
   };
@@ -372,7 +372,7 @@ function Constituency() {
         setTimeout(() => {
           setSideBar1(false);
         }, 1000);
-        setInputList([{ name: "", abbreviation: "", code: "" },]);
+        setInputList([{ name: "", abbreviation: "", code: "" }]);
         break;
     }
   };
@@ -404,7 +404,7 @@ function Constituency() {
         setTimeout(() => {
           setSideBar2(false);
         }, 1000);
-        setInputList([{ name: "", abbreviation: "", code: "" },]);
+        setInputList([{ name: "", abbreviation: "", code: "" }]);
         break;
     }
   };
@@ -691,7 +691,10 @@ function Constituency() {
       />
       <div className={menu.style3}>
         {sideBar1 && (
-          <div className={menu.style} style={{ marginLeft: "-108px" ,overflow:"auto"}}>
+          <div
+            className={menu.style}
+            style={{ marginLeft: "-108px", overflow: "auto" }}
+          >
             <div style={{ marginLeft: "-60px" }}>
               <CRow className={""}>
                 <CCol md="12" lg="12" sm="12">
@@ -850,7 +853,10 @@ function Constituency() {
         )}
         <div className={menu.style3}>
           {sideBar2 && (
-            <div className={menu.style} style={{ marginLeft: "-108px",overflow:"auto" }}>
+            <div
+              className={menu.style}
+              style={{ marginLeft: "-108px", overflow: "auto" }}
+            >
               <div style={{ marginLeft: "-60px" }}>
                 <CRow className={""}>
                   <CCol md="12" lg="12" sm="12">
@@ -876,14 +882,16 @@ function Constituency() {
                   lg={12}
                 >
                   <CCol md="6">
-                    <CLabel className={"form-labels-9 col-md-5 reAssign-Label"} 
-                    style={{position:"fixed"}}
+                    <CLabel
+                      className={"form-labels-9 col-md-5 reAssign-Label"}
+                      style={{ position: "fixed" }}
                     >
                       Parliamentary Constituency:{" "}
                     </CLabel>
 
-                    <CLabel className={"reAssign-Detail"}
-                    style={{marginLeft:"230px"}}
+                    <CLabel
+                      className={"reAssign-Detail"}
+                      style={{ marginLeft: "230px" }}
                     >
                       {selected.assignedTo
                         ? selected.assignedTo.firstName
@@ -1032,7 +1040,10 @@ function Constituency() {
           )}
           <div className={menu.style3}>
             {sideBar1e && (
-              <div className={menu.style} style={{ marginLeft: "-108px",overflow:"auto" }}>
+              <div
+                className={menu.style}
+                style={{ marginLeft: "-108px", overflow: "auto" }}
+              >
                 <div style={{ marginLeft: "-60px" }}>
                   <CRow className={""}>
                     <CCol md="12" lg="12" sm="12">
@@ -1107,8 +1118,6 @@ function Constituency() {
                             onChange={(e) => handleInputChange(e, i)}
                           />
                         </CCol>
-
-                       
                       </CRow>
                     );
                   })}
@@ -1160,7 +1169,10 @@ function Constituency() {
             )}
             <div className={menu.style3}>
               {sideBar2e && (
-                <div className={menu.style} style={{ marginLeft: "-108px",overflow:"auto" }}>
+                <div
+                  className={menu.style}
+                  style={{ marginLeft: "-108px", overflow: "auto" }}
+                >
                   <div style={{ marginLeft: "-60px" }}>
                     <CRow className={""}>
                       <CCol md="12" lg="12" sm="12">
@@ -1188,13 +1200,14 @@ function Constituency() {
                       <CCol md="6">
                         <CLabel
                           className={"form-labels-9 col-md-5 reAssign-Label"}
-                        style={{position:"fixed"}}
+                          style={{ position: "fixed" }}
                         >
                           Parliamentary Constituency:{" "}
                         </CLabel>
 
-                        <CLabel className={"reAssign-Detail"}
-                        style={{marginLeft:"230px"}}
+                        <CLabel
+                          className={"reAssign-Detail"}
+                          style={{ marginLeft: "230px" }}
                         >
                           {selected.assignedTo
                             ? selected.assignedTo.firstName
@@ -1258,7 +1271,7 @@ function Constituency() {
                               value={x.panchayatcode}
                               onChange={(e) => handleInputChange(e, i)}
                             />
-                          </CCol>                         
+                          </CCol>
                         </CRow>
                       );
                     })}
@@ -1307,7 +1320,7 @@ function Constituency() {
                     </CButton>
                   </div>
                 </div>
-              )}  
+              )}
               {sideBarup1 && (
                 <div
                   className={menu.style1}
@@ -1550,7 +1563,12 @@ function Constituency() {
                 >
                   <div style={{ marginLeft: "-30px" }}>
                     <CRow className={""}>
-                      <CCol md="12" lg="12" sm="12" style={{ marginTop: "20px" }}>
+                      <CCol
+                        md="12"
+                        lg="12"
+                        sm="12"
+                        style={{ marginTop: "20px" }}
+                      >
                         <div>
                           <span
                             style={{
@@ -1575,13 +1593,14 @@ function Constituency() {
                       <CCol md="6">
                         <CLabel
                           className={"form-labels-9 col-md-5 reAssign-Label"}
-                        style={{position:"fixed"}}
+                          style={{ position: "fixed" }}
                         >
                           Parliamentary Constituency:{" "}
                         </CLabel>
 
-                        <CLabel className={"reAssign-Detail"}
-                        style={{marginLeft:"230px"}}
+                        <CLabel
+                          className={"reAssign-Detail"}
+                          style={{ marginLeft: "230px" }}
                         >
                           {selected.assignedTo
                             ? selected.assignedTo.firstName

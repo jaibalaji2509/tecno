@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import {
   CCol,
@@ -18,11 +17,8 @@ import ConstituencyMember from "../constituency/ConstituencyMember";
 import RajyaSabha from "../rajyasabha/RajyaSabha";
 import MemberTownPanchayat from "../membertownpanchayat/MemberTownPanchayat";
 
-
-
 const MapPublicRepresent = () => {
   const [active, setActive] = useState("0");
-
 
   const activeTabHandler = (val) => {
     setActive(val);
@@ -31,8 +27,7 @@ const MapPublicRepresent = () => {
   return (
     <CRow>
       <div>
-        <Router>
-        </Router>
+        <Router></Router>
       </div>
       <CCol>
         <CCard>
@@ -42,56 +37,50 @@ const MapPublicRepresent = () => {
                 <CNavItem>
                   <CNavLink
                     data-tab="0"
-               onClick={()=>setActive("0")}
+                    onClick={() => setActive("0")}
                     id={"tabsListAddEmployee"}
                   >
-                  Constituency Member{" "}
+                    Constituency Member{" "}
                   </CNavLink>
                 </CNavItem>
 
                 <CNavItem>
                   <CNavLink
                     id={"tabsListReporting"}
-                  onClick={()=>setActive("1")}
+                    onClick={() => setActive("1")}
                     data-tab="1"
-                 
                   >
-                  Rajya Sabha{" "}
+                    Rajya Sabha{" "}
                   </CNavLink>
                 </CNavItem>
-
 
                 <CNavItem>
                   <CNavLink
                     id={"tabsListReporting"}
-                  onClick={()=>setActive("2")}
+                    onClick={() => setActive("2")}
                     data-tab="2"
-                 
                   >
-                  Member Town Panchayat{" "}
+                    Member Town Panchayat{" "}
                   </CNavLink>
                 </CNavItem>
               </CNav>
 
               <CTabContent>
-                <CTabPane  data-tab="0">
-                  {active ==="0" && (
-                 <ConstituencyMember onActive={activeTabHandler}/>
-                 )}
+                <CTabPane data-tab="0">
+                  {active === "0" && (
+                    <ConstituencyMember onActive={activeTabHandler} />
+                  )}
                 </CTabPane>
 
                 <CTabPane data-tab="1">
-                  {active ==="1" && (
-                  <RajyaSabha onActive={activeTabHandler}/>
-                  )}
+                  {active === "1" && <RajyaSabha onActive={activeTabHandler} />}
                 </CTabPane>
 
                 <CTabPane data-tab="2">
-                  {active ==="2" && (
-                  <MemberTownPanchayat onActive={activeTabHandler}/>
+                  {active === "2" && (
+                    <MemberTownPanchayat onActive={activeTabHandler} />
                   )}
                 </CTabPane>
-              
               </CTabContent>
             </CTabs>
           </CCardBody>

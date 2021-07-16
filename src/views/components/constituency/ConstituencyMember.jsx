@@ -91,7 +91,13 @@ const ConstituencyMember = () => {
   };
 
   const fields = [
-    { key: "sNo", label: "Sl. No", _style: { width: "2%" }, sorter:false,filter:false },
+    {
+      key: "sNo",
+      label: "Sl. No",
+      _style: { width: "2%" },
+      sorter: false,
+      filter: false,
+    },
     {
       key: "typeconstituency",
       label: "Type of Constituency",

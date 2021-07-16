@@ -373,7 +373,7 @@ function LocationLibrary(props) {
         setTimeout(() => {
           setSideBar1(false);
         }, 1000);
-        setInputList([{ name: "", abbreviation: "", code: "" },]);        
+        setInputList([{ name: "", abbreviation: "", code: "" }]);
         break;
     }
   };
@@ -400,7 +400,7 @@ function LocationLibrary(props) {
         setSideBarup3(false);
         setSideBarup4(false);
         setSideBarup5(false);
-        
+
         break;
       case "close":
         setMenu({
@@ -409,10 +409,10 @@ function LocationLibrary(props) {
         });
         setTimeout(() => {
           setSideBar2(false);
-        }, 1000);  
-        setInputList([{ name: "", abbreviation: "", code: "" },]);    
+        }, 1000);
+        setInputList([{ name: "", abbreviation: "", code: "" }]);
         break;
-    }   
+    }
   };
   const handleClickarea = () => {
     switch (menu.menuStatus) {
@@ -447,7 +447,7 @@ function LocationLibrary(props) {
         setTimeout(() => {
           setSideBar3(false);
         }, 1000);
-        setInputList([{ name: "", abbreviation: "", code: "" },]);
+        setInputList([{ name: "", abbreviation: "", code: "" }]);
         break;
     }
   };
@@ -484,7 +484,7 @@ function LocationLibrary(props) {
         setTimeout(() => {
           setSideBar4(false);
         }, 1000);
-        setInputList([{ name: "", abbreviation: "", code: "" },]);
+        setInputList([{ name: "", abbreviation: "", code: "" }]);
         break;
     }
   };
@@ -521,7 +521,7 @@ function LocationLibrary(props) {
         setTimeout(() => {
           setSideBar5(false);
         }, 1000);
-        setInputList([{ name: "", abbreviation: "", code: "" },]);
+        setInputList([{ name: "", abbreviation: "", code: "" }]);
         break;
     }
   };
@@ -561,7 +561,7 @@ function LocationLibrary(props) {
         setTimeout(() => {
           setSideBar1e(false);
         }, 1000);
-        setInputList([{ name: "", abbreviation: "", code: "" },]);
+        setInputList([{ name: "", abbreviation: "", code: "" }]);
         break;
     }
   };
@@ -601,7 +601,7 @@ function LocationLibrary(props) {
         setTimeout(() => {
           setSideBar2e(false);
         }, 1000);
-        setInputList([{ name: "", abbreviation: "", code: "" },]);
+        setInputList([{ name: "", abbreviation: "", code: "" }]);
         break;
     }
   };
@@ -641,7 +641,7 @@ function LocationLibrary(props) {
         setTimeout(() => {
           setSideBar3e(false);
         }, 1000);
-        setInputList([{ name: "", abbreviation: "", code: "" },]);
+        setInputList([{ name: "", abbreviation: "", code: "" }]);
         break;
     }
   };
@@ -681,7 +681,7 @@ function LocationLibrary(props) {
         setTimeout(() => {
           setSideBar4e(false);
         }, 1000);
-        setInputList([{ name: "", abbreviation: "", code: "" },]);
+        setInputList([{ name: "", abbreviation: "", code: "" }]);
         break;
     }
   };
@@ -721,7 +721,7 @@ function LocationLibrary(props) {
         setTimeout(() => {
           setSideBar5e(false);
         }, 1000);
-        setInputList([{ name: "", abbreviation: "", code: "" },]);
+        setInputList([{ name: "", abbreviation: "", code: "" }]);
         break;
     }
   };
@@ -1743,7 +1743,10 @@ function LocationLibrary(props) {
       />
       <div className={menu.style3}>
         {sideBar1 && (
-          <div className={menu.style} style={{ marginLeft: "-108px", overflow:"auto" }}>
+          <div
+            className={menu.style}
+            style={{ marginLeft: "-108px", overflow: "auto" }}
+          >
             <div style={{ marginLeft: "-60px" }}>
               <CRow className={""}>
                 <CCol md="12" lg="12" sm="12">
@@ -1903,7 +1906,10 @@ function LocationLibrary(props) {
 
         <div className={menu.style3}>
           {sideBar2 && (
-            <div className={menu.style} style={{ marginLeft: "-108px", overflow:"auto" }}>
+            <div
+              className={menu.style}
+              style={{ marginLeft: "-108px", overflow: "auto" }}
+            >
               <div style={{ marginLeft: "-60px" }}>
                 <CRow className={""}>
                   <CCol md="12" lg="12" sm="12">
@@ -1935,7 +1941,7 @@ function LocationLibrary(props) {
 
                     <CLabel
                       className={"reAssign-Detail"}
-                      style={{marginLeft:"70px"}}
+                      style={{ marginLeft: "70px" }}
                     >
                       {selected.assignedTo
                         ? selected.assignedTo.firstName
@@ -2083,7 +2089,10 @@ function LocationLibrary(props) {
           )}
           <div className={menu.style3}>
             {sideBar3 && (
-              <div className={menu.style} style={{ marginLeft: "-108px", overflow:"auto" }}>
+              <div
+                className={menu.style}
+                style={{ marginLeft: "-108px", overflow: "auto" }}
+              >
                 <div style={{ marginLeft: "-60px" }}>
                   <CRow className={""}>
                     <CCol md="12" lg="12" sm="12">
@@ -2117,7 +2126,7 @@ function LocationLibrary(props) {
 
                       <CLabel
                         className={"reAssign-Detail"}
-                        style={{marginLeft:"70px"}}
+                        style={{ marginLeft: "70px" }}
                       >
                         {selected.assignedTo
                           ? selected.assignedTo.firstName
@@ -2294,7 +2303,10 @@ function LocationLibrary(props) {
 
             <div className={menu.style3}>
               {sideBar4 && (
-                <div className={menu.style} style={{ marginLeft: "-108px", overflow:"auto" }}>
+                <div
+                  className={menu.style}
+                  style={{ marginLeft: "-108px", overflow: "auto" }}
+                >
                   <div style={{ marginLeft: "-60px" }}>
                     <CRow className={""}>
                       <CCol md="12" lg="12" sm="12">
@@ -2326,10 +2338,7 @@ function LocationLibrary(props) {
                           State :{" "}
                         </CLabel>
 
-                        <CLabel
-                          className={"reAssign-Detail"}
-                          
-                        >
+                        <CLabel className={"reAssign-Detail"}>
                           {selected.assignedTo
                             ? selected.assignedTo.firstName
                             : "Tamilnadu"}
@@ -2502,7 +2511,10 @@ function LocationLibrary(props) {
               )}
               <div className={menu.style3}>
                 {sideBar5 && (
-                  <div className={menu.style} style={{ marginLeft: "-108px", overflow:"auto" }}>
+                  <div
+                    className={menu.style}
+                    style={{ marginLeft: "-108px", overflow: "auto" }}
+                  >
                     <div style={{ marginLeft: "-60px" }}>
                       <CRow className={""}>
                         <CCol md="12" lg="12" sm="12">
@@ -2535,10 +2547,7 @@ function LocationLibrary(props) {
                             State :{" "}
                           </CLabel>
 
-                          <CLabel
-                            className={"reAssign-Detail"}
-                            
-                          >
+                          <CLabel className={"reAssign-Detail"}>
                             {selected.assignedTo
                               ? selected.assignedTo.firstName
                               : "Tamilnadu"}
@@ -2577,10 +2586,7 @@ function LocationLibrary(props) {
                             Street :{" "}
                           </CLabel>
 
-                          <CLabel
-                            className={"reAssign-Detail"}
-                            
-                          >
+                          <CLabel className={"reAssign-Detail"}>
                             {selected.assignedTo
                               ? selected.assignedTo.firstName
                               : "Kamaraj Nagar"}
@@ -2648,7 +2654,7 @@ function LocationLibrary(props) {
                           </CRow>
                         );
                       })}
-                      <CRow style={{ marginLeft: "200px", marginTop:"-70px" }}>
+                      <CRow style={{ marginLeft: "200px", marginTop: "-70px" }}>
                         <CCol md="3">
                           <CButton
                             style={{
@@ -2696,7 +2702,7 @@ function LocationLibrary(props) {
                   {sideBar1e && (
                     <div
                       className={menu.style}
-                      style={{ marginLeft: "-108px", overflow:"auto" }}
+                      style={{ marginLeft: "-108px", overflow: "auto" }}
                     >
                       <div style={{ marginLeft: "-60px" }}>
                         <CRow className={""}>
@@ -2772,8 +2778,6 @@ function LocationLibrary(props) {
                                   onChange={(e) => handleInputChange(e, i)}
                                 />
                               </CCol>
-
-                             
                             </CRow>
                           );
                         })}
@@ -2827,7 +2831,7 @@ function LocationLibrary(props) {
                     {sideBar2e && (
                       <div
                         className={menu.style}
-                        style={{ marginLeft: "-108px", overflow:"auto" }}
+                        style={{ marginLeft: "-108px", overflow: "auto" }}
                       >
                         <div style={{ marginLeft: "-60px" }}>
                           <CRow className={""}>
@@ -2864,7 +2868,7 @@ function LocationLibrary(props) {
 
                               <CLabel
                                 className={"reAssign-Detail"}
-                                style={{marginLeft:"70px"}}
+                                style={{ marginLeft: "70px" }}
                               >
                                 {selected.assignedTo
                                   ? selected.assignedTo.firstName
@@ -2928,8 +2932,6 @@ function LocationLibrary(props) {
                                     onChange={(e) => handleInputChange(e, i)}
                                   />
                                 </CCol>
-
-                               
                               </CRow>
                             );
                           })}
@@ -2985,7 +2987,7 @@ function LocationLibrary(props) {
                       {sideBar3e && (
                         <div
                           className={menu.style}
-                          style={{ marginLeft: "-108px", overflow:"auto" }}
+                          style={{ marginLeft: "-108px", overflow: "auto" }}
                         >
                           <div style={{ marginLeft: "-60px" }}>
                             <CRow className={""}>
@@ -3023,7 +3025,7 @@ function LocationLibrary(props) {
 
                                 <CLabel
                                   className={"reAssign-Detail"}
-                                  style={{marginLeft:"70px"}}
+                                  style={{ marginLeft: "70px" }}
                                 >
                                   {selected.assignedTo
                                     ? selected.assignedTo.firstName
@@ -3120,8 +3122,6 @@ function LocationLibrary(props) {
                                       onChange={(e) => handleInputChange(e, i)}
                                     />
                                   </CCol>
-
-                                 
                                 </CRow>
                               );
                             })}
@@ -3178,7 +3178,7 @@ function LocationLibrary(props) {
                         {sideBar4e && (
                           <div
                             className={menu.style}
-                            style={{ marginLeft: "-108px", overflow:"auto" }}
+                            style={{ marginLeft: "-108px", overflow: "auto" }}
                           >
                             <div style={{ marginLeft: "-60px" }}>
                               <CRow className={""}>
@@ -3214,10 +3214,7 @@ function LocationLibrary(props) {
                                     State :{" "}
                                   </CLabel>
 
-                                  <CLabel
-                                    className={"reAssign-Detail"}
-                                    
-                                  >
+                                  <CLabel className={"reAssign-Detail"}>
                                     {selected.assignedTo
                                       ? selected.assignedTo.firstName
                                       : "Tamilnadu"}
@@ -3328,8 +3325,6 @@ function LocationLibrary(props) {
                                         }
                                       />
                                     </CCol>
-
-                                 
                                   </CRow>
                                 );
                               })}
@@ -3385,7 +3380,7 @@ function LocationLibrary(props) {
                           {sideBar5e && (
                             <div
                               className={menu.style}
-                              style={{ marginLeft: "-108px" , overflow:"auto"}}
+                              style={{ marginLeft: "-108px", overflow: "auto" }}
                             >
                               <div style={{ marginLeft: "-60px" }}>
                                 <CRow className={""}>
@@ -3424,10 +3419,7 @@ function LocationLibrary(props) {
                                       State :{" "}
                                     </CLabel>
 
-                                    <CLabel
-                                      className={"reAssign-Detail"}
-                                     
-                                    >
+                                    <CLabel className={"reAssign-Detail"}>
                                       {selected.assignedTo
                                         ? selected.assignedTo.firstName
                                         : "Tamilnadu"}
@@ -3472,10 +3464,7 @@ function LocationLibrary(props) {
                                       Street :{" "}
                                     </CLabel>
 
-                                    <CLabel
-                                      className={"reAssign-Detail"}
-                                      
-                                    >
+                                    <CLabel className={"reAssign-Detail"}>
                                       {selected.assignedTo
                                         ? selected.assignedTo.firstName
                                         : "Kamaraj Nagar"}
@@ -3515,12 +3504,15 @@ function LocationLibrary(props) {
                                           }
                                         />
                                       </CCol>
-
-                                    
                                     </CRow>
                                   );
                                 })}
-                                <CRow style={{ marginLeft: "200px", marginTop:'-70px' }}>
+                                <CRow
+                                  style={{
+                                    marginLeft: "200px",
+                                    marginTop: "-70px",
+                                  }}
+                                >
                                   <CCol md="3">
                                     <CButton
                                       style={{
@@ -3828,7 +3820,7 @@ function LocationLibrary(props) {
 
                                     <CLabel
                                       className={"reAssign-Detail"}
-                                      style={{marginLeft:"70px"}}
+                                      style={{ marginLeft: "70px" }}
                                     >
                                       {selected.assignedTo
                                         ? selected.assignedTo.firstName
@@ -4072,7 +4064,7 @@ function LocationLibrary(props) {
 
                                     <CLabel
                                       className={"reAssign-Detail"}
-                                      style={{marginLeft:"70px"}}
+                                      style={{ marginLeft: "70px" }}
                                     >
                                       {selected.assignedTo
                                         ? selected.assignedTo.firstName
@@ -4329,10 +4321,7 @@ function LocationLibrary(props) {
                                       State :{" "}
                                     </CLabel>
 
-                                    <CLabel
-                                      className={"reAssign-Detail"}
-                                      
-                                    >
+                                    <CLabel className={"reAssign-Detail"}>
                                       {selected.assignedTo
                                         ? selected.assignedTo.firstName
                                         : "Tamilnadu"}
@@ -4602,10 +4591,7 @@ function LocationLibrary(props) {
                                       State :{" "}
                                     </CLabel>
 
-                                    <CLabel
-                                      className={"reAssign-Detail"}
-                                      
-                                    >
+                                    <CLabel className={"reAssign-Detail"}>
                                       {selected.assignedTo
                                         ? selected.assignedTo.firstName
                                         : "Tamilnadu"}
@@ -4650,10 +4636,7 @@ function LocationLibrary(props) {
                                       Street :{" "}
                                     </CLabel>
 
-                                    <CLabel
-                                      className={"reAssign-Detail"}
-                                      
-                                    >
+                                    <CLabel className={"reAssign-Detail"}>
                                       {selected.assignedTo
                                         ? selected.assignedTo.firstName
                                         : "Kamaraj Nagar"}
