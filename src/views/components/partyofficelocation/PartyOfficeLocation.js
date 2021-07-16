@@ -7,7 +7,6 @@ import {
   CLabel,
   CButton,
   CInput,
-  CWidgetDropdown,
   CLink,
 } from "@coreui/react";
 import ReactTooltip from "react-tooltip";
@@ -41,6 +40,7 @@ function PartyOfficeLocation() {
   const changePartyOffice = async () => {
     await setAddPartyOffice(false);
     await setCreatepartyOffice(true);
+    setSideBar1("");
   };
   const cancelPartyOffice = () => {
     setAddPartyOffice(true);

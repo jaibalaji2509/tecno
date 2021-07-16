@@ -54,7 +54,6 @@ const MunicipalCorporation = () => {
   const [municipalListadd, setMunicipalListadd] = useState(true);
   const [MunicipalCreateadd, setmunicipalCreateadd] = useState(false);
   const [selected, setSelected] = useState([]);
-  const [selecteds, setSelecteds] = useState([]);
   const [selected1, setSelected1] = useState([]);
   const [collected, setCollected] = useState([]);
   const [villageHide, setVillageHide] = useState({
@@ -1099,8 +1098,8 @@ const MunicipalCorporation = () => {
                                 </CLabel>
 
                                 <CLabel className={"reAssign-Detail"} style={{marginLeft:"190px",marginTop:"3px"}}>
-                                  {selecteds.assignedTo
-                                    ? selecteds.assignedTo.firstName
+                                  {selected.assignedTo
+                                    ? selected.assignedTo.firstName
                                     : ": South Chennai"}
                                 </CLabel>
                               </CCol>                             
@@ -1279,8 +1278,8 @@ const MunicipalCorporation = () => {
                                 </CLabel>
 
                                 <CLabel className={"reAssign-Detail"} style={{marginLeft:"190px",marginTop:"3px"}}>
-                                  {selecteds.assignedTo
-                                    ? selecteds.assignedTo.firstName
+                                  {selected.assignedTo
+                                    ? selected.assignedTo.firstName
                                     : ": South Chennai"}
                                 </CLabel>
                               </CCol>                             
@@ -1626,8 +1625,8 @@ const MunicipalCorporation = () => {
                                 </CLabel>
 
                                 <CLabel className={"reAssign-Detail"} style={{marginLeft:"190px",marginTop:"3px"}}>
-                                  {selecteds.assignedTo
-                                    ? selecteds.assignedTo.firstName
+                                  {selected.assignedTo
+                                    ? selected.assignedTo.firstName
                                     : ": South Chennai"}
                                 </CLabel>
                               </CCol>                             
@@ -2183,7 +2182,8 @@ const MunicipalCorporation = () => {
                               <Select
                                 id={"municipaldistrict"}
                                 name={"city"}
-                                placeholder={" Corporation Name"}                                
+                                placeholder={" Corporation Name"}
+                                value={selected1}
                                 onChange={(e) => setSelected1(e)}
                                 options={selectDistrict}
                               />

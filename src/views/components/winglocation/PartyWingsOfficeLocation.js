@@ -34,6 +34,8 @@ function PartyWingsOfficeLocation() {
   const changePartyOffice = async () => {
     await setAddPartyOffice(false);
     await setCreatepartyOffice(true);
+    setSideBar1("");
+    setSideBar2("");
   };
   const cancelPartyOffice = () => {
     setAddPartyOffice(true);

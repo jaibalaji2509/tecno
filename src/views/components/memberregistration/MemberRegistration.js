@@ -5,7 +5,7 @@ import {
   CCol,
   CButton,
   CLabel,
-  CWidgetDropdown,
+  // CWidgetDropdown,
   CInput,
   CInputRadio,
   CFormGroup,
@@ -18,7 +18,7 @@ import { toast } from "react-toastify";
 import { Dropdown, Menu } from "antd";
 import 'antd/dist/antd.css';
 import ImageUploading from "react-images-uploading";
-import ReactTooltip from 'react-tooltip';
+// import ReactTooltip from 'react-tooltip';
 
 function MemberRegistration() {
   const [, setSelected] = useState({});
