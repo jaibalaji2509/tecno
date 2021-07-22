@@ -62,6 +62,7 @@ const MemberRegistration = React.lazy(() => import('./views/components/memberreg
 const PartyOfficeLocation = React.lazy(() => import('./views/components/partyofficelocation/PartyOfficeLocation'));
 const PartyPosting = React.lazy(() => import('./views/components/partyposting/PartyPosting'));
 const AssignPartyPosting = React.lazy(() => import('./views/components/assignpartyposting/AssignPartyPosting'));
+const RuralBodies = React.lazy(() => import('./views/components/rural-bodies/RuralBodies'));
 
 const StateMinister = React.lazy(() => import('./views/components/stateminister/StateMinister'));
 const CentralMinister = React.lazy(() => import('./views/components/centralminister/CentralMinister'));
@@ -140,6 +141,7 @@ const routes = [
   { path: '/stateminister',  exact: true, name: 'State Minister', component: StateMinister },
   { path: '/centralminister',  exact: true, name: 'Central Minister', component: CentralMinister },
   { path: '/clientinitiation',  exact: true, name: 'Client Initiation', component: ClientInitiation },
+  { path: '/RuralBodies',  exact: true, name: 'Rural Bodies', component: RuralBodies },
 ];
 
 export default routes;

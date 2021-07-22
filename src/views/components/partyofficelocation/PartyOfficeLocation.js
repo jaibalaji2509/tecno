@@ -23,6 +23,7 @@ import {
   updateTypeofPartyOffice,
 } from "../../../services/ApiService";
 
+
 function PartyOfficeLocation() {
   const [addPartyOffice, setAddPartyOffice] = useState(true);
   const [createPartyOffice, setCreatepartyOffice] = useState(false);
@@ -215,39 +216,26 @@ function PartyOfficeLocation() {
       default:
         setMenu({
           menuStatus: "close",
-          style3: "menu2",
-          style: "menu active",
-          style1: "menu1",
+          style: "menu active1",
         });
-        setSideBar1(true);
+        setTimeout(() => {
+          setSideBar1(true);
+        }, 1000);
         setHidePartyOffice(true);
         setBackButt(false);
-        setCreatepartyOffice(false);
         break;
       case "close":
         setMenu({
           menuStatus: "open",
-          style3: "menu1",
-          style: "menu",
-          style1: "menu1",
+          style: "menu active2",
         });
         setTimeout(() => {
           setSideBar1(false);
         }, 1000);
-        setCreatepartyOffice(true);
         break;
     }
   };
-  const cancelTypeofPartyOffice = () => {
-    setMenu({
-      menuStatus: "open",
-      style3: "menu1",
-      style: "menu",
-      style1: "menu1",
-    });
-    setCreatepartyOffice(true);
-    setSideBar1(false);
-  };
+  
   const [passing, sePassings] = useState("");
   const [hidePartyOffice, setHidePartyOffice] = useState(true);
   const [backbutt, setBackButt] = useState(false);
@@ -437,7 +425,7 @@ function PartyOfficeLocation() {
       {sideBar1 && (
         <div
           className={menu.style}
-          style={{ overflow: "auto", marginLeft: "20px" }}
+          style={{ overflow: "auto", marginLeft: "-475px" ,width:"81%"}}
         >
           <div className={"main-headerlabel"} style={{ marginTop: "-40px" }}>
             <span className={"header-label"}> Adding Type of Party Office</span>
@@ -512,7 +500,7 @@ function PartyOfficeLocation() {
                           }}
                           id={"typeoofpartycancelAbbreviationConfigureCode"}
                           className={"cancelBtn"}
-                          onClick={cancelTypeofPartyOffice}
+                          onClick={addTypeofPartyOffice}
                         >
                           CANCEL
                         </CButton>
@@ -560,7 +548,7 @@ function PartyOfficeLocation() {
                       id={"typeoofpartyprint"}
                       style={{
                         position: "absolute",
-                        top: "20px",
+                        top: "25px",
                         marginLeft: "410px",
                         marginBottom: "20px",
                         color: "black",
@@ -710,7 +698,7 @@ function PartyOfficeLocation() {
                   right: "15px",
                 }}
                 className={"cancelBtn"}
-                onClick={cancelTypeofPartyOffice}
+                onClick={addTypeofPartyOffice}
               >
                 Back
               </CButton>

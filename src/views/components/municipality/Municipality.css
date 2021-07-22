@@ -117,5 +117,13 @@
    }                              
  
    .ant-dropdown {
-    left: 1370px !important;
+    left: 1300px !important;
+  }
+  .divider {
+    position: absolute;
+      left: 490px;
+      top:  80px;
+      height: 130px;
+      bottom: 40%;
+      border-left: 1px solid lightgray;
   }

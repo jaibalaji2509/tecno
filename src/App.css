@@ -1167,6 +1167,18 @@ svg.c-icon.login-icon-v {
   letter-spacing: 0.5px;
   margin-left: 60px;
 }
+.header-labelA {
+  margin-bottom: 0px;
+  text-transform: uppercase;
+  color: #000000;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 28px;
+  font-family: "Open Sans";
+  margin-top: 30px;
+  letter-spacing: 0.5px;
+  margin-left: 30px;
+}
 button.details {
   text-transform: uppercase;
   font-weight: 600;

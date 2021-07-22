@@ -18,6 +18,9 @@ import Select from "react-select";
 import "./MemberTownPanchayat.css";
 import { Dropdown, Menu } from "antd";
 import "antd/dist/antd.css";
+import { Tab, Tabs, TabList } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+
 const MemberTownPanchayat = () => {
   // const [mobilenumber, setMobileNumber] = useState("");
   // const [, setOtpHide] = useState(false);
@@ -325,25 +328,19 @@ const MemberTownPanchayat = () => {
       case "open":
         setMenu({
           menuStatus: "close",
-          style3: "menu2",
-          style: "menu active",
-          style1: "menu1",
+          style: "menu active1",
         });
         setSideBar1(true);
-        setHideMappingmunicipal(false);
         break;
       case "close":
       default:
         setMenu({
           menuStatus: "open",
-          style3: "menu1",
-          style: "menu",
-          style1: "menu1",
+          style: "menu active2",
         });
         setTimeout(() => {
           setSideBar1(false);
         }, 1000);
-        setHideMappingmunicipal(true);
         setchairTwo(false);
         setchairOne(false);
         setvice(false);
@@ -351,42 +348,23 @@ const MemberTownPanchayat = () => {
         break;
     }
   };
-  const cancelclick = () => {
-    setMenu({
-      menuStatus: "open",
-      style3: "menu1",
-      style: "menu",
-      style1: "menu1",
-    });
-    setSideBar1(false);
-    setHideMappingmunicipal(true);
-        setchairTwo(false);
-        setchairOne(false);
-        setvice(false);
-  };
   const handleClick2 = () => {
     switch (menu.menuStatus) {
       case "open":
       default:
         setMenu({
           menuStatus: "close",
-          style3: "menu2",
-          style: "menu active",
-          style1: "menu active",
+          style: "menu active1",
         });
         setSideBar2(true);
-        setHideMappingmunicipal(false);
         break;
       case "close":
         setMenu({
           menuStatus: "open",
-          style3: "menu1",
-          style: "menu",
-          style1: "menu1",
+          style: "menu active2",
         });
         setTimeout(() => {
           setSideBar2(false);
-          setHideMappingmunicipal(true);
         }, 1000);
         break;
     }
@@ -396,25 +374,19 @@ const MemberTownPanchayat = () => {
       case "open":
         setMenu({
           menuStatus: "close",
-          style3: "menu2",
-          style: "menu active",
-          style1: "menu1",
+          style: "menu active1",
         });
         setSideBar3(true);
-        setHideMappingmunicipal(false);
         break;
       case "close":
       default:
         setMenu({
           menuStatus: "open",
-          style3: "menu1",
-          style: "menu",
-          style1: "menu1",
+          style: "menu active2",
         });
         setTimeout(() => {
           setSideBar3(false);
         }, 1000);
-        setHideMappingmunicipal(true);
         setchairTwo(false);
     setchairOne(false);
     setvice(false);
@@ -456,7 +428,7 @@ const MemberTownPanchayat = () => {
               handleClick();
             }}
           >
-            History
+          Member History
           </a>
         </Menu.Item>
         <Menu.Item>
@@ -477,7 +449,7 @@ const MemberTownPanchayat = () => {
   return (
     <div className={menu.style3}>
       {sideBar1 && (
-        <div className={menu.style} style={{ minHeight: "600px" }}>
+        <div className={menu.style} style={{ overflow:"auto",  marginLeft: "-475px"}}>
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
               <div>
@@ -544,57 +516,14 @@ const MemberTownPanchayat = () => {
               </CLabel>
             </CCol>
           </CRow>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"membertowngrideye"}
-            className="fa fa-eye"
-            onClick={chairshow}
-          >
-            Chairman
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"membertowngrideye"}
-            className="fa fa-eye"
-            onClick={gridshow}
-          >
-            Vice-Chairman
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"membertowngrideye"}
-            className="fa fa-eye"
-            onClick={partshow}
-          >
-            Party Posting
-          </i>
+
+          <Tabs>
+    <TabList>
+      <Tab onClick={chairshow}>Chairman</Tab>
+      <Tab  onClick={gridshow}>Vice-Chairman</Tab>
+      <Tab  onClick={partshow}>Party Posting</Tab>
+    </TabList>    
+  </Tabs>                              
 
           {chairtwo && (
             <div>
@@ -804,7 +733,7 @@ const MemberTownPanchayat = () => {
               right: "15px",
             }}
             className={"cancelBtn"}
-            onClick={cancelclick}
+            onClick={handleClick}
           >
             Back
           </CButton>
@@ -814,13 +743,10 @@ const MemberTownPanchayat = () => {
       {sideBar3 && (
         <div
           className={menu.style}
-          style={
-            sideBar3
-              ? {
-                  overflow: "auto",
-                }
-              : { display: "none" }
-          }
+          style={{
+            overflow:"auto",
+            marginLeft: "-475px"
+          }}
         >
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
@@ -840,57 +766,14 @@ const MemberTownPanchayat = () => {
 
           <CRow style={{ marginTop: "25px" }}>
             <CCol>
-              <i
-                style={{
-                  fontWeight: "700",
-                  padding: "10px",
-                  backgroundColor: "#1313d4",
-                  color: "#fff",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  marginBottom: "15px",
-                  marginLeft: "20px",
-                }}
-                id={"membertowngrideye"}
-                className="fa fa-eye"
-                onClick={chairshow}
-              >
-                Chairman
-              </i>
-              <i
-                style={{
-                  fontWeight: "700",
-                  padding: "10px",
-                  backgroundColor: "#1313d4",
-                  color: "#fff",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  marginBottom: "15px",
-                  marginLeft: "20px",
-                }}
-                id={"membertowngrideye"}
-                className="fa fa-eye"
-                onClick={gridshow}
-              >
-                Vice-Chairman
-              </i>
-              <i
-                style={{
-                  fontWeight: "700",
-                  padding: "10px",
-                  backgroundColor: "#1313d4",
-                  color: "#fff",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  marginBottom: "15px",
-                  marginLeft: "20px",
-                }}
-                id={"membertowngrideye"}
-                className="fa fa-eye"
-                onClick={partshow}
-              >
-                Party Posting
-              </i>
+
+            <Tabs>
+    <TabList>
+      <Tab onClick={chairshow}>Chairman</Tab>
+      <Tab onClick={gridshow}>Vice-Chairman</Tab>
+      <Tab onClick={partshow}>Party Posting</Tab>
+    </TabList>    
+  </Tabs>                            
             </CCol>
           </CRow>
 
@@ -1136,17 +1019,14 @@ const MemberTownPanchayat = () => {
               right: "15px",
             }}
             className={"cancelBtn"}
-            onClick={() => {
-              handleClick();
-              handleClick3();
-            }}
+            onClick={handleClick3}
           >
             Back
           </CButton>
         </div>
       )}
       {sideBar2 && (
-        <div className={menu.style1}>
+        <div className={menu.style} style={{overflow:"auto",  marginLeft: "-475px"}}>
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
               <div>
@@ -1276,6 +1156,7 @@ const MemberTownPanchayat = () => {
                   }}
                   id={"cancelAbbreviationConfigureCode"}
                   className={"cancelBtn"}
+                  onClick={handleClick2}
                 >
                   CANCEL
                 </CButton>

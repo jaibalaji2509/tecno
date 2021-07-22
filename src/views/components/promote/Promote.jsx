@@ -31,7 +31,7 @@ const Promote = () => {
   ];
   return (
     <React.Fragment>
-      {show === false ? (
+      { show === false ? (     
         <CCard
           className={"cardSave"}
           style={{
@@ -39,7 +39,7 @@ const Promote = () => {
             maxHeight: `${window.innerHeight - 198}px`,
             overflow: "auto",
           }}
-        >
+          >          
           <div className={"main-headerlabel"}>
             <span className={"header-label"}>Promote Party Member</span>
           </div>

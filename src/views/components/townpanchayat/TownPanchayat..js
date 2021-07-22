@@ -1753,21 +1753,6 @@ const TownPanchayat = () => {
                         </CCol>
                         <CCol className={"column-align"} md="3">
                           <CLabel className={"label-name"}>
-                            District / City
-                            <span className={"text-danger"}>*</span>
-                          </CLabel>
-                          <Select
-                            className={"input-align"}
-                            id={"Towndistrict"}
-                            name={"city"}
-                            placeholder={" Corporation Name"}
-                            // value={locations.city}
-                            // onChange={changeHandler}
-                            options={cityselect}
-                          />
-                        </CCol>
-                        <CCol className={"column-align"} md="3">
-                          <CLabel className={"label-name"}>
                             Town Panchayat
                             <span className={"text-danger"}>*</span>
                           </CLabel>
@@ -1778,24 +1763,6 @@ const TownPanchayat = () => {
                             placeholder={" Corporation Name"}
                             //
                             options={townselect}
-                          />
-                        </CCol>
-                      </CRow>
-
-                      <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                        <CCol className={"column-align"} md="3">
-                          <CLabel className={"label-name"}>
-                            Area
-                            <span className={"text-danger"}>*</span>
-                          </CLabel>
-                          <Select
-                            className={"input-align"}
-                            id={"Townarea"}
-                            name={"Area"}
-                            placeholder={" Select Area"}
-                            // value={locations.city}
-                            // onChange={changeHandler}
-                            options={areaselect}
                           />
                         </CCol>
                         <CCol className={"column-align"} md="3">
@@ -1811,6 +1778,39 @@ const TownPanchayat = () => {
                             // value={locations.district}
                             // onChange={changeHandler}
                             options={wardno}
+                          />
+                        </CCol>
+                      </CRow>
+
+                      <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                      <CCol className={"column-align"} md="3">
+                          <CLabel className={"label-name"}>
+                            District / City
+                            <span className={"text-danger"}>*</span>
+                          </CLabel>
+                          <Select
+                            className={"input-align"}
+                            id={"Towndistrict"}
+                            name={"city"}
+                            placeholder={" Corporation Name"}
+                            // value={locations.city}
+                            // onChange={changeHandler}
+                            options={cityselect}
+                          />
+                        </CCol>
+                        <CCol className={"column-align"} md="3">
+                          <CLabel className={"label-name"}>
+                            Area
+                            <span className={"text-danger"}>*</span>
+                          </CLabel>
+                          <Select
+                            className={"input-align"}
+                            id={"Townarea"}
+                            name={"Area"}
+                            placeholder={" Select Area"}
+                            // value={locations.city}
+                            // onChange={changeHandler}
+                            options={areaselect}
                           />
                         </CCol>
                       </CRow>
@@ -1908,6 +1908,7 @@ const TownPanchayat = () => {
                             options={stateselect}
                           />
                         </CCol>
+                        <span class="divider" />
 
                         {TownList && (
                           <React.Fragment>

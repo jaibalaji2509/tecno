@@ -6,6 +6,7 @@ import {
     CLabel,
     CRow,
     CInputRadio,
+    CTextarea,
     CFormGroup,
   } from "@coreui/react";
   import React, { useState } from "react";
@@ -17,6 +18,9 @@ import {
   import "./StateMinister.css";
   import { Dropdown, Menu } from "antd";
   import 'antd/dist/antd.css';
+  import { Tab, Tabs, TabList } from 'react-tabs';
+  import 'react-tabs/style/react-tabs.css';
+
   const StateMinister = () => {
     // const [location, setLocation] = useState({
     //   state: "",
@@ -60,10 +64,6 @@ import {
       cityLocation: false,
     });
     const [typeofOfficess, setTypeofOfficess] = useState("");
-    const [, setchairOne] = useState(false);
-    const [, setchairTwo] = useState(true);
-    const [, setvice] = useState(false);
-    // const [partypost, setpartypost] = useState(false);
     const [gridone, setGridOne] = useState(false);
     const [gridtwo, setGridTwo] = useState(false);
     const [gridthree, setGridThree] = useState(false);
@@ -276,101 +276,71 @@ import {
     const handleClick = () => {
       switch (menu.menuStatus) {
         case "open":
-          default:
+        default:
           setMenu({
             menuStatus: "close",
-            style3: "menu2",
-            style: "menu active",
-            style1: "menu1",
+            style: "menu active1",
           });
-          setSideBar1(true);
-          setHideMappingmunicipal(false);
+          setTimeout(() => {
+            setSideBar1(true);
+          }, 1000);
           break;
         case "close":
           setMenu({
             menuStatus: "open",
-            style3: "menu1",
-            style: "menu",
-            style1: "menu1",
+            style: "menu active2",
           });
           setTimeout(() => {
             setSideBar1(false);
           }, 1000);
-          setHideMappingmunicipal(true);
-          setchairTwo(true);
-          setchairOne(false);
-          setvice(false);
-          setSideBar3(false);
           break;
       }
     };
-    const cancelclick = () => {
-      setMenu({
-        menuStatus: "open",
-        style3: "menu1",
-        style: "menu",
-        style1: "menu1",
-      });
-      setSideBar1(false);
-      setHideMappingmunicipal(true);
-      setGridOne(false);
-      setGridTwo(false);
-      setGridThree(false);
-    }
+   
+  
     const handleClick3 = () => {
       switch (menu.menuStatus) {
         case "open":
-          default:
+        default:
           setMenu({
             menuStatus: "close",
-            style3: "menu2",
-            style: "menu active",
-            style1: "menu1",
+            style: "menu active1",
           });
-          setSideBar3(true);
-          setHideMappingmunicipal(false);
+          setTimeout(() => {
+            setSideBar3(true);
+          }, 1000);
           break;
         case "close":
           setMenu({
             menuStatus: "open",
-            style3: "menu1",
-            style: "menu",
-            style1: "menu1",
+            style: "menu active2",
           });
           setTimeout(() => {
             setSideBar3(false);
           }, 1000);
-          setHideMappingmunicipal(true);
-          setGridOne(false);
-          setGridTwo(false);
-          setGridThree(false);
           break;
       }
     };
     const handleClick2 = () => {
       switch (menu.menuStatus) {
         case "open":
-          default:
+        default:
           setMenu({
             menuStatus: "close",
-            style3: "menu2",
-            style: "menu active",
-            style1: "menu active",
+            style: "menu active1",
           });
-          setSideBar2(true);
-          setHideMappingmunicipal(false);
+          setTimeout(() => {
+            setSideBar2(true);
+          }, 1000);
           break;
         case "close":
           setMenu({
             menuStatus: "open",
-            style3: "menu1",
-            style: "menu",
-            style1: "menu1",
+            style: "menu active2",
           });
           setTimeout(() => {
             setSideBar2(false);
           }, 1000);
-          setHideMappingmunicipal(true);
           break;
       }
     };
@@ -407,7 +377,7 @@ import {
           setSelected(details);
           handleClick();
         }}
-        >History</a>
+        >Member History</a>
       </Menu.Item>
       <Menu.Item>
         <a href
@@ -424,7 +394,7 @@ import {
     return (
       <div className={menu.style3}>
         {sideBar1 && (
-          <div className={menu.style} style={{ overflow:"auto" }}>
+          <div className={menu.style} style={{ overflow:"auto", marginLeft: "-475px" }}>
             <CRow className={""}>
               <CCol md="12" lg="12" sm="12">
                 <div>
@@ -497,58 +467,13 @@ import {
             </CRow>
             <CRow style={{ marginTop: "25px" }}>
             <CCol>
-            <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"stateministereyegridicon"}
-            className="fa fa-eye"
-            onClick={chiefministerShow}
-          >
-           Chief Minister
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"stateministereyegridicon"}
-            className="fa fa-eye"
-            onClick={deputychiefministerShow}
-                >
-                 Deputy Chief Minister
-        
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"stateministereyegridicon"}
-            className="fa fa-eye"
-            onClick={ministryShow}
-          >
-            Ministry
-          </i>
+            <Tabs>
+    <TabList>
+      <Tab onClick={chiefministerShow}>Chief Minister</Tab>
+      <Tab onClick={deputychiefministerShow}>Deputy Chief Minister</Tab>
+      <Tab onClick={ministryShow}>Ministry</Tab>
+    </TabList>   
+  </Tabs>                         
             </CCol>
             </CRow>
   
@@ -742,14 +667,14 @@ import {
               style={{ position: "absolute", backgroundColor: "green",
               border: "1px solid green", top: "15px", right: "15px" }}
               className={"cancelBtn"}
-              onClick={cancelclick}
+              onClick={handleClick}
             >
               Back
             </CButton>
           </div>
         )}
          {sideBar3 && (
-          <div className={menu.style} style={{ overflow:"auto" }}>
+          <div className={menu.style} style={{ overflow:"auto", marginLeft: "-475px" }}>
             <CRow className={""}>
               <CCol md="12" lg="12" sm="12">
                 <div>
@@ -768,59 +693,16 @@ import {
               
             <CRow style={{ marginTop: "25px" }}>
             <CCol>
-            <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"stateministereyegridicon"}
-            className="fa fa-eye"
-            onClick={chiefministerShow}
-          >
-           Chief Minister
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"stateministereyegridicon"}
-            className="fa fa-eye"
-            onClick={deputychiefministerShow}
-                >
-                 Deputy Chief Minister        
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"stateministereyegridicon"}
-            className="fa fa-eye"
-            onClick={ministryShow}
-          >
-            Ministry
-          </i>
+            <Tabs>
+    <TabList>
+      <Tab  onClick={chiefministerShow}>Chief Minister</Tab>
+      <Tab onClick={deputychiefministerShow}>Deputy Chief Minister</Tab>
+      <Tab onClick={ministryShow}>Ministry</Tab>
+    </TabList>
+    </Tabs>                             
             </CCol>
             </CRow>  
+
             {gridone && (
               <div>
                 <CRow>
@@ -1070,7 +952,7 @@ import {
           </div>
         )}
         {sideBar2 && (
-          <div className={menu.style1}>
+          <div className={menu.style} style={{overflow:"auto", marginLeft: "-475px"}}>
             <CRow className={""}>
               <CCol md="12" lg="12" sm="12">
                 <div>
@@ -1177,14 +1059,13 @@ import {
                   Note
                   <span className={"text-danger"}>*</span>
                 </CLabel>
-                <Select
-                  style={{ width: "50px", height: "50px" }}
-                  id={"stateministernote"}
-                  name={"note"}
-                  placeholder={" Select Status "}
-                  value={locations.city}
-                  onChange={changeHandler}
-                />
+                <CTextarea
+                id={"contimemnote"}
+                placeholder="Enter Description for Termination"
+                style={{ height: "80px", marginLeft: "10px" }}
+                min="10"
+                max="500"
+              ></CTextarea>
               </CCol>
               <CCol md="10">
                 <CCol

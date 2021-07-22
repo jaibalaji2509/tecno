@@ -16,6 +16,9 @@ import Select from "react-select";
 import "./RajyaSabha.css";
 import { Dropdown, Menu } from "antd";
 import "antd/dist/antd.css";
+import { Tab, Tabs, TabList } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
+
 const RajyaSabha = () => {
   // const [location, setLocation] = useState({
   //   state: "",
@@ -247,7 +250,7 @@ const RajyaSabha = () => {
   //   });
   // };
   const changeHandler = (e) => {
-    setLocations({ ...locations,city: e.target.value });
+    setLocations({ ...locations, city: e.target.value });
   };
   // const otpChangeHandle = (e) => {
   //   setMobileNumber(e.target.value);
@@ -339,78 +342,49 @@ const RajyaSabha = () => {
       default:
         setMenu({
           menuStatus: "close",
-          style3: "menu2",
-          style: "menu active",
-          style1: "menu1",
+          style: "menu active1",
         });
-        setSideBar1(true);
-        setHideMappingmunicipal(false);
+        setTimeout(() => {
+          setSideBar1(true);
+        }, 1000);
+        setSideBar2(false);
         break;
       case "close":
         setMenu({
           menuStatus: "open",
-          style3: "menu1",
-          style: "menu",
-          style1: "menu1",
+          style: "menu active2",
         });
         setTimeout(() => {
           setSideBar1(false);
         }, 1000);
-        setHideMappingmunicipal(true);
         break;
     }
   };
-  const cancelclick = () => {
-    setMenu({
-      menuStatus: "open",
-      style3: "menu1",
-      style: "menu",
-      style1: "menu1",
-    });
-    setSideBar1(false);
-    setHideMappingmunicipal(true);
-    setGridShow(false);
-  };
+
   const handleClick2 = () => {
     switch (menu.menuStatus) {
       case "open":
       default:
         setMenu({
           menuStatus: "close",
-          style3: "menu2",
-          style: "menu active",
-          style1: "menu active",
+          style: "menu active1",
         });
-        setSideBar2(true);
-        setHideMappingmunicipal(false);
+        setTimeout(() => {
+          setSideBar2(true);
+        }, 1000);
         break;
       case "close":
         setMenu({
           menuStatus: "open",
-          style3: "menu1",
-          style: "menu",
-          style1: "menu1",
+          style: "menu active2",
         });
         setTimeout(() => {
           setSideBar2(false);
         }, 1000);
-        setHideMappingmunicipal(true);
         break;
     }
   };
-  const cancelclick1 = () => {
-    setMenu({
-      menuStatus: "open",
-      style3: "menu1",
-      style: "menu",
-      style1: "menu1",
-    });
-    setSideBar2(false);
-    setHideMappingmunicipal(true);
-  };
-  // const handleClick1 = () => {
-  //   setSideBar2(false);
-  // };
+ 
   const [menu, setMenu] = useState({
     style: "menu",
     style1: "menu1",
@@ -455,7 +429,7 @@ const RajyaSabha = () => {
               handleClick();
             }}
           >
-            History
+            Member History
           </a>
         </Menu.Item>
       </Menu>
@@ -465,7 +439,10 @@ const RajyaSabha = () => {
   return (
     <div className={menu.style3}>
       {sideBar1 && (
-        <div className={menu.style}>
+        <div
+          className={menu.style}
+          style={{ overflow: "auto", marginLeft: "-475px" }}
+        >
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
               <div>
@@ -533,111 +510,70 @@ const RajyaSabha = () => {
               </CLabel>
             </CCol>
           </CRow>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-            }}
-            id={"partypostinggridrajyasabha"}
-            className="fa fa-eye"
-            onClick={() =>
-              setGridShow({
-                ...gridShow,
-                view1: true,
-                view2: false,
-                view3: false,
-                view: false,
-              })
-            }
-          >
-            Party Posting
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"RepresentativePostingrajyasabha"}
-            className="fa fa-eye"
-            onClick={() =>
-              setGridShow({
-                ...gridShow,
-                view2: true,
-                view1: false,
-                view3: false,
-                view4: false,
-              })
-            }
-          >
-            Representative Posting
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"rajyasabhaStateMinistersPortofolio"}
-            className="fa fa-eye"
-            onClick={() =>
-              setGridShow({
-                ...gridShow,
-                view3: true,
-                view2: false,
-                view1: false,
-                view4: false,
-              })
-            }
-          >
-            State Ministers Portofolio
-          </i>
-          <i
-            style={{
-              fontWeight: "700",
-              padding: "10px",
-              backgroundColor: "#1313d4",
-              color: "#fff",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginBottom: "15px",
-              marginLeft: "20px",
-            }}
-            id={"centralMinistersPortofoliorajyasabha"}
-            className="fa fa-eye"
-            onClick={() =>
-              setGridShow({
-                ...gridShow,
-                view4: true,
-                view2: false,
-                view1: false,
-                view3: false,
-              })
-            }
-          >
-            Central Ministers Portofolio
-          </i>
+
+          <Tabs>
+            <TabList>
+              <Tab
+                onClick={() =>
+                  setGridShow({
+                    ...gridShow,
+                    view1: true,
+                    view2: false,
+                    view3: false,
+                    view: false,
+                  })
+                }
+              >
+                Party Posting
+              </Tab>
+              <Tab
+                onClick={() =>
+                  setGridShow({
+                    ...gridShow,
+                    view2: true,
+                    view1: false,
+                    view3: false,
+                    view4: false,
+                  })
+                }
+              >
+                Representative Posting
+              </Tab>
+              <Tab
+                onClick={() =>
+                  setGridShow({
+                    ...gridShow,
+                    view3: true,
+                    view2: false,
+                    view1: false,
+                    view4: false,
+                  })
+                }
+              >
+                State Ministers Portofolio
+              </Tab>
+              <Tab
+                onClick={() =>
+                  setGridShow({
+                    ...gridShow,
+                    view4: true,
+                    view2: false,
+                    view1: false,
+                    view3: false,
+                  })
+                }
+              >
+                Central Ministers Portofolio
+              </Tab>
+            </TabList>
+          </Tabs>
+
           {gridShow.view1 && (
             <CRow>
               <CCol
                 style={{
                   marginLeft: "30px",
-
+                  marginTop: "20px",
                   maxHeight: "290px",
                   minHeight: "290px",
                   marginBottom: "-25px",
@@ -677,7 +613,7 @@ const RajyaSabha = () => {
               <CCol
                 style={{
                   marginLeft: "30px",
-
+                  marginTop: "20px",
                   maxHeight: "290px",
                   minHeight: "290px",
                   marginBottom: "-25px",
@@ -712,7 +648,7 @@ const RajyaSabha = () => {
               <CCol
                 style={{
                   marginLeft: "30px",
-
+                  marginTop: "20px",
                   maxHeight: "290px",
                   minHeight: "290px",
                   marginBottom: "-25px",
@@ -747,7 +683,7 @@ const RajyaSabha = () => {
               <CCol
                 style={{
                   marginLeft: "30px",
-
+                  marginTop: "20px",
                   maxHeight: "290px",
                   minHeight: "290px",
                   marginBottom: "-25px",
@@ -785,14 +721,17 @@ const RajyaSabha = () => {
               right: "15px",
             }}
             className={"cancelBtn"}
-            onClick={cancelclick}
+            onClick={handleClick}
           >
             Back
           </CButton>
         </div>
       )}
       {sideBar2 && (
-        <div className={menu.style1} style={{overflow:"auto"}}>
+        <div
+          className={menu.style}
+          style={{ overflow: "auto", marginLeft: "-475px" }}
+        >
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
               <div>
@@ -923,7 +862,7 @@ const RajyaSabha = () => {
                   }}
                   id={"rajyasabhacancel"}
                   className={"cancelBtn"}
-                  onClick={cancelclick1}
+                  onClick={handleClick2}
                 >
                   CANCEL
                 </CButton>
@@ -950,7 +889,7 @@ const RajyaSabha = () => {
               right: "15px",
             }}
             className={"cancelBtn"}
-            onClick={cancelclick1}
+            onClick={handleClick2}
           >
             Back
           </CButton>

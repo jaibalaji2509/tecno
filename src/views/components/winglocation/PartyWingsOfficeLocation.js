@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import {
   CRow,
@@ -19,15 +19,13 @@ import "jspdf-autotable";
 import ReactTooltip from "react-tooltip";
 import {
   // createTypeofPartyOffice,
-  getAllTypeofPartyOffice,              
-  updateTypeofPartyOffice,              
+  getAllTypeofPartyOffice,
+  updateTypeofPartyOffice,
 } from "../../../services/ApiService";
-
 
 function PartyWingsOfficeLocation() {
   const [addPartyOffice, setAddPartyOffice] = useState(true);
   const [createPartyOffice, setCreatepartyOffice] = useState(false);
-  // const [editShow, setEditShow] = useState(false);
   const [sideBar1, setSideBar1] = useState(false);
   const [sideBar2, setSideBar2] = useState(false);
 
@@ -41,10 +39,10 @@ function PartyWingsOfficeLocation() {
     setAddPartyOffice(true);
     setCreatepartyOffice(false);
   };
-  
+
   const [inEditMode, setInEditMode] = useState({
     status: false,
-  rowKey:""
+    rowKey: "",
   });
   const [getPartyOffice, setGetPartyOffice] = useState([]);
   const getTypeofPartyOffice = async () => {
@@ -57,64 +55,23 @@ function PartyWingsOfficeLocation() {
         response.TypeofPartyOffice.map((x, i) => {
           array.push({
             ...x,
-            SNo:(i+1),
+            SNo: i + 1,
             typeofpartyoffice: x.typeofpartyoffice,
             abbreviation: x.abbreviation,
             code: x.code,
           });
           return 0;
         });
-        setGetPartyOffice(array);            
-      }      
-    }     
-    catch (error) {
+        setGetPartyOffice(array);
+      }
+    } catch (error) {
       console.log("data nof find");
     }
   };
   useEffect(() => {
     getTypeofPartyOffice();
   }, []);
-  const fieldsoffice = [    
-    {
-      key: "SNo",
-      label: "S.NO",
-      _style: { width: "5%" },
-      sorter: false,
-      filter: false,
-    },
-
-    {
-      key: "show_details1",
-      label: "Type of Party Office",
-      _style: { width: "15%" },
-    },
-    { key: "show_details2", label: "Abbreviation", _style: { width: "10%" } },
-    { key: "show_details3", label: "Code", _style: { width: "10%" } },
-    { key: "male", label: "Reporting To Office", _style: { width: "12%" } },
-
-    {
-      key: "ENTERBY",
-      label: "Entered By",
-      _style: { width: "7%" },
-      sorter: false,
-      filter: false,
-    },
-    {
-      key: "ENTERON",
-      label: "Entered On",
-      _style: { width: "7%" },
-      sorter: false,
-      filter: false,
-    },
-    {
-      key: "show_details",
-      label: "Action",
-      _style: { width: "5%" },
-      sorter: false,
-      filter: false,
-    },
-  ];
-  const fieldsoffice1 = [    
+  const fieldsoffice = [
     {
       key: "SNo",
       label: "S.NO",
@@ -155,6 +112,42 @@ function PartyWingsOfficeLocation() {
     },
   ];
 
+  const fieldsoffice2 = [
+    {
+      key: "SNo",
+      label: "S.NO",
+      _style: { width: "5%" },
+      sorter: false,
+      filter: false,
+    },
+
+    {
+      key: "show_details1",
+      label: "Name of Party Wings Office",
+      _style: { width: "20%" },
+    },
+    { key: "show_details2", label: "Abbreviation", _style: { width: "10%" } },
+    { key: "show_details3", label: "Code", _style: { width: "10%" } },
+    { key: "male", label: "Reporting To Office", _style: { width: "15%" } },
+
+    {
+      key: "ENTERBY",
+      label: "Entered By",
+      _style: { width: "7%" },
+    },
+    {
+      key: "ENTERON",
+      label: "Entered On",
+      _style: { width: "7%" },
+    },
+    {
+      key: "show_details",
+      label: "Action",
+      _style: { width: "5%" },
+      sorter: false,
+      filter: false,
+    },
+  ];
   const userData = [
     {
       SNo: "1",
@@ -214,7 +207,12 @@ function PartyWingsOfficeLocation() {
       filter: false,
     },
   ];
-  const officeType = [{ value: "Head Office", label: "Head Office TamilNadu Chennai Mylapore - 600004 " }];
+  const officeType = [
+    {
+      value: "Head Office",
+      label: "Head Office TamilNadu Chennai Mylapore - 600004 ",
+    },
+  ];
   const partyofficeType = [
     {
       span: (
@@ -226,7 +224,6 @@ function PartyWingsOfficeLocation() {
     { value: "Head Office", label: "Head Office" },
     { value: "District Office", label: "Branch Office" },
   ];
-  // const [typeofPartyOffice, setTypeofPartyOffice] = useState("");
 
   const locations = [
     {
@@ -246,62 +243,51 @@ function PartyWingsOfficeLocation() {
       default:
         setMenu({
           menuStatus: "close",
-          style3: "menu2",
-          style: "menu active",
-          style1: "menu1",
+          style: "menu active1",
         });
-        setSideBar1(true);
+        setTimeout(() => {
+          setSideBar1(true);
+        }, 1000);
         setHidePartyOffice(true);
         setBackButt(false);
         setSideBar2(false);
-        setCreatepartyOffice(false);
         break;
       case "close":
         setMenu({
           menuStatus: "open",
-          style3: "menu1",
-          style: "menu",
-          style1: "menu1",
+          style: "menu active2",
         });
         setTimeout(() => {
           setSideBar1(false);
         }, 1000);
-        setCreatepartyOffice(true);
         break;
     }
-    setSideBar2(false);
   };
   const addTypeofPartyOffice1 = () => {
-
     switch (menu.menuStatus) {
       case "open":
       default:
         setMenu({
           menuStatus: "close",
-          style3: "menu2",
-          style: "menu active",
-          style1: "menu1",
+          style: "menu active1",
         });
-        setSideBar2(true);
+        setTimeout(() => {
+          setSideBar2(true);
+        }, 1000);
         setHidePartyOffice(true);
         setBackButt(false);
         setSideBar1(false);
-        setCreatepartyOffice(false);
         break;
       case "close":
         setMenu({
           menuStatus: "open",
-          style3: "menu1",
-          style: "menu",
-          style1: "menu1",
+          style: "menu active2",
         });
         setTimeout(() => {
           setSideBar2(false);
         }, 1000);
-        setCreatepartyOffice(true);
         break;
     }
-    setSideBar1(false);
   };
 
   // const [backbutt2, setBackButt2] = useState(false);
@@ -319,9 +305,6 @@ function PartyWingsOfficeLocation() {
   const [locationHide] = useState({
     corporation: true,
   });
-  // const [locationHide2] = useState({
-  //   corporation2: true,
-  // });
 
   const menus = (details) => {
     return (
@@ -511,7 +494,7 @@ function PartyWingsOfficeLocation() {
             className={menu.style}
             style={{
               overflow: "auto",
-              marginLeft: "20px",
+              marginLeft: "-475px"
             }}
           >
             <div className={"main-headerlabel"}>
@@ -644,7 +627,7 @@ function PartyWingsOfficeLocation() {
                         id={"WingsOfficeprint"}
                         style={{
                           position: "absolute",
-                          top: "68px",
+                          top: "90px",
                           marginTop: "-20px",
                           marginLeft: "675px",
                           marginBottom: "20px",
@@ -685,7 +668,7 @@ function PartyWingsOfficeLocation() {
                     itemsPerPage={5}
                     hover
                     sorter
-                    pagination
+                      pagination
                     scopedSlots={{
                       show_details: (item, index) => {
                         return (
@@ -702,7 +685,7 @@ function PartyWingsOfficeLocation() {
                                     }}
                                     onClick={() => updatePartyOffice()}
                                   />
-  
+
                                   <i
                                     className={"fa fa-remove"}
                                     style={{
@@ -727,7 +710,7 @@ function PartyWingsOfficeLocation() {
                           </td>
                         );
                       },
-  
+
                       show_details2: (item, index) => {
                         return (
                           <td key={index}>
@@ -802,7 +785,7 @@ function PartyWingsOfficeLocation() {
               </div>
             )}
           </div>
-        )}      
+        )}
         {sideBar2 && (
           <div
             className={menu.style}
@@ -810,7 +793,7 @@ function PartyWingsOfficeLocation() {
               sideBar2
                 ? {
                     overflow: "auto",
-                    marginLeft: "20px",
+                    marginLeft: "-475px"
                   }
                 : { display: "none" }
             }
@@ -978,7 +961,7 @@ function PartyWingsOfficeLocation() {
                 <CRow style={{ padding: "4%", marginTop: "-6.5%" }}>
                   <CDataTable
                     items={getPartyOffice}
-                    fields={fieldsoffice1}
+                    fields={fieldsoffice2}
                     columnFilter
                     tableFilter
                     tableLabel={"List of Name of Party Wings Office"}
@@ -1003,7 +986,7 @@ function PartyWingsOfficeLocation() {
                                     }}
                                     onClick={() => updatePartyOffice()}
                                   />
-  
+
                                   <i
                                     className={"fa fa-remove"}
                                     style={{
@@ -1028,7 +1011,7 @@ function PartyWingsOfficeLocation() {
                           </td>
                         );
                       },
-  
+
                       show_details2: (item, index) => {
                         return (
                           <td key={index}>
@@ -1088,8 +1071,13 @@ function PartyWingsOfficeLocation() {
             {backbutt && (
               <div>
                 <CButton
-                  style={{ position: "absolute", top: "15px", backgroundColor: "green",
-                  border: "1px solid green", right: "15px" }}
+                  style={{
+                    position: "absolute",
+                    top: "15px",
+                    backgroundColor: "green",
+                    border: "1px solid green",
+                    right: "15px",
+                  }}
                   className={"cancelBtn"}
                   onClick={addTypeofPartyOffice}
                 >
@@ -1441,11 +1429,6 @@ function PartyWingsOfficeLocation() {
                     components={{
                       MenuList: SelectMenuButtonpartywingsoffice,
                     }}
-                    // value={typeofPartyOffice}
-                    // onChange={(e) => {
-                    //   setTypeofPartyOffice(e);
-                    //   setEditShow(true);
-                    // }}
                   />
                 </CCol>
 

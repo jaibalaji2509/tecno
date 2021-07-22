@@ -232,7 +232,7 @@ const CDataTable = (props) => {
     genCols.includes(name)
   );
 
-  useMemo(() => {
+  useMemo(()=> {
     compData.columnFiltered++;
   },);
 

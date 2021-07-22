@@ -1831,23 +1831,6 @@ function Constituency() {
                         </CCol>
                         <CCol className={"column-align"} md="4">
                           <CLabel className={"label-name"}>
-                            District / City
-                            <span className={"text-danger"}>*</span>
-                          </CLabel>
-                          <Select
-                            styles={{ marginLeft: "50px" }}
-                            type={"text"}
-                            id={"constituencycity"}
-                            className={"input-align"}
-                            placeholder="Select the District / City "
-                            options={select}
-                          />
-                        </CCol>
-                      </CRow>
-
-                      <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                        <CCol className={"column-align"} md="4">
-                          <CLabel className={"label-name"}>
                             Parliamentary Constituency
                             <span className={"text-danger"}> *</span>
                           </CLabel>
@@ -1857,6 +1840,23 @@ function Constituency() {
                             type={"text"}
                             className={"input-align"}
                             style={{ marginLeft: "5px" }}
+                            options={select}
+                          />
+                        </CCol>                       
+                      </CRow>
+
+                      <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                      <CCol className={"column-align"} md="4">
+                          <CLabel className={"label-name"}>
+                            District / City
+                            <span className={"text-danger"}>*</span>
+                          </CLabel>
+                          <Select
+                            styles={{ marginLeft: "50px" }}
+                            type={"text"}
+                            id={"constituencycity"}
+                            className={"input-align"}
+                            placeholder="Select the District / City "
                             options={select}
                           />
                         </CCol>
@@ -1992,6 +1992,7 @@ function Constituency() {
                                   placeholder="Select the State"
                                 />
                               </CCol>
+                              <span class="divider" />
                               {municipalList && (
                                 <React.Fragment>
                                   <CCol

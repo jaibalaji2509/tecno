@@ -490,7 +490,7 @@ body {
   transition: all 1.5s ease-out;
 }
 .ant-dropdown {
-  left: 1290px !important;
+  left: 1340px !important;
 }
 .image-item {
   display: flex;
@@ -503,11 +503,11 @@ body {
 }
 .divider {
   position: absolute;
-    left: 180px;
-    top: -10px;
-    height: 60px;
-    bottom: 40%;
-    border-left: 1px solid lightgray;
+  left: 180px;
+  top: -10px;
+  height: 60px;
+  bottom: 40%;
+  border-left: 1px solid lightgray;
 }
 .divider1{
   position: absolute;
@@ -523,7 +523,7 @@ body {
   top: -238px;
   height: 60px;
   bottom: 40%;
-  border-left: 1px solid lightgray; 
+  border-left: 1px solid lightgray;
 }
 .divider3{
   position: absolute;
@@ -532,4 +532,7 @@ body {
   height: 60px;
   bottom: 40%;
   border-left: 1px solid lightgray; 
+}
+.selecci{
+ margin-left: 28px;
 }

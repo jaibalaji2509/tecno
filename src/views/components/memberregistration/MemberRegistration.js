@@ -11,23 +11,24 @@ import {
   CFormGroup,
 } from "@coreui/react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
-import "./MemberRegistration.css"
+import "./MemberRegistration.css";
 import Select from "react-select";
-import DEFAULT_IMAGE from "../../../assets/img/download (1).png";
+import DEFAULT_IMAGEperson from "../../../assets/img/download (1).png";
+import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
 import { toast } from "react-toastify";
 import { Dropdown, Menu } from "antd";
-import 'antd/dist/antd.css';
+import "antd/dist/antd.css";
 import ImageUploading from "react-images-uploading";
 // import ReactTooltip from 'react-tooltip';
 
 function MemberRegistration() {
-  const [, setSelected] = useState({});
-  const [steetSchema,] = useState([]);
-  const [Education,] = useState([]);
-  const [Occupation,] = useState([]);
+  // const [, setSelected] = useState({});
+  const [steetSchema] = useState([]);
+  const [Education] = useState([]);
+  const [Occupation] = useState([]);
   const [, setPI] = useState("");
   const [sideBar1, setSideBar1] = useState(false);
-  const [files, setFiles ] = useState("");
+  const [files, setFiles] = useState("");
 
   const [menu, setMenu] = useState({
     style: "menu",
@@ -36,21 +37,30 @@ function MemberRegistration() {
     style3: "menu1",
   });
 
-  const userData1 = [
-
-  ];
+  const userData1 = [];
 
   const fields1 = [
     {
-      key: "SNo", label: "S.NO", _style: { width: "10%" }, sorter: false,
+      key: "SNo",
+      label: "S.NO",
+      _style: { width: "5%" },
+      sorter: false,
       filter: false,
     },
     { key: "Member Name", label: "Member Name", _style: { width: "10%" } },
     { key: "Gender", label: "Gender", _style: { width: "10%" } },
-    { key: "Mobile Number", label: "Mobile Number", _style: { width: "10%" } },
+    { key: "Mobile Number", label: "Mobile Number", _style: { width: "15%" } },
     { key: "Street Name", label: "Street Name", _style: { width: "10%" } },
-    { key: "Area Name", label: "Area Name / Locality", _style: { width: "10%" } },
-    { key: "District Name", label: "District / City Name", _style: { width: "10%" } },
+    {
+      key: "Area Name",      
+      label: "Area Name / Locality",
+      _style: { width: "15%" },
+    },
+    {
+      key: "District Name",
+      label: "District / City Name",
+      _style: { width: "15%" },
+    },
     { key: "State Name", label: "State Name", _style: { width: "10%" } },
     {
       label: "Action",
@@ -87,57 +97,54 @@ function MemberRegistration() {
     console.log(imageList, addUpdateIndex);
     setImages(imageList);
   };
+  // const handleClickhis = () => {
+  //   switch (menu.menuStatus) {
+  //     case "open":
+  //       default:
+  //       setMenu({
+  //         menuStatus: "close",
+  //         style3: "menu2",
+  //         style: "menu active",
+  //         style1: "menu1",
+  //       });
+  //       setSideBar1(true);
+  //       setMemberHide(false);
+  //       break;
+  //     case "close":
+  //       setMenu({
+  //         menuStatus: "open",
+  //         style3: "menu1",
+  //         style: "menu",
+  //         style1: "menu1",
+  //       });
+  //       setTimeout(() => {
+  //         setSideBar1(false);
+  //       }, 1000);
+  //       setMemberHide(true);
+  //       break;
+  //   }
+  // };
+
   const handleClickhis = () => {
-    switch (menu.menuStatus) {
-      case "open":
-        default:
-        setMenu({
-          menuStatus: "close",
-          style3: "menu2",
-          style: "menu active",
-          style1: "menu1",
-        });
-        setSideBar1(true);
-        break;
-      case "close":
-        setMenu({
-          menuStatus: "open",
-          style3: "menu1",
-          style: "menu",
-          style1: "menu1",
-        });
-        setTimeout(() => {
-          setSideBar1(false);
-        }, 1000);
-        break;
-    }
+    setMemberHide(false);
+    setSideBar1(true);
+    setMenu({
+      menuStatus: "close",
+      style3: "menu2",
+      style: "menu active",
+      style1: "menu1",
+    });
   };
-  const [, setSideBar2] = useState(false);
 
   const handleClickback = () => {
-    switch (menu.menuStatus) {
-      case "open":
-        default:
-        setMenu({
-          menuStatus: "close",
-          style3: "menu2",
-          style: "menu active",
-          style1: "menu active",
-        });
-        setSideBar2(true);
-        break;
-      case "close":
-        setMenu({
-          menuStatus: "open",
-          style3: "menu1",
-          style: "menu",
-          style1: "menu1",
-        });
-        setTimeout(() => {
-          setSideBar2(false);
-        }, 1000);
-        break;
-    }
+    setMenu({
+      menuStatus: "open",
+      style3: "menu1",
+      style: "menu",
+      style1: "menu1",
+    });
+    setSideBar1(false);
+    setMemberHide(true);
   };
 
   const userData = [
@@ -150,17 +157,23 @@ function MemberRegistration() {
       area: "MADAM CAMMA ROAD",
       city: "MUMBAI",
       pinccode: "400021",
-
     },
   ];
-  const [hide, setHide] = useState(false)
-  const [memberhide, setMemberHide] = useState(true)
+  const [hide, setHide] = useState(false);
+  const [memberhide, setMemberHide] = useState(true);
   const fields = [
     {
-      key: "SNo", label: "S.NO", _style: { width: "1%" }, sorter: false,
+      key: "SNo",
+      label: "S.NO",
+      _style: { width: "1%" },
+      sorter: false,
       filter: false,
     },
-    { key: "Name of Member", label: "Name of Member", _style: { width: "10%" } },
+    {
+      key: "Name of Member",
+      label: "Name of Member",
+      _style: { width: "10%" },
+    },
     { key: "gende", label: "Gender", _style: { width: "10%" } },
     { key: "age", label: "Age", _style: { width: "10%" } },
     { key: "education", label: "Education", _style: { width: "10%" } },
@@ -177,13 +190,13 @@ function MemberRegistration() {
 
   const enableCreate = () => {
     setHide(true);
-    setMemberHide(false)
-  }
+    setMemberHide(false);
+  };
   const cancelCreate = () => {
     setHide(false);
-    setMemberHide(true)
+    setMemberHide(true);
     setFiles("");
-  }
+  };
   // const [gridShow, setGridShow] = useState({
   //   view1: false,
   //   view2: false,
@@ -203,21 +216,26 @@ function MemberRegistration() {
           <a href>View</a>
         </Menu.Item>
         <Menu.Item>
+          <a href onClick={handleClickhis}>
+            History
+          </a>
+        </Menu.Item>
+        {/* <Menu.Item>
           <a href
             onClick={() => {
               setSelected(details);
               handleClickhis();
             }}
           >History</a>
-        </Menu.Item>
+        </Menu.Item> */}
       </Menu>
-    )
-  } 
+    );
+  };
 
   return (
     <div className={menu.style3}>
       {sideBar1 && (
-        <div className={menu.style} style={{overflow:"auto"}}>
+        <div className={menu.style} style={{ overflow: "auto" }}>
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
               <div>
@@ -312,22 +330,21 @@ function MemberRegistration() {
           <CButton
             style={{ position: "absolute", top: "15px", right: "15px" }}
             className={"cancelBtn"}
-            onClick={() => {
-              handleClickhis();
-              handleClickback();
-            }}
+            onClick={handleClickback}
           >
             Back
           </CButton>
-
         </div>
       )}
-
-      <CCard className={"cardSave"}>
-        {memberhide && (
+      
+      {memberhide && (
           <div>
+      <CCard className={"cardSave"}>
+      
             <div className={"main-headerlabel"}>
-              <span className={"header-label"} style={{marginLeft:"-80px"}}>Member Registration</span>
+              <span className={"header-label"} style={{ marginLeft: "-80px" }}>
+                Member Registration
+              </span>
             </div>
             {/* <CRow style={{ marginTop: "30px" }} >
               <CCol sm="6" lg="3" style={{ marginLeft: "10px" }}>
@@ -397,7 +414,7 @@ function MemberRegistration() {
                 <ReactTooltip/>
               </CCol>
             </CRow> */}
-  <div style={{ marginTop: "-30px" }}>
+            <div style={{ marginTop: "-30px" }}>
               <CRow
                 style={{
                   marginTop: "65px",
@@ -406,7 +423,6 @@ function MemberRegistration() {
                 }}
               >
                 <CCol sm="3" lg="3" style={{ marginLeft: "-150px" }}>
-                  
                   <span
                     style={{
                       position: "absolute",
@@ -435,15 +451,12 @@ function MemberRegistration() {
                   <br />
                   <br></br>
                   <br />
-                  
                 </CCol>
                 <CCol
                   sm="3"
                   lg="3"
                   style={{ marginLeft: "300px", display: "flex" }}
                 >
-                  
-
                   <span
                     style={{
                       marginLeft: "-294px",
@@ -469,7 +482,6 @@ function MemberRegistration() {
                   <br />
 
                   <br />
-                  
                 </CCol>
                 <CCol
                   sm="3"
@@ -480,7 +492,6 @@ function MemberRegistration() {
                     display: "flex",
                   }}
                 >
-                  
                   <span
                     style={{
                       marginTop: "-228px",
@@ -488,7 +499,7 @@ function MemberRegistration() {
                       fontSize: "22px",
                       fontWeight: "700",
                       color: "#30a961",
-                      marginLeft:"25px"
+                      marginLeft: "25px",
                     }}
                   >
                     TransGender
@@ -508,7 +519,6 @@ function MemberRegistration() {
                   <span className={"divider2"} />
                   <br />
                   <br />
-                 
                 </CCol>
                 <CCol
                   sm="3"
@@ -517,10 +527,9 @@ function MemberRegistration() {
                     marginLeft: "800px",
                     position: "relative",
                     display: "flex",
-                    top:"-45px"
+                    top: "-45px",
                   }}
                 >
-                  
                   <span
                     style={{
                       marginTop: "-228px",
@@ -547,28 +556,32 @@ function MemberRegistration() {
                   <span className={"divider3"} />
                   <br />
                   <br />
-                 
                 </CCol>
               </CRow>
-            </div> 
-            <CRow style={{marginLeft:"4.5%",marginTop:"210px"}}>
+            </div>
+            <CRow style={{ marginLeft: "4.5%", marginTop: "210px" }}>
               <CCol>
-
-              <CButton
-              id={"memberregisteraddCButton"}
-              className={"saveBtn"}
-              onClick={enableCreate}
-              style={{               
-                width: "120px",
-                cursor: "pointer",                
-              }}
-            >
-              Add Member
-            </CButton>
+                <CButton
+                  id={"memberregisteraddCButton"}
+                  className={"saveBtn"}
+                  onClick={enableCreate}
+                  style={{
+                    width: "120px",
+                    cursor: "pointer",
+                  }}
+                >
+                  Add Member
+                </CButton>
               </CCol>
-            </CRow>                      
+            </CRow>
 
-            <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-16px", marginTop: "10px" }}>
+            <CRow
+              className={"row-alignment"}
+              md="12"
+              sm="12"
+              lg="12"
+              style={{ marginLeft: "-16px", marginTop: "10px" }}
+            >
               <CCol className={"column-align"} md="5">
                 <CLabel className={"label-name"}>
                   State
@@ -597,9 +610,13 @@ function MemberRegistration() {
               </CCol>
             </CRow>
 
-            <CRow className={"row-alignment"} md="12" sm="12" lg="12" style={{ marginLeft: "-16px" }}>
-
-
+            <CRow
+              className={"row-alignment"}
+              md="12"
+              sm="12"
+              lg="12"
+              style={{ marginLeft: "-16px" }}
+            >
               <CCol className={"column-align"} md="5">
                 <CLabel className={"label-name"}>
                   Area / Village
@@ -646,12 +663,12 @@ function MemberRegistration() {
                       <td className="py-1">
                         <CRow>
                           <CCol style={{ fontSize: "1.15rem" }} md="16">
-
                             <Dropdown
                               className={"ant-dropdown-cutomize-by-me"}
                               overlay={() => menus(item)}
                             >
-                              <a href
+                              <a
+                                href
                                 className="ant-dropdown-link"
                                 onClick={(e) => e.preventDefault()}
                               >
@@ -671,17 +688,17 @@ function MemberRegistration() {
                       </td>
                     );
                   },
-                  details: (item, index) => { },
+                  details: (item, index) => {},
                 }}
               />
             </CRow>
+            </CCard>
           </div>
         )}
 
         {hide && (
           <div>
             <CCard className={"cardSave"}>
-
               <div className={"main-headerlabel"}>
                 <span className={"header-label"}>Member Registration</span>
               </div>
@@ -691,7 +708,6 @@ function MemberRegistration() {
                     Mandatory fields are marked with an asterisk (*)
                   </p>
                   <div style={{ marginLeft: "-26px" }}>
-
                     <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                       <CCol className={"column-align"} md={3}>
                         <CLabel className={"label-name"}>
@@ -744,16 +760,46 @@ function MemberRegistration() {
                         </CLabel>
                         <CCol md="9">
                           <CFormGroup variant="custom-radio" inline>
-                            <CInputRadio custom id="inline-radio1" name="inline-radios" value="option1" />
-                            <CLabel variant="custom-checkbox" htmlFor="inline-radio1">Male</CLabel>
+                            <CInputRadio
+                              custom
+                              id="inline-radio1"
+                              name="inline-radios"
+                              value="option1"
+                            />
+                            <CLabel
+                              variant="custom-checkbox"
+                              htmlFor="inline-radio1"
+                            >
+                              Male
+                            </CLabel>
                           </CFormGroup>
                           <CFormGroup variant="custom-radio" inline>
-                            <CInputRadio custom id="inline-radio2" name="inline-radios" value="option2" />
-                            <CLabel variant="custom-checkbox" htmlFor="inline-radio2">Female</CLabel>
+                            <CInputRadio
+                              custom
+                              id="inline-radio2"
+                              name="inline-radios"
+                              value="option2"
+                            />
+                            <CLabel
+                              variant="custom-checkbox"
+                              htmlFor="inline-radio2"
+                            >
+                              Female
+                            </CLabel>
                           </CFormGroup>
                           <CFormGroup variant="custom-radio" inline>
-                            <CInputRadio custom id="inline-radio3" name="inline-radios" value="option3" />
-                            <CLabel variant="custom-checkbox" htmlFor="inline-radio3">Transgender</CLabel>
+                            <CInputRadio
+                              custom
+                              id="inline-radio3"
+                              name="inline-radios"
+                              value="option3"
+                            />
+                            <CLabel
+                              variant="custom-checkbox"
+                              htmlFor="inline-radio3"
+                            >
+                              Transgender
+                            </CLabel>
                           </CFormGroup>
                         </CCol>
                       </CCol>
@@ -802,9 +848,7 @@ function MemberRegistration() {
                         />
                       </CCol>
                       <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name"}>
-                          Voter Id
-                        </CLabel>
+                        <CLabel className={"label-name"}>Voter Id</CLabel>
                         <CInput
                           className={"input-align"}
                           id={"memberregistervoterid"}
@@ -814,18 +858,37 @@ function MemberRegistration() {
                       </CCol>
                     </CRow>
 
+                   
+
                     <div className={"row-headerlabel"}>
-                      <span style={{ marginLeft: "70px" }} className={"header-label"}>
+                      <span
+                        style={{ marginLeft: "70px" }}
+                        className={"header-label"}
+                      >
                         {" "}
-                        Address for Communication {" "}
+                        Address for Communication{" "}
                       </span>
                     </div>
+                    <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                    <CCol className={"column-align"} md="6" >
+                      <CLabel className={"label-name"}>
+                        Search
+                        <span className={"text-danger"}>*</span>
+                      </CLabel>
+                      <Select
+                        className={"selecci"}
+                        id={"nameofmemberassignpartyposting"}
+                        name={"state"}
+                        placeholder={"Select..."}  
+                        style={{marginLeft:"28px"}}
+                      />
+                    </CCol>
+                  </CRow>
                     <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                       <CCol className={"column-align"} md="3">
                         <CLabel className={"label-name"}>
                           Address line
                           <span className={"text-danger"}> *</span>
-
                         </CLabel>
                         <CInput
                           className={"input-align"}
@@ -833,7 +896,6 @@ function MemberRegistration() {
                           id={"memberregisteraddress1"}
                           placeholder="Address Line"
                         />
-
                       </CCol>
                       <CCol className={"column-align"} md="3">
                         <CLabel className={"label-name"}>
@@ -905,7 +967,7 @@ function MemberRegistration() {
                       </CCol>
                     </CRow>
                   </div>
-                  
+
                   <CRow>
                     <CCol md="10">
                       <CCol
@@ -939,64 +1001,73 @@ function MemberRegistration() {
                     </CCol>
                   </CRow>
 
-                  <CRow style={{ marginLeft: "900px", position: "absolute", marginTop: "-561px" }}>
+                  <CRow
+                    style={{
+                      marginLeft: "900px",
+                      position: "absolute",
+                      marginTop: "-561px",
+                    }}
+                  >
                     <CCol sm="6" lg="3" style={{ marginLeft: "10px" }}>
-                      <CCol md="3">                        
-<ImageUploading
-        multiple
-        value={images}
-        onChange={onChange}
-        maxNumber={maxNumber}
-        dataURLKey="data_url"
-      >
-        {({
-          imageList,
-          onImageUpload,
-          onImageRemoveAll,
-          onImageUpdate,
-          onImageRemove,
-          isDragging,
-          dragProps
-        }) => (
-         
-          <div className="upload__image-wrapper">
-           
-               <CCol md="3">
-              <CInput
-                name="file"
-                type="file"
-                id="profileImage"
-                accept="image/*"
-                style={{ display: "none" }}
-                onChange={(e) => {
-                  handleSave(e.target.files[0], "profileImage");
-                }}
-              />
-            </CCol>
-            <div
-              id={"addEmployeehandleClick"}
-              style={{
-                height: "100px",
-                width: "100px",
-                // border: "1px dashed black",
-              }}
-              onClick={() => handleClick()}
-            >
-              <img
-                alt=""
-                src={files !== "" ? files : DEFAULT_IMAGE}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  position: "acsolute",
-                }}
-              />
-            </div>
-            <CLabel className={"form-label1"} style={{width:"142px",position:"absolute"}}>
+                      <CCol md="3">
+                        <ImageUploading
+                          multiple
+                          value={images}
+                          onChange={onChange}
+                          maxNumber={maxNumber}
+                          dataURLKey="data_url"
+                        >
+                          {({
+                            imageList,
+                            onImageUpload,
+                            onImageRemoveAll,
+                            onImageUpdate,
+                            onImageRemove,
+                            isDragging,
+                            dragProps,
+                          }) => (
+                            <div className="upload__image-wrapper">
+                              <CCol md="3">
+                                <CInput
+                                  name="file"
+                                  type="file"
+                                  id="profileImage"
+                                  accept="image/*"
+                                  style={{ display: "none" }}
+                                  onChange={(e) => {
+                                    handleSave(
+                                      e.target.files[0],
+                                      "profileImage"
+                                    );
+                                  }}
+                                />
+                              </CCol>
+                              <div
+                                id={"addEmployeehandleClick"}
+                                style={{
+                                  height: "100px",
+                                  width: "100px",
+                                  // border: "1px dashed black",
+                                }}
+                                onClick={() => handleClick()}
+                              >
+                                <img
+                                  alt=""
+                                  src={
+                                    files !== "" ? files : DEFAULT_IMAGEperson
+                                  }
+                                  style={{
+                                    width: "100%",
+                                    height: "100%",
+                                    position: "acsolute",
+                                  }}
+                                />
+                              </div>
+                              {/* <CLabel className={"form-label1"} style={{width:"142px",position:"absolute"}}>
               Click to Upload Image
-            </CLabel>
-            
-            {/* <CButton
+              <span className={"text-danger"}>*</span>
+            </CLabel> */}
+                              {/* <CButton
               // style={isDragging ? { color: "red", } : null}
               style={{ width:"145px", height:"40px", marginLeft:"125px",marginTop:"-275px", border:"1px solid #00ff5a"}}
               className={"saveBtn"}
@@ -1005,9 +1076,9 @@ function MemberRegistration() {
             >
               Click or Drop here
             </CButton> */}
-            &nbsp;
-            {/* <CButton onClick={onImageRemoveAll}>Remove all images</CButton> */}
-            {/* {imageList.map((image, index) => (
+                              &nbsp;
+                              {/* <CButton onClick={onImageRemoveAll}>Remove all images</CButton> */}
+                              {/* {imageList.map((image, index) => (
               <div key={index} className="image-item" style={{marginLeft:"135px",marginTop:"-130px"}}>
                 <img src={image.data_url } alt="" width="100" />
                 <div className="image-item__btn-wrapper">
@@ -1016,15 +1087,14 @@ function MemberRegistration() {
                 </div>
               </div>
             ))} */}
-          </div>
-        )}
-      </ImageUploading>
+                            </div>
+                          )}
+                        </ImageUploading>
                       </CCol>
                     </CCol>
                   </CRow>
 
-
-                  <CRow style={{ padding: "4%", marginTop: "1.5%" }}>
+                  <CRow style={{ padding: "5%", marginTop: "1.5%" }}>
                     <CDataTable
                       items={userData1}
                       fields={fields1}
@@ -1042,12 +1112,12 @@ function MemberRegistration() {
                             <td className="py-1">
                               <CRow>
                                 <CCol style={{ fontSize: "1.15rem" }} md="16">
-
                                   <Dropdown
                                     className={"ant-dropdown-cutomize-by-me"}
                                     overlay={() => menus(item)}
                                   >
-                                    <a href
+                                    <a
+                                      href
                                       className="ant-dropdown-link"
                                       onClick={(e) => e.preventDefault()}
                                     >
@@ -1066,22 +1136,20 @@ function MemberRegistration() {
                               </CRow>
                             </td>
                           );
-
                         },
 
-                        details: (item, index) => { },
+                        details: (item, index) => {},
                       }}
                     />
                   </CRow>
                 </CCol>
               </CRow>
             </CCard>
-
           </div>
         )}
-      </CCard>
+      
     </div>
-  )
+  );
 }
 
-export default MemberRegistration
+export default MemberRegistration;

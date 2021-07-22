@@ -1,5 +1,5 @@
 .ant-dropdown {
-    left: 100px !important;
+    left: 1300px !important;
   }
 
 .menu {
@@ -119,7 +119,14 @@
      cursor: "pointer";
      margin: bottom 120px;
    }                              
- 
+   .divider {
+    position: absolute;
+      left: 498px;
+      top:  80px;
+      height: 130px;
+      bottom: 40%;
+      border-left: 1px solid lightgray;
+  }
  
 
 

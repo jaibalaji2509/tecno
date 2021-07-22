@@ -86,41 +86,41 @@ const VillagePanchayat = () => {
   ];
   
   const userData = [
-    // {
-    //   SNo: "1.",
-    //   Street: "Agaram kuturoad",
-    //   Ward: "0019",
-    //   by: "Jai Balaji",
-    //   on: "10/06/2021",
-    // },
-    // {
-    //   SNo: "2.",
-    //   Street: "Achari street",
-    //   Ward: "0019",
-    //   by: "Jai Balaji",
-    //   on: "10/06/2021",
-    // },
-    // {
-    //   SNo: "3.",
-    //   Street: "Sathya Sai Nagar",
-    //   Ward: "0019",
-    //   by: "Jai Balaji",
-    //   on: "10/06/2021",
-    // },
-    // {
-    //   SNo: "4.",
-    //   Street: "Agathiyar Avenue",
-    //   Ward: "0019",
-    //   by: "Jai Balaji",
-    //   on: "10/06/2021",
-    // },
-    // {
-    //   SNo: "5.",
-    //   Street: "Santhosapuram street",
-    //   Ward: "0019",
-    //   by: "Jai Balaji",
-    //   on: "10/06/2021",
-    // },
+    {
+      SNo: "1.",
+      Street: "Agaram kuturoad",
+      Ward: "0019",
+      by: "Jai Balaji",
+      on: "10/06/2021",
+    },
+    {
+      SNo: "2.",
+      Street: "Achari street",
+      Ward: "0019",
+      by: "Jai Balaji",
+      on: "10/06/2021",
+    },
+    {
+      SNo: "3.",
+      Street: "Sathya Sai Nagar",
+      Ward: "0019",
+      by: "Jai Balaji",
+      on: "10/06/2021",
+    },
+    {
+      SNo: "4.",
+      Street: "Agathiyar Avenue",
+      Ward: "0019",
+      by: "Jai Balaji",
+      on: "10/06/2021",
+    },
+    {
+      SNo: "5.",
+      Street: "Santhosapuram street",
+      Ward: "0019",
+      by: "Jai Balaji",
+      on: "10/06/2021",
+    },
   ];
 
   const fields = [
@@ -3695,6 +3695,7 @@ const VillagePanchayat = () => {
                                         options={select}
                                       />
                                     </CCol>
+                                    <span class="divider" />
                                     {municipalList && (
                                       <React.Fragment>
                                         <CCol

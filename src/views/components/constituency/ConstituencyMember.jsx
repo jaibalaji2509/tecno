@@ -16,6 +16,9 @@ import Select from "react-select";
 import "./ConstituencyMember.css";
 import { Dropdown, Menu } from "antd";
 import "antd/dist/antd.css";
+import { Tab, Tabs, TabList } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+
 
 const ConstituencyMember = () => {
   const [, setLocations] = useState({
@@ -252,19 +255,16 @@ const ConstituencyMember = () => {
       default:
         setMenu({
           menuStatus: "close",
-          style3: "menu2",
-          style: "menu active",
-          style1: "menu1",
+          style: "menu active1",
         });
-        setSideBar1(true);
-        setHideMappingmunicipal(false);
+        setTimeout(() => {
+          setSideBar1(true);
+        }, 1000);
         break;
       case "close":
         setMenu({
           menuStatus: "open",
-          style3: "menu1",
-          style: "menu",
-          style1: "menu1",
+          style: "menu active2",
         });
         setTimeout(() => {
           setSideBar1(false);
@@ -272,44 +272,26 @@ const ConstituencyMember = () => {
         break;
     }
   };
-  const cancelclick = () => {
-    setMenu({
-      menuStatus: "open",
-      style3: "menu1",
-      style: "menu",
-      style1: "menu1",
-    });
-    setHideMappingmunicipal(true);
-    setSideBar1(false);
-    setGridOne(false);
-    setGridTwo(false);
-    setGridThree(false);
-    setGridFour(false);
-  };
   const handleClick2 = () => {
     switch (menu.menuStatus) {
       case "open":
       default:
         setMenu({
           menuStatus: "close",
-          style3: "menu2",
-          style: "menu active",
-          style1: "menu active",
+          style: "menu active1",
         });
-        setSideBar2(true);
-        setHideMappingmunicipal(false);
+        setTimeout(() => {
+          setSideBar2(true);
+        }, 1000);
         break;
       case "close":
         setMenu({
           menuStatus: "open",
-          style3: "menu1",
-          style: "menu",
-          style1: "menu1",
+          style: "menu active2",
         });
         setTimeout(() => {
           setSideBar2(false);
         }, 1000);
-        setHideMappingmunicipal(true);
         break;
     }
   };
@@ -354,7 +336,7 @@ const ConstituencyMember = () => {
               handleClick();
             }}
           >
-            History
+          Member History
           </a>
         </Menu.Item>
       </Menu>
@@ -364,7 +346,7 @@ const ConstituencyMember = () => {
   return (
     <div className={menu.style3}>
       {sideBar1 && (
-        <div className={menu.style} style={{ overflow: "auto" }}>
+        <div className={menu.style} style={{ overflow: "auto", marginLeft: "-475px" }}>
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
               <div>
@@ -437,74 +419,14 @@ const ConstituencyMember = () => {
           </CRow>
           <CRow style={{ marginTop: "25px" }}>
             <CCol>
-              <i
-                style={{
-                  fontWeight: "700",
-                  padding: "10px",
-                  backgroundColor: "#1313d4",
-                  color: "#fff",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  marginBottom: "15px",
-                  marginLeft: "20px",
-                }}
-                id={"constihistorygridparty"}
-                className="fa fa-eye"
-                onClick={chairshow}
-              >
-                Party Posting
-              </i>
-              <i
-                style={{
-                  fontWeight: "700",
-                  padding: "10px",
-                  backgroundColor: "#1313d4",
-                  color: "#fff",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  marginBottom: "15px",
-                  marginLeft: "20px",
-                }}
-                id={"constihistorygridpublic"}
-                className="fa fa-eye"
-                onClick={gridshow}
-              >
-                PUBLIC REPRESENTATIVE POSTING
-              </i>
-              <i
-                style={{
-                  fontWeight: "700",
-                  padding: "10px",
-                  backgroundColor: "#1313d4",
-                  color: "#fff",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  marginBottom: "15px",
-                  marginLeft: "20px",
-                }}
-                id={"constihistorygridstate"}
-                className="fa fa-eye"
-                onClick={partshow}
-              >
-                STATE MINISTRY PORTFOLIO
-              </i>
-              <i
-                style={{
-                  fontWeight: "700",
-                  padding: "10px",
-                  backgroundColor: "#1313d4",
-                  color: "#fff",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  marginBottom: "15px",
-                  marginLeft: "20px",
-                }}
-                id={"constihistorygridcentral"}
-                className="fa fa-eye"
-                onClick={centralgrid}
-              >
-                CENTRAL MINISTERS PORTFOLIO
-              </i>
+            <Tabs>
+    <TabList>
+      <Tab  onClick={chairshow}>Party Posting</Tab>
+      <Tab  onClick={gridshow}>PUBLIC REPRESENTATIVE POSTING</Tab>      
+      <Tab onClick={partshow}>STATE MINISTRY PORTFOLIO</Tab>
+      <Tab  onClick={centralgrid}>CENTRAL MINISTERS PORTFOLIO</Tab>
+    </TabList>   
+  </Tabs>                                                                                              
             </CCol>
           </CRow>
 
@@ -764,14 +686,16 @@ const ConstituencyMember = () => {
             }}
             className={"cancelBtn"}
             id="constimemberhistoryback"
-            onClick={cancelclick}
+            onClick={handleClick}
           >
             Back
           </CButton>
         </div>
       )}
       {sideBar2 && (
-        <div className={menu.style1}>
+        <div className={menu.style} 
+        style={{overflow:"auto", marginLeft: "-475px"}}
+        >
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
               <div>

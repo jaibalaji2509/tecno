@@ -1,4 +1,4 @@
-import { CButton, CCard, CCol, CLabel, CRow } from "@coreui/react";
+import { CButton, CCard, CCol, CContainer, CLabel, CRow } from "@coreui/react";
 import React, { useState } from "react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import { saveCreateCorporation } from "../../../services/ApiService";
@@ -7,6 +7,8 @@ import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
 import Select from "react-select";
 import { Dropdown, Menu } from "antd";
 import "antd/dist/antd.css";
+import "./AssignPartyPosting.css";
+
 const AssignPartyPosting = () => {
   // const [mobilenumber, setMobileNumber] = useState("");
   // const [, setOtpHide] = useState(false);
@@ -19,6 +21,8 @@ const AssignPartyPosting = () => {
     street: "",
     pincode: "",
   });
+
+  const [selected] = useState("")
   const [files] = useState("");
   // const [, setMunicipalList] = useState(true);
   // const [, setmunicipalCreate] = useState(false);
@@ -45,6 +49,7 @@ const AssignPartyPosting = () => {
   const userData = [
     {
       SNo: "1",
+      member: "SathishKumar",
       Name: "Volunteer Team",
       Type: "Head Quaters",
       Department: "Voluntery",
@@ -64,7 +69,7 @@ const AssignPartyPosting = () => {
       sorter: false,
       filter: false,
     },
-
+    { key: "member", label: "Name of the Member", _style: { width: "10%" } },
     { key: "Name", label: "Name of Party Office", _style: { width: "10%" } },
     { key: "Type", label: "Type of Office", _style: { width: "10%" } },
     { key: "Department", label: "Department", _style: { width: "10%" } },
@@ -165,10 +170,7 @@ const AssignPartyPosting = () => {
       }
     }
   };
-  const selectTypeofOffice = [
-    { value: "Head Quaters", label: "Head Quaters" },
-    { value: "District Party Office", label: "District Party Office" },
-  ];
+  
   const selectDepartment = [
     { value: "Physician", label: "Physician" },
     { value: "Weaver", label: "Weaver" },
@@ -294,6 +296,9 @@ const AssignPartyPosting = () => {
   //   await setMunicipalListadd(false);
   //   await setmunicipalCreateadd(true);
   // };
+  const typeoffice=[{value :"office", label:"Type of Party Office"},
+                    {value:"wings", label:"Type of Party wings Office"}];
+
   const selectName = [{ value: "Sathishkumar", label: "SathishKumar" }];
   // const editStateadd = async () => {
   //   await setMunicipalListadd(false);
@@ -338,9 +343,18 @@ const AssignPartyPosting = () => {
   return (
     <div>
       {hideMappingMunicipal && (
-        <div>
-          <CCard className={"cardSave"}>
-            <div className={"main-headerlabel"}>
+        <div >
+         <CCard
+          className={"cardSave"}
+          style={{
+            minHeight: `${window.innerHeight - 198}px`,
+            maxHeight: `${window.innerHeight - 198}px`,
+            overflow: "auto",
+            overflowX:"hidden",
+          }}
+        >
+          <CContainer style={{marginLeft:"1em"}}>
+            <div className={"main-headerlabel"} style={{marginLeft:"-12em"}}>
               <span className={"header-label"}>
                 View Assigned Party Posting
               </span>
@@ -353,7 +367,7 @@ const AssignPartyPosting = () => {
                       <CCol md="5">
                         <CButton
                           style={{
-                            marginLeft: "35px",
+                            marginLeft: "3.8em",
                           }}
                           id={"assinpartypostingadding"}
                           className={"saveBtn"}
@@ -364,6 +378,7 @@ const AssignPartyPosting = () => {
                       </CCol>
                     </CCol>
                   </CRow>
+                  <CContainer>
                   <CRow className={"row-alignment"} md="12" sm="12" lg="12">
                     <CCol className={"column-align"} md="4">
                       <CLabel className={"label-name-1"}>
@@ -376,6 +391,7 @@ const AssignPartyPosting = () => {
                         placeholder={"Select Type of Office"}
                         value={locations.district}
                         onChange={changeHandler}
+                        
                       />
                     </CCol>
                     <CCol className={"column-align"} md="4">
@@ -409,12 +425,14 @@ const AssignPartyPosting = () => {
                       />
                     </CCol>
                   </CRow>
-                </div>
+                  </CContainer>
+                </div>               
 
+<CContainer>
                 <CRow
                   style={{
-                    padding: "4%",
-                    marginTop: "-1.5%",
+                    padding: "6%",
+                    marginTop: "0.5%",
                     marginLeft: "-40px",
                   }}
                 >
@@ -464,16 +482,27 @@ const AssignPartyPosting = () => {
                     }}
                   />
                 </CRow>
+                </CContainer>
               </div>
             )}
+            </CContainer>
           </CCard>
         </div>
       )}
 
       {hideCorporation && (
         <div>
-          <CCard className={"cardSave"}>
-            <div className={"main-headerlabel"}>
+          <CCard
+          className={"cardSave"}
+          style={{
+            minHeight: `${window.innerHeight - 198}px`,
+            maxHeight: `${window.innerHeight - 198}px`,
+            overflow: "auto",
+            overflowX:"hidden",
+          }}
+        >
+          <CContainer>
+            <div className={"main-headerlabel"} style={{marginLeft:"-12em"}}>
               <span className={"header-label"}>Assign Party Posting</span>
             </div>
             {locationHide.corporation && (
@@ -488,7 +517,7 @@ const AssignPartyPosting = () => {
                       Assign Party Posting{" "}
                     </span>
                   </div> */}
-
+<CContainer>
                   <CRow
                     className={"row-alignment"}
                     md="12"
@@ -496,7 +525,7 @@ const AssignPartyPosting = () => {
                     lg="12"
                     style={{ marginLeft: "7px" }}
                   >
-                    <CCol className={"column-align"} md="4">
+                    <CCol className={"column-align"} md="5">
                       <CLabel className={"label-name-1"}>
                         Type of Office
                         <span className={"text-danger"}>*</span>
@@ -508,11 +537,11 @@ const AssignPartyPosting = () => {
                         placeholder={"Select Type of Office"}
                         value={typeofOfficess}
                         onChange={(e) => setTypeofOfficess(e)}
-                        options={selectTypeofOffice}
+                       options={typeoffice}
                       />
                     </CCol>
 
-                    <CCol className={"column-align"} md={4} lg={4}>
+                    <CCol className={"column-align"} md={5} lg={5}>
                       <CLabel className={"label-name-1"}>
                         Department Name
                         <span className={"text-danger"}> *</span>
@@ -527,7 +556,8 @@ const AssignPartyPosting = () => {
                         options={selectDepartment}
                       />
                     </CCol>
-                  </CRow>
+                  </CRow>                 
+                  
                   <CRow
                     className={"row-alignment"}
                     md="12"
@@ -535,7 +565,7 @@ const AssignPartyPosting = () => {
                     lg="12"
                     style={{ marginLeft: "7px" }}
                   >
-                    <CCol className={"column-align"} md="4">
+                    <CCol className={"column-align"} md="5">
                       <CLabel className={"label-name-1"}>
                         Type of Party / Party Wings Office
                         <span className={"text-danger"}>*</span>
@@ -551,7 +581,7 @@ const AssignPartyPosting = () => {
                       />
                     </CCol>
 
-                    <CCol className={"column-align"} md={4} lg={4}>
+                    <CCol className={"column-align"} md={5} lg={5}>
                       <CLabel className={"label-name-1"}>
                         Designation Name
                         <span className={"text-danger"}> *</span>
@@ -572,7 +602,7 @@ const AssignPartyPosting = () => {
                     className={"row-alignment"}
                     style={{ marginLeft: "7px" }}
                   >
-                    <CCol className={"column-align"} md="4">
+                    <CCol className={"column-align"} md="5">
                       <CLabel className={"label-name-1"}>
                         Name of the Office Location
                         <span className={"text-danger"}>*</span>
@@ -588,7 +618,7 @@ const AssignPartyPosting = () => {
                       />
                     </CCol>
 
-                    <CCol className={"column-align"} md={4} lg={4}>
+                    <CCol className={"column-align"} md={5} lg={5}>
                       <CLabel className={"label-name-1"}>
                         Role Name
                         <span className={"text-danger"}> *</span>
@@ -605,14 +635,14 @@ const AssignPartyPosting = () => {
                       />
                     </CCol>
                   </CRow>
-
+                  </CContainer>
                   <CRow md="10">
                     <CCol
                       md="5"
                       style={{
-                        marginLeft: "500px",
+                        marginLeft: "50em",
                         float: "right",
-                        marginTop: "30px",
+                        marginTop: "1em",
                         position: "absolute",
                       }}
                     >
@@ -640,8 +670,10 @@ const AssignPartyPosting = () => {
                       </CButton>{" "}
                     </CCol>
                   </CRow>
+
+                  <CContainer>
                   <CRow>
-                    <CCol style={{ marginTop: "60px", marginLeft: "65px" }}>
+                    <CCol style={{ marginTop: "6em", marginLeft: "65px" }}>
                       <CLabel
                         style={{
                           fontSize: "20PX",
@@ -671,31 +703,40 @@ const AssignPartyPosting = () => {
                       />
                     </CCol>
                   </CRow>
+                  <CContainer>
+                <CRow
+                  className={"LengthDataw"}
+                  style={{ marginLeft: "2em", marginTop: "20px" }}
+                  sm={12}
+                  md={12}
+                  lg={12}
+                >
+                  <CCol md="6">
+                    <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    Name :{" "}
+                    </CLabel>
 
-                  <CRow className={"row-alignment"}>
-                    <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
-                        Name
-                        <span
-                          style={{ fontSize: "14px", fontFamily: "normal" }}
-                        >
-                          {" "}
-                          - SathishKumar
-                        </span>
-                      </CLabel>
-                    </CCol>
-                    <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
-                        Gender
-                        <span
-                          style={{ fontSize: "14px", fontFamily: "normal" }}
-                        >
-                          {" "}
-                          - Male
-                        </span>
-                      </CLabel>
-                    </CCol>
-                    <CCol>
+                    <CLabel
+                      className={"reAssign-Detail"}
+                      style={{ marginLeft: "8em" }}
+                    >
+                      {selected.assignedTo
+                        ? selected.assignedTo.firstName
+                        : "SathishKumar"}
+                    </CLabel>
+                  </CCol>
+                  <CCol md="6" style={{ marginLeft: "-200px" }}>
+                    <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    Gender :{" "}
+                    </CLabel>
+
+                    <CLabel className={"reAssign-Detail"} style={{marginLeft:"8em"}}>
+                      {selected.assignedTo
+                        ? selected.assignedTo.firstName
+                        : "Male"}
+                    </CLabel>
+                  </CCol>
+                  <CCol>
                       <img
                         type="text"
                         alt=""
@@ -706,58 +747,78 @@ const AssignPartyPosting = () => {
                           position: "relative",
                           background: "#fff",
                           left: "-40%",
-                          top: "-3%",
+                          top: "-4em",
                         }}
                       />
                     </CCol>
+                </CRow>
+                <CRow
+                  className={"LengthDataw"}
+                  style={{ marginLeft: "2em", marginTop: "-10em" }}
+                  sm={12}
+                  md={12}
+                  lg={12}
+                >
+                  <CCol md="6">
+                    <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    DOB :{" "}
+                    </CLabel>
+
+                    <CLabel
+                      className={"reAssign-Detail"}
+                      style={{ marginLeft: "8em" }}
+                    >
+                      {selected.assignedTo
+                        ? selected.assignedTo.firstName
+                        : "22/07/1996"}
+                    </CLabel>
+                  </CCol >
+                  <CCol md="6" style={{marginLeft:"29em",marginTop:"-2.4em"}}>
+                    <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    Education :{" "}
+                    </CLabel>
+
+                    <CLabel
+                      className={"reAssign-Detail"}
+                      style={{ marginLeft: "8em" }}
+                    >
+                      {selected.assignedTo
+                        ? selected.assignedTo.firstName
+                        : "Mechanical Engineer"}
+                    </CLabel>
+                  </CCol>
                   </CRow>
                   <CRow
-                    className={"row-alignment"}
-                    style={{ marginTop: "-140px" }}
-                  >
-                    <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
-                        DOB
-                        <span
-                          style={{ fontSize: "14px", fontFamily: "normal" }}
-                        >
-                          {" "}
-                          - 22/07/1996
-                        </span>
-                      </CLabel>
-                    </CCol>
-                    <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
-                        Education
-                        <span
-                          style={{ fontSize: "14px", fontFamily: "normal" }}
-                        >
-                          {" "}
-                          - Mechanical Engineer
-                        </span>
-                      </CLabel>
-                    </CCol>
+                  className={"LengthDataw"}
+                  style={{ marginLeft: "2em", marginTop: "20px" }}
+                  sm={12}
+                  md={12}
+                  lg={12}
+                >
+                  <CCol md="6">
+                    <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    Occupation :{" "}
+                    </CLabel>
+
+                    <CLabel
+                      className={"reAssign-Detail"}
+                      style={{ marginLeft: "8em" }}
+                    >
+                      {selected.assignedTo
+                        ? selected.assignedTo.firstName
+                        : " Software Developer"}
+                    </CLabel>
+                  </CCol>
                   </CRow>
-                  <CRow className={"row-alignment"}>
-                    <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
-                        Occupation{" "}
-                        <span
-                          style={{ fontSize: "14px", fontFamily: "normal" }}
-                        >
-                          {" "}
-                          - Software Developer
-                        </span>{" "}
-                        <span>-</span>
-                      </CLabel>
-                    </CCol>
-                  </CRow>
+              </CContainer>
+                            
+                  </CContainer>
                 </div>
 
                 <CRow
                   style={{
                     padding: "4%",
-                    marginTop: "-2.5%",
+                    marginTop: "1.5%",
                     marginLeft: "-10px",
                   }}
                 >
@@ -811,9 +872,10 @@ const AssignPartyPosting = () => {
                 </CRow>
               </div>
             )}
+          </CContainer>
           </CCard>
         </div>
-      )}
+      )}      
     </div>
   );
 };

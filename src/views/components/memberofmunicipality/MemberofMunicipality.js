@@ -18,6 +18,9 @@ import Select from "react-select";
 import "./MemberofMunicipality.css";
 import { Dropdown, Menu } from "antd";
 import "antd/dist/antd.css";
+import { Tab, Tabs, TabList } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+
 const MemberofMunicipality = () => {
   // const [location, setLocation] = useState({
   //     state: "",
@@ -357,19 +360,14 @@ const MemberofMunicipality = () => {
       default:
         setMenu({
           menuStatus: "close",
-          style3: "menu2",
-          style: "menu active",
-          style1: "menu1",
+          style: "menu active1",
         });
         setSideBar1(true);
-        setHideMappingmunicipal(false);
         break;
       case "close":
         setMenu({
           menuStatus: "open",
-          style3: "menu1",
-          style: "menu",
-          style1: "menu1",
+          style: "menu active2",
         });
         setTimeout(() => {
           setSideBar1(false);
@@ -381,44 +379,24 @@ const MemberofMunicipality = () => {
         break;
     }
   };
-  const cancelclick = () => {
-    setMenu({
-      menuStatus: "open",
-      style3: "menu1",
-      style: "menu",
-      style1: "menu1",
-    });
-    setHideMappingmunicipal(true);
-    setSideBar1(false);
-    setGridOne(false);
-    setGridTwo(false);
-    setGridThree(false);
-    setGridFour(false);
-  };
   const handleClick3 = () => {
     switch (menu.menuStatus) {
       case "open":
       default:
         setMenu({
           menuStatus: "close",
-          style3: "menu2",
-          style: "menu active",
-          style1: "menu1",
+          style: "menu active1",
         });
         setSideBar3(true);
-        setHideMappingmunicipal(false);
         break;
       case "close":
         setMenu({
           menuStatus: "open",
-          style3: "menu1",
-          style: "menu",
-          style1: "menu1",
+          style: "menu active2",
         });
         setTimeout(() => {
           setSideBar3(false);
         }, 1000);
-        setHideMappingmunicipal(true);
         setGridOne(false);
         setGridTwo(false);
         setGridThree(false);
@@ -432,23 +410,17 @@ const MemberofMunicipality = () => {
       default:
         setMenu({
           menuStatus: "close",
-          style3: "menu2",
-          style: "menu active",
-          style1: "menu active",
+          style: "menu active1",
         });
         setSideBar2(true);
-        setHideMappingmunicipal(false);
         break;
       case "close":
         setMenu({
           menuStatus: "open",
-          style3: "menu1",
-          style: "menu",
-          style1: "menu1",
+          style: "menu active2",
         });
         setTimeout(() => {
           setSideBar2(false);
-          setHideMappingmunicipal(true);
         }, 1000);
         break;
     }
@@ -488,7 +460,7 @@ const MemberofMunicipality = () => {
               handleClick();
             }}
           >
-            History
+           Member History
           </a>
         </Menu.Item>
         <Menu.Item>
@@ -509,7 +481,7 @@ const MemberofMunicipality = () => {
   return (
     <div className={menu.style3}>
       {sideBar1 && (
-        <div className={menu.style} style={{ overflow: "auto" }}>
+        <div className={menu.style} style={{ overflow: "auto",  marginLeft: "-475px" }}>
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
               <div>
@@ -582,74 +554,14 @@ const MemberofMunicipality = () => {
           </CRow>
           <CRow style={{ marginTop: "25px" }}>
             <CCol>
-              <i
-                style={{
-                  fontWeight: "700",
-                  padding: "10px",
-                  backgroundColor: "#1313d4",
-                  color: "#fff",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  marginBottom: "15px",
-                  marginLeft: "20px",
-                }}
-                id={"membermunicieyegrid"}
-                className="fa fa-eye"
-                onClick={chairshow}
-              >
-                Chairman
-              </i>
-              <i
-                style={{
-                  fontWeight: "700",
-                  padding: "10px",
-                  backgroundColor: "#1313d4",
-                  color: "#fff",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  marginBottom: "15px",
-                  marginLeft: "20px",
-                }}
-                id={"membermunicieyegrid"}
-                className="fa fa-eye"
-                onClick={gridshow}
-              >
-                Vice-Chairman
-              </i>
-              <i
-                style={{
-                  fontWeight: "700",
-                  padding: "10px",
-                  backgroundColor: "#1313d4",
-                  color: "#fff",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  marginBottom: "15px",
-                  marginLeft: "20px",
-                }}
-                id={"membermunicieyegrid"}
-                className="fa fa-eye"
-                onClick={partshow}
-              >
-                Party Posting
-              </i>
-              <i
-                style={{
-                  fontWeight: "700",
-                  padding: "10px",
-                  backgroundColor: "#1313d4",
-                  color: "#fff",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  marginBottom: "15px",
-                  marginLeft: "20px",
-                }}
-                id={"membermunicieyegrid"}
-                className="fa fa-eye"
-                onClick={centralgrid}
-              >
-                Ward Member
-              </i>
+            <Tabs>
+    <TabList>
+      <Tab onClick={chairshow}>Chairman</Tab>
+      <Tab onClick={gridshow}>Vice-Chairman</Tab>
+      <Tab onClick={partshow}>Party Posting</Tab>
+      <Tab onClick={centralgrid}>Ward Member</Tab>
+    </TabList>   
+  </Tabs>                                                    
             </CCol>
           </CRow>
 
@@ -891,14 +803,14 @@ const MemberofMunicipality = () => {
               right: "15px",
             }}
             className={"cancelBtn"}
-            onClick={cancelclick}
+            onClick={handleClick}
           >
             Back
           </CButton>
         </div>
       )}
       {sideBar3 && (
-        <div className={menu.style} style={{ overflow: "auto" }}>
+        <div className={menu.style} style={{ overflow: "auto",  marginLeft: "-475px" }}>
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
               <div>
@@ -917,58 +829,13 @@ const MemberofMunicipality = () => {
 
           <CRow style={{ marginTop: "25px" }}>
             <CCol>
-              <i
-                style={{
-                  fontWeight: "700",
-                  padding: "10px",
-                  backgroundColor: "#1313d4",
-                  color: "#fff",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  marginBottom: "15px",
-                  marginLeft: "20px",
-                }}
-                id={"membermunicieyegrid"}
-                className="fa fa-eye"
-                onClick={chairshow}
-              >
-                Chairman
-              </i>
-              <i
-                style={{
-                  fontWeight: "700",
-                  padding: "10px",
-                  backgroundColor: "#1313d4",
-                  color: "#fff",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  marginBottom: "15px",
-                  marginLeft: "20px",
-                }}
-                id={"membermunicieyegrid"}
-                className="fa fa-eye"
-                onClick={gridshow}
-              >
-                Vice-Chairman
-              </i>
-
-              <i
-                style={{
-                  fontWeight: "700",
-                  padding: "10px",
-                  backgroundColor: "#1313d4",
-                  color: "#fff",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  marginBottom: "15px",
-                  marginLeft: "20px",
-                }}
-                id={"membermunicieyegrid"}
-                className="fa fa-eye"
-                onClick={centralgrid}
-              >
-                Ward Member
-              </i>
+            <Tabs>
+    <TabList>
+      <Tab onClick={chairshow}>Chairman</Tab>
+      <Tab onClick={gridshow}>Vice-Chairman</Tab>
+      <Tab onClick={centralgrid}>Ward Member</Tab>
+    </TabList>   
+  </Tabs>          
             </CCol>
           </CRow>
 
@@ -1191,17 +1058,14 @@ const MemberofMunicipality = () => {
               right: "15px",
             }}
             className={"cancelBtn"}
-            onClick={() => {
-              handleClick();
-              handleClick3();
-            }}
+            onClick={handleClick3}
           >
             Back
           </CButton>
         </div>
       )}
       {sideBar2 && (
-        <div className={menu.style1}>
+        <div className={menu.style} style={{overflow:"auto",  marginLeft: "-475px"}}>
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
               <div>
