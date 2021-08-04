@@ -6,7 +6,7 @@ import CElementCover from "../element-cover/CElementCover";
 import style from "./CDataTable.module.css";
 import CIcon from "@coreui/icons-react";
 import { cilArrowTop, cilBan, cilFilterX } from "@coreui/icons";
-import { CInput, CLabel } from "@coreui/react";
+import { CContainer, CInput, CLabel } from "@coreui/react";
 
 //component - CoreUI / CTable
 const CDataTable = (props) => {
@@ -435,6 +435,7 @@ const CDataTable = (props) => {
   );
 
   return (
+    <CContainer>
     <React.Fragment>
       <div style={{ width: "100%" }} ref={innerRef}>
         <div className="row">
@@ -703,6 +704,7 @@ const CDataTable = (props) => {
         />
       )}
     </React.Fragment>
+    </CContainer>
   );
 };
 

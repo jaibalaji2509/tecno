@@ -141,12 +141,18 @@ html:not([dir="rtl"]) .c-sidebar-nav-dropdown-toggle:after {
   font-size: 13px !important;
   font-family: "Google Sans" !important;
   letter-spacing: 0.7px;
+  padding-left: 7em;
+  min-width: 269px;
+ 
+  overflow: hidden !important;
 }
 
 .c-sidebar-nav-dropdown .c-sidebar-nav-dropdown-items li a {
   font-size: 13px !important;
   font-family: "Google Sans" !important;
   letter-spacing: 0.7px;
+  overflow: hidden !important;
+  overflow-x: hidden;
 }
 
 .c-sidebar-nav-dropdown.c-show {
@@ -165,6 +171,7 @@ html:not([dir="rtl"]) .c-sidebar-nav-dropdown-toggle:after {
 
 .c-sidebar-nav-dropdown.c-show .c-sidebar-nav-dropdown-items a {
   background: #ebedef;
+  left: -1em;
 }
 
 .c-sidebar-nav-dropdown .c-sidebar-nav-dropdown-items a {
@@ -628,11 +635,12 @@ label.scrollCardText.ttlCount-data {
   border-radius: 10px !important;
 }
 
+
 .reAssign-Detail {
   color: #000;
   font-size: 15px;
   margin-left: 150px;
-  position: relative;
+  position: relative !important;
   margin-top: 3px;
 }
 
@@ -641,7 +649,7 @@ label.scrollCardText.ttlCount-data {
   font-weight: bold;
   font-size: 17px;  
   color: #2a579a;
-  position: absolute;
+  position: absolute !important;
 }
 
 .Roless-card-container-7 {
@@ -1343,4 +1351,12 @@ button.cancelBtn {
 .scrollForCard::-webkit-scrollbar {
   width: 0px;
   background: transparent; /* make scrollbar transparent */
+}
+.promotebutton{
+  margin-left: -42em;
+  margin-top: 2em;
+}
+.c-sidebar-nav-dropdown.c-show > .c-sidebar-nav-dropdown-items {
+  max-height: 1500px;
+  overflow: hidden !important;
 }

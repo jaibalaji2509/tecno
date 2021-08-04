@@ -5,10 +5,10 @@ import {
   CCol,
   CButton,
   CLabel,
-  // CWidgetDropdown,
   CInput,
   CInputRadio,
   CFormGroup,
+  CContainer,
 } from "@coreui/react";
 import CDataTable from "../../CoreComponents/table/CDataTable";
 import "./MemberRegistration.css";
@@ -26,6 +26,7 @@ function MemberRegistration() {
   const [steetSchema] = useState([]);
   const [Education] = useState([]);
   const [Occupation] = useState([]);
+  const [selected] = useState([]);
   const [, setPI] = useState("");
   const [sideBar1, setSideBar1] = useState(false);
   const [files, setFiles] = useState("");
@@ -52,7 +53,7 @@ function MemberRegistration() {
     { key: "Mobile Number", label: "Mobile Number", _style: { width: "15%" } },
     { key: "Street Name", label: "Street Name", _style: { width: "10%" } },
     {
-      key: "Area Name",      
+      key: "Area Name",
       label: "Area Name / Locality",
       _style: { width: "15%" },
     },
@@ -97,68 +98,40 @@ function MemberRegistration() {
     console.log(imageList, addUpdateIndex);
     setImages(imageList);
   };
-  // const handleClickhis = () => {
-  //   switch (menu.menuStatus) {
-  //     case "open":
-  //       default:
-  //       setMenu({
-  //         menuStatus: "close",
-  //         style3: "menu2",
-  //         style: "menu active",
-  //         style1: "menu1",
-  //       });
-  //       setSideBar1(true);
-  //       setMemberHide(false);
-  //       break;
-  //     case "close":
-  //       setMenu({
-  //         menuStatus: "open",
-  //         style3: "menu1",
-  //         style: "menu",
-  //         style1: "menu1",
-  //       });
-  //       setTimeout(() => {
-  //         setSideBar1(false);
-  //       }, 1000);
-  //       setMemberHide(true);
-  //       break;
-  //   }
-  // };
-
+  
   const handleClickhis = () => {
-    setMemberHide(false);
-    setSideBar1(true);
-    setMenu({
-      menuStatus: "close",
-      style3: "menu2",
-      style: "menu active",
-      style1: "menu1",
-    });
-  };
-
-  const handleClickback = () => {
-    setMenu({
-      menuStatus: "open",
-      style3: "menu1",
-      style: "menu",
-      style1: "menu1",
-    });
-    setSideBar1(false);
-    setMemberHide(true);
+    switch (menu.menuStatus) {
+      case "open":
+        setMenu({
+          menuStatus: "close",
+          style: "menu active1",
+        });
+        setSideBar1(true);
+        break;
+      case "close":
+      default:
+        setMenu({
+          menuStatus: "open",
+          style: "menu active2",
+        });
+        setTimeout(() => {
+          setSideBar1(false);
+        }, 1000);
+        break;
+    }
   };
 
   const userData = [
     {
       SNo: "1",
-      WingOffice: "HEAD OFFICE",
-      NAMEOFWINGOFFICE: "HEADOFFICEMUMBAI",
-      ReportingTo: "---",
-      address: "State Bank Bhavan",
-      area: "MADAM CAMMA ROAD",
-      city: "MUMBAI",
-      pinccode: "400021",
+      NameMember: "James Lucas",
+      gende: "Male",
+      age: "102",
+      education: "MBA Graduate",
+      occupation: "Lecutre in IIT Campus",     
     },
   ];
+
   const [hide, setHide] = useState(false);
   const [memberhide, setMemberHide] = useState(true);
   const fields = [
@@ -170,7 +143,7 @@ function MemberRegistration() {
       filter: false,
     },
     {
-      key: "Name of Member",
+      key: "NameMember",
       label: "Name of Member",
       _style: { width: "10%" },
     },
@@ -235,7 +208,10 @@ function MemberRegistration() {
   return (
     <div className={menu.style3}>
       {sideBar1 && (
-        <div className={menu.style} style={{ overflow: "auto" }}>
+        <div
+          className={menu.style}
+          style={{ overflow: "auto", marginLeft: "-475px" }}
+        >
           <CRow className={""}>
             <CCol md="12" lg="12" sm="12">
               <div>
@@ -251,102 +227,134 @@ function MemberRegistration() {
               </div>
             </CCol>
           </CRow>
-
-          <CRow className={"row-alignment"} style={{ marginLeft: "-61px" }}>
-            <CCol className={"column-align"} md="4">
-              <CLabel className={"label-name"}>
-                Name
-                <span style={{ fontSize: "14px", fontFamily: "normal" }}>
-                  {" "}
-                  - Arun Kumar
-                </span>
-              </CLabel>
-            </CCol>
-            <CCol className={"column-align"} md="4">
-              <CLabel className={"label-name"}>
-                Gender
-                <span style={{ fontSize: "14px", fontFamily: "normal" }}>
-                  {" "}
-                  - Male
-                </span>
-              </CLabel>
-            </CCol>
-            <CCol>
-              <img
-                type="text"
-                alt=""
-                src={files !== "" ? files : DEFAULT_IMAGE}
-                style={{
-                  width: "150px",
-                  height: "200px",
-                  position: "relative",
-                  background: "#fff",
-                  left: "-40%",
-                  top: "-3%",
-                }}
-              />
-            </CCol>
-          </CRow>
-
-          <CRow className={"row-alignment"} style={{ marginLeft: "-61px" }}>
-            <CCol
-              className={"column-align"}
-              md="4"
-              style={{ marginTop: "-120px" }}
+          <CContainer>
+            <CRow
+              className={"LengthDataw"}
+              style={{ marginLeft: "10.5em", marginTop: "20px" }}
+              sm={12}
+              md={12}
+              lg={12}
             >
-              <CLabel className={"label-name"}>
-                DOB
-                <span style={{ fontSize: "14px", fontFamily: "normal" }}>
-                  {" "}
-                  - 23/05/1990
-                </span>
-              </CLabel>
-            </CCol>
-          </CRow>
-          <CDataTable
-            tableLabel={"Details of Party Posting"}
-            columnFilter
-            tableFilter
-            hover
-            sorter
-            scopedSlots={{
-              status: (item) => <td></td>,
-            }}
-            items={[
-              {
-                SNo: "1",
-                NameofParty: "Youth Wing Association",
-                TypeofOffice: "District Office",
-                Department: " Youth Wings",
-                designation: "Chairman",
-                Role: "General",
-                FromDate: "12/08/2010",
-                ToDate: "25/06/2020",
-                Status: "Retired",
-              },
-            ]}
-          />
+              <CCol md="6">
+                <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                  Name :{" "}
+                </CLabel>
 
+                <CLabel
+                  className={"reAssign-Detail"}
+                  style={{ marginLeft: "-5em" }}
+                >
+                  {selected.assignedTo
+                    ? selected.assignedTo.firstName
+                    : "Arun Kumar"}
+                </CLabel>
+              </CCol>
+              <CCol md="6" style={{ marginLeft: "-200px" }}>
+                <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                  Gender :{" "}
+                </CLabel>
+
+                <CLabel
+                  className={"reAssign-Detail"}
+                  style={{ marginLeft: "-3.5em" }}
+                >
+                  {selected.assignedTo ? selected.assignedTo.firstName : "Male"}
+                </CLabel>
+              </CCol>
+              <CCol>
+                <img
+                  type="text"
+                  alt=""
+                  src={files !== "" ? files : DEFAULT_IMAGE}
+                  style={{
+                    width: "150px",
+                    height: "200px",
+                    position: "relative",
+                    background: "#fff",
+                    left: "-260%",
+                    top: "-5em",
+                  }}
+                />
+              </CCol>
+            </CRow>
+            <CRow
+              className={"LengthDataw"}
+              style={{ marginLeft: "10.5em", marginTop: "-10em" }}
+              sm={12}
+              md={12}
+              lg={12}
+            >
+              <CCol md="6">
+                <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                  DOB :{" "}
+                </CLabel>
+
+                <CLabel
+                  className={"reAssign-Detail"}
+                  style={{ marginLeft: "-5em" }}
+                >
+                  {selected.assignedTo
+                    ? selected.assignedTo.firstName
+                    : "23/07/1998"}
+                </CLabel>
+              </CCol>
+            </CRow>
+          </CContainer>
+
+          <CRow style={{ marginTop: "2em" }}>
+            <CDataTable
+              tableLabel={"Details of Party Posting"}
+              columnFilter
+              tableFilter
+              hover
+              sorter
+              scopedSlots={{
+                status: (item) => <td></td>,
+              }}
+              items={[
+                {
+                  SNo: "1",
+                  NameofParty: "Youth Wing Association",
+                  TypeofOffice: "District Office",
+                  Department: " Youth Wings",
+                  designation: "Chairman",
+                  Role: "General",
+                  FromDate: "12/08/2010",
+                  ToDate: "25/06/2020",
+                  Status: "Retired",
+                },
+              ]}
+            />
+          </CRow>
           <CButton
-            style={{ position: "absolute", top: "15px", right: "15px" }}
+            style={{
+              position: "absolute",
+              backgroundColor: "green",
+              border: "1px solid green",
+              top: "15px",
+              right: "15px",
+            }}
             className={"cancelBtn"}
-            onClick={handleClickback}
+            onClick={handleClickhis}
           >
             Back
           </CButton>
         </div>
       )}
-      
+
       {memberhide && (
-          <div>
-      <CCard className={"cardSave"}>
-      
-            <div className={"main-headerlabel"}>
-              <span className={"header-label"} style={{ marginLeft: "-80px" }}>
-                Member Registration
-              </span>
-            </div>
-            {/* <CRow style={{ marginTop: "30px" }} >
+        <div>
+          <CContainer>
+            <CCard className={"cardSave"}>
+              <div className={"main-headerlabel"}>
+                <span
+                  className={"header-label"}
+                  style={{ marginLeft: "-80px" }}
+                >
+                  Member Registration
+                </span>
+              </div>
+              {/* <CRow style={{ marginTop: "30px" }} >
               <CCol sm="6" lg="3" style={{ marginLeft: "10px" }}>
               <p data-tip="Male">
                 <CWidgetDropdown
@@ -414,291 +422,308 @@ function MemberRegistration() {
                 <ReactTooltip/>
               </CCol>
             </CRow> */}
-            <div style={{ marginTop: "-30px" }}>
-              <CRow
-                style={{
-                  marginTop: "65px",
-                  marginLeft: "240px",
-                  position: "absolute",
-                }}
-              >
-                <CCol sm="3" lg="3" style={{ marginLeft: "-150px" }}>
-                  <span
+              <CContainer>
+                <div style={{ marginTop: "-30px" }}>
+                  <CRow
                     style={{
+                      marginTop: "65px",
+                      marginLeft: "240px",
                       position: "absolute",
-                      marginLeft: "45px",
-                      fontSize: "22px",
-                      fontWeight: "700",
-                      color: "#134e5e",
                     }}
                   >
-                    Male
-                  </span>
-                  <span
-                    style={{
-                      display: "block",
-                      marginLeft: "-41px",
-                      marginTop: "-75px",
-                      padding: "100px",
-                      fontSize: "24px",
-                      fontWeight: "500",
-                      color: "grey",
-                    }}
-                  >
-                    2
-                  </span>
-                  <span class="divider" />
-                  <br />
-                  <br></br>
-                  <br />
-                </CCol>
-                <CCol
-                  sm="3"
-                  lg="3"
-                  style={{ marginLeft: "300px", display: "flex" }}
-                >
-                  <span
-                    style={{
-                      marginLeft: "-294px",
-                      fontSize: "22px",
-                      fontWeight: "700",
-                      color: "#4cb8c4 ",
-                    }}
-                  >
-                    Female
-                  </span>
-                  <span
-                    style={{
-                      marginLeft: "-55px",
-                      marginTop: "28px",
-                      fontSize: "24px",
-                      fontWeight: "500",
-                      color: "grey",
-                    }}
-                  >
-                    2
-                  </span>
-                  <span className={"divider1"} />
-                  <br />
+                    <CCol sm="3" lg="3" style={{ marginLeft: "-150px" }}>
+                      <span
+                        style={{
+                          position: "absolute",
+                          marginLeft: "45px",
+                          fontSize: "22px",
+                          fontWeight: "700",
+                          color: "#134e5e",
+                        }}
+                      >
+                        Male
+                      </span>
+                      <span
+                        style={{
+                          display: "block",
+                          marginLeft: "-41px",
+                          marginTop: "-75px",
+                          padding: "100px",
+                          fontSize: "24px",
+                          fontWeight: "500",
+                          color: "grey",
+                        }}
+                      >
+                        2
+                      </span>
+                      <span class="divider" />
+                      <br />
+                      <br></br>
+                      <br />
+                    </CCol>
+                    <CCol
+                      sm="3"
+                      lg="3"
+                      style={{ marginLeft: "300px", display: "flex" }}
+                    >
+                      <span
+                        style={{
+                          marginLeft: "-294px",
+                          fontSize: "22px",
+                          fontWeight: "700",
+                          color: "#4cb8c4 ",
+                        }}
+                      >
+                        Female
+                      </span>
+                      <span
+                        style={{
+                          marginLeft: "-55px",
+                          marginTop: "28px",
+                          fontSize: "24px",
+                          fontWeight: "500",
+                          color: "grey",
+                        }}
+                      >
+                        2
+                      </span>
+                      <span className={"divider1"} />
+                      <br />
 
-                  <br />
-                </CCol>
-                <CCol
-                  sm="3"
-                  lg="3"
-                  style={{
-                    marginLeft: "400px",
-                    position: "relative",
-                    display: "flex",
-                  }}
-                >
-                  <span
+                      <br />
+                    </CCol>
+                    <CCol
+                      sm="3"
+                      lg="3"
+                      style={{
+                        marginLeft: "400px",
+                        position: "relative",
+                        display: "flex",
+                      }}
+                    >
+                      <span
+                        style={{
+                          marginTop: "-228px",
+                          left: "-21px",
+                          fontSize: "22px",
+                          fontWeight: "700",
+                          color: "#30a961",
+                          marginLeft: "25px",
+                        }}
+                      >
+                        TransGender
+                      </span>
+                      <br />
+                      <span
+                        style={{
+                          marginLeft: "-75px",
+                          marginTop: "-201px",
+                          fontSize: "24px",
+                          fontWeight: "500",
+                          color: "grey",
+                        }}
+                      >
+                        1
+                      </span>
+                      <span className={"divider2"} />
+                      <br />
+                      <br />
+                    </CCol>
+                    <CCol
+                      sm="3"
+                      lg="3"
+                      style={{
+                        marginLeft: "800px",
+                        position: "relative",
+                        display: "flex",
+                        top: "-45px",
+                      }}
+                    >
+                      <span
+                        style={{
+                          marginTop: "-228px",
+                          left: "-21px",
+                          fontSize: "22px",
+                          fontWeight: "700",
+                          color: "#ec6f66",
+                        }}
+                      >
+                        Total
+                      </span>
+                      <br />
+                      <span
+                        style={{
+                          marginLeft: "-32px",
+                          marginTop: "-201px",
+                          fontSize: "24px",
+                          fontWeight: "500",
+                          color: "grey",
+                        }}
+                      >
+                        5
+                      </span>
+                      <span className={"divider3"} />
+                      <br />
+                      <br />
+                    </CCol>
+                  </CRow>
+                </div>
+              </CContainer>
+
+              <CRow style={{ marginLeft: "4.5%", marginTop: "12em" }}>
+                <CCol>
+                  <CButton
+                    id={"memberregisteraddCButton"}
+                    className={"saveBtn"}
+                    onClick={enableCreate}
                     style={{
-                      marginTop: "-228px",
-                      left: "-21px",
-                      fontSize: "22px",
-                      fontWeight: "700",
-                      color: "#30a961",
-                      marginLeft: "25px",
+                      width: "120px",
+                      cursor: "pointer",
                     }}
                   >
-                    TransGender
-                  </span>
-                  <br />
-                  <span
-                    style={{
-                      marginLeft: "-75px",
-                      marginTop: "-201px",
-                      fontSize: "24px",
-                      fontWeight: "500",
-                      color: "grey",
-                    }}
-                  >
-                    1
-                  </span>
-                  <span className={"divider2"} />
-                  <br />
-                  <br />
-                </CCol>
-                <CCol
-                  sm="3"
-                  lg="3"
-                  style={{
-                    marginLeft: "800px",
-                    position: "relative",
-                    display: "flex",
-                    top: "-45px",
-                  }}
-                >
-                  <span
-                    style={{
-                      marginTop: "-228px",
-                      left: "-21px",
-                      fontSize: "22px",
-                      fontWeight: "700",
-                      color: "#ec6f66",
-                    }}
-                  >
-                    Total
-                  </span>
-                  <br />
-                  <span
-                    style={{
-                      marginLeft: "-32px",
-                      marginTop: "-201px",
-                      fontSize: "24px",
-                      fontWeight: "500",
-                      color: "grey",
-                    }}
-                  >
-                    5
-                  </span>
-                  <span className={"divider3"} />
-                  <br />
-                  <br />
+                    Add Member
+                  </CButton>
                 </CCol>
               </CRow>
-            </div>
-            <CRow style={{ marginLeft: "4.5%", marginTop: "210px" }}>
-              <CCol>
-                <CButton
-                  id={"memberregisteraddCButton"}
-                  className={"saveBtn"}
-                  onClick={enableCreate}
-                  style={{
-                    width: "120px",
-                    cursor: "pointer",
-                  }}
+              
+              <CContainer>
+                <CRow
+                  className={"row-alignment"}
+                  md="12"
+                  sm="12"
+                  lg="12"
+                  style={{ marginLeft: "-16px", marginTop: "10px" }}
                 >
-                  Add Member
-                </CButton>
-              </CCol>
-            </CRow>
-
-            <CRow
-              className={"row-alignment"}
-              md="12"
-              sm="12"
-              lg="12"
-              style={{ marginLeft: "-16px", marginTop: "10px" }}
-            >
-              <CCol className={"column-align"} md="5">
-                <CLabel className={"label-name"}>
-                  State
-                  <span className={"text-danger"}>*</span>
-                </CLabel>
-                <Select
-                  styles={{ marginLeft: "50px" }}
-                  type={"text"}
-                  id={"memberregister"}
-                  className={"input-align"}
-                  placeholder="Select the State"
-                />
-              </CCol>
-              <CCol className={"column-align"} md="5">
-                <CLabel className={"label-name"}>
-                  District / City
-                  <span className={"text-danger"}>*</span>
-                </CLabel>
-                <Select
-                  styles={{ marginLeft: "50px" }}
-                  type={"text"}
-                  id={"memberregistercity"}
-                  className={"input-align"}
-                  placeholder="Select the District / City "
-                />
-              </CCol>
-            </CRow>
-
-            <CRow
-              className={"row-alignment"}
-              md="12"
-              sm="12"
-              lg="12"
-              style={{ marginLeft: "-16px" }}
-            >
-              <CCol className={"column-align"} md="5">
-                <CLabel className={"label-name"}>
-                  Area / Village
-                  <span className={"text-danger"}>*</span>
-                </CLabel>
-                <Select
-                  styles={{ marginLeft: "50px" }}
-                  type={"text"}
-                  id={"memberregisterarea"}
-                  className={"input-align"}
-                  placeholder="Select the Area"
-                />
-              </CCol>
-              <CCol className={"column-align"} md="5">
-                <CLabel className={"label-name"}>
-                  Street
-                  <span className={"text-danger"}>*</span>
-                </CLabel>
-                <Select
-                  styles={{ marginLeft: "50px" }}
-                  type={"text"}
-                  id={"memberregisterstreet"}
-                  className={"input-align"}
-                  placeholder="Select the Street"
-                />
-              </CCol>
-            </CRow>
-
-            <CRow style={{ padding: "4%", marginTop: "1.5%" }}>
-              <CDataTable
-                items={userData}
-                fields={fields}
-                columnFilter
-                tableFilter
-                tableLabel={"List of Register members"}
-                itemsPerPageSelect
-                itemsPerPage={5}
-                hover
-                sorter
-                pagination
-                scopedSlots={{
-                  show_details: (item, index) => {
-                    return (
-                      <td className="py-1">
-                        <CRow>
-                          <CCol style={{ fontSize: "1.15rem" }} md="16">
-                            <Dropdown
-                              className={"ant-dropdown-cutomize-by-me"}
-                              overlay={() => menus(item)}
-                            >
-                              <a
-                                href
-                                className="ant-dropdown-link"
-                                onClick={(e) => e.preventDefault()}
-                              >
-                                <i
-                                  style={{
-                                    marginLeft: "35px",
-                                    color: "black",
-                                  }}
-                                  className="fa fa-ellipsis-v"
-                                  bsStyle="overlay"
-                                  onClick={menus}
-                                />
-                              </a>
-                            </Dropdown>
-                          </CCol>
-                        </CRow>
-                      </td>
-                    );
-                  },
-                  details: (item, index) => {},
-                }}
-              />
-            </CRow>
+                  <CCol className={"column-align"} md="5">
+                    <CLabel className={"label-name"}>
+                      State
+                      <span className={"text-danger"}>*</span>
+                    </CLabel>
+                    <Select
+                      styles={{ marginLeft: "50px" }}
+                      type={"text"}
+                      id={"memberregister"}
+                      className={"input-align"}
+                      placeholder="Select the State"
+                    />
+                  </CCol>
+                  <CCol className={"column-align"} md="5">
+                    <CLabel className={"label-name"}>
+                      District / City
+                      <span className={"text-danger"}>*</span>
+                    </CLabel>
+                    <Select
+                      styles={{ marginLeft: "50px" }}
+                      type={"text"}
+                      id={"memberregistercity"}
+                      className={"input-align"}
+                      placeholder="Select the District / City "
+                    />
+                  </CCol>
+                </CRow>
+              </CContainer>
+              <CContainer>
+                <CRow
+                  className={"row-alignment"}
+                  md="12"
+                  sm="12"
+                  lg="12"
+                  style={{ marginLeft: "-16px" }}
+                >
+                  <CCol className={"column-align"} md="5">
+                    <CLabel className={"label-name"}>
+                      Area / Village
+                      <span className={"text-danger"}>*</span>
+                    </CLabel>
+                    <Select
+                      styles={{ marginLeft: "50px" }}
+                      type={"text"}
+                      id={"memberregisterarea"}
+                      className={"input-align"}
+                      placeholder="Select the Area"
+                    />
+                  </CCol>
+                  <CCol className={"column-align"} md="5">
+                    <CLabel className={"label-name"}>
+                      Street
+                      <span className={"text-danger"}>*</span>
+                    </CLabel>
+                    <Select
+                      styles={{ marginLeft: "50px" }}
+                      type={"text"}
+                      id={"memberregisterstreet"}
+                      className={"input-align"}
+                      placeholder="Select the Street"
+                    />
+                  </CCol>
+                </CRow>
+              </CContainer>
+              <CContainer>
+                <CRow style={{ padding: "4%", marginTop: "1.5%" }}>
+                  <CDataTable
+                    items={userData}
+                    fields={fields}
+                    columnFilter
+                    tableFilter
+                    tableLabel={"List of Register members"}
+                    itemsPerPageSelect
+                    itemsPerPage={5}
+                    hover
+                    sorter
+                    pagination
+                    scopedSlots={{
+                      show_details: (item, index) => {
+                        return (
+                          <td className="py-1">
+                            <CRow>
+                              <CCol style={{ fontSize: "1.15rem" }} md="16">
+                                <Dropdown
+                                  className={"ant-dropdown-cutomize-by-me"}
+                                  overlay={() => menus(item)}
+                                >
+                                  <a
+                                    href
+                                    className="ant-dropdown-link"
+                                    onClick={(e) => e.preventDefault()}
+                                  >
+                                    <i
+                                      style={{
+                                        marginLeft: "35px",
+                                        color: "black",
+                                      }}
+                                      className="fa fa-ellipsis-v"
+                                      bsStyle="overlay"
+                                      onClick={menus}
+                                    />
+                                  </a>
+                                </Dropdown>
+                              </CCol>
+                            </CRow>
+                          </td>
+                        );
+                      },
+                      details: (item, index) => {},
+                    }}
+                  />
+                </CRow>
+              </CContainer>
             </CCard>
-          </div>
-        )}
+          </CContainer>
+        </div>
+      )}
 
-        {hide && (
-          <div>
-            <CCard className={"cardSave"}>
+      {hide && (
+        <div>
+          <CContainer>
+            <CCard
+              className={"cardSave"}
+              style={{
+                minHeight: `${window.innerHeight - 198}px`,
+                maxHeight: `${window.innerHeight - 198}px`,
+                overflow: "auto",
+                overflowX: "hidden",
+              }}
+            >
               <div className={"main-headerlabel"}>
                 <span className={"header-label"}>Member Registration</span>
               </div>
@@ -708,366 +733,371 @@ function MemberRegistration() {
                     Mandatory fields are marked with an asterisk (*)
                   </p>
                   <div style={{ marginLeft: "-26px" }}>
-                    <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                      <CCol className={"column-align"} md={3}>
-                        <CLabel className={"label-name"}>
-                          First Name
-                          <span className={"text-danger"}>*</span>
-                        </CLabel>
-                        <CInput
-                          type={"text"}
-                          className={"input-align"}
-                          name={"First Name"}
-                          id={"memberregisterfname"}
-                          placeholder="First Name"
-                        />
-                      </CCol>
+                    <CContainer>
+                      <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                        <CCol className={"column-align"} md={3}>
+                          <CLabel className={"label-name"}>
+                            First Name
+                            <span className={"text-danger"}>*</span>
+                          </CLabel>
+                          <CInput
+                            type={"text"}
+                            className={"input-align"}
+                            name={"First Name"}
+                            id={"memberregisterfname"}
+                            placeholder="First Name"
+                          />
+                        </CCol>
 
-                      <CCol className={"column-align"} md={3}>
-                        <CLabel className={"label-name"}>
-                          Last Name
-                          <span className={"text-danger"}>*</span>
-                        </CLabel>
-                        <CInput
-                          type={"text"}
-                          className={"input-align"}
-                          name={"Last Name"}
-                          id={"memberregisterlname"}
-                          placeholder="Last Name"
-                        />
-                      </CCol>
-                    </CRow>
+                        <CCol className={"column-align"} md={3}>
+                          <CLabel className={"label-name"}>
+                            Last Name
+                            <span className={"text-danger"}>*</span>
+                          </CLabel>
+                          <CInput
+                            type={"text"}
+                            className={"input-align"}
+                            name={"Last Name"}
+                            id={"memberregisterlname"}
+                            placeholder="Last Name"
+                          />
+                        </CCol>
+                      </CRow>
 
-                    <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                      <CCol className={"column-align"} md={3}>
-                        <CLabel className={"label-name"}>
-                          Date of Birth
-                          <span className={"text-danger"}>*</span>
-                        </CLabel>
+                      <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                        <CCol className={"column-align"} md={3}>
+                          <CLabel className={"label-name"}>
+                            Date of Birth
+                            <span className={"text-danger"}>*</span>
+                          </CLabel>
 
-                        <CInput
-                          type={"date"}
-                          className={"input-align"}
-                          name={"Date of Birth"}
-                          id={"memberregisterdob"}
-                          placeholder="DD/MM/YYYY"
-                        />
-                      </CCol>
-                      <CCol className={"column-align"} md={5}>
-                        <CLabel className={"label-name"}>
-                          Gender
-                          <span className={"text-danger"}>*</span>
-                        </CLabel>
-                        <CCol md="9">
-                          <CFormGroup variant="custom-radio" inline>
-                            <CInputRadio
-                              custom
-                              id="inline-radio1"
-                              name="inline-radios"
-                              value="option1"
-                            />
-                            <CLabel
-                              variant="custom-checkbox"
-                              htmlFor="inline-radio1"
-                            >
-                              Male
-                            </CLabel>
-                          </CFormGroup>
-                          <CFormGroup variant="custom-radio" inline>
-                            <CInputRadio
-                              custom
-                              id="inline-radio2"
-                              name="inline-radios"
-                              value="option2"
-                            />
-                            <CLabel
-                              variant="custom-checkbox"
-                              htmlFor="inline-radio2"
-                            >
-                              Female
-                            </CLabel>
-                          </CFormGroup>
-                          <CFormGroup variant="custom-radio" inline>
-                            <CInputRadio
-                              custom
-                              id="inline-radio3"
-                              name="inline-radios"
-                              value="option3"
-                            />
-                            <CLabel
-                              variant="custom-checkbox"
-                              htmlFor="inline-radio3"
-                            >
-                              Transgender
-                            </CLabel>
-                          </CFormGroup>
+                          <CInput
+                            type={"date"}
+                            className={"input-align"}
+                            name={"Date of Birth"}
+                            id={"memberregisterdob"}
+                            placeholder="DD/MM/YYYY"
+                          />
+                        </CCol>
+                        <CCol className={"column-align"} md={5}>
+                          <CLabel className={"label-name"}>
+                            Gender
+                            <span className={"text-danger"}>*</span>
+                          </CLabel>
+                          <CCol md="9">
+                            <CFormGroup variant="custom-radio" inline>
+                              <CInputRadio
+                                custom
+                                id="inline-radio1"
+                                name="inline-radios"
+                                value="option1"
+                              />
+                              <CLabel
+                                variant="custom-checkbox"
+                                htmlFor="inline-radio1"
+                              >
+                                Male
+                              </CLabel>
+                            </CFormGroup>
+                            <CFormGroup variant="custom-radio" inline>
+                              <CInputRadio
+                                custom
+                                id="inline-radio2"
+                                name="inline-radios"
+                                value="option2"
+                              />
+                              <CLabel
+                                variant="custom-checkbox"
+                                htmlFor="inline-radio2"
+                              >
+                                Female
+                              </CLabel>
+                            </CFormGroup>
+                            <CFormGroup variant="custom-radio" inline>
+                              <CInputRadio
+                                custom
+                                id="inline-radio3"
+                                name="inline-radios"
+                                value="option3"
+                              />
+                              <CLabel
+                                variant="custom-checkbox"
+                                htmlFor="inline-radio3"
+                              >
+                                Transgender
+                              </CLabel>
+                            </CFormGroup>
+                          </CCol>
+                        </CCol>
+                      </CRow>
+                      <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                        <CCol className={"column-align"} md="3">
+                          <CLabel className={"label-name"}>
+                            Education Qualification
+                            <span className={"text-danger"}>*</span>
+                          </CLabel>
+                          <Select
+                            styles={{ marginLeft: "50px" }}
+                            type={"text"}
+                            id={"memberregistereducationqualification"}
+                            className={"select"}
+                            placeholder="Select the Education Qualification"
+                            options={Education}
+                          />
+                        </CCol>
+                        <CCol className={"column-align"} md="3">
+                          <CLabel className={"label-name"}>
+                            Occupation
+                            <span className={"text-danger"}>*</span>
+                          </CLabel>
+                          <Select
+                            type={"text"}
+                            id={"memberregisteroccupation"}
+                            className={"select"}
+                            placeholder="Select the Occupation"
+                            options={Occupation}
+                          />
+                        </CCol>
+                      </CRow>
+
+                      <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                        <CCol className={"column-align"} md="3">
+                          <CLabel className={"label-name"}>
+                            Mobile Number
+                            <span className={"text-danger"}> *</span>
+                          </CLabel>
+                          <CInput
+                            className={"input-align"}
+                            name={"Phone number"}
+                            id={"memberregisterphonenumber"}
+                            placeholder="Mobile Number"
+                          />
+                        </CCol>
+                        <CCol className={"column-align"} md="3">
+                          <CLabel className={"label-name"}>Voter Id</CLabel>
+                          <CInput
+                            className={"input-align"}
+                            id={"memberregistervoterid"}
+                            name={"voterid"}
+                            placeholder={"Voter Id"}
+                          />
+                        </CCol>
+                      </CRow>
+                    </CContainer>
+
+                    <CContainer>
+                      <div className={"row-headerlabel"}>
+                        <span
+                          style={{ marginLeft: "70px" }}
+                          className={"header-label"}
+                        >
+                          {" "}
+                          Address for Communication{" "}
+                        </span>
+                      </div>
+                      <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                        <CCol className={"column-align"} md="6">
+                          <CLabel className={"label-name"}>
+                            Search
+                            <span className={"text-danger"}>*</span>
+                          </CLabel>
+                          <Select
+                            className={"selecci"}
+                            id={"nameofmemberassignpartyposting"}
+                            name={"state"}
+                            placeholder={"Select..."}
+                            style={{ marginLeft: "28px" }}
+                          />
+                        </CCol>
+                      </CRow>
+                      <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                        <CCol className={"column-align"} md="3">
+                          <CLabel className={"label-name"}>
+                            Address line
+                            <span className={"text-danger"}> *</span>
+                          </CLabel>
+                          <CInput
+                            className={"input-align"}
+                            name={"Address"}
+                            id={"memberregisteraddress1"}
+                            placeholder="Address Line"
+                          />
+                        </CCol>
+                        <CCol className={"column-align"} md="3">
+                          <CLabel className={"label-name"}>
+                            Pincode
+                            <span className={"text-danger"}>*</span>
+                          </CLabel>
+                          <CInput
+                            className={"input-align"}
+                            id={"memberregisterpincode"}
+                            name={"Pincode"}
+                            placeholder={"Pincode"}
+                          />
+                        </CCol>
+
+                        <CCol className={"column-align"} md="3">
+                          <CLabel className={"label-name"}>
+                            State
+                            <span className={"text-danger"}>*</span>
+                          </CLabel>
+                          <CInput
+                            className={"input-align"}
+                            id={"memberregisterState"}
+                            name={"state"}
+                            placeholder={"State Name"}
+                          />
+                        </CCol>
+                      </CRow>
+
+                      <CRow className={"row-alignment"} md="12" sm="12" lg="12">
+                        <CCol className={"column-align"} md="3">
+                          <CLabel className={"label-name"}>
+                            District
+                            <span className={"text-danger"}>*</span>
+                          </CLabel>
+                          <CInput
+                            className={"input-align"}
+                            id={"memberregisterdistrict"}
+                            name={"district"}
+                            placeholder={" District/City Name"}
+                          />
+                        </CCol>
+
+                        <CCol className={"column-align"} md="3">
+                          <CLabel className={"label-name"}>
+                            Area Name
+                            <span className={"text-danger"}> *</span>
+                          </CLabel>
+                          <Select
+                            type={"text"}
+                            id={"memberregisterarea"}
+                            className={"select"}
+                            placeholder="Select the Area"
+                            options={Occupation}
+                          />
+                        </CCol>
+
+                        <CCol className={"column-align"} md="3">
+                          <CLabel className={"label-name"}>
+                            Street Name
+                            <span className={"text-danger"}>*</span>
+                          </CLabel>
+                          <Select
+                            type={"text"}
+                            id={"memberregisterstreet"}
+                            className={"select"}
+                            placeholder="Select the Street Name"
+                            options={steetSchema}
+                          />
+                        </CCol>
+                      </CRow>
+                    </CContainer>
+                  </div>
+
+                  <CContainer>
+                    <CRow>
+                      <CCol md="10">
+                        <CCol
+                          md="5"
+                          style={{
+                            marginTop: "30px",
+                            float: "right",
+                          }}
+                        >
+                          <CButton
+                            style={{
+                              float: "right",
+                            }}
+                            id={"cancelabbreviationconfigurecode"}
+                            className={"cancelBtn"}
+                            onClick={cancelCreate}
+                          >
+                            CANCEL
+                          </CButton>
+                          <CButton
+                            style={{
+                              float: "right",
+                              marginRight: "15px",
+                            }}
+                            id={"saveAbbreviationConfigureCode"}
+                            className={"saveBtn"}
+                          >
+                            Save
+                          </CButton>{" "}
                         </CCol>
                       </CCol>
                     </CRow>
-                    <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                      <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name"}>
-                          Education Qualification
-                          <span className={"text-danger"}>*</span>
-                        </CLabel>
-                        <Select
-                          styles={{ marginLeft: "50px" }}
-                          type={"text"}
-                          id={"memberregistereducationqualification"}
-                          className={"select"}
-                          placeholder="Select the Education Qualification"
-                          options={Education}
-                        />
-                      </CCol>
-                      <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name"}>
-                          Occupation
-                          <span className={"text-danger"}>*</span>
-                        </CLabel>
-                        <Select
-                          type={"text"}
-                          id={"memberregisteroccupation"}
-                          className={"select"}
-                          placeholder="Select the Occupation"
-                          options={Occupation}
-                        />
-                      </CCol>
-                    </CRow>
+                  </CContainer>
 
-                    <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                      <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name"}>
-                          Mobile Number
-                          <span className={"text-danger"}> *</span>
-                        </CLabel>
-                        <CInput
-                          className={"input-align"}
-                          name={"Phone number"}
-                          id={"memberregisterphonenumber"}
-                          placeholder="Mobile Number"
-                        />
-                      </CCol>
-                      <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name"}>Voter Id</CLabel>
-                        <CInput
-                          className={"input-align"}
-                          id={"memberregistervoterid"}
-                          name={"voterid"}
-                          placeholder={"Voter Id"}
-                        />
-                      </CCol>
-                    </CRow>
-
-                   
-
-                    <div className={"row-headerlabel"}>
-                      <span
-                        style={{ marginLeft: "70px" }}
-                        className={"header-label"}
-                      >
-                        {" "}
-                        Address for Communication{" "}
-                      </span>
-                    </div>
-                    <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                    <CCol className={"column-align"} md="6" >
-                      <CLabel className={"label-name"}>
-                        Search
-                        <span className={"text-danger"}>*</span>
-                      </CLabel>
-                      <Select
-                        className={"selecci"}
-                        id={"nameofmemberassignpartyposting"}
-                        name={"state"}
-                        placeholder={"Select..."}  
-                        style={{marginLeft:"28px"}}
-                      />
-                    </CCol>
-                  </CRow>
-                    <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                      <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name"}>
-                          Address line
-                          <span className={"text-danger"}> *</span>
-                        </CLabel>
-                        <CInput
-                          className={"input-align"}
-                          name={"Address"}
-                          id={"memberregisteraddress1"}
-                          placeholder="Address Line"
-                        />
-                      </CCol>
-                      <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name"}>
-                          Pincode
-                          <span className={"text-danger"}>*</span>
-                        </CLabel>
-                        <CInput
-                          className={"input-align"}
-                          id={"memberregisterpincode"}
-                          name={"Pincode"}
-                          placeholder={"Pincode"}
-                        />
-                      </CCol>
-
-                      <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name"}>
-                          State
-                          <span className={"text-danger"}>*</span>
-                        </CLabel>
-                        <CInput
-                          className={"input-align"}
-                          id={"memberregisterState"}
-                          name={"state"}
-                          placeholder={"State Name"}
-                        />
-                      </CCol>
-                    </CRow>
-
-                    <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                      <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name"}>
-                          District
-                          <span className={"text-danger"}>*</span>
-                        </CLabel>
-                        <CInput
-                          className={"input-align"}
-                          id={"memberregisterdistrict"}
-                          name={"district"}
-                          placeholder={" District/City Name"}
-                        />
-                      </CCol>
-
-                      <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name"}>
-                          Area Name
-                          <span className={"text-danger"}> *</span>
-                        </CLabel>
-                        <Select
-                          type={"text"}
-                          id={"memberregisterarea"}
-                          className={"select"}
-                          placeholder="Select the Area"
-                          options={Occupation}
-                        />
-                      </CCol>
-
-                      <CCol className={"column-align"} md="3">
-                        <CLabel className={"label-name"}>
-                          Street Name
-                          <span className={"text-danger"}>*</span>
-                        </CLabel>
-                        <Select
-                          type={"text"}
-                          id={"memberregisterstreet"}
-                          className={"select"}
-                          placeholder="Select the Street Name"
-                          options={steetSchema}
-                        />
-                      </CCol>
-                    </CRow>
-                  </div>
-
-                  <CRow>
-                    <CCol md="10">
-                      <CCol
-                        md="5"
-                        style={{
-                          marginTop: "30px",
-                          float: "right",
-                        }}
-                      >
-                        <CButton
-                          style={{
-                            float: "right",
-                          }}
-                          id={"cancelabbreviationconfigurecode"}
-                          className={"cancelBtn"}
-                          onClick={cancelCreate}
-                        >
-                          CANCEL
-                        </CButton>
-                        <CButton
-                          style={{
-                            float: "right",
-                            marginRight: "15px",
-                          }}
-                          id={"saveAbbreviationConfigureCode"}
-                          className={"saveBtn"}
-                        >
-                          Save
-                        </CButton>{" "}
-                      </CCol>
-                    </CCol>
-                  </CRow>
-
-                  <CRow
-                    style={{
-                      marginLeft: "900px",
-                      position: "absolute",
-                      marginTop: "-561px",
-                    }}
-                  >
-                    <CCol sm="6" lg="3" style={{ marginLeft: "10px" }}>
-                      <CCol md="3">
-                        <ImageUploading
-                          multiple
-                          value={images}
-                          onChange={onChange}
-                          maxNumber={maxNumber}
-                          dataURLKey="data_url"
-                        >
-                          {({
-                            imageList,
-                            onImageUpload,
-                            onImageRemoveAll,
-                            onImageUpdate,
-                            onImageRemove,
-                            isDragging,
-                            dragProps,
-                          }) => (
-                            <div className="upload__image-wrapper">
-                              <CCol md="3">
-                                <CInput
-                                  name="file"
-                                  type="file"
-                                  id="profileImage"
-                                  accept="image/*"
-                                  style={{ display: "none" }}
-                                  onChange={(e) => {
-                                    handleSave(
-                                      e.target.files[0],
-                                      "profileImage"
-                                    );
-                                  }}
-                                />
-                              </CCol>
-                              <div
-                                id={"addEmployeehandleClick"}
-                                style={{
-                                  height: "100px",
-                                  width: "100px",
-                                  // border: "1px dashed black",
-                                }}
-                                onClick={() => handleClick()}
-                              >
-                                <img
-                                  alt=""
-                                  src={
-                                    files !== "" ? files : DEFAULT_IMAGEperson
-                                  }
+                  <CContainer>
+                    <CRow
+                      style={{
+                        marginLeft: "900px",
+                        position: "absolute",
+                        marginTop: "-561px",
+                      }}
+                    >
+                      <CCol sm="6" lg="3" style={{ marginLeft: "10px" }}>
+                        <CCol md="3">
+                          <ImageUploading
+                            multiple
+                            value={images}
+                            onChange={onChange}
+                            maxNumber={maxNumber}
+                            dataURLKey="data_url"
+                          >
+                            {({
+                              imageList,
+                              onImageUpload,
+                              onImageRemoveAll,
+                              onImageUpdate,
+                              onImageRemove,
+                              isDragging,
+                              dragProps,
+                            }) => (
+                              <div className="upload__image-wrapper">
+                                <CCol md="3">
+                                  <CInput
+                                    name="file"
+                                    type="file"
+                                    id="profileImage"
+                                    accept="image/*"
+                                    style={{ display: "none" }}
+                                    onChange={(e) => {
+                                      handleSave(
+                                        e.target.files[0],
+                                        "profileImage"
+                                      );
+                                    }}
+                                  />
+                                </CCol>
+                                <div
+                                  id={"addEmployeehandleClick"}
                                   style={{
-                                    width: "100%",
-                                    height: "100%",
-                                    position: "acsolute",
+                                    height: "100px",
+                                    width: "100px",
+                                    // border: "1px dashed black",
                                   }}
-                                />
-                              </div>
-                              {/* <CLabel className={"form-label1"} style={{width:"142px",position:"absolute"}}>
+                                  onClick={() => handleClick()}
+                                >
+                                  <img
+                                    alt=""
+                                    src={
+                                      files !== "" ? files : DEFAULT_IMAGEperson
+                                    }
+                                    style={{
+                                      width: "100%",
+                                      height: "100%",
+                                      position: "acsolute",
+                                    }}
+                                  />
+                                </div>
+                                {/* <CLabel className={"form-label1"} style={{width:"142px",position:"absolute"}}>
               Click to Upload Image
               <span className={"text-danger"}>*</span>
             </CLabel> */}
-                              {/* <CButton
+                                {/* <CButton
               // style={isDragging ? { color: "red", } : null}
               style={{ width:"145px", height:"40px", marginLeft:"125px",marginTop:"-275px", border:"1px solid #00ff5a"}}
               className={"saveBtn"}
@@ -1076,9 +1106,9 @@ function MemberRegistration() {
             >
               Click or Drop here
             </CButton> */}
-                              &nbsp;
-                              {/* <CButton onClick={onImageRemoveAll}>Remove all images</CButton> */}
-                              {/* {imageList.map((image, index) => (
+                                &nbsp;
+                                {/* <CButton onClick={onImageRemoveAll}>Remove all images</CButton> */}
+                                {/* {imageList.map((image, index) => (
               <div key={index} className="image-item" style={{marginLeft:"135px",marginTop:"-130px"}}>
                 <img src={image.data_url } alt="" width="100" />
                 <div className="image-item__btn-wrapper">
@@ -1087,67 +1117,70 @@ function MemberRegistration() {
                 </div>
               </div>
             ))} */}
-                            </div>
-                          )}
-                        </ImageUploading>
+                              </div>
+                            )}
+                          </ImageUploading>
+                        </CCol>
                       </CCol>
-                    </CCol>
-                  </CRow>
+                    </CRow>
+                  </CContainer>
 
-                  <CRow style={{ padding: "5%", marginTop: "1.5%" }}>
-                    <CDataTable
-                      items={userData1}
-                      fields={fields1}
-                      columnFilter
-                      tableFilter
-                      tableLabel={"List of Locations"}
-                      itemsPerPageSelect
-                      itemsPerPage={5}
-                      hover
-                      sorter
-                      pagination
-                      scopedSlots={{
-                        show_details: (item, index) => {
-                          return (
-                            <td className="py-1">
-                              <CRow>
-                                <CCol style={{ fontSize: "1.15rem" }} md="16">
-                                  <Dropdown
-                                    className={"ant-dropdown-cutomize-by-me"}
-                                    overlay={() => menus(item)}
-                                  >
-                                    <a
-                                      href
-                                      className="ant-dropdown-link"
-                                      onClick={(e) => e.preventDefault()}
+                  <CContainer>
+                    <CRow style={{ padding: "5%", marginTop: "1.5%" }}>
+                      <CDataTable
+                        items={userData1}
+                        fields={fields1}
+                        columnFilter
+                        tableFilter
+                        tableLabel={"List of Locations"}
+                        itemsPerPageSelect
+                        itemsPerPage={5}
+                        hover
+                        sorter
+                        pagination
+                        scopedSlots={{
+                          show_details: (item, index) => {
+                            return (
+                              <td className="py-1">
+                                <CRow>
+                                  <CCol style={{ fontSize: "1.15rem" }} md="16">
+                                    <Dropdown
+                                      className={"ant-dropdown-cutomize-by-me"}
+                                      overlay={() => menus(item)}
                                     >
-                                      <i
-                                        style={{
-                                          marginLeft: "35px",
-                                          color: "black",
-                                        }}
-                                        className="fa fa-ellipsis-v"
-                                        bsStyle="overlay"
-                                        onClick={menus}
-                                      />
-                                    </a>
-                                  </Dropdown>
-                                </CCol>
-                              </CRow>
-                            </td>
-                          );
-                        },
+                                      <a
+                                        href
+                                        className="ant-dropdown-link"
+                                        onClick={(e) => e.preventDefault()}
+                                      >
+                                        <i
+                                          style={{
+                                            marginLeft: "35px",
+                                            color: "black",
+                                          }}
+                                          className="fa fa-ellipsis-v"
+                                          bsStyle="overlay"
+                                          onClick={menus}
+                                        />
+                                      </a>
+                                    </Dropdown>
+                                  </CCol>
+                                </CRow>
+                              </td>
+                            );
+                          },
 
-                        details: (item, index) => {},
-                      }}
-                    />
-                  </CRow>
+                          details: (item, index) => {},
+                        }}
+                      />
+                    </CRow>
+                  </CContainer>
                 </CCol>
               </CRow>
             </CCard>
-          </div>
-        )}
-      
+          </CContainer>
+        </div>
+      )}
     </div>
   );
 }

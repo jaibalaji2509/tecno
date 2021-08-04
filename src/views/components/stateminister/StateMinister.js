@@ -7,6 +7,7 @@ import {
     CRow,
     CInputRadio,
     CTextarea,
+    CContainer,
     CFormGroup,
   } from "@coreui/react";
   import React, { useState } from "react";
@@ -42,6 +43,7 @@ import {
       street: "",
       pincode: "",
     });
+    const [selected] = useState("");
     const [files, ] = useState("");
     const [ministryList, setMinistryList] = useState(true);
     const [ministryCreate, setMinistryCreate] = useState(false);
@@ -410,62 +412,83 @@ import {
                 </div>
               </CCol>
             </CRow>
-  
-            <CRow className={"row-alignment"} style={{ marginLeft: "-61px" }}>
-              <CCol className={"column-align"} md="4">
-                <CLabel className={"label-name"}>
-                  Name
-                  <span style={{ fontSize: "14px", fontFamily: "normal" }}>
-                    {" "}
-                    - Kalaiyarasan
-                  </span>
-                </CLabel>
-              </CCol>
-              <CCol className={"column-align"} md="4">
-                <CLabel className={"label-name"}>
-                  Gender
-                  <span style={{ fontSize: "14px", fontFamily: "normal" }}>
-                    {" "}
-                    - Male
-                  </span>
-                </CLabel>
-              </CCol>
-              <CCol>
-                <img
-                  type="text"
-                  alt=""
-                  src={files !== "" ? files : DEFAULT_IMAGE}
-                  style={{
-                    width: "150px",
-                    height: "200px",
-                    position: "relative",
-                    background: "#fff",
-                    left: "-40%",
-                    top: "-3%",
-                  }}
-                />
-              </CCol>
-            </CRow>
-  
-            <CRow
-              className={"row-alignment"}
-              style={{ marginLeft: "-61px", marginTop: "5px" }}
-            >
-              <CCol
-                className={"column-align"}
-                md="4"
-                style={{ marginTop: "-120px" }}
+            <CContainer>
+              <CRow
+                className={"LengthDataw"}
+                style={{ marginLeft: "10.5em", marginTop: "20px" }}
+                sm={12}
+                md={12}
+                lg={12}
               >
-                <CLabel className={"label-name"}>
-                  DOB
-                  <span style={{ fontSize: "14px", fontFamily: "normal" }}>
-                    {" "}
-                    - 17/10/1972
-                  </span>
-                </CLabel>
-              </CCol>
-            </CRow>
-            <CRow style={{ marginTop: "25px" }}>
+                <CCol md="6">
+                  <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    Name :{" "}
+                  </CLabel>
+
+                  <CLabel
+                    className={"reAssign-Detail"}
+                    style={{marginLeft:"-5em"}}
+                  >
+                    {selected.assignedTo
+                      ? selected.assignedTo.firstName
+                      : "Arun Kumar"}
+                  </CLabel>
+                </CCol>
+                <CCol md="6" style={{ marginLeft: "-200px" }}>
+                  <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    Gender :{" "}
+                  </CLabel>
+
+                  <CLabel
+                    className={"reAssign-Detail"}
+                    style={{ marginLeft: "-3.5em" }}
+                  >
+                    {selected.assignedTo
+                      ? selected.assignedTo.firstName
+                      : "Male"}
+                  </CLabel>
+                </CCol>
+                <CCol>
+                  <img
+                    type="text"
+                    alt=""
+                    src={files !== "" ? files : DEFAULT_IMAGE}
+                    style={{
+                      width: "150px",
+                      height: "200px",
+                      position: "relative",
+                      background: "#fff",
+                      left: "-260%",
+                      top: "-5em",
+                    }}
+                  />
+                </CCol>
+              </CRow>
+              <CRow
+                className={"LengthDataw"}
+                style={{ marginLeft: "10.5em", marginTop: "-10em" }}
+                sm={12}
+                md={12}
+                lg={12}
+              >
+                <CCol md="6">
+                  <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                  DOB :{" "}
+                  </CLabel>
+
+                  <CLabel
+                    className={"reAssign-Detail"}
+                    style={{marginLeft:"-5em"}}
+                  >
+                    {selected.assignedTo
+                      ? selected.assignedTo.firstName
+                      : "23/07/1998"}
+                  </CLabel>
+                </CCol>                
+              </CRow>
+            </CContainer>
+           
+            <CRow style={{ marginTop: "2em" }}>
             <CCol>
             <Tabs>
     <TabList>
@@ -968,58 +991,83 @@ import {
                 </div>
               </CCol>
             </CRow>
-  
-            <CRow className={"row-alignment"} style={{ marginLeft: "-61px" }}>
-              <CCol className={"column-align"} md="4">
-                <CLabel className={"label-name"}>
-                  Name
-                  <span style={{ fontSize: "14px", fontFamily: "normal" }}>
-                    {" "}
-                    -
-                  </span>
-                </CLabel>
-              </CCol>
-              <CCol className={"column-align"} md="4">
-                <CLabel className={"label-name"}>
-                  Gender
-                  <span style={{ fontSize: "14px", fontFamily: "normal" }}>
-                    {" "}
-                    -
-                  </span>
-                </CLabel>
-              </CCol>
-              <CCol>
-                <img
-                  type="text"
-                  alt=""
-                  src={files !== "" ? files : DEFAULT_IMAGE}
-                  style={{
-                    width: "150px",
-                    height: "200px",
-                    position: "relative",
-                    background: "#fff",
-                    left: "-40%",
-                    top: "-3%",
-                  }}
-                />
-              </CCol>
-            </CRow>
-            <CRow className={"row-alignment"} style={{ marginLeft: "-61px" }}>
-              <CCol
-                className={"column-align"}
-                md="4"
-                style={{ marginTop: "-120px" }}
+            <CContainer>
+              <CRow
+                className={"LengthDataw"}
+                style={{ marginLeft: "10.5em", marginTop: "20px" }}
+                sm={12}
+                md={12}
+                lg={12}
               >
-                <CLabel className={"label-name"}>
-                  DOB
-                  <span style={{ fontSize: "14px", fontFamily: "normal" }}>
-                    {" "}
-                    -
-                  </span>
-                </CLabel>
-              </CCol>
-            </CRow>
-            <CCol style={{ marginTop: "-90px", marginLeft: "-40px" }}>
+                <CCol md="6">
+                  <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    Name :{" "}
+                  </CLabel>
+
+                  <CLabel
+                    className={"reAssign-Detail"}
+                    style={{marginLeft:"-5em"}}
+                  >
+                    {selected.assignedTo
+                      ? selected.assignedTo.firstName
+                      : "Arun Kumar"}
+                  </CLabel>
+                </CCol>
+                <CCol md="6" style={{ marginLeft: "-200px" }}>
+                  <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    Gender :{" "}
+                  </CLabel>
+
+                  <CLabel
+                    className={"reAssign-Detail"}
+                    style={{ marginLeft: "-3.5em" }}
+                  >
+                    {selected.assignedTo
+                      ? selected.assignedTo.firstName
+                      : "Male"}
+                  </CLabel>
+                </CCol>
+                <CCol>
+                  <img
+                    type="text"
+                    alt=""
+                    src={files !== "" ? files : DEFAULT_IMAGE}
+                    style={{
+                      width: "150px",
+                      height: "200px",
+                      position: "relative",
+                      background: "#fff",
+                      left: "-260%",
+                      top: "-5em",
+                    }}
+                  />
+                </CCol>
+              </CRow>
+              <CRow
+                className={"LengthDataw"}
+                style={{ marginLeft: "10.5em", marginTop: "-10em" }}
+                sm={12}
+                md={12}
+                lg={12}
+              >
+                <CCol md="6">
+                  <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                  DOB :{" "}
+                  </CLabel>
+
+                  <CLabel
+                    className={"reAssign-Detail"}
+                    style={{marginLeft:"-5em"}}
+                  >
+                    {selected.assignedTo
+                      ? selected.assignedTo.firstName
+                      : "23/07/1998"}
+                  </CLabel>
+                </CCol>                
+              </CRow>
+            </CContainer>
+            
+            <CCol style={{  marginLeft: "-40px" }}>
               <CLabel
                 style={{
                   fontSize: "20PX",
@@ -1768,68 +1816,88 @@ import {
                         Member Details Display
                       </CLabel>
                     </CCol>
-  
-                    <CRow className={"row-alignment"}>
-                      <CCol className={"column-align"} md="4">
-                        <CLabel className={"label-name"}>
-                          Name
-                          <span
-                            style={{ fontSize: "14px", fontFamily: "normal" }}
-                          >
-                            {" "}
-                            - M Venkatesan
-                          </span>
-                        </CLabel>
-                      </CCol>
-                      <CCol className={"column-align"} md="4">
-                        <CLabel className={"label-name"}>
-                          Gender
-                          <span
-                            style={{ fontSize: "14px", fontFamily: "normal" }}
-                          >
-                            {" "}
-                            - Male
-                          </span>
-                        </CLabel>
-                      </CCol>
-                      <CCol>
-                        <img
-                          type="text"
-                          alt=""
-                          src={files !== "" ? files : DEFAULT_IMAGE}
-                          style={{
-                            width: "150px",
-                            height: "200px",
-                            position: "relative",
-                            background: "#fff",
-                            left: "-40%",
-                            top: "-3%",
-                          }}
-                        />
-                      </CCol>
-                    </CRow>
-                    <CRow
-                      className={"row-alignment"}
-                      style={{ marginTop: "-140px" }}
-                    >
-                      <CCol className={"column-align"} md="4">
-                        <CLabel className={"label-name"}>
-                          Age
-                          <span
-                            style={{ fontSize: "14px", fontFamily: "normal" }}
-                          >
-                            {" "}
-                            - 12/03/1976
-                          </span>
-                        </CLabel>
-                      </CCol>
-                    </CRow>
+                    <CContainer>
+              <CRow
+                className={"LengthDataw"}
+                style={{ marginLeft: "14.4em", marginTop: "20px" }}
+                sm={12}
+                md={12}
+                lg={12}
+              >
+                <CCol md="6">
+                  <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    Name :{" "}
+                  </CLabel>
+
+                  <CLabel
+                    className={"reAssign-Detail"}
+                    style={{marginLeft:"-5em"}}
+                  >
+                    {selected.assignedTo
+                      ? selected.assignedTo.firstName
+                      : "Arun Kumar"}
+                  </CLabel>
+                </CCol>
+                <CCol md="6" style={{ marginLeft: "-200px" }}>
+                  <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    Gender :{" "}
+                  </CLabel>
+
+                  <CLabel
+                    className={"reAssign-Detail"}
+                    style={{ marginLeft: "-3.5em" }}
+                  >
+                    {selected.assignedTo
+                      ? selected.assignedTo.firstName
+                      : "Male"}
+                  </CLabel>
+                </CCol>
+                <CCol>
+                  <img
+                    type="text"
+                    alt=""
+                    src={files !== "" ? files : DEFAULT_IMAGE}
+                    style={{
+                      width: "150px",
+                      height: "200px",
+                      position: "relative",
+                      background: "#fff",
+                      left: "-260%",
+                      top: "-5em",
+                    }}
+                  />
+                </CCol>
+              </CRow>
+              <CRow
+                className={"LengthDataw"}
+                style={{ marginLeft: "14.4em", marginTop: "-10em" }}
+                sm={12}
+                md={12}
+                lg={12}
+              >
+                <CCol md="6">
+                  <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                  Age :{" "}
+                  </CLabel>
+
+                  <CLabel
+                    className={"reAssign-Detail"}
+                    style={{marginLeft:"-5em"}}
+                  >
+                    {selected.assignedTo
+                      ? selected.assignedTo.firstName
+                      : "23"}
+                  </CLabel>
+                </CCol>                
+              </CRow>
+            </CContainer>
+                    
                     <CRow
                       className={"row-alignment"}
                       style={{
                         marginLeft: "4px",
                         marginBottom: "20px",
-                        top: "10px",
+                        marginTop: "2em",
                       }}
                     >
                       <CCol className={"column-align"} md="4">

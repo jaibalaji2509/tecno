@@ -56,12 +56,14 @@ function RuralBodies() {
       filter: false,
     },
   ];
+ 
   const userdatavp = [
     {
       sNo:"1",
       village:"Nolambur",
     }
   ];
+
   const fieldVP = [
     {
       key: "sNo",
@@ -79,12 +81,14 @@ function RuralBodies() {
       filter: false,
     },
   ];
+
   const userDatadp = [
     {
       sNo:"1",
       district:"Maduravoyal",      
     },
   ];
+
   const fieldDP = [
     {
       key: "sNo",
@@ -102,6 +106,14 @@ function RuralBodies() {
       filter: false,
     },
   ];
+
+  const userdatapu =[
+    {
+      sNo:"1",
+      union:"Mogappair"
+    }
+  ]
+
   const fieldPU = [
     {
       key: "sNo",
@@ -139,16 +151,19 @@ function RuralBodies() {
   const [error] = useState("");
   const [municipalList, setMunicipalList] = useState(true);
   const [, setmunicipalCreate] = useState(false);
+
   const enableCreate = async () => {
     await setMunicipalList(false);
     await setmunicipalCreate(true);
   };
+
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...inputList];
     list[index][name] = value;
     setInputList(list);
   };
+
   const handleRemoveClick = (index) => {
     const list = [...inputList];
     list.splice(index, 1);
@@ -190,6 +205,7 @@ function RuralBodies() {
     e.preventDefault();
     setInputList([...inputList, { name: "", abbreviation: "", code: "" }]);
   };
+  
   const SelectMenuButtonDistrictpanchayat = (props) => {
     return (
       <components.MenuList {...props}>
@@ -728,7 +744,7 @@ function RuralBodies() {
                   <CContainer>
                     <CRow
                       className={"row-alignment"}
-                      style={{ marginLeft: "5px", marginTop: "20px" }}
+                      style={{ marginLeft: "0.4em", marginTop: "20px" }}
                       sm={12}
                       md={12}
                       lg={12}
@@ -822,7 +838,7 @@ function RuralBodies() {
                 );
               })}
               <CContainer>
-                <CRow style={{ marginLeft: "250px" }} sm={12} md={12} lg={12}>
+                <CRow style={{ marginLeft: "15em" }} sm={12} md={12} lg={12}>
                   <CCol md="3">
                     <CButton
                       style={{
@@ -1064,7 +1080,7 @@ function RuralBodies() {
                 );
               })}
               <CContainer>
-                <CRow style={{ marginLeft: "250px" }} sm={12} md={12} lg={12}>
+                <CRow style={{ marginLeft: "15em" }} sm={12} md={12} lg={12}>
                   <CCol md="3">
                     <CButton
                       style={{
@@ -1295,7 +1311,7 @@ function RuralBodies() {
                 );
               })}
               <CContainer>
-                <CRow style={{ marginLeft: "250px" }} sm={12} md={12} lg={12}>
+                <CRow style={{ marginLeft: "15em" }} sm={12} md={12} lg={12}>
                   <CCol md="3">
                     <CButton
                       style={{
@@ -2502,7 +2518,7 @@ function RuralBodies() {
 
                     <CLabel
                       className={"reAssign-Detail"}
-                      style={{ marginLeft: "70px" }}
+                      style={{ marginLeft: "9em" }}
                     >
                       {selected.assignedTo
                         ? selected.assignedTo.firstName
@@ -2553,11 +2569,11 @@ function RuralBodies() {
                 }}
               >
                 <CDataTable
-                  items={excelupload.data}
+                  items={userdatapu}
                   fields={fieldPU}
-                  tableLabel={"Panchayat Union"}
+                  tableLabel={"List of Panchayat Union"}
                   itemsPerPageSelect
-                  itemsPerPage={5}
+                  itemsPerPage={5}                  
                   hover
                   sorter
                   pagination
@@ -2615,7 +2631,7 @@ function RuralBodies() {
           }}
         >
           <div className={"main-headerlabel"}>
-            <span className={"header-label"}>Rural Bodies</span>
+            <span className={"header-label"} style={{marginLeft:"-3em"}}>Rural Bodies</span>
           </div>
           <CContainer>
             <div>

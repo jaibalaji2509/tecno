@@ -228,6 +228,71 @@ const _nav = [
       },
     ],
   },
+
+  {
+    id: "AdminSetupSideBar",
+    _tag: "CSidebarNavDropdown",
+    name: "Kpost Management",
+    route: "/partyMember",    
+    icon: 'cil-drop',     
+    _children: [     
+      {
+        id: "AdminSetupSideBar",
+        _tag: "CSidebarNavDropdown",
+        name: "  Open CC",
+        route: "/Communication",
+        icon: 'cil-drop',
+        _children: [
+          {
+            id: "CSidebarNavItemSideBar",
+            _tag: "CSidebarNavItem",
+            name: "  Allocate OCC",
+            to: "/AllocateOcc",
+            icon: <CIcon className={"c-sidebar-nav-icon"} />,
+          },
+          {
+            id: "CSidebarNavItemSideBar",
+            _tag: "CSidebarNavItem",
+            name: "  Block",
+            to: "/AllocateOcc",
+            icon: <CIcon className={"c-sidebar-nav-icon"} />,
+          },
+          {
+            id: "CSidebarNavItemSideBar",
+            _tag: "CSidebarNavItem",
+            name: "  Transfer",
+            to: "/AllocateOcc",
+            icon: <CIcon className={"c-sidebar-nav-icon"} />,
+          },
+        ]
+      },
+        {
+          id: "AdminSetupSideBar",
+          _tag: "CSidebarNavDropdown",
+          name: "Closed CC",
+          route: "/Communication",
+          icon: 'cil-drop',
+
+          _children: [
+            {
+              id: "CSidebarNavItemSideBar",
+              _tag: "CSidebarNavItem",
+              name: "Allocate Closed CC",
+              to: "/AllocateCC",
+              icon: <CIcon className={"c-sidebar-nav-icon"} />,
+            },                     
+            {
+              id: "CSidebarNavItemSideBar",
+              _tag: "CSidebarNavItem",
+              name: "Allocate Contacts",
+              to: "/AllocateContacts",
+              icon: <CIcon className={"c-sidebar-nav-icon"} />,            
+            },                     
+          ]
+      },         
+    ],
+  },
+
   {
     id: "AdminSetupSideBar",
     _tag: "CSidebarNavDropdown",

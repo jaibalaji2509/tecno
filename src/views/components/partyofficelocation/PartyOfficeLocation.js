@@ -8,6 +8,7 @@ import {
   CButton,
   CInput,
   CLink,
+  CContainer,
 } from "@coreui/react";
 import ReactTooltip from "react-tooltip";
 import {} from "../../../services/ApiService";
@@ -427,6 +428,7 @@ function PartyOfficeLocation() {
           className={menu.style}
           style={{ overflow: "auto", marginLeft: "-475px" ,width:"81%"}}
         >
+          <CContainer>
           <div className={"main-headerlabel"} style={{ marginTop: "-40px" }}>
             <span className={"header-label"}> Adding Type of Party Office</span>
           </div>
@@ -704,10 +706,12 @@ function PartyOfficeLocation() {
               </CButton>
             </div>
           )}
+          </CContainer>
         </div>
       )}
       {addPartyOffice && (
         <div>
+          <CContainer>
           <CCard className={"cardSave"}>
             <div className={"main-headerlabel"}>
               <span className={"header-label"}>
@@ -1018,11 +1022,13 @@ function PartyOfficeLocation() {
               </CRow>
             </div>
           </CCard>
+          </CContainer>
         </div>
       )}
 
       {createPartyOffice && (
         <div>
+          <CContainer>
           <CCard className={"cardSave"}>
             <div style={{ marginLeft: "-2px" }}>
               <div className={"row-headerlabel"}>
@@ -1231,6 +1237,7 @@ function PartyOfficeLocation() {
               </CCol>
             </CRow>
           </CCard>
+          </CContainer>
         </div>
       )}
     </div>

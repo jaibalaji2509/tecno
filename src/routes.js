@@ -63,6 +63,8 @@ const PartyOfficeLocation = React.lazy(() => import('./views/components/partyoff
 const PartyPosting = React.lazy(() => import('./views/components/partyposting/PartyPosting'));
 const AssignPartyPosting = React.lazy(() => import('./views/components/assignpartyposting/AssignPartyPosting'));
 const RuralBodies = React.lazy(() => import('./views/components/rural-bodies/RuralBodies'));
+const AllocateCC = React.lazy(() => import('./views/components/allocatecc/AllocateCC'));
+const AllocateContacts = React.lazy(() => import('./views/components/allocatecontacts/AllocateContacts'));
 
 const StateMinister = React.lazy(() => import('./views/components/stateminister/StateMinister'));
 const CentralMinister = React.lazy(() => import('./views/components/centralminister/CentralMinister'));
@@ -142,6 +144,9 @@ const routes = [
   { path: '/centralminister',  exact: true, name: 'Central Minister', component: CentralMinister },
   { path: '/clientinitiation',  exact: true, name: 'Client Initiation', component: ClientInitiation },
   { path: '/RuralBodies',  exact: true, name: 'Rural Bodies', component: RuralBodies },
+  { path: '/AllocateCC',  exact: true, name: 'Member Allocate Closed Communication Channel', component: AllocateCC },
+  { path: '/AllocateContacts',  exact: true, name: 'Allocate Contacts', component: AllocateContacts },
+
 ];
 
 export default routes;

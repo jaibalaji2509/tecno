@@ -6,6 +6,7 @@ import {
   CLink,
   CRow,
   CInput,
+  CContainer,
 } from "@coreui/react";
 import {
   roleDelete, 
@@ -233,7 +234,7 @@ const MunicipalCorporation = () => {
     { key: "ward", label: "Ward Name", _style: { width: "10%" } },
     {
       key: "street",
-      label: "Door No and Street Name",
+      label: "Door No / Street Name",
       _style: { width: "10%" },
     },
     {
@@ -1807,6 +1808,7 @@ const MunicipalCorporation = () => {
               {hideMappingMunicipal && (
                 <div>
                   <CCard className={"cardSave"}>
+                    <CContainer>
                     <div className={"main-headerlabel"}>
                       <span className={"header-label"}>
                         {" "}
@@ -1918,7 +1920,7 @@ const MunicipalCorporation = () => {
                         <CRow
                           style={{
                             padding: "4%",
-                            marginTop: "-2.5%",
+                            marginTop: "0.5%",
                             marginLeft: "-40px",
                           }}
                         >
@@ -1975,13 +1977,15 @@ const MunicipalCorporation = () => {
                         </CRow>
                       </div>
                     )}
+                    </CContainer>
                   </CCard>
                 </div>
               )}
 
               {hideCorporation && (
                 <div>
-                  <CCard className={"cardSave"}>
+                   <CContainer>
+                  <CCard className={"cardSave"}>                  
                     <div className={"main-headerlabel"}>
                       <span className={"header-label"}>
                         {" "}
@@ -1991,6 +1995,7 @@ const MunicipalCorporation = () => {
                     {locationHide.corporation && (
                       <div>
                         <div style={{ marginLeft: "-26px" }}>
+                          <CContainer>
                           <CRow
                             className={"row-alignment"}
                             style={{ marginLeft: "5px" }}
@@ -2392,6 +2397,7 @@ const MunicipalCorporation = () => {
                               />
                             </CCol>
                           </CRow>
+                          </CContainer>
                         </div>
                         <CRow style={{ marginTop: "30px" }}>
                           <CCol md="10">
@@ -3334,8 +3340,9 @@ const MunicipalCorporation = () => {
                           />
                         </CRow>
                       </div>
-                    )}
+                    )}                   
                   </CCard>
+                  </CContainer>
                 </div>
               )}
             </div>

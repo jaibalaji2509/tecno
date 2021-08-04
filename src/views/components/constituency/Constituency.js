@@ -6,6 +6,7 @@ import {
   CLabel,
   CRow,
   CLink,
+  CContainer,
 } from "@coreui/react";
 import { roleDelete } from "../../../services/ApiService";
 import { toast } from "react-toastify";
@@ -1793,563 +1794,588 @@ function Constituency() {
               <React.Fragment>
                 {memberhide && (
                   <div>
-                    <CCard className={"cardSave"}>
-                      <div className={"main-headerlabel"}>
-                        <span className={"header-label"}>Constituency</span>
-                      </div>
-                      <CRow style={{ marginTop: "45px" }}>
-                        <CCol>
-                          <CCol md="5">
-                            <CButton
-                              style={{
-                                marginLeft: "45px",
-                              }}
-                              id={"LegislativesaveAbbreviationConfigureCode"}
-                              className={"saveBtn"}
-                              onClick={viewcreate}
-                            >
-                              Add Constituency
-                            </CButton>{" "}
+                    <CContainer>
+                      <CCard className={"cardSave"}>
+                        <div className={"main-headerlabel"}>
+                          <span className={"header-label"}>Constituency</span>
+                        </div>
+                        <CRow style={{ marginTop: "45px" }}>
+                          <CCol>
+                            <CCol md="5">
+                              <CButton
+                                style={{
+                                  marginLeft: "45px",
+                                }}
+                                id={"LegislativesaveAbbreviationConfigureCode"}
+                                className={"saveBtn"}
+                                onClick={viewcreate}
+                              >
+                                Add Constituency
+                              </CButton>{" "}
+                            </CCol>
                           </CCol>
-                        </CCol>
-                      </CRow>
+                        </CRow>
 
-                      <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                        <CCol className={"column-align"} md="4">
-                          <CLabel className={"label-name"}>
-                            State
-                            <span className={"text-danger"}>*</span>
-                          </CLabel>
-                          <Select
-                            styles={{ marginLeft: "50px" }}
-                            type={"text"}
-                            id={"constituencyState"}
-                            className={"input-align"}
-                            placeholder="Select the State"
-                            options={select}
-                          />
-                        </CCol>
-                        <CCol className={"column-align"} md="4">
-                          <CLabel className={"label-name"}>
-                            Parliamentary Constituency
-                            <span className={"text-danger"}> *</span>
-                          </CLabel>
-                          <Select
-                            placeholder="Select Parliamentary Constituency"
-                            id={"parliamentaryconstituency"}
-                            type={"text"}
-                            className={"input-align"}
-                            style={{ marginLeft: "5px" }}
-                            options={select}
-                          />
-                        </CCol>                       
-                      </CRow>
+                        <CRow
+                          className={"row-alignment"}
+                          md="12"
+                          sm="12"
+                          lg="12"
+                        >
+                          <CCol className={"column-align"} md="4">
+                            <CLabel className={"label-name"}>
+                              State
+                              <span className={"text-danger"}>*</span>
+                            </CLabel>
+                            <Select
+                              styles={{ marginLeft: "50px" }}
+                              type={"text"}
+                              id={"constituencyState"}
+                              className={"input-align"}
+                              placeholder="Select the State"
+                              options={select}
+                            />
+                          </CCol>
+                          <CCol className={"column-align"} md="4">
+                            <CLabel className={"label-name"}>
+                              Parliamentary Constituency
+                              <span className={"text-danger"}> *</span>
+                            </CLabel>
+                            <Select
+                              placeholder="Select Parliamentary Constituency"
+                              id={"parliamentaryconstituency"}
+                              type={"text"}
+                              className={"input-align"}
+                              style={{ marginLeft: "5px" }}
+                              options={select}
+                            />
+                          </CCol>
+                        </CRow>
 
-                      <CRow className={"row-alignment"} md="12" sm="12" lg="12">
-                      <CCol className={"column-align"} md="4">
-                          <CLabel className={"label-name"}>
-                            District / City
-                            <span className={"text-danger"}>*</span>
-                          </CLabel>
-                          <Select
-                            styles={{ marginLeft: "50px" }}
-                            type={"text"}
-                            id={"constituencycity"}
-                            className={"input-align"}
-                            placeholder="Select the District / City "
-                            options={select}
-                          />
-                        </CCol>
-                        <CCol className={"column-align"} md="4">
-                          <CLabel className={"label-name"}>
-                            Legislative Assembly Constituency
-                            <span className={"text-danger"}> *</span>
-                          </CLabel>
-                          <Select
-                            placeholder="Select Legislative Assembly Constituency"
-                            id={"legislativeAssemblyconstitue"}
-                            type={"text"}
-                            className={"input-align"}
-                            style={{ marginLeft: "5px" }}
-                            options={select}
-                          />
-                        </CCol>
-                      </CRow>
+                        <CRow
+                          className={"row-alignment"}
+                          md="12"
+                          sm="12"
+                          lg="12"
+                        >
+                          <CCol className={"column-align"} md="4">
+                            <CLabel className={"label-name"}>
+                              District / City
+                              <span className={"text-danger"}>*</span>
+                            </CLabel>
+                            <Select
+                              styles={{ marginLeft: "50px" }}
+                              type={"text"}
+                              id={"constituencycity"}
+                              className={"input-align"}
+                              placeholder="Select the District / City "
+                              options={select}
+                            />
+                          </CCol>
+                          <CCol className={"column-align"} md="4">
+                            <CLabel className={"label-name"}>
+                              Legislative Assembly Constituency
+                              <span className={"text-danger"}> *</span>
+                            </CLabel>
+                            <Select
+                              placeholder="Select Legislative Assembly Constituency"
+                              id={"legislativeAssemblyconstitue"}
+                              type={"text"}
+                              className={"input-align"}
+                              style={{ marginLeft: "5px" }}
+                              options={select}
+                            />
+                          </CCol>
+                        </CRow>
 
-                      <CRow
-                        style={{
-                          padding: "4%",
-                          marginTop: "-2.5%",
-                          marginLeft: "2px",
-                        }}
-                      >
-                        <CDataTable
-                          items={userDataview}
-                          fields={fieldsview}
-                          columnFilter
-                          tableFilter
-                          tableLabel={"List of Constituency"}
-                          itemsPerPageSelect
-                          itemsPerPage={5}
-                          hover
-                          sorter
-                          pagination
-                          scopedSlots={{
-                            show_detailsview: (item, index) => {
-                              return (
-                                <td className="py-1">
-                                  <CRow>
-                                    <CCol
-                                      style={{ fontSize: "1.15rem" }}
-                                      md="16"
-                                    >
-                                      <Dropdown
-                                        className={
-                                          "ant-dropdown-cutomize-by-me"
-                                        }
-                                        overlay={() => menus(item)}
-                                      >
-                                        <a
-                                          href
-                                          className="ant-dropdown-link"
-                                          onClick={(e) => e.preventDefault()}
-                                        >
-                                          <i
-                                            style={{
-                                              marginLeft: "35px",
-                                              color: "black",
-                                            }}
-                                            className="fa fa-ellipsis-v"
-                                            bsStyle="overlay"
-                                            onClick={menus}
-                                          />
-                                        </a>
-                                      </Dropdown>
-                                    </CCol>
-                                  </CRow>
-                                </td>
-                              );
-                            },
-                            details: (item, index) => {},
+                        <CRow
+                          style={{
+                            padding: "4%",
+                            marginTop: "0.5%",
+                            marginLeft: "2px",
                           }}
-                        />
-                      </CRow>
-                    </CCard>
+                        >
+                          <CDataTable
+                            items={userDataview}
+                            fields={fieldsview}
+                            columnFilter
+                            tableFilter
+                            tableLabel={"List of Constituency"}
+                            itemsPerPageSelect
+                            itemsPerPage={5}
+                            hover
+                            sorter
+                            pagination
+                            scopedSlots={{
+                              show_detailsview: (item, index) => {
+                                return (
+                                  <td className="py-1">
+                                    <CRow>
+                                      <CCol
+                                        style={{ fontSize: "1.15rem" }}
+                                        md="16"
+                                      >
+                                        <Dropdown
+                                          className={
+                                            "ant-dropdown-cutomize-by-me"
+                                          }
+                                          overlay={() => menus(item)}
+                                        >
+                                          <a
+                                            href
+                                            className="ant-dropdown-link"
+                                            onClick={(e) => e.preventDefault()}
+                                          >
+                                            <i
+                                              style={{
+                                                marginLeft: "35px",
+                                                color: "black",
+                                              }}
+                                              className="fa fa-ellipsis-v"
+                                              bsStyle="overlay"
+                                              onClick={menus}
+                                            />
+                                          </a>
+                                        </Dropdown>
+                                      </CCol>
+                                    </CRow>
+                                  </td>
+                                );
+                              },
+                              details: (item, index) => {},
+                            }}
+                          />
+                        </CRow>
+                      </CCard>
+                    </CContainer>
                   </div>
                 )}
                 {hide && (
                   <div>
-                    <CCard className={"cardSave"}>
-                      <div className={"main-headerlabel"}>
-                        <span className={"header-label"}>Constituency</span>
-                      </div>
+                    <CContainer>
+                      <CCard className={"cardSave"}>
+                        <div className={"main-headerlabel"}>
+                          <span className={"header-label"}>Constituency</span>
+                        </div>
 
-                      <CRow
-                        className={"row-alignment"}
-                        style={{ marginLeft: "-76px" }}
-                      >
-                        <CCol
-                          className={"column-align"}
-                          md="12"
-                          lg="12"
-                          sm="12"
+                        <CRow
+                          className={"row-alignment"}
+                          style={{ marginLeft: "-76px" }}
                         >
-                          <p
-                            className="mandatory_txt"
-                            style={{ marginLeft: "50px" }}
+                          <CCol
+                            className={"column-align"}
+                            md="12"
+                            lg="12"
+                            sm="12"
                           >
-                            Mandatory fields are marked with an asterisk (*)
-                          </p>
+                            <p
+                              className="mandatory_txt"
+                              style={{ marginLeft: "50px" }}
+                            >
+                              Mandatory fields are marked with an asterisk (*)
+                            </p>
 
-                          <div style={{ marginLeft: "-20px" }}>
-                            <div className={"row-headerlabel"}>
-                              <span
-                                style={{ marginLeft: "70px" }}
-                                className={"header-label"}
+                            <div style={{ marginLeft: "-20px" }}>
+                              <div className={"row-headerlabel"}>
+                                <span
+                                  style={{ marginLeft: "70px" }}
+                                  className={"header-label"}
+                                >
+                                  {" "}
+                                  Adding CONSTITUENCY{" "}
+                                </span>
+                              </div>
+                              <CRow
+                                className={"row-alignment"}
+                                md="12"
+                                sm="12"
+                                lg="12"
+                                style={{ marginLeft: "-6px" }}
                               >
-                                {" "}
-                                Adding CONSTITUENCY{" "}
-                              </span>
-                            </div>
-                            <CRow
-                              className={"row-alignment"}
-                              md="12"
-                              sm="12"
-                              lg="12"
-                              style={{ marginLeft: "-6px" }}
-                            >
-                              <CCol className={"column-align"} md="4">
-                                <CLabel className={"label-name"}>
-                                  State
-                                  <span className={"text-danger"}>*</span>
-                                </CLabel>
-                                <Select
-                                  styles={{ marginLeft: "50px" }}
-                                  type={"text"}
-                                  id={"constituencyState"}
-                                  options={select}
-                                  className={"input-align"}
-                                  placeholder="Select the State"
-                                />
-                              </CCol>
-                              <span class="divider" />
-                              {municipalList && (
-                                <React.Fragment>
-                                  <CCol
-                                    className={"column-align"}
-                                    md={4}
-                                    lg={4}
-                                  >
-                                    <CLabel className={"label-name-1"}>
-                                      Parliamentary Constituency
-                                      <span className={"text-danger"}> *</span>
-                                    </CLabel>
-                                    <Select
-                                      placeholder="Select Parliamentary Constituency"
-                                      id={"parliamentaryconstituency"}
-                                      type={"text"}
-                                      value={collected}
-                                      onChange={changedistrictpanchayat}
-                                      components={{
-                                        MenuList: SelectMenuButtonParliamentary,
-                                      }}
-                                      options={select}
-                                    />
-                                    {villageHide.districtpanchayat &&
-                                    collected.length !== 0 ? (
-                                      <div
-                                        style={{
-                                          width: 300,
-                                          marginLeft: "446px",
-                                          marginTop: "-40px",
-                                          padding: 10,
-                                        }}
-                                      >
-                                        <i
-                                          onClick={editClickmunici}
-                                          className={"editIcon"}
-                                          id={"oParliamentaryEdit"}
-                                          class="fas fa-edit"
-                                        />
-                                        <div
-                                          style={{
-                                            width: 300,
-                                            marginLeft: "26px",
-                                            marginTop: "-30px",
-                                            padding: 10,
-                                            color: "red",
-                                          }}
-                                        >
-                                          <i
-                                            onClick={deletemodal}
-                                            className={"editIcon"}
-                                            id={"Parliamentarytrash"}
-                                            class="fas fa-trash"
-                                          />
-                                        </div>
-                                      </div>
-                                    ) : null}
-                                  </CCol>
-                                </React.Fragment>
-                              )}
-                            </CRow>
-                            <CRow
-                              className={"row-alignment"}
-                              md="12"
-                              sm="12"
-                              lg="12"
-                              style={{ marginLeft: "-6px" }}
-                            >
-                              <CCol className={"column-align"} md="4">
-                                <CLabel className={"label-name"}>
-                                  District / City
-                                  <span className={"text-danger"}>*</span>
-                                </CLabel>
-                                <Select
-                                  styles={{ marginLeft: "50px" }}
-                                  type={"text"}
-                                  id={"constituencycity"}
-                                  className={"input-align"}
-                                  options={select}
-                                  placeholder="Select the District / City "
-                                />
-                              </CCol>
-                              {municipalListadd && (
-                                <React.Fragment>
-                                  <CCol
-                                    className={"column-align"}
-                                    md={4}
-                                    lg={4}
-                                  >
-                                    <CLabel className={"label-name-1"}>
-                                      Legislative Assembly Constituency
-                                      <span className={"text-danger"}> *</span>
-                                    </CLabel>
-                                    <Select
-                                      placeholder="Select the Legislative Assembly"
-                                      id={"legislative"}
-                                      type={"text"}
-                                      value={selected1}
-                                      onChange={changePanchayatUnion}
-                                      components={{
-                                        MenuList: SelectMenuButtonLegislative,
-                                      }}
-                                      options={select}
-                                    />
-                                    {villageHide.panchayatunion &&
-                                    selected1.length !== 0 ? (
-                                      <div
-                                        style={{
-                                          width: 300,
-                                          marginLeft: "446px",
-                                          marginTop: "-40px",
-                                          padding: 10,
-                                        }}
-                                      >
-                                        <i
-                                          onClick={editClickward}
-                                          className={"editIcon"}
-                                          id={"legislativeEdit"}
-                                          class="fas fa-edit"
-                                        />
-                                        <div
-                                          style={{
-                                            width: 300,
-                                            marginLeft: "26px",
-                                            marginTop: "-30px",
-                                            padding: 10,
-                                            color: "red",
-                                          }}
-                                        >
-                                          <i
-                                            onClick={deletemodal}
-                                            className={"editIcon"}
-                                            id={"legislativetrash"}
-                                            class="fas fa-trash"
-                                          />
-                                        </div>
-                                      </div>
-                                    ) : null}
-                                  </CCol>
-                                </React.Fragment>
-                              )}
-                            </CRow>
-
-                            <CRow>
-                              <CCol>
-                                <CLabel
-                                  style={{
-                                    fontSize: "20PX",
-                                    fontFamily: "Open Sans",
-                                    fontWeight: "700",
-                                    marginLeft: "71px",
-                                    marginTop: "20px",
-                                  }}
-                                >
-                                  Select Street
-                                </CLabel>
-                              </CCol>
-                            </CRow>
-
-                            <CRow
-                              className={"row-alignment"}
-                              md="12"
-                              sm="12"
-                              lg="12"
-                              style={{ marginLeft: "-6px" }}
-                            >
-                              <CCol className={"column-align"} md="4">
-                                <CLabel className={"label-name"}>
-                                  Area / Village
-                                  <span className={"text-danger"}>*</span>
-                                </CLabel>
-                                <Select
-                                  type={"text"}
-                                  id={"constituencyarea"}
-                                  className={"input-align"}
-                                  placeholder="Select the Area / Village"
-                                  options={select}
-                                />
-                              </CCol>
-
-                              <CCol className={"column-align"} md="4">
-                                <CLabel className={"label-name"}>
-                                  Ward Name
-                                  <span className={"text-danger"}> *</span>
-                                </CLabel>
-                                <Select
-                                  type={"text"}
-                                  id={"constituencyward"}
-                                  className={"input-align"}
-                                  placeholder="Select the Ward"
-                                  options={select}
-                                />
-                              </CCol>
-                            </CRow>
-                            <CRow
-                              className={"row-alignment"}
-                              md="12"
-                              sm="12"
-                              lg="12"
-                              style={{ marginLeft: "-6px" }}
-                            >
-                              <CCol className={"column-align"} md="4">
-                                <CLabel className={"label-name"}>
-                                  Street Name
-                                  <span className={"text-danger"}>*</span>
-                                </CLabel>
-                                <Select
-                                  type={"text"}
-                                  id={"constituencystreet"}
-                                  className={"input-align"}
-                                  placeholder="Select the Street "
-                                  options={select}
-                                />
-                              </CCol>
-                            </CRow>
-                            <CRow>
-                              <CCol md="10">
-                                <CCol
-                                  md="5"
-                                  style={{
-                                    marginTop: "-35px",
-                                    marginLeft: "285px",
-                                  }}
-                                >
-                                  <CButton
-                                    style={{
-                                      float: "right",
-                                    }}
-                                    id={"cancelconstituency"}
-                                    className={"cancelBtn"}
-                                    onClick={cancelview}
-                                  >
-                                    CANCEL
-                                  </CButton>
-                                  <CButton
-                                    style={{
-                                      float: "right",
-                                      marginRight: "15px",
-                                    }}
-                                    id={
-                                      "saveconstituencyabbreviationconfigurecode"
-                                    }
-                                    className={"saveBtn"}
-                                  >
-                                    Save
-                                  </CButton>{" "}
+                                <CCol className={"column-align"} md="4">
+                                  <CLabel className={"label-name"}>
+                                    State
+                                    <span className={"text-danger"}>*</span>
+                                  </CLabel>
+                                  <Select
+                                    styles={{ marginLeft: "50px" }}
+                                    type={"text"}
+                                    id={"constituencyState"}
+                                    options={select}
+                                    className={"input-align"}
+                                    placeholder="Select the State"
+                                  />
                                 </CCol>
-                              </CCol>
-                            </CRow>
-                            <CRow
-                              style={{
-                                padding: "6%",
-                                marginTop: "-3.5%",
-                                marginLeft: "-30px",
-                              }}
-                            >
-                              <CDataTable
-                                items={userData}
-                                fields={fields}
-                                columnFilter
-                                tableFilter
-                                tableLabel={"List of Streets"}
-                                itemsPerPageSelect
-                                itemsPerPage={5}
-                                hover
-                                sorter
-                                pagination
-                                selectAll={true}
-                                checkedAll={userData.length === selected.length}
-                                onSelectAll={(val) => {
-                                  console.log(val, userData);
-                                  if (userData.length === selected.length) {
-                                    setSelected([]);
-                                  } else {
-                                    let ids = [];
-                                    val.map((x) => ids.push(`${x._id}`));
-                                    setSelected(ids);
-                                  }
-                                }}
-                                scopedSlots={{
-                                  show_details: (item, index) => {
-                                    return (
-                                      <td className="py-2">
-                                        <CRow>
-                                          <CInput
-                                            type={"checkbox"}
-                                            style={{
-                                              width: "15px",
-                                              height: "15px",
-                                              marginLeft: "30px",
-                                              marginBottom: "10px",
-                                            }}
-                                            onClick={() => {
-                                              if (
-                                                selected.includes(`${item._id}`)
-                                              ) {
-                                                let values = selected.filter(
-                                                  (x) => {
-                                                    return (
-                                                      `${x}` !== `${item._id}`
-                                                    );
-                                                  }
-                                                );
-                                                setSelected(values);
-                                              } else {
-                                                setSelected([
-                                                  ...selected,
-                                                  `${item._id}`,
-                                                ]);
-                                              }
-                                            }}
-                                            checked={selected.includes(
-                                              `${item._id}`
-                                            )}
+                                <span class="divider" />
+                                {municipalList && (
+                                  <React.Fragment>
+                                    <CCol
+                                      className={"column-align"}
+                                      md={4}
+                                      lg={4}
+                                    >
+                                      <CLabel className={"label-name-1"}>
+                                        Parliamentary Constituency
+                                        <span className={"text-danger"}>
+                                          {" "}
+                                          *
+                                        </span>
+                                      </CLabel>
+                                      <Select
+                                        placeholder="Select Parliamentary Constituency"
+                                        id={"parliamentaryconstituency"}
+                                        type={"text"}
+                                        value={collected}
+                                        onChange={changedistrictpanchayat}
+                                        components={{
+                                          MenuList:
+                                            SelectMenuButtonParliamentary,
+                                        }}
+                                        options={select}
+                                      />
+                                      {villageHide.districtpanchayat &&
+                                      collected.length !== 0 ? (
+                                        <div
+                                          style={{
+                                            width: 300,
+                                            marginLeft: "446px",
+                                            marginTop: "-40px",
+                                            padding: 10,
+                                          }}
+                                        >
+                                          <i
+                                            onClick={editClickmunici}
+                                            className={"editIcon"}
+                                            id={"oParliamentaryEdit"}
+                                            class="fas fa-edit"
                                           />
-                                        </CRow>
-                                      </td>
-                                    );
-                                  },
-                                  show_details1: (item, index) => {
-                                    return (
-                                      <td className="py-2">
-                                        <CRow>
-                                          <CCol
-                                            style={{ fontSize: "1.15rem" }}
-                                            md="12"
+                                          <div
+                                            style={{
+                                              width: 300,
+                                              marginLeft: "26px",
+                                              marginTop: "-30px",
+                                              padding: 10,
+                                              color: "red",
+                                            }}
                                           >
                                             <i
-                                              style={{
-                                                marginRight: "5px",
-                                                color: "#3480e2",
-                                                cursor: "pointer",
-                                              }}
-                                              id={"constituencyediticon"}
-                                              className="fas fa-edit"
-                                            ></i>
+                                              onClick={deletemodal}
+                                              className={"editIcon"}
+                                              id={"Parliamentarytrash"}
+                                              class="fas fa-trash"
+                                            />
+                                          </div>
+                                        </div>
+                                      ) : null}
+                                    </CCol>
+                                  </React.Fragment>
+                                )}
+                              </CRow>
+                              <CRow
+                                className={"row-alignment"}
+                                md="12"
+                                sm="12"
+                                lg="12"
+                                style={{ marginLeft: "-6px" }}
+                              >
+                                <CCol className={"column-align"} md="4">
+                                  <CLabel className={"label-name"}>
+                                    District / City
+                                    <span className={"text-danger"}>*</span>
+                                  </CLabel>
+                                  <Select
+                                    styles={{ marginLeft: "50px" }}
+                                    type={"text"}
+                                    id={"constituencycity"}
+                                    className={"input-align"}
+                                    options={select}
+                                    placeholder="Select the District / City "
+                                  />
+                                </CCol>
+                                {municipalListadd && (
+                                  <React.Fragment>
+                                    <CCol
+                                      className={"column-align"}
+                                      md={4}
+                                      lg={4}
+                                    >
+                                      <CLabel className={"label-name-1"}>
+                                        Legislative Assembly Constituency
+                                        <span className={"text-danger"}>
+                                          {" "}
+                                          *
+                                        </span>
+                                      </CLabel>
+                                      <Select
+                                        placeholder="Select the Legislative Assembly"
+                                        id={"legislative"}
+                                        type={"text"}
+                                        value={selected1}
+                                        onChange={changePanchayatUnion}
+                                        components={{
+                                          MenuList: SelectMenuButtonLegislative,
+                                        }}
+                                        options={select}
+                                      />
+                                      {villageHide.panchayatunion &&
+                                      selected1.length !== 0 ? (
+                                        <div
+                                          style={{
+                                            width: 300,
+                                            marginLeft: "446px",
+                                            marginTop: "-40px",
+                                            padding: 10,
+                                          }}
+                                        >
+                                          <i
+                                            onClick={editClickward}
+                                            className={"editIcon"}
+                                            id={"legislativeEdit"}
+                                            class="fas fa-edit"
+                                          />
+                                          <div
+                                            style={{
+                                              width: 300,
+                                              marginLeft: "26px",
+                                              marginTop: "-30px",
+                                              padding: 10,
+                                              color: "red",
+                                            }}
+                                          >
                                             <i
-                                              id={"constituencydelete"}
-                                              style={{
-                                                marginLeft: "5px",
-                                                color: "#e85654",
-                                                cursor: "pointer",
-                                              }}
-                                              className="fa fa-trash"
-                                            ></i>
-                                          </CCol>
-                                        </CRow>
-                                      </td>
-                                    );
-                                  },
-                                  details: (item, index) => {},
+                                              onClick={deletemodal}
+                                              className={"editIcon"}
+                                              id={"legislativetrash"}
+                                              class="fas fa-trash"
+                                            />
+                                          </div>
+                                        </div>
+                                      ) : null}
+                                    </CCol>
+                                  </React.Fragment>
+                                )}
+                              </CRow>
+
+                              <CRow>
+                                <CCol>
+                                  <CLabel
+                                    style={{
+                                      fontSize: "20PX",
+                                      fontFamily: "Open Sans",
+                                      fontWeight: "700",
+                                      marginLeft: "71px",
+                                      marginTop: "20px",
+                                    }}
+                                  >
+                                    Select Street
+                                  </CLabel>
+                                </CCol>
+                              </CRow>
+
+                              <CRow
+                                className={"row-alignment"}
+                                md="12"
+                                sm="12"
+                                lg="12"
+                                style={{ marginLeft: "-6px" }}
+                              >
+                                <CCol className={"column-align"} md="4">
+                                  <CLabel className={"label-name"}>
+                                    Area / Village
+                                    <span className={"text-danger"}>*</span>
+                                  </CLabel>
+                                  <Select
+                                    type={"text"}
+                                    id={"constituencyarea"}
+                                    className={"input-align"}
+                                    placeholder="Select the Area / Village"
+                                    options={select}
+                                  />
+                                </CCol>
+
+                                <CCol className={"column-align"} md="4">
+                                  <CLabel className={"label-name"}>
+                                    Ward Name
+                                    <span className={"text-danger"}> *</span>
+                                  </CLabel>
+                                  <Select
+                                    type={"text"}
+                                    id={"constituencyward"}
+                                    className={"input-align"}
+                                    placeholder="Select the Ward"
+                                    options={select}
+                                  />
+                                </CCol>
+                              </CRow>
+                              <CRow
+                                className={"row-alignment"}
+                                md="12"
+                                sm="12"
+                                lg="12"
+                                style={{ marginLeft: "-6px" }}
+                              >
+                                <CCol className={"column-align"} md="4">
+                                  <CLabel className={"label-name"}>
+                                    Street Name
+                                    <span className={"text-danger"}>*</span>
+                                  </CLabel>
+                                  <Select
+                                    type={"text"}
+                                    id={"constituencystreet"}
+                                    className={"input-align"}
+                                    placeholder="Select the Street "
+                                    options={select}
+                                  />
+                                </CCol>
+                              </CRow>
+                              <CRow>
+                                <CCol md="10">
+                                  <CCol
+                                    md="5"
+                                    style={{
+                                      marginTop: "-35px",
+                                      marginLeft: "285px",
+                                    }}
+                                  >
+                                    <CButton
+                                      style={{
+                                        float: "right",
+                                      }}
+                                      id={"cancelconstituency"}
+                                      className={"cancelBtn"}
+                                      onClick={cancelview}
+                                    >
+                                      CANCEL
+                                    </CButton>
+                                    <CButton
+                                      style={{
+                                        float: "right",
+                                        marginRight: "15px",
+                                      }}
+                                      id={
+                                        "saveconstituencyabbreviationconfigurecode"
+                                      }
+                                      className={"saveBtn"}
+                                    >
+                                      Save
+                                    </CButton>{" "}
+                                  </CCol>
+                                </CCol>
+                              </CRow>
+                              <CRow
+                                style={{
+                                  padding: "6%",
+                                  marginTop: "-3.5%",
+                                  marginLeft: "-30px",
                                 }}
-                              />
-                            </CRow>
-                          </div>
-                        </CCol>
-                      </CRow>
-                    </CCard>
+                              >
+                                <CDataTable
+                                  items={userData}
+                                  fields={fields}
+                                  columnFilter
+                                  tableFilter
+                                  tableLabel={"List of Streets"}
+                                  itemsPerPageSelect
+                                  itemsPerPage={5}
+                                  hover
+                                  sorter
+                                  pagination
+                                  selectAll={true}
+                                  checkedAll={
+                                    userData.length === selected.length
+                                  }
+                                  onSelectAll={(val) => {
+                                    console.log(val, userData);
+                                    if (userData.length === selected.length) {
+                                      setSelected([]);
+                                    } else {
+                                      let ids = [];
+                                      val.map((x) => ids.push(`${x._id}`));
+                                      setSelected(ids);
+                                    }
+                                  }}
+                                  scopedSlots={{
+                                    show_details: (item, index) => {
+                                      return (
+                                        <td className="py-2">
+                                          <CRow>
+                                            <CInput
+                                              type={"checkbox"}
+                                              style={{
+                                                width: "15px",
+                                                height: "15px",
+                                                marginLeft: "30px",
+                                                marginBottom: "10px",
+                                              }}
+                                              onClick={() => {
+                                                if (
+                                                  selected.includes(
+                                                    `${item._id}`
+                                                  )
+                                                ) {
+                                                  let values = selected.filter(
+                                                    (x) => {
+                                                      return (
+                                                        `${x}` !== `${item._id}`
+                                                      );
+                                                    }
+                                                  );
+                                                  setSelected(values);
+                                                } else {
+                                                  setSelected([
+                                                    ...selected,
+                                                    `${item._id}`,
+                                                  ]);
+                                                }
+                                              }}
+                                              checked={selected.includes(
+                                                `${item._id}`
+                                              )}
+                                            />
+                                          </CRow>
+                                        </td>
+                                      );
+                                    },
+                                    show_details1: (item, index) => {
+                                      return (
+                                        <td className="py-2">
+                                          <CRow>
+                                            <CCol
+                                              style={{ fontSize: "1.15rem" }}
+                                              md="12"
+                                            >
+                                              <i
+                                                style={{
+                                                  marginRight: "5px",
+                                                  color: "#3480e2",
+                                                  cursor: "pointer",
+                                                }}
+                                                id={"constituencyediticon"}
+                                                className="fas fa-edit"
+                                              ></i>
+                                              <i
+                                                id={"constituencydelete"}
+                                                style={{
+                                                  marginLeft: "5px",
+                                                  color: "#e85654",
+                                                  cursor: "pointer",
+                                                }}
+                                                className="fa fa-trash"
+                                              ></i>
+                                            </CCol>
+                                          </CRow>
+                                        </td>
+                                      );
+                                    },
+                                    details: (item, index) => {},
+                                  }}
+                                />
+                              </CRow>
+                            </div>
+                          </CCol>
+                        </CRow>
+                      </CCard>
+                    </CContainer>
                   </div>
                 )}
               </React.Fragment>

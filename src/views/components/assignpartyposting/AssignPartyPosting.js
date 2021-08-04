@@ -427,7 +427,7 @@ const AssignPartyPosting = () => {
                   </CRow>
                   </CContainer>
                 </div>               
-
+               
 <CContainer>
                 <CRow
                   style={{
@@ -523,7 +523,7 @@ const AssignPartyPosting = () => {
                     md="12"
                     sm="12"
                     lg="12"
-                    style={{ marginLeft: "7px" }}
+                    style={{ marginLeft: "0.2em" }}
                   >
                     <CCol className={"column-align"} md="5">
                       <CLabel className={"label-name-1"}>
@@ -563,7 +563,7 @@ const AssignPartyPosting = () => {
                     md="12"
                     sm="12"
                     lg="12"
-                    style={{ marginLeft: "7px" }}
+                    style={{ marginLeft: "0.2em" }}
                   >
                     <CCol className={"column-align"} md="5">
                       <CLabel className={"label-name-1"}>
@@ -600,7 +600,7 @@ const AssignPartyPosting = () => {
                   </CRow>
                   <CRow
                     className={"row-alignment"}
-                    style={{ marginLeft: "7px" }}
+                    style={{ marginLeft: "0.2em" }}
                   >
                     <CCol className={"column-align"} md="5">
                       <CLabel className={"label-name-1"}>
@@ -676,7 +676,7 @@ const AssignPartyPosting = () => {
                     <CCol style={{ marginTop: "6em", marginLeft: "65px" }}>
                       <CLabel
                         style={{
-                          fontSize: "20PX",
+                          fontSize: "18px",
                           fontFamily: "Open Sans",
                           fontWeight: "700",
                         }}
@@ -688,10 +688,10 @@ const AssignPartyPosting = () => {
 
                   <CRow className={"row-alignment"}>
                     <CCol className={"column-align"} md="6">
-                      <CLabel className={"label-name"}>
+                      <CLabel className={"label-name-1"}>
                         Name of the Member
                         <span className={"text-danger"}>*</span>
-                      </CLabel>
+                      </CLabel>                      
                       <Select
                         className={"input-align"}
                         id={"nameofmemberassignpartyposting"}
@@ -703,6 +703,7 @@ const AssignPartyPosting = () => {
                       />
                     </CCol>
                   </CRow>
+
                   <CContainer>
                 <CRow
                   className={"LengthDataw"}

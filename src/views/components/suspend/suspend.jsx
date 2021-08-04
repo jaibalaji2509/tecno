@@ -9,10 +9,13 @@ import {
 } from "@coreui/react";
 import React, { useState } from "react";
 import Select from "react-select";
+import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
 import CDataTable from "src/views/CoreComponents/table/DataTable";
 
 const Suspend = () => {
+  const [files, ] = useState("");
   const [show, setShow] = useState(false);
+  const [selected] = useState("");
   const [filterVal, setFilterVal] = useState("");
   return (
     <React.Fragment>
@@ -208,7 +211,7 @@ const Suspend = () => {
           </div>
           <CContainer>
             <CRow>
-              <CCol>
+              <CCol style={{marginLeft:"1em"}}>
                 <CLabel className="form-check-label">
                   <b>Party Member</b>
                 </CLabel>
@@ -216,74 +219,116 @@ const Suspend = () => {
               </CCol>
               <CCol></CCol>
             </CRow>
-            <CRow>
-              <CCol lg={"2"}>
-                <div
-                  style={{
-                    width: "130px",
-                    height: "150px",
-                    margin: "30px 20px",
-                    background: "#d3d3d3",
-                  }}
-                ></div>
-              </CCol>
+            <CRow>              
               <CCol lg={"10"}>
-                <CRow style={{ margin: "30px 0px" }}>
-                  <CCol>
-                    <CContainer>
-                      <CCol>
-                        <CLabel className="form-check-label">
-                          <b>Name</b>
-                        </CLabel>
-                      </CCol>
-                      <CCol></CCol>
-                    </CContainer>
+              <CContainer style={{marginLeft:"-3em"}}>
+                <CRow
+                  className={"LengthDataw"}
+                  style={{ marginLeft: "2em", marginTop: "20px" }}
+                  sm={12}
+                  md={12}
+                  lg={12}
+                >
+                  <CCol md="6">
+                    <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    Name :{" "}
+                    </CLabel>
+
+                    <CLabel
+                      className={"reAssign-Detail"}
+                      style={{ marginLeft: "8em" }}
+                    >
+                      {selected.assignedTo
+                        ? selected.assignedTo.firstName
+                        : "SathishKumar"}
+                    </CLabel>
+                  </CCol>
+                  <CCol md="6" style={{ marginLeft:"29em", marginTop:"-2.4em" }}>
+                    <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    Gender :{" "}
+                    </CLabel>
+
+                    <CLabel className={"reAssign-Detail"} style={{marginLeft:"8em"}}>
+                      {selected.assignedTo
+                        ? selected.assignedTo.firstName
+                        : "Male"}
+                    </CLabel>
                   </CCol>
                   <CCol>
-                    <CContainer>
-                      <CCol>
-                        <CLabel className="form-check-label">
-                          <b>Gender</b>
-                        </CLabel>
-                      </CCol>
-                      <CCol></CCol>
-                    </CContainer>
-                  </CCol>
+                      <img
+                        type="text"
+                        alt=""
+                        src={files !== "" ? files : DEFAULT_IMAGE}
+                        style={{
+                          width: "150px",
+                          height: "200px",
+                          position: "relative",
+                          background: "#fff",
+                          left: "-40%",
+                          top: "-4em",
+                        }}
+                      />
+                    </CCol>
                 </CRow>
-                <CRow style={{ margin: "30px 0px" }}>
-                  <CCol>
-                    <CContainer>
-                      <CCol>
-                        <CLabel className="form-check-label">
-                          <b>DOB</b>
-                        </CLabel>
-                      </CCol>
-                      <CCol></CCol>
-                    </CContainer>
+                <CRow
+                  className={"LengthDataw"}
+                  style={{ marginLeft: "2em", marginTop: "-12em" }}
+                  sm={12}
+                  md={12}
+                  lg={12}
+                >
+                  <CCol md="6">
+                    <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    DOB :{" "}
+                    </CLabel>
+
+                    <CLabel
+                      className={"reAssign-Detail"}
+                      style={{ marginLeft: "8em" }}
+                    >
+                      {selected.assignedTo
+                        ? selected.assignedTo.firstName
+                        : "22/07/1996"}
+                    </CLabel>
+                  </CCol >
+                  <CCol md="6" style={{marginLeft:"29em",marginTop:"-2.4em"}}>
+                    <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    Education :{" "}
+                    </CLabel>
+
+                    <CLabel
+                      className={"reAssign-Detail"}
+                      style={{ marginLeft: "8em" }}
+                    >
+                      {selected.assignedTo
+                        ? selected.assignedTo.firstName
+                        : "Mechanical Engineer"}
+                    </CLabel>
                   </CCol>
-                  <CCol>
-                    <CContainer>
-                      <CCol>
-                        <CLabel className="form-check-label">
-                          <b>Qualification</b>
-                        </CLabel>
-                      </CCol>
-                      <CCol></CCol>
-                    </CContainer>
+                  </CRow>
+                  <CRow
+                  className={"LengthDataw"}
+                  style={{ marginLeft: "2em", marginTop: "20px" }}
+                  sm={12}
+                  md={12}
+                  lg={12}
+                >
+                  <CCol md="6">
+                    <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    Occupation :{" "}
+                    </CLabel>
+
+                    <CLabel
+                      className={"reAssign-Detail"}
+                      style={{ marginLeft: "8em" }}
+                    >
+                      {selected.assignedTo
+                        ? selected.assignedTo.firstName
+                        : " Software Developer"}
+                    </CLabel>
                   </CCol>
-                </CRow>
-                <CRow style={{ margin: "30px 0px" }}>
-                  <CCol>
-                    <CContainer>
-                      <CCol>
-                        <CLabel className="form-check-label">
-                          <b>Occupation</b>
-                        </CLabel>
-                      </CCol>
-                      <CCol></CCol>
-                    </CContainer>
-                  </CCol>
-                </CRow>
+                  </CRow>
+              </CContainer>
               </CCol>
             </CRow>
             <CRow style={{ margin: "30px 0px" }}>

@@ -10,6 +10,7 @@ import {
   CWidgetDropdown,
   CInput,
   CLink,
+  CContainer,
 } from "@coreui/react";
 import { roleDelete } from "../../../services/ApiService";
 import ConfirmDelete from "../confirmMessage/confirmDelete";
@@ -2256,7 +2257,7 @@ function LocationLibrary(props) {
                     );
                   })}
 
-                  <CRow style={{ marginLeft: "260px" }}>
+                  <CRow style={{ marginLeft: "29em" }}>
                     <CCol md="3">
                       <CButton
                         style={{
@@ -4833,7 +4834,16 @@ function LocationLibrary(props) {
                           )}
                           <div>
                             <div>
-                              <CCard className={"cardSave"}>
+                              <CCard
+                                className={"cardSave"}
+                                style={{
+                                  minHeight: `${window.innerHeight - 198}px`,
+                                  maxHeight: `${window.innerHeight - 198}px`,
+                                  overflow: "auto",
+                                  overflowX: "hidden",
+                                }}
+                              >
+                                <CContainer>
                                 <div>
                                   <div className={"main-headerlabel"}>
                                     <span
@@ -4938,7 +4948,10 @@ function LocationLibrary(props) {
                                           <CCol
                                             sm="6"
                                             lg="3"
-                                            style={{ marginLeft: "-30px",marginTop:"-10px" }}
+                                            style={{
+                                              marginLeft: "-30px",
+                                              marginTop: "-10px",
+                                            }}
                                           >
                                             <p data-tip="State">
                                               <CWidgetDropdown
@@ -4950,7 +4963,6 @@ function LocationLibrary(props) {
                                                   height: "100px",
                                                   marginRight: "85px",
                                                   boxShadow: "5px 10px",
-
                                                 }}
                                                 header=""
                                                 text=""
@@ -4981,12 +4993,13 @@ function LocationLibrary(props) {
                                               </CWidgetDropdown>
                                             </p>
                                             <ReactTooltip />
-                                            <hr style={{
+                                            <hr
+                                              style={{
                                                 marginTop: "110px",
                                                 marginLeft: "-270px",
                                                 width: "222px",
-                                            }}
-                                                />
+                                              }}
+                                            />
                                           </CCol>
                                         </CRow>
                                       </CRow>
@@ -5070,7 +5083,10 @@ function LocationLibrary(props) {
                                           <CCol
                                             sm="3"
                                             lg="3"
-                                            style={{ marginLeft: "-30px",marginTop:"-1px" }}
+                                            style={{
+                                              marginLeft: "-30px",
+                                              marginTop: "-1px",
+                                            }}
                                           >
                                             <p data-tip="District / City">
                                               <CWidgetDropdown
@@ -5108,15 +5124,16 @@ function LocationLibrary(props) {
                                                 </span>
                                                 <br />
                                                 <br />
-                                              </CWidgetDropdown>                                             
+                                              </CWidgetDropdown>
                                             </p>
                                             <ReactTooltip />
                                             <hr
-                                              style={{marginLeft: "-270px",
-                                              width: "222px",
-                                            marginTop:"110px",
-                                            }}
-                                              />
+                                              style={{
+                                                marginLeft: "-270px",
+                                                width: "222px",
+                                                marginTop: "110px",
+                                              }}
+                                            />
                                           </CCol>
                                         </CRow>
                                       </CRow>
@@ -5198,7 +5215,10 @@ function LocationLibrary(props) {
                                           <CCol
                                             sm="3"
                                             lg="3"
-                                            style={{ marginLeft: "-30px",marginTop:"8px" }}
+                                            style={{
+                                              marginLeft: "-30px",
+                                              marginTop: "8px",
+                                            }}
                                           >
                                             <p data-tip="Village / Area">
                                               <CWidgetDropdown
@@ -5212,7 +5232,7 @@ function LocationLibrary(props) {
                                                 }}
                                                 header=""
                                                 text=""
-                                              >                                               
+                                              >
                                                 <span
                                                   style={{
                                                     marginLeft: "-70px",
@@ -5238,12 +5258,13 @@ function LocationLibrary(props) {
                                                 <br />
                                               </CWidgetDropdown>
                                             </p>
-                                            <ReactTooltip />                                           
+                                            <ReactTooltip />
                                             <hr
-                                            style={{marginLeft: "-270px",
-                                            width: "222px",
-                                          marginTop:"110px",      
-                                          }}
+                                              style={{
+                                                marginLeft: "-270px",
+                                                width: "222px",
+                                                marginTop: "110px",
+                                              }}
                                             />
                                           </CCol>
                                         </CRow>
@@ -5327,7 +5348,10 @@ function LocationLibrary(props) {
                                           <CCol
                                             sm="3"
                                             lg="3"
-                                            style={{ marginLeft: "-30px",marginTop:"16px" }}
+                                            style={{
+                                              marginLeft: "-30px",
+                                              marginTop: "16px",
+                                            }}
                                           >
                                             <p data-tip="Street">
                                               <CWidgetDropdown
@@ -5368,7 +5392,6 @@ function LocationLibrary(props) {
                                               </CWidgetDropdown>
                                             </p>
                                             <ReactTooltip />
-
                                           </CCol>
                                         </CRow>
                                       </CRow>
@@ -5466,7 +5489,7 @@ function LocationLibrary(props) {
                                               style={{
                                                 position: "absolute",
                                                 top: "74px",
-                                                marginLeft: "470px",
+                                                marginLeft: "18em",
                                                 marginBottom: "20px",
                                                 color: "black",
                                               }}
@@ -5489,7 +5512,7 @@ function LocationLibrary(props) {
                                             style={{
                                               position: "absolute",
                                               top: "74px",
-                                              marginLeft: "560px",
+                                              marginLeft: "21em",
                                               marginBottom: "910px",
                                               color: "black",
                                             }}
@@ -5555,6 +5578,7 @@ function LocationLibrary(props) {
                                     />
                                   </CRow>
                                 </div>
+                                </CContainer>
                               </CCard>
                             </div>
                           </div>

@@ -1,0 +1,44 @@
+.input-align-2 {
+    margin-left: 27px;
+  }
+  .card-container {
+    background-color: white;
+    width: 270px;
+    height: auto;
+    border-radius: 14px;
+    box-shadow: 0px 10px 30px hsl(185, 75%, 35%);
+  }
+  .img {
+    border: solid 6px transparent;
+    border-radius: 50%;
+    width: 140px;
+    margin: auto;
+    margin-top: -40px
+  }
+  .header-label22 {
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    color: #000000;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    font-family: "Open Sans";
+  top:40px;
+  left: 1%;
+    letter-spacing: 0.5px;
+    position: absolute;        
+  }
+  
+  .header-label23 {
+    margin-bottom: 0px;
+    text-transform: uppercase;
+    color: #000000;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    font-family: "Open Sans";
+  top:-10px;
+  left: 5%;
+    letter-spacing: 0.5px;
+    position: absolute;        
+  }

@@ -8,6 +8,7 @@ import {
   CButton,
   CInput,
   CLink,
+  CContainer,
 } from "@coreui/react";
 import {} from "../../../services/ApiService";
 import Select, { components } from "react-select";
@@ -497,6 +498,7 @@ function PartyWingsOfficeLocation() {
               marginLeft: "-475px"
             }}
           >
+            <CContainer>
             <div className={"main-headerlabel"}>
               <span className={"header-label"}>
                 {" "}
@@ -784,6 +786,7 @@ function PartyWingsOfficeLocation() {
                 </CButton>
               </div>
             )}
+            </CContainer>
           </div>
         )}
         {sideBar2 && (
@@ -798,6 +801,7 @@ function PartyWingsOfficeLocation() {
                 : { display: "none" }
             }
           >
+            <CContainer>
             <div className={"main-headerlabel"}>
               <span className={"header-label"}>
                 {" "}
@@ -1085,10 +1089,12 @@ function PartyWingsOfficeLocation() {
                 </CButton>
               </div>
             )}
+            </CContainer>
           </div>
         )}
         {addPartyOffice && (
           <div>
+            <CContainer>
             <CCard className={"cardSave"}>
               <div className={"main-headerlabel"}>
                 <span className={"header-label"}>
@@ -1377,11 +1383,13 @@ function PartyWingsOfficeLocation() {
                 />
               </CRow>
             </CCard>
+            </CContainer>
           </div>
         )}
 
         {createPartyOffice && (
           <div>
+            <CContainer>
             <CCard className={"cardSave"}>
               <div style={{ marginLeft: "-2px" }}>
                 <div className={"row-headerlabel"}>
@@ -1608,6 +1616,7 @@ function PartyWingsOfficeLocation() {
                 </CCol>
               </CRow>
             </CCard>
+            </CContainer>
           </div>
         )}
       </div>

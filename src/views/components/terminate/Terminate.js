@@ -13,9 +13,29 @@ import CDataTable from "src/views/CoreComponents/table/DataTable";
 import DEFAULT_IMAGE from "../../../assets/img/No-image-icon.png";
 
 const Terminate = () => {
-  const [files, ] = useState("");
+  const [files] = useState("");
+  const [selected] = useState("");
   const [show, setShow] = useState(false);
   const [filterVal, setFilterVal] = useState("");
+
+  const type = [
+    { value: "youth", label: "youth wings Association" },
+    { value: "Lawyers", label: "Lawyers wings Association" },
+  ];
+  const state = [
+    { value: "tamilnadu", label: "TamilNadu" },
+  ];
+  const city = [
+    { value: "chennai", label: "Chennai" },
+  ];
+  const name = [
+    { value: "Chennai-youth", label: "Chennai youth wings Association" },
+    { value: "Chennai-Lawyers", label: "Chennai Lawyers wings Association" },
+  ];
+  const office = [
+    { value: "party", label: "Type of Party Office" },
+    { value: "wings", label: "Type of Party Wings Office" },
+  ];
   return (
     <React.Fragment>
       {show === false ? (
@@ -40,7 +60,7 @@ const Terminate = () => {
                   onClick={() => {
                     setShow(true);
                   }}
-                  style={{ margin: "20px 0px" }}
+                  style={{ margin: "1em" }}
                 >
                   Terminate Party Mamber
                 </CButton>
@@ -92,7 +112,10 @@ const Terminate = () => {
                       <CLabel>
                         <b>Type Of Office</b>
                       </CLabel>
-                      <Select isDisabled={filterVal !== "TypeOfPartyOffice"} />
+                      <Select
+                        isDisabled={filterVal !== "TypeOfPartyOffice"}
+                        options={office}
+                      />
                     </CCol>
                   </CRow>
                   <CRow style={{ padding: "10px 0px" }}>
@@ -100,7 +123,10 @@ const Terminate = () => {
                       <CLabel>
                         <b>Type Of Party / Party Wings Office</b>
                       </CLabel>
-                      <Select isDisabled={filterVal !== "TypeOfPartyOffice"} />
+                      <Select
+                        isDisabled={filterVal !== "TypeOfPartyOffice"}
+                        options={type}
+                      />
                     </CCol>
                   </CRow>
                   <CRow style={{ padding: "10px 0px" }}>
@@ -108,7 +134,10 @@ const Terminate = () => {
                       <CLabel>
                         <b>Name of the Office Location</b>
                       </CLabel>
-                      <Select isDisabled={filterVal !== "TypeOfPartyOffice"} />
+                      <Select
+                        isDisabled={filterVal !== "TypeOfPartyOffice"}
+                        options={name}
+                      />
                     </CCol>
                   </CRow>
                 </CContainer>
@@ -120,7 +149,7 @@ const Terminate = () => {
                       <CLabel>
                         <b>State</b>
                       </CLabel>
-                      <Select isDisabled={filterVal !== "Location"} />
+                      <Select isDisabled={filterVal !== "Location"} options={state} />
                     </CCol>
                   </CRow>
                   <CRow style={{ padding: "10px 0px" }}>
@@ -128,13 +157,13 @@ const Terminate = () => {
                       <CLabel>
                         <b>District / City</b>
                       </CLabel>
-                      <Select isDisabled={filterVal !== "Location"} />
+                      <Select isDisabled={filterVal !== "Location"} options={city}/>
                     </CCol>
                   </CRow>
                 </CContainer>
               </CCol>
             </CRow>
-            <CRow style={{  padding: "2%"}}>
+            <CRow style={{ padding: "2%" }}>
               <CDataTable
                 items={[]}
                 tableLabel={"List of Terminated Member"}
@@ -160,10 +189,26 @@ const Terminate = () => {
                     label: "Current Party Postings",
                     _style: { width: "15%" },
                   },
-                  { key: "role", label: "Name of the Office", _style: { width: "15%" } },
-                  { key: "status", label: "Type of Office", _style: { width: "15%" } },
-                  { key: "from", label: "Terminate On", _style: { width: "10%" } },
-                  { key: "to", label: "Terminated By", _style: { width: "10%" } },
+                  {
+                    key: "role",
+                    label: "Name of the Office",
+                    _style: { width: "15%" },
+                  },
+                  {
+                    key: "status",
+                    label: "Type of Office",
+                    _style: { width: "15%" },
+                  },
+                  {
+                    key: "from",
+                    label: "Terminate On",
+                    _style: { width: "10%" },
+                  },
+                  {
+                    key: "to",
+                    label: "Terminated By",
+                    _style: { width: "10%" },
+                  },
                   {
                     key: "show_details",
                     label: "Action",
@@ -214,21 +259,22 @@ const Terminate = () => {
             <span className={"header-label"}>Details of Terminate Member</span>
           </div>
           <CCol>
-                    <CLabel
-                      style={{
-                        fontSize: "20PX",
-                        fontFamily: "Open Sans",
-                        fontWeight: "700",
-                        marginTop: "60px",
-                      }}
-                    >
-                      Select Party Member
-                    </CLabel>
-                  </CCol>
+            <CLabel
+              style={{
+                fontSize: "20PX",
+                fontFamily: "Open Sans",
+                fontWeight: "700",
+                marginTop: "60px",
+                marginLeft: "1em",
+              }}
+            >
+              Select Party Member
+            </CLabel>
+          </CCol>
 
           <CContainer>
             <CRow>
-              <CCol>
+              <CCol style={{ marginLeft: "1.5em" }}>
                 <CLabel className="form-check-label">
                   <b>Party Member</b>
                 </CLabel>
@@ -236,60 +282,120 @@ const Terminate = () => {
               </CCol>
               <CCol></CCol>
             </CRow>
-            <CRow className={"row-alignment"}>
-                    <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
-                        Name
-                        <span>-</span>
-                      </CLabel>
-                    </CCol>
-                    <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
-                        Gender
-                        <span>-</span>
-                      </CLabel>
-                    </CCol>
-                    <CCol>
-                      <img
-                        type="text"
-                        alt=""
-                        src={files !== "" ? files : DEFAULT_IMAGE}
-                        style={{
-                          width: "150px",
-                          height: "200px",
-                          position: "relative",
-                          background: "#fff",
-                          left: "-40%",
-                          top: "-3%",
-                        }}
-                      />
-                    </CCol>
-                  </CRow>
-                  <CRow
-                    className={"row-alignment"}
-                    style={{ marginTop: "-140px" }}
+            <CContainer style={{ marginLeft: "-2em" }}>
+              <CRow
+                className={"LengthDataw"}
+                style={{ marginLeft: "2em", marginTop: "20px" }}
+                sm={12}
+                md={12}
+                lg={12}
+              >
+                <CCol md="6">
+                  <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    Name :{" "}
+                  </CLabel>
+
+                  <CLabel
+                    className={"reAssign-Detail"}
+                    style={{ marginLeft: "8em" }}
                   >
-                    <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
-                        DOB
-                        <span>-</span>
-                      </CLabel>
-                    </CCol>
-                    <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
-                        Education
-                        <span>-</span>
-                      </CLabel>
-                    </CCol>
-                  </CRow>
-                  <CRow className={"row-alignment"}>
-                    <CCol className={"column-align"} md="4">
-                      <CLabel className={"label-name"}>
-                        Occupation
-                        <span>-</span>
-                      </CLabel>
-                    </CCol>
-                  </CRow>
+                    {selected.assignedTo
+                      ? selected.assignedTo.firstName
+                      : "SathishKumar"}
+                  </CLabel>
+                </CCol>
+                <CCol md="6" style={{ marginLeft: "-200px" }}>
+                  <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    Gender :{" "}
+                  </CLabel>
+
+                  <CLabel
+                    className={"reAssign-Detail"}
+                    style={{ marginLeft: "8em" }}
+                  >
+                    {selected.assignedTo
+                      ? selected.assignedTo.firstName
+                      : "Male"}
+                  </CLabel>
+                </CCol>
+                <CCol>
+                  <img
+                    type="text"
+                    alt=""
+                    src={files !== "" ? files : DEFAULT_IMAGE}
+                    style={{
+                      width: "150px",
+                      height: "200px",
+                      position: "relative",
+                      background: "#fff",
+                      left: "-40%",
+                      top: "-4em",
+                    }}
+                  />
+                </CCol>
+              </CRow>
+              <CRow
+                className={"LengthDataw"}
+                style={{ marginLeft: "2em", marginTop: "-10em" }}
+                sm={12}
+                md={12}
+                lg={12}
+              >
+                <CCol md="6">
+                  <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    DOB :{" "}
+                  </CLabel>
+
+                  <CLabel
+                    className={"reAssign-Detail"}
+                    style={{ marginLeft: "8em" }}
+                  >
+                    {selected.assignedTo
+                      ? selected.assignedTo.firstName
+                      : "22/07/1996"}
+                  </CLabel>
+                </CCol>
+                <CCol
+                  md="6"
+                  style={{ marginLeft: "29em", marginTop: "-2.4em" }}
+                >
+                  <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    Education :{" "}
+                  </CLabel>
+
+                  <CLabel
+                    className={"reAssign-Detail"}
+                    style={{ marginLeft: "8em" }}
+                  >
+                    {selected.assignedTo
+                      ? selected.assignedTo.firstName
+                      : "Mechanical Engineer"}
+                  </CLabel>
+                </CCol>
+              </CRow>
+              <CRow
+                className={"LengthDataw"}
+                style={{ marginLeft: "2em", marginTop: "20px" }}
+                sm={12}
+                md={12}
+                lg={12}
+              >
+                <CCol md="6">
+                  <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
+                    Occupation :{" "}
+                  </CLabel>
+
+                  <CLabel
+                    className={"reAssign-Detail"}
+                    style={{ marginLeft: "8em" }}
+                  >
+                    {selected.assignedTo
+                      ? selected.assignedTo.firstName
+                      : " Software Developer"}
+                  </CLabel>
+                </CCol>
+              </CRow>
+            </CContainer>
 
             <CRow style={{ padding: "2%" }}>
               <CDataTable

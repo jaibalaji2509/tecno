@@ -6,6 +6,7 @@ import {
   CLabel,
   CRow,
   CLink,
+  CContainer,
 } from "@coreui/react";
 import { roleDelete } from "../../../services/ApiService";
 import { toast } from "react-toastify";
@@ -1712,6 +1713,7 @@ const TownPanchayat = () => {
         <div>
           {hideMappingTown && (
             <div>
+              <CContainer>
               <CCard className={"cardSave"}>
                 <div className={"main-headerlabel"}>
                   <span className={"header-label"}>Town Panchayat</span>
@@ -1819,7 +1821,7 @@ const TownPanchayat = () => {
                     <CRow
                       style={{
                         padding: "4%",
-                        marginTop: "-2.5%",
+                        marginTop: "0.5%",
                         marginLeft: "-30px",
                       }}
                     >
@@ -1874,10 +1876,12 @@ const TownPanchayat = () => {
                   </div>
                 )}
               </CCard>
+              </CContainer>
             </div>
           )}
           {hideTownPanchayat && (
             <div>
+              <CContainer>
               <CCard className={"cardSave"}>
                 <div className={"main-headerlabel"}>
                   <span className={"header-label"}> Town panchayat</span>
@@ -2387,6 +2391,7 @@ const TownPanchayat = () => {
                   </div>
                 )}
               </CCard>
+              </CContainer>
             </div>
           )}
         </div>
