@@ -673,7 +673,7 @@ const AssignPartyPosting = () => {
 
                   <CContainer>
                   <CRow>
-                    <CCol style={{ marginTop: "6em", marginLeft: "65px" }}>
+                    <CCol style={{ marginTop: "6em", marginLeft: "45px" }}>
                       <CLabel
                         style={{
                           fontSize: "18px",
@@ -692,8 +692,7 @@ const AssignPartyPosting = () => {
                         Name of the Member
                         <span className={"text-danger"}>*</span>
                       </CLabel>                      
-                      <Select
-                        className={"input-align"}
+                      <Select                        
                         id={"nameofmemberassignpartyposting"}
                         name={"state"}
                         placeholder={"Select Type of Office"}
@@ -715,8 +714,7 @@ const AssignPartyPosting = () => {
                   <CCol md="6">
                     <CLabel className={"form-labels-9 col-md-5 reAssign-Label"}>
                     Name :{" "}
-                    </CLabel>
-
+                    </CLabel>                    
                     <CLabel
                       className={"reAssign-Detail"}
                       style={{ marginLeft: "8em" }}

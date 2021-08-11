@@ -251,10 +251,10 @@
  
   .divider {
     position: absolute;
-      left: 34.3em;
-      top:  130px;
-      height: 130px;
-      bottom: 40%;
+      left: 34.3em !important;
+      top:  140px !important;
+      height: 130px !important;
+      bottom: 40% !important;
       border-left: 1px solid lightgray;
   }
   .ant-dropdown {

@@ -200,8 +200,10 @@ function PartyOfficeLocation() {
         </CLink>
       ),
     },
-    { value: "Head Office", label: "Head Office" },
-    { value: "District Office", label: "District Office" },
+    { value: "Head Office", label: "Party Head Quaters" },
+    { value: "District Office", label: "Party District Office" },
+    { value: "circle Office", label: "Party Circle Office" },
+    { value: "divisional Office", label: "Party Divisional Office" },
   ];
   // const [typeofPartyOffice, setTypeofPartyOffice] = useState("");
 
@@ -330,9 +332,9 @@ function PartyOfficeLocation() {
         {props.children}
         <div
           style={{
-            marginTop: "-95px",
+            marginTop: "-170px",
             marginBottom: "-50px",
-            minHeight: "150px",
+            minHeight: "250px",
           }}
         >
           <CLink

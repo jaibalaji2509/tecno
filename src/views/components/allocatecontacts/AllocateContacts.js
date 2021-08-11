@@ -34,6 +34,8 @@ function AllocateContacts() {
     { value: "Type of Party wing Office", label: "Type of Party Wing Office" },
   ];
 
+  const [selected,setSelected]= useState('');
+
   const [bacbut, setbacbut] = useState(false);
   const [desig, setDesig] = useState(false);
   const [mem, setMem] = useState(false);
@@ -812,9 +814,80 @@ function AllocateContacts() {
     setShow1(true);
     setbacbut(true);
   };
-  const userData = [];
-
-  const fields = [
+  const userData = [
+    {
+      SNo:"1",
+      member:"Rajnidhi",
+      gender:"Male",
+      address:"Tamilnadu, Chennai, Mylapore-600 004",
+      by:"Jai",
+      on:"1/8/2021",
+      ward:"052",    
+      corp:"Madhavaram",
+      office:"Youth Wing Office",
+      type:"Party Wing Office",
+      departmen:"Secretariat",
+      desig:"Divisional Officer",
+      role:"Divisional Officer",
+      ministry:"Danve Raosaheb Dadarao",
+      consti:"Lok sabha constituency",
+    },
+  ];
+  const userDataa = [
+    {
+      SNo:"1",
+      member:"Rajnidhi",
+      gender:"Male",
+      address:"Tamilnadu, Chennai, Mylapore-600 004",
+      by:"Jai",
+      on:"1/8/2021",
+      ward:"052",    
+      corp:"Madhavaram",
+      office:"Youth Wing Office",
+      type:"Party Wing Office",
+      departmen:"Secretariat",
+      desig:"Divisional Officer",
+      role:"Divisional Officer",
+      ministry:"Danve Raosaheb Dadarao",
+      consti:"Lok sabha constituency",
+    },
+    {
+      SNo:"2",
+      member:"Guru",
+      gender:"Male",
+      address:"Tamilnadu, Chennai, Alwar Thirunagar-600 087",
+      by:"Jai",
+      on:"1/8/2021",
+      ward:"004",
+      corp:"Tondiarpet",
+      office:"Youth Wing Office",
+      type:"Party Wing Office",
+      departmen:"Secretariat",
+      desig:"Branch Officer",
+      role:"Branch Officer",
+      ministry:"Anupriya Singh Patel / Som Parkash",
+      consti:"Lok sabha constituency",
+    },
+    {
+      SNo:"3",
+      member:"Bhrama",
+      gender:"Male",
+      address:"Tamilnadu, Chennai, Guindy-600 019",
+      by:"Jai",
+      on:"1/8/2021",
+      ward:"006",
+      corp:"Thiru. Vi. Ka. Nagar	",
+      office:"Youth Wing Office",
+      type:"Party Wing Office",
+      departmen:"Secretariat",
+      desig:"Section Officer",
+      role:"Section Officer",
+      ministry:"Devusinh Chauhan",
+      consti:"Lok sabha constituency",
+    },
+  ];
+  const fields1a = [
+    
     {
       key: "SNo",
       label: "S.NO",
@@ -822,9 +895,12 @@ function AllocateContacts() {
       sorter: false,
       filter: false,
     },
-    { key: "member", label: "Name of the Member", _style: { width: "12%" } },
-    { key: "gender", label: "Gender", _style: { width: "10%" } },
-    { key: "address", label: "Address", _style: { width: "10%" } },
+    { key: "office", label: "Name of the Office", _style: { width: "15%" } },
+    { key: "type", label: "Type of Office", _style: { width: "15%" } },
+    { key: "departmen", label: "Department", _style: { width: "12%" } },
+    { key: "desig", label: "Party Posting", _style: { width: "15%" } },
+    { key: "role", label: "Role", _style: { width: "12%" } },
+    { key: "member", label: "Name of the Member", _style: { width: "15%" } },
     { key: "by", label: "Allocated By", _style: { width: "10%" } },
     { key: "on", label: "Allocated On", _style: { width: "10%" } },
     {
@@ -835,31 +911,8 @@ function AllocateContacts() {
       filter: false,
     },
   ];
-  const fieldwarddist = [
-    {
-      key: "SNo",
-      label: "S.NO",
-      _style: { width: "3%" },
-      sorter: false,
-      filter: false,
-    },
-    {
-      key: "ward",
-      label: "Number of the Ward",
-      _style: { width: "10%" },
-    },
-    { key: "member", label: "Name of the Member", _style: { width: "10%" } },
-    { key: "by", label: "Allocated By", _style: { width: "10%" } },
-    { key: "on", label: "Allocated On", _style: { width: "10%" } },
-    {
-      key: "show_details",
-      label: "Action",
-      _style: { width: "10%" },
-      sorter: false,
-      filter: false,
-    },
-  ];
-  const fieldstown = [
+  const fieldstowna = [
+   
     {
       key: "SNo",
       label: "S.NO",
@@ -884,7 +937,57 @@ function AllocateContacts() {
       filter: false,
     },
   ];
-  const fieldsmuni = [
+  const fieldwarddista = [
+   
+    {
+      key: "SNo",
+      label: "S.NO",
+      _style: { width: "3%" },
+      sorter: false,
+      filter: false,
+    },
+    {
+      key: "ward",
+      label: "Number of the Ward",
+      _style: { width: "10%" },
+    },
+    { key: "member", label: "Name of the Member", _style: { width: "10%" } },
+    { key: "by", label: "Allocated By", _style: { width: "10%" } },
+    { key: "on", label: "Allocated On", _style: { width: "10%" } },
+    {
+      key: "show_details",
+      label: "Action",
+      _style: { width: "10%" },
+      sorter: false,
+      filter: false,
+    },
+  ];
+  const fieldsa = [
+   
+    {
+      key: "SNo",
+      label: "S.NO",
+      _style: { width: "3%" },
+      sorter: false,
+      filter: false,
+    },
+    { key: "member", label: "Name of the Member", _style: { width: "12%" } },
+    { key: "gender", label: "Gender", _style: { width: "10%" } },
+    { key: "address", label: "Address", _style: { width: "10%" } },
+    { key: "by", label: "Allocated By", _style: { width: "10%" } },
+    { key: "on", label: "Allocated On", _style: { width: "10%" } },
+    {
+      key: "show_details",
+      label: "Action",
+      _style: { width: "10%" },
+      sorter: false,
+      filter: false,
+    },
+  ];
+ 
+ 
+  const fieldsmunia = [
+   
     {
       key: "SNo",
       label: "S.NO",
@@ -897,7 +1000,7 @@ function AllocateContacts() {
       label: "Name of the Municipality ",
       _style: { width: "15%" },
     },
-    { key: "ward", label: "Name of the Ward Number", _style: { width: "15%" } },
+    { key: "ward", label: "Ward Number", _style: { width: "15%" } },
     { key: "member", label: "Name of the Member", _style: { width: "15%" } },
     { key: "by", label: "Allocated By", _style: { width: "10%" } },
     { key: "on", label: "Allocated On", _style: { width: "10%" } },
@@ -910,7 +1013,8 @@ function AllocateContacts() {
     },
   ];
 
-  const fieldscorp = [
+  const fieldscorpa = [
+   
     {
       key: "SNo",
       label: "S.NO",
@@ -919,7 +1023,7 @@ function AllocateContacts() {
       filter: false,
     },
     { key: "corp", label: "Name of the Corporation", _style: { width: "15%" } },
-    { key: "ward", label: "Name of the Ward Number", _style: { width: "15%" } },
+    { key: "ward", label: "Ward Number", _style: { width: "15%" } },
     { key: "member", label: "Name of the Member", _style: { width: "15%" } },
     { key: "by", label: "Allocated By", _style: { width: "10%" } },
     { key: "on", label: "Allocated On", _style: { width: "10%" } },
@@ -932,7 +1036,96 @@ function AllocateContacts() {
     },
   ];
 
+
+  const fieldschiefa = [
+   
+    {
+      key: "SNo",
+      label: "S.NO",
+      _style: { width: "3%" },
+      sorter: false,
+      filter: false,
+    },
+    {
+      key: "ministry",
+      label: "Name of the Ministry",
+      _style: { width: "10%" },
+    },
+    { key: "member", label: "Name of the Member", _style: { width: "10%" } },
+    { key: "by", label: "Allocated By", _style: { width: "10%" } },
+    { key: "on", label: "Allocated On", _style: { width: "10%" } },
+    {
+      key: "show_details",
+      label: "Action",
+      _style: { width: "10%" },
+      sorter: false,
+      filter: false,
+    },
+  ];
+  const fieldsprimea = [
+   
+    {
+      key: "SNo",
+      label: "S.NO",
+      _style: { width: "3%" },
+      sorter: false,
+      filter: false,
+    },
+    {
+      key: "ministry",
+      label: "Name of the Ministry ",
+      _style: { width: "10%" },
+    },
+    { key: "member", label: "Name of the Member", _style: { width: "10%" } },
+    { key: "by", label: "Allocated By", _style: { width: "10%" } },
+    { key: "on", label: "Allocated On", _style: { width: "10%" } },
+    {
+      key: "show_details",
+      label: "Action",
+      _style: { width: "10%" },
+      sorter: false,
+      filter: false,
+    },
+  ];
+
+  const fieldslega = [   
+    {
+      key: "SNo",
+      label: "S.NO",
+      _style: { width: "3%" },
+      sorter: false,
+      filter: false,
+    },
+    {
+      key: "consti",
+      label: "Name of the Constituency",
+      _style: { width: "10%" },
+    },
+    { key: "member", label: "Name of the Member", _style: { width: "10%" } },
+    { key: "by", label: "Allocated By", _style: { width: "10%" } },
+    { key: "on", label: "Allocated On", _style: { width: "10%" } },
+    {
+      key: "show_details",
+      label: "Action",
+      _style: { width: "10%" },
+      sorter: false,
+      filter: false,
+    },
+  ];
+  //select
   const fields1 = [
+    {
+      key: "show_details1",
+      label: "Select",
+      _style: { width: "3%" },
+      name: (
+        <div>
+          Email <input type={"checkbox"} onClick={""} />
+        </div>
+      ),
+      sorter: false,
+      filter: false,
+    },
     {
       key: "SNo",
       label: "S.NO",
@@ -956,7 +1149,200 @@ function AllocateContacts() {
       filter: false,
     },
   ];
+  const fieldstown = [
+    {
+      key: "show_details1",
+      label: "Select",
+      _style: { width: "3%" },
+      name: (
+        <div>
+          Email <input type={"checkbox"} onClick={""} />
+        </div>
+      ),
+      sorter: false,
+      filter: false,
+    },
+    {
+      key: "SNo",
+      label: "S.NO",
+      _style: { width: "3%" },
+      sorter: false,
+      filter: false,
+    },
+    {
+      key: "corp",
+      label: "Name of the Town Panchayat ",
+      _style: { width: "10%" },
+    },
+    { key: "ward", label: "Ward Number", _style: { width: "10%" } },
+    { key: "member", label: "Name of the Member", _style: { width: "10%" } },
+    { key: "by", label: "Allocated By", _style: { width: "10%" } },
+    { key: "on", label: "Allocated On", _style: { width: "10%" } },
+    {
+      key: "show_details",
+      label: "Action",
+      _style: { width: "10%" },
+      sorter: false,
+      filter: false,
+    },
+  ];
+  const fieldwarddist = [
+    {
+      key: "show_details1",
+      label: "Select",
+      _style: { width: "3%" },
+      name: (
+        <div>
+          Email <input type={"checkbox"} onClick={""} />
+        </div>
+      ),
+      sorter: false,
+      filter: false,
+    },
+    {
+      key: "SNo",
+      label: "S.NO",
+      _style: { width: "3%" },
+      sorter: false,
+      filter: false,
+    },
+    {
+      key: "ward",
+      label: "Number of the Ward",
+      _style: { width: "10%" },
+    },
+    { key: "member", label: "Name of the Member", _style: { width: "10%" } },
+    { key: "by", label: "Allocated By", _style: { width: "10%" } },
+    { key: "on", label: "Allocated On", _style: { width: "10%" } },
+    {
+      key: "show_details",
+      label: "Action",
+      _style: { width: "10%" },
+      sorter: false,
+      filter: false,
+    },
+  ];
+  const fields = [
+    {
+      key: "show_details1",
+      label: "Select",
+      _style: { width: "3%" },
+      name: (
+        <div>
+          Email <input type={"checkbox"} onClick={""} />
+        </div>
+      ),
+      sorter: false,
+      filter: false,
+    },    
+    {
+      key: "SNo",
+      label: "S.NO",
+      _style: { width: "3%" },
+      sorter: false,
+      filter: false,
+    },
+    { key: "member", label: "Name of the Member", _style: { width: "12%" } },
+    { key: "gender", label: "Gender", _style: { width: "10%" } },
+    { key: "address", label: "Address", _style: { width: "10%" } },
+    { key: "by", label: "Allocated By", _style: { width: "10%" } },
+    { key: "on", label: "Allocated On", _style: { width: "10%" } },
+    {
+      key: "show_details",
+      label: "Action",
+      _style: { width: "10%" },
+      sorter: false,
+      filter: false,
+    },
+  ];
+ 
+ 
+  const fieldsmuni = [
+    {
+      key: "show_details1",
+      label: "Select",
+      _style: { width: "3%" },
+      name: (
+        <div>
+          Email <input type={"checkbox"} onClick={""} />
+        </div>
+      ),
+      sorter: false,
+      filter: false,
+    },
+    {
+      key: "SNo",
+      label: "S.NO",
+      _style: { width: "3%" },
+      sorter: false,
+      filter: false,
+    },
+    {
+      key: "corp",
+      label: "Name of the Municipality ",
+      _style: { width: "15%" },
+    },
+    { key: "ward", label: "Ward Number", _style: { width: "15%" } },
+    { key: "member", label: "Name of the Member", _style: { width: "15%" } },
+    { key: "by", label: "Allocated By", _style: { width: "10%" } },
+    { key: "on", label: "Allocated On", _style: { width: "10%" } },
+    {
+      key: "show_details",
+      label: "Action",
+      _style: { width: "10%" },
+      sorter: false,
+      filter: false,
+    },
+  ];
+
+  const fieldscorp = [
+    {
+      key: "show_details1",
+      label: "Select",
+      _style: { width: "3%" },
+      name: (
+        <div>
+          Email <input type={"checkbox"} onClick={""} />
+        </div>
+      ),
+      sorter: false,
+      filter: false,
+    },
+    {
+      key: "SNo",
+      label: "S.NO",
+      _style: { width: "3%" },
+      sorter: false,
+      filter: false,
+    },
+    { key: "corp", label: "Name of the Corporation", _style: { width: "15%" } },
+    { key: "ward", label: "Ward Number", _style: { width: "15%" } },
+    { key: "member", label: "Name of the Member", _style: { width: "15%" } },
+    { key: "by", label: "Allocated By", _style: { width: "10%" } },
+    { key: "on", label: "Allocated On", _style: { width: "10%" } },
+    {
+      key: "show_details",
+      label: "Action",
+      _style: { width: "10%" },
+      sorter: false,
+      filter: false,
+    },
+  ];
+
+
   const fieldschief = [
+    {
+      key: "show_details1",
+      label: "Select",
+      _style: { width: "3%" },
+      name: (
+        <div>
+          Email <input type={"checkbox"} onClick={""} />
+        </div>
+      ),
+      sorter: false,
+      filter: false,
+    },
     {
       key: "SNo",
       label: "S.NO",
@@ -982,6 +1368,18 @@ function AllocateContacts() {
   ];
   const fieldsprime = [
     {
+      key: "show_details1",
+      label: "Select",
+      _style: { width: "3%" },
+      name: (
+        <div>
+          Email <input type={"checkbox"} onClick={""} />
+        </div>
+      ),
+      sorter: false,
+      filter: false,
+    },
+    {
       key: "SNo",
       label: "S.NO",
       _style: { width: "3%" },
@@ -989,7 +1387,7 @@ function AllocateContacts() {
       filter: false,
     },
     {
-      key: "corp",
+      key: "ministry",
       label: "Name of the Ministry ",
       _style: { width: "10%" },
     },
@@ -1006,6 +1404,18 @@ function AllocateContacts() {
   ];
 
   const fieldsleg = [
+    {
+      key: "show_details1",
+      label: "Select",
+      _style: { width: "3%" },
+      name: (
+        <div>
+          Email <input type={"checkbox"} onClick={""} />
+        </div>
+      ),
+      sorter: false,
+      filter: false,
+    },
     {
       key: "SNo",
       label: "S.NO",
@@ -1407,7 +1817,7 @@ function AllocateContacts() {
                   </CContainer>
                   <CDataTable
                     items={userData}
-                    fields={fields}
+                    fields={fieldsa}
                     columnFilter
                     tableFilter
                     // tableLabel={table}
@@ -1478,7 +1888,7 @@ function AllocateContacts() {
                   </CContainer>
                   <CDataTable
                     items={userData}
-                    fields={fieldsleg}
+                    fields={fieldslega}
                     columnFilter
                     tableFilter
                     // tableLabel={table}
@@ -1549,7 +1959,7 @@ function AllocateContacts() {
                   </CContainer>
                   <CDataTable
                     items={userData}
-                    fields={fieldsprime}
+                    fields={fieldsprimea}
                     columnFilter
                     tableFilter
                     // tableLabel={table}
@@ -1620,7 +2030,7 @@ function AllocateContacts() {
                   </CContainer>
                   <CDataTable
                     items={userData}
-                    fields={fieldschief}
+                    fields={fieldschiefa}
                     columnFilter
                     tableFilter
                     // tableLabel={table}
@@ -1691,7 +2101,7 @@ function AllocateContacts() {
                   </CContainer>
                   <CDataTable
                     items={userData}
-                    fields={fieldschief}
+                    fields={fieldschiefa}
                     columnFilter
                     tableFilter
                     // tableLabel={table}
@@ -1761,7 +2171,7 @@ function AllocateContacts() {
                   </CContainer>
                   <CDataTable
                     items={userData}
-                    fields={fieldsprime}
+                    fields={fieldsprimea}
                     columnFilter
                     tableFilter
                     // tableLabel={table}
@@ -1832,7 +2242,7 @@ function AllocateContacts() {
                   </CContainer>
                   <CDataTable
                     items={userData}
-                    fields={fields1}
+                    fields={fields1a}
                     columnFilter
                     tableFilter
                     // tableLabel={table}
@@ -1903,7 +2313,7 @@ function AllocateContacts() {
                   </CContainer>
                   <CDataTable
                     items={userData}
-                    fields={fieldscorp}
+                    fields={fieldscorpa}
                     columnFilter
                     tableFilter
                     // tableLabel={table}
@@ -1974,7 +2384,7 @@ function AllocateContacts() {
                   </CContainer>
                   <CDataTable
                     items={userData}
-                    fields={fieldsmuni}
+                    fields={fieldsmunia}
                     columnFilter
                     tableFilter
                     // tableLabel={table}
@@ -2045,7 +2455,7 @@ function AllocateContacts() {
                   </CContainer>
                   <CDataTable
                     items={userData}
-                    fields={fieldstown}
+                    fields={fieldstowna}
                     columnFilter
                     tableFilter
                     // tableLabel={table}
@@ -2115,7 +2525,7 @@ function AllocateContacts() {
                   </CContainer>
                   <CDataTable
                     items={userData}
-                    fields={fieldwarddist}
+                    fields={fieldwarddista}
                     columnFilter
                     tableFilter
                     // tableLabel={table}
@@ -2186,7 +2596,7 @@ function AllocateContacts() {
                   </CContainer>
                   <CDataTable
                     items={userData}
-                    fields={fieldwarddist}
+                    fields={fieldwarddista}
                     columnFilter
                     tableFilter
                     // tableLabel={table}
@@ -2194,7 +2604,7 @@ function AllocateContacts() {
                     itemsPerPage={5}
                     hover
                     sorter
-                    pagination
+                    pagination                    
                     scopedSlots={{
                       show_details: (item, index) => {
                         return (
@@ -2589,7 +2999,7 @@ function AllocateContacts() {
                           /> */}
                             <CCard
                               className={"card-container"}
-                              style={{ marginTop: "130px" }}
+                              style={{ marginTop: "130px", marginLeft: "850px",}}
                             >
                               <header>
                                 <img
@@ -2654,7 +3064,7 @@ function AllocateContacts() {
                     }}
                   >
                     <CDataTable
-                      items={userData}
+                      items={userDataa}
                       fields={fields}
                       columnFilter
                       tableFilter
@@ -2664,7 +3074,50 @@ function AllocateContacts() {
                       hover
                       sorter
                       pagination
+                      selectAll={true}
+                      checkedAll={userData.length === selected.length}
+                      onSelectAll={(val) => {
+                        console.log(val, userData);
+                        if (userData.length === selected.length) {
+                          setSelected([]);
+                        } else {
+                          let ids = [];
+                          val.map((x) => ids.push(`${x._id}`));
+                          setSelected(ids);
+                        }
+                      }}
                       scopedSlots={{
+                        show_details1: (item, index) => {
+                          return (
+                            <td className="py-2">
+                              <CRow>
+                                <CInput
+                                  type={"checkbox"}
+                                  style={{
+                                    width: "15px",
+                                    height: "15px",
+                                    marginLeft: "30px",
+                                    marginBottom: "10px",
+                                  }}
+                                  onClick={() => {
+                                    if (selected.includes(`${item._id}`)) {
+                                      let values = selected.filter((x) => {
+                                        return `${x}` !== `${item._id}`;
+                                      });
+                                      setSelected(values);
+                                    } else {
+                                      setSelected([
+                                        ...selected,
+                                        `${item._id}`,
+                                      ]);
+                                    }
+                                  }}
+                                  checked={selected.includes(`${item._id}`)}
+                                />
+                              </CRow>
+                            </td>
+                          );
+                        },
                         show_details: (item, index) => {
                           return (
                             <td className="py-1">
@@ -2928,16 +3381,16 @@ function AllocateContacts() {
                                 className={"img"}
                                 style={{ marginTop: "-85px" }}
                               />
-                              <h2
+                              <h3
                                 style={{
-                                  fontSize: "30px",
+                                  fontSize: "20px",
 
                                   textAlign: "center",
                                   textTransform: "uppercase",
                                 }}
                               >
-                                Name{" "}
-                              </h2>
+                                Office Name{" "}
+                              </h3>
                               <h3
                                 style={{
                                   fontSize: "20px",
@@ -2945,17 +3398,17 @@ function AllocateContacts() {
                                   textTransform: "uppercase",
                                 }}
                               >
-                                Gender{" "}
+                                Role{" "}
                               </h3>
-                              <h4
+                              <h3
                                 style={{
-                                  fontSize: "18px",
+                                  fontSize: "20px",
                                   textAlign: "center",
                                   textTransform: "uppercase",
                                 }}
                               >
-                                DoB{" "}
-                              </h4>
+                                Name{" "}
+                              </h3>
                             </CCard>
                           </CCol>
                         </CRow>
@@ -2973,7 +3426,7 @@ function AllocateContacts() {
                     }}
                   >
                     <CDataTable
-                      items={userData}
+                      items={userDataa}
                       fields={fields1}
                       columnFilter
                       tableFilter
@@ -2983,7 +3436,50 @@ function AllocateContacts() {
                       hover
                       sorter
                       pagination
+                      selectAll={true}
+                      checkedAll={userData.length === selected.length}
+                      onSelectAll={(val) => {
+                        console.log(val, userData);
+                        if (userData.length === selected.length) {
+                          setSelected([]);
+                        } else {
+                          let ids = [];
+                          val.map((x) => ids.push(`${x._id}`));
+                          setSelected(ids);
+                        }
+                      }}
                       scopedSlots={{
+                        show_details1: (item, index) => {
+                          return (
+                            <td className="py-2">
+                              <CRow>
+                                <CInput
+                                  type={"checkbox"}
+                                  style={{
+                                    width: "15px",
+                                    height: "15px",
+                                    marginLeft: "30px",
+                                    marginBottom: "10px",
+                                  }}
+                                  onClick={() => {
+                                    if (selected.includes(`${item._id}`)) {
+                                      let values = selected.filter((x) => {
+                                        return `${x}` !== `${item._id}`;
+                                      });
+                                      setSelected(values);
+                                    } else {
+                                      setSelected([
+                                        ...selected,
+                                        `${item._id}`,
+                                      ]);
+                                    }
+                                  }}
+                                  checked={selected.includes(`${item._id}`)}
+                                />
+                              </CRow>
+                            </td>
+                          );
+                        },
                         show_details: (item, index) => {
                           return (
                             <td className="py-1">
@@ -3224,16 +3720,16 @@ function AllocateContacts() {
                                 className={"img"}
                                 style={{ marginTop: "-85px" }}
                               />
-                              <h2
+                              <h3
                                 style={{
-                                  fontSize: "30px",
+                                  fontSize: "20px",
 
                                   textAlign: "center",
                                   textTransform: "uppercase",
                                 }}
                               >
-                                Name{" "}
-                              </h2>
+                                Constituency{" "}
+                              </h3>
                               <h3
                                 style={{
                                   fontSize: "20px",
@@ -3241,17 +3737,9 @@ function AllocateContacts() {
                                   textTransform: "uppercase",
                                 }}
                               >
-                                Gender{" "}
+                                Name{" "}
                               </h3>
-                              <h4
-                                style={{
-                                  fontSize: "18px",
-                                  textAlign: "center",
-                                  textTransform: "uppercase",
-                                }}
-                              >
-                                DoB{" "}
-                              </h4>
+                              
                             </CCard>
                           </CCol>
                         </CRow>
@@ -3269,7 +3757,7 @@ function AllocateContacts() {
                     }}
                   >
                     <CDataTable
-                      items={userData}
+                      items={userDataa}
                       fields={fieldsleg}
                       columnFilter
                       tableFilter
@@ -3279,7 +3767,50 @@ function AllocateContacts() {
                       hover
                       sorter
                       pagination
+                      selectAll={true}
+                      checkedAll={userData.length === selected.length}
+                      onSelectAll={(val) => {
+                        console.log(val, userData);
+                        if (userData.length === selected.length) {
+                          setSelected([]);
+                        } else {
+                          let ids = [];
+                          val.map((x) => ids.push(`${x._id}`));
+                          setSelected(ids);
+                        }
+                      }}
                       scopedSlots={{
+                        show_details1: (item, index) => {
+                          return (
+                            <td className="py-2">
+                              <CRow>
+                                <CInput
+                                  type={"checkbox"}
+                                  style={{
+                                    width: "15px",
+                                    height: "15px",
+                                    marginLeft: "30px",
+                                    marginBottom: "10px",
+                                  }}
+                                  onClick={() => {
+                                    if (selected.includes(`${item._id}`)) {
+                                      let values = selected.filter((x) => {
+                                        return `${x}` !== `${item._id}`;
+                                      });
+                                      setSelected(values);
+                                    } else {
+                                      setSelected([
+                                        ...selected,
+                                        `${item._id}`,
+                                      ]);
+                                    }
+                                  }}
+                                  checked={selected.includes(`${item._id}`)}
+                                />
+                              </CRow>
+                            </td>
+                          );
+                        },
                         show_details: (item, index) => {
                           return (
                             <td className="py-1">
@@ -3588,7 +4119,7 @@ function AllocateContacts() {
                     }}
                   >
                     <CDataTable
-                      items={userData}
+                      items={userDataa}
                       fields={fieldscorp}
                       columnFilter
                       tableFilter
@@ -3598,7 +4129,50 @@ function AllocateContacts() {
                       hover
                       sorter
                       pagination
+                      selectAll={true}
+                      checkedAll={userData.length === selected.length}
+                      onSelectAll={(val) => {
+                        console.log(val, userData);
+                        if (userData.length === selected.length) {
+                          setSelected([]);
+                        } else {
+                          let ids = [];
+                          val.map((x) => ids.push(`${x._id}`));
+                          setSelected(ids);
+                        }
+                      }}
                       scopedSlots={{
+                        show_details1: (item, index) => {
+                          return (
+                            <td className="py-2">
+                              <CRow>
+                                <CInput
+                                  type={"checkbox"}
+                                  style={{
+                                    width: "15px",
+                                    height: "15px",
+                                    marginLeft: "30px",
+                                    marginBottom: "10px",
+                                  }}
+                                  onClick={() => {
+                                    if (selected.includes(`${item._id}`)) {
+                                      let values = selected.filter((x) => {
+                                        return `${x}` !== `${item._id}`;
+                                      });
+                                      setSelected(values);
+                                    } else {
+                                      setSelected([
+                                        ...selected,
+                                        `${item._id}`,
+                                      ]);
+                                    }
+                                  }}
+                                  checked={selected.includes(`${item._id}`)}
+                                />
+                              </CRow>
+                            </td>
+                          );
+                        },
                         show_details: (item, index) => {
                           return (
                             <td className="py-1">
@@ -3907,7 +4481,7 @@ function AllocateContacts() {
                     }}
                   >
                     <CDataTable
-                      items={userData}
+                      items={userDataa}
                       fields={fieldsmuni}
                       columnFilter
                       tableFilter
@@ -3917,7 +4491,50 @@ function AllocateContacts() {
                       hover
                       sorter
                       pagination
+                      selectAll={true}
+                      checkedAll={userData.length === selected.length}
+                      onSelectAll={(val) => {
+                        console.log(val, userData);
+                        if (userData.length === selected.length) {
+                          setSelected([]);
+                        } else {
+                          let ids = [];
+                          val.map((x) => ids.push(`${x._id}`));
+                          setSelected(ids);
+                        }
+                      }}
                       scopedSlots={{
+                        show_details1: (item, index) => {
+                          return (
+                            <td className="py-2">
+                              <CRow>
+                                <CInput
+                                  type={"checkbox"}
+                                  style={{
+                                    width: "15px",
+                                    height: "15px",
+                                    marginLeft: "30px",
+                                    marginBottom: "10px",
+                                  }}
+                                  onClick={() => {
+                                    if (selected.includes(`${item._id}`)) {
+                                      let values = selected.filter((x) => {
+                                        return `${x}` !== `${item._id}`;
+                                      });
+                                      setSelected(values);
+                                    } else {
+                                      setSelected([
+                                        ...selected,
+                                        `${item._id}`,
+                                      ]);
+                                    }
+                                  }}
+                                  checked={selected.includes(`${item._id}`)}
+                                />
+                              </CRow>
+                            </td>
+                          );
+                        },
                         show_details: (item, index) => {
                           return (
                             <td className="py-1">
@@ -4226,7 +4843,7 @@ function AllocateContacts() {
                     }}
                   >
                     <CDataTable
-                      items={userData}
+                      items={userDataa}
                       fields={fieldstown}
                       columnFilter
                       tableFilter
@@ -4236,7 +4853,50 @@ function AllocateContacts() {
                       hover
                       sorter
                       pagination
+                      selectAll={true}
+                      checkedAll={userData.length === selected.length}
+                      onSelectAll={(val) => {
+                        console.log(val, userData);
+                        if (userData.length === selected.length) {
+                          setSelected([]);
+                        } else {
+                          let ids = [];
+                          val.map((x) => ids.push(`${x._id}`));
+                          setSelected(ids);
+                        }
+                      }}
                       scopedSlots={{
+                        show_details1: (item, index) => {
+                          return (
+                            <td className="py-2">
+                              <CRow>
+                                <CInput
+                                  type={"checkbox"}
+                                  style={{
+                                    width: "15px",
+                                    height: "15px",
+                                    marginLeft: "30px",
+                                    marginBottom: "10px",
+                                  }}
+                                  onClick={() => {
+                                    if (selected.includes(`${item._id}`)) {
+                                      let values = selected.filter((x) => {
+                                        return `${x}` !== `${item._id}`;
+                                      });
+                                      setSelected(values);
+                                    } else {
+                                      setSelected([
+                                        ...selected,
+                                        `${item._id}`,
+                                      ]);
+                                    }
+                                  }}
+                                  checked={selected.includes(`${item._id}`)}
+                                />
+                              </CRow>
+                            </td>
+                          );
+                        },
                         show_details: (item, index) => {
                           return (
                             <td className="py-1">
@@ -4272,7 +4932,7 @@ function AllocateContacts() {
                     />
                   </CRow>
                 </div>
-              )}
+              )}      
 
               {addtenth && (
                 <div>
@@ -4534,7 +5194,7 @@ function AllocateContacts() {
                     }}
                   >
                     <CDataTable
-                      items={userData}
+                      items={userDataa}
                       fields={fieldwarddist}
                       columnFilter
                       tableFilter
@@ -4544,7 +5204,50 @@ function AllocateContacts() {
                       hover
                       sorter
                       pagination
+                      selectAll={true}
+                      checkedAll={userData.length === selected.length}
+                      onSelectAll={(val) => {
+                        console.log(val, userData);
+                        if (userData.length === selected.length) {
+                          setSelected([]);
+                        } else {
+                          let ids = [];
+                          val.map((x) => ids.push(`${x._id}`));
+                          setSelected(ids);
+                        }
+                      }}
                       scopedSlots={{
+                        show_details1: (item, index) => {
+                          return (
+                            <td className="py-2">
+                              <CRow>
+                                <CInput
+                                  type={"checkbox"}
+                                  style={{
+                                    width: "15px",
+                                    height: "15px",
+                                    marginLeft: "30px",
+                                    marginBottom: "10px",
+                                  }}
+                                  onClick={() => {
+                                    if (selected.includes(`${item._id}`)) {
+                                      let values = selected.filter((x) => {
+                                        return `${x}` !== `${item._id}`;
+                                      });
+                                      setSelected(values);
+                                    } else {
+                                      setSelected([
+                                        ...selected,
+                                        `${item._id}`,
+                                      ]);
+                                    }
+                                  }}
+                                  checked={selected.includes(`${item._id}`)}
+                                />
+                              </CRow>
+                            </td>
+                          );
+                        },
                         show_details: (item, index) => {
                           return (
                             <td className="py-1">
@@ -4803,7 +5506,7 @@ function AllocateContacts() {
                     }}
                   >
                     <CDataTable
-                      items={userData}
+                      items={userDataa}
                       fields={fieldsprime}
                       columnFilter
                       tableFilter
@@ -4813,7 +5516,50 @@ function AllocateContacts() {
                       hover
                       sorter
                       pagination
+                      selectAll={true}
+                      checkedAll={userData.length === selected.length}
+                      onSelectAll={(val) => {
+                        console.log(val, userData);
+                        if (userData.length === selected.length) {
+                          setSelected([]);
+                        } else {
+                          let ids = [];
+                          val.map((x) => ids.push(`${x._id}`));
+                          setSelected(ids);
+                        }
+                      }}
                       scopedSlots={{
+                        show_details1: (item, index) => {
+                          return (
+                            <td className="py-2">
+                              <CRow>
+                                <CInput
+                                  type={"checkbox"}
+                                  style={{
+                                    width: "15px",
+                                    height: "15px",
+                                    marginLeft: "30px",
+                                    marginBottom: "10px",
+                                  }}
+                                  onClick={() => {
+                                    if (selected.includes(`${item._id}`)) {
+                                      let values = selected.filter((x) => {
+                                        return `${x}` !== `${item._id}`;
+                                      });
+                                      setSelected(values);
+                                    } else {
+                                      setSelected([
+                                        ...selected,
+                                        `${item._id}`,
+                                      ]);
+                                    }
+                                  }}
+                                  checked={selected.includes(`${item._id}`)}
+                                />
+                              </CRow>
+                            </td>
+                          );
+                        },
                         show_details: (item, index) => {
                           return (
                             <td className="py-1">
@@ -5072,7 +5818,7 @@ function AllocateContacts() {
                     }}
                   >
                     <CDataTable
-                      items={userData}
+                      items={userDataa}
                       fields={fieldsprime}
                       columnFilter
                       tableFilter
@@ -5082,7 +5828,50 @@ function AllocateContacts() {
                       hover
                       sorter
                       pagination
+                      selectAll={true}
+                      checkedAll={userData.length === selected.length}
+                      onSelectAll={(val) => {
+                        console.log(val, userData);
+                        if (userData.length === selected.length) {
+                          setSelected([]);
+                        } else {
+                          let ids = [];
+                          val.map((x) => ids.push(`${x._id}`));
+                          setSelected(ids);
+                        }
+                      }}
                       scopedSlots={{
+                        show_details1: (item, index) => {
+                          return (
+                            <td className="py-2">
+                              <CRow>
+                                <CInput
+                                  type={"checkbox"}
+                                  style={{
+                                    width: "15px",
+                                    height: "15px",
+                                    marginLeft: "30px",
+                                    marginBottom: "10px",
+                                  }}
+                                  onClick={() => {
+                                    if (selected.includes(`${item._id}`)) {
+                                      let values = selected.filter((x) => {
+                                        return `${x}` !== `${item._id}`;
+                                      });
+                                      setSelected(values);
+                                    } else {
+                                      setSelected([
+                                        ...selected,
+                                        `${item._id}`,
+                                      ]);
+                                    }
+                                  }}
+                                  checked={selected.includes(`${item._id}`)}
+                                />
+                              </CRow>
+                            </td>
+                          );
+                        },
                         show_details: (item, index) => {
                           return (
                             <td className="py-1">

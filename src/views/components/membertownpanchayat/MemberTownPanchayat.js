@@ -481,7 +481,7 @@ const MemberTownPanchayat = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{marginLeft:"-5em"}}
                   >
                     {selected.assignedTo
@@ -495,7 +495,7 @@ const MemberTownPanchayat = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{ marginLeft: "-3.5em" }}
                   >
                     {selected.assignedTo
@@ -532,7 +532,7 @@ const MemberTownPanchayat = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{marginLeft:"-5em"}}
                   >
                     {selected.assignedTo
@@ -754,8 +754,8 @@ const MemberTownPanchayat = () => {
           <CButton
             style={{
               position: "absolute",
-              backgroundColor: "green",
-              border: "1px solid green",
+              
+              
               top: "15px",
               right: "15px",
             }}
@@ -1083,7 +1083,7 @@ const MemberTownPanchayat = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{marginLeft:"-5em"}}
                   >
                     {selected.assignedTo
@@ -1097,7 +1097,7 @@ const MemberTownPanchayat = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{ marginLeft: "-3.5em" }}
                   >
                     {selected.assignedTo
@@ -1134,7 +1134,7 @@ const MemberTownPanchayat = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{marginLeft:"-5em"}}
                   >
                     {selected.assignedTo
@@ -1799,7 +1799,7 @@ const MemberTownPanchayat = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{marginLeft:"-5em"}}
                   >
                     {selected.assignedTo
@@ -1813,7 +1813,7 @@ const MemberTownPanchayat = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{ marginLeft: "-3.5em" }}
                   >
                     {selected.assignedTo
@@ -1850,7 +1850,7 @@ const MemberTownPanchayat = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{marginLeft:"-5em"}}
                   >
                     {selected.assignedTo

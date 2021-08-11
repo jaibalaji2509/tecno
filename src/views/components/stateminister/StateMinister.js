@@ -426,7 +426,7 @@ import {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{marginLeft:"-5em"}}
                   >
                     {selected.assignedTo
@@ -440,7 +440,7 @@ import {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{ marginLeft: "-3.5em" }}
                   >
                     {selected.assignedTo
@@ -477,7 +477,7 @@ import {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{marginLeft:"-5em"}}
                   >
                     {selected.assignedTo
@@ -1005,7 +1005,7 @@ import {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{marginLeft:"-5em"}}
                   >
                     {selected.assignedTo
@@ -1019,7 +1019,7 @@ import {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{ marginLeft: "-3.5em" }}
                   >
                     {selected.assignedTo
@@ -1056,7 +1056,7 @@ import {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{marginLeft:"-5em"}}
                   >
                     {selected.assignedTo
@@ -1830,7 +1830,7 @@ import {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{marginLeft:"-5em"}}
                   >
                     {selected.assignedTo
@@ -1844,7 +1844,7 @@ import {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{ marginLeft: "-3.5em" }}
                   >
                     {selected.assignedTo
@@ -1881,7 +1881,7 @@ import {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{marginLeft:"-5em"}}
                   >
                     {selected.assignedTo

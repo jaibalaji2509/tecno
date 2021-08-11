@@ -129,10 +129,10 @@
  
  
    .divider {
-    position: absolute;
-      left: 34.6em;
-      top:  80px;
-      height: 130px;
-      bottom: 40%;
-      border-left: 1px solid lightgray;
+    position: absolute !important;
+      left: 34.6em !important;
+      top:  75px !important;
+      height: 300px !important;
+      bottom: 40% !important;
+      border-left: 1px solid lightgray !important;
   }

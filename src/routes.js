@@ -65,6 +65,28 @@ const AssignPartyPosting = React.lazy(() => import('./views/components/assignpar
 const RuralBodies = React.lazy(() => import('./views/components/rural-bodies/RuralBodies'));
 const AllocateCC = React.lazy(() => import('./views/components/allocatecc/AllocateCC'));
 const AllocateContacts = React.lazy(() => import('./views/components/allocatecontacts/AllocateContacts'));
+const Form = React.lazy(() => import('./views/components/dashboardform/Form'));
+const Form1 = React.lazy(() => import('./views/components/dashboardform/Form1'));
+const MLAForm = React.lazy(() => import('./views/components/dashboardform/MLAForm'));
+const Formstate = React.lazy(() => import('./views/components/dashboardform/Formstate'));
+const FormCentral = React.lazy(() => import('./views/components/dashboardform/FormCentral'));
+const FormCouncul = React.lazy(() => import('./views/components/dashboardform/FormCouncul'));
+const FormCorporation = React.lazy(() => import('./views/components/dashboardform/FormCorporation'));
+const FormMuni = React.lazy(() => import('./views/components/dashboardform/FormMuni'));
+const FormTown = React.lazy(() => import('./views/components/dashboardform/FormTown'));
+const FormPanchayatMember = React.lazy(() => import('./views/components/dashboardform/FormPanchayatMember'));
+const FormDP = React.lazy(() => import('./views/components/dashboardform/FormDP'));
+const FormPU = React.lazy(() => import('./views/components/dashboardform/FormPU'));
+const PartypostingForm = React.lazy(() => import('./views/components/dashboardform/PartypostingForm'));
+const HeadParty = React.lazy(() => import('./views/components/dashboardform/HeadParty'));
+const Districtparty = React.lazy(() => import('./views/components/dashboardform/Districtparty'));
+const Circleparty = React.lazy(() => import('./views/components/dashboardform/Circleparty'));
+const Divisionparty = React.lazy(() => import('./views/components/dashboardform/Divisionparty'));
+const PartywingForm = React.lazy(() => import('./views/components/dashboardform/PartywingForm'));
+const FormVolunteer = React.lazy(() => import('./views/components/dashboardform/FormVolunteer'));
+const YouthForm = React.lazy(() => import('./views/components/dashboardform/YouthForm'));
+const FormWomen = React.lazy(() => import('./views/components/dashboardform/FormWomen'));
+const FormEngineerTeam = React.lazy(() => import('./views/components/dashboardform/FormEngineerTeam'));
 
 const StateMinister = React.lazy(() => import('./views/components/stateminister/StateMinister'));
 const CentralMinister = React.lazy(() => import('./views/components/centralminister/CentralMinister'));
@@ -146,6 +168,28 @@ const routes = [
   { path: '/RuralBodies',  exact: true, name: 'Rural Bodies', component: RuralBodies },
   { path: '/AllocateCC',  exact: true, name: 'Member Allocate Closed Communication Channel', component: AllocateCC },
   { path: '/AllocateContacts',  exact: true, name: 'Allocate Contacts', component: AllocateContacts },
+  { path: '/Form',  exact: true, name: 'District-Wise Data', component: Form },
+  { path: '/Form1',  exact: true, name: 'Mp-Wise Data', component: Form1 },
+  { path: '/MLAForm',  exact: true, name: 'MLA-Wise Data', component: MLAForm },
+  { path: '/Formstate',  exact: true, name: 'State Minister-Wise Data', component: Formstate },
+  { path: '/FormCentral',  exact: true, name: 'Central Minister-Wise Data', component: FormCentral },
+  { path: '/FormCouncul',  exact: true, name: 'Member of Legistative Council', component: FormCouncul },
+  { path: '/FormCorporation',  exact: true, name: 'Member of Corporation', component: FormCorporation },
+  { path: '/FormMuni',  exact: true, name: 'Member of Municipality', component: FormMuni },
+  { path: '/FormTown',  exact: true, name: 'Member of TownPanchayat', component: FormTown },
+  { path: '/FormPanchayatMember',  exact: true, name: 'Member of TownPanchayat', component: FormPanchayatMember },
+  { path: '/FormDP',  exact: true, name: 'District Panchayat', component: FormDP },
+  { path: '/FormPU',  exact: true, name: 'Panchayat Union', component: FormPU },
+  { path: '/PartypostingForm',  exact: true, name: 'Head Office', component: PartypostingForm },
+  { path: '/HeadParty',  exact: true, name: 'Head Office', component: HeadParty },
+  { path: '/Districtparty',  exact: true, name: 'District Office', component: Districtparty },
+  { path: '/Circleparty',  exact: true, name: 'Circle Office', component: Circleparty },
+  { path: '/Divisionparty',  exact: true, name: 'Division Office', component: Divisionparty },
+  { path: '/PartywingForm',  exact: true, name: 'Division Office', component: PartywingForm },
+  { path: '/FormVolunteer',  exact: true, name: 'Volunteer Team', component: FormVolunteer },
+  { path: '/YouthForm',  exact: true, name: 'Youth Team', component: YouthForm },
+  { path: '/FormWomen',  exact: true, name: 'Womens Team', component: FormWomen },
+  { path: '/FormEngineerTeam',  exact: true, name: 'Engineer Team', component: FormEngineerTeam },
 
 ];
 

@@ -41,11 +41,12 @@ const TheSidebar = () => {
          <CSidebarBrand
         className="d-md-down-none"
         to="/"
-        style={{ backgroundColor: "#fff" }}
+        style={{ backgroundColor: "#fff" ,marginLeft:"-53%"}}
       >
-        <CLabel style={{fontSize:"18px", fontWeight:"bold",backgroundColor:"#225da2 ", color:"white", position:"fixed"}}>
+        <span style={{fontSize:"16px",fontWeight:"bold",backgroundColor:"#225da2 ", color:"white", position:"fixed",float:"left"}}>
           POLITICAL-PARTY
-        </CLabel>
+        </span>
+        
       </CSidebarBrand>
       </CSidebarBrand>
       <CSidebarNav>

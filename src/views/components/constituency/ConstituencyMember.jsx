@@ -378,7 +378,7 @@ const ConstituencyMember = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{marginLeft:"-5em"}}
                   >
                     {selected.assignedTo
@@ -392,7 +392,7 @@ const ConstituencyMember = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{ marginLeft: "-3.5em" }}
                   >
                     {selected.assignedTo
@@ -429,7 +429,7 @@ const ConstituencyMember = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{marginLeft:"-5em"}}
                   >
                     {selected.assignedTo
@@ -748,7 +748,7 @@ const ConstituencyMember = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{marginLeft:"-5em"}}
                   >
                     {selected.assignedTo
@@ -762,7 +762,7 @@ const ConstituencyMember = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{ marginLeft: "-3.5em" }}
                   >
                     {selected.assignedTo
@@ -799,7 +799,7 @@ const ConstituencyMember = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{marginLeft:"-5em"}}
                   >
                     {selected.assignedTo
@@ -1158,7 +1158,7 @@ const ConstituencyMember = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{marginLeft:"-5em"}}
                   >
                     {selected.assignedTo
@@ -1172,7 +1172,7 @@ const ConstituencyMember = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{ marginLeft: "-3.5em" }}
                   >
                     {selected.assignedTo
@@ -1209,7 +1209,7 @@ const ConstituencyMember = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
+                    className={"reAssign-Detail22"}
                     style={{marginLeft:"-5em"}}
                   >
                     {selected.assignedTo

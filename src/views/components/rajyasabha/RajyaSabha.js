@@ -474,8 +474,8 @@ const RajyaSabha = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
-                    style={{ marginLeft: "-5em" }}
+                    className={"reAssign-Detail22"}
+                    
                   >
                     {selected.assignedTo
                       ? selected.assignedTo.firstName
@@ -488,8 +488,8 @@ const RajyaSabha = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
-                    style={{ marginLeft: "-3.5em" }}
+                    className={"reAssign-Detail22"}
+                   
                   >
                     {selected.assignedTo
                       ? selected.assignedTo.firstName
@@ -525,8 +525,8 @@ const RajyaSabha = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
-                    style={{ marginLeft: "-5em" }}
+                    className={"reAssign-Detail22"}
+              
                   >
                     {selected.assignedTo
                       ? selected.assignedTo.firstName
@@ -788,8 +788,8 @@ const RajyaSabha = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
-                    style={{ marginLeft: "-5em" }}
+                    className={"reAssign-Detail22"}
+                   
                   >
                     {selected.assignedTo
                       ? selected.assignedTo.firstName
@@ -802,8 +802,8 @@ const RajyaSabha = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
-                    style={{ marginLeft: "-3.5em" }}
+                    className={"reAssign-Detail22"}
+                    
                   >
                     {selected.assignedTo
                       ? selected.assignedTo.firstName
@@ -839,8 +839,8 @@ const RajyaSabha = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
-                    style={{ marginLeft: "-5em" }}
+                    className={"reAssign-Detail22"}
+                    
                   >
                     {selected.assignedTo
                       ? selected.assignedTo.firstName
@@ -1126,8 +1126,8 @@ const RajyaSabha = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
-                    style={{marginLeft:"-5em"}}
+                    className={"reAssign-Detail22"}
+                    
                   >
                     {selected.assignedTo
                       ? selected.assignedTo.firstName
@@ -1140,8 +1140,8 @@ const RajyaSabha = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
-                    style={{ marginLeft: "-3.5em" }}
+                    className={"reAssign-Detail22"}
+                    
                   >
                     {selected.assignedTo
                       ? selected.assignedTo.firstName
@@ -1177,8 +1177,8 @@ const RajyaSabha = () => {
                   </CLabel>
 
                   <CLabel
-                    className={"reAssign-Detail"}
-                    style={{marginLeft:"-5em"}}
+                    className={"reAssign-Detail22"}
+                   
                   >
                     {selected.assignedTo
                       ? selected.assignedTo.firstName

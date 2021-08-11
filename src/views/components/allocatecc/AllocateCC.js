@@ -33,7 +33,7 @@ function AllocateCC() {
     { value: "Type of Party Office", label: "Type of Party Office" },
     { value: "Type of Party wing Office", label: "Type of Party Wing Office" },
   ];
-
+  const [bacbut, setbacbut] = useState(false);
   const [desig, setDesig] = useState(false);
   const [mem, setMem] = useState(false);
   const [minit, setminit] = useState(false);
@@ -71,6 +71,7 @@ function AllocateCC() {
   const sowmember = () => {
     setShow(false);
     setShow1(true);
+    setbacbut(true);
   };
 
   const cancelsowmember = () => {
@@ -106,7 +107,8 @@ function AllocateCC() {
     setchiefstate(false);
     setaddninth(false);
     setaddtenth(false);
-  };
+    setbacbut(false);
+  }
 
   // First
   const cahange = (e) => {
@@ -131,6 +133,7 @@ function AllocateCC() {
       setwardg1(false);
       setwardg2(false);
       setchiefstate(false);
+      setbacbut(false);
     }
     if (e.value === "role") {
       setDesig(true);
@@ -476,6 +479,7 @@ function AllocateCC() {
   const partroleaddchng = (e) => {
     if (e.value === "Membera") {
       setaddfirst(true);
+      setbacbut(false);
       setaddsecond(false);
       setaddthird(false);
       setPubrep(false);
@@ -493,6 +497,7 @@ function AllocateCC() {
     if (e.value === "rolea") {
       setaddfirst(false);
       setaddsecond(true);
+      setbacbut(false);
       setaddthird(false);
       setPubrep(false);
       setaddfourth(false);
@@ -513,6 +518,7 @@ function AllocateCC() {
       setPubrep(true);
       setaddfourth(false);
       setaddfivth(false);
+      setbacbut(false);
       setaddsixth(false);
       setaddseventh(false);
       setminitta(false);
@@ -526,6 +532,7 @@ function AllocateCC() {
       setaddfirst(false);
       setaddsecond(false);
       setaddthird(false);
+      setbacbut(false);
       setPubrep(false);
       setaddfourth(false);
       setaddfivth(false);
@@ -541,6 +548,7 @@ function AllocateCC() {
       setaddfirst(false);
       setaddsecond(false);
       setaddthird(false);
+      setbacbut(false);
       setPubrep(false);
       setaddfourth(false);
       setaddfivth(false);
@@ -564,6 +572,7 @@ function AllocateCC() {
       setaddfivth(false);
       setaddsixth(false);
       setaddseventh(false);
+      setbacbut(false);
       setminitta(false);
       setaddeight(false);
       setminittac(false);
@@ -576,6 +585,7 @@ function AllocateCC() {
       setaddthird(false);
       setPubrep(true);
       setaddfourth(true);
+      setbacbut(false);
       setaddfivth(false);
       setaddsixth(false);
       setminitta(false);
@@ -591,6 +601,7 @@ function AllocateCC() {
       setaddthird(false);
       setPubrep(true);
       setaddfourth(false);
+      setbacbut(false);
       setaddfivth(true);
       setaddsixth(false);
       setaddseventh(false);
@@ -603,6 +614,7 @@ function AllocateCC() {
     if (e.value === "membercouncimunia") {
       setaddfirst(false);
       setaddsecond(false);
+      setbacbut(false);
       setaddthird(false);
       setPubrep(true);
       setaddfourth(false);
@@ -620,6 +632,7 @@ function AllocateCC() {
       setaddsecond(false);
       setaddthird(false);
       setPubrep(true);
+      setbacbut(false);
       setaddfourth(false);
       setaddfivth(false);
       setaddsixth(false);
@@ -633,6 +646,7 @@ function AllocateCC() {
     if (e.value === "distwarda") {
       setaddfirst(false);
       setaddsecond(false);
+      setbacbut(false);
       setaddthird(false);
       setPubrep(true);
       setaddfourth(false);
@@ -647,6 +661,7 @@ function AllocateCC() {
     }
     if (e.value === "townwarda") {
       setaddfirst(false);
+      setbacbut(false);
       setaddsecond(false);
       setaddthird(false);
       setPubrep(true);
@@ -665,6 +680,7 @@ function AllocateCC() {
   const primeeaddsub = (e) => {
     if (e.value === "pminia") {
       setaddfirst(false);
+      setbacbut(false);
       setaddsecond(false);
       setaddthird(false);
       setPubrep(false);
@@ -682,6 +698,7 @@ function AllocateCC() {
       setaddfirst(false);
       setaddsecond(false);
       setaddthird(false);
+      setbacbut(false);
       setPubrep(false);
       setaddfourth(false);
       setaddfivth(false);
@@ -700,6 +717,7 @@ function AllocateCC() {
       setaddfirst(false);
       setaddsecond(false);
       setaddthird(false);
+      setbacbut(false);
       setPubrep(false);
       setaddfourth(false);
       setaddfivth(false);
@@ -717,6 +735,7 @@ function AllocateCC() {
       setaddthird(false);
       setPubrep(false);
       setaddfourth(false);
+      setbacbut(false);
       setaddfivth(false);
       setaddsixth(false);
       setaddseventh(false);
@@ -2310,6 +2329,25 @@ function AllocateCC() {
                             onChange={partroleaddchng}
                           />
                         </CCol>
+                        {bacbut && (
+                        <div>
+                          <CCol>
+                            <CButton
+                              style={{
+                                position: "absolute",
+                                top: "-20px",
+                                backgroundColor: "green",
+                                border: "1px solid green",
+                                right: "-880px",
+                              }}
+                              className={"cancelBtn"}
+                              onClick={cancelsowmember}
+                            >
+                              Back
+                            </CButton>
+                          </CCol>
+                        </div>
+                      )}
                       </CRow>
                     </CContainer>
 
@@ -2397,7 +2435,7 @@ function AllocateCC() {
 
                 {addfirst && (
                   <div>
-                    <CContainer>
+                   
                       <CCol style={{ top: "2em" }}>
                         <CLabel
                           style={{
@@ -2450,6 +2488,10 @@ function AllocateCC() {
                           />
                         </CCol>
                       </CRow>
+
+                      <div>
+                    <CRow sm="12" md="12" lg="12">
+                      <CCol md="9">
                       <CRow
                         sm="12"
                         md="12"
@@ -2470,7 +2512,7 @@ function AllocateCC() {
                           />
                         </CCol>
                       </CRow>
-                    </CContainer>
+                  
 
                     <CCol style={{ top: "2em", marginLeft: "20.5em" }}>
                       <CLabel
@@ -2519,75 +2561,12 @@ function AllocateCC() {
                           />
                         </CCol>
                       </CRow>
-                      <CRow
-                        sm="12"
-                        md="12"
-                        lg="12"
-                        style={{ marginLeft: "850px", marginTop: "-250px" }}
-                      >
-                        <CCol>
-                          {/* <ProfileUi
-                            imgUrl="https://previews.123rf.com/images/solargaria/solargaria1709/solargaria170900007/85362512-user-icon-male-avatar-in-business-suit-businessman-flat-icon-man-in-business-suit-avatar-of-business.jpg"
-                            
-                            name="Name"
-                            // designation="Gender"
-                            born="dob"
-                          /> */}
-                          <CCard className={"card-container"}>
-                            <header>
-                              <img
-                                src="https://raw.githubusercontent.com/ritaxcorreia/react-profile-card/3b562dc1f28cd3630508d4628aab1e85e25c2682/src/images/bg-pattern-card.svg"
-                                alt="male icon"
-                                style={{
-                                  marginLeft: "0em",
-                                  minWidth: "270px",
-                                  maxWidth: "270px",
-                                  borderRadius: "14px",
-                                }}
-                              />
-                            </header>
-                            <img
-                              src="https://i.pinimg.com/736x/5f/40/6a/5f406ab25e8942cbe0da6485afd26b71.jpg"
-                              alt="member"
-                              className={"img"}
-                              style={{ marginTop: "-85px" }}
-                            />
-                            <h2
-                              style={{
-                                fontSize: "30px",
-
-                                textAlign: "center",
-                                textTransform: "uppercase",
-                              }}
-                            >
-                              Name{" "}
-                            </h2>
-                            <h3
-                              style={{
-                                fontSize: "20px",
-                                textAlign: "center",
-                                textTransform: "uppercase",
-                              }}
-                            >
-                              Gender{" "}
-                            </h3>
-                            <h4
-                              style={{
-                                fontSize: "18px",
-                                textAlign: "center",
-                                textTransform: "uppercase",
-                              }}
-                            >
-                              DoB{" "}
-                            </h4>
-                          </CCard>
-                        </CCol>
-                      </CRow>
+                    
                     </CContainer>
                     <CContainer>
                       <CRow sm="12" md="12" lg="12">
                         <CCol
-                          style={{ marginTop: "-3.5em", marginLeft: "1em" }}
+                          style={{ marginTop: "2.5em", marginLeft: "1em" }}
                         >
                           <CLabel
                             style={{
@@ -2695,6 +2674,75 @@ function AllocateCC() {
                         </CButton>{" "}
                       </CCol>
                     </CRow>
+                    </CCol>
+                    <CCol md="3">
+                    <CRow
+                        sm="12"
+                        md="12"
+                        lg="12"
+                        style={{ marginLeft: "-150px", marginTop: "50px" }}
+                      >
+                        <CCol>
+                          {/* <ProfileUi
+                            imgUrl="https://previews.123rf.com/images/solargaria/solargaria1709/solargaria170900007/85362512-user-icon-male-avatar-in-business-suit-businessman-flat-icon-man-in-business-suit-avatar-of-business.jpg"
+                            
+                            name="Name"
+                            // designation="Gender"
+                            born="dob"
+                          /> */}
+                          <CCard className={"card-container"}>
+                            <header>
+                              <img
+                                src="https://raw.githubusercontent.com/ritaxcorreia/react-profile-card/3b562dc1f28cd3630508d4628aab1e85e25c2682/src/images/bg-pattern-card.svg"
+                                alt="male icon"
+                                style={{
+                                  marginLeft: "0em",
+                                  minWidth: "270px",
+                                  maxWidth: "270px",
+                                  borderRadius: "14px",
+                                }}
+                              />
+                            </header>
+                            <img
+                              src="https://i.pinimg.com/736x/5f/40/6a/5f406ab25e8942cbe0da6485afd26b71.jpg"
+                              alt="member"
+                              className={"img"}
+                              style={{ marginTop: "-85px" }}
+                            />
+                            <h2
+                              style={{
+                                fontSize: "30px",
+
+                                textAlign: "center",
+                                textTransform: "uppercase",
+                              }}
+                            >
+                              Name{" "}
+                            </h2>
+                            <h3
+                              style={{
+                                fontSize: "20px",
+                                textAlign: "center",
+                                textTransform: "uppercase",
+                              }}
+                            >
+                              Gender{" "}
+                            </h3>
+                            <h4
+                              style={{
+                                fontSize: "18px",
+                                textAlign: "center",
+                                textTransform: "uppercase",
+                              }}
+                            >
+                              DoB{" "}
+                            </h4>
+                          </CCard>
+                        </CCol>
+                      </CRow>
+                    </CCol>
+                    </CRow>
+                    </div>
                     <CRow
                       sm="12"
                       md="12"
@@ -2799,7 +2847,10 @@ function AllocateCC() {
                         />
                       </CCol>
                     </CRow>
-                    <CRow
+                    <div>
+                      <CRow>
+                        <CCol>
+                          <CRow
                       sm="12"
                       md="12"
                       lg="12"
@@ -2819,7 +2870,7 @@ function AllocateCC() {
                         />
                       </CCol>
                     </CRow>
-                  </CContainer>
+                
 
                   <CCol style={{ top: "2em", marginLeft: "20.5em" }}>
                     <CLabel
@@ -2868,75 +2919,12 @@ function AllocateCC() {
                         />
                       </CCol>
                     </CRow>
-                    <CRow
-                      sm="12"
-                      md="12"
-                      lg="12"
-                      style={{ marginLeft: "850px", marginTop: "-230px" }}
-                    >
-                      <CCol>
-                        {/* <ProfileUi
-                            imgUrl="https://previews.123rf.com/images/solargaria/solargaria1709/solargaria170900007/85362512-user-icon-male-avatar-in-business-suit-businessman-flat-icon-man-in-business-suit-avatar-of-business.jpg"
-                            
-                            name="Name"
-                            // designation="Gender"
-                            born="dob"
-                          /> */}
-                        <CCard className={"card-container"}>
-                          <header>
-                            <img
-                              src="https://raw.githubusercontent.com/ritaxcorreia/react-profile-card/3b562dc1f28cd3630508d4628aab1e85e25c2682/src/images/bg-pattern-card.svg"
-                              alt="male icon"
-                              style={{
-                                marginLeft: "0em",
-                                minWidth: "270px",
-                                maxWidth: "270px",
-                                borderRadius: "14px",
-                              }}
-                            />
-                          </header>
-                          <img
-                            src="https://i.pinimg.com/736x/5f/40/6a/5f406ab25e8942cbe0da6485afd26b71.jpg"
-                            className={"img"}
-                            alt="member"
-                            style={{ marginTop: "-85px" }}
-                          />
-                          <h2
-                            style={{
-                              fontSize: "30px",
-
-                              textAlign: "center",
-                              textTransform: "uppercase",
-                            }}
-                          >
-                            Name{" "}
-                          </h2>
-                          <h3
-                            style={{
-                              fontSize: "20px",
-                              textAlign: "center",
-                              textTransform: "uppercase",
-                            }}
-                          >
-                            Gender{" "}
-                          </h3>
-                          <h4
-                            style={{
-                              fontSize: "18px",
-                              textAlign: "center",
-                              textTransform: "uppercase",
-                            }}
-                          >
-                            DoB{" "}
-                          </h4>
-                        </CCard>
-                      </CCol>
-                    </CRow>
+                   
                   </CContainer>
 
                   <CContainer>
                     <CRow sm="12" md="12" lg="12">
-                      <CCol style={{ marginTop: "-3.5em", marginLeft: "1em" }}>
+                      <CCol style={{ marginTop: "2.5em", marginLeft: "1em" }}>
                         <CLabel
                           style={{
                             fontSize: "18px",
@@ -3043,6 +3031,76 @@ function AllocateCC() {
                       </CButton>{" "}
                     </CCol>
                   </CRow>
+                  </CCol>
+                  <CCol md="3">
+
+                  <CRow
+                      sm="12"
+                      md="12"
+                      lg="12"
+                      style={{ marginLeft: "-150px", marginTop: "100px" }}
+                    >
+                      <CCol>
+                        {/* <ProfileUi
+                            imgUrl="https://previews.123rf.com/images/solargaria/solargaria1709/solargaria170900007/85362512-user-icon-male-avatar-in-business-suit-businessman-flat-icon-man-in-business-suit-avatar-of-business.jpg"
+                            
+                            name="Name"
+                            // designation="Gender"
+                            born="dob"
+                          /> */}
+                        <CCard className={"card-container"}>
+                          <header>
+                            <img
+                              src="https://raw.githubusercontent.com/ritaxcorreia/react-profile-card/3b562dc1f28cd3630508d4628aab1e85e25c2682/src/images/bg-pattern-card.svg"
+                              alt="male icon"
+                              style={{
+                                marginLeft: "0em",
+                                minWidth: "270px",
+                                maxWidth: "270px",
+                                borderRadius: "14px",
+                              }}
+                            />
+                          </header>
+                          <img
+                            src="https://i.pinimg.com/736x/5f/40/6a/5f406ab25e8942cbe0da6485afd26b71.jpg"
+                            className={"img"}
+                            alt="member"
+                            style={{ marginTop: "-85px" }}
+                          />
+                          <h2
+                            style={{
+                              fontSize: "30px",
+
+                              textAlign: "center",
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            Name{" "}
+                          </h2>
+                          <h3
+                            style={{
+                              fontSize: "20px",
+                              textAlign: "center",
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            Gender{" "}
+                          </h3>
+                          <h4
+                            style={{
+                              fontSize: "18px",
+                              textAlign: "center",
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            DoB{" "}
+                          </h4>
+                        </CCard>
+                      </CCol>
+                    </CRow>
+                  </CCol>
+                  </CRow>
+                  </div>
                   <CRow
                     sm="12"
                     md="12"
@@ -3099,6 +3157,7 @@ function AllocateCC() {
                       }}
                     />
                   </CRow>
+                  </CContainer>
                 </div>
               )}
               {addthird && (
@@ -3122,6 +3181,13 @@ function AllocateCC() {
                         />
                       </CCol>
                     </CRow>
+                   
+
+                       <div>
+                         <CRow  sm="12"
+                      md="12"
+                      lg="12">
+                           <CCol md="9">
                     <CRow
                       sm="12"
                       md="12"
@@ -3142,77 +3208,14 @@ function AllocateCC() {
                         />
                       </CCol>
                     </CRow>
-                  </CContainer>
+                 
 
                   <CContainer>
-                    <CRow
-                      sm="12"
-                      md="12"
-                      lg="12"
-                      style={{ marginLeft: "850px", marginTop: "-230px" }}
-                    >
-                      <CCol>
-                        {/* <ProfileUi
-                            imgUrl="https://previews.123rf.com/images/solargaria/solargaria1709/solargaria170900007/85362512-user-icon-male-avatar-in-business-suit-businessman-flat-icon-man-in-business-suit-avatar-of-business.jpg"
-                            
-                            name="Name"
-                            // designation="Gender"
-                            born="dob"
-                          /> */}
-                        <CCard className={"card-container"}>
-                          <header>
-                            <img
-                              src="https://raw.githubusercontent.com/ritaxcorreia/react-profile-card/3b562dc1f28cd3630508d4628aab1e85e25c2682/src/images/bg-pattern-card.svg"
-                              alt="male icon"
-                              style={{
-                                marginLeft: "0em",
-                                minWidth: "270px",
-                                maxWidth: "270px",
-                                borderRadius: "14px",
-                              }}
-                            />
-                          </header>
-                          <img
-                            src="https://i.pinimg.com/736x/5f/40/6a/5f406ab25e8942cbe0da6485afd26b71.jpg"
-                            className={"img"}
-                            alt="member"
-                            style={{ marginTop: "-85px" }}
-                          />
-                          <h2
-                            style={{
-                              fontSize: "30px",
 
-                              textAlign: "center",
-                              textTransform: "uppercase",
-                            }}
-                          >
-                            Name{" "}
-                          </h2>
-                          <h3
-                            style={{
-                              fontSize: "20px",
-                              textAlign: "center",
-                              textTransform: "uppercase",
-                            }}
-                          >
-                            Gender{" "}
-                          </h3>
-                          <h4
-                            style={{
-                              fontSize: "18px",
-                              textAlign: "center",
-                              textTransform: "uppercase",
-                            }}
-                          >
-                            DoB{" "}
-                          </h4>
-                        </CCard>
-                      </CCol>
-                    </CRow>
                   </CContainer>
                   <CContainer>
                     <CRow sm="12" md="12" lg="12">
-                      <CCol style={{ marginTop: "-3.5em", marginLeft: "1em" }}>
+                      <CCol style={{ marginTop: "2.5em", marginLeft: "1em" }}>
                         <CLabel
                           style={{
                             fontSize: "18px",
@@ -3319,6 +3322,75 @@ function AllocateCC() {
                       </CButton>{" "}
                     </CCol>
                   </CRow>
+                  </CCol>
+                  <CCol>
+                                        <CRow
+                      sm="12"
+                      md="12"
+                      lg="12"
+                      style={{ marginLeft: "-100px", marginTop: "-100px" }}
+                    >
+                      <CCol>
+                        {/* <ProfileUi
+                            imgUrl="https://previews.123rf.com/images/solargaria/solargaria1709/solargaria170900007/85362512-user-icon-male-avatar-in-business-suit-businessman-flat-icon-man-in-business-suit-avatar-of-business.jpg"
+                            
+                            name="Name"
+                            // designation="Gender"
+                            born="dob"
+                          /> */}
+                        <CCard className={"card-container"}>
+                          <header>
+                            <img
+                              src="https://raw.githubusercontent.com/ritaxcorreia/react-profile-card/3b562dc1f28cd3630508d4628aab1e85e25c2682/src/images/bg-pattern-card.svg"
+                              alt="male icon"
+                              style={{
+                                marginLeft: "0em",
+                                minWidth: "270px",
+                                maxWidth: "270px",
+                                borderRadius: "14px",
+                              }}
+                            />
+                          </header>
+                          <img
+                            src="https://i.pinimg.com/736x/5f/40/6a/5f406ab25e8942cbe0da6485afd26b71.jpg"
+                            className={"img"}
+                            alt="member"
+                            style={{ marginTop: "-85px" }}
+                          />
+                          <h2
+                            style={{
+                              fontSize: "30px",
+
+                              textAlign: "center",
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            Name{" "}
+                          </h2>
+                          <h3
+                            style={{
+                              fontSize: "20px",
+                              textAlign: "center",
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            Gender{" "}
+                          </h3>
+                          <h4
+                            style={{
+                              fontSize: "18px",
+                              textAlign: "center",
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            DoB{" "}
+                          </h4>
+                        </CCard>
+                      </CCol>
+                    </CRow>
+                  </CCol>
+                      </CRow>
+                    </div>
                   <CRow
                     sm="12"
                     md="12"
@@ -3375,10 +3447,12 @@ function AllocateCC() {
                       }}
                     />
                   </CRow>
+                  </CContainer>
                 </div>
               )}
               {addfourth && (
                 <div>
+                  <CContainer>
                   <CContainer>
                     <CRow
                       sm="12"
@@ -3398,6 +3472,13 @@ function AllocateCC() {
                         />
                       </CCol>
                     </CRow>
+
+                    <div>
+                      <CRow
+                      sm="12"
+                      md="12"
+                      lg="12">
+                        <CCol md="9">
                     <CRow
                       sm="12"
                       md="12"
@@ -3418,77 +3499,14 @@ function AllocateCC() {
                         />
                       </CCol>
                     </CRow>
-                  </CContainer>
+                 
 
                   <CContainer>
-                    <CRow
-                      sm="12"
-                      md="12"
-                      lg="12"
-                      style={{ marginLeft: "850px", marginTop: "-230px" }}
-                    >
-                      <CCol>
-                        {/* <ProfileUi
-                            imgUrl="https://previews.123rf.com/images/solargaria/solargaria1709/solargaria170900007/85362512-user-icon-male-avatar-in-business-suit-businessman-flat-icon-man-in-business-suit-avatar-of-business.jpg"
-                            
-                            name="Name"
-                            // designation="Gender"
-                            born="dob"
-                          /> */}
-                        <CCard className={"card-container"}>
-                          <header>
-                            <img
-                              src="https://raw.githubusercontent.com/ritaxcorreia/react-profile-card/3b562dc1f28cd3630508d4628aab1e85e25c2682/src/images/bg-pattern-card.svg"
-                              alt="male icon"
-                              style={{
-                                marginLeft: "0em",
-                                minWidth: "270px",
-                                maxWidth: "270px",
-                                borderRadius: "14px",
-                              }}
-                            />
-                          </header>
-                          <img
-                            src="https://i.pinimg.com/736x/5f/40/6a/5f406ab25e8942cbe0da6485afd26b71.jpg"
-                            className={"img"}
-                            alt="member"
-                            style={{ marginTop: "-85px" }}
-                          />
-                          <h2
-                            style={{
-                              fontSize: "30px",
-
-                              textAlign: "center",
-                              textTransform: "uppercase",
-                            }}
-                          >
-                            Name{" "}
-                          </h2>
-                          <h3
-                            style={{
-                              fontSize: "20px",
-                              textAlign: "center",
-                              textTransform: "uppercase",
-                            }}
-                          >
-                            Gender{" "}
-                          </h3>
-                          <h4
-                            style={{
-                              fontSize: "18px",
-                              textAlign: "center",
-                              textTransform: "uppercase",
-                            }}
-                          >
-                            DoB{" "}
-                          </h4>
-                        </CCard>
-                      </CCol>
-                    </CRow>
+                   
                   </CContainer>
                   <CContainer>
                     <CRow sm="12" md="12" lg="12">
-                      <CCol style={{ marginTop: "-3.5em", marginLeft: "1em" }}>
+                      <CCol style={{ marginTop: "2.5em", marginLeft: "1em" }}>
                         <CLabel
                           style={{
                             fontSize: "18px",
@@ -3595,6 +3613,76 @@ function AllocateCC() {
                       </CButton>{" "}
                     </CCol>
                   </CRow>
+
+                  </CCol>
+                  <CCol md="3">
+                  <CRow
+                      sm="12"
+                      md="12"
+                      lg="12"
+                      style={{ marginLeft: "-100px", marginTop: "-100px" }}
+                    >
+                      <CCol>
+                        {/* <ProfileUi
+                            imgUrl="https://previews.123rf.com/images/solargaria/solargaria1709/solargaria170900007/85362512-user-icon-male-avatar-in-business-suit-businessman-flat-icon-man-in-business-suit-avatar-of-business.jpg"
+                            
+                            name="Name"
+                            // designation="Gender"
+                            born="dob"
+                          /> */}
+                        <CCard className={"card-container"}>
+                          <header>
+                            <img
+                              src="https://raw.githubusercontent.com/ritaxcorreia/react-profile-card/3b562dc1f28cd3630508d4628aab1e85e25c2682/src/images/bg-pattern-card.svg"
+                              alt="male icon"
+                              style={{
+                                marginLeft: "0em",
+                                minWidth: "270px",
+                                maxWidth: "270px",
+                                borderRadius: "14px",
+                              }}
+                            />
+                          </header>
+                          <img
+                            src="https://i.pinimg.com/736x/5f/40/6a/5f406ab25e8942cbe0da6485afd26b71.jpg"
+                            className={"img"}
+                            alt="member"
+                            style={{ marginTop: "-85px" }}
+                          />
+                          <h2
+                            style={{
+                              fontSize: "30px",
+
+                              textAlign: "center",
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            Name{" "}
+                          </h2>
+                          <h3
+                            style={{
+                              fontSize: "20px",
+                              textAlign: "center",
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            Gender{" "}
+                          </h3>
+                          <h4
+                            style={{
+                              fontSize: "18px",
+                              textAlign: "center",
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            DoB{" "}
+                          </h4>
+                        </CCard>
+                      </CCol>
+                    </CRow>
+                  </CCol>
+                      </CRow>
+                    </div>
                   <CRow
                     sm="12"
                     md="12"
@@ -3651,11 +3739,14 @@ function AllocateCC() {
                       }}
                     />
                   </CRow>
+                  </CContainer>
+                  </CContainer>
                 </div>
               )}
               {addfivth && (
                 <div>
                   <CContainer>
+                 
                     <CRow
                       sm="12"
                       md="12"
@@ -3692,10 +3783,17 @@ function AllocateCC() {
                         <Select
                           id={"municipalcorporation"}
                           name={"constituency"}
-                          placeholder={"Select Name of Constituency"}
+                          placeholder={"Select Name of Corporation"}
                         />
                       </CCol>
                     </CRow>
+
+                    <div>
+                      <CRow
+                      sm="12"
+                      md="12"
+                      lg="12">
+                        <CCol md="9">                        
                     <CRow
                       sm="12"
                       md="12"
@@ -3716,7 +3814,7 @@ function AllocateCC() {
                         />
                       </CCol>
                     </CRow>
-                  </CContainer>
+                 
 
                   <CCol style={{ top: "2em", marginLeft: "20.5em" }}>
                     <CLabel
@@ -3765,74 +3863,11 @@ function AllocateCC() {
                         />
                       </CCol>
                     </CRow>
-                    <CRow
-                      sm="12"
-                      md="12"
-                      lg="12"
-                      style={{ marginLeft: "850px", marginTop: "-230px" }}
-                    >
-                      <CCol>
-                        {/* <ProfileUi
-                            imgUrl="https://previews.123rf.com/images/solargaria/solargaria1709/solargaria170900007/85362512-user-icon-male-avatar-in-business-suit-businessman-flat-icon-man-in-business-suit-avatar-of-business.jpg"
-                            
-                            name="Name"
-                            // designation="Gender"
-                            born="dob"
-                          /> */}
-                        <CCard className={"card-container"}>
-                          <header>
-                            <img
-                              src="https://raw.githubusercontent.com/ritaxcorreia/react-profile-card/3b562dc1f28cd3630508d4628aab1e85e25c2682/src/images/bg-pattern-card.svg"
-                              alt="male icon"
-                              style={{
-                                marginLeft: "0em",
-                                minWidth: "270px",
-                                maxWidth: "270px",
-                                borderRadius: "14px",
-                              }}
-                            />
-                          </header>
-                          <img
-                            src="https://i.pinimg.com/736x/5f/40/6a/5f406ab25e8942cbe0da6485afd26b71.jpg"
-                            className={"img"}
-                            alt="member"
-                            style={{ marginTop: "-85px" }}
-                          />
-                          <h2
-                            style={{
-                              fontSize: "30px",
-
-                              textAlign: "center",
-                              textTransform: "uppercase",
-                            }}
-                          >
-                            Name{" "}
-                          </h2>
-                          <h3
-                            style={{
-                              fontSize: "20px",
-                              textAlign: "center",
-                              textTransform: "uppercase",
-                            }}
-                          >
-                            Gender{" "}
-                          </h3>
-                          <h4
-                            style={{
-                              fontSize: "18px",
-                              textAlign: "center",
-                              textTransform: "uppercase",
-                            }}
-                          >
-                            DoB{" "}
-                          </h4>
-                        </CCard>
-                      </CCol>
-                    </CRow>
+                   
                   </CContainer>
                   <CContainer>
                     <CRow sm="12" md="12" lg="12">
-                      <CCol style={{ marginTop: "-3.5em", marginLeft: "1em" }}>
+                      <CCol style={{ marginTop: "2.5em", marginLeft: "1em" }}>
                         <CLabel
                           style={{
                             fontSize: "18px",
@@ -3939,6 +3974,75 @@ function AllocateCC() {
                       </CButton>{" "}
                     </CCol>
                   </CRow>
+                  </CCol>
+                  <CCol md="3">
+                  <CRow
+                      sm="12"
+                      md="12"
+                      lg="12"
+                      style={{ marginLeft: "-100px", marginTop: "50px" }}
+                    >
+                      <CCol>
+                        {/* <ProfileUi
+                            imgUrl="https://previews.123rf.com/images/solargaria/solargaria1709/solargaria170900007/85362512-user-icon-male-avatar-in-business-suit-businessman-flat-icon-man-in-business-suit-avatar-of-business.jpg"
+                            
+                            name="Name"
+                            // designation="Gender"
+                            born="dob"
+                          /> */}
+                        <CCard className={"card-container"}>
+                          <header>
+                            <img
+                              src="https://raw.githubusercontent.com/ritaxcorreia/react-profile-card/3b562dc1f28cd3630508d4628aab1e85e25c2682/src/images/bg-pattern-card.svg"
+                              alt="male icon"
+                              style={{
+                                marginLeft: "0em",
+                                minWidth: "270px",
+                                maxWidth: "270px",
+                                borderRadius: "14px",
+                              }}
+                            />
+                          </header>
+                          <img
+                            src="https://i.pinimg.com/736x/5f/40/6a/5f406ab25e8942cbe0da6485afd26b71.jpg"
+                            className={"img"}
+                            alt="member"
+                            style={{ marginTop: "-85px" }}
+                          />
+                          <h2
+                            style={{
+                              fontSize: "30px",
+
+                              textAlign: "center",
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            Name{" "}
+                          </h2>
+                          <h3
+                            style={{
+                              fontSize: "20px",
+                              textAlign: "center",
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            Gender{" "}
+                          </h3>
+                          <h4
+                            style={{
+                              fontSize: "18px",
+                              textAlign: "center",
+                              textTransform: "uppercase",
+                            }}
+                          >
+                            DoB{" "}
+                          </h4>
+                        </CCard>
+                      </CCol>
+                    </CRow>
+                  </CCol>
+                      </CRow>
+                    </div>
                   <CRow
                     sm="12"
                     md="12"
@@ -3995,11 +4099,13 @@ function AllocateCC() {
                       }}
                     />
                   </CRow>
+                  </CContainer>
                 </div>
               )}
               {addsixth && (
                 <div>
                   <CContainer>
+                 
                     <CRow
                       sm="12"
                       md="12"
@@ -4036,10 +4142,18 @@ function AllocateCC() {
                         <Select
                           id={"municipalcorporation"}
                           name={"constituency"}
-                          placeholder={"Select Name of Constituency"}
+                          placeholder={"Select Name of Municipality"}
                         />
                       </CCol>
                     </CRow>
+                    <div>
+                      <CRow
+                      sm="12"
+                      md="12"
+                      lg="12">
+                        <CCol md="9">
+
+                        
                     <CRow
                       sm="12"
                       md="12"
@@ -4060,7 +4174,7 @@ function AllocateCC() {
                         />
                       </CCol>
                     </CRow>
-                  </CContainer>
+                 
 
                   <CCol style={{ top: "2em", marginLeft: "20.5em" }}>
                     <CLabel
@@ -4109,11 +4223,124 @@ function AllocateCC() {
                         />
                       </CCol>
                     </CRow>
+                   
+                  </CContainer>
+                  <CContainer>
+                    <CRow sm="12" md="12" lg="12">
+                      <CCol style={{ marginTop: "2.5em", marginLeft: "1em" }}>
+                        <CLabel
+                          style={{
+                            fontSize: "18px",
+                            fontFamily: "Open Sans",
+                            fontWeight: "700",
+                          }}
+                        >
+                          Details of Closed CC
+                        </CLabel>
+                      </CCol>
+                    </CRow>
                     <CRow
                       sm="12"
                       md="12"
                       lg="12"
-                      style={{ marginLeft: "850px", marginTop: "-230px" }}
+                      className={"seperator-1"}
+                      style={{ marginTop: "0.2em", marginLeft: "0.5em" }}
+                    >
+                      <CCol
+                        md="3"
+                        style={{ marginLeft: "0em", marginTop: "16px" }}
+                      >
+                        <CLabel className={"form-labels-1"}>
+                          {" "}
+                          {
+                            <span
+                              style={{ color: "black" }}
+                              className={"form-labels-6"}
+                            >
+                              C.C Description
+                            </span>
+                          }
+                          <span className={"text-danger"}> *</span>{" "}
+                        </CLabel>
+                        <CInput
+                          name={"dccDescription"}
+                          style={{ textTransform: "uppercase" }}
+                          id={"createRoleDccDescription"}
+                          onKeyPress={(e) =>
+                            FormValidation.value_Without_Symbols(e)
+                          }
+                          maxLength="30"
+                        />
+                      </CCol>
+                      <CCol
+                        className={"column-align"}
+                        md="3"
+                        style={{ marginLeft: "-1em" }}
+                      >
+                        <CLabel className={"form-labels-1"}>
+                          {" "}
+                          {
+                            <span
+                              style={{ color: "black" }}
+                              className={"form-labels-6"}
+                            >
+                              C.C ID
+                            </span>
+                          }
+                          <span className={"text-danger"}> *</span>{" "}
+                        </CLabel>
+                        <CInput
+                          name={"dccID"}
+                          id={"createRoleDccidCode"}
+                          readOnly={true}
+                          onKeyPress={(e) =>
+                            FormValidation.value_Without_Symbols(e)
+                          }
+                          maxLength="30"
+                        />
+                      </CCol>
+                    </CRow>
+                  </CContainer>
+                  <CRow sm="12" lg="12" md="10">
+                    <CCol
+                      md="5"
+                      style={{
+                        marginLeft: "23em",
+                        float: "right",
+                        marginTop: "-2.5em",
+                        position: "absolute",
+                      }}
+                    >
+                      <CButton
+                        style={{
+                          float: "right",
+                          cursor: "pointer",
+                        }}
+                        id={"assignpartypostingcancel"}
+                        className={"cancelBtn"}
+                        onClick={cancelsowmember}
+                      >
+                        CANCEL
+                      </CButton>{" "}
+                      <CButton
+                        style={{
+                          float: "right",
+                          marginRight: "15px",
+                        }}
+                        id={"assignpartypostingsave"}
+                        className={"saveBtn"}
+                      >
+                        Allocate
+                      </CButton>{" "}
+                    </CCol>
+                  </CRow>
+                  </CCol>
+                  <CCol md="3">
+                  <CRow
+                      sm="12"
+                      md="12"
+                      lg="12"
+                      style={{ marginLeft: "-150px", marginTop: "50px" }}
                     >
                       <CCol>
                         {/* <ProfileUi
@@ -4186,116 +4413,9 @@ function AllocateCC() {
 		</div> */}
                       </CCol>
                     </CRow>
-                  </CContainer>
-                  <CContainer>
-                    <CRow sm="12" md="12" lg="12">
-                      <CCol style={{ marginTop: "-3.5em", marginLeft: "1em" }}>
-                        <CLabel
-                          style={{
-                            fontSize: "18px",
-                            fontFamily: "Open Sans",
-                            fontWeight: "700",
-                          }}
-                        >
-                          Details of Closed CC
-                        </CLabel>
-                      </CCol>
-                    </CRow>
-                    <CRow
-                      sm="12"
-                      md="12"
-                      lg="12"
-                      className={"seperator-1"}
-                      style={{ marginTop: "0.2em", marginLeft: "0.5em" }}
-                    >
-                      <CCol
-                        md="3"
-                        style={{ marginLeft: "0em", marginTop: "16px" }}
-                      >
-                        <CLabel className={"form-labels-1"}>
-                          {" "}
-                          {
-                            <span
-                              style={{ color: "black" }}
-                              className={"form-labels-6"}
-                            >
-                              C.C Description
-                            </span>
-                          }
-                          <span className={"text-danger"}> *</span>{" "}
-                        </CLabel>
-                        <CInput
-                          name={"dccDescription"}
-                          style={{ textTransform: "uppercase" }}
-                          id={"createRoleDccDescription"}
-                          onKeyPress={(e) =>
-                            FormValidation.value_Without_Symbols(e)
-                          }
-                          maxLength="30"
-                        />
-                      </CCol>
-                      <CCol
-                        className={"column-align"}
-                        md="3"
-                        style={{ marginLeft: "-1em" }}
-                      >
-                        <CLabel className={"form-labels-1"}>
-                          {" "}
-                          {
-                            <span
-                              style={{ color: "black" }}
-                              className={"form-labels-6"}
-                            >
-                              C.C ID
-                            </span>
-                          }
-                          <span className={"text-danger"}> *</span>{" "}
-                        </CLabel>
-                        <CInput
-                          name={"dccID"}
-                          id={"createRoleDccidCode"}
-                          readOnly={true}
-                          onKeyPress={(e) =>
-                            FormValidation.value_Without_Symbols(e)
-                          }
-                          maxLength="30"
-                        />
-                      </CCol>
-                    </CRow>
-                  </CContainer>
-                  <CRow sm="12" lg="12" md="10">
-                    <CCol
-                      md="5"
-                      style={{
-                        marginLeft: "23em",
-                        float: "right",
-                        marginTop: "-2.5em",
-                        position: "absolute",
-                      }}
-                    >
-                      <CButton
-                        style={{
-                          float: "right",
-                          cursor: "pointer",
-                        }}
-                        id={"assignpartypostingcancel"}
-                        className={"cancelBtn"}
-                        onClick={cancelsowmember}
-                      >
-                        CANCEL
-                      </CButton>{" "}
-                      <CButton
-                        style={{
-                          float: "right",
-                          marginRight: "15px",
-                        }}
-                        id={"assignpartypostingsave"}
-                        className={"saveBtn"}
-                      >
-                        Allocate
-                      </CButton>{" "}
-                    </CCol>
-                  </CRow>
+                  </CCol>
+                      </CRow>
+                    </div>
                   <CRow
                     sm="12"
                     md="12"
@@ -4352,10 +4472,12 @@ function AllocateCC() {
                       }}
                     />
                   </CRow>
+                  </CContainer>
                 </div>
               )}
               {addseventh && (
                 <div>
+                  <CContainer>
                   <CContainer>
                     <CRow
                       sm="12"
@@ -4393,7 +4515,7 @@ function AllocateCC() {
                         <Select
                           id={"municipalcorporation"}
                           name={"constituency"}
-                          placeholder={"Select Name of Constituency"}
+                          placeholder={"Select Name of Town Panchayat"}
                         />
                       </CCol>
                     </CRow>
@@ -4709,10 +4831,12 @@ function AllocateCC() {
                       }}
                     />
                   </CRow>
+                  </CContainer>
                 </div>
               )}
               {addeight && (
                 <div>
+                  <CContainer>
                   <CContainer>
                     <CRow
                       sm="12"
@@ -4968,10 +5092,12 @@ function AllocateCC() {
                       }}
                     />
                   </CRow>
+                  </CContainer>
                 </div>
               )}
                {addninth && (
                 <div>
+                  <CContainer>
                   <CContainer>
                     <CRow
                       sm="12"
@@ -5238,10 +5364,12 @@ function AllocateCC() {
                       }}
                     />
                   </CRow>
+                  </CContainer>
                 </div>
               )}
                {addtenth && (
                 <div>
+                  <CContainer>
                   <CContainer>
                     <CRow
                       sm="12"
@@ -5563,6 +5691,7 @@ function AllocateCC() {
                       }}
                     />
                   </CRow>
+                  </CContainer>
                 </div>
               )}
             </CCard>

@@ -261,8 +261,10 @@ function PartyWingsOfficeLocation() {
         setTimeout(() => {
           setSideBar1(false);
         }, 1000);
+        setSideBar2(false);
         break;
     }
+    
   };
   const addTypeofPartyOffice1 = () => {
     switch (menu.menuStatus) {
@@ -287,6 +289,7 @@ function PartyWingsOfficeLocation() {
         setTimeout(() => {
           setSideBar2(false);
         }, 1000);
+        setSideBar1(false);
         break;
     }
   };
@@ -297,11 +300,11 @@ function PartyWingsOfficeLocation() {
   const [backbutt, setBackButt] = useState(false);
   const viewTypeofPartyOffice = () => {
     setHidePartyOffice(false);
-    setBackButt(true);
+    setBackButt(true);    
   };
   const viewTypeofPartyOffice1 = () => {
     setHidePartyOffice(false);
-    setBackButt(true);
+    setBackButt(true);   
   };
   const [locationHide] = useState({
     corporation: true,
@@ -319,7 +322,7 @@ function PartyWingsOfficeLocation() {
       </Menu>
     );
   };
-
+                                                
   const exportPDF = () => {
     const unit = "pt";
     const size = "A4";

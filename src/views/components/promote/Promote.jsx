@@ -269,8 +269,8 @@ const Promote = () => {
                     </CLabel>
 
                     <CLabel
-                      className={"reAssign-Detail"}
-                      style={{ marginLeft: "8em" }}
+                      className={"reAssign-Detail23"}
+                      
                     >
                       {selected.assignedTo
                         ? selected.assignedTo.firstName
@@ -282,7 +282,7 @@ const Promote = () => {
                     Gender :{" "}
                     </CLabel>
 
-                    <CLabel className={"reAssign-Detail"} style={{marginLeft:"8em"}}>
+                    <CLabel className={"reAssign-Detail23"} >
                       {selected.assignedTo
                         ? selected.assignedTo.firstName
                         : "Male"}
@@ -317,8 +317,8 @@ const Promote = () => {
                     </CLabel>
 
                     <CLabel
-                      className={"reAssign-Detail"}
-                      style={{ marginLeft: "8em" }}
+                      className={"reAssign-Detail23"}
+                      
                     >
                       {selected.assignedTo
                         ? selected.assignedTo.firstName
@@ -331,8 +331,8 @@ const Promote = () => {
                     </CLabel>
 
                     <CLabel
-                      className={"reAssign-Detail"}
-                      style={{ marginLeft: "8em" }}
+                      className={"reAssign-Detail23"}
+                      
                     >
                       {selected.assignedTo
                         ? selected.assignedTo.firstName
@@ -353,8 +353,8 @@ const Promote = () => {
                     </CLabel>
 
                     <CLabel
-                      className={"reAssign-Detail"}
-                      style={{ marginLeft: "8em" }}
+                      className={"reAssign-Detail23"}
+                      
                     >
                       {selected.assignedTo
                         ? selected.assignedTo.firstName
