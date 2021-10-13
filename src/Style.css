@@ -748,8 +748,9 @@ button.cancelBtn {
   }
 
   .long{
-    color: tomato;
-    text-align: center;
+    background: linear-gradient(to bottom, #000 0, #000 50%, #ff1c1b 51%, #ff1c1b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .long1{

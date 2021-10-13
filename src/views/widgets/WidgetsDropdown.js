@@ -319,7 +319,9 @@ const WidgetsDropdown = () => {
           </CDropdown>
         </CWidgetDropdown>
       </CCol>
-
+      <CCol sm="6" lg="3">
+        </CCol>
+        <CCol sm="6" lg="3"></CCol>
       <CCol sm="6" lg="3">
         <CWidgetDropdown
           color="gradient-success"
@@ -425,7 +427,113 @@ const WidgetsDropdown = () => {
           </CDropdown>
         </CWidgetDropdown>
       </CCol>
+      <CCol sm="6" lg="3">
+        <CWidgetDropdown
+          color="gradient-dark"
+          // header="Tansgender"
+          // text="02"
+          footerSlot={
+            <span
+              style={{
+                 fontSize: "18px",
+                fontWeight: "600",
+                textAlign: "center",
+                marginTop: "65px",
+                marginLeft: "-130px",
+              }}
+            ></span>
+          }
+          style={{ height: "135px", cursor: "pointer" }}         
+        >
+          <span
+            style={{
+              fontSize: "23px",
+              fontWeight: "600",
+              marginTop: "-5px",
+              marginLeft: "20px",
+              position: "absolute",
+            }}
+            onClick={() => history.push("/FormCouncul")}
+          >
+            Legistative Council
+          </span>
+          <span
+            style={{
+               fontSize: "18px",
+              fontWeight: "600",
+              textAlign: "center",
+              marginTop: "60px",
+              marginLeft: "8px",
+            }}
+            onClick={() => history.push("/FormCouncul")}
+          >
+            500
+          </span>
+          <CDropdown>
+            <CDropdownToggle caret className="text-white" color="transparent">
+              <i class="fa fa-share-alt" style={{ color: "white" }} />
+            </CDropdownToggle>
+            <CDropdownMenu className="pt-0" placement="bottom-end">
+              <CDropdownItem>SMS</CDropdownItem>
+              <CDropdownItem>Katchup</CDropdownItem>
+            </CDropdownMenu>
+          </CDropdown>
+        </CWidgetDropdown>
+      </CCol>
 
+      <CCol sm="6" lg="3">
+        <CWidgetDropdown
+          color="gradient-primary"
+          // header="Tansgender"
+          // text="02"
+          footerSlot={
+            <span
+              style={{
+                 fontSize: "18px",
+                fontWeight: "600",
+                textAlign: "center",
+                marginTop: "65px",
+                marginLeft: "-130px",
+              }}
+            ></span>
+          }
+          style={{ height: "135px", cursor: "pointer" }}          
+        >
+          <span
+            style={{
+              fontSize: "23px",
+              fontWeight: "600",
+              marginTop: "-5px",
+              marginLeft: "11px",
+              position: "absolute",
+            }}
+            onClick={() => history.push("/FormPanchayatMember")}
+          >
+            Panchayat Member
+          </span>
+          <span
+            style={{
+               fontSize: "18px",
+              fontWeight: "600",
+              textAlign: "center",
+              marginTop: "60px",
+              marginLeft: "8px",
+            }}
+            onClick={() => history.push("/FormPanchayatMember")}
+          >
+            500
+          </span>
+          <CDropdown>
+            <CDropdownToggle caret className="text-white" color="transparent">
+              <i class="fa fa-share-alt" style={{ color: "white" }} />
+            </CDropdownToggle>
+            <CDropdownMenu className="pt-0" placement="bottom-end">
+              <CDropdownItem>SMS</CDropdownItem>
+              <CDropdownItem>Katchup</CDropdownItem>
+            </CDropdownMenu>
+          </CDropdown>
+        </CWidgetDropdown>
+      </CCol>
       <CCol sm="6" lg="3">
         <CWidgetDropdown
           color="gradient-danger"
@@ -534,113 +642,7 @@ const WidgetsDropdown = () => {
         </CWidgetDropdown>
       </CCol>
 
-      <CCol sm="6" lg="3">
-        <CWidgetDropdown
-          color="gradient-dark"
-          // header="Tansgender"
-          // text="02"
-          footerSlot={
-            <span
-              style={{
-                 fontSize: "18px",
-                fontWeight: "600",
-                textAlign: "center",
-                marginTop: "65px",
-                marginLeft: "-130px",
-              }}
-            ></span>
-          }
-          style={{ height: "135px", cursor: "pointer" }}         
-        >
-          <span
-            style={{
-              fontSize: "23px",
-              fontWeight: "600",
-              marginTop: "-5px",
-              marginLeft: "20px",
-              position: "absolute",
-            }}
-            onClick={() => history.push("/FormCouncul")}
-          >
-            Legistative Council
-          </span>
-          <span
-            style={{
-               fontSize: "18px",
-              fontWeight: "600",
-              textAlign: "center",
-              marginTop: "60px",
-              marginLeft: "8px",
-            }}
-            onClick={() => history.push("/FormCouncul")}
-          >
-            500
-          </span>
-          <CDropdown>
-            <CDropdownToggle caret className="text-white" color="transparent">
-              <i class="fa fa-share-alt" style={{ color: "white" }} />
-            </CDropdownToggle>
-            <CDropdownMenu className="pt-0" placement="bottom-end">
-              <CDropdownItem>SMS</CDropdownItem>
-              <CDropdownItem>Katchup</CDropdownItem>
-            </CDropdownMenu>
-          </CDropdown>
-        </CWidgetDropdown>
-      </CCol>
-
-      <CCol sm="6" lg="3">
-        <CWidgetDropdown
-          color="gradient-primary"
-          // header="Tansgender"
-          // text="02"
-          footerSlot={
-            <span
-              style={{
-                 fontSize: "18px",
-                fontWeight: "600",
-                textAlign: "center",
-                marginTop: "65px",
-                marginLeft: "-130px",
-              }}
-            ></span>
-          }
-          style={{ height: "135px", cursor: "pointer" }}          
-        >
-          <span
-            style={{
-              fontSize: "23px",
-              fontWeight: "600",
-              marginTop: "-5px",
-              marginLeft: "11px",
-              position: "absolute",
-            }}
-            onClick={() => history.push("/FormPanchayatMember")}
-          >
-            Panchayat Member
-          </span>
-          <span
-            style={{
-               fontSize: "18px",
-              fontWeight: "600",
-              textAlign: "center",
-              marginTop: "60px",
-              marginLeft: "8px",
-            }}
-            onClick={() => history.push("/FormPanchayatMember")}
-          >
-            500
-          </span>
-          <CDropdown>
-            <CDropdownToggle caret className="text-white" color="transparent">
-              <i class="fa fa-share-alt" style={{ color: "white" }} />
-            </CDropdownToggle>
-            <CDropdownMenu className="pt-0" placement="bottom-end">
-              <CDropdownItem>SMS</CDropdownItem>
-              <CDropdownItem>Katchup</CDropdownItem>
-            </CDropdownMenu>
-          </CDropdown>
-        </CWidgetDropdown>
-      </CCol>
+     
     </CRow>
   );
 };

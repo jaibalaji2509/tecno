@@ -519,7 +519,7 @@ const Form = () => {
                 )}
                 {show1 && (
                   <tr>
-                    <td className={"long"} style={{ paddingLeft: "30px" }}></td>
+                    <td style={{ paddingLeft: "30px" }}></td>
                     <td className={"long"} style={{ paddingLeft: "50px" }}>
                       Gangaikonda Cholapuram.
                     </td>
@@ -659,12 +659,21 @@ const Form = () => {
                 )}
                 {kaliu1 && (
                   <tr>
-                    <td className={"long"} style={{ paddingLeft: "30px" }}></td>
+                    <td style={{ paddingLeft: "30px" }}></td>
                     <td className={"long"} style={{ paddingLeft: "50px" }}>
                       Acharapakkam
                     </td>
                     <td className={"long"} style={{ paddingLeft: "50px" }}>
                       10
+                    </td>
+                    <td className={"long"} style={{ paddingLeft: "50px" }}>
+                      10
+                    </td>
+                    <td className={"long"} style={{ paddingLeft: "50px" }}>
+                      15
+                    </td>
+                    <td className={"long"} style={{ paddingLeft: "50px" }}>
+                      5
                     </td>
                   </tr>
                 )}
@@ -677,6 +686,15 @@ const Form = () => {
                     <td className={"long"} style={{ paddingLeft: "50px" }}>
                       25
                     </td>
+                    <td className={"long"} style={{ paddingLeft: "50px" }}>
+                      10
+                    </td>
+                    <td className={"long"} style={{ paddingLeft: "50px" }}>
+                      15
+                    </td>
+                    <td className={"long"} style={{ paddingLeft: "50px" }}>
+                      5
+                    </td>
                   </tr>
                 )}
                 {kaliu3 && (
@@ -684,6 +702,15 @@ const Form = () => {
                     <td style={{ paddingLeft: "30px" }}></td>
                     <td className={"long"} style={{ paddingLeft: "50px" }}>
                       Edaikazhinadu
+                    </td>
+                    <td className={"long"} style={{ paddingLeft: "50px" }}>
+                      5
+                    </td>
+                    <td className={"long"} style={{ paddingLeft: "50px" }}>
+                      10
+                    </td>
+                    <td className={"long"} style={{ paddingLeft: "50px" }}>
+                      15
                     </td>
                     <td className={"long"} style={{ paddingLeft: "50px" }}>
                       5
@@ -699,6 +726,15 @@ const Form = () => {
                     <td className={"long"} style={{ paddingLeft: "50px" }}>
                       10
                     </td>
+                    <td className={"long"} style={{ paddingLeft: "50px" }}>
+                      10
+                    </td>
+                    <td className={"long"} style={{ paddingLeft: "50px" }}>
+                      15
+                    </td>
+                    <td className={"long"} style={{ paddingLeft: "50px" }}>
+                      5
+                    </td>
                   </tr>
                 )}
                 {kaliu5 && (
@@ -710,6 +746,15 @@ const Form = () => {
                     <td className={"long"} style={{ paddingLeft: "50px" }}>
                       20
                     </td>
+                    <td className={"long"} style={{ paddingLeft: "50px" }}>
+                      10
+                    </td>
+                    <td className={"long"} style={{ paddingLeft: "50px" }}>
+                      15
+                    </td>
+                    <td className={"long"} style={{ paddingLeft: "50px" }}>
+                      5
+                    </td>
                   </tr>
                 )}
                 {kaliu && (
@@ -720,6 +765,15 @@ const Form = () => {
                     </td>
                     <td className={"long"} style={{ paddingLeft: "50px" }}>
                       30
+                    </td>
+                    <td className={"long"} style={{ paddingLeft: "50px" }}>
+                      10
+                    </td>
+                    <td className={"long"} style={{ paddingLeft: "50px" }}>
+                      15
+                    </td>
+                    <td className={"long"} style={{ paddingLeft: "50px" }}>
+                      5
                     </td>
                   </tr>
                 )}
@@ -745,7 +799,7 @@ const Form = () => {
                 )}
                 {kali0o1 && (
                   <tr>
-                    <td className={"long"} style={{ paddingLeft: "30px" }}></td>
+                    <td style={{ paddingLeft: "30px" }}></td>
                     <td className={"long"} style={{ paddingLeft: "50px" }}>
                       Agaram
                     </td>
@@ -889,7 +943,7 @@ const Form = () => {
                 )}
                 {kali1m1 && (
                   <tr>
-                    <td className={"long"} style={{ paddingLeft: "30px" }}></td>
+                    <td style={{ paddingLeft: "30px" }}></td>
                     <td className={"long"} style={{ paddingLeft: "50px" }}>
                       Arappalayam
                     </td>

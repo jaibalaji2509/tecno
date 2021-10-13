@@ -117,79 +117,7 @@ const _nav = [
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       }, 
 
-      {
-        id: "AdminSetupSideBar",
-        _tag: "CSidebarNavDropdown",
-        name: "Map Publc Representative",
-        route: "/rajyasabha1",
-        icon: 'cil-drop',
-        _children: [
-          {
-            id: "CSidebarNavItemSideBar",
-            _tag: "CSidebarNavItem",
-            name: "Central Minister",
-            to: "/centralminister",
-            icon: <CIcon className={"c-sidebar-nav-icon"} />,
-          
-          },
-          {
-            _tag: "CSidebarNavItem",
-            name: "Rajya Sabha",
-            to: "/rajyasabha",
-          },
-          {
-            id: "CSidebarNavItemSideBar",
-            _tag: "CSidebarNavItem",
-            name: "State Minister",
-            to: "/stateminister",
-            icon: <CIcon className={"c-sidebar-nav-icon"} />,
-          
-          },
-          {
-            _tag: "CSidebarNavItem",
-            name: "Constituency Member  ",
-            to: "/ConstituencyMember",
-            icon: <CIcon className={"c-sidebar-nav-icon"} />,
-          },
-          {
-            id: "CSidebarNavItemSideBar",
-            _tag: "CSidebarNavItem",
-            name: "Member Corporation",
-            to: "/corporation",
-            icon: <CIcon className={"c-sidebar-nav-icon"} />,
-          },
-          {
-            id: "CSidebarNavItemSideBar",
-            _tag: "CSidebarNavItem",
-            name: "Member of Municipality ",
-            to: "/MemberofMunicipality",
-            icon: <CIcon className={"c-sidebar-nav-icon"} />,
-          
-          },
-
-          {
-            id: "CSidebarNavItemSideBar",
-            _tag: "CSidebarNavItem",
-            name: "Member Town Panchayat",
-            to: "/MemberTownPanchayat",
-            icon: <CIcon className={"c-sidebar-nav-icon"} />,
-          
-          },
-
-         {
-            id: "CSidebarNavItemSideBar",
-            _tag: "CSidebarNavItem",
-            name: "Rural Bodies",
-            to: "/RuralBodies",
-            icon: <CIcon className={"c-sidebar-nav-icon"} />,
-          
-          },
-         
-         
-         
-        ]
-
-      },
+     
      
       {
         id: "CSidebarNavItemSideBar",
@@ -227,6 +155,75 @@ const _nav = [
         icon: <CIcon className={"c-sidebar-nav-icon"} />,
       },
     ],
+  },
+  {
+    id: "AdminSetupSideBar",
+    _tag: "CSidebarNavDropdown",
+    name: "PR Management ",
+    route: "/rajyasabha1",
+    icon: 'cil-drop',
+    _children: [
+      {
+        id: "CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: "Central Minister",
+        to: "/centralminister",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      
+      },
+      {
+        _tag: "CSidebarNavItem",
+        name: "Rajya Sabha",
+        to: "/rajyasabha",
+      },
+      {
+        id: "CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: "State Minister",
+        to: "/stateminister",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      
+      },
+    {
+        _tag: "CSidebarNavItem",
+        name: "Constituency Member  ",
+        to: "/ConstituencyMember",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+      {
+        id: "CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: "Member of Corporation",
+        to: "/corporation",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      },
+      {
+        id: "CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: "Member of Municipality ",
+        to: "/MemberofMunicipality",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      
+      },
+
+      {
+        id: "CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: "Member of Town Panchayat",
+        to: "/MemberTownPanchayat",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      
+      },
+
+     {
+        id: "CSidebarNavItemSideBar",
+        _tag: "CSidebarNavItem",
+        name: "Member of Rural Bodies",
+        to: "/RuralBodies",
+        icon: <CIcon className={"c-sidebar-nav-icon"} />,
+      
+      },               
+    ]
   },
 
   {
@@ -291,31 +288,7 @@ const _nav = [
           ]
       },         
     ],
-  },
-
-  {
-    id: "AdminSetupSideBar",
-    _tag: "CSidebarNavDropdown",
-    name: "Party Member Registration",
-    route: "/AdminSetup",
-    icon: 'cil-drop',
-    _children: [
-         
-      {
-        id:"CSidebarNavItemSideBar",
-        _tag: "CSidebarNavItem",
-        name: 'Member Count',
-        to: '/',
-        icon: <CIcon className={"c-sidebar-nav-icon"} />,
-      },
-    ],
-  },
-  
-     
-    
-  
-
- 
+  },         
 ];
 
 export default _nav;
